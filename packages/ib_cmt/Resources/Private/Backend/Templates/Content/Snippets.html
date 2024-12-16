@@ -1,0 +1,118 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="content">
+  {namespace be=TYPO3\CMS\Backend\ViewHelpers}
+
+  <f:be.infobox title="E-Mail mit Client/Anzeige Auswahl"></f:be.infobox>
+  <fieldset>
+    ###IBMAILTOSTART###test@test.de###IBMAILTOEND###
+  </fieldset>
+
+  <f:be.infobox title="Youtube Video"></f:be.infobox>
+  <fieldset>
+    ###IBSTART###YT#:#VIDEOCODE#:#STARTAT###IBEND###
+  </fieldset>
+
+  <f:be.infobox title="Allgemeine Iframes"></f:be.infobox>
+  <fieldset>
+    ###IBSTART###TAG#:#SKRIPTURL#:#TEXTDATEI#:#HINTERGRUNDBILD#:#COOKIEKATEGORIE#:#ANGEZEIGTERKATEGORIENAME#:#HEIGHT###IBEND###
+  </fieldset>
+
+  <f:be.infobox title="Iframes ohne Consent/Cookiebot-Abfrage!"></f:be.infobox>
+  <fieldset>
+    ###IBSTART###IFRAME#:#SKRIPTURL#:#HEIGHT###IBEND###
+  </fieldset>
+
+  <div>
+    </br>
+    <h4>YouTube Video Code (VIDEOCODE)</h4>
+    </br>
+    <h4>Video abspielen bei/nach X Sekunden (STARTAT)</h4>
+    </br>
+    <h4>data-src (SKRIPTURL)</h4>
+    URL/SRC des zu ladenden Skriptes
+
+    <h4>data-cbtext (TEXTDATEI)</h4>
+    <ul>
+      <li>Datei, welche die anzuzeigenden Texte beinhaltet (vom Standard abweichende Texte). Falls Standardtexte
+        verwendet werden sollen, dieses Attribut bzw. TEXTDATEI entfernen/leer lassen (nur die Bezeichnung "TEXTDATEI",
+        nicht #:#).</br>Folgende Texte stehen zur Verfügung
+        <ul>
+          <li>freiwilligendienste</li>
+        </ul>
+      </li>
+
+    </ul>
+
+    <h4>data-cboverlayclass (HINTERGRUNDBILD)</h4>
+    <ul>
+      <li>genericCBOverlay</li>
+      <li>mapsCBOverlay</li>
+      <li>youtubeCBOverlay</li>
+    </ul>
+
+
+    <h4>data-cookieconsent (COOKIEKATEGORIE)</h4>
+    <ul>
+      <li>statistics (Statistik)</li>
+      <li>marketing (Marketing)</li>
+      <li>preferences (Remarketing)</li>
+    </ul>
+
+
+    <h4>data-cbcategoryname (ANGEZEIGTERKATEGORIENAME)</h4>
+    Entsprechender Anzeigename der Kategorie. Wird als Buttontext verwendet. Siehe data-cookieconsent Werte in Klammern
+    <ul>
+      <li>Statistik - (CN = 统计学)</li>
+      <li>Marketing - (CN = 市场营销)</li>
+      <li>Remarketing - (CN = 再营销)</li>
+    </ul>
+
+    <h4>Iframe-Höhe (HEIGHT)</h4>
+
+  </div>
+
+
+
+
+
+
+
+
+  <f:be.infobox title="Hinfällige Implementierung"></f:be.infobox>
+
+  <pre>
+    <code>
+      &#x3C;div class=&#x22;cb-script-container&#x22;&#x3E;
+        &#x3C;div class=&#x22;ibConsentComment&#x22;&#x3E;
+          RTE_TEXT
+        &#x3C;/div&#x3E;
+        &#x3C;iframe data-src=&#x22;SKRIPT_URL&#x22; data-cbtext=&#x22;TEXTDATEI&#x22; data-cboverlayclass=&#x22;HINTERGRUNDBILD&#x22; data-cookieconsent=&#x22;COOKIEKATEGORIE&#x22;
+          data-cbcategoryname=&#x22;ANGEZEIGTER_KATEGORIENAME&#x22;&#x3E;&#x3C;/iframe&#x3E;
+      &#x3C;/div&#x3E;
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+      &lt;div class=&quot;video-responsive&quot;&gt;
+        &lt;iframe width=&quot;100%&quot; height=&quot;400&quot; frameborder=&quot;0&quot;
+          src=&quot;//www.youtube-nocookie.com/embed/YOUTUBECODE?autoplay=0&amp;showinfo=0&amp;controls=1&quot; allowfullscreen&gt;&lt;/iframe&gt;
+      &lt;/div&gt;
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+      &lt;div class=&quot;video-responsive&quot;&gt;
+        &lt;div class=&quot;ibConsentComment&quot;&gt;
+          RTE_TEXT
+        &lt;/div&gt;
+        &lt;iframe width=&quot;100%&quot; height=&quot;400&quot; frameborder=&quot;0&quot;
+          data-src=&quot;//www.youtube-nocookie.com/embed/YOUTUBECODE?autoplay=0&amp;showinfo=0&amp;controls=1&quot; data-cookieconsent=&quot;statistics&quot; allowfullscreen&gt;&lt;/iframe&gt;
+      &lt;/div&gt;
+    </code>
+  </pre>
+</f:section>
+
+</html>

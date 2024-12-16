@@ -1,0 +1,11 @@
+# cat=basic/enable; type=string; label=Path to JSON (Redaktionstool)
+pathRTJSON =
+
+# cat=basic/enable; type=string; label=Storage PID
+cmtStoragePid =
+
+# cat=basic/enable; type=string; label=Typo3 Suche-Terme
+termsTypo3 =
+
+# cat=basic/enable; type=string; label=Redaktionstool Suche-Terme
+termsRT =

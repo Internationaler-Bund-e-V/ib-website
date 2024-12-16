@@ -1,0 +1,17 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    IB\IbCmt\:
+        resource: '../Classes/*'
+
+    IB\IbCmt\Command\CheckContentTagsCommand:
+        tags:
+            - name: 'console.command'
+              command: 'ibcmt:checkcontenttags'
+              description: 'V10 - IB CMT check content tags command'
+
+
+

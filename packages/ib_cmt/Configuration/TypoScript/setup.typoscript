@@ -1,0 +1,14 @@
+# Module configuration
+module.tx_ibcmt_web_ibcmtibcmt {
+    persistence {
+        storagePid = 3283
+    }
+    view {
+        templateRootPaths.0 = EXT:ib_cmt/Resources/Private/Backend/Templates/
+        templateRootPaths.1 = {$module.tx_ibcmt_ibcmt.view.templateRootPath}
+        partialRootPaths.0 = EXT:ib_cmt/Resources/Private/Backend/Partials/
+        partialRootPaths.1 = {$module.tx_ibcmt_ibcmt.view.partialRootPath}
+        layoutRootPaths.0 = EXT:ib_cmt/Resources/Private/Backend/Layouts/
+        layoutRootPaths.1 = {$module.tx_ibcmt_ibcmt.view.layoutRootPath}
+    }
+}

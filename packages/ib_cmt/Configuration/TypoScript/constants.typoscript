@@ -1,0 +1,15 @@
+
+module.tx_ibcmt_ibcmt {
+    view {
+        # cat=module.tx_rmscrm_rmscrmbe/file; type=string; label=Path to template root (BE)
+        templateRootPath = EXT:ib_cmt/Resources/Private/Backend/Templates/
+        # cat=module.tx_rmscrm_rmscrmbe/file; type=string; label=Path to template partials (BE)
+        partialRootPath = EXT:ib_cmt/Resources/Private/Backend/Partials/
+        # cat=module.tx_rmscrm_rmscrmbe/file; type=string; label=Path to template layouts (BE)
+        layoutRootPath = EXT:ib_cmt/Resources/Private/Backend/Layouts/
+    }
+    persistence {
+        # cat=module.tx_rmscrm_rmscrmbe//a; type=string; label=Default storage PID
+        storagePid =
+    }
+}

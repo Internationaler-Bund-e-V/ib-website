@@ -1,0 +1,53 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="content">
+  {namespace be=TYPO3\CMS\Backend\ViewHelpers}
+
+  <f:be.infobox title="Typo3 News">    
+    <f:count>{contentItems}</f:count> Contentelemente gefunden - Suchterme: {searchTerms}
+  </f:be.infobox>
+
+
+
+  <table>
+    <thead>
+      <tr>
+        <td>Content ID</td>
+        <td>Content Parent ID (Seite)</td>
+        <td>Content Typ</td>
+        <td>Status</td>
+        <td>Kommentar</td>
+        <td>Aktion</td>
+      </tr>
+    </thead>
+
+
+    <f:for each="{contentItems}" as="c">
+      <tr>
+        <td><be:link.editRecord uid="{c.contentid}" class="cmtContentLink" table="tx_news_domain_model_news">{c.contentid}</be:link.editRecord></td>
+        <td><f:link.typolink target="_blank" class="cmtContentLink" parameter="{c.contentparentid}">{c.contentparentid}</f:link.typolink></td>
+        <td>Typo3 News</td>
+        <td>
+          <f:if condition="{c.allowed}">
+            <f:then>
+              <div class="cmtStatusIcon cmtGreen"></div>
+              <f:link.action action="allow" class="btn btn-default" arguments="{content:c,redirect:'listNews'}">Melden</f:link.action>
+            </f:then>
+            <f:else>
+              <div class="cmtStatusIcon cmtRed"></div>
+              <f:link.action action="allow" class="btn btn-default" arguments="{content:c,redirect:'listNews'}">Erlauben</f:link.action>
+            </f:else>
+          </f:if>
+        </td>
+        <td>{c.comment}</td>
+        <td>
+          <be:link.editRecord uid="{c.uid}" table="tx_ibcmt_domain_model_content" class="btn btn-default"> Kommentar bearbeiten
+          </be:link.editRecord>
+        </td>
+      </tr>
+    </f:for>
+  </table>
+
+</f:section>
+
+</html>

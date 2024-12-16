@@ -1,0 +1,26 @@
+{
+    "name": "ib/ib-cmt",
+    "type": "typo3-cms-extension",
+    "description": "IB - CMT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "authors": [],
+    "require": {
+        "typo3/cms-core": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "IB\\IbCmt\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "IB\\IbCmt\\Tests\\": "Tests"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "ib_cmt"
+        }
+    }
+}

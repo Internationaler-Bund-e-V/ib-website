@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2020-02-05T16:17:42Z" product-name="ib_cmt">
+    <header />
+    <body>
+      <trans-unit id="tx_ibcmt_domain_model_content">
+        <source>Content Item</source>
+      </trans-unit>
+      <trans-unit id="tx_ibcmt_domain_model_content.contentid">
+        <source>Content ID</source>
+      </trans-unit>
+      <trans-unit id="tx_ibcmt_domain_model_content.contentparentid">
+        <source>Content Parent ID</source>
+      </trans-unit>
+      <trans-unit id="tx_ibcmt_domain_model_content.contenttype">
+        <source>Content Typ</source>
+      </trans-unit>
+      <trans-unit id="tx_ibcmt_domain_model_content.tstampallowed">
+        <source>Letzter Timestamp</source>
+      </trans-unit>
+      <trans-unit id="tx_ibcmt_domain_model_content.allowed">
+        <source>Erlauben</source>
+      </trans-unit>
+      <trans-unit id="tx_ibcmt_domain_model_content.comment">
+        <source>Kommentar</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
