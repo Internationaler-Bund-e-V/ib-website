@@ -1,0 +1,7 @@
+# Jugendtreff Kirchheim
+#[site("rootPageId") == 4501]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Jugendtreff_Kirchheim
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

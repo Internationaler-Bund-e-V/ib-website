@@ -1,0 +1,51 @@
+# -----------------------------------------------------------------------------
+# PORTAL Menschseinstaerken
+# -----------------------------------------------------------------------------
+[request.getNormalizedParams().getHttpHost() == 'menschseinstaerken.de']
+    host = menschseinstaerken.de
+    portalSettings {
+        pageTitle = Menschseinstaerken.de
+        firstMenuTitle = 
+        root_id = 4613
+        misc.sitemapStartId = 4613
+        mainnav_start_id =4626
+        misc.searchResultId = 4625
+        misc.showOnlyTYPO3SearchResults = 1
+        readspeaker.show = 1
+        bodyClassName = menschseinstaerken
+
+        #data privacy site ID
+        dataPrivacySiteID = 4622
+    
+        //generate news sitemap     
+        NewsSitemap.generate = 1
+        NewsSitemap.NewsFolderPid = 4637
+        NewsSitemap.NewsDetailPid = 4640
+
+        analytics {
+            #account_id =
+            #enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 47
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = rOIzcTdH
+        }
+   
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+        main_bubble {
+            hide = 0
+            text = &#35;menschsein<br/>staerken
+            title_text = &#35;menschseinstaerken
+            id = 4613
+        }
+        social.ib_english_page_link = 
+    }
+    const_navigation {
+        footernav_central_folder_id = 4616
+        footernav_misc_folder_id = 4614
+        footernav_meta_folder_id = 4618
+    }
+[end]

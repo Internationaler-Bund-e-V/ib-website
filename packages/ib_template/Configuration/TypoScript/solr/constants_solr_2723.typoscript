@@ -1,0 +1,7 @@
+# IB Stiftung
+#[site("rootPageId") == 2723]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_Stiftung
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

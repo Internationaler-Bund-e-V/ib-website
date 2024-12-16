@@ -1,0 +1,109 @@
+# -----------------------------------------------------------------------------
+# PORTAL IB FREIWILLIGENDIENSTE
+# -----------------------------------------------------------------------------
+[request.getNormalizedParams().getHttpHost() == 'ib-freiwilligendienste.de' || request.getNormalizedParams().getHttpHost() == 'ibfreiwilligendienste2016.rmsdev.de' || request.getNormalizedParams().getHttpHost() == 'ib-freiwilligendienste.ddev.site' || request.getNormalizedParams().getHttpHost() == 'ib-fwd.ddev.site']
+    host = ib-freiwilligendienste.de
+    portalSettings {
+
+        pageTitle = IB Freiwilligendienste
+        root_id = 129
+        bodyClassName = ib-FWD
+        mainnav_start_id = 132
+        firstMenuTitle = IB Freiwilligendienste
+        #tt_news.single_pid = 745
+        tt_news.single_pid = 130
+        services_menu_start_id = 495
+        //allow shariff sharebutton for FWD Job-Template only
+        allowFWDJobTemplate = 1
+
+        misc.showOnlyTYPO3SearchResults = 0
+        misc.searchResultId = 131
+        misc.sitemapStartId = 129
+
+        misc.mapViewPid = 494
+        misc.gridViewPid = 497
+        misc.gridViewImg = fileadmin/user_upload/navigation/location_list_kita.jpg
+
+        misc.locationSingleViewId = 493
+        misc.productSingleViewId = 492
+        ib_content.dbCategoryLocationPage = 493
+        ib_content.dbNavigationId = 4
+
+        readspeaker.show = 1
+
+        //data privacy site ID
+        dataPrivacySiteID = 762
+
+        //generate news sitemap     
+        NewsSitemap.generate = 1
+        NewsSitemap.NewsFolderPid = 499
+        NewsSitemap.NewsDetailPid = 130
+        //generate location sitemap
+        LocationSitemap.generate = 1
+        LocationSitemap.NavigationID = 4
+        LocationSitemap.DetailPid = 493
+        //generate fwd sitemap
+        FwdSitemap.generate = 1
+        FwdSitemap.DetailPid = 545
+
+        main_bubble {
+            text = Freie<br>Stellen
+            id = 546
+            title_text = Kontaktieren Sie uns hier bei Fragen, Wünschen und Anregungen
+        }
+
+        social.facebook = https://www.facebook.com/ibfreiwilligendienste
+        social.facebook.titletag = Offizielle Facebook-Seite der IB-Freiwilligendienste
+        social.youtube = https://www.youtube.com/channel/UCM5eFDRXilM3Pua0be5s7Jg
+        social.youtube.titletag = Offizielle YouTube-Seite der IB-Freiwilligendienste
+
+        analytics {
+            #account_id = 0
+            #enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 4
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = Y7OVVZGR
+        }
+
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+
+        #threecolumn footer layout
+        footer.use_three_columns = 1
+        footer.show_textcontent_left = 1
+        footer.show_textcontent_middle = 1
+        footer.show_textcontent_right = 1
+        footer.tt_content_uid_left = 18564
+        footer.tt_content_uid_middle = 18563
+        footer.tt_content_uid_right = 18562
+    }
+
+    social.facebook = https://www.facebook.com/ibfreiwilligendienste
+    social.facebook.titletag = Offizielle Facebook-Seite der IB-Freiwilligendienste
+    social.youtube = https://www.youtube.com/channel/UCM5eFDRXilM3Pua0be5s7Jg
+    social.youtube.titletag = Offizielle YouTube-Seite der IB-Freiwilligendienste
+  
+    const_navigation {
+        footernav_central_folder_id = 3
+        footernav_misc_folder_id = 15
+        footernav_meta_folder_id = 758
+    }
+[end]
+
+[request.getNormalizedParams().getHttpHost() == 'ibfreiwilligendienste2016.rmsdev.de']
+    host = ibfreiwilligendienste2016.rmsdev.de
+    portalSettings.analytics.enable_tracking = 0
+[end]
+
+[request.getNormalizedParams().getHttpHost() == 'ib-freiwilligendienste.ddev.site']
+    host = ib-freiwilligendienste.ddev.site
+    portalSettings.analytics.enable_tracking = 0
+[end]
+
+[request.getNormalizedParams().getHttpHost() == 'ib-fwd.ddev.site']
+    host = ib-fwd.ddev.site
+    portalSettings.analytics.enable_tracking = 0
+[end]

@@ -1,0 +1,86 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:comment>
+  <!-- ************************************************
+	 * render the default menu list item
+	 * ************************************************ -->
+</f:comment>
+<f:section name="defaultMenuListItem">
+  <v:condition.page.hasSubpages pageUid="{mainMenuItem.uid}" includeAccessProtected="1" includeHiddenInMenu="1">
+    <f:then>
+      <!-- render full subnavi -->
+      <li class="{listClass}" style="{inlineStyles}">
+        <f:if condition="{mainMenuItem.nav_title}">
+          <f:then>
+            <a href="#">{mainMenuItem.nav_title}</a>
+          </f:then>
+          <f:else>
+            <a href="#">{mainMenuItem.title}</a>
+          </f:else>
+        </f:if>
+
+        <div class="megamenu full-width">
+          <f:render section="MenuRecursionStart" arguments="{recursionStartPageUid:mainMenuItem.uid}" />
+        </div>
+      </li>
+    </f:then>
+    <f:else>
+      <!-- render link only -->
+      <li class="{listClass}">
+        <v:page.link pageUid="{mainMenuItem.uid}" absolute="1">
+          <f:if condition="{mainMenuItem.nav_title}">
+            <f:then>
+              {mainMenuItem.nav_title}
+            </f:then>
+            <f:else>
+              {mainMenuItem.title}
+            </f:else>
+          </f:if>
+        </v:page.link>
+      </li>
+    </f:else>
+  </v:condition.page.hasSubpages>
+
+</f:section>
+
+
+<f:comment>
+  <!-- ************************************************
+	 * recurse into the menu items
+	 * ************************************************ -->
+</f:comment>
+<f:section name="MenuRecursionStart">
+  <v:menu pageUid="{recursionStartPageUid}" classActive="active" entryLevel="2">
+    <f:if condition="{menu}">
+      <!-- open first row -->
+      <div class="row">
+        <f:for each="{menu}" as="startLevelPage" iteration="iterator">
+          <div class="col2">
+            <ul>
+              <li class="image">
+                <v:page.resources.fal table="pages" field="media" uid="{startLevelPage.uid}" as="images" limit="1">
+                  <f:for each="{images}" as="image">
+                    <v:page.link pageUid="{startLevelPage.uid}" absolute="1">
+                      <img src="{image.url}" alt="{image.alternative}" data-navimage="{startLevelPage.uid}">
+                    </v:page.link>
+                  </f:for>
+                </v:page.resources.fal>
+              </li>
+              <li>
+                <v:page.link pageUid="{startLevelPage.uid}" absolute="1" />
+              </li>
+            </ul>
+          </div>
+          <f:if condition="{iterator.cycle} % 3">
+            <f:then></f:then>
+            <f:else>
+      </div>
+      <div class="row">
+        </f:else>
+    </f:if>
+    </f:for>
+    <!-- close last row -->
+    </div>
+    </f:if>
+  </v:menu>
+</f:section>

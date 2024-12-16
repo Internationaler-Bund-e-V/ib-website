@@ -1,0 +1,7 @@
+# Juz_Nussloch
+#[site("rootPageId") == 4171]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 4191
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Juz_Nussloch
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

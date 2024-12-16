@@ -1,0 +1,7 @@
+# Maedchentreff_Solingen
+#[site("rootPageId") == 4774]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Maedchentreff_Solingen
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

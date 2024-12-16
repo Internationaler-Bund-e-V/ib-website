@@ -1,0 +1,71 @@
+# -----------------------------------------------------------------------------
+# PORTAL IB PERSONALENTWICKLUNG
+# -----------------------------------------------------------------------------
+[request.getNormalizedParams().getHttpHost() == 'ib-personalentwicklung.de' || request.getNormalizedParams().getHttpHost() == 'ibpersonal2016.rmsdev.de' || request.getNormalizedParams().getHttpHost() == 'ib-personal.ddev.site']
+    host = ib-personalentwicklung.de
+    
+    portalSettings {
+        pageTitle = kompetenz + karriere
+        root_id = 67
+        mainnav_start_id = 68
+        firstMenuTitle = kompetenz + karriere
+        tt_news.single_pid = 71
+        ib_content.dbNavigationId = 1
+        misc.showOnlyTYPO3SearchResults = 1
+        misc.searchResultId = 70
+        misc.sitemapStartId = 67
+        readspeaker.show = 1
+        dataPrivacySiteID = 457
+
+        analytics {
+            #account_id =
+            #enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 2
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = tYPn39xS
+        }
+
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+
+        main_bubble {
+            id = 440
+            text = Kontakt<br>+<br>Support
+            title_text = Kontaktieren Sie uns hier bei Fragen, Wünschen und Anregungen
+        }
+
+        #set additional headerData
+        additionalHeaderData = 1
+        additionalHeaderDataValue = <meta name="google-site-verification" content="GHgFkUo9hbOfHp90kvWWk7FpfMyf6DFD2pYcfNlZu8Y" />
+
+        #threecolumn footer layout
+        footer.use_three_columns = 1
+        footer.show_textcontent_left = 1
+        footer.show_textcontent_middle = 1
+        footer.show_textcontent_right = 1
+        footer.tt_content_uid_left = 18558
+        footer.tt_content_uid_middle = 18557
+        footer.tt_content_uid_right = 18556
+    }
+    const_navigation {
+        footernav_central_folder_id = 3
+        footernav_misc_folder_id = 15
+        footernav_meta_folder_id = 456
+    }
+    
+[end]
+
+[request.getNormalizedParams().getHttpHost() == 'ibpersonal2016.rmsdev.de']
+    host = ibpersonal2016.rmsdev.de
+    portalSettings.analytics.enable_tracking = 0
+    portalSettings.misc.sitemapStartId = 67
+[end]
+
+[request.getNormalizedParams().getHttpHost() == 'ib-personal.ddev.site']
+    host = ib-personal.ddev.site
+    portalSettings.analytics.enable_tracking = 0
+    portalSettings.misc.sitemapStartId = 67
+[end]

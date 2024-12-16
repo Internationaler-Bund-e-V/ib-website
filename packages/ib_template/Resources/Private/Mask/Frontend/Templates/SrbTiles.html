@@ -1,0 +1,148 @@
+<!-- set color -->
+<f:if condition="{data.tx_mask_srb_tiles_color}">
+  <f:switch expression="{data.tx_mask_srb_tiles_color}">
+    <f:case value="1">
+      <f:variable name="colorTheme">standardTheme</f:variable>
+    </f:case>
+    <f:case value="2">
+      <f:variable name="colorTheme">blackwhiteTheme</f:variable>
+    </f:case>
+  </f:switch><br />
+</f:if>
+<!-- set columns -->
+<f:if condition="{data.tx_mask_srb_tiles_columns}">
+  <f:switch expression="{data.tx_mask_srb_tiles_columns}">
+    <f:case value="1">
+      <f:variable name="columnsCount">6</f:variable>
+    </f:case>
+    <f:case value="2">
+      <f:variable name="columnsCount">4</f:variable>
+    </f:case>
+  </f:switch><br />
+</f:if>
+
+
+
+
+<div class="grid-container SrbDefaultContent SrbMaskContainer ">
+  <div class="grid-x grid-margin-x SrbTiles {colorTheme}">
+    <div class="cell SrbTilesHeadline">
+      <f:if condition="{data.tx_mask_srb_headline}">
+        <h2>{data.tx_mask_srb_headline}</h2>
+      </f:if>
+    </div>
+    <f:if condition="{data.tx_mask_srb_tiles}">
+      <f:for each="{data.tx_mask_srb_tiles}" as="data_item">
+        <f:if condition="{data.tx_mask_srb_tiles_direction}">
+          <f:switch expression="{data.tx_mask_srb_tiles_direction}">
+            <f:case value="1">
+              <f:render section="tileVertical" arguments="{data_item:data_item,columnsCount:columnsCount}" />
+            </f:case>
+            <f:case value="2">
+              <f:render section="tileHorizontal" arguments="{data_item:data_item,columnsCount:columnsCount}" />
+            </f:case>
+          </f:switch>
+        </f:if>
+
+      </f:for>
+    </f:if>
+
+
+  </div>
+</div>
+
+
+<!-- horizontal -->
+<f:section name="tileHorizontal">
+  <div class="cell small-12 medium-6 large-{columnsCount} SrbTile horizontal">
+    <div class="grid-x grid-margin-x">
+      <div class="cell small-12 medium-4 large-5">
+        <f:if condition="{data_item.tx_mask_srb_tile_image}">
+          <f:for each="{data_item.tx_mask_srb_tile_image}" as="file">
+            <f:image image="{file}" alt="{file.alternative}" title="{file.title}" />
+          </f:for>
+        </f:if>
+      </div>
+      <div class="cell small-12 medium-8 large-7">
+        <div class="cell SrbTileHeadline">
+          <f:if condition="{data_item.tx_mask_srb_tile_headline}">
+            <h3>{data_item.tx_mask_srb_tile_headline}</h3>
+          </f:if>
+        </div>
+        <div class="cell SrbTileSubline">
+          <f:if condition="{data_item.tx_mask_srb_tile_subline}">
+            {data_item.tx_mask_srb_tile_subline}<br />
+          </f:if>
+        </div>
+        <div class="cell">
+          <f:if condition="{data_item.tx_mask_srb_tile_text}">
+            <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data_item.tx_mask_srb_tile_text}</f:format.html>
+          </f:if>
+        </div>
+        <f:if condition="{data_item.tx_mask_srb_tile_link}">
+          <div class="cell SrbTileLinkButton">
+            <f:link.typolink parameter="{data_item.tx_mask_srb_tile_link}">
+              <f:if condition="{data_item.tx_mask_srb_tile_linktext}">
+                {data_item.tx_mask_srb_tile_linktext}
+              </f:if>
+            </f:link.typolink>
+          </div>
+
+        </f:if>
+      </div>
+
+
+
+    </div>
+  </div>
+
+</f:section>
+<!-- ########### -->
+
+
+<!-- vertical -->
+<f:section name="tileVertical">
+  <div class="cell small-12 medium-6 large-{columnsCount} SrbTile vertical">
+    <div class="grid-x grid-margin-x">
+      <div class="cell small-12 medium-12">
+        <f:if condition="{data_item.tx_mask_srb_tile_image}">
+          <f:for each="{data_item.tx_mask_srb_tile_image}" as="file">
+            <f:image image="{file}" alt="{file.alternative}" title="{file.title}" />
+          </f:for>
+        </f:if>
+      </div>
+      <div class="cell small-12 medium-12">
+        <div class="cell SrbTileHeadline">
+          <f:if condition="{data_item.tx_mask_srb_tile_headline}">
+            <h3>{data_item.tx_mask_srb_tile_headline}</h3>
+          </f:if>
+        </div>
+        <div class="cell SrbTileSubline">
+          <f:if condition="{data_item.tx_mask_srb_tile_subline}">
+            {data_item.tx_mask_srb_tile_subline}<br />
+          </f:if>
+        </div>
+        <div class="cell">
+          <f:if condition="{data_item.tx_mask_srb_tile_text}">
+            <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data_item.tx_mask_srb_tile_text}</f:format.html>
+          </f:if>
+        </div>
+        <f:if condition="{data_item.tx_mask_srb_tile_link}">
+          <div class="cell SrbTileLinkButton">
+            <f:link.typolink parameter="{data_item.tx_mask_srb_tile_link}">
+              <f:if condition="{data_item.tx_mask_srb_tile_linktext}">
+                {data_item.tx_mask_srb_tile_linktext}
+              </f:if>
+            </f:link.typolink>
+          </div>
+
+        </f:if>
+      </div>
+
+
+
+    </div>
+  </div>
+
+</f:section>
+<!-- ########### -->

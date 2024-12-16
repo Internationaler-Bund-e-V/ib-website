@@ -1,0 +1,7 @@
+# Schulen IB
+#[site("rootPageId") == 5017]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 5035
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = schulen_ib
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

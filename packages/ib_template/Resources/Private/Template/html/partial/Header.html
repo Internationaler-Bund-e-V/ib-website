@@ -1,0 +1,64 @@
+
+
+<f:switch expression="{data.sys_language_uid}">
+	<f:comment>EN</f:comment>
+	<f:case value="1">
+		<f:variable name="buddy_hide">
+			{f:cObject(typoscriptObjectPath: 'portalSettings.main_bubble_en.hide')}
+		</f:variable>
+		<f:variable name="buddy_text">{data.bubble_text}</f:variable>
+		<f:variable name="buddy_title_text">{data.bubble_title_text}</f:variable>
+		<f:variable name="buddy_link_id">{data.bubble_link}</f:variable>
+		<f:variable name="buddy_link">
+			<f:cObject typoscriptObjectPath="bubble.link_en" />
+		</f:variable>
+	</f:case>
+	<f:defaultCase>
+		<f:variable name="buddy_hide">
+			{f:cObject(typoscriptObjectPath: 'portalSettings.main_bubble.hide')}
+		</f:variable>
+		<f:variable name="buddy_text">{data.bubble_text}</f:variable>
+		<f:variable name="buddy_title_text">{data.bubble_title_text}</f:variable>
+		<f:variable name="buddy_link_id">{data.bubble_link}</f:variable>
+		<f:variable name="buddy_link">
+			<f:cObject typoscriptObjectPath="bubble.link" />
+		</f:variable>
+	</f:defaultCase>
+</f:switch>
+
+
+<div id="ib-header">
+	<div class="ib-header-container container-fluid">
+		<div class="hide-for-large">
+			<f:if condition="{f:cObject(typoscriptObjectPath:'portalSettings.showNavigationSearch')}">
+				<f:cObject typoscriptObjectPath="lib.headerSearchForm" data="{context:'searchBar'}" />
+			</f:if>
+		</div>
+		<div class="row-fluid ib-header-bar {f:if(condition: "
+			{f:cObject(typoscriptObjectPath:'portalSettings.portal_logo.format')}=='wide' ", then: 'header-ib-logo-wide')}">
+			<div id="ib-logo" class="show-for-large">
+				<f:cObject typoscriptObjectPath="lib.linkedLogo" />
+			</div>
+			<f:render partial="menu/mainMenuEntryPoint" arguments="{_all}" />
+			<div id="ib-menu-overlay"></div>
+			<!-- buddy start -->
+			<f:if condition="{buddy_hide} == 0">
+				<f:if condition="{buddy_text}">
+					<f:then>
+						<div id="ib-head-bubble">
+							<f:link.page pageUid="{buddy_link_id}" title="{buddy_title_text}">
+								<f:format.raw>{buddy_text}</f:format.raw>
+							</f:link.page>
+						</div>
+					</f:then>
+					<f:else>
+						<div id="ib-head-bubble">
+							<f:format.raw>{buddy_link}</f:format.raw>
+						</div>
+					</f:else>
+				</f:if>
+			</f:if>
+			<!-- buddy end -->
+		</div>
+	</div>
+</div>

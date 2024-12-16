@@ -1,0 +1,7 @@
+# Sozialassistenz Berlin
+#[site("rootPageId") == 3898]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Sozialassistenz_Berlin
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

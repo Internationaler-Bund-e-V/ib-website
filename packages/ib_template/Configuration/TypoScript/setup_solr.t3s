@@ -1,0 +1,372 @@
+##########################
+# header form
+##########################
+lib.headerSearchForm = USER
+lib.headerSearchForm {
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    extensionName = Solr
+    pluginName = pi_search
+    vendorName = ApacheSolrForTypo3
+    controller = Search
+    action = form
+    settings {
+        context = 'header'
+    }
+}
+
+##########################
+# General Configuration Facets, Types, etc.
+##########################
+plugin.tx_solr.search.results.maxPaginatorLinks = 10
+plugin.tx_solr.search.faceting = 1
+plugin.tx_solr.statistics = 0
+plugin.tx_solr.search.initializeWithEmptyQuery = 1
+plugin.tx_solr.search.showResultsOfInitialEmptyQuery = 1
+plugin.tx_solr.search.query.allowEmptyQuery = 1
+plugin.tx_solr.search.faceting.facets {
+    Bundesland {
+        operator = AND
+        label = Bundesland
+        field = federalState_stringS
+    }
+    Arbeitsfeld {
+        operator = AND
+        label = Arbeitsfeld
+        field = category
+
+        requirements{
+            typeIsFWD-Jobs {
+                facet = type
+                values = FWD-Jobs
+            }
+        }
+    }
+    Medientyp {
+        operator = AND
+        label = Medientyp
+        field = fileExtension
+
+        requirements{
+            typeIstx_solr_file {
+                facet = type
+                values = tx_solr_file
+            }
+        }
+    }
+    type {
+        label = Ergebnisse filtern
+
+        renderingInstruction = CASE
+        renderingInstruction {
+            key.field = optionValue
+            Content = TEXT
+            Content.value = Ergebnisse filtern
+            Content.lang.de = Ergebnisse filtern
+            # pages
+            pages = TEXT
+            pages.value = Pages
+            pages.lang.de = Seiten
+            # tx_news
+            tx_news_domain_model_news = TEXT
+            tx_news_domain_model_news.value = News
+            tx_news_domain_model_news.lang.de = News
+            # Standorte
+            Standort = TEXT
+            Standort.value = Standorte
+            Standort.lang.de = Standorte
+            #Jobs
+            Jobs = TEXT
+            Jobs.value = Jobs
+            Jobs.lang.de = Jobs
+            #FWD-Jobs
+            FWD = TEXT
+            FWD.value = Freiwilligendienste
+            FWD.lang.de = Freiwilligendienste
+            #Angebote
+            Angebot = TEXT
+            Angebot.value = Angebote
+            Angebot.lang.de = Angebote
+            #FAL
+            tx_solr_file = TEXT
+            tx_solr_file.value = Medien & Downloads
+            tx_solr_file.lang.de = Medien & Downloads
+        }
+    }
+}
+
+plugin.tx_solr.search.keepExistingParametersForNewSearches = 1
+plugin.tx_solr.search.results.resultsHighlighting = 1
+plugin.tx_solr.search.spellchecking = 1
+plugin.tx_solr.search.spellchecking.searchUsingSpellCheckerSuggestion = 1
+plugin.tx_solr.search.trustedFields = url, content, pi_flexform
+
+
+##########################
+# News Configuration
+##########################
+plugin.tx_solr.index.queue {
+
+    news = 1
+    news {
+        table = tx_news_domain_model_news
+        additionalPageIds = {$plugin.tx_solr.portalConfiguration.additionalPageIds}
+
+        fields {
+            abstract = teaser
+            author = author
+            authorEmail_stringS = author_email
+            title = title
+            datetime_stringS = TEXT
+            datetime_stringS {
+                field = datetime
+                date = d.m.Y H:i
+            }
+            datetime_dateS = TEXT
+            datetime_dateS {
+                field = datetime
+                date = Y-m-d\TH:i:s\Z
+            }
+            content = SOLR_CONTENT
+            content {
+                cObject = COA
+                cObject {
+                    10 = TEXT
+                    10 {
+                        field = bodytext
+                        noTrimWrap = || |
+                    }
+                }
+            }
+            category_stringM = SOLR_RELATION
+            category_stringM {
+                localField = categories
+                multiValue = 1
+            }
+            keywords = SOLR_MULTIVALUE
+            keywords {
+                field = keywords
+            }
+            tags_stringM = SOLR_RELATION
+            tags_stringM {
+                localField = tags
+                multiValue = 1
+            }
+            url = TEXT
+            url {
+                typolink.parameter = {$plugin.tx_solr.portalConfiguration.newsDetailPageID}
+                typolink.forceAbsoluteUrl = 1
+                forceAbsoluteUrl.scheme = https
+                typolink.additionalParams = &tx_news_pi1[controller]=News&tx_news_pi1[action]=detail&tx_news_pi1[news]={field:uid}&L={field:__solr_index_language}
+                typolink.additionalParams.insertData = 1
+                typolink.useCacheHash = 0
+                typolink.returnLast = url
+            }
+        }
+        attachments = 1
+        attachments {
+            fields = fal_related_files
+            fileExtensions = {$plugin.tx_solr.portalConfiguration.allowed_Extensions}
+        }
+    }
+}
+
+#plugin.tx_solr.logging.indexing.queue.news = 1
+plugin.tx_solr.logging {
+    indexing.queue.news = 1
+    exceptions = 0
+    debugOutput = 0
+    query.rawPost = 1
+    query.rawGet = 1
+    query.queryString = 1
+}
+
+##########################
+# FAL Index Configuration
+##########################
+
+plugin.tx_solr {
+    index {
+
+        fieldProcessingInstructions {
+            category = categoryUidToHierarchy
+        }
+        enableFileIndexing {
+            # pageContext - index files from tt_content, shown in indexed frontend pages
+            pageContext = 1
+            pageContext {
+                contentElementTypes {
+                    text = bodytext, header_link
+                    textpic < .text
+                    uploads = media, file_collections
+                    textmedia = bodytext, header_link, assets
+                }
+
+                # files directly linked to the page, for instance the media field
+                attachments = 1
+                attachments.fields = media
+
+                # restrict indexed files extensions to index
+                fileExtensions = {$plugin.tx_solr.portalConfiguration.allowed_Extensions}
+
+                # Use enable fields from page
+                enableFields {
+                    accessGroups = fe_group
+                    endtime = endtime
+                }
+                contentEnableFields {
+                    accessGroups = fe_group
+                }
+            }
+
+
+            # Storage Context is indexing the file-system for example creating a download area
+            storageContext = 1
+            storageContext {
+
+                1 {
+                    languages = 0
+                    fileExtensions = {$plugin.tx_solr.portalConfiguration.allowed_Extensions}
+                    folders = user_upload/storage_ib_redaktion/{$plugin.tx_solr.portalConfiguration.fileMount}
+                    excludeFolders = {$plugin.tx_solr.portalConfiguration.excludeFolders}
+
+                    enableFields {
+                        hidden = visible
+                        accessGroups = fe_groups
+                    }
+                }
+            }
+
+            # Activates Indexing of Files attached to TCA records (like news), needs further configuration in queue
+            recordContext = 1
+            recordContext {
+                fileExtensions = {$plugin.tx_solr.portalConfiguration.allowed_Extensions}
+            }
+
+            # Activates merging of files that are referenced in multiple contexts multiple times.
+            # With the fieldMapping you can merge all source fields of the merged documents into one field of the
+            # target document.
+            # For merging the oldest item is used as rootItem (which is indexed)
+            mergeDuplicates = 0
+            mergeDuplicates {
+                fieldMapping {
+                }
+            }
+
+        }
+        queue {
+
+            # enables Index Queue Initialization for custom file storages in EXT:solr Search Backend Module
+            # needs "plugin.tx_solr.index.enableFileIndexing.storageContext = 1"
+            # default file storage: fileadmin
+            fileadmin = 1
+            fileadmin {
+                table = sys_file_storage
+                storageUid = 1
+            }
+
+            # special configuration section for files, fieldConfiguration basically refers to queue.[indexingConfiguration].fields
+            _FILES {
+                # Basic configuration which applies to all files which are indexed, record: sys_file_metadata
+                default {
+                    description = description
+                    altText_stringS = alternative
+                    width_intS = width
+                    height_intS = height
+
+                    category = SOLR_RELATION
+                    category {
+                        localField = categories
+                        foreignLabelField = uid
+                        enableRecursiveValueResolution = 1
+                        multiValue = 1
+                    }
+
+                    keywords = SOLR_MULTIVALUE
+                    keywords {
+                        field = keywords
+                    }
+
+                    caption_stringS = caption
+                    downloadName_stringS = download_name
+                    author = creator
+                    publisher_stringS = publisher
+                    source_stringS = source
+                    country_stringS = location_country
+                    region_stringS = location_region
+                    city_stringS = location_city
+                    ranking_intS = ranking
+                    note_textS = note
+                    duration_floatS = duration
+                    colorSpace_stringS = color_space
+                }
+
+                # additional Fields which are indexed, when in pageContext
+                pageContext {
+                    __RecordContext {
+                        fileReferenceUrl = TEXT
+                        fileReferenceUrl {
+                            typolink {
+                                parameter.field = pid
+                                forceAbsoluteUrl = 1
+                                linkAccessRestrictedPages = 1
+                                section.wrap = c|
+                                section.field = uid
+                                returnLast = url
+                            }
+                        }
+                    }
+                }
+
+                storageContext {					
+                    ## default for all storages
+                    #default = fieldConfiguration
+                    #
+                    ## custom field configuration per storage
+                    #__storageUid__ = fieldConfiguration
+                    #
+                }
+
+                # additional Fields which are indexed, when in recordContext
+                recordContext {					
+                    ## for all tables
+                    #default = fieldConfiguration
+                    #
+                    ## special configuration per table
+                    #__TABLENAME__ = fieldConfiguration
+                    #__TABLENAME__ {
+                    #	__RecordContext {
+                    #		fileReferenceUrl < plugin.tx_solr.index.queue.__TABLENAME__.fields.url
+                    #		fileReferenceTitle < plugin.tx_solr.index.queue.__TABLENAME__.fields.title
+                    #	}
+                    #}					
+                }
+            }
+        }
+    }
+    search {
+        results {
+            fieldRenderingInstructions {
+                url = CASE
+                url {
+                    tx_solr_file = TEXT
+                    tx_solr_file {
+                        typolink {
+                            parameter.field = filePublicUrl
+                            returnLast = url
+                        }
+                    }
+                }
+                link = CASE
+                link {
+                    tx_solr_file = TEXT
+                    tx_solr_file {
+                        field = fileName
+                        typolink {
+                            parameter.field = filePublicUrl
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+<div class="grid-container full SrbBanner">
+  <div class="grid-x grid-padding-x align-center-middle text-center">
+    <f:if condition="{data.tx_mask_srb_headline}">
+      <div class="cell small-12 medium-12 large-shrink SrbBannerHeadline">
+        <f:format.htmlentities>{data.tx_mask_srb_headline}</f:format.htmlentities>
+      </div>
+    </f:if>
+    <f:if condition="{data.tx_mask_srb_links}">
+      <f:for each="{data.tx_mask_srb_links}" as="data_item" iteration="index">
+        <f:if condition="{data_item.tx_mask_srb_link}">
+          <div class="cell small-12 medium-shrink SrbBannerLink">
+            <f:link.typolink parameter="{data_item.tx_mask_srb_link}">
+              <span class="linkIndex">0{index.index + 1} /</span>
+              <span class="linkText">{data_item.tx_mask_srb_linktext}</span>
+
+            </f:link.typolink>
+
+          </div>
+        </f:if>
+      </f:for>
+    </f:if>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+# Seniorenzentrum Chemnitz
+#[site("rootPageId") == 2862]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 2874
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Haus_40
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

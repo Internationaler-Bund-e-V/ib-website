@@ -1,0 +1,94 @@
+<!-- header -->
+<f:render partial="header" arguments="{_all}" />
+<!-- content -->
+<div id="ib-container" class="container-fluid">
+
+  <div id="ib-partial-startpageslider">
+    <f:format.raw>{header_element}</f:format.raw>
+  </div>
+
+  <!-- rs reader start-->
+  <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.readspeaker.show')}">
+    <f:then>
+      <f:render partial="rsReader" />
+    </f:then>
+    <f:else></f:else>
+  </f:if>
+  <!-- rs reader end-->
+  <!-- social share start -->
+  <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social_bar.show')}">
+    <f:then>
+      <f:render partial="socialShare" arguments="{_all}" />
+    </f:then>
+  </f:if>
+  <!-- social share end -->
+
+  <!--TYPO3SEARCH_begin-->
+  <div class="row ib-rs-content ib-background-white {f:if(condition: "{f:cObject(typoscriptObjectPath:'portalSettings.cookiebot.enabled')}!='1' ", then: 'noCookieBot')}">
+		<!-- page title bar -->
+		<f:if condition=" {data.show_page_title}==1">
+    <div class="ib-content-module ib-pagetitle clearfix">
+      <div class="columns small-12 medium-11 medium-offset-1">
+        <h1>
+          <f:if condition="{data.page_title}">
+            <f:then>{data.page_title}</f:then>
+            <f:else>{data.title}</f:else>
+          </f:if>
+        </h1>
+      </div>
+    </div>
+    </f:if>
+
+    <!-- left column start -->
+    <div class="columns large-8 ib-2col--main ib-background-white">
+      <f:format.raw>{content_element_main}</f:format.raw>
+    </div>
+    <!-- left column end -->
+
+    <!-- right column start -->
+    <div class="columns medium-offset-1 medium-10 large-offset-0 large-3 end ib-2col--sidebar ib-background-white">
+      <!-- sidebar content start -->
+      <div class="ib-sidebar">
+        <!-- render contact person details -->
+        <f:if condition="{data.contact_person}!=0">
+          <div id="dynamicContactNews">
+            <f:render partial="contactPerson"
+              arguments="{contact_person: data.contact_person, bgColor: data.contact_person_bg}" />
+          </div>
+        </f:if>        
+        <f:format.raw>{content_element_sidebar}</f:format.raw>
+      </div>
+      <!-- sidebar content end  -->
+    </div>
+    <!-- right column end -->
+  </div>
+  <!--TYPO3SEARCH_end-->
+
+</div>
+<!-- /content wrapper -->
+
+<!-- tabs start-->
+<f:render partial="TabsBar" arguments="{_all}" />
+<!-- tabs end-->
+
+<!-- fab start-->
+<f:render partial="FloatingActionButton" arguments="{_all}" />
+<!-- fab end-->
+
+
+<f:render partial="footer" arguments="{_all}" />
+
+<!-- additional partial/snippet-->
+<f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.additional_partial')} != ''">
+  <f:render partial="snippets{f:cObject(typoscriptObjectPath: 'portalSettings.additional_partial')}" />
+</f:if>
+
+
+ <!-- email dialog-->
+ <f:render partial="EmailDialog" />
+
+<!-- readspeaker lib start-->
+<script type="text/javascript" data-cookieconsent="necessary"
+  src="https://f1-eu.readspeaker.com/script/{f:cObject(typoscriptObjectPath: 'portalSettings.readspeaker.id')}/webReader/webReader.js?pids=wr&notools=1">
+</script>
+<!-- readspeaker lib end-->

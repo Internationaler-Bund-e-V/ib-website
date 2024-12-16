@@ -1,0 +1,7 @@
+{
+    "videoTextConsent": "<div class=\"cookieconsent-optout-marketing rs_preserve\"><div>Чтобы активировать воспроизведение видео, необходимо щелкнуть по ссылке ниже. В открывшемся окне вы можете разрешить инструменты \"маркетинг\" YouTube. YouTube и Google используют эти инструменты при каждом воспроизведении видео, и мы не можем их отключить. Поэтому мы можем воспроизводить видео только с вашего согласия. Во время воспроизведения YouTube и Google получают данные (например, ваш IP-адрес) и обрабатывают их в соответствии с политикой конфиденциальности Google. Для получения дополнительной информации, включая возможность отзыва вашего согласия в любое время.<a class=\"cbOverlayDPLink\" href=\"\">Защита данных</a></div> <div class=\"customCBOverlay customCBOverlayYouTube\" aria-hidden=\"true\"><div class=\"customCBButton\" aria-hidden=\"true\"><button onclick=\"Cookiebot.renew();\">чтобы активировать видео, разрешите cookies маркетинг здесь</button></div></div></div>",
+    "text1": "To activate the content please allow the according cookie category. ",
+    "text2": "For further information including the revocation of consent at any time.",
+    "overlayButtonText": "пожалуйста, разрешите следующую категорию cookie для активации контента: ",  
+    "dataPrivacyPage": "ru\/privacy-statement"
+  }

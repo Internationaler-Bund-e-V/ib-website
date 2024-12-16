@@ -1,0 +1,7 @@
+# Herbstgold
+#[site("rootPageId") == 2659]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 2671
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Herbstgold_Pflege
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

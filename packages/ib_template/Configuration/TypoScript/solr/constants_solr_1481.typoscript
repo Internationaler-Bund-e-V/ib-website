@@ -1,0 +1,7 @@
+# IB Berlin Brandenburg
+#[site("rootPageId") == 1481]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 1488
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Berlin_Brandenburg
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

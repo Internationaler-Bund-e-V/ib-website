@@ -1,0 +1,7 @@
+# IB Wohnstätte Ostseeblick
+#[site("rootPageId") == 1432]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 1443
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Wohnstätte_Ostseeblick
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

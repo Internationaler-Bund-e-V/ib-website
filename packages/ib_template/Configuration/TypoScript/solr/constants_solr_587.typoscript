@@ -1,0 +1,7 @@
+# IB Südwest gGmbH
+#[site("rootPageId") == 587]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 659
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_Suedwest
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

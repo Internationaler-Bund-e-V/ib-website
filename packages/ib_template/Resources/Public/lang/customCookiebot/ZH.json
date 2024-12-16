@@ -1,0 +1,7 @@
+{
+  "videoTextConsent": "<div class=\"cookieconsent-optout-marketing rs_preserve\"><div>要启用视频播放，必须单击以下链接。在接着打开的窗口中，您可以允许 YouTube 使用“统计”工具。每次播放视频时，YouTube 和 Google 都会使用这些工具，而我们无法将其禁用。因此，我们只能在您同意后才播放视频。在播放期间，YouTube 和 Google 会接收数据（例如您的 IP 地址）并根据 Google 的隐私权政策对其进行处理。<a href=\"/zh/privacy-statement\"> 更多相关信息，包括随时撤消同意意见。</a></div> <div class=\"customCBOverlay customCBOverlayYouTube\" aria-hidden=\"true\"><div class=\"customCBButton\" aria-hidden=\"true\"><button onclick=\"Cookiebot.renew();\">允许此处的统计 Cookie 来激活视频</button></div></div></div>",
+  "text1": "要激活内容，请允许使用相应的cookie类别。",
+  "text2": "更多信息，包括随时撤销同意的选项，可以在这里找到。",
+  "overlayButtonText": "为了激活内容，请允许使用以下cookie类别。 ",  
+  "dataPrivacyPage": "zh\/privacy-statement"
+}

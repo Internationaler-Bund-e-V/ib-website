@@ -1,0 +1,7 @@
+# Sozialberufe Berlin
+#[site("rootPageId") == 3865]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Erzieherschule_Berlin
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

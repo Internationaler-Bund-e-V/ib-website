@@ -1,0 +1,7 @@
+# IB Kitas
+#[site("rootPageId") == 121]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 122
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_Kitas
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

@@ -1,0 +1,41 @@
+# -----------------------------------------------------------------------------
+# PORTAL https://maedchentreff-solingen-ib.de/
+# -----------------------------------------------------------------------------
+[request.getNormalizedParams().getHttpHost() == 'maedchentreff-solingen-ib.rmsdev.de']
+    host = maedchentreff-solingen-ib.rmsdev.de
+    portalSettings {
+        pageTitle = 
+        firstMenuTitle = 
+        root_id = 4774
+        misc.sitemapStartId = 
+        mainnav_start_id = 4787
+        misc.searchResultId = 
+        misc.showOnlyTYPO3SearchResults = 1
+        readspeaker.show = 0
+
+        #data privacy site ID
+        dataPrivacySiteID = 4783
+
+        analytics {
+            account_id = 
+            enable_tracking = 0
+        }
+        google_tag_manager{
+            enabled = 0
+            id = 
+        }
+        cookiebot {
+            enabled = 0
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+        main_bubble {
+            hide = 1			
+        }
+        social.ib_english_page_link = 
+    }
+    const_navigation {
+        footernav_central_folder_id = 4777
+        footernav_misc_folder_id = 4775
+        footernav_meta_folder_id = 4779
+    }
+[end]

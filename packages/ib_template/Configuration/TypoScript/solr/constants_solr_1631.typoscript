@@ -1,0 +1,7 @@
+# IB Pflegeeltern
+#[site("rootPageId") == 1631]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 1638
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_Pflegeeltern
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

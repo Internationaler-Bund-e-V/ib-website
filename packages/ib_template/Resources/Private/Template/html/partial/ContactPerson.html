@@ -1,0 +1,24 @@
+{namespace cp=Rms\IbContactPerson\ViewHelpers}
+
+<div class="ib-content-module ib-sidebar-contact ib-background-{bgColor}">
+	<f:if condition="{cp:contactPersonImage(personid:contact_person)}">
+    <div>
+      <f:image src="{cp:contactPersonImage(personid:contact_person)}"
+        alt="IB - {cp:contactPersonName(personid:contact_person)}"
+        title="IB - {cp:contactPersonName(personid:contact_person)}" />
+    </div>
+	</f:if>
+	<f:format.html parseFuncTSPath="">
+		<div class="ib-font-bold">
+			<cp:contactPersonName personid="{contact_person}" />
+		</div>
+	</f:format.html>
+	<f:format.html parseFuncTSPath="">
+		<cp:contactPersonPosition personid="{contact_person}" />
+	</f:format.html>
+
+
+	<f:format.html parseFuncTSPath="">
+		<cp:contactPersonDescription personid="{contact_person}" />
+	</f:format.html>
+</div>

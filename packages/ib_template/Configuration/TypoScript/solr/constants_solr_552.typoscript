@@ -1,0 +1,7 @@
+# IB Gästehaus Jena
+#[site("rootPageId") == 552]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 559
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_Jugendgaestehaus
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <type>module</type>
+        <description>Language labels for IB menu</description>
+    </meta>
+    <data type="array">
+        <languageKey index="de" type="array">
+            <label index="listview">Listenansicht</label>
+            <label index="mapview">Kartenansicht</label>
+            <label index="servicesmenu">Unsere Services</label>
+        </languageKey>
+        <languageKey index="default" type="array">
+            <label index="listview">List View</label>
+            <label index="mapview">Map View</label>
+            <label index="servicesmenu">Our Services</label>
+        </languageKey>
+    </data>
+</T3locallang>

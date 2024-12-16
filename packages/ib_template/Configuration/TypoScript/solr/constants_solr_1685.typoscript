@@ -1,0 +1,7 @@
+# IB KGS Stella
+#[site("rootPageId") == 1685]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 1692
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_Stella
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

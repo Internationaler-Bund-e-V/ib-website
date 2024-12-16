@@ -1,0 +1,53 @@
+<!-- ###TEMPLATE_LIST### begin
+	This is the template for the list of news in the archive or news page or search
+-->
+<div class="news-list-container news-list-container-standalone">
+
+
+	<div class="row">
+		<div class="small-12 columns">
+			###NEWS_CATEGORY_ROOTLINE###
+		</div>
+	</div>
+	<!-- ###CONTENT### begin
+		  This is the part of the template substituted with the list of news:
+	-->
+
+	<!-- ###NEWS### begin
+		Template for a single item
+	-->
+	<div class="news-list-item">
+
+
+		<div class="row">
+			<div class="columns medium-offset-1 medium-10 large-6-2col large-offset-1-2col end">
+				<!--###LINK_ITEM###-->###NEWS_IMAGE###<!--###LINK_ITEM###-->
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="columns medium-offset-1 medium-10 large-6-2col large-offset-1-2col end">
+				<span class="news-list-date">###NEWS_DATE###</span>
+				<h2><!--###LINK_ITEM###-->###NEWS_TITLE###<!--###LINK_ITEM###--></h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="columns medium-offset-1 medium-10 large-6-2col large-offset-1-2col end">
+				###NEWS_SUBHEADER###
+				###CATWRAP_B### ###TEXT_CAT### ###NEWS_CATEGORY### ###NEWS_CATEGORY_IMAGE### ###CATWRAP_E###
+				<hr class="clearer"/>
+			</div>
+		</div>
+
+
+	</div>
+	<!-- ###NEWS### end-->
+	<!-- ###CONTENT###  end -->
+
+	<div class="row news-page-browser">
+		<div class="columns medium-offset-1 medium-10 large-6-2col large-offset-1-2col end">
+			###BROWSE_LINKS###
+		</div>
+	</div>
+</div>
+<!-- ###TEMPLATE_LIST### end -->

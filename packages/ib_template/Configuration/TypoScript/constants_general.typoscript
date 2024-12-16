@@ -1,0 +1,371 @@
+# --------------------------------------------------------------------------------------------
+# global settings used in all extensions and in various setup files
+# overwrite in portal settings if needed
+# --------------------------------------------------------------------------------------------
+host = internationaler-bund.de
+const_navigation {
+    footernav_central_folder_id = 3
+    footernav_misc_folder_id = 15
+    footernav_meta_folder_id = 439
+}
+
+// configure language menu
+// @see ts/language_menu.ts
+const_language_menu {
+    show_language_menu = 0
+    active_language_ids = 0,1,2,3
+    active_language_labels = DE || EN || IT || ZH
+    active_language_link_ids = &L=0 || &L=1 || &L=2 || $L=3
+    active_language_link_hreflang = hreflang="de-DE" || hreflang="en-EN" || hreflang="it-IT" || hreflang="zh-CN"
+}
+
+portalSettings {
+    pageTitle = Internationaler Bund
+    baseURL = https://www.internationaler-bund.de/
+
+    bodyClassName = portal_ib
+    showLanguageMenu = 0
+
+    //data privacy site ID
+    dataPrivacySiteID = 4545
+
+    //allow shariff sharebutton for FWD Job-Template only
+    allowFWDJobTemplate = 0
+
+    //generate news sitemap
+    NewsSitemap.generate = 0
+    NewsSitemap.NewsFolderPid = 
+    NewsSitemap.NewsDetailPid = 
+    //generate location sitemap
+    LocationSitemap.generate = 0
+    LocationSitemap.NavigationID = 0
+    LocationSitemap.DetailPid = 0
+    //generate fwd sitemap
+    FwdSitemap.generate = 0
+    FwdSitemap.DetailPid = 0
+
+    ## set the default language for a portal
+    ## i.e. = 1 will create all links with /en
+    defaultGetVars.L = 0
+    root_id = 1
+    mainnav_start_id = 28
+
+    analytics {
+        account_id = 
+        enable_tracking = 0
+        matomo_enabled = 0
+        matomo_siteid = 0
+        matomo_tagmanager_enabled = 0
+        matomo_containerid = 0
+        
+        google_tagmanager_enabled = 0
+        google_containerid = 
+
+        facebook_pixel_enabled = 0
+        facebook_pixel_id = 
+    }
+
+    main_bubble {
+        id = 6675
+        text = Jobs
+        title_text = Jobs
+        link_target = _self
+        hide = 0
+    }
+
+    main_bubble_en {
+        id = 
+        text = 
+        title_text = 
+        link_target = _self
+        hide = 1
+    }
+
+    tabs_bar {
+        show = 0
+        folder_id = 
+        orientation = right
+    }
+
+    social_bar {
+        show = 1
+    }
+
+    // place logo in {$template_path.img}
+    portal_logo {
+        file = ib_main_portal_logo.svg
+        file_favicon = ib_main_portal_logo.ico
+        # format can be default | wide
+        format = default
+    }
+
+    cookiebot {
+        enabled = 0
+        cbid = 0
+        language = DE
+    }
+    //add additional partial/snippet for portal (e.g. events, html, etc.) path to partial/snippet
+    additional_partial = 
+
+    footernav_central_folder_id = 3
+    footernav_misc_folder_id = 15
+    footernav_meta_folder_id = 439
+
+    //activate navigationSearch
+    showNavigationSearch = 1
+
+    //activate socialbar (right) search
+    showSearchButton = 1
+
+    //footer settings
+    footer_hide_footer = 0
+    footer_hide_social_links = 0
+    footer.hide_central_links = 0
+    footer.hide_further_links = 0
+    footer.central_links_num_columns = 6
+    footer_central_links_headline = 
+    footer_further_links_headline = 
+    footer_logo = ib_markenzeichen_logo.svg
+    // instead of the "central_links" and /or "further_links", we cand show textcontent from tt_content.bodytext
+    // set footer.hide_further_links = 0 and hide_central_links = 0 to prevent too many columns in the footer
+    // this only takes content from the tt_content.bodytext
+    //
+    // if you want to show two textcolumns, you can decrease the width of the central links
+    // by setting i.e. footer.central_links_num_columns = 2 OR complete hide the central links
+    // - see EXT:ib_template/Configuration/TypoScript/main_config.ts
+    // - see EXT:ib_template/Configuration/TypoScript/main_config.ts
+    // - for an example see EXT:ib_template/Configuration/TypoScript/main_config.ts
+    //
+    // see 0001601: Seite ib-stiftung.de - Änderungen,  author mk@rms, 2020-03-23
+    footer.use_three_columns = 0
+    footer.show_textcontent_left = 0
+    footer.show_textcontent_middle = 0
+    footer.show_textcontent_right = 0
+    #footer.tt_content_uid_left = 10087
+    #footer.tt_content_uid_right = 10087
+    #footer.hide_central_links = 1
+    #footer.hide_further_links = 1
+    #footer.central_links_num_columns = 2
+    footer.tt_content_uid_left = 
+    footer.tt_content_uid_middle = 
+    footer.tt_content_uid_right = 
+
+    services_menu_start_id = 32
+    tt_news.pid_list = 10
+    tt_news.single_pid = 14
+    tt_news.list_view_pid = 501
+    firstMenuTitle = Der Internationale Bund
+    ib_content.dbNavigationId = 5
+    ib_content.dbCategoryLocationPage = 40
+    ib_content.newsProductLocationsFolder = 66
+    ib_content.newsDetailsPage = 65
+    ib_content.newsUploadFolder = uploads/pics/
+
+    misc.googleAps.apiKey = AIzaSyC7gFdnyfZCpKbX-Jowu5gBcfCNTRKfQ0s
+    misc.productDbBaseUrl = https://redaktion.internationaler-bund.de
+    misc.gridViewImg = fileadmin/user_upload/navigation/location_list.jpg
+    misc.mapViewImg = fileadmin/user_upload/navigation/location_map.jpg
+    misc.mapViewPid = 41
+    misc.gridViewPid = 42
+    misc.locationSingleViewId = 40
+    misc.productSingleViewId = 39
+    misc.searchResultId = 43
+    misc.showOnlyTYPO3SearchResults = 0
+    misc.sitemapStartId = 1
+    misc.google.recaptchaSiteKey = 6LesBQ4UAAAAACHcJQuvSaBmyxftnwUI-j0SRCFA
+
+    #readspeaker -> see MA_838
+    readspeaker.show = 0
+    readspeaker.id = 10125
+    readspeaker.lang = de_de
+    readspeaker.buttonText = Vorlesen
+    readspeaker.title = Um den Text anzuh&ouml;ren, verwenden Sie bitte ReadSpeaker webReader
+
+    #ibjobs loga
+    ibjobs.jobSingleViewPageUrl = /
+    ibjobs.ibjobsBaseUrl = https://redaktion.internationaler-bund.de/
+
+    #fixed social bar
+    social.facebook = https://www.facebook.com/InternationalerBund
+    social.twitter = https://twitter.com/IntBund
+    social.linkedin = https://de.linkedin.com/company/internationalerbund
+    social.instagram = https://www.instagram.com/internationalerbund/
+    social.xing = https://www.xing.com/pages/internationalerbund
+    social.kununu = https://www.kununu.com/de/internationaler-bund?utm_source=widget&utm_campaign=widget_selfservice_scoresmall
+    social.youtube = https://www.youtube.com/user/InternationalerBund
+
+    social.facebook.titletag = Offizielle Facebook-Seite des Internationalen Bund
+    social.twitter.titletag = Offizielle X-Seite des Internationalen Bund
+    social.linkedin.titletag = Offizielle LinkedIn-Seite des Internationalen Bund
+    social.instagram.titletag = Offizielle Instagram-Seite des Internationalen Bund
+    social.xing.titletag = Offizielle Xing-Seite des Internationalen Bund
+    social.kununu.titletag = Offizielle Kununu-Seite des Internationalen Bund
+    social.youtube.titletag = Offizieller YouTube-Kanal des Internationalen Bund
+
+    social.ib_english_page_link = https://ib.international/
+    social.ib_german_page_link = 
+
+    # cookie policy
+    cookiepolicy.show = 0
+    cookiepolicy.text = Diese Website verwendet Cookies. Cookies gewährleisten den vollen Funktionsumfang unseres Angebots und werden zu Analysezwecken verwendet.
+    cookiepolicy.link = Lesen Sie auch unsere Datenschutz-Erklärung.
+    cookiepolicy.link_page = 4
+    cookiepolicy.ok_button_text = OK
+}
+
+# social footer
+social.headline = Social Media Kanäle des IB
+social.facebook = https://www.facebook.com/InternationalerBund
+social.twitter = https://twitter.com/IntBund
+social.instagram = https://www.instagram.com/internationalerbund/
+social.linkedin = https://de.linkedin.com/company/internationalerbund
+social.xing = https://www.xing.com/pages/internationalerbund
+social.kununu = https://www.kununu.com/de/internationaler-bund?utm_source=widget&utm_campaign=widget_selfservice_scoresmall
+social.youtube = https://www.youtube.com/user/InternationalerBund
+
+social.facebook.titletag = Offizielle Facebook-Seite des Internationalen Bund
+social.twitter.titletag = Offizielle X-Seite des Internationalen Bund
+social.instagram.titletag = Offizielle Instagram-Seite des Internationalen Bund
+social.linkedin.titletag = Offizielle LinkedIn-Seite des Internationalen Bund
+social.xing.titletag = Offizielle Xing-Seite des Internationalen Bund
+social.kununu.titletag = Offizielle Kununu-Seite des Internationalen Bund
+social.youtube.titletag = Offizieller YouTube-Kanal des Internationalen Bund
+
+
+
+## RTE fontawesome for FE
+plugin.tx_ckeditor_fontawesome.loadCSS = 1
+plugin.tx_ckeditor_fontawesome.css = EXT:ib_template/Resources/Public/css/faAll.css
+
+# gallery pid
+gallery.folder.pid = 1351
+
+# --------------------------------------------------------------------------------------------
+# INCLUDE PORTAL CONSTANTS
+# --------------------------------------------------------------------------------------------
+#<INCLUDE_TYPOSCRIPT: source="DIR:typo3conf/ext/ib_template/Configuration/TypoScript/constants_portals">
+# TODO: mk@rms 2023-12-21 - rename all .t3s files in .typoscript
+@import 'EXT:ib_template/Configuration/TypoScript/constants_portals/*.t3s'
+
+# --------------------------------------------------------------------------------------------
+# LOCAL AND DEV "PORTALS"
+# --------------------------------------------------------------------------------------------
+[request && request.getNormalizedParams().getHttpHost() == 'www.internationaler-bund.de' || request.getNormalizedParams().getHttpHost() == 'ib.ddev.site' || request.getNormalizedParams().getHttpHost() == 'ib-staging.rmsdev.de']
+
+    host = www.internationaler-bund.de
+    portalSettings.readspeaker.show = 1
+    portalSettings.cookiepolicy.show = 0
+    portalSettings.analytics.enable_tracking = 0
+    portalSettings.allowFWDJobTemplate = 1
+    
+    portalSettings.showLanguageMenu = 1
+    portalSettings.social.ib_english_page_link = 
+
+    # ibjobs redirects
+    plugin.tx_ibjobs_iblogajobs.settings.useCustomRedirect = 1
+    plugin.tx_ibjobs_iblogajobs.settings.customRedirectPageID = 509
+
+    portalSettings.cookiebot{
+        enabled = 1
+        cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+    }
+
+    //sitemap
+    portalSettings {
+        NewsSitemap.generate = 1
+        NewsSitemap.NewsFolderPid = 502
+        NewsSitemap.NewsDetailPid = 14
+        //generate location sitemap
+        LocationSitemap.generate = 1
+        LocationSitemap.NavigationID = 5
+        LocationSitemap.DetailPid = 40
+               
+    }
+
+    portalSettings.analytics {
+        matomo_enabled = 0
+        matomo_siteid = 1
+        matomo_tagmanager_enabled = 1
+        matomo_containerid = HMgf3aC9
+    }
+[global]
+
+[request.getNormalizedParams().getHttpHost() == 'rms-ib.dev']
+    host = rms-ib.dev
+[global]
+
+[request.getNormalizedParams().getHttpHost() == 'ibrelaunch2016.rmsdev.de']
+    host = ibrelaunch2016.rmsdev.de
+[global]
+
+[request.getNormalizedParams().getHttpHost() == 'ib.ddev.site']
+    host = ib.ddev.site
+    config.no_cache = 1
+    
+[global]
+
+[request.getNormalizedParams().getHttpHost() == 'ib-fwd.ddev.site']
+    host = ib-fwd.ddev.site
+    config.no_cache = 1
+    portalSettings.FwdSitemap.generate = 1
+    portalSettings.FwdSitemap.DetailPid = 545
+[global]
+
+#typo3 in developer mode -> setenv apache
+[applicationContext == "Development"]
+    portalSettings.analytics.enable_tracking = 0  
+    #portalSettings.ibjobs.ibjobsBaseUrl = https://redaktionstool.ddev.site/
+    portalSettings.ibjobs.ibjobsBaseUrl = https://redaktion-relaunch.ddev.site/
+    portalSettings.tabs_bar {
+        show = 0
+        folder_id = 2801
+        orientation = right
+    }
+    
+    #portalSettings.misc.productDbBaseUrl = https://redaktionstool.ddev.site
+    portalSettings.misc.productDbBaseUrl = https://redaktion-relaunch.ddev.site
+    portalSettings.readspeaker.show = 1
+    portalSettings.analytics.enable_tracking = 0
+    portalSettings.cookiepolicy.show = 0
+
+    portalSettings.cookiebot{
+        enabled = 1
+        cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+    }
+
+    portalSettings.analytics {
+        matomo_enabled = 0
+        matomo_siteid = 67
+        matomo_tagmanager_enabled = 1
+        matomo_containerid = 4uVmol36
+    }
+[global]
+
+[request.getNormalizedParams().getHttpHost() == 'ibfwd.local.de']
+    host = ibfwd.local.de
+[global]
+
+[request.getNormalizedParams().getHttpHost() == 'ib-staging.rmsdev.de']
+    host = ib-staging.rmsdev.de
+    portalSettings.analytics {
+        matomo_enabled = 1
+        matomo_siteid = 68
+    }
+[global]
+
+# --------------------------------------------------------------------------------------------
+# INCLUDE PORTAL CONSTANTS
+# --------------------------------------------------------------------------------------------
+#<INCLUDE_TYPOSCRIPT: source="DIR:typo3conf/ext/ib_template/Configuration/TypoScript/constants_developer">
+@import 'DIR:typo3conf/ext/ib_template/Configuration/TypoScript/constants_developer'
+
+## get protocol
+protocol = http
+[getenv("HTTPS") == "on"]
+    protocol = https
+[global]
+
+## create baseURL
+portalSettings.baseURL = {$protocol}://{$host}/
+
+styles.content.allowTags:= addToList(iframe)

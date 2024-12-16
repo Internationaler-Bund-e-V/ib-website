@@ -1,0 +1,9 @@
+# Internationaler Bund PID 1
+##[site("rootPageId") == 1]
+#[1 in tree.rootLineIds]
+plugin.tx_solr.portalConfiguration.additionalPageIds = 503,10
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 14
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 43
+plugin.tx_solr.portalConfiguration.fileMount = IB_Portal
+plugin.tx_solr.portalConfiguration.excludeFolders = user_upload/storage_ib_redaktion/IB_Portal/Social-Media,user_upload/storage_ib_redaktion/IB_Portal/Dokumentation/CD
+#[global]

@@ -1,0 +1,7 @@
+# IB Delta Netz
+#[site("rootPageId") == 2991]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 3003
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Delta-Netz
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

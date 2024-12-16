@@ -1,0 +1,161 @@
+lang.sys_language_mode = content_fallback
+lang.sys_language_fallBackOrder = 0
+lang.sys_language_overlay = 0
+lang.sys_language_content = 0
+
+# -----------------------------------------------------------------------------
+#  choose lang menu style
+#  options: simple || dropdown
+# -----------------------------------------------------------------------------
+lang.menuStyle = simple
+
+# -----------------------------------------------------------------------------
+# LANGUAGE SETTINGS default
+# -----------------------------------------------------------------------------
+lang.sys_language_uid = 0
+lang.locale = de
+lang.language = de
+lang.locale_all = de_DE.UTF-8
+lang.htmlTag_langKey = de
+lang.countryname = germany
+lang.country = DEU
+lang.langname = deutsch
+#lang.sys_language_mode = content_fallback
+lang.sys_language_mode = strict
+
+[siteLanguage("languageId") == 1]
+    lang.sys_language_uid = 1
+    lang.locale = en
+    lang.language = en
+    lang.locale_all = en_GB.UTF-8
+    lang.htmlTag_langKey = en
+    lang.countryname = germany
+    lang.country = DEU
+    lang.langname = english
+[global]
+
+[siteLanguage("languageId") == 2]
+    lang.sys_language_uid = 2
+    lang.locale = it
+    lang.language = it
+    lang.locale_all = it_IT.UTF-8
+    lang.htmlTag_langKey = it
+    lang.countryname = italy
+    lang.country = DEU
+    lang.langname = italiano
+[global]
+
+[siteLanguage("languageId") == 3]
+    lang.sys_language_uid = 3
+    lang.locale = zh
+    lang.language = zh
+    lang.locale_all = zh_CN.UTF-8
+    lang.htmlTag_langKey = zh
+    lang.countryname = china
+    lang.country = CHN
+    lang.langname = chinese
+[global]
+
+[siteLanguage("languageId") == 4]
+    lang.sys_language_uid = 4
+    lang.locale = pl
+    lang.language = pl
+    lang.locale_all = pl_PL.UTF-8
+    lang.htmlTag_langKey = pl
+    lang.countryname = poland
+    lang.country = PL
+    lang.langname = polish
+[global]
+
+[siteLanguage("languageId") == 0]
+    portalSettings.cookiebot.language = DE  
+    portalSettings.readspeaker.lang = de_de
+    portalSettings.readspeaker.buttonText = Vorlesen
+    portalSettings.readspeaker.title = Um den Text anzuh&ouml;ren, verwenden Sie bitte ReadSpeaker webReader
+    portalSettings.defaultGetVars.L = 0
+[global]
+
+[siteLanguage("languageId") == 1]
+    portalSettings.cookiebot.language = EN  
+    portalSettings.readspeaker.lang = en_uk
+    portalSettings.readspeaker.buttonText = Listen
+    portalSettings.readspeaker.title = Listen to this page using ReadSpeaker webReader
+    portalSettings.defaultGetVars.L = 1
+[global]
+
+[siteLanguage("languageId") == 2]
+    portalSettings.cookiebot.language = IT  
+    portalSettings.readspeaker.lang = it_it
+    portalSettings.readspeaker.buttonText = Lettura ad alta voce
+    portalSettings.readspeaker.title = Per ascoltare il testo, utilizzare il lettore web ReadSpeaker
+    portalSettings.defaultGetVars.L = 2
+[global]
+
+[siteLanguage("languageId") == 3]
+    portalSettings.cookiebot.language = ZH  
+    portalSettings.defaultGetVars.L = 3
+[global]
+
+[siteLanguage("languageId") == 4]
+    portalSettings.cookiebot.language = PL
+    portalSettings.readspeaker.lang = pl_pl
+    portalSettings.readspeaker.buttonText = Czytany na głos
+    portalSettings.readspeaker.title = Aby wysłuchać tekstu, skorzystaj z ReadSpeaker webReader
+    portalSettings.defaultGetVars.L = 4
+[global]
+
+[siteLanguage("languageId") == 5]
+    portalSettings.cookiebot.language = SL  
+    portalSettings.readspeaker.lang = sl_sl
+    portalSettings.readspeaker.buttonText = Glasno branje
+    portalSettings.readspeaker.title = Če želite poslušati besedilo, uporabite spletni bralnik ReadSpeaker
+    portalSettings.defaultGetVars.L = 5
+[global]
+
+[siteLanguage("languageId") == 6]
+    portalSettings.cookiebot.language = LV  
+    portalSettings.readspeaker.lang = lv_lv
+    portalSettings.readspeaker.buttonText = Lasīt skaļi
+    portalSettings.readspeaker.title = Lai noklausītos tekstu, izmantojiet ReadSpeaker webReader
+    portalSettings.defaultGetVars.L = 6
+[global]
+
+[siteLanguage("languageId") == 7]
+    portalSettings.cookiebot.language = ES
+    portalSettings.readspeaker.lang = es_es
+    portalSettings.readspeaker.buttonText = Leer en voz alta
+    portalSettings.readspeaker.title = Para escuchar el texto, utilice ReadSpeaker webReader
+    portalSettings.defaultGetVars.L = 7
+[global]
+
+[siteLanguage("languageId") == 8]
+    portalSettings.cookiebot.language = TR
+    portalSettings.readspeaker.lang = tr_tr
+    portalSettings.readspeaker.buttonText = Yüksek sesle oku
+    portalSettings.readspeaker.title = Metni dinlemek için lütfen ReadSpeaker webReader'ı kullanın
+    portalSettings.defaultGetVars.L = 8
+[global]
+
+[siteLanguage("languageId") == 9]
+    portalSettings.cookiebot.language = FR
+    portalSettings.readspeaker.lang = fr_fr
+    portalSettings.readspeaker.buttonText = Lire à haute voix
+    portalSettings.readspeaker.title = Pour écouter le texte, veuillez utiliser ReadSpeaker webReader
+    portalSettings.defaultGetVars.L = 9
+[global]
+
+[siteLanguage("languageId") == 10]
+    portalSettings.cookiebot.language = RU
+    portalSettings.readspeaker.lang = ru_ru
+    portalSettings.readspeaker.buttonText = чтение вслух
+    portalSettings.readspeaker.title = для прослушивания текста используйте ReadSpeaker webReader
+    portalSettings.defaultGetVars.L = 10
+[global]
+
+[siteLanguage("languageId") == 11]
+    portalSettings.cookiebot.language = UA
+    portalSettings.readspeaker.lang = uk_ua
+    portalSettings.readspeaker.buttonText = читання вголос
+    portalSettings.readspeaker.title = для прослуховування тексту, будь ласка, використовуйте ReadSpeaker webReader
+    portalSettings.defaultGetVars.L = 11
+[global]

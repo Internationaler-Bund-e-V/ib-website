@@ -1,0 +1,54 @@
+<f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.tabs_bar.show')}">
+    <div class="ib-tabs-bar-{f:cObject(typoscriptObjectPath: 'portalSettings.tabs_bar.orientation')}" id="ib-tabs-bar"
+        data-orientation="{f:cObject(typoscriptObjectPath: 'portalSettings.tabs_bar.orientation')}">
+        <div id="itbic-close-button">
+            <i class="fas fa-times"></i>
+        </div>
+
+
+        <ul class="ib-tabs-bar-ul">
+            <v:menu pageUid="{f:cObject(typoscriptObjectPath: 'portalSettings.tabs_bar.folder_id')}">
+                <f:for each="{menu}" as="tabsBarMenuItem" iteration="iterator">
+                    <f:if condition="{tabsBarMenuItem.shortcut} != ''">
+                        <f:then>
+                            <f:link.page pageUid="{tabsBarMenuItem.shortcut}">
+                                <li class="ib-tabs-bar-item-link {f:if(condition: '{iterator.isFirst}' , then: 'ib-tabs-bar-item-first')} {f:if(condition: '{iterator.isLast}' , then: 'ib-tabs-bar-item-last')}" data-cid="{iterator.index}">{tabsBarMenuItem.linktext}</li>
+                            </f:link.page>
+                        </f:then>
+                        <f:else>
+                            <li class="ib-tabs-bar-item {f:if(condition: '{iterator.isFirst}' , then: 'ib-tabs-bar-item-first')} {f:if(condition: '{iterator.isLast}' , then: 'ib-tabs-bar-item-last')}" data-cid="{iterator.index}">{tabsBarMenuItem.linktext}</li>
+                        </f:else>
+                    </f:if>
+                </f:for>
+            </v:menu>
+        </ul>
+
+        <v:menu pageUid="{f:cObject(typoscriptObjectPath: 'portalSettings.tabs_bar.folder_id')}">
+            <f:for each="{menu}" as="tabsBarMenuItem" iteration="iterator">
+                <f:if condition="{tabsBarMenuItem.shortcut} != ''">
+                    <f:then></f:then>
+                    <f:else>
+                        <div class="ib-tabs-bar-item-content" id="itbic-{iterator.index}">
+                            <!--
+                            <div class="itbic-headline">
+                                {tabsBarMenuItem.linktext}
+                            </div>
+                            -->
+                                <v:menu pageUid="{tabsBarMenuItem.uid}">
+                                    <f:for each="{menuLinks}" as="tabsBarMenuLinks">
+                                        {tabsBarMenuLinks.linktext}
+                                    </f:for>
+                                </v:menu>
+
+                        </div>
+                    </f:else>
+                </f:if>
+            </f:for>
+        </v:menu>
+
+
+
+
+
+    </div>
+</f:if>

@@ -1,0 +1,7 @@
+# Einfach Demokratie
+#[site("rootPageId") == 4947]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 4966
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Einfach_Demokratie
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

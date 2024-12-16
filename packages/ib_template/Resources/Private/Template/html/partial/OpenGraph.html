@@ -1,0 +1,28 @@
+<!-- render og for ibjobs -->
+<f:section name="OG_IBJobs">
+  <v:page.header.meta property="og:type" content="content" />
+  <v:page.header.meta property="og:title" content="{job.position.ausschreibung.beschreibung}" />
+  <v:page.header.meta property="og:description" content="{job.position.ausschreibung.funktion}" />
+  <v:page.header.meta property="og:url" content="{v:page.absoluteUrl()}" />
+  <v:page.header.meta property="og:image"
+    content="https://www.internationaler-bund.de/fileadmin/user_upload/storage_ib_redaktion/IB_Portal/Jobs_Karriere/IB_Header_Recruiting_Stellenanzeige_a.jpg" />
+</f:section>
+
+<!-- render og for locations/products -->
+<f:section name="OB_Locations_Products">
+  <v:page.header.meta property="og:type" content="content" />
+  <v:page.header.meta property="og:description" content="{description}" />
+  <v:page.header.meta property="og:title" content="{title}" />
+  <v:page.header.meta property="og:url" content="{v:page.absoluteUrl()}" />
+  <f:if condition="{ogImage}">
+    <f:then>
+      <v:page.header.meta property="og:image"
+      content="https://redaktion.internationaler-bund.de/img/{ogImage}" />
+    </f:then>
+    <f:else>
+      <v:page.header.meta property="og:image"
+        content="https://www.internationaler-bund.de/fileadmin/user_upload/navigation/location_map.jpg" />
+    </f:else>
+  </f:if>
+
+</f:section>

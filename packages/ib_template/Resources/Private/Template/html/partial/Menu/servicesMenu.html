@@ -1,0 +1,50 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:section name="MenuRecursionStart">
+    <v:menu pageUid="{recursionStartPageUid}" classActive="active" entryLevel="2">
+        <f:if condition="{menu}">
+            <div class="row">
+                <f:for each="{menu}" as="startLevelPage" iteration="iterator">
+                    <div class="col2">
+                        <ul>
+                            <li class="image">
+                                <v:page.resources.fal table="pages" field="media" uid="{startLevelPage.uid}" as="images" limit="1">
+                                    <f:for each="{images}" as="image">
+                                        <v:page.link pageUid="{startLevelPage.uid}" absolute="1" class="ib-tracking-on-click" additionalAttributes="{data-ibtrackingdata: 'Navigation,{startLevelPage.title},Hauptnavigation'}">
+                                          <img src="{image.url}" alt="{image.alternative}" data-navimage="{startLevelPage.uid}">
+                                        </v:page.link>
+                                    </f:for>
+                                </v:page.resources.fal>
+                            </li>
+                            <li class="title">
+                                <h5>
+                                <v:page.link pageUid="{startLevelPage.uid}" class="" absolute="1" class="ib-tracking-on-click" additionalAttributes="{data-ibtrackingdata: 'Navigation,{startLevelPage.title},Hauptnavigation'}" />
+                                </h5>
+                            </li>
+                            <f:if condition="{startLevelPage.hasSubPages}">
+                                <v:menu pageUid="{startLevelPage.uid}" entryLevel="2">
+                                    <f:if condition="{menu}">
+                                        <f:for each="{menu}" as="subPage" iteration="subIterator">
+                                            <li>
+                                                <v:page.link pageUid="{subPage.uid}" class="ib-serviceMenuLink " absolute="1" class="ib-tracking-on-click" additionalAttributes="{data-ibtrackingdata: 'Navigation,{subPage.title},Subnavigation'}">
+                                                    {subPage.title}
+                                                </v:page.link>
+                                            </li>
+                                        </f:for>
+                                    </f:if>
+                                </v:menu>
+                            </f:if>
+                        </ul>
+                    </div>
+                    <f:if condition="{iterator.cycle} % 3">
+                        <f:then></f:then>
+                        <f:else>
+            </div>
+            <div class="row">
+                </f:else>
+        </f:if>
+        </f:for>
+        </div>
+        </f:if>
+    </v:menu>
+</f:section>

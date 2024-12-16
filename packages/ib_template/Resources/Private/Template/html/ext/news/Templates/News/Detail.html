@@ -1,0 +1,81 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	xmlns:rx="http://typo3.org/ns/Reelworx/RxShariff/ViewHelper" data-namespace-typo3-fluid="true">
+
+<f:layout name="Detail" />
+
+<!--
+	=====================
+		News/Detail.html
+-->
+
+<f:section name="content">
+	<f:render partial="Detail/Opengraph" arguments="{newsItem: newsItem, settings:settings}" />
+	<div class="news-single-item">
+		<div class="row">
+			<div class="columns medium-offset-1 medium-10 large-6-2col large-offset-1-2col">
+				<!--categoryTags-->
+				<div class="ibCatgoryTagsContainer">
+					<f:if condition="{settings.templateLayout} == 3">
+						<f:render section="categoryTags" arguments="{newsItem:newsItem}" />
+					</f:if>
+				</div>
+				<!-- date -->
+				<span class="news-list-date">
+					<time itemprop="datePublished" datetime="{f:format.date(date:newsItem.datetime, format:'Y-m-d')}">
+						<f:format.date format="{f:translate(key:'dateFormat')}">{newsItem.datetime}</f:format.date>
+					</time>
+				</span>
+				<h1>{newsItem.title}</h1>
+				<f:if condition="{newsItem.subheadline}">
+					<h2>{newsItem.subheadline}</h2>
+				</f:if>
+				<!-- teaser disabled see MA#2753-->
+				<hr class="cl-right" />
+				<!-- main text -->
+				<f:render partial="Detail/MediaContainer"
+					arguments="{media: newsItem.mediaNonPreviews, settings:settings}" />
+				<div class="news-text-wrap" itemprop="articleBody">
+					<f:format.html>{newsItem.bodytext}</f:format.html>
+				</div>
+				<hr class="cl-right" />
+
+				<f:if condition="{settings.detail.showPrevNext}">
+					<n:simplePrevNext pidList="{newsItem.pid}" news="{newsItem}" as="paginated" sortField="datetime">
+						<f:if condition="{paginated}">
+							<ul class="pager">
+								<f:if condition="{paginated.prev}">
+									<li class="previous">
+										<n:link newsItem="{paginated.prev}" settings="{settings}">
+											<span aria-hidden="true">&larr; </span>{paginated.prev.title}
+										</n:link>
+									</li>
+								</f:if>
+								<f:if condition="{paginated.next}">
+									<li class="next">
+										<n:link newsItem="{paginated.next}" settings="{settings}" class="next">
+											{paginated.next.title}
+											<span aria-hidden="true"> &rarr;</span>
+										</n:link>
+									</li>
+								</f:if>
+							</ul>
+						</f:if>
+					</n:simplePrevNext>
+				</f:if>
+
+			</div>
+		</div>
+	</div>
+
+
+</f:section>
+
+<!-- render category tags -->
+<f:section name="categoryTags">
+	<f:for each="{newsItem.categories}" as="category">
+		<span class="ibCategoryTags">{category.title}</span>
+	</f:for>
+</f:section>
+
+</html>

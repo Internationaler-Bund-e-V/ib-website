@@ -1,0 +1,7 @@
+# IB Suedwest IMD
+#[site("rootPageId") == 5244]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 5269
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_Suedwest_IMD
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

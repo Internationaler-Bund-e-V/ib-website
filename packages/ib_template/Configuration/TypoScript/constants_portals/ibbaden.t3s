@@ -1,0 +1,45 @@
+# -----------------------------------------------------------------------------
+# PORTAL IB GREEN
+# -----------------------------------------------------------------------------
+[request.getNormalizedParams().getHttpHost() == 'baden.ib.de' || request.getNormalizedParams().getHttpHost() == 'ibbaden2016.rmsdev.de']
+    host = baden.ib.de
+    portalSettings {
+
+        root_id = 145
+        mainnav_start_id = 148
+        pageTitle = IB Baden
+        firstMenuTitle = IB Baden
+
+        misc.sitemapStartId = 145
+        misc.searchResultId = 147
+        misc.mapViewPid = 591
+        misc.gridViewPid = 592
+        misc.locationSingleViewId = 594
+        misc.productSingleViewId = 593
+
+        ib_content.dbCategoryLocationPage = 594
+        ib_content.dbNavigationId = 7
+
+        tt_news.single_pid = 146
+
+        misc.showOnlyTYPO3SearchResults = 0
+        analytics {
+            account_id = UA-42876528-12
+            enable_tracking = 1
+        }
+        main_bubble {
+            id = 596
+        }
+    }
+    const_navigation {
+        footernav_central_folder_id = 3
+        footernav_misc_folder_id = 15
+        footernav_meta_folder_id = 597
+    }
+[end]
+
+[request.getNormalizedParams().getHttpHost() == 'ibbaden2016.rmsdev.de']
+    host = ibbaden2016.rmsdev.de
+    portalSettings.analytics.enable_tracking = 0
+    portalSettings.misc.sitemapStartId = 105
+[end]

@@ -1,0 +1,20 @@
+# -----------------------------------------------------------------------------
+# PORTAL schwarz-rot-bunt
+#
+#
+# SEE EXT:ib_srb -> constants.typoscript for portalSettings!!!!
+#
+#
+# -----------------------------------------------------------------------------
+[request.getNormalizedParams().getHttpHost() == 'schwarz-rot-bunt.rmsdev.de' || request.getNormalizedParams().getHttpHost() == 'schwarz-rot-bunt.de']
+    host = schwarz-rot-bunt.de
+    # SEE EXT:ib_srb -> constants.typoscript for portalSettings!!!!
+[end]
+
+[request.getNormalizedParams().getHttpHost() == 'ib-srb.ddev.site']
+    host = ib-srb.ddev.site
+[end]
+
+[request.getNormalizedParams().getHttpHost() == 'schwarz-rot-bunt.rmsdev.de']
+    host = schwarz-rot-bunt.rmsdev.de
+[end]

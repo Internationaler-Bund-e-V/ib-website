@@ -1,0 +1,7 @@
+# Jugendmigrationsdienste
+#[site("rootPageId") == 3931]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Jugendmigrationsdienste
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

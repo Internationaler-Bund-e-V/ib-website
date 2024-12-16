@@ -1,0 +1,69 @@
+# -----------------------------------------------------------------------------
+# PORTAL Oberschule Neuenhagen
+# -----------------------------------------------------------------------------
+[request.getNormalizedParams().getHttpHost() == 'oberschule-neuenhagen.de' || request.getNormalizedParams().getHttpHost() == 'iboberschuleneuenhagen.rmsdev.de']
+    host = oberschule-neuenhagen.de
+    portalSettings {
+        pageTitle = Oberschule Neuenhagen
+        firstMenuTitle = Oberschule Neuenhagen
+        root_id = 1766
+        misc.sitemapStartId = 1766
+        mainnav_start_id = 1778
+        misc.searchResultId = 1776
+        tt_news.single_pid = 1773
+        misc.showOnlyTYPO3SearchResults = 1
+        readspeaker.show = 1
+
+        #data privacy site ID
+        dataPrivacySiteID = 1771
+
+        //generate news sitemap     
+        NewsSitemap.generate = 1
+        NewsSitemap.NewsFolderPid = 3863
+        NewsSitemap.NewsDetailPid = 1773
+
+        analytics {
+            #account_id =
+            #enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 25
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = emsd2KxP
+        }
+    
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+
+        main_bubble {
+            text = Zur <br> Schulanmeldung <br><br>
+            id = 1923		
+            title_text = Kontaktieren Sie uns hier bei Fragen, Wünschen und Anregungen
+        }
+        social.instagram = https://www.instagram.com/ib.berlin.brandenburg/
+        social.instagram.titletag = Hier geht es zur Instagram Seite
+        social.facebook = https://www.facebook.com/IB.Berlin.Brandenburg
+        social.facebook.titletag = Hier geht es zur Facebook-Seite
+
+        social.ib_english_page_link = 
+    }
+
+    social.instagram = https://www.instagram.com/ib.berlin.brandenburg/
+    social.instagram.titletag = Hier geht es zur Instagram Seite
+    social.facebook = https://www.facebook.com/IB.Berlin.Brandenburg
+    social.facebook.titletag = Hier geht es zur Facebook-Seite
+
+  gallery.folder.pid = 4851
+
+    const_navigation {
+        footernav_central_folder_id = 6177
+        footernav_misc_folder_id = 6179
+        footernav_meta_folder_id = 1767
+    }
+[end]
+
+[request.getNormalizedParams().getHttpHost() == 'iboberschuleneuenhagen.rmsdev.de']
+    host = iboberschuleneuenhagen.rmsdev.de
+    portalSettings.analytics.enable_tracking = 0
+[end]

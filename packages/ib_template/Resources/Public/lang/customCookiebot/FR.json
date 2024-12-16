@@ -1,0 +1,7 @@
+{
+    "videoTextConsent": "<div class=\"cookieconsent-optout-marketing rs_preserve\"><div>Pour activer la lecture vidéo, vous devez cliquer sur le lien ci-dessous. Dans la fenêtre qui s'ouvre, vous pouvez autoriser les outils \"Commercialisation\" de YouTube. YouTube et Google utilisent ces outils chaque fois que des vidéos sont lues, et nous ne pouvons pas les désactiver. Par conséquent, nous ne pouvons lire les vidéos qu'avec votre consentement. Pendant la lecture, YouTube et Google reçoivent des données (par exemple votre adresse IP) et les traitent conformément à la déclaration de protection des données de Google. Pour plus d'informations y compris la possibilité de retirer votre consentement à tout moment.</div> <div class=\"customCBOverlay customCBOverlayYouTube\" aria-hidden=\"true\"><div class=\"customCBButton\" aria-hidden=\"true\"><button onclick=\"Cookiebot.renew();\">Autoriser les cookies marketing ici pour activer les vidéos</button></div></div></div>",
+    "text1": "Zur Aktivierung des Inhalts bitte entsprechende Cookie-Kategorie zulassen.",
+    "text2": "Zu weiteren Infos inkl. des jederzeit möglichen Widerrufs der Einwilligung.",
+    "overlayButtonText": "Pour activer le contenu, veuillez autoriser la catégorie de cookies suivante: ",
+    "dataPrivacyPage": "datenschutz"
+}

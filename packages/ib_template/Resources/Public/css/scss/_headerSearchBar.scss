@@ -1,0 +1,125 @@
+#ib-headerSearchBar {  
+  position: absolute;  
+  z-index: 1001;
+  height: 50px;
+  top: 0;
+  right: 0;
+  width:100px;
+  padding-top:14px;
+  background:white;
+  
+
+  -webkit-transition: all .25s ease;
+  -moz-transition: all .25s ease;
+  -ms-transition: all .25s ease;
+  transition: all .25s ease;
+
+
+  &.ib-hsb-fullWidth{
+    width: calc(100% - 33px);
+  }
+
+  .expanded {
+    input::placeholder {
+      opacity: .2;
+    }
+    input{
+      font-size:26px;
+      width:100%;
+      padding-left:35px;
+    }
+  }
+
+  .ib-hsb-hide {
+    display: none;
+  }
+
+  .headerSearchBarIcon {
+    position: absolute;
+    width: 50px;
+    float: right;
+    text-align: center;
+    font-size: 23px;
+    right: 0;
+    z-index: 1;
+  }
+
+  .headerSearchBarSearch {
+    position: relative;
+    -webkit-transition: all .7s ease;
+    -moz-transition: all .7s ease;
+    -ms-transition: all .7s ease;
+    transition: all .7s ease;
+    float: right;
+    width:100%;
+    border: none;
+
+    #inputSearchIcon {
+      display: none;
+      position: absolute;
+      font-size: 23px;
+      left: 5px;
+      z-index: 10;
+      top: 5px;
+    }
+
+    input {
+      border: none;
+      border-bottom: 1px solid gray;
+      background: white;
+      box-shadow: none;
+      width:100%;
+      
+
+    }
+  }
+
+  i {
+    cursor: pointer;
+    color: $ib-darkblue;
+  }
+
+}
+
+
+.autocomplete-suggestions.searchHeaderBarFocus {
+  width: auto !important;
+  max-width: 300px !important;
+  position: relative !important;
+  top: -17px !important;
+}
+
+/* Large and up */
+@media screen and (min-width: 64em) {
+
+.headroom--collapsed {
+  #ib-headerSearchBar {
+    top: 5px;
+    right: 0;    
+  }
+}
+
+  #ib-headerSearchBar {
+    top: 47px;
+    &.ib-hsb-fullWidth{
+      width: calc(80%);
+    }
+  }
+}
+
+/* Small only */
+@media screen and (max-width: 767px) {
+    #ib-headerSearchBar {
+        right: 80px;
+        &.ib-hsb-fullWidth{
+          width: calc(100% - 114px);
+        }
+      }
+}
+
+.dimContent{  
+  opacity: .1;
+}
+.pauseScrolling{
+  overflow: hidden;
+}

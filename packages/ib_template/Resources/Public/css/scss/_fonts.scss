@@ -1,0 +1,15 @@
+//generate ib-font-size- 1...60
+@mixin generate-ib-font-sizes() {
+  @for $i from 1 through 60{
+    .ib-font-size-#{$i} { font-size:rem-calc($i); }
+  }        
+}
+@include generate-ib-font-sizes();
+
+
+//font weight
+
+.ib-font-bold{
+  font-weight:bold;
+}
+

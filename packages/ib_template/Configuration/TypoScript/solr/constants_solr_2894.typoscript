@@ -1,0 +1,7 @@
+# catering-neuenhagen
+#[site("rootPageId") == 2894]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_Catering_Berlin_Brandenburg
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

@@ -1,0 +1,462 @@
+/*
+this files holds styles for the header with logo, bubble and navigation placement
+navigation styles are found in _jetmenu.scss
+*/
+$nav-height--expanded: 100px;
+$nav-height--collapsed: 60px;
+
+#ib-header {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  right: 0;
+  top: 0;
+
+  &.ibLandingpageHeader {
+    ul.jetmenu {
+      li.ibLandingpageLI {
+        border: none;
+      }
+    }
+  }
+
+  #ib-head-bubble-mobile {
+    
+
+    &:hover {
+      a {
+        background-color: $ib-bubble-orange;
+      }
+
+    }
+
+    a {
+      color: white;
+      width: auto;
+      padding: 10px 15px !important;
+    }
+
+  }
+}
+
+.ib-header-container {
+  max-width: 1350px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ib-header-bar {
+  background-color: $white;
+  position: relative;
+  z-index: 100;
+}
+
+#ib-logo {
+  bottom: 15px;
+  left: 11%;
+  position: absolute;
+  z-index: 10;
+}
+
+#ib-main-menu {
+  position: relative;
+  z-index: 1;
+}
+
+#ib-menu-overlay {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $white;
+}
+
+#ib-head-bubble {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  top: 0px;
+  width: 135px;
+  height: 80px;
+  background-color: $ib-bubble-orange;
+  right: 0;
+  border-radius: 4.3em / 3em;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  @include transition(all 250ms ease);
+  box-shadow: 0px 0px 0px 0px rgba($ib-orange, .2);
+
+  &:hover {
+    box-shadow: 0px 10px 20px -10px rgba(darken($ib-orange, 30%), .5);
+  }
+
+  a {
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    position: relative;
+    text-align: center;
+    line-height: 1em;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.jetmenu .showhide img {
+  height: 35px;
+}
+
+.jetmenu>li.showhide span.title {
+  margin: 3px 0 0 25px;
+}
+
+.jetmenu>li>.megamenu {
+  top: 40px !important;
+  background: $white !important;
+  border-top: none !important;
+}
+
+.jetmenu>li {
+  border-left: 1px solid $ib-standard-font-color;
+  line-height: 40px;
+  width: 200px;
+  text-align: center;
+}
+
+.jetmenu>li.showhide {
+  background: $white !important;
+}
+
+.jetmenu>li.showhide .icon em {
+  background: $ib-blue !important;
+}
+
+.jetmenu>li>a {
+  //color:$ib-darkblue !important;
+  padding: 0 !important;
+}
+
+/* Small only */
+@media screen and (max-width: 767px) {
+  #ib-logo {
+    display: none !important;
+  }
+}
+
+/* Medium and up */
+@media screen and (min-width: 40em) {}
+
+/* Medium only */
+@media screen and (min-width: 768px) and (max-width: 63.9375em) {
+  .ib-header-bar {
+    height: 55px;
+  }
+
+  #ib-logo {
+    display: block !important;
+    left: 25px;
+    width: 37px;
+  }
+
+  #ib-main-menu {
+    padding-top: 6px;
+  }
+
+  .jetmenu {
+    background-color: $white !important;
+    background: $white !important;
+    padding-left: 20.3% !important;
+  }
+}
+
+/* Large and up */
+@media screen and (min-width: 64em) {
+  .ib-header-bar {
+    height: $nav-height--expanded;
+  }
+
+  #ib-main-menu {
+    padding-top: 59px;
+  }
+
+  .jetmenu {
+    background-color: $white !important;
+    background: $white !important;
+    padding-left: 20.3% !important;
+  }
+}
+
+/* make main navigation smaller so that there can be 4 nav items */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  #ib-main-menu .jetmenu {
+    padding-left: 70px !important;
+  }
+
+  #ib-main-menu .jetmenu>li {
+    width: auto;
+    padding: 0 10px;
+  }
+
+  #ib-head-bubble {
+    display: block !important;
+    top: 58px;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  #ib-head-bubble {
+    display: block !important;
+    top: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1255px) {
+  #ib-main-menu .jetmenu>li {
+    width: 160px;
+  }
+}
+
+/* Large only */
+@media screen and (min-width: 64em) and (max-width: 74.9375em) {}
+
+/*headroom scroll states*/
+@media screen and (min-width: 64em) {
+
+  /*initial state*/
+  .headroom {
+
+    .ib-header-bar {
+      height: $nav-height--expanded;
+      @include transition(height 250ms ease);
+    }
+
+    #ib-logo {
+      width: 70px;
+      @include transition(width 250ms ease);
+    }
+
+    #ib-main-menu {
+      padding-top: 59px;
+      @include transition(padding 250ms ease);
+    }
+
+    #ib-menu-overlay {
+      height: 59px;
+      @include transition(height 250ms ease);
+    }
+
+
+  }
+
+  /*collapsed state*/
+  .headroom--collapsed {
+
+    .ib-header-bar {
+      height: $nav-height--collapsed;
+    }
+
+    #ib-logo {
+      width: 35px;
+    }
+
+    #ib-main-menu {
+      padding-top: 20px;
+    }
+
+    #ib-menu-overlay {
+      top: 0;
+      left: 0;
+      right: 0;
+      height: $nav-height--collapsed;
+    }
+
+
+  }
+
+  /*epanded state*/
+  .headroom--expanded {
+
+    .ib-header-bar {
+      height: $nav-height--expanded;
+    }
+
+    #ib-logo {
+      width: 70px;
+    }
+
+    #ib-main-menu {
+      padding-top: 59px;
+    }
+
+    #ib-menu-overlay {
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 59px;
+    }
+
+
+  }
+
+}
+
+/*
+ * ------------------------------------------------------
+ * format wide logos
+ * ------------------------------------------------------
+ * @see {$portalSettings.portal_logo.format} constant
+ * @see typo3conf/ext/ib_template/Resources/Private/Template/partial/header.html
+ */
+
+.mobileLoader {
+  display: none;
+}
+
+.header-ib-logo-wide {
+  #ib-logo {
+    left: 6%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .jetmenu {
+    display: none;
+  }
+
+  .mobileLoader {
+    display: block;
+    height: 60px;
+    background: white;
+  }
+
+  .header-ib-logo-wide {
+    #ib-logo {
+      display: none !important;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 63.9375em) {
+  .header-ib-logo-wide {
+    #ib-logo {
+      left: 25px;
+      width: 120px;
+    }
+
+    #ib-main-menu .jetmenu {
+      padding-left: 140px !important;
+    }
+  }
+}
+
+@media screen and (min-width: 64em) {
+
+  .header-ib-logo-wide {
+    #ib-main-menu .jetmenu {
+      padding-left: 280px !important;
+    }
+  }
+
+  .headroom {
+    .header-ib-logo-wide {
+      #ib-logo {
+        width: 180px;
+      }
+    }
+  }
+
+  .headroom--collapsed {
+    .header-ib-logo-wide {
+      #ib-logo {
+        width: 110px;
+      }
+    }
+  }
+
+  .headroom--expanded {
+    .header-ib-logo-wide {
+      #ib-logo {
+        width: 180px;
+      }
+    }
+  }
+}
+
+
+
+
+.lds-ellipsis {
+
+  position: relative;
+  width: 80px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.lds-ellipsis div {
+  position: absolute;
+  top: 20px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #005590;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+.extbase-debugger.extbase-debugger-floating {
+  z-index: 1001;
+}

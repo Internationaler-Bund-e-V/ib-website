@@ -1,0 +1,7 @@
+# FUD_Rostock - https://lkrostock.fud-ib.de/
+#[site("rootPageId") == 3697]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = FUD_Rostock
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

@@ -1,0 +1,7 @@
+# JuKuWe Pirmasens
+#[site("rootPageId") == 5104]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 5132
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Jukuwe_Pirmasens
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

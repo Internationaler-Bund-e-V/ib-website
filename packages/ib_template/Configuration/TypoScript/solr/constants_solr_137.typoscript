@@ -1,0 +1,7 @@
+# IB Inklusion
+#[site("rootPageId") == 137]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 138
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_Inklusion
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

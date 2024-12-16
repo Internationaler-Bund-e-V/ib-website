@@ -1,0 +1,7 @@
+{
+  "videoTextConsent": "<div class=\"cookieconsent-optout-marketing rs_preserve\"><div>Če želite aktivirati predvajanje videoposnetka, morate klikniti spodnjo povezavo. V oknu, ki se nato odpre, lahko dovolite orodja \"trženje\" iz YouTuba. YouTube in Google uporabljata ta orodja ob vsakem predvajanju videoposnetkov in jih ne moremo onemogočiti. Zato lahko videoposnetke predvajamo le z vašim soglasjem. Med predvajanjem YouTube in Google prejmeta podatke (npr. vaš naslov IP) in jih obdelujeta tudi za lastne namene. Prenosa podatkov v ZDA, kjer ni zagotovljena enakovredna raven varstva podatkov, ni mogoče izključiti. Vse informacije o varstvu vaših podatkov najdete v naši politiki zasebnosti. Svoje soglasje lahko kadar koli prekličete v naših nastavitvah za varstvo podatkov: <a class=\"cbOverlayDPLink\" href=\"/sl/varovanje-podatkov\">Varovanje podatkov</a></div> <div class=\"customCBOverlay customCBOverlayYouTube\" aria-hidden=\"true\"><div class=\"customCBButton\" aria-hidden=\"true\"><button onclick=\"Cookiebot.renew();\">\u010Ce \u017Eelite aktivirati videoposnetke, kliknite tukaj in dovolite trženje pi\u0161kotke</button></div></div></div>",
+  "text1": "Če želite aktivirati vsebino, dovolite ustrezno kategorijo piškotkov.",
+  "text2": "Več informacij, vključno z možnostjo, da kadar koli prekličete soglasje, najdete tukaj.",
+  "overlayButtonText": "Če želite aktivirati vsebino, dovolite naslednje kategorije piškotkov: ",  
+  "dataPrivacyPage": "datenschutz"
+}

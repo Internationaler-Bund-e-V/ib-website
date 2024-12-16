@@ -1,0 +1,34 @@
+# -----------------------------------------------------------------------------
+# PORTAL IB GREEN
+# -----------------------------------------------------------------------------
+[request.getNormalizedParams().getHttpHost() == 'ib-international.eu' || request.getNormalizedParams().getHttpHost() == 'ibinternational2016.rmsdev.de']
+    host = ib-international.eu
+    
+    portalSettings {
+        pageTitle = IB International
+        firstMenuTitle = International
+        root_id = 217
+        misc.sitemapStartId = 217
+        mainnav_start_id = 220
+        misc.searchResultId = 219
+        tt_news.single_pid = 218
+        ib_content.dbNavigationId = 1
+        misc.showOnlyTYPO3SearchResults = 1
+        showNavigationSearch = 0
+
+        analytics {
+            account_id = UA-42876528-2
+            enable_tracking = 1
+        }
+    }
+    const_navigation {
+        footernav_central_folder_id = 3
+        footernav_misc_folder_id = 15
+    }
+[end]
+
+[request.getNormalizedParams().getHttpHost() == 'ibinternational2016.rmsdev.de']
+    host = ibinternational2016.rmsdev.de
+    portalSettings.analytics.enable_tracking = 0
+    portalSettings.misc.sitemapStartId = 105
+[end]

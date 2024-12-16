@@ -1,0 +1,7 @@
+{
+    "videoTextConsent": "<div class=\"cookieconsent-optout-marketing rs_preserve\"><div>Video oynatmayı etkinleştirmek için aşağıdaki bağlantıya tıklamanız gerekir. Daha sonra açılan pencerede YouTube'un \"pazarlama\" araçlarına izin verebilirsiniz. YouTube ve Google, videoları her oynattıklarında bu araçları kullanır ve bunları devre dışı bırakamayız. Bu nedenle, videoları yalnızca sizin izninizle oynatabiliriz. Oynatma sırasında YouTube ve Google veri alır (örneğin IP adresiniz) ve bunları kendi amaçları için işler. Eşdeğer düzeyde veri korumasının garanti edilmediği ABD'ye veri aktarımı göz ardı edilemez. Verilerinizin korunmasına ilişkin tüm bilgileri gizlilik politikamızda bulabilirsiniz. Veri koruma ayarlarımızdan istediğiniz zaman onayınızı iptal edebilirsiniz:  <a class=\"cbOverlayDPLink\" href=\"/tr/veri-korumasi\">Veri korumasi</a></div> <div class=\"customCBOverlay customCBOverlayYouTube\" aria-hidden=\"true\"><div class=\"customCBButton\" aria-hidden=\"true\"><button onclick=\"Cookiebot.renew();\">Videoları etkinleştirmek için burada pazarlama çerezlere izin verin</button></div></div></div>",
+    "text1": "Zur Aktivierung des Inhalts bitte entsprechende Cookie-Kategorie zulassen.",
+    "text2": "Zu weiteren Infos inkl. des jederzeit möglichen Widerrufs der Einwilligung.",
+    "overlayButtonText": "İçeriği etkinleştirmek için lütfen aşağıdaki çerez kategorisine izin verin: ",
+    "dataPrivacyPage": "datenschutz"
+}

@@ -1,0 +1,7 @@
+# IB West
+#[site("rootPageId") == 4687]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_West
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

@@ -1,0 +1,130 @@
+<!-- Footer Three Columns-->
+<div id="ib-footer" class="footerThreeColumns">
+  <div class="row ib-footer-container">
+    <div class="columns medium-10 medium-offset-1">
+      <!-- columns-->
+      <div class="row">
+        <!-- textcontent LEFT start-->
+        <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.footer.show_textcontent_left')}">
+          <f:then>
+            <div class="columns medium-6 large-4 ib-footer-textcontent">
+              <f:format.html parseFuncTSPath="lib.parseFunc">{f:cObject(typoscriptObjectPath:
+                'portalSettings.footer.textcontent_left')}</f:format.html>
+            </div>
+          </f:then>
+        </f:if>
+        <!-- textcontent LEFT end-->
+
+        <!-- textcontent MIDDLE start-->
+        <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.footer.show_textcontent_middle')}">
+          <f:then>
+            <div class="columns medium-6 large-4 ib-footer-textcontent">
+              <f:format.html parseFuncTSPath="lib.parseFunc">{f:cObject(typoscriptObjectPath:
+                'portalSettings.footer.textcontent_middle')}</f:format.html>
+            </div>
+          </f:then>
+        </f:if>
+        <!-- textcontent MIDDLE end-->
+
+        <!-- textcontent RIGHT start-->
+        <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.footer.show_textcontent_right')}">
+          <f:then>
+            <div class="columns medium-6 large-4 ib-footer-textcontent">
+              <f:format.html parseFuncTSPath="lib.parseFunc">{f:cObject(typoscriptObjectPath:
+                'portalSettings.footer.textcontent_right')}</f:format.html>
+            </div>
+          </f:then>
+        </f:if>
+
+      </div>
+
+      <!-- social links start-->
+      <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.footer.hide_social_links')}">
+        <f:then></f:then>
+        <f:else>
+
+          <f:if condition="{f:cObject(typoscriptObjectPath: 'social.headline')}">
+            <div class="row columns small-12">
+              <ul class="menu simple ib-footer-social">
+                <f:if condition="{f:cObject(typoscriptObjectPath: 'social.facebook')}">
+                  <li>
+                    <a target="_blank" title="{f:cObject(typoscriptObjectPath: 'social.facebook.titletag')}"
+                      href="{f:cObject(typoscriptObjectPath: 'social.facebook')}">
+                      <i class="ib-icon-facebook-circle"></i>
+                    </a>
+                  </li>
+                </f:if>
+                <f:if condition="{f:cObject(typoscriptObjectPath: 'social.instagram')}">
+                  <li>
+                    <a target="_blank" title="{f:cObject(typoscriptObjectPath: 'social.instagram.titletag')}"
+                      href="{f:cObject(typoscriptObjectPath: 'social.instagram')}">
+                      <i class="ib-icon-instagram-circle"></i>
+                    </a>
+                  </li>
+                </f:if>
+                <f:if condition="{f:cObject(typoscriptObjectPath: 'social.twitter')}">
+                  <li>
+                    <a target="_blank" title="{f:cObject(typoscriptObjectPath: 'social.twitter.titletag')}"
+                      href="{f:cObject(typoscriptObjectPath: 'social.twitter')}">
+                      <i class="ib-icon-twitter-x-circle"></i>
+                    </a>
+                  </li>
+                </f:if>
+                <f:if condition="{f:cObject(typoscriptObjectPath: 'social.linkedin')}">
+                  <li>
+                    <a target="_blank" title="{f:cObject(typoscriptObjectPath: 'social.linkedin.titletag')}"
+                      href="{f:cObject(typoscriptObjectPath: 'social.linkedin')}">
+                      <i class="ib-icon-linkedin-circle"></i>
+                    </a>
+                  </li>
+                </f:if>
+
+                <f:if condition="{f:cObject(typoscriptObjectPath: 'social.xing')}">
+                  <li>
+                    <a target="_blank" title="{f:cObject(typoscriptObjectPath: 'social.xing.titletag')}"
+                      href="{f:cObject(typoscriptObjectPath: 'social.xing')}">
+                      <i class="ib-icon-xing-circle"></i>
+                    </a>
+                  </li>
+                </f:if>
+                <f:if condition="{f:cObject(typoscriptObjectPath: 'social.kununu')}">
+                  <li>
+                    <a target="_blank" title="{f:cObject(typoscriptObjectPath: 'social.kununu.titletag')}"
+                      href="{f:cObject(typoscriptObjectPath: 'social.kununu')}">
+                      <i class="ib-icon-kununu-circle"></i>
+                    </a>
+                  </li>
+                </f:if>
+                <f:if condition="{f:cObject(typoscriptObjectPath: 'social.youtube')}">
+                  <li>
+                    <a target="_blank" title="{f:cObject(typoscriptObjectPath: 'social.youtube.titletag')}"
+                      href="{f:cObject(typoscriptObjectPath: 'social.youtube')}">
+                      <i class="ib-icon-youtube-circle"></i>
+                    </a>
+                  </li>
+                </f:if>
+              </ul>
+            </div>
+          </f:if>
+        </f:else>
+      </f:if>
+      <!-- solical links end-->
+
+      <!-- meta -->
+      <div class="row ib-footer-meta">
+        <div class="columns medium-8">
+          <ul class="no-bullet">
+            <f:cObject typoscriptObjectPath="lib.footerMeta" />
+          </ul>
+        </div>
+        <div class="columns medium-4">
+          <img class="ib-footer-logo"
+            src="/typo3conf/ext/ib_template/Resources/Public/img/logos_portals/{f:cObject(typoscriptObjectPath: 'portalSettings.footer.logo')}"
+            alt="Portal Logo Footer">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Footer End-->

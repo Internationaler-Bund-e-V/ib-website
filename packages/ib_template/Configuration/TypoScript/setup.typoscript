@@ -1,0 +1,41 @@
+#
+# main entry point, autoloaded by extension
+#
+
+# main ts config
+#<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ib_template/Configuration/TypoScript/main_config.ts">
+@import 'EXT:ib_template/Configuration/TypoScript/main_config.ts'
+
+# menu config
+#<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ib_template/Configuration/TypoScript/menu.ts">
+@import 'EXT:ib_template/Configuration/TypoScript/menu.ts'
+
+# layout config
+##<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ib_template/Configuration/TypoScript/layout.ts">
+@import 'EXT:ib_template/Configuration/TypoScript/layout.ts'
+
+# search config
+#<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ib_template/Configuration/TypoScript/search.ts">
+@import 'EXT:ib_template/Configuration/TypoScript/search.ts'
+
+# solr config
+#<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ib_template/Configuration/TypoScript/setup_solr.t3s">
+@import 'EXT:ib_template/Configuration/TypoScript/setup_solr.t3s'
+
+module.tx_ibcmt_web_ibcmtibcmt.persistence.storagePid = 4228
+
+
+#config.renderCharset = utf-8
+#config.local_all = de_DE.utf8
+
+# -----------------------------------------------------------------------------
+# development settings
+# -----------------------------------------------------------------------------
+config.admPanel = 1
+[applicationContext == "Development"]
+    config.no_cache = 1
+    config.debug = 1
+    config.config.debug = 1
+    config.concatenateJs = 0
+    config.concatenateCss = 0
+[end]

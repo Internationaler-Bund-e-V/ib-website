@@ -1,0 +1,430 @@
+# -----------------------------------------------------------------------------
+# PAGE OBJECT
+# -----------------------------------------------------------------------------
+page = PAGE
+page.typeNum = 0
+page.shortcutIcon = {$template_path.img}/logos_portals/{$portalSettings.portal_logo.file_favicon}
+page {
+    # Neuen title Tag in headerData setzen
+    headerData {
+        10 = TEXT
+        10 {
+            field = title
+            noTrimWrap = |<title>{$portalSettings.pageTitle}: |</title>|
+        }
+        20 = TEXT
+        20.value = <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><meta http-equiv="x-ua-compatible" content="ie=edge">
+    }
+}
+
+# -----------------------------------------------------------------------------
+# overwrite <title> from above
+# for news if on detail pages.
+#
+# @see 0000596: News Modul // Title Tag
+# @author mkettel
+# -----------------------------------------------------------------------------
+// [globalVar = TSFE:id={$portalSettings.tt_news.single_pid}]
+[getTSFE().id >= {$portalSettings.tt_news.single_pid}]
+    page {
+        headerData {
+            #10 >
+            10 = TEXT
+            10 {
+                field >
+                stdWrap >
+                wrap >
+                stdWrap.wrap = {page:title}
+                stdWrap.insertData = 1
+                #noTrimWrap >
+                #noTrimWrap = |<title>{$portalSettings.pageTitle}: |</title>
+            }
+        }
+    }
+[global]
+
+# -----------------------------------------------------------------------------
+# meta tags
+# -----------------------------------------------------------------------------
+page.meta {
+    keywords.field = keywords
+    description.field = description
+
+    # set to MOINDEX if robots_noindex_nofollow flag is set
+    # @see htdocs/typo3conf/ext/ib_page_extension
+    # @see https://mantis.rm-solutions.de/mantis/view.php?id=317
+    robots = INDEX,FOLLOW
+    #robots.override = NOINDEX,NOFOLLOW
+    #robots.override.if.isTrue.field = robots_noindex_nofollow
+    #robots.override.if.isTrue.field = no_search
+}
+
+page.10 = FLUIDTEMPLATE 
+page.10 {
+    partialRootPath = {$template_path.html}/partial/
+    layoutRootPath = {$template_path.html}/layout/
+    variables {
+        menuStyle = TEXT
+        menuStyle.value = {$lang.menuStyle}
+
+        imgPath = TEXT
+        imgPath.value = {$template_path.img}
+    }
+    dataProcessing {
+        10 = TYPO3\CMS\Frontend\DataProcessing\LanguageMenuProcessor
+        10 {
+            as = languageMenu
+        }
+    }
+}
+
+# -----------------------------------------------------------------------------
+# include CSS & JS
+# -----------------------------------------------------------------------------
+page.includeJS {
+    jsLibsHeader = {$template_path.js}/min/header.min.js
+    jsRSconfig = {$template_path.js}/src/rsConfig.js
+    #jquery = {$template_path.bower}/foundation/js/vendor/jquery.js
+    #modernizr = {$template_path.bower}/foundation/js/vendor/modernizr.js
+}
+
+page.includeJSFooter {
+    libs = {$template_path.js}/min/libs.min.js
+    frontend = {$template_path.js}/min/frontend.min.js
+    shariff = {$template_path.js}/min/shariff.min.js  
+}
+
+#### overwrite EXT:db_friendlycaptcha for local source + version control -> see 
+page.includeJSFooterlibs{
+    friendlycaptchaModule = {$template_path.js}/min/widget.module.min.js
+    friendlycaptchaModule.external = 0
+
+    friendlycaptcha ={$template_path.js}/min/widget.min.js
+    friendlycaptcha.external = 0
+}
+
+#
+# deaktiviere das Laden von einer in Solr integrierten jQuery Version (jQuery v3.1.1)
+# https://mantis.rm-solutions.de/mantis/view.php?id=2338
+# mk@rms, 2022-08-12
+#
+page.includeJSFooterlibs.solr-jquery >
+page.includeJS {
+    jquery = typo3conf/ext/ib_template/Resources/Public/js/min/jquery.min.js
+}
+
+page.jsFooterInline {
+    10 = TEXT
+    10.value (
+        $(document).foundation();
+        $(window).load(function() {
+            $().jetmenu({
+                indicator: false
+            });
+        });
+
+        $(document).ready(function() {            
+
+            $('.twoColLayout .ib-news-slider').slick({
+                prevArrow : $('#newsPrevButton'),
+                nextArrow : $('#newsNextButton'),
+                slidesToShow : 2,
+                dots: true,
+                responsive : [
+                {
+                    breakpoint : 900,
+                    settings : {
+                        slidesToShow : 2,
+                        slidesToScroll : 2
+                    }
+                }, {
+                    breakpoint : 480,
+                    settings : {
+                        slidesToShow : 1,
+                        slidesToScroll : 1
+                    }
+                }]
+            });
+        });
+    )
+}
+
+page.includeCSS {
+    app = {$template_path.css}/min/app.min.css
+    app.media = screen
+    print = {$template_path.css}/min/print.min.css
+    print.media = print
+    print.excludeFromConcatenation = 1
+    shariff = {$template_path.css}/min/shariff.complete.css
+}
+
+# -----------------------------------------------------------------------------
+# settings for the BE Layouts - BE Layout defines frontend layout
+# frontpage layout
+# -----------------------------------------------------------------------------
+//[globalVar = TSFE:page|backend_layout = 1]
+[page["backend_layout"] == 1]
+    page.10 {
+        file = {$template_path.html}/layout/mainLayout.html
+        variables {
+            header_element < styles.content.get
+            header_element.select.where = colPos=0
+
+            content_element < styles.content.get
+            content_element.select.where = colPos=1
+        }
+    }
+    # add theme to body tag
+    page.bodyTag >
+    page.bodyTagCObject = TEXT
+    page.bodyTagCObject.wrap {
+        cObject = TEXT
+        cObject.typolink {
+            parameter = {$portalSettings.dataPrivacySiteID}
+            returnLast = url
+        }
+    }
+    page.bodyTagCObject{
+        dataWrap = <body data-dataprivacyurl="|" data-cblanguage="{$portalSettings.cookiebot.language}" class="startPage {$portalSettings.bodyClassName} {field:page_theme}">
+    }
+[END]
+//[globalVar = TSFE:page|backend_layout = 2]
+[page["backend_layout"] == 2]
+    page.10 {
+        file = {$template_path.html}/layout/2colLayout.html
+        variables {
+            header_element < styles.content.get
+            header_element.select.where = colPos=0
+
+            content_element_main < styles.content.get
+            content_element_main.select.where = colPos=1
+
+            content_element_sidebar < styles.content.get
+            content_element_sidebar.select.where = colPos=2
+        }
+    }
+    page.bodyTag >
+    page.bodyTagCObject = TEXT
+    page.bodyTagCObject.wrap {
+        cObject = TEXT
+        cObject.typolink {
+            parameter = {$portalSettings.dataPrivacySiteID}
+            returnLast = url
+        }
+    }
+    page.bodyTagCObject{
+        dataWrap = <body data-dataprivacyurl="|" data-cblanguage="{$portalSettings.cookiebot.language}" class="twoColLayout {$portalSettings.bodyClassName} {field:page_theme}">
+    }
+    #page.bodyTagCObject.noTrimWrap = |<body data-cblanguage="{$portalSettings.cookiebot.language}" class="twoColLayout {$portalSettings.bodyClassName} |">|
+[END]
+
+//[globalVar = TSFE:page|backend_layout = 3]
+[page["backend_layout"] == 3]
+    page.10 {
+        file = {$template_path.html}/layout/empty.html
+        variables {
+            header_element < styles.content.get
+            header_element.select.where = colPos=0
+
+            content_element_main < styles.content.get
+            content_element_main.select.where = colPos=1
+
+            content_element_sidebar < styles.content.get
+            content_element_sidebar.select.where = colPos=2
+        }
+    }
+    page.bodyTag >
+    page.bodyTagCObject = TEXT
+    page.bodyTagCObject.wrap {
+        cObject = TEXT
+        cObject.typolink {
+            parameter = {$portalSettings.dataPrivacySiteID}
+            returnLast = url
+        }
+    }
+    page.bodyTagCObject{
+        dataWrap = <body data-dataprivacyurl="|" data-cblanguage="{$portalSettings.cookiebot.language}" class="twoColLayout {$portalSettings.bodyClassName} {field:page_theme}">
+    }
+    #page.bodyTagCObject.noTrimWrap = |<body data-cblanguage="{$portalSettings.cookiebot.language}" class="twoColLayout {$portalSettings.bodyClassName} |">|
+[END]
+
+//[globalVar = TSFE:page|backend_layout = 4]
+[page["backend_layout"] == 4]
+    page.10 {
+        file = {$template_path.html}/layout/landingpage.html
+        variables {
+            header_element < styles.content.get
+            header_element.select.where = colPos=0
+
+            content_element < styles.content.get
+            content_element.select.where = colPos=1
+        }
+    }
+    page.bodyTag >
+    page.bodyTagCObject = TEXT
+    page.bodyTagCObject.wrap {
+        cObject = TEXT
+        cObject.typolink {
+            parameter = {$portalSettings.dataPrivacySiteID}
+            returnLast = url
+        }
+    }
+    page.bodyTagCObject{
+        dataWrap = <body data-dataprivacyurl="|" data-cblanguage="{$portalSettings.cookiebot.language}" class="twoColLayout {$portalSettings.bodyClassName} {field:page_theme}">
+    }
+    #page.bodyTagCObject.noTrimWrap = |<body data-cblanguage="{$portalSettings.cookiebot.language}" class="twoColLayout {$portalSettings.bodyClassName} |">|
+[END]
+
+# -----------------------------------------------------------------------------
+# include custom fluid styled content
+# -----------------------------------------------------------------------------
+lib.contentElement{
+    templateRootPaths{
+        10 = typo3conf/ext/ib_template/Resources/Private/Template/html/fsc/Templates/
+        11 = typo3conf/ext/ib_template/Resources/Private/Template/html/ext/solr/Templates/
+    }
+    partialRootPaths{
+        10 = typo3conf/ext/ib_template/Resources/Private/Template/html/fsc/Partials/
+        11 = typo3conf/ext/ib_template/Resources/Private/Template/html/ext/solr/Partials/
+    }
+    layoutRootPaths{
+        10 = typo3conf/ext/ib_template/Resources/Private/Template/html/fsc/Layouts/
+        11 = typo3conf/ext/ib_template/Resources/Private/Template/html/ext/solr/Layouts/
+    }
+}
+
+# -----------------------------------------------------------------------------
+# logo in header incl. link
+# -----------------------------------------------------------------------------
+lib.linkedLogo = COA
+lib.linkedLogo {
+    10 = TEXT
+    10.stdWrap.typolink{
+        parameter = {$portalSettings.mainnav_start_id}
+        returnLast = url
+    }
+    10.wrap = <a href="|"><img src="{$template_path.img}/logos_portals/{$portalSettings.portal_logo.file}" class="responsive" alt="Portal Logo"></a>
+}
+
+[{$portalSettings.analytics.matomo_enabled} == 1]
+    # script part: add code in the <head> section
+    # to make it work on productdb pages,
+    # add into typo3/public/typo3conf/ext/ibcontent/Classes/Controller/MyContentController.php
+    page.headerData.9990 = TEXT
+    page.headerData.9990.value (
+    <link rel="dns-prefetch" href="https://matomo.ib.de">
+    <!--<link rel="preload" href="https://matomo.ib.de/matomo.js" onload="embedTracker()" type="script" crossorigin as="script">-->
+
+     <!-- Matomo -->
+        <script type="text/plain" data-cookieconsent="statistics">
+            var _paq = window._paq = window._paq || [];
+            /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+            _paq.push(['trackPageView']);
+            _paq.push(['enableLinkTracking']);
+            (function() {
+                var u="https://matomo.ib.de/";
+                _paq.push(['setTrackerUrl', u+'matomo.php']);
+                _paq.push(['setSiteId', "{$portalSettings.analytics.matomo_siteid}"]);
+                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+                g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+                ibTrackLocation();
+            })();
+        </script>
+    <!-- End Matomo Code -->
+    )
+[END]
+
+
+### see -> MA2970: Integration Google & Facebook-PIxel
+[{$portalSettings.analytics.google_tagmanager_enabled} == 1]
+    page.headerData.9980 = TEXT
+    page.headerData.9980.value (
+        <!-- Google Tag Manager -->
+        <script type="text/plain" data-cookieconsent="statistics">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','{$portalSettings.analytics.google_containerid}');</script>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={$portalSettings.analytics.google_containerid}"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <!-- End Google Tag Manager -->
+    )
+[END]
+
+### see -> MA2970: Integration Google & Facebook-PIxel
+[{$portalSettings.analytics.facebook_pixel_enabled} == 1]
+    page.headerData.9970 = TEXT
+    page.headerData.9970.value (
+        <!-- Meta Pixel Code -->
+        <script type="text/plain" data-cookieconsent="preferences">
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '{$portalSettings.analytics.facebook_pixel_id}');
+        fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id={$portalSettings.analytics.facebook_pixel_id}&amp;ev=PageView&amp;noscript=1&quot;
+        /></noscript>
+        <!-- End Meta Pixel Code -->
+    )
+[END]
+
+[{$portalSettings.analytics.matomo_tagmanager_enabled} == 1]
+    # script part: add code in the <head> section
+    # to make it work on productdb pages,
+    # add into typo3/public/typo3conf/ext/ibcontent/Classes/Controller/MyContentController.php
+    page.headerData.9990 = TEXT
+    page.headerData.9990.value (
+    <link rel="dns-prefetch" href="https://matomo.ib.de">
+    <!--<link rel="preload" href="https://matomo.ib.de/matomo.js" onload="embedTracker()" type="script" crossorigin as="script">-->
+
+    <!-- Matomo Tag Manager -->
+    <script type="text/plain" data-cookieconsent="statistics">
+    var _paq = window._paq = window._paq || [];
+    var _mtm = window._mtm = window._mtm || [];
+    _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+    (function(){
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src='https://matomo.ib.de/js/container_{$portalSettings.analytics.matomo_containerid}.js'; s.parentNode.insertBefore(g,s);
+        ibTrackLocation();
+    })();
+    </script>
+    <!-- End Matomo Tag Manager -->
+
+    )
+[END]
+
+
+
+
+
+# -----------------------------------------------------------------------------
+# cookiebot
+# only show this if enabled in portal settings
+# @see https://mantis.rm-solutions.de/mantis/view.php?id=530 && https://mantis.rm-solutions.de/mantis/view.php?id=1534
+# @author mkettel
+# -----------------------------------------------------------------------------
+[{$portalSettings.cookiebot.enabled} == 1]
+    # script part: add code in the <head> section
+    # add for product pages into typo3/public/typo3conf/ext/ibcontent/Classes/Controller/MyContentController.php
+    page.headerData.9999 = TEXT
+    page.headerData.9999.value (
+    <script id='Cookiebot' data-culture="{$portalSettings.cookiebot.language}" src='https://consent.cookiebot.eu/uc.js' data-cbid='{$portalSettings.cookiebot.cbid}' data-blockingmode='auto' type='text/javascript'></script>
+    )
+[END]
+
+
+#additional portal header data
+//[globalVar = LIT:1 = {$portalSettings.additionalHeaderData}]
+[{$portalSettings.additionalHeaderData} == 1]
+    page.headerData.9998 = TEXT
+    page.headerData.9998.value = {$portalSettings.additionalHeaderDataValue}
+[END]

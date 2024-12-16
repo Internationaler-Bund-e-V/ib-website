@@ -1,0 +1,7 @@
+{
+  "videoTextConsent": "<div class=\"cookieconsent-optout-marketing rs_preserve\"><div> To activate video playback, you must click on the link below. In the window that then opens, you can allow \"statistical\" tools from YouTube.\r\nYouTube and Google use these tools every time a video is played, without us being able to deactivate it. Therefore, we can only play the videos with your consent. During playback, YouTube and Google receive data (e.g. your IP address) and process them in accordance with Google's privacy policy.<a href=\"/en/privacy-statement\"> For further information including the revocation of consent at any time.</a></div> <div class=\"customCBOverlay customCBOverlayYouTube\" aria-hidden=\"true\"><div class=\"customCBButton\" aria-hidden=\"true\"><button onclick=\"Cookiebot.renew();\">To activate the videos click here to allow statistical cookies</button></div></div></div>",
+  "text1": "To activate the content please allow the according cookie category. ",
+  "text2": "For further information including the revocation of consent at any time.",
+  "overlayButtonText": "To activate the content please allow the following cookie category: ",  
+  "dataPrivacyPage": "en\/privacy-statement"
+}

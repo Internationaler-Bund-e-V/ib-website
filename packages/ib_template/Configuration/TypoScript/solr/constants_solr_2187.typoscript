@@ -1,0 +1,7 @@
+# IB Blaupause
+#[site("rootPageId") == 2187]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_Blaupause
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

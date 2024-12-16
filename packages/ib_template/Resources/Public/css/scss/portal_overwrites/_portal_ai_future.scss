@@ -1,0 +1,13 @@
+.ai-future-project {
+  #ib-footer {
+    .ib-footer-textcontent.medium-4 {
+      @media screen and (min-width: 40em) {
+        width: 80%;
+      }
+    }
+
+    .ib-footer-meta .columns {
+      height: 35px;
+    }
+  }
+}

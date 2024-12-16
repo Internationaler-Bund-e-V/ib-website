@@ -1,0 +1,7 @@
+# recruiting polen
+#[site("rootPageId") == 2627]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Recruiting_Polen
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

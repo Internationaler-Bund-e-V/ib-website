@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+   <meta type="array">
+      <type>module</type>
+      <description>Language labels for IB footer</description>
+   </meta>
+   <data type="array">
+      <languageKey index="de" type="array">
+         <label index="press">Presse &amp; News</label>
+         <label index="socialMedia">Social Media Kanäle des IB</label>
+         <label index="centralPages">Zentrale Seiten</label>
+         <label index="miscPages">Weitere Seiten des IB</label>
+         <label index="socialTitleFacebook">Offizielle Facebook-Seite des Internationalen Bund</label>
+         <label index="socialTitleTwitter">Offizielle X-Seite des Internationalen Bund</label>
+         <label index="socialTitleLinkedIn">Offizielle LinkedIn-Seite des Internationalen Bund</label>
+         <label index="socialTitleXing">Offizielle Xing-Seite des Internationalen Bund</label>
+         <label index="socialTitleKununu">Offizielle Kununu-Seite des Internationalen Bund</label>
+         <label index="socialTitleYouTube">Offizieller YouTube-Kanal des Internationalen Bund</label>
+      </languageKey>
+      <languageKey index="zh" type="array">
+         <label index="press">Presse &amp; News</label>
+         <label index="socialMedia">Social Media Channels</label>
+         <label index="centralPages">Central Pages</label>
+         <label index="miscPages">Weitere Seiten des IB</label>
+         <label index="socialTitleFacebook">Offizielle Facebook-Seite des Internationalen Bund</label>
+         <label index="socialTitleTwitter">Offizielle X-Seite des Internationalen Bund</label>
+         <label index="socialTitleLinkedIn">Offizielle LinkedIn-Seite des Internationalen Bund</label>
+         <label index="socialTitleXing">Offizielle Xing-Seite des Internationalen Bund</label>
+         <label index="socialTitleKununu">Offizielle Kununu-Seite des Internationalen Bund</label>
+         <label index="socialTitleYouTube">Offizieller YouTube-Kanal des Internationalen Bund</label>
+      </languageKey>
+      <languageKey index="default" type="array">
+         <label index="press">Press &amp; News</label>
+         <label index="socialMedia">Social Media Kanäle des IB</label>
+         <label index="centralPages">Central Pages</label>
+         <label index="miscPages">More Content</label>
+         <label index="socialTitleFacebook">Offizielle Facebook-Seite des Internationalen Bund</label>
+         <label index="socialTitleTwitter">Offizielle X-Seite des Internationalen Bund</label>
+         <label index="socialTitleLinkedIn">Offizielle LinkedIn-Seite des Internationalen Bund</label>
+         <label index="socialTitleKununu">Offizielle Kununu-Seite des Internationalen Bund</label>
+         <label index="socialTitleYouTube">Offizieller YouTube-Kanal des Internationalen Bund</label>
+      </languageKey>
+   </data>
+</T3locallang>

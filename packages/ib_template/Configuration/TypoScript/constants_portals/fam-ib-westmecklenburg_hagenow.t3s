@@ -1,0 +1,66 @@
+# -----------------------------------------------------------------------------
+# PORTAL Familienunterstützender Dienst IB Westmecklenburg
+# -----------------------------------------------------------------------------
+[request.getNormalizedParams().getHttpHost() == 'hagenow.fud-ib.de']
+    host = hagenow.fud-ib.de
+    portalSettings {
+        pageTitle = Familienunterstützender Dienst Hagenow
+        firstMenuTitle = Familienunterstützender Dienst Hagenow
+        root_id = 3457
+        misc.sitemapStartId = 3457
+        mainnav_start_id = 3475
+        misc.searchResultId = 3474
+        tt_news.single_pid = 0
+        readspeaker.show = 1
+
+        #data privacy site ID
+        dataPrivacySiteID = 3462
+
+        #services_menu_start_id = 495
+
+        misc.showOnlyTYPO3SearchResults = 0
+        #misc.searchResultId = 131
+
+        misc.mapViewPid = 
+        misc.gridViewPid = 
+
+        misc.locationSingleViewId = 3472
+        misc.productSingleViewId = 3473
+        ib_content.dbCategoryLocationPage = 3472
+        ib_content.dbNavigationId =
+
+        
+        analytics {
+            #account_id =
+            #enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 40
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = uRx9x1sg
+        }
+
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+
+        main_bubble {
+            hide = 1
+            id = 1383			
+        }
+
+        #threecolumn footer layout
+        footer.use_three_columns = 1
+        footer.show_textcontent_left = 1
+        footer.show_textcontent_middle = 1
+        footer.show_textcontent_right = 1
+        footer.tt_content_uid_left = 18610
+        footer.tt_content_uid_middle = 18609
+        footer.tt_content_uid_right = 18608
+    }
+    const_navigation {
+        footernav_central_folder_id = 3
+        footernav_misc_folder_id = 15
+        footernav_meta_folder_id = 3458
+    }
+[end]

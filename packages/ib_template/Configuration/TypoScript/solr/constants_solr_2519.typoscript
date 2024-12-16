@@ -1,0 +1,7 @@
+# IB_Incoming
+#[site("rootPageId") == 2519]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 2595
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_Incoming
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

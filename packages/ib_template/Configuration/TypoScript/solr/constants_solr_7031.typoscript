@@ -1,0 +1,7 @@
+# juniti_app
+#[site("rootPageId") == 7031]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Juniti
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

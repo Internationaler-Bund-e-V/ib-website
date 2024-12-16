@@ -1,0 +1,7 @@
+# Erzieherschule Berlin
+#[site("rootPageId") == 2595]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 2595
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Erzieherschule_Berlin_2
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

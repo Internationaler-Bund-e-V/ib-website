@@ -1,0 +1,7 @@
+# IB_uns_darsser_schaul
+#[site("rootPageId") == 6084]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_uns_darsser_schaul
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

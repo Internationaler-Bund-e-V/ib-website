@@ -1,0 +1,37 @@
+<f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.tabs_bar.show')}">
+  <div id="ibFAB">
+    <div id="navButtonIconContainer">
+      <div class="navButtonIcon"></div>
+      <div class="navButtonIcon"></div>
+      <div class="navButtonIcon"></div>
+      <div class="navButtonIcon"></div>
+    </div>
+    <div id="ibFABContent">
+      <ul>
+        <v:menu pageUid="{f:cObject(typoscriptObjectPath: 'portalSettings.tabs_bar.folder_id')}">
+          <f:for each="{menu}" as="fabMenuItem" iteration="iterator">
+            <f:if condition="{fabMenuItem.shortcut} != ''">
+              <f:then>
+                <f:link.page pageUid="{fabMenuItem.shortcut}">
+                  <li data-cid="{iterator.index}">{fabMenuItem.linktext}</li>
+                </f:link.page>
+              </f:then>
+              <f:else>
+                <li class="fabItem" data-cid="{iterator.index}">{fabMenuItem.linktext}
+                  <div class="fabItemContainer" id="fabIC-{iterator.index}">
+                    <v:menu pageUid="{fabMenuItem.uid}">
+                      <f:for each="{menuLinks}" as="fabMenuLinks">
+                        {fabMenuLinks.linktext}
+                      </f:for>
+                    </v:menu>
+                  </div>
+                </li>
+
+              </f:else>
+            </f:if>
+          </f:for>
+        </v:menu>
+      </ul>
+    </div>
+  </div>
+</f:if>

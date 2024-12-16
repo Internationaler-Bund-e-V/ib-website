@@ -1,0 +1,68 @@
+
+
+/* font-family for print view */
+* {
+	font-family: Arial,Helvetica,sans-serif;
+	background-color: transparent;
+}
+
+body {
+	font-size: 10pt;
+	color:#000;
+	line-height: 1.4;
+	word-spacing:1.1pt;
+	letter-spacing:0.2pt;
+	width:100% !important;
+	margin:0 !important;
+	padding:0 !important;
+}
+/* hidden elements for print view */
+#header,#rootline,#footer,#printlink,#servicemenu,.nav,#search,#logo {display: none;}
+
+/* set all margins and paddings from design to 0px */
+#content {padding: 0; margin: 0;}
+
+/* deactivate float for viewable elements */
+#contentWrap,#contentMain,#contentRight,#contentBorder {float:none;}
+
+/* set width for each column to 100% */
+#contentMain,#contentRight,#contentBorder {width: 100%;}
+
+/* set lines between the output of each column, improves readability*/
+#contentMain,#contentRight,#contentBorder {border-bottom: 3pt solid #ccc; padding-bottom: 30pt; margin-bottom: 30pt;}
+
+/* set absolute positioned elements back to static */
+#language {position: static; clear: both;}
+
+/* set font color to black */
+a,h1 a,h2 a,h3 a,h4 a,h5 a,h1,h2,h3,h4,h5 {font-weight: bold; color:#000;}
+
+/* set URL after links */
+/*
+a[href]:after {
+	background-color: inherit;
+	color: #666;
+	content: " (http://domain.tld/" attr(href) ")";    font-style: italic;
+}
+a.external-link[href]:after, table a.external-link[href]:after,
+a.external-link-new-window[href]:after, table a.external-link-new-window[href]:after {
+	content: " (" attr(href) ")";
+}
+*/
+/* no displayed link for E-Mail etc. */
+a.mail[href]:after, table a[href]:after,
+.csc-textpic-imagewrap a[href]:after {
+	content: " ";
+}
+
+/* deactivate image position middle and right above or below text */
+div.csc-textpic-center div.csc-textpic-imagewrap {margin: 0;}
+div.csc-textpic-right div.csc-textpic-imagewrap {width: 100%;}
+div.csc-textpic-center {text-align: left;}
+
+/* line break for pre */
+pre {white-space: pre-wrap;}
+
+/* tables */
+thead {display: table-header-group;}
+tr {page-break-inside: avoid;}

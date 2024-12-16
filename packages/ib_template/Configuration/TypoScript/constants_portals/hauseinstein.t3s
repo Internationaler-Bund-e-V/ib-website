@@ -1,0 +1,58 @@
+# -----------------------------------------------------------------------------
+# PORTAL IB HAUS EINSTEIN
+# -----------------------------------------------------------------------------
+[request.getNormalizedParams().getHttpHost() == 'haus-einstein.de' || request.getNormalizedParams().getHttpHost() == 'ibhauseinstein.rmsdev.de']
+    host = haus-einstein.de
+    portalSettings {
+        pageTitle = Haus Einstein
+        firstMenuTitle = Haus Einstein
+        root_id = 1658
+        misc.sitemapStartId = 1658
+        mainnav_start_id = 1670
+        misc.searchResultId = 1668
+        tt_news.single_pid = 1665
+        misc.showOnlyTYPO3SearchResults = 1
+        readspeaker.show = 1
+        #data privacy site ID
+        dataPrivacySiteID = 1663
+
+        analytics {
+            account_id = 
+            enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 21
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = agmD3Uvr
+        }
+
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+
+        main_bubble {
+            hide = 1			
+        }
+        social.ib_english_page_link = 
+
+        social.instagram = https://www.instagram.com/ib.berlin.brandenburg/
+        social.instagram.titletag = Hier geht es zur Instagram Seite
+        social.facebook = https://www.facebook.com/IB.Berlin.Brandenburg
+        social.facebook.titletag = Hier geht es zur Facebook-Seite
+    }
+
+    social.instagram = https://www.instagram.com/ib.berlin.brandenburg/
+    social.instagram.titletag = Hier geht es zur Instagram Seite
+    social.facebook = https://www.facebook.com/IB.Berlin.Brandenburg
+    social.facebook.titletag = Hier geht es zur Facebook-Seite
+
+    const_navigation {
+        footernav_central_folder_id = 2472
+        footernav_misc_folder_id = 2470
+        footernav_meta_folder_id = 1659
+    }
+[end]
+[request.getNormalizedParams().getHttpHost() == 'ibhauseinstein.rmsdev.de']
+    host = ibhauseinstein.rmsdev.de
+    portalSettings.analytics.enable_tracking = 0
+[end]

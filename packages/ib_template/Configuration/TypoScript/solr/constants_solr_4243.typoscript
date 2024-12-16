@@ -1,0 +1,7 @@
+# schwarz-rot-bunt
+#[site("rootPageId") == 4243]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 4313
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = schwarz_rot_bunt
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

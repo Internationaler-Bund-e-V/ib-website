@@ -1,0 +1,7 @@
+# Jugendzentrum Wiesloch
+#[site("rootPageId") == 4588]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Jugendzentrum_Wiesloch
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

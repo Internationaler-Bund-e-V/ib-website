@@ -1,0 +1,7 @@
+# IB Arche Neuenhagen
+#[site("rootPageId") == 1739]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 1746
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Arche_Neuenhagen
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

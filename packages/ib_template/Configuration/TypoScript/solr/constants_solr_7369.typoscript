@@ -1,0 +1,7 @@
+# Sprachinstitut Stuttgart
+#[site("rootPageId") == 7369]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Sit_Sis
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

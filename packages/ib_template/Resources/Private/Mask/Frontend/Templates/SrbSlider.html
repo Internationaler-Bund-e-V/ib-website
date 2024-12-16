@@ -1,0 +1,21 @@
+<f:if condition="{data.tx_mask_srb_images}">
+  <div class="grid-container full SrbSliderContainer">
+    <div class="SrbSlider">
+      <f:for each="{data.tx_mask_srb_images}" as="data_item">
+        <div>
+          <f:if condition="{data_item.tx_mask_srb_image}">
+            <f:for each="{data_item.tx_mask_srb_image}" as="file">
+              
+                <f:image image="{file}" alt="{file.alternative}" title="{file.title}" />
+              
+            </f:for>
+          </f:if>
+        </div>
+      </f:for>
+    </div>
+    <i class="fas fa-angle-left SrbSliderNavigationArrowsPrev"></i>
+    <i class="fas fa-angle-right SrbSliderNavigationArrowsNext"></i>
+    <div class="SrbSliderNavigationDots"></div>
+  </div>
+
+</f:if>

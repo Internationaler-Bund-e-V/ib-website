@@ -1,0 +1,7 @@
+# proWood
+#[site("rootPageId") == 5401]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 5420
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = proWood
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

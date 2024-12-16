@@ -1,0 +1,7 @@
+# Stadtteilmanagement Boxberg
+#[site("rootPageId") == 7284]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Stadtteilmanagement_Boxberg
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

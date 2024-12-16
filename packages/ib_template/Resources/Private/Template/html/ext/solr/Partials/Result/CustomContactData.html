@@ -1,0 +1,67 @@
+{namespace rms=Rms\Ibcontent\ViewHelpers}
+<div class="result-custom-contact-data">
+    <div class="row">
+        <div class="columns medium-6">
+            <div class="customContatctDataContainer">
+                <fieldset>
+
+                    <legend>Kontaktdaten</legend>
+
+                    <label>{document.title}</label>
+                    <!-- street -->
+                    <f:if condition="{document.street_stringS}">
+                        <label>{document.street_stringS}</label>
+                    </f:if>
+                    <!-- plz city -->
+                    <f:if condition="{document.plz_stringS}">
+                        <label>{document.plz_stringS} {document.city_stringS}</label>
+                    </f:if>
+                    <!-- phone -->
+                    <f:if condition="{document.phone_stringS}">
+                        <div class="customContactDataItem">
+                            <i class="fas fa-phone"></i> Tel.:
+                            <a href="tel:{User.phone_int}">{document.phone_stringS}</a>
+                        </div>
+                    </f:if>
+                    <!-- route -->
+                    <div class="customContactDataItem">
+                        <a href="https://maps.google.com/maps?q={document.plz_stringS},{document.city_stringS},{document.street_stringS}"
+                            class="" target="_blank"
+                            title="{f:translate(key: 'LLL:EXT:ibcontent/Resources/Private/Language/locallang_map.xml:route_plan_title')}">
+                            <i class="fas fa-map-marked ib-color-icons"></i>
+                            <f:translate
+                                key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_map.xml:route_plan" />
+                        </a>
+                    </div>
+
+
+                </fieldset>
+            </div>
+            <f:if condition="{document.contacts_stringS} != 'null'">
+                <div class="customContatctDataContainer">
+                    <fieldset>
+                        <legend>Ansprechpartner</legend>
+                        <f:for each="{v:format.json.decode(json: document.contacts_stringS)}" as="contact">                            
+                            <label>{contact.first_name} {contact.last_name}</label>
+                            <label>{contact.phone} </label>                            
+                        </f:for>
+                    </fieldset>
+                </div>
+            </f:if>
+        </div>
+        <div class="columns medium-6">
+            <f:if condition="{document.categories_stringS}">
+                <fieldset>
+                    <legend>Kategorien</legend>
+                    <ul>
+                        <v:iterator.explode content="{document.categories_stringS}" glue="','" as="categories">
+                            <f:for each="{categories}" as="category">
+                                <li>{category}</li>
+                            </f:for>
+                        </v:iterator.explode>
+                    </ul>
+                </fieldset>
+            </f:if>
+        </div>
+    </div>
+</div>

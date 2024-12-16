@@ -1,0 +1,8 @@
+{
+  "videoTextConsent": "",
+  "text1": "M\u00F6chten Sie die Karte nutzen, m\u00FCssen Sie diese aktivieren, indem Sie unten den Button \"Zur Aktivierung der Karte bitte folgende Cookie-Kategorie zulassen\" anklicken. Anschlie\u00DFend wird in Ihrem Browser ein Fenster zu den Cookie-Einstellungen ge\u00F6ffnet. \u00DCber dieses Fenster k\u00F6nnen Sie die Datenverarbeitung zwecks \"Statistik\" zulassen, die der Anbieter des Kartendienstes, die Open-Street-Map Foundation (OSMF), bei Nutzung der Kartenausschnitte aus OpenStreetMap vornehmen kann, ohne dass wir dies beeinflussen k\u00F6nnen. Erst mit Ihrer Zustimmung hierzu kann die Karte angezeigt werden. Durch Aktivieren der Karte erh\u00E4lt OSMF personenbezogene Daten wie Ihre IP-Adresse, Ihr Klick-Verhalten bei Nutzung der Karte und ggf. Ihren Standort. OSMF verarbeitet diese Daten gem\u00E4\u00DF der Datenschutzerkl\u00E4rung von OSMF (etwa zur Bereitstellung und ggf. Verbesserung des Kartendienstes). <a onclick=\"Cookiebot.renew();\">Ihre Einwilligung k\u00F6nnen Sie hier jederzeit f\u00FCr die Zukunft widerrufen.<\/a>",
+  "text2": "<p\/> Weitere Details zu Freiwillig24 finden Sie in unserer Datenschutzerkl\u00E4rung.<\/p> ",
+  "overlayButtonText": "Zur Aktivierung der Karte bitte folgende Cookie-Kategorie zulassen: ",
+  "dataPrivacyPage": "datenschutz"
+}
+

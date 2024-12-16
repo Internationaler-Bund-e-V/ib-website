@@ -1,0 +1,7 @@
+# IB The internationaler bund - internationaler-bund.org
+#[site("rootPageId") == 249]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 250
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_International
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

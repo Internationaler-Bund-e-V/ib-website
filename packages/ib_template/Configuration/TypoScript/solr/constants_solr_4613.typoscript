@@ -1,0 +1,7 @@
+# Menschseinstärken
+#[site("rootPageId") == 4613]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 4640
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Menschseinstaerken
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

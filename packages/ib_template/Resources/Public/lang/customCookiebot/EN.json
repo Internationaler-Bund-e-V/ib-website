@@ -1,0 +1,7 @@
+{
+  "videoTextConsent": "<div class=\"cookieconsent-optout-marketing rs_preserve\"><div> To enable video playback you need to click the link below. In the subsequently opened window you can allow \"marketing\" tools from YouTube. These tools are used by YouTube and Google every time videos are played, without us being able to disable this. Therefore, we can only play the videos with your consent to do so. During playback, YouTube and Google receive data (e.g. your IP address) and also process this for their own purposes. In the process, a data transfer to the USA, where no equivalent level of data protection is guaranteed, cannot be ruled out. All information on the protection of your data can be found in our privacy policy. You can revoke your consent at any time in our privacy settings: <a class=\"cbOverlayDPLink\" href=\"\">Privacy policy</a></div> <div class=\"customCBOverlay customCBOverlayYouTube\" aria-hidden=\"true\"><div class=\"customCBButton\" aria-hidden=\"true\"><button onclick=\"Cookiebot.renew();\">To activate the videos click here to allow marketing cookies</button></div></div></div>",
+  "text1": "To activate the content please allow the according cookie category. ",
+  "text2": "For further information including the revocation of consent at any time.",
+  "overlayButtonText": "To activate the content please allow the following cookie category: ",  
+  "dataPrivacyPage": "en\/privacy-statement"
+}

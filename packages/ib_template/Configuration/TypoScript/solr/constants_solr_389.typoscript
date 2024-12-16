@@ -1,0 +1,7 @@
+# IB schaut hin
+#[site("rootPageId") == 389]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 543
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_Schaut_Hin
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

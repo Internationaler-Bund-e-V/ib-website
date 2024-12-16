@@ -1,0 +1,39 @@
+.ib-custom-content {
+  .ib-custom-content-header{
+    h2 span{
+      display: inline-block;
+      vertical-align: middle;
+    }
+    h2 i{
+      font-size:40px;
+    } 
+  }
+  .ib-custom-content-icon img{
+    width:40px;
+    height:40px;  
+  }
+  .ib-custom-content-divider {
+    border-bottom: 1px solid #818181;
+    padding-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .ib-custom-content-container {
+    padding-top: 15px;
+  }
+
+  .ib-custom-content-layout-3 {
+    .ib-custom-content-container img {
+      float: left;
+      padding-right: 15px;
+    }
+  }
+
+  .ib-custom-content-layout-4 {
+    .ib-custom-content-container img {
+      float: right;
+      padding-left: 15px;
+    }
+  }
+
+}

@@ -1,0 +1,99 @@
+# -----------------------------------------------------------------------------
+# PORTAL project-value.eu
+# -----------------------------------------------------------------------------
+[request.getNormalizedParams().getHttpHost() == 'project-value.eu' || request.getNormalizedParams().getHttpHost() == 'ib-project-value.rmsdev.de' || request.getNormalizedParams().getHttpHost() == 'ib-project-value.ddev.site']
+    host = project-value.eu
+
+    portalSettings {
+        pageTitle = Project Value
+        firstMenuTitle =
+        bodyClassName = project_value
+        root_id = 4152
+        misc.sitemapStartId = 4152
+        mainnav_start_id = 4166
+        misc.searchResultId = 4164
+        showNavigationSearch = 0
+        showSearchButton = 0
+        misc.showOnlyTYPO3SearchResults = 1
+        readspeaker.show = 1
+        portal_logo.file = Value_Logo.jpg
+        portal_logo.file_favicon = Value_Logo.ico
+        footer_logo = Logo_EU_flag-Erasmus+.jpg
+        footer_hide_footer = 0
+        footer.hide_central_links = 1
+        footer.hide_further_links = 1
+        footer.central_links_num_columns = 12
+        footer.show_textcontent_left = 1
+        footer.tt_content_uid_left = 13022
+
+        #data privacy site ID
+        dataPrivacySiteID = 4161
+
+        #defaultGetVars.L = 1
+        readspeaker.show = 1
+        showLanguageMenu = 1
+
+        //generate news sitemap     
+        NewsSitemap.generate = 1
+        NewsSitemap.NewsFolderPid = 4431
+        NewsSitemap.NewsDetailPid = 4432
+
+        analytics {
+            #account_id =
+            #enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 43
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = TsWzKAps
+        }
+
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+            language = EN
+        }
+
+        main_bubble {
+            hide = 1			
+        }
+
+        social.ib_english_page_link =
+
+        social.youtube =
+        social.twitter =
+        social.xing =
+        social.linkedin =
+        social.instagram =
+        social.kununu =
+
+        social.facebook = https://www.facebook.com/ValueEUproject
+        social.facebook.titletag = Offizielle Facebook-Seite Value Project
+    }
+
+    social.youtube =
+    social.twitter =
+    social.xing =
+    social.linkedin =
+    social.instagram =
+    social.kununu =
+
+    social.facebook = https://www.facebook.com/ValueEUproject
+    social.facebook.titletag = Offizielle Facebook-Seite Value Project
+
+    const_navigation {
+        footernav_central_folder_id = 4155
+        footernav_misc_folder_id = 4153
+        footernav_meta_folder_id = 4157
+    }
+[end]
+
+[request.getNormalizedParams().getHttpHost() == 'ib-project-value.ddev.site']
+    host = ib-project-value.ddev.site
+    portalSettings.analytics.enable_tracking = 0
+    config.no_cache = 1
+[end]
+
+[request.getNormalizedParams().getHttpHost() == 'ib-project-value.rmsdev.de']
+    host = ib-project-value.rmsdev.de
+    portalSettings.analytics.enable_tracking = 0
+[end]

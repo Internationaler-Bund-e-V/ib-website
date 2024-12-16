@@ -1,0 +1,7 @@
+# IB Freiwilligendienste
+#[site("rootPageId") == 129]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 130
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_Freiwilligendienste
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

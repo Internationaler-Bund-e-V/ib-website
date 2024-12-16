@@ -1,0 +1,7 @@
+# IB Haus am Bibowsee
+#[site("rootPageId") == 1383]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 1394
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Haus_am_Bibowsee
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

@@ -1,0 +1,274 @@
+# -----------------------------------------------------------------------------
+# BACKEND CONFIGURATION
+# -----------------------------------------------------------------------------
+mod.SHARED.defaultLanguageLabel = Deutsch
+mod.SHARED.defaultLanguageFlag = de
+# see MA#2133 do not allow copy for translations
+mod.web_layout.localization.enableCopy = 0
+
+TCEFORM.pages {
+	layout {
+		removeItems = 0,1,2,3
+	}
+	backend_layout {
+		PAGE_TSCONFIG_ID = 2
+		removeItems = -1
+	}
+	backend_layout_next_level {
+		PAGE_TSCONFIG_ID = 2
+		removeItems = -1
+	}
+}
+
+# -----------------------------------------------------------------------------
+# automatically set correct user permissions
+# -----------------------------------------------------------------------------
+TCEMAIN.permissions.user = show, editcontent, edit, new, delete
+TCEMAIN.permissions.group = show, editcontent, edit, new, delete
+
+# IB PORTAL
+[1 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 2
+[global]
+# IB Personalentwicklung
+[67 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 3
+[global]
+# IB Pflegeeltern
+[1631 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 6
+[global]
+# IB Kitas
+[121 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 7
+[global]
+# IB Freiwilligendienste
+[129 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 8
+[global]
+# IB Weiterbildung
+[137 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 9
+[global]
+# IB Baden
+[5814 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 10
+[global]
+# IB Sued
+[161 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 33
+[global]
+# Oberschule Neuenhagen
+[1766 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 47
+[global]
+# IB Nord
+[241 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 22
+[global]
+# IB Org
+[249 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 23
+[global]
+# IB Schaut-Hin
+[389 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 25
+[global]
+# IB Grenzerfahrung
+[890 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 30
+[global]
+# IB Haus am Bibowsee
+[1383 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 36
+[global]
+# IB Wohnstaette Ostseeblick
+[1432 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 37
+[global]
+# IB Kinderpatenschaft Leipzig
+[1356 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 38
+[global]
+# IB Berlin Brandenburg
+[1481 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 39
+[global]
+# IB Blaupause
+[2187 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 41
+[global]
+# Delta Netz
+[2991 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 60
+[global]
+# 
+[3457 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 64
+[global]
+# FUD Rostock
+[3697 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 65
+[global]
+# IB Stiftung
+[2723 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 55
+[global]
+# Erzieherschule Berlin
+[3865 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 66
+[global]
+# Sozialassistenz Berlin
+[3898 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 67
+[global]
+# Jugendmigrationsdienste
+[3931 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 68
+[global]
+# Project Value
+[4152 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 75
+[global]
+# Juz Nussloch
+[4171 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 76
+[global]
+# Recruiting Polen
+[2627 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 52
+[global]
+# Recruiting
+[4386 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 77
+[global]
+# jugendtreff-kirchheim
+[4501 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 78
+[global]
+# jugendzentrum wiesloch
+[4501 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 79
+[global]
+# menschseinstaerken
+[4501 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 80
+[global]
+# ib dippegugger
+[4642 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 81
+[global]
+# ib west
+[4687 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 82
+[global]
+# ai future project
+[4721 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 83
+[global]
+# Einfach Demokratie
+[4947 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 85
+[global]
+# Schulen IB
+[5017 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 86
+[global]
+# JuKuWe Pirmasens
+[5104 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 87
+[global]
+# IB Turkey
+[5141 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 88
+[global]
+# IB Turkey
+[5244 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 89
+[global]
+# proWood
+[5401 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 90
+[global]
+# jugendhaus pirmasens
+[5639 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 94
+[global]
+# welcome support
+[5689 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 95
+[global]
+# jugendhaus woerth
+[5689 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 96
+[global]
+# ib-uns-darßer-schaul.de
+[6084 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 98
+[global]
+# medius-pflegedienst.de
+[6285 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 99
+[global]
+# juniti app
+[7031 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 102
+[global]
+
+# seniorenzentrum meissen
+[7126 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 103
+[global]
+
+# sit sis
+[7369 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 105
+[global]
+
+# ib sim
+[7391 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 106
+[global]
+
+# sprache reutlingen
+[7564 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 108
+[global]
+
+# ib-sprachinstitut-stuttgart
+[7581 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 109
+[global]
+
+# ib-sprachinstitut-boeblingen
+[7598 in tree.rootLineIds]
+TCEMAIN.permissions.groupid = 110
+[global]
+
+#<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ib_template/Configuration/TSconfig/ts_config_rte.ts">
+@import 'EXT:ib_template/Configuration/TSconfig/ts_config_rte.ts'
+
+# configure the dropdown header_layout in the General tab of every content element
+# this removes the unused layout options and leaves only the Default and hidden option for selection
+# @see https://mantis.rm-solutions.de/mantis/view.php?id=347
+# @author mkettel
+TCEFORM.tt_content.header_layout {
+	removeItems = 1,2,3,4,5
+}
+
+# tx_news layouts
+tx_news.templateLayouts {
+	1 = Listenansicht Startseite
+	2 = Listenansicht Standard
+	3 = Detailansicht mit Kategorien
+}
+
+# initial hide new news entries on creation
+# see 0002014: Einstellung - News bei Erstellung deaktiv
+# mk@rms, 2021-05-27
+TCAdefaults.tx_news_domain_model_news.hidden = 1
+# MA#2146
+TCAdefaults.sys_file_reference.showinpreview = 1
+
+# see -> MA#2753
+TCEFORM.tx_news_domain_model_news.teaser.label.de = Teaser (wird nur in der Listen- und Slideransicht angezeigt)

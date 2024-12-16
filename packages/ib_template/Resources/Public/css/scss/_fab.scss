@@ -1,0 +1,117 @@
+#ibFAB {
+  transition: all 0.3s ease-out;
+  width: 60px;
+  height: 60px;
+  background: rgb(254, 204, 0);
+  color: white;
+  border-radius: 50%;
+  position: fixed;
+  z-index: 100;
+  bottom: 20px;
+  right: 20px;
+  box-shadow: 1px 1px 2px 1px grey;
+  cursor: pointer;
+
+  #navButtonIconContainer {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+
+    .navButtonIcon {
+      width: 25px;
+      height: 3px;
+      background-color: #fff;
+      margin: 5px auto;
+      position: relative;
+      top: 12px;
+    }
+  }
+
+
+  #ibFABContent {
+    display: none;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    a {
+      color: white;
+      text-decoration: underline;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin: 15px;
+        padding: 0px 0px 10px 0px;
+        list-style: none;
+        border-bottom: 1px solid #fff;
+      }
+    }
+  }
+
+}
+
+#ibFAB.fabOpen {
+  border-radius: 0;
+  width: 100%;
+
+  height: 50%;
+  bottom: 0;
+  right: 0;
+
+  #navButtonIconContainer {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+
+    .navButtonIcon:nth-child(1) {
+      transform: translateY(12px) rotate(-45deg);
+    }
+
+    .navButtonIcon:nth-child(2) {
+      opacity: 0;
+    }
+
+    .navButtonIcon:nth-child(3) {
+      opacity: 0;
+    }
+
+    .navButtonIcon:nth-child(4) {
+      transform: translateY(-12px) rotate(45deg);
+    }
+
+  }
+
+  #ibFABContent {
+    display: block;
+    position: relative;
+    overflow: scroll;
+    height: 100%;
+    width: 100%;
+    padding-top: 50px;
+
+    .fabItemContainer {
+      display: none;
+      margin: 0px 15px;
+
+      li {
+        border: none;
+      }
+
+    }
+  }
+
+}
+
+@media screen and (min-width: 764px) {
+  #ibFAB {
+    display: none;
+  }
+}

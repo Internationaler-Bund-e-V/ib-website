@@ -1,0 +1,7 @@
+# IB Süd
+#[site("rootPageId") == 161]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 162
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_Sued
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

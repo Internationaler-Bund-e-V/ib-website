@@ -1,0 +1,46 @@
+<f:variable name="grid" value="12" />
+<f:variable name="columns" value="{f:count(subject: data.tx_mask_bvbbe_tiles)}" />
+<f:variable name="columnSize" value="{grid / columns}" />
+<f:if condition="{columnSize} < 3">
+  <f:variable name="columnSize" value="3" />
+</f:if>
+
+<div class="Bvbbe-Tiles container pt-5 pb-5">
+  <f:if condition="{data.tx_mask_bvbbe_tiles}">
+    <div class="row">
+      <f:for each="{data.tx_mask_bvbbe_tiles}" as="data_item">
+        <div class="col-md-{columnSize}">
+
+
+          <div class="aht-info aht-info--yoga-event">
+            <div class="aht-info__img" style="background-image: url(&quot;../img/yoga/home-yoga/event-1.jpg&quot;);">
+              <f:if condition="{data_item.tx_mask_bvbbe_tile_image}">
+                <f:for each="{data_item.tx_mask_bvbbe_tile_image}" as="file">
+                  <f:image image="{file}" class="aht-info__img-inner js-bg" />
+                </f:for>
+              </f:if>
+              <a href="#" class="aht-info__img-link"></a>
+            </div>
+            <div class="aht-info__content">
+              <div class="aht-info__persons">
+              </div>
+              <f:if condition="{data_item.tx_mask_bvbbe_tile_text}">
+                {data_item.tx_mask_bvbbe_tile_text -> f:format.html()}
+              </f:if>
+
+              <f:if condition="{data_item.tx_mask_bvbbe_tile_link}">
+                <f:link.typolink class="aht-info__link aheto-btn t-uppercase"
+                  parameter="{data_item.tx_mask_bvbbe_tile_link}">
+                  <f:if condition="{data_item.tx_mask_bvbbe_tile_link_text}">
+                    {data_item.tx_mask_bvbbe_tile_link_text}
+                  </f:if>
+
+                </f:link.typolink>
+              </f:if>
+            </div>
+          </div>
+        </div>
+      </f:for>
+    </div>
+  </f:if>
+</div>

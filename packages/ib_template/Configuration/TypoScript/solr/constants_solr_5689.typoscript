@@ -1,0 +1,7 @@
+# Jugendzentrum_Woerth
+#[site("rootPageId") == 5689]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 5707
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Jugendzentrum_Woerth
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

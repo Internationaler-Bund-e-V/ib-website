@@ -1,0 +1,7 @@
+# IB Dippegugger
+#[site("rootPageId") == 4642]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_Dippegugger
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.2"
+    xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file datatype="plaintext" date="2024-04-22T20:47:10Z" original="messages"
+        product-name="ibnewslist" source-language="en" target-language="de">
+        <header />
+        <body>
+            <trans-unit id="fluid.label.first_page" xml:space="preserve">
+            <source></source>
+                <target>
+                    Zur 1. Seite
+                </target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,7 @@
+# IB green / Nachhaltigkeit beim IB
+#[site("rootPageId") == 1604]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 1611
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_Green
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

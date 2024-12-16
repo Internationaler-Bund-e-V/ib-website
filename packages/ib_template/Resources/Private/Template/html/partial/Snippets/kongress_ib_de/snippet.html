@@ -1,0 +1,11 @@
+<script type="text/javascript">  
+  function formBuilderSuccessCallback(submitButton) {    
+    var buttonID = submitButton.attr('id');
+    if (buttonID == "button-1560222659083") {
+      console.log("event sent..");
+      if (typeof fbq === 'function') {
+        fbq('track', 'CompleteRegistration');
+      }
+    }
+  }
+</script>

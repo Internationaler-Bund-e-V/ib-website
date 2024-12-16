@@ -1,0 +1,49 @@
+# -----------------------------------------------------------------------------
+# PORTAL IB PFLEGEELTERN
+# -----------------------------------------------------------------------------
+[request.getNormalizedParams().getHttpHost() == 'ib-pflegeeltern.de' || request.getNormalizedParams().getHttpHost() == 'ibpflegeeltern.rmsdev.de']
+    host = ib-pflegeeltern.de
+    
+    portalSettings {
+        pageTitle = IB Pflegeeltern
+        firstMenuTitle = IB Pflegeeltern
+        root_id = 1631
+        mainnav_start_id = 1643
+        tt_news.single_pid = 1638
+        misc.showOnlyTYPO3SearchResults = 1
+        misc.searchResultId = 1641
+        misc.sitemapStartId = 1631
+        readspeaker.show = 1
+        #data privacy site ID
+        dataPrivacySiteID = 2466
+
+        analytics {
+            #account_id =
+            #enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 20
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = 1MgnyfHL
+        }
+
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+
+        main_bubble {
+            hide = 1			
+        }
+        social.ib_english_page_link = 
+    }
+    const_navigation {
+        footernav_central_folder_id = 2474
+        footernav_misc_folder_id = 2476
+        footernav_meta_folder_id = 1632
+    }
+[end]
+
+[request.getNormalizedParams().getHttpHost() == 'ibpflegeeltern.rmsdev.de']
+    host = ibpflegeeltern.rmsdev.de
+    portalSettings.analytics.enable_tracking = 0
+[end]

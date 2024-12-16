@@ -1,0 +1,7 @@
+{
+  "videoTextConsent": "<div class=\"cookieconsent-optout-marketing rs_preserve\"><div>Zum Aktivieren der Videowiedergabe müssen Sie auf den Link unten klicken. Im anschließend geöffneten Fenster können Sie \"Marketing\"-Tools von YouTube zulassen. Diese Tools setzen YouTube und Google bei jeder Wiedergabe von Videos ein, ohne dass wir das deaktivieren können. Daher können wir erst mit Ihrer Einwilligung dazu die Videos abspielen. Bei der Wiedergabe erhalten YouTube und Google Daten (z.B. Ihre IP-Adresse) und verarbeiten diese auch zu eigenen Zwecken. Dabei kann eine Datenübertragung in die USA, wo kein gleichwertiges Datenschutzniveau gewährleistet ist, nicht ausgeschlossen werden. Alle Informationen zum Schutz Ihrer Daten finden Sie in unserer Datenschutzerklärung. Ihre Einwilligung können Sie in unseren Datenschutzeinstellungen jederzeit widerrufen: <a class=\"cbOverlayDPLink\" href=\"\">Datenschutz</a></div> <div class=\"customCBOverlay customCBOverlayYouTube\" aria-hidden=\"true\"><div class=\"customCBButton\" aria-hidden=\"true\"><button onclick=\"Cookiebot.renew();\">Zur Aktivierung der Videos Marketing-Cookies hier zulassen</button></div></div></div>",
+  "text1": "Zur Aktivierung des Inhalts bitte entsprechende Cookie-Kategorie zulassen.",
+  "text2": "Zu weiteren Infos inkl. des jederzeit möglichen Widerrufs der Einwilligung.",
+  "overlayButtonText": "Zur Aktivierung des Inhalts bitte folgende Cookie-Kategorie zulassen: ",  
+  "dataPrivacyPage": "datenschutz"
+}

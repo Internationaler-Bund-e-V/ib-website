@@ -1,0 +1,16 @@
+// styles for the optional divider at
+// - top or bottom of plugins
+// - for p tags defined in CKE
+.divider, .rte-divider {
+	width: 100%;
+	//background: $ib-lightblue;
+	border-bottom: 2px solid rgba(0, 157, 223, 0.2);
+}
+
+.divider {
+	height: 1px;
+}
+
+p.rte-divider {
+	padding-bottom: 10px;
+}

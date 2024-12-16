@@ -1,0 +1,7 @@
+# IB Mitte
+#[site("rootPageId") == 1026]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 1033
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_Mitte
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

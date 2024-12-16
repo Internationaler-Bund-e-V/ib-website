@@ -1,0 +1,188 @@
+<div class="ib-social">
+    <div class="ib-social-container">
+        <div class="ib-social-content" style="float: right;">
+            <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.showSearchButton')}">
+                <a class="search" href="{f:cObject(typoscriptObjectPath: 'lib.searchPageLink')}" title="Suchen">
+                    <i class="ib-icon-search"></i>
+                </a>
+            </f:if>
+            <f:if condition="{data.hide_print_icon} != 1">
+                <a class="print" href="javascript:window.print()" title="Drucken">
+                    <i class="fa fa-print" aria-hidden="true"></i>
+                </a>
+            </f:if>
+            <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.ib_english_page_link')}">
+                <a class="link-ib-en" target="_blank"
+                   href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.ib_english_page_link')}"
+                   title="Englische Webseite">EN</a>
+            </f:if>
+            <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.ib_german_page_link')}">
+                <a class="link-ib-en" target="_blank"
+                   href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.ib_german_page_link')}"
+                   title="German Website">DE</a>
+            </f:if>
+            <!-- language switch activated-->
+            <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.showLanguageMenu')}">
+                <f:if condition="{languageMenu}">
+                    <f:for each="{languageMenu}" as="item">
+                        <f:if condition="{item.active} == '0' && {item.available}">
+                            <f:then>
+                                <a class="link-ib-en"
+                                   href="{item.link}"
+                                   title="{item.navigationTitle}">{item.navigationTitle}</a>
+                            </f:then>
+                            <f:else>
+                            </f:else>
+                        </f:if>
+                    </f:for>
+                </f:if>
+            </f:if>
+            <!-- facebook -->
+            <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.facebook')}">
+                <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.facebook')}"
+                   title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.facebook.titletag')}">
+                    <i class="ib-icon-facebook"></i>
+                </a>
+            </f:if>
+            <!-- instagram -->
+            <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.instagram')}">
+                <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.instagram')}"
+                   title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.instagram.titletag')}">
+                    <i class="ib-icon-instagram"></i>
+                </a>
+            </f:if>
+            <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.twitter')}">
+                <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.twitter')}"
+                   title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.twitter.titletag')}">
+                    <i class="ib-icon-x-logo"></i>
+                </a>
+            </f:if>
+
+            <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.linkedin')}">
+                <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.linkedin')}"
+                   title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.linkedin.titletag')}">
+                    <i class="ib-icon-linkedin"></i>
+                </a>
+            </f:if>
+            <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.xing')}">
+                <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.xing')}"
+                   title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.xing.titletag')}">
+                    <i class="ib-icon-xing"></i>
+                </a>
+            </f:if>
+            <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.kununu')}">
+                <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.kununu')}"
+                   title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.kununu.titletag')}">
+                    <i class="ib-icon-kununu"></i>
+                </a>
+            </f:if>
+            <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.youtube')}">
+                <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.youtube')}"
+                   title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.youtube.titletag')}">
+                    <i class="ib-icon-youtube"></i>
+                </a>
+            </f:if>
+
+
+        </div>
+    </div>
+</div>
+
+
+<div class="ib-social-action-button ">
+    <div class="ib-social-content">
+        <div class="container">
+
+            <div class="permanent-language-links">
+                <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.ib_english_page_link')}">
+                    <a class="link-ib-en" target="_blank"
+                       href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.ib_english_page_link')}"
+                       title="Englische Webseite">EN</a>
+                </f:if>
+                <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.ib_german_page_link')}">
+                    <a class="link-ib-en" target="_blank"
+                       href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.ib_german_page_link')}"
+                       title="German Website">DE</a>
+                </f:if>
+                <!-- language switch activated-->
+                <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.showLanguageMenu')}">
+                    <f:if condition="{languageMenu}">
+                        <f:for each="{languageMenu}" as="item">
+                            <f:if condition="{item.active} == '0' && {item.available}">
+                                <f:then>
+                                    <a class="link-ib-en"
+                                       href="{item.link}"
+                                       title="{item.navigationTitle}">{item.navigationTitle}</a>
+                                </f:then>
+                                <f:else></f:else>
+                            </f:if>
+                        </f:for>
+                    </f:if>
+                </f:if>
+            </div>
+
+            <input type="checkbox" id="toggle"/> <!-- checked -->
+            <label class="button" for="toggle"><i class="ib-icon-action-button"></i></label>
+            <nav class="nav">
+                <ul>
+                    <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.showSearchButton')}">
+                        <a class="search show-for-medium" href="{f:cObject(typoscriptObjectPath: 'lib.searchPageLink')}"
+                           title="Suchen">
+                            <i class="ib-icon-search"></i>
+                        </a>
+                    </f:if>
+                    <f:if condition="{data.hide_print_icon} != 1">
+                        <a class="print show-for-medium" href="javascript:window.print()" title="Drucken">
+                            <i class="fa fa-print" aria-hidden="true"></i>
+                        </a>
+                    </f:if>
+                    <!-- facebook -->
+                    <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.facebook')}">
+                        <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.facebook')}"
+                           title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.facebook.titletag')}">
+                            <i class="ib-icon-facebook"></i>
+                        </a>
+                    </f:if>
+                    <!-- instagram -->
+                    <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.instagram')}">
+                        <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.instagram')}"
+                           title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.instagram.titletag')}">
+                            <i class="ib-icon-instagram"></i>
+                        </a>
+                    </f:if>
+                    <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.twitter')}">
+                        <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.twitter')}"
+                           title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.twitter.titletag')}">
+                            <i class="ib-icon-x-logo"></i>
+                        </a>
+                    </f:if>
+
+                    <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.linkedin')}">
+                        <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.linkedin')}"
+                           title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.linkedin.titletag')}">
+                            <i class="ib-icon-linkedin"></i>
+                        </a>
+                    </f:if>
+                    <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.xing')}">
+                        <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.xing')}"
+                           title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.xing.titletag')}">
+                            <i class="ib-icon-xing"></i>
+                        </a>
+                    </f:if>
+                    <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.kununu')}">
+                        <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.kununu')}"
+                           title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.kununu.titletag')}">
+                            <i class="ib-icon-kununu"></i>
+                        </a>
+                    </f:if>
+                    <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.youtube')}">
+                        <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.youtube')}"
+                           title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.youtube.titletag')}">
+                            <i class="ib-icon-youtube"></i>
+                        </a>
+                    </f:if>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

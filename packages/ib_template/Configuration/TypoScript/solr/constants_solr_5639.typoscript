@@ -1,0 +1,7 @@
+# jugendhaus pirmasens
+#[site("rootPageId") == 5639]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 5659
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Jugendhaus_Pirmasens
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

@@ -1,0 +1,7 @@
+# AI Future Project
+#[site("rootPageId") == 4721]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = AI_Future_project
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

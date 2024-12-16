@@ -1,0 +1,7 @@
+# IB Turkey
+#[site("rootPageId") == 5141]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 5132
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_Turkey
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

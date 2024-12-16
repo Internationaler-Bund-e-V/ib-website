@@ -1,0 +1,7 @@
+# bundesverband
+#[site("rootPageId") == 5527]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 5532
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Bundesverband
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

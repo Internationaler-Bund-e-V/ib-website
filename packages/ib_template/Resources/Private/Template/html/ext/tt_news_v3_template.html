@@ -1,0 +1,336 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<!--
+		IMPORTANT: The stylesheet link below is only for testing the template file directly in a browser while editing it.
+		On the website the css styles for tt_news have to be include with the static TS template "default CSS style (tt_news)" or
+		with an external file (see tt_news/res/tt_news_v2_styles.css) which you include via TypoSript in the "page" object.
+
+ -->
+	<title>new News example template</title>
+    <link href="../res/tt_news_tut_main_stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+
+
+
+
+
+<br />
+<br />
+<br />
+<h1>NEWS TEMPLATES</h1>
+<h2>EXAMPLE</h2>
+
+
+
+
+
+
+<br />
+<br />
+<br />
+<pre>
+
+<strong>Common markers:</strong>
+These are substituted in all news item displaying templates:
+
+<em>Markers:</em>
+NEWS_UID - ID number (uid) of the news item
+NEWS_TITLE - News item title
+NEWS_AUTHOR - name of author
+NEWS_EMAIL - email of author
+NEWS_DATE - date
+NEWS_TIME - time
+NEWS_AGE - age of news item in minutes, hours, days or years
+NEWS_SUBHEADER - subheader, if empty main content is inserted here in LIST and LATEST
+NEWS_CONTENT - main content
+NEWS_LINKS - news links
+NEWS_CATEGORY - news item category
+NEWS_CATEGORY_IMAGE - news item category image
+NEWS_RELATED - links to related news
+NEWS_IMAGE - news item images
+NEWS_CATEGORY_ROOTLINE - category rootline
+
+PAGE_UID - Page id of the parent page (pid)
+PAGE_TITLE - Title of the parent page of the news item
+PAGE_AUTHOR - Page author, if any
+PAGE_AUTHOR_EMAIL - Page author email, if any
+
+<em>News Language Markers (see pi/locallang.php):</em>
+LATEST_HEADER - header for the LATEST element
+GOTOARCHIVE - link to archive page in latest template
+ARCHIVE_HEADER - same for AMENU
+MORE - more ;-)
+TEXT_CAT - text output before categories and category images in LIST view (eg: 'categories:')
+TEXT_CAT_LATEST - the same in a shorter form for the LATEST element (eg: 'cat:')
+BACK_TO_LIST - link back to list-view in single-view template
+ARCHIVE_EMPTY_MSG - no items in archive
+SEARCH_EMPTY_MSG - message for empty search results
+TEXT_NEWS_AGE - text inserted before the age of the news item
+
+
+<em>Wrapped Subparts:</em>
+LINK_ITEM - link to the news item single display
+LINK_PREV - used in the pagebrowser
+BROWSE_LINKS - used in the pagebrowser
+LINK_NEXT - used in the pagebrowser
+</pre>
+
+
+
+<br />
+<br />
+<br />
+<br />
+<hr />
+<br />
+<br />
+<br />
+<h3>TEMPLATE_LIST</h3>
+<em>This is the template for the list of news in the archive or news page or search.</em>
+<br />
+<br />
+<br />
+<br />
+<!-- ###TEMPLATE_LIST### begin
+	This is the template for the list of news in the archive or news page or search
+-->
+<div class="row ib-content-module ib-newsslider rs_skip rs_preserve ib-background-###GENERIC_COLOR###">
+	<div class="columns medium-offset-1 small-10 end">
+			<h2 class="ib-headline">###LATEST_HEADER###</h2>
+	</div>
+	<div class="columns small-12">
+		<div id="newsPrevButton" class="columns small-1 ib-color-blue ib-font-size-60 ib-prev-next-button">
+			<i class="ib-icon-arrow-left"></i>
+		</div>
+		<div class="columns small-10">
+			<div class="ib-news-slider row expanded">
+				<!-- ###CONTENT### begin
+		  This is the part of the template substituted with the list of news:
+	-->
+		<!-- ###NEWS### begin
+			Template for a single item
+		-->
+				<div class="ib-news-item">
+					<!--###LINK_ITEM###-->###NEWS_IMAGE###<!--###LINK_ITEM###-->
+
+					<!--<p>###NEWS_DATE###</p>-->
+					<h2 class="ib-color-darkblue"><!--###LINK_ITEM###-->###NEWS_TITLE###<!--###LINK_ITEM###--></h2>
+					<p>###NEWS_SUBHEADER###</p>
+					<span class="ib-link-more-extend"><!--###LINK_ITEM###-->###MORE###<!--###LINK_ITEM###--></span>
+				</div>
+				<!-- ###NEWS### end-->
+	<!-- ###CONTENT###  end -->
+			</div>
+		</div>
+		<div id="newsNextButton" class="columns small-1 ib-color-blue ib-font-size-60 ib-prev-next-button">
+			<i class="ib-icon-arrow-right float-right "></i>
+		</div>
+	</div>
+</div>
+<!-- ###TEMPLATE_LIST### end -->
+
+
+<!-- ###TEMPLATE_LIST2### begin
+	This is the template for the list of news in the archive or news page or search
+-->
+
+	<div class="row ib-content-module ib-newslist ib-background-white">
+		<div class="columns medium-6-2col medium-offset-1-2col end ">
+			<div class="ib-newslist-header">
+				<h1>###LATEST_HEADER###</h1>
+			</div>
+	<!-- ###CONTENT### begin
+		  This is the part of the template substituted with the list of news:
+	-->
+		<!-- ###NEWS### begin -->
+			<div class="ib-newslist-newselement">
+			    <!--###LINK_ITEM###-->###NEWS_IMAGE###<!--###LINK_ITEM###-->
+			    <h2><!--###LINK_ITEM###-->###NEWS_TITLE###<!--###LINK_ITEM###--></h2>
+			    <p>
+			        ###NEWS_SUBHEADER###
+			    </p>
+			</div>
+		<!-- ###NEWS### end-->
+	<!-- ###CONTENT###  end -->
+		</div>
+	</div>
+
+<!-- ###TEMPLATE_LIST2### end -->
+
+
+
+<!-- ###TEMPLATE_LIST3### begin
+	This is the template for the list of news in the archive or news page or search
+-->
+<div class="row ib-content-module ib-newsslider rs_skip rs_preserve ib-background-white">
+	<div class="columns small-12 medium-offset-1 medium-10 large-offset-1-2col large-6-2col end">
+			<h1>###LATEST_HEADER###</h1>
+	</div>
+	<div class="columns small-12-2col">
+		<div class="row">
+			<div id="newsPrevButton" class="columns small-1 large-1-2col ib-color-blue ib-font-size-60 ib-prev-next-button">
+				<i class="ib-icon-arrow-left"></i>
+			</div>
+			<div class="columns small-10 large-6-2col">
+				<div class="ib-news-slider row expanded">
+				<!-- ###CONTENT### begin
+		  		This is the part of the template substituted with the list of news:
+				-->
+				<!-- ###NEWS### begin -->
+					<div class="ib-news-item">
+						 <!--###LINK_ITEM###-->###NEWS_IMAGE###<!--###LINK_ITEM###-->
+						<p>
+							<h2 class="ib-color-darkblue"><!--###LINK_ITEM###-->###NEWS_TITLE###<!--###LINK_ITEM###--></h2>
+							###NEWS_SUBHEADER###
+						</p>
+					</div>
+				<!-- ###NEWS### end-->
+			<!-- ###CONTENT###  end -->
+				</div>
+			</div>
+			<div id="newsNextButton" class="columns small-1 large-1-2col ib-color-blue ib-font-size-60 ib-prev-next-button">
+				<i class="ib-icon-arrow-right float-right"></i>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- ###TEMPLATE_LIST3### end -->
+
+
+<br />
+<br />
+<br />
+<br />
+<hr />
+<br />
+<br />
+<br />
+<h3>TEMPLATE_SINGLE</h3>
+<em>This subpart is used to display single news items</em><br />
+<br />
+<br />
+
+
+
+
+<!-- ###TEMPLATE_SINGLE### begin
+	This subpart is used to display single news items
+-->
+<div class="news-single-item">
+	<div class="row">
+		<div class="columns medium-offset-1 medium-10 large-6-2col large-offset-1-2col">
+		###NEWS_CATEGORY_ROOTLINE###
+
+				###NEWS_DATE###
+				<h1>###NEWS_TITLE###</h1>
+				###NEWS_SUBHEADER###
+				<hr class="cl-right" />
+
+				###NEWS_IMAGE###
+				###NEWS_CONTENT###
+
+				<hr class="cl-right" />
+					###ADDINFO_WRAP_B###
+
+					###TEXT_RELATED###
+					###NEWS_RELATED###
+
+					###TEXT_FILES###
+					###FILE_LINK###
+
+					###TEXT_LINKS###
+					###NEWS_LINKS###
+
+					###TEXT_RELATEDBYCATEGORY###
+					###NEWS_RELATEDBYCATEGORY###
+
+					###ADDINFO_WRAP_E###
+
+					###NEWS_SINGLE_PAGEBROWSER###
+			<div class="news-single-backlink">
+				<!--###LINK_ITEM###-->###BACK_TO_LIST###<!--###LINK_ITEM###-->
+			</div>
+
+			<div class="prev-next-article-links">
+                ###PREV_ARTICLE###
+                ###NEXT_ARTICLE###
+			</div>
+		</div>
+	</div>
+</div>
+<!-- ###TEMPLATE_SINGLE### end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br />
+<br />
+<br />
+<br />
+<hr />
+<br />
+<br />
+<br />
+<h3>TEMPLATE_ARCHIVE</h3>
+<em>Subpart for the news archive menu.</em><br />
+<br />
+<br />
+<!-- ###TEMPLATE_ARCHIVE### begin
+	Subpart for the news archive menu
+ -->
+<div class="news-amenu-container">
+	<ul>
+	<!-- ###CONTENT### begin -->
+		<!-- ###MENUITEM### begin -->
+		###ARCHIVE_YEAR###
+		<li ###ARCHIVE_ACTIVE###><!--###LINK_ITEM###-->###ARCHIVE_TITLE###: ###ARCHIVE_COUNT### ###ARCHIVE_ITEMS###<!--###LINK_ITEM###--></li>
+		<!-- ###MENUITEM### end-->
+	<!-- ###CONTENT###  end -->
+	</ul>
+</div>
+<!-- ###TEMPLATE_ARCHIVE### end -->
+
+
+<br />
+<br />
+<br />
+<br />
+<hr />
+<br />
+<br />
+<br />
+<h3>TEMPLATE_ARCHIVE_NOITEMS</h3>
+<em>Shown if the archive has no items!</em><br />
+<br />
+<br />
+<!-- ###TEMPLATE_ARCHIVE_NOITEMS### begin
+	Shown if the archive has no items!
+-->
+<div class="row ib-content-module ib-newsslider ib-background-gray">
+	<div class="columns small-offset-1 small-10 end">
+			<h1>###ARCHIVE_EMPTY_MSG###</h1>
+	</div>
+</div>
+<!-- ###TEMPLATE_ARCHIVE_NOITEMS### end -->
+
+
+
+
+</body>
+</html>

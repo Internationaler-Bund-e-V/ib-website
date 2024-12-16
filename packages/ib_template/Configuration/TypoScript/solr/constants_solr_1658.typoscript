@@ -1,0 +1,7 @@
+# IB Haus Einstein
+#[site("rootPageId") == 1658]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 1665
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Haus_Einstein
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

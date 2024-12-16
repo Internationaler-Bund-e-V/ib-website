@@ -1,0 +1,42 @@
+<div id="ib-header" class="ibLandingpageHeader">
+    <div class="ib-header-container container-fluid">
+        <div class="hide-for-large">
+            <f:if condition="{f:cObject(typoscriptObjectPath:'portalSettings.showNavigationSearch')}">
+                <f:cObject typoscriptObjectPath="lib.headerSearchForm" data="{context:'searchBar'}" />
+            </f:if>
+        </div>
+        <div class="row-fluid ib-header-bar {f:if(condition: "
+            {f:cObject(typoscriptObjectPath:'portalSettings.portal_logo.format')}=='wide' ", then: 'header-ib-logo-wide')}">
+            <div id="ib-logo" class="show-for-large">
+                <f:cObject typoscriptObjectPath="lib.linkedLogo" />
+            </div>
+            <div id="ib-main-menu">
+                <ul class="jetmenu">
+                    <li class='showhide'>
+                        <span class='title'>
+                            <f:cObject typoscriptObjectPath="lib.linkedLogo" />
+                        </span>
+
+                    </li>
+                    <li class="ibLandingpageLI">
+                        &nbsp;
+                    </li>
+
+                </ul>
+                <div class="mobileLoader">
+                    <div class="lds-ellipsis">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <div id="ib-menu-overlay"></div>
+
+
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+{
+  "videoTextConsent": "<div class=\"cookieconsent-optout-marketing rs_preserve\"><div> Lai aktivizētu video atskaņošanu, ir jānoklikšķina uz tālāk norādītās saites. Pēc tam atvērtajā logā varat atļaut YouTube \"mārketings\" rīkus. YouTube un Google izmanto šos rīkus katru reizi, kad tiek atskaņoti videoklipi, un mēs tos nevaram atspējot. Tāpēc mēs varam atskaņot videoklipus tikai ar jūsu piekrišanu. Atskaņošanas laikā YouTube un Google saņem datus (piemēram, jūsu IP adresi) un apstrādā tos arī savām vajadzībām. Nevar izslēgt datu pārsūtīšanu uz ASV, kur nav garantēts līdzvērtīgs datu aizsardzības līmenis. Visu informāciju par savu datu aizsardzību varat atrast mūsu privātuma politikā. Savu piekrišanu jebkurā laikā varat atsaukt mūsu datu aizsardzības iestatījumos: <a class=\"cbOverlayDPLink\" href=\"/lv/politika-zasebnosti\">Politika zasebnosti</a><div class=\"customCBOverlay customCBOverlayYouTube\" aria-hidden=\"true\"><div class=\"customCBButton\" aria-hidden=\"true\"><button onclick=\"Cookiebot.renew();\">Lai aktivizētu videoklipus, atļaujiet mārketings sīkfailus šeit</button></div></div></div>",
+  "text1": "To activate the content please allow the according cookie category. ",
+  "text2": "For further information including the revocation of consent at any time.",
+  "overlayButtonText": "Lai aktivizētu saturu, lūdzu, atļaujiet šādu cookies kategoriju: ",  
+  "dataPrivacyPage": "lv\/privatumu"
+}

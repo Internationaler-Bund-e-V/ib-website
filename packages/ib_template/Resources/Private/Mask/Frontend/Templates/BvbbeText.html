@@ -1,0 +1,16 @@
+<f:variable name="grid" value="12" />
+<f:variable name="columns" value="{f:count(subject: data.tx_mask_bvbbe_text_columns)}" />
+<f:variable name="columnSize" value="{grid / columns}" />
+<div class="Bvbbe-Text container pt-5 pb-5">
+  <f:if condition="{data.tx_mask_bvbbe_text_columns}">
+    <div class="row">
+      <f:for each="{data.tx_mask_bvbbe_text_columns}" as="data_item">
+        <div class="col-md-{columnSize}">
+          <f:if condition="{data_item.tx_mask_bvbbe_text_column}">
+            {data_item.tx_mask_bvbbe_text_column -> f:format.html()}
+          </f:if>
+        </div>
+      </f:for>
+    </div>
+  </f:if>
+</div>

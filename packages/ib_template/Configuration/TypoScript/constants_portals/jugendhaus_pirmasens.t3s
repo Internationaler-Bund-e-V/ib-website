@@ -1,0 +1,129 @@
+# -----------------------------------------------------------------------------
+# PORTAL jugendhaus-pirmasens
+# -----------------------------------------------------------------------------
+
+[request.getNormalizedParams().getHttpHost() == 'jugendhaus-pirmasens.de' || request.getNormalizedParams().getHttpHost() == 'jugendhaus-pirmasens.ddev.site']
+    host = jugendhaus-pirmasens.de
+    portalSettings {
+        pageTitle = Jugendhaus Pirmasens
+
+        #oberster Knoten / Home-Seite
+        root_id = 5639
+
+        readspeaker.show = 1
+
+        #data privacy site ID
+        dataPrivacySiteID = 5647
+
+        portal_logo.file = logo_jugendhaus_pirmasens.png
+        #portal_logo.format = wide
+
+        #Navigation / Mainnavigation
+        mainnav_start_id = 5652
+
+        #Start-ID für Sitemap / zB. Mainnavigation
+        misc.sitemapStartId = 5652
+
+        #Präfix Titel
+        firstMenuTitle = Jugendhaus Pirmasens
+
+        #News Details - Seite
+        tt_news.single_pid = 5659
+
+        #Konfiguration Suchmaske / Standorte+Angebote ausblenden = 1
+        misc.showOnlyTYPO3SearchResults = 0
+
+        #Suche - Ergebnisseite
+        misc.searchResultId = 5651
+
+        #Seiten ID für Karte+Listendarstellung der Standorte
+        misc.mapViewPid = 
+        misc.gridViewPid = 
+
+        #ID Standort(detail)seite
+        misc.locationSingleViewId = 
+        ib_content.dbCategoryLocationPage = 
+
+        #ID Angebots(detail)seite
+        misc.productSingleViewId = 
+
+        #ID der Navigation aus IB-Redaktionssystem
+        ib_content.dbNavigationId = 
+
+        #Individuelles Image für Standortkarte in Navigation, kann optional gesetzt werden
+        #misc.mapViewImg = fileadmin/user_upload/navigation/xxx.jpg
+
+        //generate news sitemap     
+        NewsSitemap.generate = 1
+        NewsSitemap.NewsFolderPid = 5658
+        NewsSitemap.NewsDetailPid = 5659
+        //generate location sitemap
+        LocationSitemap.generate = 0
+        LocationSitemap.NavigationID = 
+        LocationSitemap.DetailPid = 
+
+        #Google Analytics ID
+        analytics {
+            #account_id =
+            #enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 62
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = zsTJIXKF
+        }
+
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+
+        #Text und Verlinkung des Bubbles im Header
+        main_bubble {
+            hide = 0
+            text = Kontakt
+            id = 5646
+            title_text = Kontaktieren Sie uns hier bei Fragen, Wünschen und Anregungen
+        }
+
+        #Möglichkeit, optional Social Media Iconbar zu überschreiben
+        social.facebook = https://www.facebook.com/JugendhausONEPirmasens
+        social.youtube = https://www.youtube.com/channel/UClQuD70eBaA0F18AM5AlCgg
+        social.instagram = https://www.instagram.com/ib_jugendhaus_one_pirmasens/
+        social.facebook.titletag = Offizielle Facebook-Seite des Jugendhaus One Pirmasens
+        social.youtube.titletag = Offizielle Youtube-Seite des Jugendhaus One Pirmasens
+        social.instagram.titletag = Offizielle Instagram-Seite des Jugendhaus One Pirmasens
+        social.twitter =
+        social.xing =
+        social.linkedin =
+        social.kununu =
+    }
+
+    social.facebook = https://www.facebook.com/JugendhausONEPirmasens
+    social.youtube = https://www.youtube.com/channel/UClQuD70eBaA0F18AM5AlCgg
+    social.instagram = https://www.instagram.com/ib_jugendhaus_one_pirmasens/
+    social.facebook.titletag = Offizielle Facebook-Seite des Jugendhaus One Pirmasens
+    social.youtube.titletag = Offizielle Youtube-Seite des Jugendhaus One Pirmasens
+    social.instagram.titletag = Offizielle Instagram-Seite des Jugendhaus One Pirmasens
+    social.twitter =
+    social.xing =
+    social.linkedin =
+    social.kununu =
+
+    gallery.folder.pid = 5662
+
+    const_navigation {
+        #Ordner ID zentraler Footer, zentrale Websites
+        footernav_central_folder_id = 5642
+
+        #Ordner ID weiterführende Links
+        footernav_misc_folder_id = 5640
+
+        #Meta Ordner ID (Impress, AGB, etc)
+        footernav_meta_folder_id = 5644
+    }
+[end]
+
+[request.getNormalizedParams().getHttpHost() == 'jugendhaus-pirmasens.ddev.site']
+    host = jugendhaus-pirmasens.ddev.site
+    portalSettings.analytics.enable_tracking = 0
+[end]

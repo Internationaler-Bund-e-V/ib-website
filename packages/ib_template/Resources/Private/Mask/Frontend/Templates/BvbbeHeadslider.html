@@ -1,0 +1,63 @@
+<f:if condition="{data.tx_mask_bvbbe_slides_no_full_screen} == 'false'">
+  <div class="BvbbeHeadSlider swiper swiper-banner-yoga">
+    <div class="swiper-wrapper ">
+      <f:if condition="{data.tx_mask_bvbbe_slides}">
+        <f:for each="{data.tx_mask_bvbbe_slides}" as="data_item">
+          <div class="swiper-slide">
+            <f:if condition="{data_item.tx_mask_bvbbe_slide}">
+              <f:for each="{data_item.tx_mask_bvbbe_slide}" as="file">
+                <div class="BvbbeSlideContainer" style="background-image: url({f:uri.image(image:file)});">
+                  <f:image class="imgPlaceholder" image="{file}" />
+                </div>
+              </f:for>
+            </f:if>
+            <f:render section="textContainer" arguments="{data_item:data_item}" />
+          </div>
+        </f:for>
+      </f:if>
+    </div>
+  </div>
+</f:if>
+
+<f:if condition="{data.tx_mask_bvbbe_slides_no_full_screen}">
+  <div class="BvbbeHeadSlider noFullScreen swiper">
+    <div class="swiper-wrapper ">
+      <f:if condition="{data.tx_mask_bvbbe_slides}">
+        <f:for each="{data.tx_mask_bvbbe_slides}" as="data_item">
+          <div class="swiper-slide">
+            <f:if condition="{data_item.tx_mask_bvbbe_slide}">
+              <f:for each="{data_item.tx_mask_bvbbe_slide}" as="file">
+                <div class="BvbbeSlideContainer ">
+                  <f:image class="imgPlaceholder" image="{file}" />
+                </div>
+              </f:for>
+            </f:if>
+            <f:if condition="{data_item.tx_mask_bvbbe_slide_headline} != '' || {data_item.tx_mask_bvbbe_slide_links}">
+              <f:render section="textContainer" arguments="{data_item:data_item}" />
+            </f:if>
+          </div>
+        </f:for>
+      </f:if>
+    </div>
+  </div>
+</f:if>
+
+<f:section name="textContainer">
+  <div class="aht-banner__content">
+    <div class="aht-banner__content-inner">
+      <div class="aht-banner__holder">
+      </div>
+      <h2 class="aht-banner__title">{data_item.tx_mask_bvbbe_slide_headline}</h2>
+      <p class="aht-banner__desc">{data_item.tx_mask_bvbbe_slide_subline}</p>
+      <f:if condition="{data_item.tx_mask_bvbbe_slide_links}">
+        <div class="aht-banner__links">
+          <f:for each="{data_item.tx_mask_bvbbe_slide_links}" as="link">
+            <f:link.typolink class="aht-banner__link aheto-btn t-uppercase" parameter="{link.tx_mask_bvbbe_slide_link}">
+              {link.tx_mask_bvbbe_slide_link_text}
+            </f:link.typolink>
+          </f:for>
+        </div>
+      </f:if>
+    </div>
+  </div>
+</f:section>

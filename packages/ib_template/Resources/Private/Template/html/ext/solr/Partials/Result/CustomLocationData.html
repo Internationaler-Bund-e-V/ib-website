@@ -1,0 +1,18 @@
+{namespace rms=Rms\Ibcontent\ViewHelpers}
+<div class="result-custom-location-data">
+  <!-- street -->
+  <f:if condition="{document.street_stringS}">
+    <div>{document.street_stringS}</div>
+  </f:if>
+  <!-- plz city -->
+  <f:if condition="{document.plz_stringS}">
+    <div>{document.plz_stringS} {document.city_stringS}</div>
+  </f:if>
+  <!-- phone -->
+  <f:if condition="{document.phone_stringS}">
+    <div class="customContactDataItem">
+      <i class="fas fa-phone"></i> Tel.:
+      <a class="searchCustomLink" href="tel:{User.phone_int}">{document.phone_stringS}</a>
+    </div>
+  </f:if>
+</div>

@@ -1,0 +1,7 @@
+{
+    "videoTextConsent": "<div class=\"cookieconsent-optout-marketing rs_preserve\"><div>Aby włączyć odtwarzanie wideo, musisz kliknąć poniższy link. W oknie, które się wtedy otworzy, możesz zezwolić na narzędzia \"marketing\" z YouTube. YouTube i Google używają tych narzędzi przy każdym odtwarzaniu filmów, a my nie możemy ich wyłączyć. Dlatego możemy odtwarzać filmy tylko za Państwa zgodą. Podczas odtwarzania YouTube i Google otrzymują dane (np. Państwa adres IP) i przetwarzają je również do własnych celów. Nie można wykluczyć przekazywania danych do USA, gdzie nie jest zagwarantowany równoważny poziom ochrony danych. Wszystkie informacje na temat ochrony Państwa danych znajdują się w naszej polityce prywatności. W każdej chwili mogą Państwo cofnąć swoją zgodę w ustawieniach dotyczących ochrony danych: <a class=\"cbOverlayDPLink\" href=\"/pl/ochrona-danych\">Ochrona danych</a></div> <div class=\"customCBOverlay customCBOverlayYouTube\" aria-hidden=\"true\"><div class=\"customCBButton\" aria-hidden=\"true\"><button onclick=\"Cookiebot.renew();\">Aby aktywować filmy, należy zezwolić na stosowanie plików cookie do marketing tutaj</button></div></div></div>",
+    "text1": "Zur Aktivierung des Inhalts bitte entsprechende Cookie-Kategorie zulassen.",
+    "text2": "Zu weiteren Infos inkl. des jederzeit möglichen Widerrufs der Einwilligung.",
+    "overlayButtonText": "Proszę zezwolić na następującą kategorię plików cookie, aby aktywować zawartość: ",
+    "dataPrivacyPage": "ochrona-danych"
+}

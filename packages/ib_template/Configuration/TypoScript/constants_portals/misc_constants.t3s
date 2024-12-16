@@ -1,0 +1,5 @@
+##### start MA#1513
+[page["uid"] == 2764 || page["uid"] == 3395 || page["uid"] == 3393 || page["uid"] == 3389 || page["uid"] == 3387 || page["uid"] == 3384 || page["uid"] == 3390 || page["uid"] == 3391 || page["uid"] == 3388]
+    portalSettings.footer_hide_footer = 1
+[GLOBAL]
+##### end MA#1513

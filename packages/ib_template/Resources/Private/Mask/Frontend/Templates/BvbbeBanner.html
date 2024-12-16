@@ -1,0 +1,28 @@
+<div class="Bvbbe-Banner bg-wrap-c-active">
+  <div class="wrap-1720px">
+    <div class="wrap-yoga-2">
+      <div class="container">
+        <div class="row padding-lg-50t padding-lg-40b padding-sm-50b padding-sm-50t">
+          <div class="col-md-12">
+            <div class="aht-cta aht-cta--simple aht-cta--t-white aht-cta--yoga">
+              <div class="aht-cta__text">
+                <f:if condition="{data.tx_mask_bvbbe_banner_text}">
+                  {data.tx_mask_bvbbe_banner_text -> f:format.html()}
+                </f:if>
+              </div>
+              <f:if condition="{data.tx_mask_bvbbe_banner_links}">
+                <div class="aht-cta__links">
+                  <f:for each="{data.tx_mask_bvbbe_banner_links}" as="data_item">
+                    <f:if condition="{data_item.tx_mask_bvbbe_banner_link}">
+                      <f:link.typolink class="aht-cta__link aheto-btn" parameter="{data_item.tx_mask_bvbbe_banner_link}">{data_item.tx_mask_bvbbe_banner_link_text}</f:link.typolink>
+                    </f:if>
+                  </f:for>
+                </div>
+              </f:if>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

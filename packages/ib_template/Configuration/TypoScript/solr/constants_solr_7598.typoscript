@@ -1,0 +1,7 @@
+# IB Sprachinstitut München
+#[site("rootPageId") == 7369]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_Sprachinstitut_Boeblingen
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

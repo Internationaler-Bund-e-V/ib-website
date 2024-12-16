@@ -1,0 +1,93 @@
+# -----------------------------------------------------------------------------
+# PORTAL ib-turkey.com
+# -----------------------------------------------------------------------------
+[request.getNormalizedParams().getHttpHost() == 'ib-turkey.rmsdev.de' || request.getNormalizedParams().getHttpHost() == 'ib-turkey.com']
+    host = ib-turkey.com
+
+    portalSettings {
+        pageTitle = IB Turkey
+        firstMenuTitle =
+        bodyClassName = ib_turkey
+        root_id = 5141
+        misc.sitemapStartId = 5141
+        mainnav_start_id = 5154
+        misc.searchResultId = 5153
+        misc.showOnlyTYPO3SearchResults = 1
+        readspeaker.show = 1
+        portal_logo.file = IB-EN-Logo-turkey.png
+        portal_logo.format = wide
+        footer_logo = IB-Logo-IBETH-GmbH_Weiß_EN.svg
+
+        //activate navigationSearch
+        showNavigationSearch = 0
+
+        //activate socialbar (right) search
+        showSearchButton = 0
+
+        #data privacy site ID
+        dataPrivacySiteID = 5149
+        
+        
+        #defaultGetVars.L = 1
+        readspeaker.show = 1
+        showLanguageMenu = 1
+
+        analytics {
+            #account_id =
+            #enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 70
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = 42UezjHn
+
+        }
+
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+            //language = EN
+        }
+
+        main_bubble {
+            hide = 1			
+        }
+
+        social.ib_english_page_link =
+
+        social.youtube = 
+        social.facebook = https://www.facebook.com/IBTurkiye/
+        social.facebook.titletag = Facebook IB Turkiye
+        social.twitter =
+        social.xing =
+        social.linkedin = https://www.linkedin.com/in/ib-turkey-ibeth-482129275
+        social.linkedin.titletag = LinkedIn IB Turkey
+        social.instagram = https://www.instagram.com/ib_turkey/
+        social.instagram.titletag = Instagram IB Turkey
+        social.kununu =         
+    }
+
+    social.youtube =
+    social.facebook = https://www.facebook.com/IBTurkiye/
+    social.facebook.titletag = Facebook IB Turkiye
+    social.twitter =
+    social.xing =
+    social.linkedin = https://www.linkedin.com/in/ib-turkey-ibeth-482129275
+    social.linkedin.titletag = LinkedIn IB Turkey
+    social.instagram = https://www.instagram.com/ib_turkey/
+    social.instagram.titletag = Instagram IB Turkey
+    social.kununu =
+
+    
+    gallery.folder.pid = 5162
+
+    const_navigation {
+        footernav_central_folder_id = 5144
+        footernav_misc_folder_id = 5142
+        footernav_meta_folder_id = 5146
+    }
+[end]
+
+[request.getNormalizedParams().getHttpHost() == 'ib-turkey.rmsdev.de']
+    host = ib-turkey.rmsdev.de
+    portalSettings.analytics.enable_tracking = 0
+[end]

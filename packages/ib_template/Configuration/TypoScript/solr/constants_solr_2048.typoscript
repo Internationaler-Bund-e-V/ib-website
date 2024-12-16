@@ -1,0 +1,7 @@
+# IB jobs.ib.de
+#[site("rootPageId") == 2048]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 2055
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = 
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

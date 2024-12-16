@@ -1,0 +1,7 @@
+# seniorenzentrum meissen
+#[site("rootPageId") == 7126]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Seniorenzentrum_Meissen
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

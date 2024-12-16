@@ -1,0 +1,105 @@
+<div class="grid-container SrbDefaultContent SrbMaskContainer ">
+  <div class="grid-x grid-margin-x SrbText">
+    <f:if condition="{data.tx_mask_srb_headline}">
+      <div class="cell small-12">
+        <h2>{data.tx_mask_srb_headline}</h2>
+      </div>
+    </f:if>
+    <f:if condition="{data.tx_mask_srb_subline}">
+      <div class="cell small-12">
+        <h3>{data.tx_mask_srb_subline}</h3>
+      </div>
+    </f:if>
+    <f:if condition="{data.tx_mask_srb_layout}">
+      <f:switch expression="{data.tx_mask_srb_layout}">
+        <f:case value="1">
+          <f:render section="Layout100" arguments="{data:data}" />
+        </f:case>
+        <f:case value="2">
+          <f:render section="Layout5050" arguments="{data:data}" />
+        </f:case>
+        <f:case value="3">
+          <f:render section="Layout6633" arguments="{data:data}" />
+        </f:case>
+        <f:case value="4">
+          <f:render section="Layout3366" arguments="{data:data}" />
+        </f:case>
+        <f:case value="5">
+          <f:render section="Layout333333" arguments="{data:data}" />
+        </f:case>
+      </f:switch>
+    </f:if>
+  </div>
+</div>
+
+
+
+<!-- 100% -->
+<f:section name="Layout100">
+  <div class="cell small-12">
+    <f:if condition="{data.tx_mask_srb_text_1}">
+      <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.tx_mask_srb_text_1}</f:format.html>
+    </f:if>
+  </div>
+</f:section>
+
+<!-- 50:50-->
+<f:section name="Layout5050">
+  <div class="cell small-12 medium-6">
+    <f:if condition="{data.tx_mask_srb_text_1}">
+      <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.tx_mask_srb_text_1}</f:format.html>
+    </f:if>
+  </div>
+  <div class="cell small-12 medium-6">
+    <f:if condition="{data.tx_mask_srb_text_2}">
+      <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.tx_mask_srb_text_2}</f:format.html>
+    </f:if>
+  </div>
+</f:section>
+
+<!-- 66:33-->
+<f:section name="Layout6633">
+  <div class="cell small-12 medium-8">
+    <f:if condition="{data.tx_mask_srb_text_1}">
+      <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.tx_mask_srb_text_1}</f:format.html>
+    </f:if>
+  </div>
+  <div class="cell small-12 medium-4">
+    <f:if condition="{data.tx_mask_srb_text_2}">
+      <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.tx_mask_srb_text_2}</f:format.html>
+    </f:if>
+  </div>
+</f:section>
+
+<!-- 33:66-->
+<f:section name="Layout3366">
+  <div class="cell small-12 medium-4">
+    <f:if condition="{data.tx_mask_srb_text_1}">
+      <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.tx_mask_srb_text_1}</f:format.html>
+    </f:if>
+  </div>
+  <div class="cell small-12 medium-8">
+    <f:if condition="{data.tx_mask_srb_text_2}">
+      <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.tx_mask_srb_text_2}</f:format.html>
+    </f:if>
+  </div>
+</f:section>
+
+<!-- 33:33:33-->
+<f:section name="Layout333333">
+  <div class="cell small-12 medium-4">
+    <f:if condition="{data.tx_mask_srb_text_1}">
+      <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.tx_mask_srb_text_1}</f:format.html>
+    </f:if>
+  </div>
+  <div class="cell small-12 medium-4">
+    <f:if condition="{data.tx_mask_srb_text_2}">
+      <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.tx_mask_srb_text_2}</f:format.html>
+    </f:if>
+  </div>
+  <div class="cell small-12 medium-4">
+    <f:if condition="{data.tx_mask_srb_text_3}">
+      <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.tx_mask_srb_text_3}</f:format.html>
+    </f:if>
+  </div>
+</f:section>

@@ -1,0 +1,7 @@
+{
+  "videoTextConsent": "<div class=\"cookieconsent-optout-marketing rs_preserve\"><div> Para activar la reproducción de vídeo, debe hacer clic en el siguiente enlace. En la ventana que se abre a continuación, puedes permitir las herramientas de \"estadísticas\" de YouTube. YouTube y Google utilizan estas herramientas cada vez que reproducen vídeos, y no podemos desactivarlas. Por lo tanto, sólo podemos reproducir los vídeos con su consentimiento. Durante la reproducción, YouTube y Google reciben datos (por ejemplo, su dirección IP) y también los procesan para sus propios fines. No se descarta la transferencia de datos a EE.UU., donde no se garantiza un nivel equivalente de protección de datos. Puede encontrar toda la información sobre la protección de sus datos en nuestra política de privacidad. Puede revocar su consentimiento en cualquier momento en nuestra configuración de protección de datos: <a class=\"cbOverlayDPLink\" href=\"/es/politica-de-privacidad\">Política de privacidad</a><div class=\"customCBOverlay customCBOverlayYouTube\" aria-hidden=\"true\"><div class=\"customCBButton\" aria-hidden=\"true\"><button onclick=\"Cookiebot.renew();\">Para activar los vídeos permitir cookies estadísticas aquí</button></div></div></div>",
+  "text1": "To activate the content please allow the according cookie category. ",
+  "text2": "For further information including the revocation of consent at any time.",
+  "overlayButtonText": "Para activar el contenido, permita la siguiente categoría de cookies: ",  
+  "dataPrivacyPage": "es\/intimidad"
+}

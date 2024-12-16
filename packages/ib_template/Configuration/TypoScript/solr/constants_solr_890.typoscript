@@ -1,0 +1,7 @@
+# IB Grenzerfahrung
+#[site("rootPageId") == 890]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 897
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_Grenzerfahrung
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

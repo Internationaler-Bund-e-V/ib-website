@@ -1,0 +1,26 @@
+<f:variable name="bvbbeTextImageOrientation" value="0" />
+<f:switch expression="{data.tx_mask_bvbbe_text_image_orientation}">
+  <f:case value="2">
+    <f:variable name="bvbbeTextImageOrientation" value="2" />
+  </f:case>
+</f:switch>
+<f:variable name="bvbbeTextImageBackgroundColor" value="{data.tx_mask_bvbbe_text_image_background_color}" />
+
+<div class="Bvbbe-TextImage bg-{bvbbeTextImageBackgroundColor}">
+  <div class="container pt-5 pb-5">
+    <div class="row">
+      <div class="col-md-6 order-{bvbbeTextImageOrientation}">
+        <f:if condition="{data.tx_mask_bvbbe_text_image_text}">
+          {data.tx_mask_bvbbe_text_image_text -> f:format.html()}
+        </f:if>
+      </div>
+      <div class="col-md-6 order-1 imgCol">
+        <f:if condition="{data.tx_mask_bvbbe_text_image_image}">
+          <f:for each="{data.tx_mask_bvbbe_text_image_image}" as="file">
+            <f:image image="{file}" />
+          </f:for>
+        </f:if>
+      </div>
+    </div>
+  </div>
+</div>

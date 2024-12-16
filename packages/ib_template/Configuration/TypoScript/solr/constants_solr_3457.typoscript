@@ -1,0 +1,7 @@
+# Fam_Dienst_Westmecklenburg - https://hagenow.fud-ib.de/
+#[site("rootPageId") == 3457]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Fam_Dienst_Westmecklenburg
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

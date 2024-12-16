@@ -1,0 +1,71 @@
+{namespace ib=Rms\Ibcontent\ViewHelpers} {namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:comment>
+  <!-- ************************************************
+	* MAIN MENU ENTRY POINT
+	* @see partial/header.html
+	* this will render either the megamenu or a single menu item (if there are no children)
+	************************************************ -->
+</f:comment>
+
+<div id="ib-main-menu">
+  <ul class="jetmenu">
+    <li class='showhide'>
+      <span class='title'>
+        <f:cObject typoscriptObjectPath="lib.linkedLogo" />
+      </span>
+      <span class='icon showhidemobile'>
+        <em></em>
+        <em></em>
+        <em></em>
+        <em></em>
+      </span>
+    </li>
+    <v:menu pageUid="{f:cObject(typoscriptObjectPath: 'portalSettings.id')}" entryLevel="2">
+      <f:for each="{menu}" as="mainMenuItem" iteration="iterator">
+        <f:render partial="menu/megaMenu" section="megaJetMenu"
+          arguments="{mainMenuItem: mainMenuItem, recursionStartPageUid:mainMenuItem.uid, listClass: '', inlineStyles: ''}" />
+      </f:for>
+    </v:menu>
+    <f:comment>
+      <!-- ************************************************
+		 * render buddy in mobile menu
+		 * ************************************************ -->
+    </f:comment>
+    <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.main_bubble.hide')} == 0">
+      <f:if condition="{data.bubble_text}">
+        <f:then>
+          <li id="ib-head-bubble-mobile" class="show-only-in-burger-menu singleMenuItem">
+            <f:link.page pageUid="{f:cObject(typoscriptObjectPath:'bubble.linkID')}" title="{data.bubble_title_text}">
+              <f:format.raw>{data.bubble_text}</f:format.raw>
+            </f:link.page>
+          </li>
+        </f:then>
+        <f:else>
+          <li id="ib-head-bubble-mobile" class="show-only-in-burger-menu singleMenuItem">
+            <f:link.page pageUid="{f:cObject(typoscriptObjectPath:'bubble.linkID')}" class="ibCustomButton orange">
+              <f:format.stripTags>
+                <f:format.raw>
+                  <v:format.replace content="{f:cObject(typoscriptObjectPath:'bubble.linkText')}" substring="<br>"
+                    replacement=" " />
+                </f:format.raw>
+              </f:format.stripTags>
+            </f:link.page>
+          </li>
+        </f:else>
+      </f:if>
+    </f:if>
+
+
+
+
+  </ul>
+  <div class="mobileLoader">
+    <div class="lds-ellipsis">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</div>

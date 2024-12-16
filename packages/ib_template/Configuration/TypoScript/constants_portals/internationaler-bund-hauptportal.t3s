@@ -1,0 +1,23 @@
+# -----------------------------------------------------------------------------
+# IB HAUPtPORTAL Standardkonfiguration
+# -----------------------------------------------------------------------------
+[request.getNormalizedParams().getHttpHost() == 'internationaler-bund.de' || request.getNormalizedParams().getHttpHost() == 'www.internationaler-bund.de']
+    portalSettings{
+        footer.use_three_columns = 1
+        footer.show_textcontent_left = 1
+        footer.show_textcontent_middle = 1
+        footer.show_textcontent_right = 1
+        footer.tt_content_uid_left = 18096
+        footer.tt_content_uid_middle = 18097
+        footer.tt_content_uid_right = 18098
+
+        analytics {
+            #account_id = UA-42876528-21
+            #enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 1
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = HMgf3aC9
+        }        
+    }
+[end]

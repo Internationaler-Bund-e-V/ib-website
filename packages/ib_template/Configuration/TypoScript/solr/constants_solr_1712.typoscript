@@ -1,0 +1,7 @@
+# IB Integrationsfachdienst
+#[site("rootPageId") == 1712]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 1719
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_Ifd
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

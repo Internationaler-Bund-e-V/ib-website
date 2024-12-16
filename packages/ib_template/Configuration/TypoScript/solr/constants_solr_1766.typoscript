@@ -1,0 +1,7 @@
+# IB Oberschule Neuenhagen
+#[site("rootPageId") == 1766]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 1773
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Oberschule_Neuenhagen
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

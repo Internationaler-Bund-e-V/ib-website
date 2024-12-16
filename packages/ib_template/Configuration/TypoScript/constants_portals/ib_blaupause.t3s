@@ -1,0 +1,37 @@
+ # -----------------------------------------------------------------------------
+# PORTAL IB BLAUPAUSE
+# -----------------------------------------------------------------------------
+[request.getNormalizedParams().getHttpHost() == 'ib-blaupause.rmsdev.de' || request.getNormalizedParams().getHttpHost() == 'ib-blaupause.de']
+    host = ib-blaupause.de
+    portalSettings {
+        pageTitle = IB-Blaupause
+        firstMenuTitle = 
+        root_id = 2187
+        misc.sitemapStartId = 2187
+        mainnav_start_id = 2213
+        misc.searchResultId = 2211
+        misc.showOnlyTYPO3SearchResults = 1
+
+        #data privacy site ID
+        dataPrivacySiteID = 2206
+
+        analytics {
+            account_id = 
+            enable_tracking = 0
+        }
+        main_bubble {
+            hide = 1			
+        }
+        social.ib_english_page_link = 
+    }
+    const_navigation {
+        footernav_central_folder_id = 2193
+        footernav_misc_folder_id = 2188
+        footernav_meta_folder_id = 2202
+    }
+[end]
+
+[request.getNormalizedParams().getHttpHost() == 'ib-blaupause.rmsdev.de']
+    host = ib-blaupause.rmsdev.de
+    portalSettings.analytics.enable_tracking = 0
+[end]

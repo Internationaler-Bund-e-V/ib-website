@@ -1,0 +1,11 @@
+# -----------------------------------------------------------------------------
+# PORTAL Sprachkurse Pforzheim
+# -----------------------------------------------------------------------------
+[request.getNormalizedParams().getHttpHost() == 'sprachkurse-pforzheim.ib.de']
+    host = sprachkurse-pforzheim.ib.de
+    portalSettings {
+        pageTitle = Sprachkurse Pforzheim
+        #oberster Knoten / Home-Seite
+        root_id = 3345
+    }
+[end]

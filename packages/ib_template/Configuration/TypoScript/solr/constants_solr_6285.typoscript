@@ -1,0 +1,7 @@
+# medius-pflegedienst
+#[site("rootPageId") == 6285]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Medius_Pflegedienst
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

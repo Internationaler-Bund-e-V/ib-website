@@ -1,0 +1,111 @@
+# -----------------------------------------------------------------------------
+# PORTAL Einfach Demokratie
+# -----------------------------------------------------------------------------
+
+[request.getNormalizedParams().getHttpHost() == 'ib-einfach-demokratie.rmsdev.de' || request.getNormalizedParams().getHttpHost() == 'einfach-demokratie.ib-berlin.de']
+    host = einfach-demokratie.ib-berlin.de
+    portalSettings {
+        pageTitle = Einfach Demokratie
+
+        #oberster Knoten / Home-Seite
+        root_id = 4947
+
+        #data privacy site ID
+        dataPrivacySiteID = 4955
+
+        readspeaker.show = 1
+
+        #Navigation / Mainnavigation
+        mainnav_start_id = 4960
+
+        #Start-ID für Sitemap / zB. Mainnavigation
+        misc.sitemapStartId = 4960
+
+        #Präfix Titel
+        firstMenuTitle = Einfach Demokratie
+
+        #News Details - Seite
+        tt_news.single_pid = 4966
+
+        #Konfiguration Suchmaske / Standorte+Angebote ausblenden = 1
+        misc.showOnlyTYPO3SearchResults = 0
+
+        #Suche - Ergebnisseite
+        misc.searchResultId = 4959
+
+        #Seiten ID für Karte+Listendarstellung der Standorte
+        misc.mapViewPid = 
+        misc.gridViewPid = 
+
+        #ID Standort(detail)seite
+        misc.locationSingleViewId = 1012
+        ib_content.dbCategoryLocationPage = 1012
+
+        #ID Angebots(detail)seite
+        misc.productSingleViewId = 
+
+        #ID der Navigation aus IB-Redaktionssystem
+        ib_content.dbNavigationId = 
+
+        #Individuelles Image für Standortkarte in Navigation, kann optional gesetzt werden
+        #misc.mapViewImg = fileadmin/user_upload/navigation/xxx.jpg
+
+        #Google Analytics ID
+        analytics {
+            #account_id =
+            #enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 55
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = SVTXI0T1
+        }
+
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+
+        #Text und Verlinkung des Bubbles im Header
+        main_bubble {
+            hide = 1
+            text = Kontakt
+            id = 1016
+            title_text = Kontaktieren Sie uns hier bei Fragen, Wünschen und Anregungen
+        }
+
+        portal_logo {
+          file = einfach_demokratie.png
+          format = wide
+        }
+
+        #Möglichkeit, optional Social Media Iconbar zu überschreiben
+        social.facebook = https://facebook.com/IB.Berlin.Brandenburg
+        social.facebook.titletag = Offizielle Facebook-Seite des IB Berlin-Brandenburg
+        #social.youtube = https://www.youtube.com/channel/UCeIAJvbaM_ABRng3_GmHCfQ
+        #social.youtube.titletag = Offizieller YouTube-Kanal der IB Süd
+        social.instagram = https://www.instagram.com/ib.berlin.brandenburg/
+        social.instagram.titletag = Hier geht es zur Instagram Seite
+    }
+
+    #Möglichkeit, optional Social Media Footer Links zu überschreiben
+    #social.headline = Social Media Kanäle der IB Süd
+    social.facebook = https://facebook.com/IB.Berlin.Brandenburg
+    social.facebook.titletag = Offizielle Facebook-Seite des IB Berlin-Brandenburg
+    #social.youtube = https://www.youtube.com/channel/UCeIAJvbaM_ABRng3_GmHCfQ
+    #social.youtube.titletag = Offizieller YouTube-Kanal der IB Süd
+    social.instagram = https://www.instagram.com/ib.berlin.brandenburg/
+    social.instagram.titletag = Hier geht es zur Instagram Seite
+
+    gallery.folder.pid = 4965
+
+    const_navigation {
+        #Ordner ID zentraler Footer, zentrale Websites
+        footernav_central_folder_id = 4950
+
+        #Ordner ID weiterführende Links
+        footernav_misc_folder_id = 4948
+
+        #Meta Ordner ID (Impress, AGB, etc)
+        footernav_meta_folder_id = 4952
+    }
+[end]

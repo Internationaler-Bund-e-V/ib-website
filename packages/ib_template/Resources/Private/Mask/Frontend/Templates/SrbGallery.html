@@ -1,0 +1,19 @@
+<div class="grid-container SrbDefaultContent SrbMaskContainer">
+  <div class="grid-x grid-margin-x SrbGallery align-middle" data-equalizer>
+    <f:if condition="{data.tx_mask_srb_headline}">
+      <div class="cell small-12">
+        <h2>{data.tx_mask_srb_headline}</h2>
+      </div>
+    </f:if>
+    <f:if condition="{data.image}">
+      <f:for each="{data.image}" as="image">
+        <div class="cell small-6 medium-4 large-3 GalleryImage" data-equalizer-watch>
+          <a href="{f:uri.image(image:image)}" data-lightbox="lightbox-{data.uid}" data-title="{image.description}">
+            <f:image image="{image}" width="300c" height="300c" alt="{image.alternative}"
+              title="{image.title}{image.description}" />
+          </a>
+        </div>
+      </f:for>
+    </f:if>
+  </div>
+</div>

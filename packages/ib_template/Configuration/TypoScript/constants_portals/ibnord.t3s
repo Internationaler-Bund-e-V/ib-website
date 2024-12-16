@@ -1,0 +1,100 @@
+# -----------------------------------------------------------------------------
+# PORTAL IB NORD
+# -----------------------------------------------------------------------------
+[request.getNormalizedParams().getHttpHost() == 'ib-nord.de' || request.getNormalizedParams().getHttpHost() == 'ibnord2016.rmsdev.de' || request.getNormalizedParams().getHttpHost() == 'ib-nord.local.mac']
+    host = ib-nord.de
+    portalSettings {
+        pageTitle = IB Nord
+        firstMenuTitle = IB Nord
+        root_id = 241
+        misc.sitemapStartId = 241
+        mainnav_start_id = 244
+        misc.searchResultId = 243
+        tt_news.single_pid = 242
+
+        #data privacy site ID
+        dataPrivacySiteID = 2443
+
+        #services_menu_start_id = 495
+
+        misc.showOnlyTYPO3SearchResults = 0
+        #misc.searchResultId = 131
+
+        misc.mapViewPid = 548
+        misc.gridViewPid = 549
+
+        misc.locationSingleViewId = 551
+        misc.productSingleViewId = 550
+        ib_content.dbCategoryLocationPage = 551
+        ib_content.dbNavigationId = 6
+
+        readspeaker.show = 1
+
+        //generate location sitemap
+        LocationSitemap.generate = 1
+        LocationSitemap.NavigationID = 6
+        LocationSitemap.DetailPid = 551
+
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+
+        analytics {
+            account_id = 
+            enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 8
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = rle5Zp9i
+        }
+
+        main_bubble {
+            id = 850
+            text = Jobs
+            title_text = Jobs
+        }
+
+        social.youtube =
+        social.twitter =
+        social.xing =
+        social.linkedin =
+        social.instagram =
+        social.kununu =
+        social.facebook =
+
+        #threecolumn footer layout
+        footer.use_three_columns = 1
+        footer.show_textcontent_left = 1
+        footer.show_textcontent_middle = 1
+        footer.show_textcontent_right = 1
+        footer.tt_content_uid_left = 18573
+        footer.tt_content_uid_middle = 18572
+        footer.tt_content_uid_right = 18571
+    }
+
+    # ibjobs redirects
+    plugin.tx_ibjobs_iblogajobs.settings.useCustomRedirect = 1
+    plugin.tx_ibjobs_iblogajobs.settings.customRedirectPageID = 850
+
+    const_navigation {
+        footernav_central_folder_id = 3
+        footernav_misc_folder_id = 15
+        footernav_meta_folder_id = 580
+    }
+[end]
+
+[request.getNormalizedParams().getHttpHost() == 'ibnord2016.rmsdev.de']
+    host = ibnord2016.rmsdev.de
+    portalSettings.analytics.enable_tracking = 0
+[end]
+
+[request.getNormalizedParams().getHttpHost() == 'ib-nord.local.mac']
+    host = ib-nord.local.mac
+    portalSettings.analytics.enable_tracking = 0
+[end]
+
+
+[mypidinrootline(241) || 241 in tree.rootLineIds]
+    module.tx_ibformbuilder_ibforms.persistence.storagePid = 6961
+[end]

@@ -1,0 +1,7 @@
+# IB Personalentwicklung
+#[site("rootPageId") == 67]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 14
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 43
+plugin.tx_solr.portalConfiguration.fileMount = IB_Personalentwicklung
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

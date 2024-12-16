@@ -1,0 +1,191 @@
+<!-- Footer Start-->
+<f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.footer.use_three_columns')}">
+  <f:then>
+    <f:render partial="FooterThreeColumns" />
+  </f:then>
+  <f:else>
+    <f:render section="defaultFooter" />
+  </f:else>
+</f:if>
+
+<f:section name="defaultFooter">
+  <div id="ib-footer">
+    <div class="row ib-footer-container">
+      <div class="columns medium-10 medium-offset-1">
+        <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.footer.hide_footer')}">
+          <f:then>
+          </f:then>
+          <f:else>
+            <div class="row">
+
+              <!-- central links start -->
+              <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.footer.hide_central_links')}">
+                <f:then></f:then>
+                <f:else>
+                  <div
+                    class="columns medium-{f:cObject(typoscriptObjectPath: 'portalSettings.footer.central_links_num_columns')} ib-central-links">
+                    <h4>
+                      <f:if
+                        condition="{f:cObject(typoscriptObjectPath: 'portalSettings.footer.central_links_headline')}">
+                        <f:then>
+                          {f:cObject(typoscriptObjectPath: 'portalSettings.footer.central_links_headline')}
+                        </f:then>
+                        <f:else>
+                          <f:translate
+                            key="LLL:typo3conf/ext/ib_template/Resources/Private/Language/locallang_footer.xml:centralPages" />
+                        </f:else>
+                      </f:if>
+
+                    </h4>
+                    <ul class="row no-bullet">
+                      <f:cObject typoscriptObjectPath="lib.footerCentral" />
+                    </ul>
+                  </div>
+                </f:else>
+              </f:if>
+              <!-- central links end-->
+
+              <!-- further links start-->
+              <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.footer.hide_further_links')}">
+                <f:then></f:then>
+                <f:else>
+                  <div class="columns medium-4 end">
+                    <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.footerMisc')}">
+                      <h4>
+                        <f:if
+                          condition="{f:cObject(typoscriptObjectPath: 'portalSettings.footer.further_links_headline')}">
+                          <f:then>
+                            {f:cObject(typoscriptObjectPath: 'portalSettings.footer.further_links_headline')}
+                          </f:then>
+                          <f:else>
+                            <f:translate
+                              key="LLL:typo3conf/ext/ib_template/Resources/Private/Language/locallang_footer.xml:miscPages" />
+                          </f:else>
+                        </f:if>
+
+                      </h4>
+                      <ul class="row no-bullet">
+                        <f:cObject typoscriptObjectPath="lib.footerMisc" />
+                      </ul>
+                    </f:if>
+                  </div>
+                </f:else>
+              </f:if>
+              <!-- further links end-->
+
+              <!-- textcontent LEFT start-->
+              <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.footer.show_textcontent_left')}">
+                <f:then>
+                  <div class="columns medium-4 end ib-footer-textcontent">
+                    <f:format.html parseFuncTSPath="lib.parseFunc">{f:cObject(typoscriptObjectPath:
+                      'portalSettings.footer.textcontent_left')}</f:format.html>
+                  </div>
+                </f:then>
+              </f:if>
+              <!-- textcontent LEFT end-->
+
+              <!-- textcontent RIGHT start-->
+              <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.footer.show_textcontent_right')}">
+                <f:then>
+                  <div class="columns medium-4 end ib-footer-textcontent">
+                    <f:format.html parseFuncTSPath="lib.parseFunc">{f:cObject(typoscriptObjectPath:
+                      'portalSettings.footer.textcontent_right')}</f:format.html>
+                  </div>
+                </f:then>
+              </f:if>
+              <!-- textcontent RIGHT end-->
+
+              <!-- social links start-->
+              <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.footer.hide_social_links')}">
+                <f:then></f:then>
+                <f:else>
+
+                  <f:if condition="{f:cObject(typoscriptObjectPath: 'social.headline')}">
+                    <div class="columns medium-12 large-2">
+                      <ul class="menu simple ib-footer-social">
+                        <f:if condition="{f:cObject(typoscriptObjectPath: 'social.facebook')}">
+                          <li>
+                            <a target="_blank" title="{f:cObject(typoscriptObjectPath: 'social.facebook.titletag')}"
+                              href="{f:cObject(typoscriptObjectPath: 'social.facebook')}">
+                              <i class="ib-icon-facebook-circle"></i>
+                            </a>
+                          </li>
+                        </f:if>
+                        <f:if condition="{f:cObject(typoscriptObjectPath: 'social.instagram')}">
+                          <li>
+                            <a target="_blank" title="{f:cObject(typoscriptObjectPath: 'social.instagram.titletag')}"
+                              href="{f:cObject(typoscriptObjectPath: 'social.instagram')}">
+                              <i class="ib-icon-instagram-circle"></i>
+                            </a>
+                          </li>
+                        </f:if>
+                        <f:if condition="{f:cObject(typoscriptObjectPath: 'social.twitter')}">
+                          <li>
+                            <a target="_blank" title="{f:cObject(typoscriptObjectPath: 'social.twitter.titletag')}"
+                              href="{f:cObject(typoscriptObjectPath: 'social.twitter')}">
+                              <i class="ib-icon-twitter-x-circle"></i>
+                            </a>
+                          </li>
+                        </f:if>
+                        <f:if condition="{f:cObject(typoscriptObjectPath: 'social.linkedin')}">
+                          <li>
+                            <a target="_blank" title="{f:cObject(typoscriptObjectPath: 'social.linkedin.titletag')}"
+                              href="{f:cObject(typoscriptObjectPath: 'social.linkedin')}">
+                              <i class="ib-icon-linkedin-circle"></i>
+                            </a>
+                          </li>
+                        </f:if>
+
+                        <f:if condition="{f:cObject(typoscriptObjectPath: 'social.xing')}">
+                          <li>
+                            <a target="_blank" title="{f:cObject(typoscriptObjectPath: 'social.xing.titletag')}"
+                              href="{f:cObject(typoscriptObjectPath: 'social.xing')}">
+                              <i class="ib-icon-xing-circle"></i>
+                            </a>
+                          </li>
+                        </f:if>
+                        <f:if condition="{f:cObject(typoscriptObjectPath: 'social.kununu')}">
+                          <li>
+                            <a target="_blank" title="{f:cObject(typoscriptObjectPath: 'social.kununu.titletag')}"
+                              href="{f:cObject(typoscriptObjectPath: 'social.kununu')}">
+                              <i class="ib-icon-kununu-circle"></i>
+                            </a>
+                          </li>
+                        </f:if>
+                        <f:if condition="{f:cObject(typoscriptObjectPath: 'social.youtube')}">
+                          <li>
+                            <a target="_blank" title="{f:cObject(typoscriptObjectPath: 'social.youtube.titletag')}"
+                              href="{f:cObject(typoscriptObjectPath: 'social.youtube')}">
+                              <i class="ib-icon-youtube-circle"></i>
+                            </a>
+                          </li>
+                        </f:if>
+                      </ul>
+                    </div>
+                  </f:if>
+                </f:else>
+              </f:if>
+              <!-- solical links end-->
+
+            </div>
+          </f:else>
+        </f:if>
+
+        <div class="row ib-footer-meta">
+          <div class="columns medium-8">
+            <ul class="no-bullet">
+              <f:cObject typoscriptObjectPath="lib.footerMeta" />
+            </ul>
+          </div>
+          <div class="columns medium-4">
+            <img class="ib-footer-logo"
+              src="/typo3conf/ext/ib_template/Resources/Public/img/logos_portals/{f:cObject(typoscriptObjectPath: 'portalSettings.footer.logo')}"
+              alt="Portal Logo Footer">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</f:section>
+
+<!-- Footer End-->

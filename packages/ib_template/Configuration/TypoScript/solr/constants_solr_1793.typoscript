@@ -1,0 +1,7 @@
+# IB Versicherungsvermittlung
+#[site("rootPageId") == 1793]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 1800
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = IB_VV
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]

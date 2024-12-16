@@ -1,0 +1,28 @@
+# -----------------------------------------------------------------------------
+# PORTAL hksp-neuruppin
+# -----------------------------------------------------------------------------
+[request.getNormalizedParams().getHttpHost() == 'hksp-neuruppin.rmsdev.de']
+    host = hksp-neuruppin.rmsdev.de
+    portalSettings {
+        pageTitle = hksp-neuruppin
+        firstMenuTitle = HKSP Neuruppin
+        root_id = 2595
+        misc.sitemapStartId = 2612
+        mainnav_start_id = 2612
+        misc.searchResultId = 
+        misc.showOnlyTYPO3SearchResults = 1
+        analytics {
+            account_id = 
+            enable_tracking = 0
+        }
+        main_bubble {
+            hide = 1			
+        }
+        social.ib_english_page_link = 
+    }
+    const_navigation {
+        footernav_central_folder_id = 2598
+        footernav_misc_folder_id = 2596
+        footernav_meta_folder_id = 2601
+    }
+[end]

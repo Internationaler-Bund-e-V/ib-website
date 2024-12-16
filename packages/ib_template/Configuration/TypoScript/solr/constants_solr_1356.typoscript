@@ -1,0 +1,7 @@
+# IB Kinderpatenschaft Leipzig
+#[site("rootPageId") == 1356]
+plugin.tx_solr.portalConfiguration.newsDetailPageID = 1363
+plugin.tx_solr.portalConfiguration.newsDetailBackPID = 
+plugin.tx_solr.portalConfiguration.fileMount = Kinderpatenschaft_Leipzig
+plugin.tx_solr.portalConfiguration.excludeFolders = 
+#[global]
