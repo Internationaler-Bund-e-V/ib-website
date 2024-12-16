@@ -1,0 +1,150 @@
+.SrbNewsListSlider {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+
+  .slick-track {
+    display: flex !important;
+  }
+
+  .slick-slide {
+    height: inherit !important;
+    position: relative;
+    
+
+  }
+
+
+  .SrbNewsSliderItem {
+    border: 1px solid $srb-font-color-light-grey;
+    margin: 1rem;
+
+    .SrbNewsSliderItemHeadline {
+      padding: 1rem;
+      font-weight: 700;
+      color: $srb-font-color-light-black;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      &:hover{
+        color:$srb-font-color-green;
+        opacity: .8;
+        cursor: pointer;
+      }
+
+
+
+      span {
+        height: 70px;
+        overflow: hidden;
+        display: inline-flex;
+
+      }
+    }
+
+
+  }
+
+  //dots
+  .SrbNewsSliderNavigationDots {
+
+    width: 100%;
+
+
+    ul {
+      list-style: none;
+      display: flex !important;
+    }
+
+
+    .slick-dots {
+
+      bottom: -25px;
+      display: block;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      text-align: center;
+
+      li {
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin: 0 5px;
+        padding: 0;
+        cursor: pointer;
+
+        button {
+          font-size: 0;
+          line-height: 0;
+          display: block;
+          width: 20px;
+          height: 20px;
+          padding: 5px;
+          cursor: pointer;
+          color: transparent;
+          border: 0;
+          outline: none;
+          background: transparent;
+
+          &::before {
+            font-family: 'slick';
+            font-size: 3rem;
+            line-height: 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            content: '•';
+            text-align: center;
+            opacity: .5;
+            color: black;
+          }
+        }
+
+        &.slick-active {
+          button {
+            &::before {
+              color: $srb-font-color-green;
+              opacity: .8;
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  //arrows 
+  .SrbNewsSliderNavigationArrowsPrev,
+  .SrbNewsSliderNavigationArrowsNext {
+
+    font-size: 4em;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    opacity: .25;
+    color: $srb-font-color-black;
+    top: 45%;
+    cursor: pointer;
+    z-index: 10;
+
+    &:hover {
+      color: $srb-font-color-green;
+      opacity: .8;
+    }
+  }
+
+  .SrbNewsSliderNavigationArrowsPrev {
+    left: 20px;
+  }
+
+  .SrbNewsSliderNavigationArrowsNext {
+    right: 20px;
+  }
+}

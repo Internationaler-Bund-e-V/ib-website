@@ -1,0 +1,17 @@
+# tx_news layouts
+tx_news.templateLayouts {
+        1 = Listenansicht Slider
+        2 = Listenansicht Liste
+        4 = Listenansicht Liste (ohne Bilder)
+        3 = Listenansicht Termine
+}
+
+# configure imagesizes inside rte fields
+
+RTE.default.preset = ib_srb
+
+RTE.default {
+	buttons.image.options.magic.maxWidth = 1000
+	buttons.image.options.plain.maxWidth = 1000	
+}
+

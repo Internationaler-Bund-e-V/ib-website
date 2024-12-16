@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2024-02-20T18:53:00Z"
+        product-name="misc">
+        <header />
+        <body>
+            <trans-unit id="email_dialog_text">
+                <source>Mail-Programm öffnen (sofern konfiguriert) oder E-Mail-Adresse anzeigen</source>
+            </trans-unit>
+            <trans-unit id="email_dialog_client">
+                <source>Mail-Programm</source>
+            </trans-unit>
+            <trans-unit id="email_dialog_address">
+                <source>E-Mail</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

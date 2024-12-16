@@ -1,0 +1,44 @@
+.SrbGallery {
+
+  .GalleryImage {
+    position: relative;
+    z-index: 10;
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    /* Centering y-axis */
+    align-items: center;
+    /* Centering x-axis */
+    max-height: 250px;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    overflow: hidden;
+
+    span {
+      position: relative;
+      margin: 1rem;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    img {
+
+      max-height: 305px;
+
+      width: auto;
+      padding: .5rem;
+
+      &:hover {
+        transform: scale(1.03);
+        transition: all .5s;
+      }
+    }
+  }
+
+}
+
+#lightbox {
+  display: flex;
+  flex-direction: column-reverse;
+}

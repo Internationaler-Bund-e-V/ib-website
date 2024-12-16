@@ -1,0 +1,73 @@
+.SrbTiles {
+  .SrbTilesHeadline {
+    h2 {
+      padding: 1rem 0;
+    }
+  }
+
+  .SrbTile {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    .SrbTileHeadline {
+      h3 {
+        color: $srb-font-color-green;
+        font-weight: 700;
+        font-size: 1.25rem;
+      }
+    }
+
+    .SrbTileSubline {
+      font-weight: 300;
+
+    }
+
+    .SrbTileLinkButton {
+      a {
+        display: inline-block;
+        background: $srb-font-color-yellow;
+        padding: 8px 24px;
+        font-style: italic;
+        color: $srb-font-color-white;
+        border-radius: 3px;
+        font-size: .8rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+
+        &:hover {
+          background: #333;
+          border-color: #333;
+          color: #ffd52d;
+        }
+      }
+    }
+  }
+
+  //vertical
+  .SrbTile.vertical {
+
+
+
+    .SrbTileHeadline {
+      padding-top: 1rem;
+
+    }
+
+  }
+
+  //blackwhiteTheme
+  &.blackwhiteTheme {
+    .SrbTileHeadline {
+      h3 {
+        color: $srb-font-color-light-black;
+      }
+    }
+
+    .SrbTileLinkButton {
+      a {
+        color: $srb-font-color-white;
+        background: $srb-font-color-light-black;
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers"
+      xmlns:friendlycaptcha="http://typo3.org/ns/StudioMitte/FriendlyCaptcha/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+      <f:variable name="dataPrivacySiteID" value="{f:cObject(typoscriptObjectPath: 'portalSettings.dataPrivacySiteID')}" />
+      <f:variable name="asboluteDataPrivacyPath" value="{f:uri.page(pageUid:dataPrivacySiteID)}" />
+
+    <formvh:renderRenderable renderable="{element}">
+        <f:variable name="captchaConfiguration" value="{friendlycaptcha:configuration()}" />
+        <f:if condition="{captchaConfiguration.enabled}">
+            <f:then>
+                <f:asset.script defer="1" async="1" identifier="friendlycaptcha" src="{captchaConfiguration.jsPath}" />
+
+                <f:render partial="Field/Field" arguments="{element: element, doNotShowLabel: 1}" contentAs="elementContent">
+                    <f:form.hidden
+                        property="{element.identifier}"
+                        id="{element.uniqueIdentifier}"
+                        value="1"
+                        additionalAttributes="{formvh:translateElementProperty(element: element, property: 'fluidAdditionalAttributes')}"
+                    />
+                    <div class="frc-captcha" data-sitekey="{captchaConfiguration.siteKey}" data-lang="{captchaConfiguration.languageIsoCode}" data-puzzle-endpoint="{captchaConfiguration.puzzleUrl}"></div>
+                </f:render>
+            </f:then>
+            <f:else>
+                <p>{f:translate(key:'LLL:EXT:friendlycaptcha_official/Resources/Private/Language/locallang.xlf:configuration_missing')}</p>
+            </f:else>
+        </f:if>
+        <!-- data privacy start -->
+        <div class="row">
+            <div class="medium-12 columns">
+                <f:format.raw>
+                    <f:translate arguments="{0:asboluteDataPrivacyPath}"
+                        key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_dataPrivacyLink" />
+                </f:format.raw>
+            </div>
+        </div>
+        <!-- data privacy end -->
+
+    </formvh:renderRenderable>
+</html>

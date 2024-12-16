@@ -1,0 +1,157 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="General" />
+<!--
+	=====================
+		Templates/News/List.html sss
+-->
+
+
+<f:section name="content">  
+  <f:if condition="{news}">
+    <f:then>
+      <f:switch expression="{settings.templateLayout}">
+        <f:case value="1">
+          <f:render section="listSlider" arguments="{news:news, settings:settings, newssliderid:contentObjectData.uid}" />
+        </f:case>
+        <f:case value="2">
+          <f:render section="listList" arguments="{news:news, settings:settings}" />
+        </f:case>
+        <f:case value="3">
+          <f:render section="listDate" arguments="{news:news, settings:settings}" />
+        </f:case>
+        <f:case value="4">
+          <f:render section="ListListItemNoPicture" arguments="{news:news, settings:settings}" />
+        </f:case>
+      </f:switch>
+    </f:then>
+    <f:else>
+      <div class="no-news-found">
+        <f:translate key="list_nonewsfound" />
+      </div>
+    </f:else>
+  </f:if>  
+</f:section>
+
+</html>
+
+<!--- listSlider -->
+<f:section name="listSlider">    
+  <div class="grid-container SrbDefaultContent SrbNewsListSlider" id="newsslider-{newssliderid}">
+    <div class="grid-x">
+      <div class="cell-12">
+        <f:if condition="{settings.customHeadline}">
+          <f:then>
+            <h2 class="ib-headline">{settings.customHeadline}</h2>
+          </f:then>
+          <f:else>
+            <h2 class="ib-headline">
+              <f:translate key="start-page-headline" />
+            </h2>
+          </f:else>
+        </f:if>
+      </div>
+    </div>
+
+    <div class="grid-x align-middle">
+      <div class="cell shrink">
+        <i class="fas fa-angle-left SrbNewsSliderNavigationArrowsPrev"></i>
+      </div>
+      <div class="SrbNewsSlider cell auto">
+        <f:for each="{news}" as="newsItem" iteration="iterator">
+          <div class="SrbNewsSliderItem">
+            <f:render partial="List/ListSliderItem" arguments="{newsItem:newsItem,settings:settings}" />
+          </div>
+        </f:for>
+      </div>
+      <div clas="cell shrink">
+        <i class="fas fa-angle-right SrbNewsSliderNavigationArrowsNext"></i>
+      </div>
+
+    </div>
+
+    <div class="SrbNewsSliderNavigation">
+      <div class="grid-x align-middle align-spaced">
+        <div class="cell shrink">
+          <div class="SrbNewsSliderNavigationDots"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</f:section>
+
+
+<!-- listList -->
+<f:section name="listList">
+  <div class="grid-container SrbDefaultContent SrbNewsListList">
+    <div class="grid-x">
+      <div class="cell-12">
+        <f:if condition="{settings.customHeadline}">
+          <f:then>
+            <h2 class="ib-headline">{settings.customHeadline}</h2>
+          </f:then>
+          <f:else>
+            <h2 class="ib-headline">
+              <f:translate key="start-page-headline" />
+            </h2>
+          </f:else>
+        </f:if>
+      </div>
+    </div>
+    <div class="grid-x">
+      <f:for each="{news}" as="newsItem" iteration="iterator">
+        <f:render partial="List/ListListItem" arguments="{newsItem:newsItem,settings:settings}" />
+      </f:for>
+    </div>
+  </div>
+</f:section>
+
+<!-- listListWithoutImage -->
+<f:section name="ListListItemNoPicture">
+  <div class="grid-container SrbDefaultContent SrbNewsListList">
+    <div class="grid-x">
+      <div class="cell-12">
+        <f:if condition="{settings.customHeadline}">
+          <f:then>
+            <h2 class="ib-headline">{settings.customHeadline}</h2>
+          </f:then>
+          <f:else>
+            <h2 class="ib-headline">
+              <f:translate key="start-page-headline" />
+            </h2>
+          </f:else>
+        </f:if>
+      </div>
+    </div>
+    <div class="grid-x">
+      <f:for each="{news}" as="newsItem" iteration="iterator">
+        <f:render partial="List/ListListItemNoPicture" arguments="{newsItem:newsItem,settings:settings}" />
+      </f:for>
+    </div>
+  </div>
+</f:section>
+
+<!-- listDate-->
+<f:section name="listDate">
+  <div class="grid-container SrbDefaultContent SrbNewsListDate">
+    <div class="grid-x">
+      <div class="cell-12">
+        <f:if condition="{settings.customHeadline}">
+          <f:then>
+            <h2 class="ib-headline">{settings.customHeadline}</h2>
+          </f:then>
+          <f:else>
+            <h2 class="ib-headline">
+              <f:translate key="start-page-headline" />
+            </h2>
+          </f:else>
+        </f:if>
+      </div>
+    </div>
+    <div class="grid-x grid-margin-x">
+      <f:for each="{news}" as="newsItem" iteration="iterator">
+        <f:render partial="List/ListDateItem" arguments="{newsItem:newsItem,settings:settings}" />
+      </f:for>
+    </div>
+  </div>
+</f:section>

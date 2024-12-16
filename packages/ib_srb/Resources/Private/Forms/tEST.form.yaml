@@ -1,0 +1,44 @@
+
+renderingOptions:
+  submitButtonLabel: Absenden
+type: Form
+identifier: tEST
+label: Workshop-Anmeldung
+prototypeName: standard
+renderables:
+  -
+    renderingOptions:
+      previousButtonLabel: 'Vorherige Seite'
+      nextButtonLabel: 'Nächster Schritt'
+    type: Page
+    identifier: page-1
+    label: Workshop-Anmeldung
+    renderables:
+      -
+        properties:
+          text: 'Melden Sie sich hier zu unseren Workshops an!'
+        type: StaticText
+        identifier: statictext-1
+        label: 'Lust auf neues Wissen? :)'
+      -
+        properties:
+          options:
+            'Workshop 1': 'Workshop 1'
+            'Workshop 2': 'Workshop 2'
+            'Workshop 3': 'Workshop 3'
+          elementDescription: 'Markieren Sie, an welchen Workshops Sie teilnehmen möchten:'
+        type: MultiCheckbox
+        identifier: multicheckbox-1
+        label: Workshop-Themen
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        renderingOptions:
+          submitButtonLabel: true
+        type: FriendlyCaptcha
+        identifier: friendlycaptcha-1
+        label: 'Friendly Captcha'
+        validators:
+          -
+            identifier: FriendlyCaptcha

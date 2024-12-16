@@ -1,0 +1,20 @@
+.SrbNewsListList {
+  .SrbNewsListListItem {
+    padding: 1rem 0;
+
+    .SrbNewsListItemImage {
+      img {
+        width: 100%;
+      }
+    }
+
+    .SrbNewsListItemHeadline {
+      color: $srb-font-color-green;
+      padding: 1rem 0;
+    }
+
+    .SrbNewsListButton {
+      padding: 1rem 0;
+    }
+  }
+}

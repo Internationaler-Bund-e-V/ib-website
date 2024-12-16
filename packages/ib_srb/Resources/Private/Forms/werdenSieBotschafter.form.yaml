@@ -1,0 +1,86 @@
+
+renderingOptions:
+  submitButtonLabel: 'Nachricht senden'
+  useInvisibleRecaptcha: false
+type: Form
+identifier: werdenSieBotschafter
+label: 'Werden Sie Botschafter'
+prototypeName: standard
+finishers:
+  -
+    options:
+      subject: 'SRB Kontak'
+      senderAddress: srb@ib.de
+      senderName: 'SRB Kontakt'
+      #recipientAddress: marco.schmidt@rm-solutions.de
+      #recipientName: 'Marco Schmidt'
+      #replyToAddress: ''
+      #carbonCopyAddress: ''
+      #blindCarbonCopyAddress: ''
+
+      replyToRecipients:
+        - ''
+      carbonCopyRecipients:
+        - ''
+      blindCarbonCopyRecipients:
+        - ''
+      recipients:
+        marco.schmidt@rm-solutions.de: 'Marco Schmidt'
+
+      format: html
+      attachUploads: false
+      translation:
+        language: ''
+    identifier: EmailToReceiver
+renderables:
+  -
+    renderingOptions:
+      previousButtonLabel: 'Previous step'
+      nextButtonLabel: 'Next step'
+    type: Page
+    identifier: page-1
+    label: 'Werden Sie Botschafter*in!'
+    renderables:
+      -
+        defaultValue: ''
+        type: Text
+        identifier: text-1
+        label: 'Ihr Name'
+        properties:
+          fluidAdditionalAttributes:
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Email
+        identifier: email-1
+        label: 'Ihre E-Mail-Adresse'
+        properties:
+          fluidAdditionalAttributes:
+            required: required
+        validators:
+          -
+            identifier: EmailAddress
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Text
+        identifier: text-2
+        label: Betreff
+      -
+        defaultValue: ''
+        type: Textarea
+        identifier: textarea-1
+        label: Nachricht
+      -
+        renderingOptions:
+          submitButtonLabel: false
+        type: Recaptcha
+        identifier: recaptcha-1
+        label: reCAPTCHA
+        validators:
+          -
+            identifier: Recaptcha

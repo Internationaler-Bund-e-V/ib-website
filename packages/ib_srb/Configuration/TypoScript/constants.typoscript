@@ -1,0 +1,44 @@
+IbMainTemplatePath {
+    #js = fileadmin/template/js
+    js = EXT:ib_template/Resources/Public/js
+
+    #css = fileadmin/template/css
+    css = EXT:ib_template/Resources/Public/css
+}
+
+portalSettings {
+    footerColumnOne = 4262
+    footerColumnTwo = 4263
+    footerColumnThree = 4264
+    metaMenu = 4258
+    mainMenu = 4243
+    spendenUID = 4267
+    searchUID = 4255
+    recaptchaSiteKey = 6LesBQ4UAAAAACHcJQuvSaBmyxftnwUI-j0SRCFA
+    google_tag_manager.id = 
+    cookiebot.language = DE
+    cookiebot.cbid = a5443aef-4545-4365-a7d7-0c9845b054b8
+    //data privacy site ID
+    dataPrivacySiteID = 4259
+}
+
+#recpatcha
+plugin.tx_recaptcha.public_key = 6LesBQ4UAAAAACHcJQuvSaBmyxftnwUI-j0SRCFA
+plugin.tx_recaptcha.private_key = 6LesBQ4UAAAAALhNNGcHEyuR2QdZBzjPhCDzgijV
+
+# development settings
+[applicationContext == "Development"]
+    portalSettings {
+        footerColumnOne = 4262
+        footerColumnTwo = 4263
+        footerColumnThree = 4264
+        metaMenu = 4258
+        mainMenu = 4243
+        spendenUID = 4267
+        searchUID = 4255
+        recaptchaSiteKey = 6LesBQ4UAAAAACHcJQuvSaBmyxftnwUI-j0SRCFA
+        google_tag_manager.id = 
+        cookiebot.language = DE
+        cookiebot.cbid = a5443aef-4545-4365-a7d7-0c9845b054b8
+    }
+[end]

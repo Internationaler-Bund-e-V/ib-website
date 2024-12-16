@@ -1,0 +1,4 @@
+page.headerData.9999 = TEXT
+	page.headerData.9999.value (     
+    <script id='Cookiebot' data-culture="{$portalSettings.cookiebot.language}" src='https://consent.cookiebot.eu/uc.js' data-cbid='{$portalSettings.cookiebot.cbid}' data-blockingmode='auto' type='text/javascript'></script>
+	)

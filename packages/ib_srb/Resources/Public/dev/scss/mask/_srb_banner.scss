@@ -1,0 +1,65 @@
+.SrbBanner {
+  background: $srb-font-color-dark-blue;
+  color: $srb-font-color-white;
+
+
+  .SrbBannerHeadline {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .SrbBannerLink {
+
+
+    .linkIndex {
+      font-size: 60px;
+      color: $srb-font-color-yellow;
+      font-weight: 300;
+    }
+
+    .linkText {
+      font-size: 20px;
+      font-style: italic;
+      width: 120px;
+      display: inherit;
+    }
+
+    a {
+      color: $srb-font-color-white;
+      font-size: 1.5rem;
+      display: inline-block;
+      position: relative;
+      padding: 1.5rem;
+
+
+      &::after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 0%;
+        top: 0px;
+        left: 0px;
+        background: rgba(255, 255, 255, 0.1);
+        -webkit-transition: 0.3s linear;
+        -moz-transition: 0.3s linear;
+        -ms-transition: 0.3s linear;
+        -o-transition: 0.3s linear;
+        transition: 0.3s linear;
+        transform: translateY(0%);
+      }
+
+      &:hover {
+
+        &::after {
+          height: 100%;
+        }
+      }
+
+    }
+
+  }
+}
+

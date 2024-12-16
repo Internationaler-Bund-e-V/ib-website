@@ -1,0 +1,81 @@
+#IbSrb {
+  #footer {
+    h3 {
+      font-style: italic;
+      text-transform: uppercase;
+      font-size: 1.75rem;
+    }
+
+    .nav-link {
+      font-size: 14px;
+    }
+
+    background: $srb-black;
+    color: $srb-font-color-white;
+
+    a {
+      color: $srb-font-color-white;
+
+      &:hover {
+        color: $srb-font-color-green;
+      }
+    }
+
+    #subFooter {
+      padding: 50px 0;
+
+      #ibFooterLogo {
+        width: 70px;
+        height: auto;
+        margin-top: 25px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+    }
+
+    #subFooterMeta {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+
+
+      .SrbMetaNavigation {
+        .align-middle {
+          min-height: 65px;
+        }
+
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+
+          li {
+            display: inline;
+            margin-left: 1rem;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 63.9375em) {
+  #IbSrb {
+    #footer {
+      .cell {
+        margin-bottom: 1rem;
+        font-size: 14px;
+      }
+
+      h3 {
+        font-size: 28px;
+        font-style: italic;
+      }
+    }
+  }
+}

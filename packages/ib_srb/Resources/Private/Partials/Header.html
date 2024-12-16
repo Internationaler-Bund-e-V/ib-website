@@ -1,0 +1,96 @@
+<div id="header" class="grid-container">
+  <div class="grid-container SrbDefaultContent">
+    <div id="SrbMobileMenu" data-responsive-toggle="SrbNavigation" data-hide-for="xlarge">
+      <a href="/">
+        <f:image src="EXT:ib_srb/Resources/Public/img/logo.svg" alt="Schwarz Rot Bunt Logo" />
+      </a>
+      <button id="SrbMobileMenuToggle" class="menu-icon" type="button" data-toggle="SrbNavigation"></button>
+    </div>
+
+    <div class="SrbNavigation" id="SrbNavigation">
+      <div id="SrbNavigationLeft">
+        <ul id="SrbNavigationContainer" class="accordion xlarge-horizontal menu"
+          data-responsive-menu="accordion xlarge-dropdown">
+          <!-- Mobile/Desktop Home Link-->
+          <a href="/" class="show-for-xlarge">
+            <f:image src="EXT:ib_srb/Resources/Public/img/logo.svg" alt="Schwarz Rot Bunt Logo" />
+          </a>
+
+
+          <!-- actual navigation -->
+          <f:for each="{mainMenu}" as="mainMenuItem" iteration="index">
+            <f:if condition="{index.index} == 0">
+              <!-- if first page -> home link/icon -->
+              <f:then>
+                <li class="nav-item {f:if(condition: '{currentUID} == {mainMenuHomeUID}', then: 'active')}">
+                  <a class="nav-link hide-for-xlarge" href="/" target="" title="">
+                    Startseite
+                  </a>
+                  <a class="nav-link show-for-xlarge" href="/" target="" title="">
+                    <svg class="mk-svg-icon" data-name="mk-moon-home-4" data-cacheid="icon-5b83360c76a49"
+                      style=" height:16px; width: 16px; " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                      <path d="M256 32l-256 256h64l192-192 192 192h64zm-160 288v160h128v-128h64v128h128v-160l-160-160z">
+                      </path>
+                    </svg>
+                  </a>
+                </li>
+              </f:then>
+              <f:else>
+                <li class="nav-item {f:if(condition: mainMenuItem.active, then: 'active')}">
+
+                  <f:if condition="{mainMenuItem.children}">
+                    <f:then>
+                      <a class="nav-link" href="javascript:void(0)" target="{mainMenuItem.target}"
+                        title="{mainMenuItem.title}">
+                        {mainMenuItem.title}
+                      </a>
+                      <f:render partial="SubMenu" arguments="{menu:mainMenuItem.children}" />
+                    </f:then>
+                    <f:else>
+                      <a class="nav-link" href="{mainMenuItem.link}" target="{mainMenuItem.target}"
+                        title="{mainMenuItem.title}">
+                        {mainMenuItem.title}
+                      </a>
+                    </f:else>
+
+                  </f:if>
+                </li>
+              </f:else>
+            </f:if>
+
+          </f:for>
+
+          <!-- mobiel spenden link-->
+          <li class="nav-item">
+            <f:link.typolink parameter="{spendenUID}" class="nav-link hide-for-xlarge">
+              Jetzt spenden
+            </f:link.typolink>
+          </li>
+
+        </ul>
+      </div>
+      <div id="SrbNavigationRight">
+        <div class="hide-for-xlarge">
+          <ul class="menu SrbNavigationMobileSearch">
+            <li><input type="search" placeholder="Suche..."></li>
+          </ul>
+        </div>
+        <div class="show-for-xlarge">
+          <f:link.typolink parameter="{spendenUID}" class="spendenButton">
+            Jetzt spenden
+          </f:link.typolink>
+        </div>
+        <div>
+          <f:link.typolink parameter="{searchUID}">
+            <i class="SrbSearchIcon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1664 1792">
+                <path
+                  d="M1152 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z">
+                </path>
+              </svg></i>
+            </a>
+          </f:link.typolink>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

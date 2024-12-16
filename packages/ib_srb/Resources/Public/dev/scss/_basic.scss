@@ -1,0 +1,92 @@
+body {
+  padding: 0;
+  margin: 0;
+  color: $srb-font-color-standard;
+  font-size: $srb-font-size-standard;
+  font-family: 'Lato';
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  &:hover {
+    color: $srb-font-color-green;
+    opacity: .8;
+  }
+}
+
+.SrbFontColorBlue {
+  color: $srb-font-color-blue;
+}
+
+h2 {
+  color: $srb-font-color-green;
+  font-size: 1.5rem;
+}
+
+.text-color-green {
+  color: #76B019;
+}
+
+.primaryButton {
+
+  display: inline-block;
+  background: $srb-font-color-yellow;
+  padding: 8px 24px;
+  font-style: italic;
+  color: $srb-font-color-white;
+  border-radius: 3px;
+  font-size: .8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+
+  &:hover {
+    background: #333;
+    border-color: #333;
+    color: #ffd52d;
+  }
+
+}
+
+.spendenButton {
+  background: $srb-font-color-green !important;
+  font-style: italic;
+  display: inline !important;
+  padding: 15px 6px !important;
+  margin: 0px 10px !important;
+  font-weight: bold !important;
+  color: $srb-font-color-white !important;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+
+  &:hover {
+    background: $srb-font-color-white !important;
+    color: $srb-font-color-green !important;
+    opacity: 1;
+  }
+}
+
+#srbSpendenTable {
+  thead {
+    font-size: 2.5rem;
+    color: $srb-font-color-green;
+
+
+
+  }
+
+  td {
+    font-size: 2rem;
+    color: $srb-font-color-green;
+
+
+  }
+
+  form {
+    input[type=image] {
+      width: 200px;
+    }
+  }
+}

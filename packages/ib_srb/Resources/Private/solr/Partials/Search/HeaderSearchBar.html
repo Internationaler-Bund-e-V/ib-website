@@ -1,0 +1,24 @@
+
+<f:section name="Form">
+
+<div class="row">
+
+    <div class="tx-solr-search-form">
+        <form method="get" id="tx-solr-search-form-pi-results" action="{f:cObject(typoscriptObjectPath: 'lib.searchPageLink')}" data-suggest="{f:cObject(typoscriptObjectPath: 'lib.searchPageLink')}?type=7384"
+            data-suggest-header="Top Treffer" accept-charset="utf-8">
+            <div class="ib-header-search-bar" id="ib-headerSearchBar">
+                <div class="headerSearchBarIcon">
+                    <i class="fas fa-search ib-hsb-actionButton"></i>
+                    <i class="fas fa-times ib-hsb-actionButton ib-hsb-hide"></i>
+                </div>
+                <div class="headerSearchBarSearch">                        
+                    <i class="fas fa-search" id="inputSearchIcon"></i>
+                    <input name="tx_solr[q]" disabled="disabled" type="text" placeholder="Suche..." id="headerSearchBar-input" autocomplete="off" class="tx-solr-q js-solr-q tx-solr-suggest tx-solr-suggest-focus form-control">
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+</f:section>

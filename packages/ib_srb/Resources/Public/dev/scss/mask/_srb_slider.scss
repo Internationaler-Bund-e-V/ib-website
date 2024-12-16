@@ -1,0 +1,256 @@
+/* Slider */
+
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 0;
+  padding: 0;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.dragging {
+    cursor: pointer;
+    cursor: hand;
+  }
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+  position: relative;
+  left: 0;
+  top: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+
+  .slick-loading & {
+    visibility: hidden;
+  }
+}
+
+.slick-slide {
+  float: left;
+  height: 100%;
+  min-height: 1px;
+
+  [dir="rtl"] & {
+    float: right;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  &.slick-loading img {
+    display: none;
+  }
+
+  display: none;
+
+  &.dragging img {
+    pointer-events: none;
+  }
+
+  .slick-initialized & {
+    display: block;
+  }
+
+  .slick-loading & {
+    visibility: hidden;
+  }
+
+  .slick-vertical & {
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+  }
+}
+
+.slick-arrow.slick-hidden {
+  display: none;
+}
+
+
+
+//custom srb slider
+.SrbSliderContainer {
+  position: relative;
+  margin-top: -2rem;
+}
+
+//arrows 
+.SrbSliderNavigationArrowsPrev,
+.SrbSliderNavigationArrowsNext {
+
+  font-size: 4em;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  position: absolute;
+  opacity: .25;
+  color: $srb-font-color-black;
+  top: 45%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.SrbSliderNavigationArrowsPrev {
+  left: 20px;
+}
+
+.SrbSliderNavigationArrowsNext {
+  right: 20px;
+}
+
+
+
+
+//dots
+.SrbSliderNavigationDots {
+  position: absolute;
+  width: 100%;
+  bottom: 20px;
+
+  ul {
+    list-style: none;
+  }
+
+
+  .slick-dots {
+
+    bottom: -25px;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+
+    li {
+      position: relative;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin: 0 5px;
+      padding: 0;
+      cursor: pointer;
+
+      button {
+        font-size: 0;
+        line-height: 0;
+        display: block;
+        width: 20px;
+        height: 20px;
+        padding: 5px;
+        cursor: pointer;
+        color: transparent;
+        border: 0;
+        outline: none;
+        background: transparent;
+
+        &::before {
+          font-family: 'slick';
+          font-size: 3rem;
+          line-height: 20px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 20px;
+          height: 20px;
+          content: '•';
+          text-align: center;
+          opacity: .25;
+          color: black;
+        }
+      }
+
+      &.slick-active {
+        button {
+          &::before {
+            color: $srb-font-color-white;
+            opacity: .8;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
+
+
+.SrbSlider {
+  position: relative;
+  max-height: 600px;
+  overflow: hidden;
+
+}
+
+@media screen and (min-width: 1341px) {
+  .SrbSlider {
+    margin-top: -100px;
+  }
+
+}
+
+@media screen and (min-width: 2000px) {
+  .SrbSlider {
+    .slick-slide {
+      img {
+        transform: translateY(-30px);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 2100px) {
+  .SrbSlider {
+    .slick-slide {
+      img {
+        transform: translateY(-40px);
+      }
+    }
+  }
+}

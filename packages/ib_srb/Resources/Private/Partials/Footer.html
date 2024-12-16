@@ -1,0 +1,79 @@
+<div id="footer" class="grid-container">
+  <div class="grid-container" id="subFooter">
+    <div class="grid-container SrbDefaultContent">
+      <div class="grid-x grid-margin-x">
+        <div class="cell small-12 medium-3">
+          <div class="cell small-12">
+            <a href="/">
+              <f:image src="EXT:ib_srb/Resources/Public/img/logo.svg" alt="Schwarz Rot Bunt Logo" />
+            </a>
+          </div>
+          <div class="cell small-12">
+            <a href="https://internationaler-bund.de" target="_blank">
+              <f:image src="EXT:ib_srb/Resources/Public/img/ibFooterLogo.png" alt="IB Logo" id="ibFooterLogo" />
+            </a>
+          </div>
+        </div>
+        <div class="cell small-12 medium-3">
+          <h3>Wir über uns</h3>
+          <ul>
+            <f:for each="{footerColumnOne}" as="footerColumnOneItem">
+              <li class="nav-item {f:if(condition: footerColumnOneItem.active, then: 'active')}">
+                <a class="nav-link" href="{footerColumnOneItem.link}" target="{footerColumnOneItem.target}"
+                  title="{footerColumnOneItem.title}">
+                  {footerColumnOneItem.title}
+                </a>
+              </li>
+            </f:for>
+          </ul>
+        </div>
+        <div class="cell small-12 medium-3">
+          <h3>Aktivitäten</h3>
+          <ul>
+            <f:for each="{footerColumnTwo}" as="footerColumnTwoItem">
+              <li class="nav-item {f:if(condition: footerColumnTwoItem.active, then: 'active')}">
+                <a class="nav-link" href="{footerColumnTwoItem.link}" target="{footerColumnTwoItem.target}"
+                  title="{footerColumnTwoItem.title}">
+                  {footerColumnTwoItem.title}
+                </a>
+              </li>
+            </f:for>
+          </ul>
+        </div>
+        <div class="cell small-12 medium-3">
+          <h3>Multimedia</h3>
+          <ul>
+            <f:for each="{footerColumnThree}" as="footerColumnThreeItem">
+              <li class="nav-item {f:if(condition: footerColumnThreeItem.active, then: 'active')}">
+                <a class="nav-link" href="{footerColumnThreeItem.link}" target="{footerColumnThreeItem.target}"
+                  title="{footerColumnThreeItem.title}">
+                  {footerColumnThreeItem.title}
+                </a>
+              </li>
+            </f:for>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="grid-container" id="subFooterMeta">
+    <div class="grid-container SrbDefaultContent SrbMetaNavigation">
+      <div class="grid-x align-middle">
+        <div class="cell small-12">
+          <ul>
+            <f:for each="{metaMenu}" as="metaMenuItem">
+              <li class="nav-item {f:if(condition: metaMenuItem.active, then: 'active')}">
+                <a class="nav-link" href="{metaMenuItem.link}" target="{metaMenuItem.target}"
+                  title="{metaMenuItem.title}">
+                  {metaMenuItem.title}
+                </a>
+              </li>
+            </f:for>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

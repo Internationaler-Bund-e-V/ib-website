@@ -1,0 +1,22 @@
+.SrbMaskContainer {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  h2 {
+    font-size: 36px;
+    color: $srb-font-color-green;
+  }
+
+  h3 {
+    color: $srb-font-color-lighter-black;
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  h4 {
+    font-size: 18px;
+    color: $srb-font-color-lighter-black;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}

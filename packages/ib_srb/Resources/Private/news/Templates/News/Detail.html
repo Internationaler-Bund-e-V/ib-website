@@ -1,0 +1,71 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:layout name="Detail" />
+
+<!--
+	=====================
+		News/Detail.html
+-->
+
+<f:section name="content">
+  <f:render partial="Detail/Opengraph" arguments="{newsItem: newsItem, settings:settings}" />
+  <div class="grid-container SrbDefaultContent">
+    <div class="grid-x SrbNewsDetail">
+      <div class="cell small-12 SrbNewsHeaderImageContainer">
+        <f:render partial="Detail/MediaContainer" arguments="{media: newsItem.mediaNonPreviews, settings:settings}" />
+      </div>
+      <div class="cell small-12 SrbNewsDetailDate">
+        <!-- date -->
+        <span>
+          <time itemprop="datePublished" datetime="{f:format.date(date:newsItem.datetime, format:'Y-m-d')}">
+            <f:format.date format="{f:translate(key:'dateFormat')}">{newsItem.datetime}</f:format.date>
+          </time>
+        </span>
+      </div>      
+      <!-- title/headlilne -->
+      <div class="cell small-12 SrbNewsDetailHeadline">
+        <h1>{newsItem.title}</h1>
+      </div>      
+
+      <hr class="cl-right" />
+      <!-- main text -->
+
+      <div class="news-text-wrap" itemprop="articleBody">
+        <f:format.html>{newsItem.bodytext}</f:format.html>
+      </div>
+      <hr class="cl-right" />
+
+      <f:if condition="{settings.detail.showPrevNext}">
+        <n:simplePrevNext pidList="{newsItem.pid}" news="{newsItem}" as="paginated" sortField="datetime">
+          <f:if condition="{paginated}">
+            <div class="cell small-12">
+              <div class="grid-x SrbNewsPagination">
+                <f:if condition="{paginated.prev}">
+                  <div class="SrbNewsPaginationPrev previous">
+                    <n:link newsItem="{paginated.prev}" settings="{settings}">
+                      <i class="fas fa-angle-left"></i>{paginated.prev.title}
+                    </n:link>
+                  </div>
+                </f:if>
+                <f:if condition="{paginated.next}">
+                  <div class="SrbNewsPaginationNext next">
+                    <n:link newsItem="{paginated.next}" settings="{settings}" class="next">
+                      {paginated.next.title}<i class="fas fa-angle-right"></i>
+                    </n:link>
+                  </div>
+                </f:if>
+              </div>
+            </div>
+          </f:if>
+        </n:simplePrevNext>
+      </f:if>
+
+    </div>
+  </div>
+  </div>
+
+
+</f:section>
+
+</html>

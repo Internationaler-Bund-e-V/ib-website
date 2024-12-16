@@ -1,0 +1,27 @@
+
+
+robots = PAGE
+robots {
+    typeNum = 84358734
+    config {
+        disableAllHeaderCode = 1
+        additionalHeaders.10.header = Content-Type:text/plain;charset=utf-8
+        xhtml_cleaning = 0
+        admPanel = 0
+        debug = 0
+        index_enable = 0
+        removeDefaultJS = 1
+        removeDefaultCss = 1
+        removePageCss = 1
+        INTincScript_ext.pagerender = 1
+        sourceopt.enabled = 0
+    }
+
+    10 = TEXT
+    10.value (
+User-Agent: *
+Disallow: /suche/
+Disallow: /suche
+Sitemap: https://schwarz-rot-bunt.de/sitemap.xml
+    )
+}
