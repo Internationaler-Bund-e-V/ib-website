@@ -1,0 +1,16 @@
+{
+    "name": "rms/ib-page-extension",
+    "type": "typo3-cms-extension",
+    "description": "IB - Page Extension",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "authors": [],
+    "require": {
+        "typo3/cms-core": "^11.5"
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "ib_page_extension"
+        }
+    }
+}
