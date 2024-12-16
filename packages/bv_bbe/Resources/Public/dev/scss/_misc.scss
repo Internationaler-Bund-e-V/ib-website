@@ -1,0 +1,45 @@
+.customNewsHeadline {
+  padding-left: 15px;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.news {
+  .news-img-wrap {
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+
+#SrbMainContent {
+  background: white;
+  max-width: 1700px;
+  margin: 0 auto;
+
+  -webkit-user-select: text;
+  /* Safari */
+  -ms-user-select: text;
+  /* IE 10 and IE 11 */
+  user-select: text;
+
+  /* Standard syntax */
+  p {
+    -webkit-user-select: text;
+    /* Safari */
+    -ms-user-select: text;
+    /* IE 10 and IE 11 */
+    user-select: text;
+    /* Standard syntax */
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+}
+
+.mainContainer {
+  background: #eee;
+}

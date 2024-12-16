@@ -1,0 +1,218 @@
+# development settings
+[applicationContext == "Development"]
+  config.no_cache = 1
+  config.contentObjectExceptionHandler = 0
+[end]
+
+config {
+    index_enable = 1
+}
+
+config.htmlTag.attributes.class = no-js
+
+# Default PAGE object:
+page = PAGE
+page.bodyTag = <body id="BVBBE" data-cblanguage="DE">
+page.shortcutIcon = EXT:bv_bbe/Resources/Public/img/BvBBI.ico
+page.headerData{
+  10 = TEXT
+  10.value = <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><meta http-equiv="x-ua-compatible" content="ie=edge">
+}
+
+page.10 = FLUIDTEMPLATE
+page.10{
+  #stdWrap.dataWrap = <!--TYPO3SEARCH_begin-->|<!--TYPO3SEARCH_end-->
+  file.stdWrap.cObject = CASE
+  file.stdWrap.cObject {
+        key.data = pagelayout
+
+        default = TEXT
+        default.value = EXT:bv_bbe/Resources/Private/Layouts/Default.html        
+  }  
+
+  templateRootPaths.1     = EXT:bv_bbe/Resources/Private/Templates/  
+  templateRootPaths.2     = EXT:ib_dataprivacy/Resources/Private/Templates/ 
+  partialRootPaths.1      = EXT:bv_bbe/Resources/Private/Partials/
+  layoutRootPaths.1       = EXT:bv_bbe/Resources/Private/Layouts/
+
+  variables {
+      content < styles.content.get
+      mainMenuHomeUID = TEXT
+      mainMenuHomeUID.value = {$portalSettings.mainMenu}
+      spendenUID = TEXT
+      spendenUID.value = {$portalSettings.spendenUID}
+      searchUID = TEXT
+      searchUID.value = {$portalSettings.searchUID}
+   }
+   dataProcessing {
+      10 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+      10 {
+          special = directory          
+          special.value = {$portalSettings.footerColumnOne}
+          levels = 1          
+          as = footerColumnOne              
+      }
+      11 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+      11 {
+          special = directory          
+          special.value = {$portalSettings.footerColumnTwo}
+          levels = 1          
+          as = footerColumnTwo              
+      }    
+      12 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+      12 {
+          special = directory          
+          special.value = {$portalSettings.footerColumnThree}
+          levels = 1          
+          as = footerColumnThree              
+      }    
+      13 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+      13 {
+          special = directory          
+          special.value = {$portalSettings.footerColumnFour}
+          levels = 1          
+          as = footerColumnFour              
+      }         
+      20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+      20 {
+        special = directory
+        special.value = {$portalSettings.mainMenu}
+        levels = 2          
+        as = mainMenu              
+      }
+      30 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+      30 {
+        special = directory
+        special.value = {$portalSettings.metaMenu}
+        levels = 1          
+        as = metaMenu              
+      }
+      40 = TYPO3\CMS\Frontend\DataProcessing\LanguageMenuProcessor
+      40 {
+        languages = auto
+        as = langNavigation
+      }
+  }  
+}
+
+plugin.tx_felogin_login {
+  view {
+    templateRootPaths {
+      0 = EXT:felogin/Resources/Private/Templates/
+      10 = EXT:bv_bbe/Resources/Private/Templates/
+    }
+  }
+}
+
+#include IB Main Template Files
+page.includeJS {
+	jquery = typo3conf/ext/ib_template/Resources/Public/js/min/jquery.min.js
+}
+page.includeJSFooter {
+	#libs = {$IbMainTemplatePath.js}/min/libs.min.js
+	#frontend = {$IbMainTemplatePath.js}/min/frontend.min.js
+  
+}
+
+#include Bundesverband BBE Template Files
+page.includeCSS {
+  #faLib = EXT:bv_bbe/Resources/Public/dist/css/faAll.min.css	
+  bvbbeLib = EXT:bv_bbe/Resources/Public/dist/css/libs.min.css	
+	bvbbeApp = EXT:bv_bbe/Resources/Public/dist/css/app.min.css	
+  #lightbox = EXT:bv_bbe/Resources/Public/dist/css/lightbox.min.css	  
+  
+}
+page.includeJS {
+  bvbbeLib = EXT:bv_bbe/Resources/Public/dist/js/libs.min.js
+	bvbbeApp = EXT:bv_bbe/Resources/Public/dist/js/app.min.js  
+  #lightbox = EXT:bv_bbe/Resources/Public/dist/js/lightbox.min.js	
+}
+
+#page.includeJSLibs.bootstrap = EXT:bv_bbe/Resources/Public/dist/js/bootstrap.min.js
+
+#########################
+# solr config
+#########################
+plugin.tx_solr.view{
+	templateRootPaths {
+			0 = EXT:solr/Resources/Private/Templates/
+			10 = EXT:bv_bbe/Resources/Private/solr/Templates/
+		}
+		partialRootPaths {
+			0 = EXT:solr/Resources/Private/Partials/
+			10 = EXT:bv_bbe/Resources/Private/solr/Partials/
+		}
+		layoutRootPaths {
+			0 = EXT:solr/Resources/Private/Layouts/
+			10 = EXT:bv_bbe/Resources/Private/solr/Layouts/
+		}
+}
+
+plugin.tx_solr.index.queue.pages.indexer.authorization {
+	username = ib
+	password = ib
+}
+
+# -----------------------------------------------------------------------------
+# RTE configuration
+# -----------------------------------------------------------------------------
+
+lib.parseFunc_RTE.allowTags = p,div,b,form,span,input,h1,h2,h3,h4,h5,i,br,strong,iframe,hr,em
+
+# -----------------------------------------------------------------------------
+# Form Setup
+# -----------------------------------------------------------------------------
+
+plugin.tx_form {
+    settings {
+        yamlConfigurations {
+            # register your own additional configuration
+            # choose a number higher than 30 (below is reserved)
+            100 = EXT:bv_bbe/Configuration/Form/CustomFormSetup.yaml
+        }
+    }
+}
+
+# -----------------------------------------------------------------------------
+# FriendlyCaptcha
+# -----------------------------------------------------------------------------
+
+plugin.tx_form.settings.yamlConfigurations.1998 = EXT:bv_bbe/Configuration/Yaml/BaseSetup.yaml
+plugin.tx_form.view.partialRootPaths.1998 = EXT:bv_bbe/Resources/Private/FriendlyCaptcha/
+
+page.includeJSFooterlibs{
+  friendlycaptchaModule = https://unpkg.com/friendly-challenge@0.9.0/widget.module.min.js
+  friendlycaptchaModule.external = 1
+
+  friendlycaptcha = https://unpkg.com/friendly-challenge@0.9.0/widget.min.js
+  friendlycaptcha.external = 1
+}
+
+# -----------------------------------------------------------------------------
+# portal settings
+# -----------------------------------------------------------------------------
+portalSettings.searchUID = TEXT
+portalSettings.searchUID.value = {$portalSettings.searchUID}
+portalSettings.footerColumnOne = TEXT
+portalSettings.footerColumnOne.value = {$portalSettings.footerColumnOne}
+portalSettings.footerColumnTwo = TEXT
+portalSettings.footerColumnTwo.value = {$portalSettings.footerColumnTwo}
+portalSettings.footerColumnThree = TEXT
+portalSettings.footerColumnThree.value = {$portalSettings.footerColumnThree}
+portalSettings.footerColumnFour = TEXT
+portalSettings.footerColumnFour.value = {$portalSettings.footerColumnFour}
+
+# -----------------------------------------------------------------------------
+# news configuration
+# -----------------------------------------------------------------------------
+@import 'EXT:bv_bbe/Configuration/TypoScript/News/setup.typoscript'
+
+# -----------------------------------------------------------------------------
+# cookiebot configuration
+# -----------------------------------------------------------------------------
+@import 'EXT:bv_bbe/Configuration/TypoScript/Cookiebot/cookiebot.typoscript'
+
+# -----------------------------------------------------------------------------
+# matomo configuration
+# -----------------------------------------------------------------------------
+@import 'EXT:bv_bbe/Configuration/TypoScript/Matomo/matomo.typoscript'

@@ -1,0 +1,53 @@
+.logo__img {
+  max-height: 50px;
+  width: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $bv_bee_primary_color;
+}
+
+.aheto-btn {
+  border: 1px solid $bv_bee_primary_color;
+
+  &:hover {
+    background-color: white;
+  }
+}
+
+ul {
+  padding-left: 15px;
+
+  li {
+    color: #999;
+    font-family: Montserrat, sans-serif;
+  }
+}
+
+.SrbNewsPagination {
+  a {
+    i {
+      padding: 0 10px;
+    }
+  }
+}
+
+.aht-blog-yoga__item {
+  word-break: break-word;
+
+}
+
+@media screen and (min-width: 1500px) {
+  .aht-blog-yoga__item {
+
+    flex-basis: 33.33%;
+  }
+}
+a{
+  font-weight: inherit;
+}

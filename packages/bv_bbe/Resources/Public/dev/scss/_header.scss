@@ -1,0 +1,13 @@
+#langMenu {
+  display: flex;
+  align-items: center;
+
+  #dropdownMenuButton {
+    background: none;
+    border: none;
+    color: #555;
+  }
+  #langMenuLanguages{
+    min-width: unset;
+  }
+}

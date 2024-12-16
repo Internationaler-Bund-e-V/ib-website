@@ -1,0 +1,63 @@
+imports:
+  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml" }
+  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
+  - { resource: "EXT:rte_ckeditor_image/Configuration/RTE/Plugin.yaml" }
+
+
+editor:
+  config:
+    # RTE default config removes image plugin - restore it:
+    format_tags: "p;h1;h2;h3;h4;h5;pre"
+
+    contentsCss:
+      - 'EXT:rte_ckeditor/Resources/Public/Css/contents.css'
+      - 'EXT:safe_psi_template/Resources/Public/dist/css/rteStyles.min.css'
+
+    toolbarGroups:
+      - { name: styles, groups: [ styles, format ] }
+      - { name: basicstyles, groups: [ basicstyles ] }
+      - { name: paragraph, groups: [ list, indent, blocks, align ] }
+      - { name: links, groups: [ links ] }
+      - { name: clipboard, groups: [ clipboard, cleanup, undo ] }
+      - { name: editing, groups: [ spellchecker ] }
+      - { name: insert, groups: [ insert ] }
+      - { name: tools, groups: [ table, specialchar, insertcharacters ] }
+      - { name: document, groups: [ mode ] }
+
+    justifyClasses:
+      - text-left
+      - text-center
+      - text-right
+      - text-justify
+
+    extraPlugins:
+      - justify
+
+    removeButtons:
+      - Anchor
+      - Underline
+      
+      #- Styles
+
+    removePlugins: null
+    fillEmptyBlocks: false
+   
+    #extraAllowedContent: "*(*)[data-*]"
+    allowedContent: true
+   
+    stylesSet:
+      - { name: "External Link", element: "a", attributes: { class: "customlink external"}}
+      - { name: "MailTo Link", element: "a", attributes: { class: "customlink mailto"}}
+      - { name: "Download Link", element: "a", attributes: { class: "customlink download"}}
+
+  externalPlugins:
+    #youtube: { resource: "fileadmin/template/Ressources/Public/JavaScript/Ckeditor/Plugins/youtube/" }
+    typo3link: { resource: "EXT:rte_ckeditor/Resources/Public/JavaScript/Plugins/typo3link.js", route: "rteckeditor_wizard_browse_links" }
+    #showbrokenlinks: { resource: "EXT:rte_ckeditor/Resources/Public/JavaScript/Plugins/showbrokenlinks/plugin.js"}
+    # This is a plugin, found here: https://github.com/ufdada/quicktable
+    quicktable: { resource: "EXT:rte_ckeditor/Resources/Public/JavaScript/Plugins/quicktable/plugin.js" }
+    autolinking: { resource: "EXT:rte_ckeditor/Resources/Public/JavaScript/Plugins/autolinking.js" }
+    # softhyphen plugin for adding ctrl+dash support to insert a conditional word break
+    softhyphen:
+      resource: "EXT:rte_ckeditor/Resources/Public/JavaScript/Plugins/softhyphen/"
+      enableShortcut: true

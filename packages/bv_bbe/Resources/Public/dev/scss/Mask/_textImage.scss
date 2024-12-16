@@ -1,0 +1,27 @@
+.Bvbbe-TextImage {
+  .row {
+    align-items: center;
+
+    .imgCol {
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+    }
+  }
+
+  p {
+    padding: 0;
+  }
+
+
+  &.bg-blue {
+    background: $bv_bee_primary_color;
+
+    p {
+      color: white;
+    }
+  }
+
+}

@@ -1,0 +1,23 @@
+<div class="cell small-12 medium-6 large-4 SrbNewsListDateItem flex-container flex-dir-column">
+
+  <div class="flex-child-shrink">
+    <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+      <div class="SrbNewsListItemHeadline">
+        <span>
+          {newsItem.title}
+        </span>
+      </div>
+    </n:link>
+  </div>
+  <div class="flex-child-auto SrbNewsListDateItemTeaser">
+    {newsItem.teaser}
+  </div>
+
+
+  <div class="flex-child-shrink SrbNewsListButton">
+    <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+      weiter
+    </n:link>
+  </div>
+
+</div>

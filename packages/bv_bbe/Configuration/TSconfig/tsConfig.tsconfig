@@ -1,0 +1,9 @@
+
+# configure imagesizes inside rte fields
+
+RTE.default.preset = bv_bbe
+
+RTE.default {
+    buttons.image.options.magic.maxWidth = 1000
+    buttons.image.options.plain.maxWidth = 1000
+}

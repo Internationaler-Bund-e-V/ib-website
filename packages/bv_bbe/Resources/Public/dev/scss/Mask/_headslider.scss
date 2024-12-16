@@ -1,0 +1,59 @@
+.BvbbeHeadSlider {
+
+  .swiper-wrapper {
+    box-sizing: border-box;
+  }
+
+  .aht-banner__content {
+    text-align: center;
+  }
+
+  .BvbbeSlideContainer {
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .imgPlaceholder {
+      display: none;
+    }
+
+  }
+
+  &.noFullScreen {
+    max-width: 1750px;
+
+    .imgPlaceholder {
+      display: block;
+    }
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .BvbbeHeadSlider {
+    .aht-banner__content {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+
+      .aht-banner__title {
+        font-size: 60px;
+        font-weight: bold;
+      }
+
+      .aht-banner__desc {
+        color: white;
+      }
+    }
+  }
+
+}

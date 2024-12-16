@@ -1,0 +1,60 @@
+<div class="aht-blog-yoga__item">
+  <div class="aht-blog-yoga__item-inner">
+    <div class="aht-blog-yoga__img">
+      <f:if condition="{newsItem.mediaPreviews}">
+        <!-- media preview element -->
+        <f:then>
+
+
+          <f:alias map="{mediaElement: newsItem.mediaPreviews.0}">
+            <f:if condition="{mediaElement.originalResource.type} == 2">
+              <f:image class="aht-blog-yoga__img-inner js-bg" image="{mediaElement}"
+                title="{mediaElement.originalResource.title}" alt="{mediaElement.originalResource.alternative}"
+                maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}"
+                maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}" />
+            </f:if>
+            <f:if condition="{mediaElement.originalResource.type} == 4">
+              <f:render partial="Detail/MediaVideo" arguments="{mediaElement: mediaElement}" />
+            </f:if>
+            <f:if condition="{mediaElement.originalResource.type} == 5">
+              <f:image class="aht-blog-yoga__img-inner js-bg" image="{mediaElement}"
+                title="{mediaElement.originalResource.title}" alt="{mediaElement.originalResource.alternative}"
+                maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}"
+                maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}" />
+            </f:if>
+          </f:alias>
+
+
+        </f:then>
+        <f:else>
+          <f:if condition="{settings.displayDummyIfNoMedia}">
+            <div class="news-img-wrapper">
+              <span class="no-media-element">
+                <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+                  <f:image class="aht-blog-yoga__img-inner js-bg" src="{settings.list.media.dummyImage}" title="" alt=""
+                    maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}"
+                    maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}" />
+                </n:link>
+              </span>
+            </div>
+          </f:if>
+        </f:else>
+      </f:if>
+      <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+        <div class="newsDetailsLinkButton aht-blog-yoga__link aheto-btn t-uppercase">Weiter</div>
+      </n:link>     
+    </div>
+    <div class="aht-blog-yoga__content">
+
+      <h4 class="aht-blog-yoga__title">{newsItem.title}</h4>
+      <p class="aht-blog-yoga__desc">{newsItem.teaser}</p>
+    </div>
+    <div class="aht-blog-yoga__details">
+      <div class="aht-blog-yoga__detail">
+        <span class="aht-blog-yoga__det-icon el icon_calendar"></span>
+        <p class="aht-blog-yoga__det-text"><f:format.date format="{f:translate(key:'dateFormat')}">{newsItem.datetime}</f:format.date></p>
+      </div>
+
+    </div>
+  </div>
+</div>

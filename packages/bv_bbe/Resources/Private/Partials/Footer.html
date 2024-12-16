@@ -1,0 +1,144 @@
+<footer class="aheto-footer aheto-footer-5" id="footer">
+  <div class="aheto-footer-5__main">
+    <div class="container">
+      <div class="row">
+        <!-- footer column one-->
+        <div class="col-sm-12 col-md-6 col-lg-3">
+          <div class="widget widget_nav_menu widget_nav_menu_">
+            <v:page.info pageUid="{f:cObject(typoscriptObjectPath: 'portalSettings.footerColumnOne')}"
+              as="headlinePartner">
+              <h2 class="widget-title">{headlinePartner.title}</h2>
+            </v:page.info>
+            <div class="menu-main-container">
+              <ul class="menu">
+                <f:for each="{footerColumnOne}" as="menuItem">
+                  <li
+                    class="menu-item  menu-item-type-post_type menu-item-object-page {f:if(condition: menuItem.active, then: 'active')}">
+                    <a href="{menuItem.link}" target="{menuItem.target}" title="{menuItem.title}">
+                      {menuItem.title}
+                    </a>
+                  </li>
+                </f:for>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- footer column two-->
+        <div class="col-sm-12 col-md-6 col-lg-3">
+          <div class="widget widget_nav_menu widget_nav_menu_">
+            <v:page.info pageUid="{f:cObject(typoscriptObjectPath: 'portalSettings.footerColumnTwo')}" as="headlineLinks">
+              <h2 class="widget-title">{headlineLinks.title}</h2>
+            </v:page.info>
+            <div class="menu-main-container">
+              <ul class="menu">
+                <f:for each="{footerColumnTwo}" as="menuItem">
+                  <li
+                    class="menu-item  menu-item-type-post_type menu-item-object-page {f:if(condition: menuItem.active, then: 'active')}">
+                    <a href="{menuItem.link}" target="{menuItem.target}" title="{menuItem.title}">
+                      {menuItem.title}
+                    </a>
+                  </li>
+                </f:for>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- footer column three-->
+        <div class="col-sm-12 col-md-6 col-lg-3">
+          <div class="widget widget_nav_menu widget_nav_menu_">
+            <v:page.info pageUid="{f:cObject(typoscriptObjectPath: 'portalSettings.footerColumnThree')}"
+              as="headlinePartner">
+              <h2 class="widget-title">{headlinePartner.title}</h2>
+            </v:page.info>
+            <div class="menu-main-container">
+              <ul class="menu">
+                <f:for each="{footerColumnThree}" as="menuItem">
+                  <li
+                    class="menu-item  menu-item-type-post_type menu-item-object-page {f:if(condition: menuItem.active, then: 'active')}">
+                    <a href="{menuItem.link}" target="{menuItem.target}" title="{menuItem.title}">
+                      {menuItem.title}
+                    </a>
+                  </li>
+                </f:for>
+              </ul>
+            </div>
+          </div>
+        </div>
+         <!-- footer column four-->
+         <div class="col-sm-12 col-md-6 col-lg-3">
+          <div class="widget widget_nav_menu widget_nav_menu_">
+            <v:page.info pageUid="{f:cObject(typoscriptObjectPath: 'portalSettings.footerColumnFour')}"
+              as="headlinePartner">
+              <h2 class="widget-title">{headlinePartner.title}</h2>
+            </v:page.info>
+            <div class="menu-main-container">
+              <ul class="menu">
+                <f:for each="{footerColumnFour}" as="menuItem">
+                  <li
+                    class="menu-item  menu-item-type-post_type menu-item-object-page {f:if(condition: menuItem.active, then: 'active')}">
+                    <a href="{menuItem.link}" target="{menuItem.target}" title="{menuItem.title}">
+                      {menuItem.title}
+                    </a>
+                  </li>
+                </f:for>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="aheto-footer-5__bottom">
+    <div class="container">
+      <div class="row footerRowSocialLinks">
+        <div class="col-sm-12 col-md-12 col-lg-7">
+          <div class="aheto-footer-menu">
+            <nav class="menu-main-container">
+              <ul class="main-menu">
+                <f:for each="{metaMenu}" as="metaMenuItem">
+                  <li
+                    class="menu-item  menu-item-type-post_type menu-item-object-page {f:if(condition: metaMenuItem.active, then: 'active')}">
+                    <a class="nav-link" href="{metaMenuItem.link}" target="{metaMenuItem.target}"
+                      title="{metaMenuItem.title}">
+                      {metaMenuItem.title}
+                    </a>
+                  </li>
+                </f:for>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- social meda-->
+        <div class="col-sm-12 col-md-12 col-lg-5">
+          <div class="aht-socials aht-socials--circle">
+            <div class="footerSocialHeadline">
+              <h2 class="widget-title">Social Media</h2>
+            </div>
+            <a class="aht-socials__link aht-btn--dark aht-btn--trans " href="https://www.linkedin.com/">
+              <i class="aht-socials__icon icon ion-social-linkedin"></i>
+            </a>
+            <a class="aht-socials__link aht-btn--dark aht-btn--trans " href="https://youtube.com/">
+              <i class="aht-socials__icon icon ion-social-youtube"></i>
+            </a>
+            <a class="aht-socials__link aht-btn--dark aht-btn--trans " href="https://www.facebook.com/">
+              <i class="aht-socials__icon icon ion-social-facebook"></i>
+            </a>
+          </div>
+        </div>
+        <!-- social media end -->
+      </div>
+    </div>
+  </div>
+  <div class="aheto-footer-5__bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aheto-footer-5__cr margin-sm-10b margin-sm-10t">
+            <p class="aheto-footer-5__cr-text ">© Bundesverband Berufsbildung International (BvBBI) e.V.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

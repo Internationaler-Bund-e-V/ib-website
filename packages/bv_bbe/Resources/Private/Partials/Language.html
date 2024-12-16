@@ -1,0 +1,20 @@
+<f:if condition="{langNavigation}">
+
+  <f:for each="{langNavigation}" as="item">
+
+    <f:if condition="{item.available}">
+      <f:then>
+        <a class="dropdown-item" href="{item.link}" hreflang="{item.hreflang}" title="{item.title}">
+          {item.navigationTitle}
+        </a>
+      </f:then>
+      <f:else>
+        <a class="dropdown-item">
+          {item.navigationTitle}
+        </a>
+      </f:else>
+    </f:if>
+
+  </f:for>
+
+</f:if>

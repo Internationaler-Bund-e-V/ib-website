@@ -1,0 +1,14 @@
+.BvbbeNewsList {
+  .aht-blog-yoga__item-inner {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .aht-blog-yoga__content {
+    flex: 1 1 auto;
+  }
+  .newsDetailsLinkButton{
+    z-index: 1000;
+  }
+}

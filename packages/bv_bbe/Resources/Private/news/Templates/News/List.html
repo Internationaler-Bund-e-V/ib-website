@@ -1,0 +1,73 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="General" />
+<!--
+	=====================
+		Templates/News/List.html sss
+-->
+
+
+<f:section name="content">
+  <f:if condition="{news}">
+    <f:then>
+      <f:switch expression="{settings.templateLayout}">
+
+        <f:case value="2">
+          <f:render section="list" arguments="{news:news, settings:settings, newssliderid:contentObjectData.uid}" />
+        </f:case>
+        <f:defaultCase>
+          <f:render section="listSlider"
+            arguments="{news:news, settings:settings, newssliderid:contentObjectData.uid}" />
+        </f:defaultCase>
+      </f:switch>
+
+    </f:then>
+    <f:else>
+      <div class="no-news-found">
+        <f:translate key="list_nonewsfound" />
+      </div>
+    </f:else>
+  </f:if>
+</f:section>
+
+</html>
+
+<!--- listSlider -->
+<f:section name="listSlider">
+  <div class="BvbbeNewsListSlider container pt-5" id="bvbbe_newsslider-{newssliderid}">
+    <div class="Bvbbe-Swiper">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <f:for each="{news}" as="newsItem" iteration="iterator">
+          <div class="swiper-slide">
+            <f:render partial="List/ListSliderItem" arguments="{newsItem:newsItem,settings:settings}" />
+          </div>
+        </f:for>
+      </div>
+      <div class="BvbbeNewsSliderNavigation pt-5 pb-5">
+        <div class="swiper-button-prev swiper-navigation-button"></div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next swiper-navigation-button"></div>
+      </div>
+    </div>
+  </div>
+</f:section>
+
+<!-- list -->
+<f:section name="list">
+  <div class="BvbbeNewsList container pt-5" id="bvbbe_newsslider-{newssliderid}">
+    <div class="margin-lg-40t margin-lg-90b margin-sm-20t margin-sm-20b">
+      <div class="aht-blog-yoga">
+        <f:if condition="{settings.customHeadline}">
+          <h2 class="customNewsHeadline">{settings.customHeadline}</h2>
+        </f:if>
+        
+        <div class="aht-blog-yoga__list">
+          <f:for each="{news}" as="newsItem" iteration="iterator">
+            <f:render partial="List/ListListItem" arguments="{newsItem:newsItem,settings:settings}" />
+          </f:for>
+        </div>
+      </div>
+    </div>
+  </div>
+</f:section>

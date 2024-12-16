@@ -1,0 +1,82 @@
+<header class="aheto-header aheto-header-5">
+  <div class="aheto-header-5__nav-wrap">
+    <div class="aheto-header-5__inner">
+      <div class="aheto-header-5__line">
+        <div class="aheto-header-5__logo">
+          <div class="logo">
+            <a class="logo__link" href="/">
+              <div class="logo__img-holder">
+                <f:image class="logo__img" src="EXT:bv_bbe/Resources/Public/img/BvBBI_logo_blue.svg"
+                  alt="Bundesverband Berufsbildungsexport Logo" />
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="aheto-header-5__menu js-menu js-menu-height">
+          <ul class="main-menu">
+            <f:for each="{mainMenu}" as="menuItem">
+              <li
+                class="menu-item menu-item-type-custom menu-item-object-custom {f:if(condition: menuItem.active, then: 'active')}">
+                <f:if condition="{menuItem.children}">
+                  <f:then>
+                    <a href="#">{menuItem.title}</a>
+                    <f:render section="subMenu" arguments="{subMenu:menuItem.children}" />
+                  </f:then>
+                  <f:else>
+                    <a class="nav-link" href="{menuItem.link}" target="{menuItem.target}" title="{menuItem.title}">
+                      {menuItem.title}
+                    </a>
+                  </f:else>
+                </f:if>
+
+              </li>
+            </f:for>
+
+          </ul>
+        </div>
+
+
+        <div class="aheto-header-5__buttons">
+
+
+          <!-- lang-->
+          <div class="dropdown" id="langMenu">
+            <i class="fa fa-globe" aria-hidden="true"></i>
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <f:for each="{langNavigation}" as="item">
+                <f:if condition="{item.active}">
+                  {item.navigationTitle}
+                </f:if>
+              </f:for>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="langMenuLanguages">
+              <f:render partial="Language" arguments="{langNavigation:langNavigation}" />
+            </div>
+          </div>
+          <!-- lang end -->
+
+        </div>
+        <div class="aheto-header-5__hamburger">
+          <button class="hamburger hamburger--squeeze js-hamburger js-hamburger--body-over" type="button">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<f:section name="subMenu">
+  <ul class="sub-menu menu-depth-1">
+    <f:for each="{subMenu}" as="subMenuItem">
+      <li class="menu-item menu-item-type-custom menu-item-object-custom">
+        <a href="{subMenuItem.link}" target="{subMenuItem.target}" title="{subMenuItem.title}">
+          {subMenuItem.title}
+        </a>
+      </li>
+    </f:for>
+  </ul>
+</f:section>

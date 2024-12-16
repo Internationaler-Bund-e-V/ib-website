@@ -1,0 +1,13 @@
+<f:render partial="Header"
+  arguments="{langNavigation:langNavigation,searchUID:searchUID,spendenUID:spendenUID,mainMenu:mainMenu,currentUID:data.uid,mainMenuHomeUID:mainMenuHomeUID}" />
+<div class="grid-container full mainContainer">
+  <div id="SrbMainContent">
+    <!--TYPO3SEARCH_begin-->
+    <f:format.raw>{content}</f:format.raw>
+    <!--TYPO3SEARCH_end-->
+  </div>
+</div>
+<f:render partial="Footer"
+  arguments="{footerColumnOne:footerColumnOne,footerColumnTwo:footerColumnTwo,footerColumnThree:footerColumnThree,footerColumnFour:footerColumnFour,metaMenu:metaMenu}" />
+<!-- email dialog-->
+<f:render partial="EmailDialog" />

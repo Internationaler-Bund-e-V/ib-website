@@ -1,0 +1,10 @@
+@import 'variables';
+@import 'bootstrapSettings';
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import 'Mask/mask.scss';
+@import 'Theme/mainOverwrite.scss';
+@import 'header';
+@import 'footer';
+@import 'misc';
+@import 'emailDialog';
+@import 'solrSearch';
