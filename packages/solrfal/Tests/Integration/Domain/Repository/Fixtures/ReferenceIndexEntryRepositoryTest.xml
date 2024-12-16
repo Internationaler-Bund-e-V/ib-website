@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+    <!-- 6 rows for ref_table=sys_file AND ref_uid=47-->
+    <sys_refindex>
+        <hash>63cb9df9758ae6402c35480bbf79e2cd</hash>
+        <tablename>sys_file_reference</tablename>
+        <recuid>21</recuid>
+        <field>uid_local</field>
+        <flexpointer></flexpointer>
+        <softref_key></softref_key>
+        <softref_id></softref_id>
+        <sorting>0</sorting>
+        <workspace>0</workspace>
+        <ref_table>sys_file</ref_table>
+        <ref_uid>47</ref_uid>
+        <ref_string></ref_string>
+    </sys_refindex>
+
+    <sys_refindex>
+        <hash>8d5cd5728103490deea1f22c25d847ab</hash>
+        <tablename>sys_file_reference</tablename>
+        <recuid>74</recuid>
+        <field>uid_local</field>
+        <flexpointer></flexpointer>
+        <softref_key></softref_key>
+        <softref_id></softref_id>
+        <sorting>0</sorting>
+        <workspace>0</workspace>
+        <ref_table>sys_file</ref_table>
+        <ref_uid>47</ref_uid>
+        <ref_string></ref_string>
+    </sys_refindex>
+
+    <sys_refindex>
+        <hash>918bdf275b14702211464ad8915e0eca</hash>
+        <tablename>sys_file_reference</tablename>
+        <recuid>38</recuid>
+        <field>uid_local</field>
+        <flexpointer></flexpointer>
+        <softref_key></softref_key>
+        <softref_id></softref_id>
+        <sorting>0</sorting>
+        <workspace>0</workspace>
+        <ref_table>sys_file</ref_table>
+        <ref_uid>47</ref_uid>
+        <ref_string></ref_string>
+    </sys_refindex>
+
+    <sys_refindex>
+        <hash>c66a357527ba011dbee4f1293da9f1cf</hash>
+        <tablename>sys_file_reference</tablename>
+        <recuid>78</recuid>
+        <field>uid_local</field>
+        <flexpointer></flexpointer>
+        <softref_key></softref_key>
+        <softref_id></softref_id>
+        <sorting>0</sorting>
+        <workspace>0</workspace>
+        <ref_table>sys_file</ref_table>
+        <ref_uid>47</ref_uid>
+        <ref_string></ref_string>
+    </sys_refindex>
+
+    <sys_refindex>
+        <hash>ea9f6991d4f7ae8fcf2b565f87f5f90f</hash>
+        <tablename>sys_file_metadata</tablename>
+        <recuid>45</recuid>
+        <field>file</field>
+        <flexpointer></flexpointer>
+        <softref_key></softref_key>
+        <softref_id></softref_id>
+        <sorting>0</sorting>
+        <workspace>0</workspace>
+        <ref_table>sys_file</ref_table>
+        <ref_uid>47</ref_uid>
+        <ref_string></ref_string>
+    </sys_refindex>
+
+    <sys_refindex>
+        <hash>fb30c8f1d4cc9e8e4bbc3c58cbab366a</hash>
+        <tablename>sys_file_reference</tablename>
+        <recuid>33</recuid>
+        <field>uid_local</field>
+        <flexpointer></flexpointer>
+        <softref_key></softref_key>
+        <softref_id></softref_id>
+        <sorting>0</sorting>
+        <workspace>0</workspace>
+        <ref_table>sys_file</ref_table>
+        <ref_uid>47</ref_uid>
+        <ref_string></ref_string>
+    </sys_refindex>
+
+    <!-- one row with ref_uid=47 !BUT! ref_table=sys_file_reference -->
+    <sys_refindex>
+        <hash>56a568bf6351c895ee87c61176eff517</hash>
+        <tablename>tt_content</tablename>
+        <recuid>115</recuid>
+        <field>assets</field>
+        <flexpointer></flexpointer>
+        <softref_key></softref_key>
+        <softref_id></softref_id>
+        <sorting>2</sorting>
+        <workspace>0</workspace>
+        <ref_table>sys_file_reference</ref_table>
+        <ref_uid>47</ref_uid>
+        <ref_string></ref_string>
+    </sys_refindex>
+
+    <!-- The deleted sys_refindex or tt_content: MUST NOT be found by any find*() method. -->
+
+    <tt_content>
+        <uid>222</uid>
+        <pid>1</pid>
+        <CType>form_formframework</CType>
+        <sys_language_uid>0</sys_language_uid>
+        <header>Form Framework Form CE</header>
+        <bodytext>Deleted CE, references a form yaml file from Form framework file.</bodytext>
+    </tt_content>
+
+    <!-- other random stuff -->
+    <sys_refindex>
+        <hash>8d8085e7b9f13091e78fc81e07bc0bc5</hash>
+        <tablename>sys_file_reference</tablename>
+        <recuid>64</recuid>
+        <field>uid_local</field>
+        <flexpointer></flexpointer>
+        <softref_key></softref_key>
+        <softref_id></softref_id>
+        <sorting>0</sorting>
+        <workspace>0</workspace>
+        <ref_table>sys_file</ref_table>
+        <ref_uid>18</ref_uid>
+        <ref_string></ref_string>
+    </sys_refindex>
+    <sys_refindex>
+        <hash>8fb62a2b62850a14d20978ed86545d54</hash>
+        <tablename>pages</tablename>
+        <recuid>18</recuid>
+        <field>media</field>
+        <flexpointer></flexpointer>
+        <softref_key></softref_key>
+        <softref_id></softref_id>
+        <sorting>0</sorting>
+        <workspace>0</workspace>
+        <ref_table>sys_file_reference</ref_table>
+        <ref_uid>68</ref_uid>
+        <ref_string></ref_string>
+    </sys_refindex>
+    <sys_refindex>
+        <hash>9006cfe3b412ddeb393817190b295efe</hash>
+        <tablename>tt_content</tablename>
+        <recuid>5</recuid>
+        <field>image</field>
+        <flexpointer></flexpointer>
+        <softref_key></softref_key>
+        <softref_id></softref_id>
+        <sorting>0</sorting>
+        <workspace>0</workspace>
+        <ref_table>sys_file_reference</ref_table>
+        <ref_uid>3</ref_uid>
+        <ref_string></ref_string>
+    </sys_refindex>
+    <sys_refindex>
+        <hash>90452ef3d3fd89b22fe7e31fd4baff86</hash>
+        <tablename>tt_content</tablename>
+        <recuid>17</recuid>
+        <field>image</field>
+        <flexpointer></flexpointer>
+        <softref_key></softref_key>
+        <softref_id></softref_id>
+        <sorting>0</sorting>
+        <workspace>0</workspace>
+        <ref_table>sys_file_reference</ref_table>
+        <ref_uid>9</ref_uid>
+        <ref_string></ref_string>
+    </sys_refindex>
+    <sys_refindex>
+        <hash>9076b304b2fa5a43c5411cf2024703fe</hash>
+        <tablename>sys_file_metadata</tablename>
+        <recuid>126</recuid>
+        <field>file</field>
+        <flexpointer></flexpointer>
+        <softref_key></softref_key>
+        <softref_id></softref_id>
+        <sorting>0</sorting>
+        <workspace>0</workspace>
+        <ref_table>sys_file</ref_table>
+        <ref_uid>74</ref_uid>
+        <ref_string></ref_string>
+    </sys_refindex>
+    <sys_refindex>
+        <hash>927a78eb7c2c4dd4c2d350578a3ecb04</hash>
+        <tablename>sys_file_metadata</tablename>
+        <recuid>62</recuid>
+        <field>file</field>
+        <flexpointer></flexpointer>
+        <softref_key></softref_key>
+        <softref_id></softref_id>
+        <sorting>0</sorting>
+        <workspace>0</workspace>
+        <ref_table>sys_file</ref_table>
+        <ref_uid>66</ref_uid>
+        <ref_string></ref_string>
+    </sys_refindex>
+</dataset>
+

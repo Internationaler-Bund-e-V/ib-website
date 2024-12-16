@@ -1,0 +1,59 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  ApacheSolrForTypo3\Solrfal\:
+    resource: '../Classes/*'
+
+  solrfal.extension.configuration:
+    public: true
+    class: 'ArrayObject'
+    factory: ['@TYPO3\CMS\Core\Configuration\ExtensionConfiguration', 'get']
+    arguments:
+      $extension: 'solrfal'
+
+  ApacheSolrForTypo3\Solrfal\System\Configuration\ExtensionConfiguration:
+    public: true
+    arguments:
+      $extensionConfiguration: '@solrfal.extension.configuration'
+
+  ApacheSolrForTypo3\Solrfal\Queue\ConsistencyAspect:
+    public: true
+    arguments:
+      $indexer: '@ApacheSolrForTypo3\Solrfal\Indexing\Indexer'
+      $itemRepository: '@ApacheSolrForTypo3\Solrfal\Queue\ItemRepository'
+      $extensionConfiguration: '@ApacheSolrForTypo3\Solrfal\System\Configuration\ExtensionConfiguration'
+
+
+  ApacheSolrForTypo3\Solrfal\EventListener\AfterFileUpdatedInIndex:
+    tags:
+      - name: event.listener
+        identifier: 'solrfal-afterfileupdateinindex'
+        event: TYPO3\CMS\Core\Resource\Event\AfterFileUpdatedInIndexEvent
+  ApacheSolrForTypo3\Solrfal\EventListener\AfterFileDeleted:
+    tags:
+      - name: event.listener
+        identifier: 'solrfal-afterfiledeleted'
+        event: TYPO3\CMS\Core\Resource\Event\AfterFileDeletedEvent
+  ApacheSolrForTypo3\Solrfal\EventListener\AfterFileAddedToIndex:
+    tags:
+      - name: event.listener
+        identifier: 'solrfal-afterfileaddedtoindex'
+        event: TYPO3\CMS\Core\Resource\Event\AfterFileAddedToIndexEvent
+  ApacheSolrForTypo3\Solrfal\EventListener\AfterFileRemovedFromIndex:
+    tags:
+      - name: event.listener
+        identifier: 'solrfal-afterfileaddedtoindex'
+        event: TYPO3\CMS\Core\Resource\Event\AfterFileRemovedFromIndexEvent
+  ApacheSolrForTypo3\Solrfal\EventListener\AfterFileMarkedAsMissing:
+    tags:
+      - name: event.listener
+        identifier: 'solrfal-afterfilemarkedasmissing'
+        event: TYPO3\CMS\Core\Resource\Event\AfterFileMarkedAsMissingEvent
+  ApacheSolrForTypo3\Solrfal\System\Resource\GeneratePublicUrlForResourceEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'solrfal.system.resource.generatepublicurlforresourceeventlistener'
+        event: 'TYPO3\CMS\Core\Resource\Event\GeneratePublicUrlForResourceEvent'

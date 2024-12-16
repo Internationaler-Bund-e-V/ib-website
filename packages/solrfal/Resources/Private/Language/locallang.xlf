@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-10-16T14:00:00Z" product-name="lang">
+		<header/>
+		<body>
+			<trans-unit id="scheduler.title" xml:space="preserve">
+				<source>File Index Queue Worker</source>
+			</trans-unit>
+			<trans-unit id="scheduler.description" xml:space="preserve">
+				<source>Processes the files in the File Index Queue and sends them to Solr.</source>
+			</trans-unit>
+			<trans-unit id="scheduler.fields.filesToIndexLimit" xml:space="preserve">
+				<source>Number of files to index</source>
+			</trans-unit>
+			<trans-unit id="scheduler.fields.forcedWebRoot" xml:space="preserve">
+				<source>Forced webroot (only needed when webroot is not PATH_site)</source>
+			</trans-unit>
+			<trans-unit id="scheduler.additionalInformation" xml:space="preserve">
+				<source>Failures: %d</source>
+			</trans-unit>
+			<!-- Backend module -->
+			<trans-unit id="solr.backend.solrfal.label" xml:space="preserve">
+				<source>File Index Queue</source>
+			</trans-unit>
+			 <trans-unit id="solrfal.backend.file_indexing_module.description" xml:space="preserve">
+				<source>The File Indexing module gives an overview about the progress of the file indexing process.</source>
+			</trans-unit>
+			 <trans-unit id="solrfal.backend.file_indexing_module.header_status" xml:space="preserve">
+				<source>File Index Queue Status</source>
+			</trans-unit>
+			<trans-unit id="solrfal.backend.file_indexing_module.button.clear_file_index_queue" xml:space="preserve">
+			    <source>Clear File Index Queue</source>
+			</trans-unit>
+
+			<trans-unit id="solrfal.backend.file_indexing_module.success.queue_emptied" xml:space="preserve">
+				<source>File Index Queue emptied for Site "%s".</source>
+			</trans-unit>
+
+			<trans-unit id="solrfal.backend.file_indexing_module.error.on_empty_queue" xml:space="preserve">
+				<source>An error occurred while trying to truncate the file index queue for the current site: %s</source>
+			</trans-unit>
+
+			<trans-unit id="solrfal.backend.file_indexing_module.status.header" xml:space="preserve">
+				<source>Indexing Progress</source>
+			</trans-unit>
+			<trans-unit id="solrfal.backend.file_indexing_module.status.indexed" xml:space="preserve">
+				<source> Indexed</source>
+			</trans-unit>
+			<trans-unit id="solrfal.backend.file_indexing_module.status.pending" xml:space="preserve">
+				<source> Pending</source>
+			</trans-unit>
+
+			<!-- Errors -->
+			<trans-unit id="solrfal.backend.file_indexing_module.errors.headline" xml:space="preserve">
+				<source>Indexing Errors</source>
+			</trans-unit>
+			<trans-unit id="solrfal.backend.file_indexing_module.errors.uid" xml:space="preserve">
+				<source>ID</source>
+			</trans-unit>
+			<trans-unit id="solrfal.backend.file_indexing_module.errors.context_type" xml:space="preserve">
+				<source>Context</source>
+			</trans-unit>
+			<trans-unit id="solrfal.backend.file_indexing_module.errors.context_record_indexing_configuration" xml:space="preserve">
+				<source>Configuration</source>
+			</trans-unit>
+			<trans-unit id="solrfal.backend.file_indexing_module.errors.context_record_uid" xml:space="preserve">
+				<source>record Uid</source>
+			</trans-unit>
+			<trans-unit id="solrfal.backend.file_indexing_module.errors.file_uid" xml:space="preserve">
+				<source>File Uid</source>
+			</trans-unit>
+			<trans-unit id="solrfal.backend.file_indexing_module.errors.context_record_page" xml:space="preserve">
+				<source>Record Storage</source>
+			</trans-unit>
+			<trans-unit id="solrfal.backend.file_indexing_module.errors.error_message" xml:space="preserve">
+				<source>Error Message</source>
+			</trans-unit>
+			<trans-unit id="solrfal.backend.file_indexing_module.errors.show_button" xml:space="preserve">
+				<source>Show error</source>
+			</trans-unit>
+			<trans-unit id="solrfal.backend.file_indexing_module.flashmessage.error.no_queue_item_for_queue_error" xml:space="preserve">
+				<source>No valid queue item passed to show the error information!</source>
+			</trans-unit>
+
+			<trans-unit id="solrfal.backend.file_indexing_module.errors.reset_button" xml:space="preserve">
+				<source>Reset errors</source>
+			</trans-unit>
+
+			<trans-unit id="solrfal.backend.file_indexing_module.flashmessage.title" xml:space="preserve">
+				<source>File Index Queue</source>
+			</trans-unit>
+			<trans-unit id="solrfal.backend.file_indexing_module.flashmessage.success.reset_errors" xml:space="preserve">
+				<source>All errors have been reset.</source>
+			</trans-unit>
+			<trans-unit id="solrfal.backend.file_indexing_module.flashmessage.error.reset_errors" xml:space="preserve">
+				<source>An error occurred while resetting the error log in the index queue.</source>
+			</trans-unit>
+
+			<trans-unit id="solrfal.backend.file_indexing_module.error_details" xml:space="preserve">
+				<source>Error details for file queue item</source>
+			</trans-unit>
+
+
+		</body>
+	</file>
+</xliff>

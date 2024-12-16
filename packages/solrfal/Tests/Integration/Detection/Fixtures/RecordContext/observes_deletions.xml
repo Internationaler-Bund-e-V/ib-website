@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+	<sys_file>
+		<uid>9999</uid>
+		<pid>0</pid>
+		<tstamp>1461055663</tstamp>
+		<last_indexed>0</last_indexed>
+		<missing>0</missing>
+		<storage>1</storage>
+		<type>0</type>
+		<metadata>0</metadata>
+		<identifier>/file9999.txt</identifier>
+		<identifier_hash>ec6094d17d168dc2103ee974be89a3fbd4af69a1</identifier_hash>
+		<folder_hash>42099b4af021e53fd8fd4e056c2568d7c2e3ffa8</folder_hash>
+		<extension>txt</extension>
+		<mime_type>text/plain</mime_type>
+		<name>file9999.txt</name>
+		<sha1>461886494e1c85e906e104f9c0e7565c6cd15bf5</sha1>
+		<size>20</size>
+		<creation_date>1461055663</creation_date>
+		<modification_date>1461055663</modification_date>
+	</sys_file>
+
+	<sys_file>
+		<uid>8888</uid>
+		<pid>0</pid>
+		<tstamp>1461132031</tstamp>
+		<last_indexed>0</last_indexed>
+		<missing>0</missing>
+		<storage>1</storage>
+		<type>5</type>
+		<metadata>0</metadata>
+		<identifier>/file8888.pdf</identifier>
+		<identifier_hash>13a35123cdf982d74a7a584cdc778f00d6221629</identifier_hash>
+		<folder_hash>42099b4af021e53fd8fd4e056c2568d7c2e3ffa8</folder_hash>
+		<extension>pdf</extension>
+		<mime_type>application/pdf</mime_type>
+		<name>file8888.pdf</name>
+		<sha1>8440134cfa762d7a721301b2652430235b6d1d19</sha1>
+		<size>13843</size>
+		<creation_date>1461132031</creation_date>
+		<modification_date>1461132031</modification_date>
+	</sys_file>
+
+	<tx_fakeextension_domain_model_news>
+		<uid>1</uid>
+		<pid>1</pid>
+		<crdate>1461055663</crdate>
+		<tstamp>1461055663</tstamp>
+		<sys_language_uid>0</sys_language_uid>
+		<title>Lorem ipsum</title>
+		<bodytext><![CDATA[<link t3://file?uid=9999 - download "Opens internal link in current window>file 9999</link>]]></bodytext>
+		<fal_related_files>1</fal_related_files>
+	</tx_fakeextension_domain_model_news>
+
+	<sys_file_reference>
+		<uid>8888</uid>
+		<pid>1</pid>
+		<sys_language_uid>0</sys_language_uid>
+		<l10n_diffsource></l10n_diffsource>
+		<tstamp>1461055663</tstamp>
+		<crdate>1461055663</crdate>
+		<uid_local>8888</uid_local>
+		<uid_foreign>1</uid_foreign>
+		<tablenames>tx_fakeextension_domain_model_news</tablenames>
+		<fieldname>fal_related_files</fieldname>
+		<table_local>sys_file</table_local>
+	</sys_file_reference>
+
+	<tx_solr_indexqueue_item>
+		<uid>1</uid>
+		<root>1</root>
+		<item_type>tx_fakeextension_domain_model_news</item_type>
+		<item_uid>1</item_uid>
+		<indexing_configuration>news</indexing_configuration>
+		<changed>1461055663</changed>
+		<indexed>0</indexed>
+		<errors></errors>
+	</tx_solr_indexqueue_item>
+
+	<tx_solr_indexqueue_file>
+		<uid>1</uid>
+		<last_update>1461055663</last_update>
+		<last_indexed>0</last_indexed>
+		<file>8888</file>
+		<context_type>record</context_type>
+		<context_site>1</context_site>
+		<context_access_restrictions>r:0</context_access_restrictions>
+		<context_language>0</context_language>
+		<context_record_uid>1</context_record_uid>
+		<context_record_table>tx_fakeextension_domain_model_news</context_record_table>
+		<context_record_field>fal_related_files</context_record_field>
+		<context_record_page>0</context_record_page>
+		<context_additional_fields>[]</context_additional_fields>
+		<error_message></error_message>
+		<error>0</error>
+		<context_record_indexing_configuration>news</context_record_indexing_configuration>
+	</tx_solr_indexqueue_file>
+
+	<tx_solr_indexqueue_file>
+		<uid>2</uid>
+		<last_update>1461055663</last_update>
+		<last_indexed>0</last_indexed>
+		<file>9999</file>
+		<context_type>record</context_type>
+		<context_site>1</context_site>
+		<context_access_restrictions>r:0</context_access_restrictions>
+		<context_language>0</context_language>
+		<context_record_uid>1</context_record_uid>
+		<context_record_table>tx_fakeextension_domain_model_news</context_record_table>
+		<context_record_field>bodytext</context_record_field>
+		<context_record_page>0</context_record_page>
+		<context_additional_fields>[]</context_additional_fields>
+		<error_message></error_message>
+		<error>0</error>
+		<context_record_indexing_configuration>news</context_record_indexing_configuration>
+	</tx_solr_indexqueue_file>
+</dataset>

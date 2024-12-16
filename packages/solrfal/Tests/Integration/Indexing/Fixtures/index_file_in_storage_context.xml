@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+	<sys_file_storage>
+		<uid>1</uid>
+		<pid>0</pid>
+		<tstamp>1461055663</tstamp>
+		<crdate>1461055663</crdate>
+		<cruser_id>0</cruser_id>
+		<deleted>0</deleted>
+		<name>fileadmin/ (auto-created)</name>
+		<description>This is the local fileadmin/ directory. This storage mount has been created automatically by TYPO3.</description>
+		<driver>Local</driver>
+		<configuration><![CDATA[<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3FlexForms>
+	<data>
+		<sheet index="sDEF">
+			<language index="lDEF">
+				<field index="basePath">
+					<value index="vDEF">fileadmin/</value>
+				</field>
+				<field index="pathType">
+					<value index="vDEF">relative</value>
+				</field>
+				<field index="caseSensitive">
+					<value index="vDEF">1</value>
+				</field>
+			</language>
+		</sheet>
+	</data>
+</T3FlexForms>
+		]]></configuration>
+		<is_default>1</is_default>
+		<is_browsable>1</is_browsable>
+		<is_public>1</is_public>
+		<is_writable>1</is_writable>
+		<is_online>1</is_online>
+		<auto_extract_metadata>1</auto_extract_metadata>
+		<processingfolder>NULL</processingfolder>
+	</sys_file_storage>
+
+	<sys_file>
+		<uid>9999</uid>
+		<pid>0</pid>
+		<tstamp>1461055663</tstamp>
+		<last_indexed>0</last_indexed>
+		<missing>0</missing>
+		<storage>1</storage>
+		<type>0</type>
+		<metadata>0</metadata>
+		<identifier>/file9999.txt</identifier>
+		<identifier_hash>ec6094d17d168dc2103ee974be89a3fbd4af69a1</identifier_hash>
+		<folder_hash>42099b4af021e53fd8fd4e056c2568d7c2e3ffa8</folder_hash>
+		<extension>txt</extension>
+		<mime_type>text/plain</mime_type>
+		<name>file9999.txt</name>
+		<sha1>461886494e1c85e906e104f9c0e7565c6cd15bf5</sha1>
+		<size>20</size>
+		<creation_date>1461055663</creation_date>
+		<modification_date>1461055663</modification_date>
+	</sys_file>
+
+	<sys_file_metadata>
+		<uid>1</uid>
+		<pid>0</pid>
+		<crdate>1461055663</crdate>
+		<tstamp>1461055663</tstamp>
+		<title>title sys_file_metadata</title>
+		<file>9999</file>
+		<l10n_diffsource></l10n_diffsource>
+		<keywords></keywords>
+		<note></note>
+		<fe_groups>1,2</fe_groups>
+	</sys_file_metadata>
+
+	<tx_solr_indexqueue_file>
+		<uid>1</uid>
+		<last_update>1461055663</last_update>
+		<last_indexed>0</last_indexed>
+		<file>9999</file>
+		<context_type>storage</context_type>
+		<context_site>1</context_site>
+		<context_access_restrictions></context_access_restrictions>
+		<context_language>0</context_language>
+		<context_record_uid>0</context_record_uid>
+		<context_record_table></context_record_table>
+		<context_record_field></context_record_field>
+		<context_record_page>0</context_record_page>
+		<context_record_indexing_configuration>fileadmin</context_record_indexing_configuration>
+		<context_additional_fields>{"fileStorage":1}</context_additional_fields>
+		<error_message></error_message>
+		<error>0</error>
+	</tx_solr_indexqueue_file>
+</dataset>

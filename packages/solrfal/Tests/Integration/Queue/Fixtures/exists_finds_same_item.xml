@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+	<!-- pending -->
+	<tx_solr_indexqueue_file>
+		<uid>1</uid>
+		<last_update>1461055663</last_update>
+		<last_indexed>0</last_indexed>
+		<file>1000</file>
+		<context_type>storage</context_type>
+		<context_site>1</context_site>
+		<context_access_restrictions></context_access_restrictions>
+		<context_language>0</context_language>
+		<context_record_uid>0</context_record_uid>
+		<context_record_table></context_record_table>
+		<context_record_field></context_record_field>
+		<context_record_page>0</context_record_page>
+		<context_record_indexing_configuration>fileadmin</context_record_indexing_configuration>
+		<context_additional_fields>{"fileStorage":1}</context_additional_fields>
+		<error_message></error_message>
+		<error>0</error>
+	</tx_solr_indexqueue_file>
+	<!-- indexed -->
+	<tx_solr_indexqueue_file>
+		<uid>2</uid>
+		<last_update>1461055663</last_update>
+		<last_indexed>1461055664</last_indexed>
+		<file>2000</file>
+		<context_type>storage</context_type>
+		<context_site>1</context_site>
+		<context_access_restrictions></context_access_restrictions>
+		<context_language>0</context_language>
+		<context_record_uid>0</context_record_uid>
+		<context_record_table></context_record_table>
+		<context_record_field></context_record_field>
+		<context_record_page>0</context_record_page>
+		<context_record_indexing_configuration>fileadmin</context_record_indexing_configuration>
+		<context_additional_fields>{"fileStorage":1}</context_additional_fields>
+		<error_message></error_message>
+		<error>0</error>
+	</tx_solr_indexqueue_file>
+	<tx_solr_indexqueue_file>
+		<uid>3</uid>
+		<last_update>1461055660</last_update>
+		<last_indexed>1461055665</last_indexed>
+		<file>3000</file>
+		<context_type>record</context_type>
+		<context_site>1</context_site>
+		<context_access_restrictions></context_access_restrictions>
+		<context_language>0</context_language>
+		<context_record_uid>0</context_record_uid>
+		<context_record_table></context_record_table>
+		<context_record_field></context_record_field>
+		<context_record_page>0</context_record_page>
+		<context_record_indexing_configuration>fileadmin</context_record_indexing_configuration>
+		<context_additional_fields>{"fileStorage":1}</context_additional_fields>
+		<error_message></error_message>
+		<error>0</error>
+	</tx_solr_indexqueue_file>
+
+	<!-- error -->
+	<tx_solr_indexqueue_file>
+		<uid>4</uid>
+		<last_update>1461055663</last_update>
+		<last_indexed>0</last_indexed>
+		<file>4000</file>
+		<context_type>storage</context_type>
+		<context_site>1</context_site>
+		<context_access_restrictions></context_access_restrictions>
+		<context_language>0</context_language>
+		<context_record_uid>0</context_record_uid>
+		<context_record_table></context_record_table>
+		<context_record_field></context_record_field>
+		<context_record_page>0</context_record_page>
+		<context_record_indexing_configuration>fileadmin</context_record_indexing_configuration>
+		<context_additional_fields>{"fileStorage":1}</context_additional_fields>
+		<error_message>Bad Request: </error_message>
+		<error>1</error>
+	</tx_solr_indexqueue_file>
+	<!-- file missing -->
+	<tx_solr_indexqueue_file>
+		<uid>5</uid>
+		<last_update>1489157593</last_update>
+		<last_indexed>1489405773</last_indexed>
+		<file>5000</file>
+		<context_type>storage</context_type>
+		<context_site>1</context_site>
+		<context_access_restrictions></context_access_restrictions>
+		<context_language>0</context_language>
+		<context_record_uid>0</context_record_uid>
+		<context_record_table></context_record_table>
+		<context_record_field></context_record_field>
+		<context_record_page>0</context_record_page>
+		<context_record_indexing_configuration>fileadmin</context_record_indexing_configuration>
+		<context_additional_fields>{"fileStorage":1}</context_additional_fields>
+		<error_message>File missing </error_message>
+		<error>1</error>
+	</tx_solr_indexqueue_file>
+</dataset>

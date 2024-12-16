@@ -1,0 +1,18 @@
+<html data-namespace-typo3-fluid="true">
+
+<f:if condition="{indexQueueItem.error}">
+    <h1><f:translate key="solrfal.backend.file_indexing_module.error_details"/> (
+        uid: <code>{indexQueueItem.uid}</code>,
+        context: <code>{indexQueueItem.context.contextIdentifier}</code>)
+        configuration: <code>{indexQueueItem.context.indexingConfiguration}</code>
+        file_uid: <code>{indexQueueItem.file.uid}</code>
+        :
+    </h1>
+    <pre class="alert alert-danger">{indexQueueItem.errorMessage}</pre>
+
+    <f:link.action class="btn btn-default">
+        {core:icon(identifier:'actions-view-go-back')} <f:translate key="solr.backend.index_queue_module.back"/>
+    </f:link.action>
+</f:if>
+
+</html>

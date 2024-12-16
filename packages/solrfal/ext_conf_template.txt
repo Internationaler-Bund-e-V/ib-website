@@ -1,0 +1,2 @@
+# cat=basic/enable/10; type=string; label=Site exclusive records (Tables that should only be monitored for the current site)
+siteExclusiveRecordTables = pages, tt_content, sys_file_reference

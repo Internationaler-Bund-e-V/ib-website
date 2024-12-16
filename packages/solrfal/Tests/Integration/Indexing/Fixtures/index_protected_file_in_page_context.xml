@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+	<pages>
+		<uid>2</uid>
+		<pid>1</pid>
+		<doktype>1</doktype>
+		<title>Hello EXT:solrfal</title>
+		<slug>solrfals-page-context</slug>
+		<endtime>2054827203</endtime>
+		<fe_group>1</fe_group>
+	</pages>
+
+	<tt_content>
+		<uid>1</uid>
+		<pid>2</pid>
+		<header>Hello Solr - Content</header>
+		<bodytext><a href="#/?t3://file?uid=9999">test file</a></bodytext>
+		<fe_group></fe_group>
+	</tt_content>
+
+	<tt_content>
+		<uid>2</uid>
+		<pid>2</pid>
+		<header>Hello Solr - Protected Content</header>
+		<bodytext><a href="#/?t3://file?uid=8888">test file</a></bodytext>
+		<fe_group>1,2</fe_group>
+	</tt_content>
+
+	<sys_file>
+		<uid>9999</uid>
+		<pid>0</pid>
+		<tstamp>1461055663</tstamp>
+		<last_indexed>0</last_indexed>
+		<missing>0</missing>
+		<storage>1</storage>
+		<type>0</type>
+		<metadata>0</metadata>
+		<identifier>/file9999.txt</identifier>
+		<identifier_hash>ec6094d17d168dc2103ee974be89a3fbd4af69a1</identifier_hash>
+		<folder_hash>42099b4af021e53fd8fd4e056c2568d7c2e3ffa8</folder_hash>
+		<extension>txt</extension>
+		<mime_type>text/plain</mime_type>
+		<name>file9999.txt</name>
+		<sha1>461886494e1c85e906e104f9c0e7565c6cd15bf5</sha1>
+		<size>20</size>
+		<creation_date>1461055663</creation_date>
+		<modification_date>1461055663</modification_date>
+	</sys_file>
+
+	<tx_solr_indexqueue_file>
+		<uid>1</uid>
+		<last_update>1461055663</last_update>
+		<last_indexed>0</last_indexed>
+		<file>9999</file>
+		<context_type>page</context_type>
+		<context_site>1</context_site>
+		<context_access_restrictions></context_access_restrictions>
+		<context_language>0</context_language>
+		<context_record_uid>1</context_record_uid>
+		<context_record_table>tt_content</context_record_table>
+		<context_record_field>bodytext</context_record_field>
+		<context_record_page>2</context_record_page>
+		<context_record_indexing_configuration>pages</context_record_indexing_configuration>
+		<context_additional_fields>[]</context_additional_fields>
+		<error_message></error_message>
+		<error>0</error>
+	</tx_solr_indexqueue_file>
+
+	<sys_file>
+		<uid>8888</uid>
+		<pid>0</pid>
+		<tstamp>1461132031</tstamp>
+		<last_indexed>0</last_indexed>
+		<missing>0</missing>
+		<storage>1</storage>
+		<type>0</type>
+		<metadata>0</metadata>
+		<identifier>/file8888.txt</identifier>
+		<identifier_hash>9f8b088d1c08dacf6a4b1b31b8ef132422938348</identifier_hash>
+		<folder_hash>42099b4af021e53fd8fd4e056c2568d7c2e3ffa8</folder_hash>
+		<extension>txt</extension>
+		<mime_type>text/plain</mime_type>
+		<name>file8888.txt</name>
+		<sha1>a760b392930fd29a6cccb9ebfbbcd93395c4918e</sha1>
+		<size>13843</size>
+		<creation_date>1461132031</creation_date>
+		<modification_date>1461132031</modification_date>
+	</sys_file>
+
+	<tx_solr_indexqueue_file>
+		<uid>2</uid>
+		<last_update>1461055663</last_update>
+		<last_indexed>0</last_indexed>
+		<file>8888</file>
+		<context_type>page</context_type>
+		<context_site>1</context_site>
+		<context_access_restrictions></context_access_restrictions>
+		<context_language>0</context_language>
+		<context_record_uid>2</context_record_uid>
+		<context_record_table>tt_content</context_record_table>
+		<context_record_field>bodytext</context_record_field>
+		<context_record_page>2</context_record_page>
+		<context_record_indexing_configuration>pages</context_record_indexing_configuration>
+		<context_additional_fields>[]</context_additional_fields>
+		<error_message></error_message>
+		<error>0</error>
+	</tx_solr_indexqueue_file>
+</dataset>

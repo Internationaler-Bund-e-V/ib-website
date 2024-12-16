@@ -1,0 +1,96 @@
+
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	xmlns:solr="http://typo3.org/ns/ApacheSolrForTypo3/Solr/ViewHelpers"
+	f:schemaLocation="https://fluidtypo3.org/schemas/fluid-master.xsd">
+
+	<f:layout name="Backend/WithPageTree"/>
+
+	<f:section name="Main">
+		<f:be.pageRenderer includeRequireJsModules="{0:'TYPO3/CMS/Solr/FormModal'}"/>
+
+		<f:render partial="Backend/FlashMessages" />
+
+		<h1>File Indexing</h1>
+		<p class="lead"><f:translate key="solrfal.backend.file_indexing_module.description" /></p>
+
+		<ul>
+			<li>Total items in solrfal queue: {total_item_count}</li>
+			<li>Items for the current site: {site_item_count}</li>
+		</ul>
+
+		<h2>
+			<f:translate key="solrfal.backend.file_indexing_module.header_status"/>
+		</h2>
+		<f:if condition="{indexqueue_statistics.totalCount} > 0">
+			<f:then>
+				<div class="col-md-12">
+					<div class="row section-with-header">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="progress">
+									<f:if condition="{indexqueue_statistics.successCount} > 0">
+										<div class="progress-bar bg-success"
+											 style="width: {indexqueue_statistics.successPercentage}%"
+											 title="{f:translate(key:'solrfal.backend.file_indexing_module.status.indexed')}: {indexqueue_statistics.successCount}/{indexqueue_statistics.totalCount} ({indexqueue_statistics.successPercentage}%)">
+
+											<f:translate key="solrfal.backend.file_indexing_module.status.indexed"/>
+										</div>
+									</f:if>
+
+									<f:if condition="{indexqueue_statistics.successCount} > 0">
+										<div class="progress-bar bg-warning"
+											 style="width: {indexqueue_statistics.pendingPercentage}%"
+											 title="{f:translate(key:'solrfal.backend.file_indexing_module.status.pending')}: {indexqueue_statistics.pendingCount}/{indexqueue_statistics.totalCount} ({indexqueue_statistics.pendingPercentage}%)">
+
+											<f:translate key="solrfal.backend.file_indexing_module.status.pending"/>
+										</div>
+									</f:if>
+
+									<f:if condition="{indexqueue_statistics.successCount} > 0">
+										<div class="progress-bar bg-danger"
+											 style="width: {indexqueue_statistics.failedPercentage}%"
+											 title="{f:translate(key:'solrfal.backend.file_indexing_module.status.errors')}: {indexqueue_statistics.failedCount}/{indexqueue_statistics.totalCount} ({indexqueue_statistics.failedPercentage}%)">
+
+											<f:translate key="solrfal.backend.file_indexing_module.status.errors"/>
+										</div>
+									</f:if>
+								</div>
+							</div>
+						</div>
+
+						<hr class="section-divider" />
+
+						<div class="row section-with-header">
+							<div class="col-md-3">
+								<f:form action="clearSitesFileIndexQueue" method="POST">
+									<f:form.submit class="btn btn-sm btn-default btn-danger t3js-modal-formsubmit-trigger"
+												   data="{title: 'Please confirm', content: 'Are you sure you want to clear the File Index Queue for the current site?', severity: 'warning'}"
+												   value="{f:translate(key:'solrfal.backend.file_indexing_module.button.clear_file_index_queue')}"/>
+								</f:form>
+							</div>
+							<div class="col-md-9 action-description">
+								<h3>
+									<f:translate key="solrfal.backend.file_indexing_module.button.clear_file_index_queue"/>
+								</h3>
+
+								<p>
+									This will empty the File Index Queue. It will take care of only deleting
+									the currently selected site's File Index Queue entries. You have to re-initialize the file index queue afterwards
+									in the solr index queue module, or it will be filled from the record context or page context during indexing.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</f:then>
+			<f:else>
+				<p>The file index queue is empty, you need to queue items from the storage context in the solr Index Queue Module, or enable the record or page context to index files during page and record indexing:</p>
+                <f:be.link route="searchbackend_SolrIndexqueue" parameters="{id:pageUID}">Solr Index Queue Module</f:be.link>
+			</f:else>
+		</f:if>
+
+		<f:if condition="{indexqueue_errors}">
+			<f:render partial="Backend/QueueErrors" arguments="{indexqueue_errors:indexqueue_errors}" />
+		</f:if>
+	</f:section>
+</div>

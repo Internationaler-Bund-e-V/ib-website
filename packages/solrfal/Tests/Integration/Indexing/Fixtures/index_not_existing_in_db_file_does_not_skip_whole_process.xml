@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+	<sys_file>
+		<uid>9999</uid>
+		<pid>0</pid>
+		<tstamp>1461055663</tstamp>
+		<last_indexed>0</last_indexed>
+		<missing>0</missing>
+		<storage>1</storage>
+		<type>0</type>
+		<metadata>0</metadata>
+		<identifier>/file9999.txt</identifier>
+		<identifier_hash>ec6094d17d168dc2103ee974be89a3fbd4af69a1</identifier_hash>
+		<folder_hash>42099b4af021e53fd8fd4e056c2568d7c2e3ffa8</folder_hash>
+		<extension>txt</extension>
+		<mime_type>text/plain</mime_type>
+		<name>file9999.txt</name>
+		<sha1>461886494e1c85e906e104f9c0e7565c6cd15bf5</sha1>
+		<size>20</size>
+		<creation_date>1461055663</creation_date>
+		<modification_date>1461055663</modification_date>
+	</sys_file>
+	<sys_file_metadata>
+		<uid>9999</uid>
+		<pid>0</pid>
+		<crdate>1461055663</crdate>
+		<tstamp>1461055663</tstamp>
+		<title>title sys_file_metadata 9999</title>
+		<file>9999</file>
+		<l10n_diffsource></l10n_diffsource>
+		<keywords></keywords>
+		<note></note>
+		<fe_groups>1,2</fe_groups>
+	</sys_file_metadata>
+	<tx_solr_indexqueue_file>
+		<uid>9999</uid>
+		<last_update>1461055663</last_update>
+		<last_indexed>0</last_indexed>
+		<file>9999</file>
+		<merge_id>tx_solr_file/9999</merge_id>
+		<context_type>storage</context_type>
+		<context_site>1</context_site>
+		<context_access_restrictions></context_access_restrictions>
+		<context_language>0</context_language>
+		<context_record_uid>0</context_record_uid>
+		<context_record_table></context_record_table>
+		<context_record_field></context_record_field>
+		<context_record_page>0</context_record_page>
+		<context_record_indexing_configuration>fileadmin</context_record_indexing_configuration>
+		<context_additional_fields>{"fileStorage":1}</context_additional_fields>
+		<error_message></error_message>
+		<error>0</error>
+	</tx_solr_indexqueue_file>
+
+	<!-- this file should NOT exist in DB -->
+	<tx_solr_indexqueue_file>
+		<uid>8888</uid>
+		<last_update>1461055663</last_update>
+		<last_indexed>0</last_indexed>
+		<file>8888</file>
+		<merge_id>tx_solr_file/8888</merge_id>
+		<context_type>storage</context_type>
+		<context_site>1</context_site>
+		<context_access_restrictions></context_access_restrictions>
+		<context_language>0</context_language>
+		<context_record_uid>0</context_record_uid>
+		<context_record_table></context_record_table>
+		<context_record_field></context_record_field>
+		<context_record_page>0</context_record_page>
+		<context_record_indexing_configuration>fileadmin</context_record_indexing_configuration>
+		<context_additional_fields>{"fileStorage":1}</context_additional_fields>
+		<error_message></error_message>
+		<error>0</error>
+	</tx_solr_indexqueue_file>
+
+
+
+
+
+	<sys_file>
+		<uid>7777</uid>
+		<pid>0</pid>
+		<tstamp>1517906157</tstamp>
+		<last_indexed>0</last_indexed>
+		<missing>0</missing>
+		<storage>1</storage>
+		<type>0</type>
+		<metadata>0</metadata>
+		<identifier>/file7777.txt</identifier>
+		<identifier_hash>0113daff5b239a76d208d70726ec530dd5552278</identifier_hash>
+		<folder_hash>42099b4af021e53fd8fd4e056c2568d7c2e3ffa8</folder_hash>
+		<extension>txt</extension>
+		<mime_type>text/plain</mime_type>
+		<name>file7777.txt</name>
+		<sha1>0113daff5b239a76d208d70726ec530dd5552278</sha1>
+		<size>46</size>
+		<creation_date>1517906157</creation_date>
+		<modification_date>1517906157</modification_date>
+	</sys_file>
+	<sys_file_metadata>
+		<uid>7777</uid>
+		<pid>0</pid>
+		<crdate>1517906157</crdate>
+		<tstamp>1517906157</tstamp>
+		<title>title sys_file_metadata 7777 </title>
+		<file>7777</file>
+		<l10n_diffsource></l10n_diffsource>
+		<keywords></keywords>
+		<note></note>
+		<fe_groups>1,2</fe_groups>
+	</sys_file_metadata>
+	<tx_solr_indexqueue_file>
+		<uid>7777</uid>
+		<last_update>1461055663</last_update>
+		<last_indexed>0</last_indexed>
+		<file>7777</file>
+		<merge_id>tx_solr_file/7777</merge_id>
+		<context_type>storage</context_type>
+		<context_site>1</context_site>
+		<context_access_restrictions></context_access_restrictions>
+		<context_language>0</context_language>
+		<context_record_uid>0</context_record_uid>
+		<context_record_table></context_record_table>
+		<context_record_field></context_record_field>
+		<context_record_page>0</context_record_page>
+		<context_record_indexing_configuration>fileadmin</context_record_indexing_configuration>
+		<context_additional_fields>{"fileStorage":1}</context_additional_fields>
+		<error_message></error_message>
+		<error>0</error>
+	</tx_solr_indexqueue_file>
+
+</dataset>

@@ -1,0 +1,235 @@
+plugin.tx_solr {
+	index {
+
+		fieldProcessingInstructions {
+			category = categoryUidToHierarchy
+		}
+
+		enableFileIndexing {
+			# pageContext - index files from tt_content, shown in indexed frontend pages
+			pageContext = 1
+			pageContext {
+				contentElementTypes {
+					text = bodytext, header_link
+					textpic < .text
+					uploads = media, file_collections
+					textmedia = bodytext, header_link, assets
+				}
+
+				# files directly linked to the page, for instance the media field
+				attachments = 1
+				attachments.fields = media
+
+				# restrict indexed files extensions to index
+				fileExtensions = *
+
+				# Use enable fields from page
+				enableFields {
+					accessGroups = fe_group
+					endtime = endtime
+				}
+				contentEnableFields {
+					accessGroups = fe_group
+				}
+			}
+
+
+			# Storage Context is indexing the file-system for example creating a download area
+			storageContext = 0
+			storageContext {
+				__storageUid__ {
+
+					# which languages should be indexed
+					languages = 0
+
+					# restrict indexed files extensions to index
+					fileExtensions = *
+
+
+					# restrict to folders
+					folders = *
+					excludeFolders =
+
+					# FAL generally does not have enable fields, but metadata ships fields which can be used for that purpose
+					enableFields {
+						accessGroups >
+						endtime >
+					}
+				}
+
+				1 {
+					languages = 0
+					fileExtensions = *
+					folders = *
+					excludeFolders =
+
+					enableFields {
+						hidden = visible
+						accessGroups = fe_groups
+					}
+				}
+			}
+
+			# Activates Indexing of Files attached to TCA records (like news), needs further configuration in queue
+			recordContext = 1
+			recordContext {
+				fileExtensions = *
+			}
+
+			# Activates merging of files that are referenced in multiple contexts multiple times.
+			# With the fieldMapping you can merge all source fields of the merged documents into one field of the
+			# target document.
+			# For merging the oldest item is used as rootItem (which is indexed)
+			mergeDuplicates = 0
+			mergeDuplicates {
+				fieldMapping {
+				}
+			}
+
+		}
+		queue {
+
+			# enables Index Queue Initialization for custom file storages in EXT:solr Search Backend Module
+			# needs "plugin.tx_solr.index.enableFileIndexing.storageContext = 1"
+			# default file storage: fileadmin
+			fileadmin = 1
+			fileadmin {
+				table = sys_file_storage
+				storageUid = 1
+			}
+/*
+			# Example for another file storage
+			fileStorage1 = 1
+			fileStorage1 {
+				table = sys_file_storage
+				storageUid = 2
+			}
+
+			__TABLENAME__ {
+				# activates file indexing for this table, needs "plugin.tx_solr.index.enableFileIndexing.recordContext = 1"
+				attachments = 1
+
+				# allows to restrict the fields in which we search for files, defaults to all
+				attachments.fields = *
+
+				# allows to restrict indexed files extensions to index, overwrites global setting (plugin.tx_solr.index.enableFileIndexing.recordContext.fileExtensions)
+				attachments.fileExtensions = *
+			}
+*/
+			# special configuration section for files, fieldConfiguration basically refers to queue.[indexingConfiguration].fields
+			_FILES {
+				# Basic configuration which applies to all files which are indexed, record: sys_file_metadata
+				default {
+					description = description
+					altText_stringS = alternative
+					width_intS = width
+					height_intS = height
+
+					category = SOLR_RELATION
+					category {
+						localField = categories
+						foreignLabelField = uid
+						enableRecursiveValueResolution = 1
+						multiValue = 1
+					}
+
+					keywords = SOLR_MULTIVALUE
+					keywords {
+						field = keywords
+					}
+
+					caption_stringS = caption
+					downloadName_stringS = download_name
+					author = creator
+					publisher_stringS = publisher
+					source_stringS = source
+
+					country_stringS = location_country
+					region_stringS = location_region
+					city_stringS = location_city
+
+					ranking_intS = ranking
+
+					note_textS = note
+
+					duration_floatS = duration
+
+					colorSpace_stringS = color_space
+				}
+
+				# additional Fields which are indexed, when in pageContext
+				pageContext {
+					__RecordContext {
+						fileReferenceUrl = TEXT
+						fileReferenceUrl {
+							typolink {
+								parameter.field = pid
+								forceAbsoluteUrl = 1
+								linkAccessRestrictedPages = 1
+								section.wrap = c|
+								section.field = uid
+								returnLast = url
+							}
+						}
+					}
+				}
+
+				storageContext {
+/*
+					# default for all storages
+					default = fieldConfiguration
+
+					# custom field configuration per storage
+					__storageUid__ = fieldConfiguration
+*/
+				}
+
+				# additional Fields which are indexed, when in recordContext
+				recordContext {
+/*
+					# for all tables
+					default = fieldConfiguration
+
+					# special configuration per table
+					__TABLENAME__ = fieldConfiguration
+					__TABLENAME__ {
+						__RecordContext {
+							fileReferenceUrl < plugin.tx_solr.index.queue.__TABLENAME__.fields.url
+							fileReferenceTitle < plugin.tx_solr.index.queue.__TABLENAME__.fields.title
+						}
+					}
+*/
+				}
+			}
+		}
+	}
+
+	search {
+		results {
+			fieldRenderingInstructions {
+				url = CASE
+				url {
+					tx_solr_file = TEXT
+					tx_solr_file {
+						typolink {
+							parameter.field = filePublicUrl
+							returnLast = url
+						}
+					}
+				}
+
+				link = CASE
+				link {
+					tx_solr_file = TEXT
+					tx_solr_file {
+						field = fileName
+
+						typolink {
+							parameter.field = filePublicUrl
+						}
+					}
+				}
+			}
+		}
+	}
+}
