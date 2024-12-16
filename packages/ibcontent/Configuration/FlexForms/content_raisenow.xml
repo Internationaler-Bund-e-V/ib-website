@@ -1,0 +1,27 @@
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>RaiseNow Widget</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.code>
+                        <TCEforms>
+                            <label>Widget ID einfügen</label>
+                            <config>
+                                <type>input</type>
+                                <size>255</size>
+                                <eval>trim</eval>
+                            </config>
+                        </TCEforms>
+                    </settings.code>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

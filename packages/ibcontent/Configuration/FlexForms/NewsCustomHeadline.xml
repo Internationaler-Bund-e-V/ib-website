@@ -1,0 +1,20 @@
+<extra>
+  <ROOT>
+    <TCEforms>
+      <sheetTitle>Überschrift</sheetTitle>
+    </TCEforms>
+    <type>array</type>
+    <el>
+      <settings.customHeadline>
+        <TCEforms>
+          <label>Überschrift - ersetzt die Standardüberschrift "Presse &#38; News" (gilt nur für Listenansicht Startseite!)</label>
+          <config>
+            <type>input</type>
+            <size>255</size>
+            <eval>trim</eval>
+          </config>
+        </TCEforms>
+      </settings.customHeadline>
+    </el>
+  </ROOT>
+</extra>

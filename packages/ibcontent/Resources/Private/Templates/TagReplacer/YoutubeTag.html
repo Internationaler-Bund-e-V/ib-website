@@ -1,0 +1,29 @@
+<f:comment>
+  ###IBSTART###YT#:#VIDEOCODE###IBEND###
+
+  {youtubecode} => youtubecode (VIDEOCODE)
+
+  <div class="video-responsive">
+    <iframe width="100%" height="400" frameborder="0"
+      data-src="//www.youtube-nocookie.com/embed/{youtubecode}?autoplay=0&showinfo=0&controls=1"
+      data-cookieconsent="marketing" allowfullscreen></iframe>
+  </div>
+</f:comment>
+
+
+
+<div class="video-responsive">
+  <f:if condition="{startAt}">
+    <f:then>
+      <iframe width="100%" height="400" frameborder="0"
+        data-src="//www.youtube-nocookie.com/embed/{youtubecode}?autoplay=0&showinfo=0&controls=1&start={startAt}"
+        data-cookieconsent="marketing" allowfullscreen></iframe>
+    </f:then>
+    <f:else>
+      <iframe width="100%" height="400" frameborder="0"
+        data-src="//www.youtube-nocookie.com/embed/{youtubecode}?autoplay=0&showinfo=0&controls=1"
+        data-cookieconsent="marketing" allowfullscreen></iframe>
+    </f:else>
+  </f:if>
+
+</div>

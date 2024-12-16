@@ -1,0 +1,272 @@
+<f:variable name="gsitekey" value="{f:cObject(typoscriptObjectPath: 'google.recaptcha.sitekey')}" />
+<f:variable name="dataPrivacySiteID" value="{f:cObject(typoscriptObjectPath: 'portalSettings.dataPrivacySiteID')}" />
+<f:variable name="asboluteDataPrivacyPath" value="{f:uri.page(pageUid:dataPrivacySiteID)}" />
+
+<div class="ib-contact-form">
+  <div class="row ib-content-module ib-background-white">
+    <div class="columns medium-offset-1 medium-10 large-6-2col large-offset-1-2col end">
+      <div class="columns row">
+        <h1>{settings.headline}</h1>
+      </div>
+      <div class="columns row">
+        <f:format.raw>
+          {settings.text}
+        </f:format.raw>
+      </div>
+      <div class="columns row">
+        <f:form action="submitContactForm" controller="ContactForm"
+          additionalAttributes="{data-abide:'',novalidate:'',data-usetestkeys:'{customSettings.useTestKeys}',data-gsitekey: '{gsitekey}', data-rclangcode:'{settings.reCaptchaLangCode}'}"
+          name="ib-form-contact-form" id="ib-form-contact-form">
+          <!-- salutation-->
+          <fieldset>
+            <legend>
+              <f:if condition="{settings.salutation}">
+                <f:then>
+                  {settings.salutation}
+                </f:then>
+                <f:else>
+                  <f:translate
+                    key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_salutation" />
+                </f:else>
+              </f:if>
+            </legend>
+            <!-- salutation none-->
+            <input type="radio" checked="checked" name="salutation" value="Keine Angabe" id="salutationNone">
+            <label for="salutationNone">
+              <f:if condition="{settings.salutationNone}">
+                <f:then>
+                  {settings.salutationNone}
+                </f:then>
+                <f:else>
+                  <f:translate
+                    key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_salutation_none" />
+                </f:else>
+              </f:if>
+            </label>
+            <!-- salutation ms-->
+            <input type="radio" name="salutation" value="Frau" id="salutationFrau">
+            <label for="salutationFrau">
+              <f:if condition="{settings.salutationMS}">
+                <f:then>
+                  {settings.salutationMS}
+                </f:then>
+                <f:else>
+                  <f:translate
+                    key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_salutation_mrs" />
+                </f:else>
+              </f:if>
+
+            </label>
+            <!-- salutation mr-->
+            <input type="radio" name="salutation" value="Herr" id="salutationHerr">
+            <label for="salutationHerr">
+              <f:if condition="{settings.salutationMR}">
+                <f:then>
+                  {settings.salutationMR}
+                </f:then>
+                <f:else>
+                  <f:translate
+                    key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_salutation_mr" />
+                </f:else>
+              </f:if>
+            </label>
+            <!-- salutation neutral-->
+            <input type="radio" name="salutation" value="Neutral" id="salutationNeutral">
+            <label for="salutationNeutral">
+              <f:if condition="{settings.salutationNeutral}">
+                <f:then>
+                  {settings.salutationNeutral}
+                </f:then>
+                <f:else>
+                  <f:translate
+                    key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_salutation_neutral" />
+                </f:else>
+              </f:if>
+            </label>
+          </fieldset>
+
+          <div class="row">
+
+            <!-- firstname -->
+            <div class="medium-6 columns">
+              <label>
+                <f:if condition="{settings.label_firstname}">
+                  <f:then>
+                    {settings.label_firstname}*
+                  </f:then>
+                  <f:else>
+                    <f:translate
+                      key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_firstname" />
+                  </f:else>
+                </f:if>
+                <input type="text" placeholder="" name="firstName" required>
+                <span class="form-error">
+                  <f:translate
+                    key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_firstname_error" />
+                </span>
+              </label>
+            </div>
+
+            <!-- lastname -->
+            <div class="medium-6 columns">
+              <label>
+                <f:if condition="{settings.label_lastname}">
+                  <f:then>
+                    {settings.label_lastname}*
+                  </f:then>
+                  <f:else>
+                    <f:translate
+                      key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_lastname" />
+                  </f:else>
+                </f:if>
+                <input type="text" placeholder="" name="lastName" required>
+                <span class="form-error">
+                  <f:translate
+                    key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_lastname_error" />
+                </span>
+              </label>
+            </div>
+
+            <!-- email -->
+            <div class="medium-6 columns">
+              <label>
+                <f:if condition="{settings.label_email}">
+                  <f:then>
+                    {settings.label_email}*
+                  </f:then>
+                  <f:else>
+                    <f:translate
+                      key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_email" />
+                  </f:else>
+                </f:if>
+                <input type="email" placeholder="" name="eMail" required>
+                <span class="form-error">
+                  <f:translate
+                    key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_email_error" />
+                </span>
+              </label>
+            </div>
+
+            <!-- telefon optional -->
+            <div class="medium-6 columns">
+              <label>
+                <f:if condition="{settings.label_phone}">
+                  <f:then>
+                    {settings.label_phone}:
+                  </f:then>
+                  <f:else>
+                    <f:translate
+                      key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_phone" />
+                  </f:else>
+                </f:if>
+                <input type="text" placeholder="" name="phone">
+              </label>
+            </div>
+
+          </div>
+          <!-- msg -->
+          <div class="row columns">
+            <label>
+              <f:if condition="{settings.label_message}">
+                <f:then>
+                  {settings.label_message}:*
+                </f:then>
+                <f:else>
+                  <f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_msg" />
+                </f:else>
+              </f:if>
+              <textarea rows="5" cols="50" name="msg" required></textarea>
+              <span class="form-error">
+                <f:translate
+                  key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_msg_error" />
+              </span>
+            </label>
+          </div>
+
+          <!-- friendly captcha start -->
+          <div class="row columns" id="ib-recaptcha-container">            
+            <div class="frc-captcha" data-sitekey="FCMKN6E68LK32MRG"
+              data-puzzle-endpoint="https://eu-api.friendlycaptcha.eu/api/v1/puzzle" data-callback="fcCallback"
+              data-lang="{f:cObject(typoscriptObjectPath: 'portalSettings.cookiebot_language')}"></div>
+            <span class="form-error">
+              <f:translate
+                key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_recaptcha_error" />
+            </span>
+            </label>
+          </div>
+          <!-- friendly captcha end -->
+
+          <!-- data privacy start -->
+          <f:format.raw>
+            <f:translate arguments="{0:asboluteDataPrivacyPath}"
+              key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_dataPrivacyLink" />
+          </f:format.raw>
+          <!-- data privacy end -->
+
+          <div class="row columns">
+            <f:form.button class="ib-link-more-after ib-color-darkblue button">
+              <f:if condition="{settings.submit}">
+                <f:then>
+                  {settings.submit}
+                </f:then>
+                <f:else>
+                  <f:translate
+                    key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_submit" />
+                </f:else>
+              </f:if>
+            </f:form.button>
+          </div>
+        </f:form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+  //const defaultWidget = friendlyChallenge.autoWidget;
+  //console.log(defaultWidget);
+
+  var ibForm = document.forms['ib-form-contact-form'];
+  var doSubmit = false;
+  var fcSolved = false;
+
+
+  function validateEmail() {
+    var eMailField = document.forms["ib-form-contact-form"]["eMail"];
+    var x = eMailField.value;
+    var atpos = x.indexOf("@");
+    var dotpos = x.lastIndexOf(".");
+    if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  function fcCallback(solution) {
+    if ($('#ib-recaptcha-container .frc-container').hasClass('frc-success')) {
+      fcSolved = true;
+    }
+  }
+
+
+
+
+  $(document).on("forminvalid.zf.abide", function (ev, frm) {
+    if (!doSubmit) {
+      $('#ib-recaptcha-container .form-error').fadeIn(100).fadeOut(5000);
+    }
+  })
+
+  $(document).on('submit', function (e) {
+    e.preventDefault();
+    if (fcSolved) {
+      ibForm.submit();
+    } else {
+      $('#ib-recaptcha-container .form-error').fadeIn(100).fadeOut(5000);
+    }
+
+  });
+</script>

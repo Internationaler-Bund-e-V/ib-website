@@ -1,0 +1,196 @@
+<T3DataStructure>
+  <meta>
+    <langDisable>1</langDisable>
+  </meta>
+
+  <sheets>
+    <sDEF>
+      <ROOT>
+        <TCEforms>
+          <sheetTitle>Header Slider</sheetTitle>
+        </TCEforms>
+        <type>array</type>
+        <el>
+          <settings.layout>
+            <TCEforms>
+              <label>Choose Content offset</label>
+              <config>
+                <type>select</type>
+                <renderType>selectSingle</renderType>
+                <items type="array">
+                  <numIndex index="0" type="array">
+                    <numIndex index="0">large offset</numIndex>
+                    <numIndex index="1">offset--large</numIndex>
+                  </numIndex>
+                  <numIndex index="1" type="array">
+                    <numIndex index="0">small offset</numIndex>
+                    <numIndex index="1">offset--small</numIndex>
+                  </numIndex>
+                </items>
+              </config>
+            </TCEforms>
+          </settings.layout>
+
+          <settings.sliderContainer>
+            <TCEforms>
+              <tx_templavoila>
+                <title>Slider</title>
+              </tx_templavoila>
+            </TCEforms>
+            <section>1</section>
+            <title>Hinweis: Für die korrekte Verwendung muss das PlugIn zuerst gespeichert werden!</title>
+            <type>array</type>
+            <el>
+              <ItemWrap>
+                <type>array</type>
+                <tx_templavoila>
+                  <title>new slide</title>
+                </tx_templavoila>
+                <el>
+                  <slideImage>
+                    <TCEforms>
+                      <label>Slide Image</label>
+                        <config>
+                            <type>group</type>
+                            <internal_type>db</internal_type>
+                            <appearance>
+                                <elementBrowserType>file</elementBrowserType>
+                                <elementBrowserAllowed>gif,jpg,jpeg,png</elementBrowserAllowed>
+                            </appearance>
+                            <allowed>sys_file</allowed>
+                            <size>1</size>
+                            <minitems>1</minitems>
+                            <maxitems>1</maxitems>
+                        </config>
+                    </TCEforms>
+                  </slideImage>
+                  <slideImageAltText>
+                    <TCEforms>
+                      <label>Slide Image Alt Text</label>
+                      <config>
+                        <type>input</type>
+                        <eval>trim</eval>
+                        <max>254</max>
+                        <size>254</size>
+                      </config>
+                    </TCEforms>
+                  </slideImageAltText>
+                  <bubbleColor>
+                    <TCEforms>
+                      <label>Buddy Color</label>
+                      <config>
+                        <type>select</type>
+                        <renderType>selectSingle</renderType>
+                        <items type="array">
+                          <numIndex index="0" type="array">
+                            <numIndex index="0">blue</numIndex>
+                            <numIndex index="1">blue</numIndex>
+                          </numIndex>                        
+                          <numIndex index="3" type="array">
+                            <numIndex index="0">orange</numIndex>
+                            <numIndex index="1">orange</numIndex>
+                          </numIndex>                         
+                          <numIndex index="6" type="array">
+                            <numIndex index="0">no buddy</numIndex>
+                            <numIndex index="1">inactive</numIndex>
+                          </numIndex>
+                        </items>
+                      </config>
+                    </TCEforms>
+                  </bubbleColor>
+                  <bubblePosition>
+                    <TCEforms>
+                      <label>Buddy Position</label>
+                      <config>
+                        <type>select</type>
+                        <renderType>selectSingle</renderType>
+                        <items type="array">
+                          <numIndex index="0" type="array">
+                            <numIndex index="0">right</numIndex>
+                            <numIndex index="1">right</numIndex>
+                          </numIndex>
+                          <numIndex index="1" type="array">
+                            <numIndex index="0">left</numIndex>
+                            <numIndex index="1">left</numIndex>
+                          </numIndex>                          
+                        </items>
+                      </config>
+                    </TCEforms>
+                  </bubblePosition>                  
+                  <slideLink>
+                    <TCEforms>
+                      <label>Link to page</label>
+                      <config>
+                        <type>input</type>
+                        <eval>trim</eval>
+                        <size>60</size>
+                        <default></default>
+                        <wizards type="array">
+                          <_PADDING type="integer">2</_PADDING>
+                          <link type="array">
+                            <type>popup</type>
+                            <title>Link</title>
+                            <icon>EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_link.gif</icon>
+                            <module type="array">
+                              <name>wizard_link</name>
+                              <urlParameters type="array">
+                                <mode>wizard</mode>
+                                <act>file</act>
+                              </urlParameters>
+                            </module>
+                            <JSopenParams>height=500,width=500,status=0,menubJSopenParams</JSopenParams>
+                          </link>
+                        </wizards>
+                      </config>
+                    </TCEforms>
+                  </slideLink>
+                  <openInNewTab>
+                   <TCEforms>
+                      <label>Open in new tab</label>
+                      <config>
+                        <type>check</type>
+                        <default>0</default>
+                      </config>
+                    </TCEforms>
+                  </openInNewTab>                  
+                  <textRowOne>
+                    <TCEforms>
+                      <label>Headline - Für Zeilenumbruch bitte das &lt;br /&gt; Tag verwenden</label>
+                      <config>
+                        <type>input</type>
+                        <eval>trim</eval>
+                        <max>255</max>
+                        <size>255</size>
+                      </config>
+                    </TCEforms>
+                  </textRowOne>                  
+                  <textRowTwo>
+                    <TCEforms>
+                      <label>Subline - Für Zeilenumbruch bitte das &lt;br /&gt; Tag verwenden</label>
+                      <config>
+                        <type>input</type>
+                        <eval>trim</eval>
+                        <max>255</max>
+                        <size>255</size>
+                      </config>
+                    </TCEforms>
+                  </textRowTwo>                  
+                  <textRowThree>
+                    <TCEforms>
+                      <label>Text</label>
+                      <config>
+                        <type>input</type>
+                        <eval>trim</eval>
+                        <size>255</size>
+                      </config>
+                    </TCEforms>
+                  </textRowThree>                
+                </el>
+              </ItemWrap>
+            </el>
+          </settings.sliderContainer>
+        </el>
+      </ROOT>
+    </sDEF>
+  </sheets>
+</T3DataStructure>

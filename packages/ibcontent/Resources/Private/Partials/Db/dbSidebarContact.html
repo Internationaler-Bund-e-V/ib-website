@@ -1,0 +1,67 @@
+<div class="ib-sidebar">
+  <!-- render contact person details -->
+
+  <div class="ib-content-module ib-sidebar-contact ib-background-white ib-contact-sidebar-header">
+
+    <h2>Kontakt</h2>
+    <f:if condition="{product.Users}">
+      <div class="contacts-container">
+        <f:for each="{product.Users}" as="User">
+          <div class="pdb-single-contact-container">
+            <f:if condition="{User.image}">
+              <img src="{customSettings.urlIBPdb}{User.image}" alt="{User.image}">
+            </f:if>
+            <div class="row columns">
+              <b class="ib-font-bold">
+                {User.first_name} {User.last_name}
+              </b>
+            </div>
+            <f:if condition="{User.addition_position}">
+              <div class="row columns">
+                {User.addition_position}
+              </div>
+            </f:if>
+            <f:if condition="{User.phone}">
+              <div class="row columns">
+                <i class="fas fa-phone"></i> Tel.:
+                <a href="tel:{User.phone_int}">{User.phone}</a>
+              </div>
+            </f:if>
+            <f:if condition="{User.mobile}">
+              <div class="row columns">
+                <i class="fas fa-phone"></i> Mobil:
+                <a href="tel:{User.mobile_int}">{User.mobile}</a>
+              </div>
+            </f:if>
+
+            <f:if condition="{User.fax}">
+              <div class="row columns">
+                <i class="fas fa-fax"></i> Fax: {User.fax}
+              </div>
+            </f:if>
+
+            <f:if condition="{User.email}">
+              <div class="row columns">
+                <i class="fas fa-envelope"></i>
+                <a data-ibemailreferrer="Angebot_mail" data-ibemail="{obfuscateEmail:ObfuscateEmail(emailAddress:User.email)}" class="ibOEmail mail"
+                  title="{f:translate(key:'LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contact_us')}">{f:translate(key:
+                  'LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:email_label')}</a>
+  
+              </div>
+            </f:if>
+            <f:if condition="{product.Product.contact}">
+              <div class="row columns">
+                <p>
+                  Direkt zum <span data-anchor="contact-form-{uid}"
+                    class="db-contactform-jump ib-link-more-before ib-color-blue">Kontaktformular</span>
+                </p>
+              </div>
+            </f:if>
+          </div>
+        </f:for>
+      </div>
+    </f:if>
+
+  </div>
+
+</div>

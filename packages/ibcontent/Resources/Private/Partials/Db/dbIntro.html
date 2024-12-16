@@ -1,0 +1,109 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<!-- add og for products/locations-->
+<f:render partial="OpenGraph" section="OB_Locations_Products"
+  arguments="{title: intro.name,description: intro.header, ogImage:ogImage}" />
+
+<div class="ib-services" id="ib-intro-content">
+  <div class="row ib-content-module ib-background-white">
+    <div class="columns medium-offset-1 medium-10 large-6-2col large-offset-1-2col end">
+      <div class="columns row">
+
+        <h1>{intro.name}</h1>
+        <h2>{intro.header}</h2>
+      </div>
+      <div class="columns row">
+
+        <f:format.raw>{intro.short_description}</f:format.raw>
+        <f:comment><!--
+				  * Show description for locations only.
+				  * For products the description is a duplicate of "ablauf"
+				  * itemType can be location or product. See the related templates
+				  * @author mk, 2017-04-11
+				 --></f:comment>
+        <f:if condition="{itemType} == 'location' ">
+          <f:then>
+            <f:format.raw>{intro.description}</f:format.raw>
+          </f:then>
+        </f:if>
+
+        <!-- customContent start -->
+        <f:render partial="db/dbCustomContent"
+          arguments="{customcontent:customcontent,customSettings:customSettings}" />
+        <!-- customContent end -->
+
+        <f:if condition="{sponsorimages}">
+          <f:render section="sponsor"
+            arguments="{logo_options:sponsor.sponsor_logo_options,type:'sponsor',uid:uid,sponsor:sponsor,sponsorimages:sponsorimages,customSettings:customSettings}">
+          </f:render>
+        </f:if>
+
+        <f:if condition="{coopPartnerImages}">
+          <f:render section="sponsor"
+            arguments="{logo_options:coopPartner.coop_logo_options,type:'coop',uid:uid,sponsor:coopPartner,sponsorimages:coopPartnerImages,customSettings:customSettings}">
+          </f:render>
+        </f:if>
+      </div>
+    </div>
+  </div>
+</div>
+
+<f:section name="sponsor">
+
+  <f:if condition="{logo_options} == '0' || {logo_options} == '2'">
+    <div class="ib-sponsor" id="{type}_{uid}">
+      <div class="columns row">
+        <h2>
+          <f:if condition="{sponsor.headline}">
+            <f:then>{sponsor.headline}</f:then>
+            <f:else>
+              <f:if condition="{type} == 'sponsor'">
+                <f:then>
+                  <f:translate
+                    key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:sponsors_default_headline" />
+                </f:then>
+                <f:else>
+                  <f:translate
+                    key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:coop_default_headline" />
+                </f:else>
+              </f:if>
+            </f:else>
+
+          </f:if>
+        </h2>
+      </div>
+      <div class="columns row">
+        <f:format.raw>{sponsor.text_top}</f:format.raw>
+      </div>
+
+      <div class="columns row ib-sponsor-image-container">
+        <f:for each="{sponsorimages}" as="image" iteration="iterator">
+          <f:if condition="{image.alt_tag} != ''">
+            <f:then>
+              <f:variable name="altAttributeValue">{image.alt_tag}</f:variable>
+            </f:then>
+            <f:else>
+              <f:variable name="altAttributeValue"><f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:altTagValue" /></f:variable>
+            </f:else>
+          </f:if>
+          <div
+            class="columns small-{f:if(condition:'{image.image_layout_columns} != 6',then:'{image.image_layout_columns}', else:'6')} ib-sponsor-image text-center float-left {f:if(condition:iterator.isOdd, then: 'ib-sponsor-image-odd')} {f:if(condition:iterator.isEven, then: 'ib-sponsor-image-even')}">
+            <f:if condition="{image.link}">
+              <f:then>
+                <a href="{image.link}" target="_blank">
+                  <img src="{customSettings.urlIBPdbImages}{image.img}" alt="{altAttributeValue}">
+                </a>
+              </f:then>
+              <f:else>
+                <img src="{customSettings.urlIBPdbImages}{image.img}" alt="{altAttributeValue}">
+              </f:else>
+            </f:if>
+          </div>
+        </f:for>
+      </div>
+
+      <div class="columns row">
+        <f:format.raw> {sponsor.text_bottom}</f:format.raw>
+      </div>
+    </div>
+  </f:if>
+</f:section>

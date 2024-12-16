@@ -1,0 +1,181 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace seo=RmsSeo\Ibcontent\ViewHelpers}
+{namespace obfuscateEmail=Rms\Ibcontent\ViewHelpers}
+/* * product sorting configuration
+* * type sets rendering in t3 extension * * 1 = accordion * 2 = news * 3 = gallery * 4 = partner * 5 = downloads * 6 = products
+*/
+
+<f:layout name="Default" />
+<f:section name="main">
+    <div class="ib-db-extension ib-tracking-on-load" data-locationnetworkid="{location.Network.id}" data-locationnetwork="{location.Network.name}" data-ibentity="Location" data-ibtrackingdata="{location.Network.name},{location.Location.name},Standort">
+        <!-- content -->
+        <div id="ib-partial-startpageslider">
+            <!-- render headerslider start -->
+            <f:if condition="{location.Images.Headerslides}">
+                <f:render partial="db/dbSlider" arguments="{slides:location.Images.Headerslides,customSettings:customSettings}" />
+            </f:if>
+            <!-- render headerslider end -->
+        </div>
+
+        <!-- social share start -->
+        <!-- partial="db/dbSocialShare"-->
+        <v:render.template file="typo3conf/ext/ib_template/Resources/Private/Template/html/partial/SocialShare.html" />
+        <!-- social share end -->
+
+        <div class="row ib-background-white">
+            <!-- left column start -->
+
+            <div class="columns large-8 ib-2col--main ib-background-white ib-db-main-content">
+                
+                <!-- render breadcrumb start -->
+                <f:render partial="db/dbBreadcrumb" arguments="{additionalPages:{0:location.Location}}" />
+                <!-- render breadcrumb end -->
+
+                <!-- rs reader start-->
+                <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.readspeaker.show')}">
+                    <f:then>
+                        <div class="row ib-content-module ib-rs-speaker ib-background-white">
+                            <div class="columns {f:if(condition: '{settings.layout}==" 2col "',then: 'medium-offset-1 medium-11 large-offset-1-2col large-7-2col',else: 'medium-offset-1 medium-11')}">
+                                <div id="readspeaker_button1" class="rs_skip rsbtn rs_preserve">
+                                    <a rel="nofollow" class="rsbtn_play" accesskey="L" title="{f:cObject(typoscriptObjectPath: 'portalSettings.readspeaker.title')}"
+                                        href="//app-eu.readspeaker.com/cgi-bin/rsent?customerid={f:cObject(typoscriptObjectPath: 'portalSettings.readspeaker.id')}&amp;lang={f:cObject(typoscriptObjectPath: 'portalSettings.readspeaker.lang')}&amp;readclass=ib-db-main-content,ib-db-right-content">
+                                        <span class="rsbtn_left rsimg rspart">
+                                            <span class="rsbtn_text">
+                                                <span>{f:cObject(typoscriptObjectPath: 'portalSettings.readspeaker.buttonText')}</span>
+                                            </span>
+                                        </span>
+                                        <span class="rsbtn_right rsimg rsplay rspart"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </f:then>
+                    <f:else></f:else>
+                </f:if>
+                <!-- rs reader end-->
+                
+                <!-- render mobile contact overlay start -->
+                <div class="row hide-for-large">
+                  <div class="columns small-12 medium-offset-1">
+                    <span class="ibCustomButton lightblue toggleContactOverlay"><b>Kontakt</b></span>
+                  </div>
+                </div>
+                <!-- render mobile contact overlay end -->
+
+                <!-- render intro headline,subline,description/short-description, sponsor/cooppartner start -->
+                <f:render partial="db/dbIntro" arguments="{ogImage:location.Images.Headerslides.0,uid:uid,customcontent:location.Customcontent, intro:location.Location,sponsor:location.Sponsor,sponsorimages:location.Images.Sponsors, coopPartner:location.CoopPartner, coopPartnerImages:location.Images.CoopPartners,customSettings:customSettings,itemType:'location'}"
+                />
+                <!-- render intro headline,subline,description/short-description end -->
+
+
+                <f:for each="{location.Location.attributesorting}" as="attribute" iteration="iterator">
+                    <f:switch expression="{attribute.type}">
+                        <f:case value="1">
+                            <!-- render accordion start -->
+                            <f:render partial="db/dbSingleAccordion" arguments="{accordion:location.Location,attribute:attribute,uid:uid,iterator:iterator}"
+                            />
+                            <!-- render accordion end -->
+                        </f:case>
+                        <f:case value="2">
+                            <!-- render news start -> see ma#1026 -->                            
+                            <!-- render news end -->
+                        </f:case>
+                        <f:case value="3">
+                            <!-- render gallery start -->
+                            <f:if condition="{location.Images.Impression}">
+                                <f:render partial="db/dbGallery" arguments="{gallery:location.Images.Impression,customSettings:customSettings}" />
+                            </f:if>
+                            <!-- render gallery end -->
+                        </f:case>
+                        <f:case value="4">
+                            <!-- render partner start -->
+                            <f:if condition="{location.Links}">
+                                <f:render partial="db/dbPartner" arguments="{headline:location.Location.partner_headline,partners:location.Links,uid:uid,customSettings:customSettings}"
+                                />
+                            </f:if>
+                            <!-- render partner end -->
+                        </f:case>
+                        <f:case value="5">
+                            <!-- sidebar download start -->
+                            <f:if condition="{location.Document}">
+                                <f:render partial="db/dbDownload" arguments="{downloads:location.Document,attribute:attribute,uid:uid,iterator:iterator,customSettings:customSettings}"
+                                />
+                            </f:if>
+                            <!-- sidebar download end -->
+                        </f:case>
+                        <f:case value="6">
+                          <f:comment>see MA#2007</f:comment>
+                            <!-- render products/locations start -->
+                            <f:if condition="{location.Products} || {location.Locations}">
+                                <f:render partial="db/dbProducts" arguments="{products:location.Products,locations:location.Locations,uid:uid,locationtargetpage:settings.locationtargetpage,pageID:settings.targetpage,iterator:iterator,location:location}"
+                                />
+                            </f:if>
+                            <!-- render products end -->
+                        </f:case>
+
+                    </f:switch>
+                </f:for>
+                
+                <f:render partial="db/dbContact" arguments="{contact:location.Location.contact, contact_mail:location.Location.contact_mail, uid:uid, item_id:location_id, form_type:'location',customSettings:customSettings}" />
+
+                <f:render partial="db/dbVideo" arguments="{video:location.Video}" />
+            </div>
+
+            <!-- left column end -->
+
+            <!-- right column start -->
+            <div class="columns medium-offset-1 medium-10 large-offset-0 large-3 end ib-2col--sidebar ib-background-white ib-db-right-content">
+                <!-- sidebar content start -->
+
+                <!-- render spacer for contacts start -->               
+                    <f:render partial="Db/dbSidebarSpacer" />
+                <!-- render spacer for contacts end -->
+                 
+                <!-- sidebar contact start -->
+                <f:render partial="db/dbSidebarContactLocation" arguments="{location_id:location_id, location:location.Location, contacts:location.Users, uid:uid,customSettings:customSettings}"
+                />
+                <!-- sidebar contact end -->
+
+                <!-- sideba map start -->
+                <f:render partial="db/dbSidebarMap" arguments="{location_id:location_id, location:location.Location}" />
+                <!-- sideba map end -->
+
+                <!-- sidebar contact_text start-->
+                <f:if condition="{location.Location.contact_text} != ''">
+                  <f:render partial="db/dbSidebarContactText" arguments="{location:location.Location}" />                
+                </f:if>
+                <!-- sidebar contact_text end-->
+
+                <div class="small-12 medium-5 large-12 columns">
+                    <!-- sidebar sponsor start -->                    
+                    <f:if condition="{location.Sponsor.sponsor_logo_options} == '1' || {location.Sponsor.sponsor_logo_options} == '2'">
+                        <f:render partial="Db/dbSidebarSponsor" arguments="{headline:location.Sponsor.headline,sponsorOptions:location.Sponsor.sponsor_logo_options, type:'sponsor',sponsorimages:location.Images.Sponsors,customSettings:customSettings, uid:uid }"></f:render>
+                    </f:if>					
+                    <!-- sidebar sponsor end -->
+                </div>
+
+                <div class="small-12 medium-5 large-12 columns">
+                    <!-- sidebar coop start -->
+                    <f:if condition="{location.CoopPartner.coop_logo_options} == '1' || {location.CoopPartner.coop_logo_options} == '2'">
+                        <f:render partial="Db/dbSidebarSponsor" arguments="{headline:location.CoopPartner.headline,sponsorOptions:location.CoopPartner.coop_logo_options,type:'coop',sponsorimages:location.Images.CoopPartners,customSettings:customSettings, uid:uid }"></f:render>
+                    </f:if>
+                    <!-- sidebar coop end -->
+                </div>
+
+                <!-- sidebar content end  -->
+            </div>
+            <!-- right column end -->
+        </div>
+        <!--TYPO3SEARCH_end-->
+
+        <!-- /content wrapper -->
+
+        <!-- include db.js as footer asset -->
+    <f:asset.script identifier="dbjs" src="EXT:ibcontent/Resources/Public/js/db.js" />
+    </div>
+    
+<div id="dbContactOverlay" class="hide-for-large">  
+  <f:render partial="db/dbContactOverlay" arguments="{location:location.Location, contacts:location.Users, uid:uid,customSettings:customSettings}" />
+</div>
+
+</f:section>

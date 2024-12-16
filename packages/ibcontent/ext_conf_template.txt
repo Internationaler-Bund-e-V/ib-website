@@ -1,0 +1,17 @@
+# cat=basic/enable; type=string; label=URL IB-Redaktionstool URL
+urlIBPdb =
+
+# cat=basic/enable; type=string; label=URL IB-Redaktionstool Interface
+urlIBPdbInteface =
+
+# cat=basic/enable; type=string; label=URL IB-Redaktionstool Images
+urlIBPdbImages =
+
+# cat=basic/enable; type=string; label=frienldyCaptcha Code
+reCaptchaCode =
+
+# cat=basic/enable; type=string; label=eMail From (Kontaktformular)
+emailFrom =
+
+# cat=basic/enable; type=boolean; label= Use Test Keys for reCaptcha 
+useTestKeys = 

@@ -1,0 +1,89 @@
+{namespace ib=Rms\Ibcontent\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<v:condition.string.contains haystack="{gallery.0}" needle="fallback">
+    <f:then></f:then>
+    <f:else>
+        <f:if condition="{gallery}">
+            <div class="row columns ib-content-module ib-noTopBottomPadding ib-background-white">
+                <div class="ib-db-gallery">
+                    <div class="row">
+                        <div class="columns small-1 large-1-2col"></div>
+                        <div class="columns small-10 large-6-2col end">
+                            <h2 class="ib-headline">Galerie</h2>
+                        </div>
+                    </div>
+                    <div class="sliderLoading" id="loader_locGalerie"></div>
+                    <f:if condition="{gallery -> f:count()} > 1">
+                        <f:then>
+                            <div class="row useLoadingIndicator loading ibLocGalerieContainer ">
+                                <div id="dbGalleryPrevButton"
+                                    class="columns small-1 large-1-2col ib-prev-next-button ib-slider-nav-left">
+                                    <span class="ib-iconwrapper"><i class="ib-icon-arrow-left"></i></span>
+                                </div>
+                                <div class="columns small-10 large-6-2col">
+                                    <div class="ib-dbGallery-slider" data-loaderid="loader_locGalerie">
+                                        <f:for each="{gallery}" as="image">
+                                            <f:if condition="{image.alt_tag} != ''">
+                                                <f:then>
+                                                    <f:variable name="altAttributeValue">{image.alt_tag}</f:variable>
+                                                </f:then>
+                                                <f:else>
+                                                    <f:variable name="altAttributeValue"><f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:altTagValue" /></f:variable>
+                                                </f:else>
+                                            </f:if>
+                                            <div class="ib-dbGallery-item">
+                                                <div class="ib-dbGallery-item-container">
+                                                    <img src="{customSettings.urlIBPdbImages}{image.url}"
+                                                        alt="{altAttributeValue}" />
+                                                </div>
+                                            </div>
+                                        </f:for>
+                                    </div>
+                                </div>
+                                <div id="dbGalleryNextButton"
+                                    class="columns small-1 large-1-2col ib-prev-next-button ib-slider-nav-right">
+                                    <span class="ib-iconwrapper"> <i class="ib-icon-arrow-right"></i> </span>
+                                </div>
+                            </div>
+                        </f:then>
+                        <f:else>
+                            <div class=" row ">
+                                <div class="columns small-1 large-1-2col ib-prev-next-button ib-slider-nav-left">
+                                    <div id="dbGalleryPrevButton">
+                                        <span class="ib-iconwrapper"><i class="ib-icon-arrow-left"></i></span>
+                                    </div>
+                                </div>
+                                <div class="columns small-10 large-6-2col">
+                                    <div class="ib-dbGallery-slider" data-loaderid="loader_locGalerie">
+                                        <f:for each="{gallery}" as="image">
+                                            <f:if condition="{image.alt_tag} != ''">
+                                                <f:then>
+                                                    <f:variable name="altAttributeValue">{image.alt_tag}</f:variable>
+                                                </f:then>
+                                                <f:else>
+                                                    <f:variable name="altAttributeValue"><f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:altTagValue" /></f:variable>
+                                                </f:else>
+                                            </f:if>
+                                            <div class="ib-dbGallery-item">
+                                                <div class="ib-dbGallery-item-container">
+                                                    <img src="{customSettings.urlIBPdbImages}{image.url}"
+                                                        alt="{altAttributeValue}" />
+                                                </div>
+                                            </div>
+                                        </f:for>
+                                    </div>
+                                </div>
+                                <div class="columns small-1 large-1-2col ib-prev-next-button ib-slider-nav-right">
+                                    <div id="dbGalleryNextButton">
+                                        <span class="ib-iconwrapper"> <i class="ib-icon-arrow-right"></i> </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </f:else>
+                    </f:if>
+                </div>
+            </div>
+        </f:if>
+    </f:else>
+</v:condition.string.contains>

@@ -1,0 +1,190 @@
+<T3DataStructure>
+  <meta>
+    <langDisable>1</langDisable>
+  </meta>
+  <sheets>
+    <sDEF>
+      <ROOT>
+        <TCEforms>
+          <sheetTitle>Kontaktformular Einstellungen</sheetTitle>
+        </TCEforms>
+        <type>array</type>
+        <el>
+          <settings.headline>
+            <TCEforms>
+              <label>Überschrift</label>
+              <config>
+                <type>input</type>
+                <size>255</size>
+              </config>
+            </TCEforms>
+          </settings.headline>
+          <settings.text>
+            <TCEforms>
+              <label>Text</label>
+              <config>
+                <type>text</type>
+                <cols>3</cols>
+                <rows>3</rows>
+                <enableRichtext>1</enableRichtext>
+              </config>
+            </TCEforms>
+          </settings.text>
+          <settings.emailreceiver>
+            <TCEforms>
+              <label>eMail Adresse (mehrere Adressen möglich. Kommaseparierte Angabe)</label>
+              <config>
+                <type>input</type>
+                <size>255</size>
+                <eval>required,Rms\IbFormbuilder\Evaluation\MultipleEmailEvaluation</eval>
+              </config>
+            </TCEforms>
+          </settings.emailreceiver>
+          <settings.salutation>
+            <TCEforms>
+              <label>Bezeichnung Feld Anrede   - Standard "Anrede" -</label>
+              <config>
+                <type>input</type>
+                <size>255</size>
+              </config>
+            </TCEforms>
+          </settings.salutation>
+          <settings.salutationNone>
+            <TCEforms>
+              <label>Bezeichnung Feld Keine Angabe   - Standard "Keine Angabe" -</label>
+              <config>
+                <type>input</type>
+                <size>255</size>
+              </config>
+            </TCEforms>
+          </settings.salutationNone>
+          <settings.salutationMR>
+            <TCEforms>
+              <label>Bezeichnung Feld Herr   - Standard "Herr" -</label>
+              <config>
+                <type>input</type>
+                <size>255</size>
+              </config>
+            </TCEforms>
+          </settings.salutationMR>
+          <settings.salutationMS>
+            <TCEforms>
+              <label>Bezeichnung Feld Frau   - Standard "Frau" -</label>
+              <config>
+                <type>input</type>
+                <size>255</size>
+              </config>
+            </TCEforms>
+          </settings.salutationMS>
+          <settings.salutationNeutral>
+            <TCEforms>
+              <label>Bezeichnung Feld Neutrale Anrede   - Standard "Neutrale Anrede" -</label>
+              <config>
+                <type>input</type>
+                <size>255</size>
+              </config>
+            </TCEforms>
+          </settings.salutationNeutral>
+          <settings.label_firstname>
+            <TCEforms>
+              <label>Bezeichnung Feld Vorname   - Standard "Vorname" -</label>
+              <config>
+                <type>input</type>
+                <size>255</size>
+              </config>
+            </TCEforms>
+          </settings.label_firstname>
+          <settings.label_lastname>
+            <TCEforms>
+              <label>Bezeichnung Feld Nachname   - Standard "Nachname" -</label>
+              <config>
+                <type>input</type>
+                <size>255</size>
+              </config>
+            </TCEforms>
+          </settings.label_lastname>
+          <settings.label_email>
+            <TCEforms>
+              <label>Bezeichnung Feld eMail   - Standard "Ihre E-Mail-Adresse" -</label>
+              <config>
+                <type>input</type>
+                <size>255</size>
+              </config>
+            </TCEforms>
+          </settings.label_email>
+          <settings.label_phone>
+            <TCEforms>
+              <label>Bezeichnung Feld Telefon   - Standard "Ihre Telefonnummer" -</label>
+              <config>
+                <type>input</type>
+                <size>255</size>
+              </config>
+            </TCEforms>
+          </settings.label_phone>
+          <settings.label_message>
+            <TCEforms>
+              <label>Bezeichnung Feld Nachricht   - Standard "Ihre Nachricht" -</label>
+              <config>
+                <type>input</type>
+                <size>255</size>
+              </config>
+            </TCEforms>
+          </settings.label_message>
+          <settings.submit>
+            <TCEforms>
+              <label>Bezeichnung Feld Absenden   - Standard "Absenden" -</label>
+              <config>
+                <type>input</type>
+                <size>255</size>
+              </config>
+            </TCEforms>
+          </settings.submit>
+          <settings.subject>
+            <TCEforms>
+              <label>eMail Betreff   - Standard "Kontaktformular" -</label>
+              <config>
+                <type>input</type>
+                <size>255</size>
+              </config>
+            </TCEforms>
+          </settings.subject>
+          <settings.showSentOverlay>
+            <label>Zusätzliches PopUp/Overlay für eMail gesendet anzeigen</label>
+            <config>
+              <type>check</type>
+            </config>
+          </settings.showSentOverlay>
+          <settings.reCaptchaLangCode>
+            <TCEforms>
+              <label>reCaptcha Sprachcode (z.B. en, zh-CN, etc.) - Standard "de" -</label>
+              <config>
+                <type>input</type>
+                <size>255</size>
+              </config>
+            </TCEforms>
+          </settings.reCaptchaLangCode>
+          <settings.sentHeadline>
+            <TCEforms>
+              <label>eMail gesendet Headline - Standard "Danke für Ihre Nachricht!" -</label>
+              <config>
+                <type>input</type>
+                <size>255</size>
+              </config>
+            </TCEforms>
+          </settings.sentHeadline>
+          <settings.sentText>
+            <TCEforms>
+              <label>eMail gesendet Text - Standard "Ein/Eine Mitarbeiter/in wird sich umgehend bei Ihnen melden." -</label>
+              <config>
+                <type>text</type>
+                <cols>3</cols>
+                <rows>3</rows>
+                <enableRichtext>1</enableRichtext>
+              </config>
+            </TCEforms>
+          </settings.sentText>
+        </el>
+      </ROOT>
+    </sDEF>
+  </sheets>
+</T3DataStructure>

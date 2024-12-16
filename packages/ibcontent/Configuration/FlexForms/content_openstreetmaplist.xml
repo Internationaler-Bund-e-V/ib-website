@@ -1,0 +1,141 @@
+<T3DataStructure>
+  <meta>
+    <langDisable>1</langDisable>
+  </meta>
+
+  <sheets>
+    <sDEF>
+      <ROOT>
+        <TCEforms>
+          <sheetTitle>Openstreet Map List</sheetTitle>
+        </TCEforms>
+        <type>array</type>
+        <el>
+          <settings.osmMapNavigation>
+            <label>Navigation</label>
+            <config>
+              <type>input</type>
+              <size>20</size>
+              <max>30</max>
+              <eval>trim</eval>
+            </config>
+          </settings.osmMapNavigation>
+          <settings.showCategoryFilter>
+            <label>Kategoriefilter anzeigen:</label>
+            <config>
+              <type>check</type>
+            </config>
+          </settings.showCategoryFilter>
+          <settings.usePreFilterCategory>
+            <label>Vordefinierte Kategorien anzeigen: !Kategorie- und Schlagwortfilter werden
+              ausgeblendet! </label>
+            <config>
+              <type>check</type>
+            </config>
+          </settings.usePreFilterCategory>
+          <settings.preFilterCategoryIDs>
+            <label>Vordefinierte Kategorien IDs (kommasepariert, z.B. "193,171,174"):</label>
+            <config>
+              <type>input</type>
+              <size>20</size>
+              <max>100</max>
+              <eval>trim</eval>
+            </config>
+          </settings.preFilterCategoryIDs>
+          <settings.showTagFilter>
+            <label>Schlagwortfilter anzeigen (sofern vorhanden):</label>
+            <config>
+              <type>check</type>
+            </config>
+          </settings.showTagFilter>
+          <settings.tagFilterHeadline>
+            <label>Überschrift Schlagwortfilter (Standard = Schlagwörter)</label>
+            <config>
+              <type>input</type>
+              <size>20</size>
+              <max>100</max>
+              <eval>trim</eval>
+            </config>
+          </settings.tagFilterHeadline>
+          <settings.showLinkButton>
+            <label>Standortlink Button ausblenden:</label>
+            <config>
+              <type>check</type>
+            </config>
+          </settings.showLinkButton>
+          <settings.linkButtonColor>
+            <label>Standortlink Button-Farbe</label>
+            <config>
+              <type>select</type>
+              <renderType>selectSingle</renderType>
+              <items>
+                <numIndex index="0">
+                  <numIndex index="0">IB-Dunkelblau</numIndex>
+                  <numIndex index="1">#005590</numIndex>
+                </numIndex>
+                <numIndex index="1">
+                  <numIndex index="0">IB-Hellblau</numIndex>
+                  <numIndex index="1">#009ddf</numIndex>
+                </numIndex>
+                <numIndex index="2">
+                  <numIndex index="0">IB-Orange</numIndex>
+                  <numIndex index="1">#f18700</numIndex>
+                </numIndex>
+              </items>
+            </config>
+          </settings.linkButtonColor>
+          <settings.searchBarBackgroundColor>
+            <label>Hintergrundfarbe Suchleiste</label>
+            <config>
+              <type>select</type>
+              <renderType>selectSingle</renderType>
+              <items>
+                <numIndex index="0">
+                  <numIndex index="0">IB-Dunkelblau</numIndex>
+                  <numIndex index="1">#005590</numIndex>
+                </numIndex>
+                <numIndex index="1">
+                  <numIndex index="0">IB-Hellblau</numIndex>
+                  <numIndex index="1">#009ddf</numIndex>
+                </numIndex>
+                <numIndex index="2">
+                  <numIndex index="0">IB-Orange</numIndex>
+                  <numIndex index="1">#f18700</numIndex>
+                </numIndex>
+                <numIndex index="3">
+                  <numIndex index="0">Keine</numIndex>
+                  <numIndex index="1">transparent</numIndex>
+                </numIndex>
+              </items>
+            </config>
+          </settings.searchBarBackgroundColor>
+          <settings.tileBorderColor>
+            <label>Rahmenfarbe Kachel</label>
+            <config>
+              <type>select</type>
+              <renderType>selectSingle</renderType>
+              <items>
+                <numIndex index="0">
+                  <numIndex index="0">IB-Dunkelblau</numIndex>
+                  <numIndex index="1">#005590</numIndex>
+                </numIndex>
+                <numIndex index="1">
+                  <numIndex index="0">IB-Hellblau</numIndex>
+                  <numIndex index="1">#009ddf</numIndex>
+                </numIndex>
+                <numIndex index="2">
+                  <numIndex index="0">IB-Orange</numIndex>
+                  <numIndex index="1">#f18700</numIndex>
+                </numIndex>
+                <numIndex index="3">
+                  <numIndex index="0">Keine</numIndex>
+                  <numIndex index="1">transparent</numIndex>
+                </numIndex>
+              </items>
+            </config>
+          </settings.tileBorderColor>
+        </el>
+      </ROOT>
+    </sDEF>
+  </sheets>
+</T3DataStructure>

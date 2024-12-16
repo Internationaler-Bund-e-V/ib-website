@@ -1,0 +1,32 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers} {namespace j=Rms\Ibcontent\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+    <div id="osmMapContainer" data-appid="{settings.mapLayout}"
+        class="row ib-content-module ib-osmmap rs_preserve ib-background-white"
+        data-navigations="{settings.osmMapNavigation}" data-showtagfilter="{settings.showTagFilter}"
+        data-showlinkbutton="{settings.showLinkButton}" data-showfederalstatefilter="{settings.showFederalStateFilter}"
+        data-linkbuttoncolor="{settings.linkButtonColor}" data-tilebordercolor="{settings.tileBorderColor}"
+        data-showtagfilter="{settings.showTagFilter}" data-showcategoryfilter="{settings.showCategoryFilter}"
+        data-tagfilterheadlline="{settings.tagFilterHeadline}"
+        data-useprefiltercategory="{settings.usePreFilterCategory}"
+        data-prefiltercategoryids="{settings.preFilterCategoryIDs}"
+        data-searchbarbackgroundcolor="{settings.searchBarBackgroundColor}" data-emaillabel="{f:translate(key:
+            'LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:email_label')}" style="max-width:100%;">
+
+        <div id="osmListApp" class="columns"></div>
+
+
+    </div>
+
+    <!-- include db.js as footer asset -->
+    <!--
+    <f:asset.script identifier="osmMapVue" src="EXT:ibcontent/osmmap-vue/dist/js/osmMap.min.js" />
+    -->
+    <f:asset.script identifier="select2" src="EXT:ibcontent/Resources/Public/js/select2.full.js"
+        data="{cookieconsent: 'necessary'}" />
+    <f:asset.script identifier="osmMapVue" src="EXT:ibcontent/osmmap-vue/dist/js/osmMapApp.js" type="module"
+        data="{cookieconsent: 'necessary'}" />
+    <f:asset.css identifier="osmMapVueCss" href="EXT:ibcontent/osmmap-vue/dist/assets/index.css" />
+
+</f:section>

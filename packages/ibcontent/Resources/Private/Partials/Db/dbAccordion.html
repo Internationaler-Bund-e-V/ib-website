@@ -1,0 +1,24 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<div class="row columns ib-content-module ib-collapsible ib-background-white">
+	<f:for each="{show}" as="collapsible" iteration="iterator" key="contentKey">
+		<f:if condition="{v:variable.get(name: 'accordion.{contentKey}')}">
+			<div class="row" id="ib-collapsible-{uid}{iterator.cycle}">
+				<div class="columns small-1 large-1-2col ib-collapsible-icon ib-collapsible-trigger" data-ibcollapsibleid="{uid}{iterator.cycle}">
+					<span class="ib-iconwrapper"><i class="ib-icon-arrow-right"></i></span>
+				</div>
+				<div class="columns small-10 large-6-2col end">
+					<div class="ib-collapsible-header ib-collapsible-trigger rs_preserve" data-ibcollapsibleid="{uid}{iterator.cycle}" id="{v:format.eliminate(content:collapsible.ItemWrap.title, whitespace:1)}" >
+						<h2 class="ib-headline">{collapsible}</h2>
+					</div>
+					<div class="row ib-collapsible-content" id="ib-collapsible-content-{uid}{iterator.cycle}">
+						<div class="columns medium-12">
+							{v:variable.get(name: 'accordion.{contentKey}')}
+						</div>
+					</div>
+					<div class="row columns ib-collapsible-divider"></div>
+				</div>
+			</div>
+		</f:if>
+	</f:for>
+</div>
+

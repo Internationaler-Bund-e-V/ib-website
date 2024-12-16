@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.2"
+    xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file datatype="plaintext" date="2017-06-07T12:22:32Z" original="messages"
+        product-name="recaptcha" source-language="en" target-language="de">
+        <header />
+        <body>
+            <trans-unit id="searchcriteria" xml:space="preserve">
+            <source></source>
+                <target>
+                    Ihre Suchkriterien
+                </target>
+            </trans-unit>
+            <trans-unit id="distance" xml:space="preserve">
+                <source></source>
+                <target>
+                    Umkreis
+                </target>
+            </trans-unit>
+            <trans-unit id="zip" xml:space="preserve">
+            <source></source>
+                <target>
+                    PLZ
+                </target>
+            </trans-unit>
+            <trans-unit id="topic" xml:space="preserve">
+            <source></source>
+                <target>
+                    Thema
+                </target>
+            </trans-unit>
+            <trans-unit id="education_schools" xml:space="preserve">
+            <source></source>
+                <target>
+                    Erziehung &amp; Schulen
+                </target>
+            </trans-unit>
+            <trans-unit id="training_development" xml:space="preserve">
+            <source></source>
+                <target>
+                    Berufs- &amp; Weiterbildung
+                </target>
+            </trans-unit>
+            <trans-unit id="special_situations" xml:space="preserve">
+            <source></source>
+                <target>
+                    Besondere Lebenslagen
+                </target>
+            </trans-unit>
+            <trans-unit id="search" xml:space="preserve">
+            <source></source>
+                <target>
+                    Suchen
+                </target>
+            </trans-unit>
+            <trans-unit id="route_plan" xml:space="preserve">
+            <source></source>
+                <target>
+                    Zur Routenplanung
+                </target>
+            </trans-unit>
+            <trans-unit id="to_location" xml:space="preserve">
+            <source></source>
+                <target>
+                    Zum Standort
+                </target>
+            </trans-unit>
+            <trans-unit id="start_training_hours" xml:space="preserve">
+            <source></source>
+                <target>
+                    Angebotsanfang:
+                </target>
+            </trans-unit>
+            <trans-unit id="end_training_hours" xml:space="preserve">
+            <source></source>
+                <target>
+                    Angebotsende:
+                </target>
+            </trans-unit>
+            <trans-unit id="training_hours" xml:space="preserve">
+            <source></source>
+                <target>
+                    Unterrichtszeiten
+                </target>
+            </trans-unit>
+            <trans-unit id="training_period" xml:space="preserve">
+            <source></source>
+                <target>
+                    Ausbildungsdauer
+                </target>
+            </trans-unit>
+            <trans-unit id="promotions" xml:space="preserve">
+            <source></source>
+                <target>
+                    Fördermöglichkeiten
+                </target>
+            </trans-unit>
+            <trans-unit id="contact_us" xml:space="preserve">
+            <source></source>
+                <target>
+                    Kontaktieren Sie uns
+                </target>
+            </trans-unit>
+            <trans-unit id="email_label" xml:space="preserve">
+                <source></source>
+                <target>
+                    E-Mail schreiben
+                </target>
+            </trans-unit>
+            <trans-unit id="email_dialog_text" xml:space="preserve">
+                <source></source>
+                <target>Mail-Programm öffnen (sofern konfiguriert) oder E-Mail-Adresse anzeigen</target>
+            </trans-unit>
+            <trans-unit id="email_dialog_client" xml:space="preserve">
+                <source></source>
+                <target>Mail-Programm</target>
+            </trans-unit>
+            <trans-unit id="email_dialog_address" xml:space="preserve">
+                <source></source>
+                <target>E-Mail</target>
+            </trans-unit>
+            <trans-unit id="to_location_title" xml:space="preserve">
+            <source></source>
+                <target>
+                    Hier gelangen sie zu unserem Standort
+                </target>
+            </trans-unit>
+            <trans-unit id="contactform_confirm_text_1" xml:space="preserve">
+            <source></source>
+                <target>
+                    Danke für Ihre Nachricht!
+                </target>
+            </trans-unit>
+            <trans-unit id="contactform_confirm_text_2" xml:space="preserve">
+            <source></source>
+                <target>
+                    Ein/Eine Mitarbeiter/in wird sich umgehend bei Ihnen melden.
+                </target>
+            </trans-unit>
+            <trans-unit id="route_plan_title" xml:space="preserve">
+            <source></source>
+                <target>
+                    Hier gelangen Sie zum Routenplaner
+                </target>
+            </trans-unit>
+            <trans-unit id="contactform_salutation" xml:space="preserve">
+            <source></source>
+                <target>
+                    Anrede
+                </target>
+            </trans-unit>
+            <trans-unit id="contactform_salutation_none" xml:space="preserve">
+            <source></source>
+                <target>
+                    Keine Angabe
+                </target>
+            </trans-unit>
+            <trans-unit id="contactform_salutation_mrs" xml:space="preserve">
+            <source></source>
+                 <target>Frau</target>
+            </trans-unit>
+            <trans-unit id="contactform_salutation_mr" xml:space="preserve">
+            <source></source>
+                <target>
+                    Herr
+                </target>
+            </trans-unit>
+            <trans-unit id="contactform_salutation_neutral" xml:space="preserve">
+            <source></source>
+                <target>
+                    Neutrale Anrede
+                </target>
+            </trans-unit>
+            <trans-unit id="contactform_firstname" xml:space="preserve">
+            <source></source>
+                <target>
+                    Vorname *
+                </target>
+            </trans-unit>
+            <trans-unit id="contactform_firstname_error" xml:space="preserve">
+            <source></source>
+                <target>
+                    Bitte Vorname eintragen
+                </target>
+            </trans-unit>
+            <trans-unit id="contactform_lastname" xml:space="preserve">
+            <source></source>
+                <target>
+                    Nachname *
+                </target>
+            </trans-unit>
+            <trans-unit id="contactform_lastname_error" xml:space="preserve">
+            <source></source>
+                <target>
+                    Bitte Nachname eintragen
+                </target>
+            </trans-unit>
+            <trans-unit id="contactform_completename" xml:space="preserve">
+                <source></source>
+                    <target>Bitte Nachname und Vorname eintragen</target>
+                </trans-unit>
+            <trans-unit id="contactform_email" xml:space="preserve">
+            <source></source>
+                <target>
+                    Ihre E-Mail-Adresse *
+                </target>
+            </trans-unit>
+            <trans-unit id="contactform_email_error" xml:space="preserve">
+            <source></source>
+                <target>Bitte gültige eMail Adresse eintragen</target>
+            </trans-unit>
+            <trans-unit id="contactform_msg" xml:space="preserve">
+            <source></source>
+                <target>
+                    Ihre Nachricht: *
+                </target>
+            </trans-unit>
+            <trans-unit id="contactform_phone" xml:space="preserve">
+            <source></source>
+                <target>
+                    Ihre Telefonnummer:
+                </target>
+            </trans-unit>
+            <trans-unit id="contactform_msg_error" xml:space="preserve">
+            <source></source>
+                <target>Bitte Nachricht eintragen</target>
+            </trans-unit>
+            <trans-unit id="contactform_recaptcha_error" xml:space="preserve">
+            <source></source>
+                <target>
+                    Bitte FriendlyCaptcha bestätigen und die Validierung durchführen
+                </target>
+            </trans-unit>
+            <trans-unit id="contactform_dataPrivacyLink" xml:space="preserve">
+            <source></source>
+                <target>
+                <![CDATA[Alle Informationen zum Schutz der Daten sind sind in unserer <a href="%s" target="_blank">Datenschutzerklärung</a> aufrufbar.]]>
+                </target>
+            </trans-unit>
+            <trans-unit id="contactform_submit" xml:space="preserve">
+            <source></source>
+                <target>
+                    Absenden
+                </target>
+            </trans-unit>
+            <trans-unit id="sponsors_default_headline" xml:space="preserve">
+            <source></source>
+                <target>
+                    Gefördert durch:
+                </target>
+            </trans-unit>
+            <trans-unit id="coop_default_headline" xml:space="preserve">
+            <source></source>
+                <target>
+                    Unsere Kooperationspartner:
+                </target>
+            </trans-unit>
+            <trans-unit id="osmmaplistviewlinktext" xml:space="preserve">
+            <source></source>
+                <target>
+                    Die Kartenansicht ist für kleine Bildschirmgrößen ungeeignet, bitte wechseln Sie zur Listenansicht
+                </target>
+            </trans-unit>
+            <trans-unit id="altTagValue" xml:space="preserve">
+            <source></source>
+                <target>Keine Bildbeschreibung verfügbar</target>
+            </trans-unit>
+            <trans-unit id="tilesOverlayLabel" xml:space="preserve">
+                <source></source>
+                    <target>Weitere Informationen hier öffnen</target>
+                </trans-unit>
+        </body>
+    </file>
+</xliff>

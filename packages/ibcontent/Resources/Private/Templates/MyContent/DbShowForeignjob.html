@@ -1,0 +1,112 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace obfuscateEmail=Rms\Ibcontent\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+  <div class="ib-db-extension">
+    <div id="ib-partial-startpageslider">
+      <!-- render headerslider start -->
+      <f:if condition="{job.Images.Headerslides}">
+        <f:render partial="db/dbSlider" arguments="{slides:job.Images.Headerslides,customSettings:customSettings}" />
+      </f:if>
+      <!-- render headerslider end -->
+    </div>
+
+    <div class="row ib-background-white">
+
+      <!-- left column start -->
+      <div class="columns large-8 ib-2col--main ib-background-white ib-db-main-content">
+
+        <!-- rs reader start-->
+        <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.readspeaker.show')}">
+          <f:then>
+            <div class="row ib-content-module ib-rs-speaker ib-background-white">
+              <div class="columns {f:if(condition: '{settings.layout}=="
+                2col "',then: 'medium-offset-1 medium-11 large-offset-1-2col large-7-2col',else: 'medium-offset-1 medium-11')}">
+                <div id="readspeaker_button1" class="rs_skip rsbtn rs_preserve">
+                  <a rel="nofollow" class="rsbtn_play" accesskey="L"
+                    title="{f:cObject(typoscriptObjectPath: 'portalSettings.readspeaker.title')}"
+                    href="//app-eu.readspeaker.com/cgi-bin/rsent?customerid={f:cObject(typoscriptObjectPath: 'portalSettings.readspeaker.id')}&amp;lang={f:cObject(typoscriptObjectPath: 'portalSettings.readspeaker.lang')}&amp;readclass=ib-db-main-content,ib-db-right-content">
+                    <span class="rsbtn_left rsimg rspart">
+                      <span class="rsbtn_text">
+                        <span>{f:cObject(typoscriptObjectPath: 'portalSettings.readspeaker.buttonText')}</span>
+                      </span>
+                    </span>
+                    <span class="rsbtn_right rsimg rsplay rspart"></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </f:then>
+          <f:else></f:else>
+        </f:if>
+        <!-- rs reader end-->
+
+        <!-- render intro headline,subline,description/short-description, sponsor/cooppartner start -->
+        <div class="row">
+          <div class="columns medium-offset-1 medium-10 large-6-2col large-offset-1-2col end">
+            <h3>{job.Job.continent}</h3>
+            <h3>{job.Job.country}</h3>
+          </div>
+        </div>
+
+        <f:render partial="db/dbIntro"
+          arguments="{intro:job.Job, sponsor:product.Sponsor,sponsorimages:product.Images.Sponsors, coopPartner:product.CoopPartner, coopPartnerImages:product.Images.CoopPartners,customSettings:customSettings,itemType:'product'}" />
+        <!-- render intro headline,subline,description/short-description end -->
+
+        <!-- related FWD-->
+        <f:if condition="{job.Relatedjobs}">
+          <f:render partial="db/dbRelatedjobs" arguments="{relatedjobs:job.Relatedjobs, uid:uid, settings:settings}">
+          </f:render>
+        </f:if>
+
+        <!-- render gallery start -->
+        <f:if condition="{job.Images.Impression}">
+          <f:render partial="db/dbGallery" arguments="{gallery:job.Images.Impression,customSettings:customSettings}" />
+        </f:if>
+        <!-- render gallery end -->
+
+      </div>
+
+      <!-- left column end -->
+
+      <!-- right column start -->
+      <div
+        class="columns medium-offset-1 medium-10 large-offset-0 large-3 end ib-2col--sidebar ib-background-white ib-db-right-content">
+        <!-- sidebar content start -->
+        <div class="small-12 medium-5 large-12 columns">
+
+          <!-- sidebar contact start -->
+          <div class="ib-sidebar">
+            <!-- render contact person details -->
+            <div class="ib-content-module ib-sidebar-contact ib-background-white">
+
+              <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.allowFWDJobTemplate')}">
+                <div class="show-for-large">
+                  <!-- share buttton -->
+                  <f:render partial="ShariffButtons" /><br>
+                </div>
+              </f:if>
+
+              <div class="contacts-container">
+                <div class="pdb-single-contact-container">
+                  <f:if condition="{job.Contacts}">
+                    <f:render partial="Db/dbSidebarContactForeignjob"
+                      arguments="{contacts:job.Contacts,customSettings:customSettings}" />
+                  </f:if>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- sidebar contact end -->
+        </div>
+
+
+      </div>
+      <!-- right column end -->
+    </div>
+
+    <!-- include db.js as footer asset -->
+  <f:asset.script identifier="dbjs" src="EXT:ibcontent/Resources/Public/js/db.js" />
+  </div>
+</f:section>

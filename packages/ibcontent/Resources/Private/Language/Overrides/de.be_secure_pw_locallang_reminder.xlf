@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2013-03-09T18:44:59Z"
+          product-name="examples">
+        <header/>
+        <body>
+
+            <!--
+                original file see EXT:be_secure_pw/Resources/Private/Language/locallang_reminder.xml
+                see 0001996: Passwortschutz des Backends (https://mantis.rm-solutions.de/mantis/view.php?id=1996)
+                mk@rms, 2021-06-16
+            -->
+            <trans-unit id="passwordReminderWindow_message" xml:space="preserve">
+                <source>xxx</source>
+                <target>
+                    Um die Sicherheit des Systems zu gewährleisten, sollten Sie spätestens alle 180 Tage Ihr Passwort ändern.
+
+                    Klicken Sie hierzu auf OK und anschließend auf den Reiter Passwort.
+                </target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

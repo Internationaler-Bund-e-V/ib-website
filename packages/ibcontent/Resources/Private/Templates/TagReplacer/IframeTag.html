@@ -1,0 +1,25 @@
+<f:comment>
+  ###IBSTART###IFRAME#:#SKRIPTURL#:#HEIGHT###IBEND###
+
+  {SKRIPTURL} => skripturl
+  {HEIGHT} => customHeight => default = 0 => 450
+
+  <div class="cb-script-container-iframe">
+    <iframe data-src="{SKRIPTURL ->f:format.raw()}" data-cookieconsent="necessary" width="100%" height="400" frameborder="0"></iframe>
+  </div>
+</f:comment>
+
+
+<f:if condition="{customHeight} > 0">
+  <f:then>
+    <f:variable name="customHeight">{customHeight}</f:variable>
+  </f:then>
+  <f:else>
+    <f:variable name="customHeight">450</f:variable>
+  </f:else>
+</f:if>
+
+<div class="cb-script-container-iframe">
+  <iframe src="{skripturl ->f:format.raw()}" data-cookieconsent="necessary" width="100%" height="{customHeight}"
+    frameborder="0"></iframe>
+</div>

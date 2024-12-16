@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<T3DataStructure>
+  <meta>
+    <langDisable>1</langDisable>
+  </meta>
+  <sheets>
+    <general>
+      <ROOT>
+        <TCEforms>
+          <sheetTitle>Allgemeine Einstellungen</sheetTitle>
+        </TCEforms>
+        <type>array</type>
+        <el>
+          <settings.targetpage>
+            <TCEforms>
+              <label>Zielseite Einzelansicht</label>
+              <config>
+                <type>group</type>
+                <internal_type>db</internal_type>
+                <allowed>pages</allowed>
+                <size>1</size>
+                <maxitems>1</maxitems>
+                <minitems>0</minitems>
+                <show_thumbs>1</show_thumbs>
+              </config>
+            </TCEforms>
+          </settings.targetpage>
+          <settings.dbportalid>
+            <TCEforms>
+              <label>Portal ID (Produktdatenbank)</label>
+              <config>
+                <type>input</type>
+                <size>255</size>
+              </config>
+            </TCEforms>
+          </settings.dbportalid>
+          <settings.dbcities>
+            <TCEforms>
+              <label>Städtefilter (kommasepariert z.B. Frankfurt, Stuttgart, etc.)</label>
+              <config>
+                <type>input</type>
+                <size>255</size>
+              </config>
+            </TCEforms>
+          </settings.dbcities>
+        </el>
+      </ROOT>
+    </general>
+  </sheets>
+</T3DataStructure>

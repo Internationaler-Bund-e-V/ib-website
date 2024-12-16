@@ -1,0 +1,204 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+  <f:if condition="{settings.divider} == 'bottom'">
+    <f:render section="divider" />
+  </f:if>
+  <f:if condition="{settings.divider} == 'both'">
+    <f:render section="divider" />
+  </f:if>
+
+
+  <div class="row ib-content-module ib-bubbleslider rs_skip rs_preserve ib-background-{settings.bgColor}">
+    <div class="sliderLoading" id="loader_{uid}"></div>
+
+    <div class="columns medium-offset-1 medium-11 small-12 end">
+      <f:if condition="{settings.headline}">
+        <h2 class="ib-headline">{settings.headline}</h2>
+      </f:if>
+      <f:format.html>{settings.text}</f:format.html>
+      <f:link.typolink parameter="{settings.link}" class="ib-link-more-after">{settings.linkLabel}
+      </f:link.typolink>
+    </div>
+    <div class="ibBubbleSliderContainer useLoadingIndicator loading">
+      <div class="row columns small-12">
+        <div id="prevButton" class="columns small-1 ib-color-blue ib-font-size-60 ib-bubble-slider-control">
+          <i class="ib-icon-arrow-left"></i>
+        </div>
+        <div class="columns small-10">
+          <div class="ib-bubble-slider" data-loaderid="loader_{uid}">
+
+            <f:for each="{settings.sliderContainer}" as="slide">
+              <f:variable name="altAttributeValue">{slide.ItemWrap.slideImageAltText}</f:variable>
+                <f:if condition="{altAttributeValue} == ''">
+                  <f:then>
+                    <f:variable name="altAttributeValue"><f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:altTagValue" /></f:variable>
+                  </f:then>
+                </f:if>
+              <f:if condition="{slide}">
+                <!-- check link-->
+                <v:variable.set name="useLink" value="0" />
+                <f:if condition="{slide.ItemWrap.bubbleLink}">
+                  <v:variable.set name="useLink" value="{slide.ItemWrap.bubbleLink}" />
+                  <v:variable.set name="target" value="_self" />
+                </f:if>
+                <f:if condition="{slide.ItemWrap.bubbleLinkExtern}">
+                  <v:variable.set name="useLink" value="{slide.ItemWrap.bubbleLinkExtern}" />
+                  <v:variable.set name="target" value="_blank" />
+                </f:if>
+                <!-- image bubble -->
+                <f:if condition="{slide.ItemWrap.bubbleImage}">
+                  <f:then>
+                    <f:if condition="{useLink} != '0'">
+                      <f:then>
+                        <f:render section="imageBubbleLink" arguments="{slide:slide, link:useLink, target:target,altAttributeValue:altAttributeValue}" />
+                      </f:then>
+                      <f:else>
+                        <f:render section="imageBubble" arguments="{slide:slide,altAttributeValue:altAttributeValue}" />
+                      </f:else>
+                    </f:if>
+                  </f:then>
+                  <!-- text bubble-->
+                  <f:else>
+                    <f:if condition="{useLink} != '0'">
+                      <f:then>
+                        <f:render section="textBubbleLink" arguments="{slide:slide, link:useLink, target:target,altAttributeValue:altAttributeValue}" />
+                      </f:then>
+                      <f:else>
+                        <f:render section="textBubble" arguments="{slide:slide,altAttributeValue:altAttributeValue}" />
+                      </f:else>
+                    </f:if>
+                  </f:else>
+                </f:if>
+              </f:if>
+
+            </f:for>
+          </div>
+        </div>
+        <div id="nextButton" class="columns small-1 ib-color-blue ib-font-size-60 ib-bubble-slider-control">
+          <i class="ib-icon-arrow-right float-right "></i>
+        </div>
+      </div>
+      <div class="row columns small-12" {f:if(condition: settings.bubblesonly, then: ' style="display:none;""' )}>
+        <div class="ib-bubble-slider-main-stage">
+          <f:for each="{settings.sliderContainer}" as="slide">
+            <f:if condition="{slide}">
+              <div>
+                <f:if condition="{slide.ItemWrap.slideImage}">
+                  <v:condition.string.isNumeric value="{slide.ItemWrap.slideImage}">
+                    <f:then>
+                        <f:image src="{slide.ItemWrap.slideImage}" class="responsive"
+                        alt="{altAttributeValue}" />
+                    </f:then>
+                  </v:condition.string.isNumeric>
+                </f:if>
+              </div>
+            </f:if>
+          </f:for>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <f:if condition="{settings.divider} == 'bottom'">
+    <f:render section="divider" />
+  </f:if>
+  <f:if condition="{settings.divider} == 'both'">
+    <f:render section="divider" />
+  </f:if>
+  <!-- include bubbleSlider.js as footer asset -->
+  <f:asset.script identifier="bubbleSliderJs" src="EXT:ibcontent/Resources/Public/js/bubbleSlider.js" />
+</f:section>
+
+
+<f:section name="divider">
+  <div class="row ib-background-{settings.bgColor}">
+    <div class="columns medium-offset-1 medium-10 large-offset-1-2col large-6-2col end">
+      <div class="divider"></div>
+    </div>
+  </div>
+</f:section>
+
+
+<!-- image bubble -->
+<f:section name="imageBubble">
+  <div class="ib-bubbleslider-item">
+    <v:condition.string.isNumeric value="{slide.ItemWrap.bubbleImage}">
+      <f:then>
+        <f:image class="ib-bubbleslider-item-image" alt="{altAttributeValue}" src="{slide.ItemWrap.bubbleImage}" />
+        <figcaption>{slide.ItemWrap.headline}</figcaption>
+      </f:then>
+    </v:condition.string.isNumeric>
+  </div>
+</f:section>
+<!-- image bubble link -->
+<f:section name="imageBubbleLink">
+  <div class="ib-bubbleslider-item">
+    <f:if condition="{target} == '_self'">
+      <f:then>
+        <f:link.typolink parameter="{link}">
+          <v:condition.string.isNumeric value="{slide.ItemWrap.bubbleImage}">
+            <f:then>
+              <f:image class="ib-bubbleslider-item-image" src="{slide.ItemWrap.bubbleImage}" alt="{altAttributeValue}" />
+            </f:then>
+          </v:condition.string.isNumeric>
+          <figcaption>{slide.ItemWrap.headline}</figcaption>
+        </f:link.typolink>
+      </f:then>
+      <f:else>
+        <a href="{link}" target="{target}">
+          <v:condition.string.isNumeric value="{slide.ItemWrap.bubbleImage}">
+            <f:then>
+              <f:image class="ib-bubbleslider-item-image" src="{slide.ItemWrap.bubbleImage}" alt="{altAttributeValue}" />
+            </f:then>
+          </v:condition.string.isNumeric>
+          <figcaption>{slide.ItemWrap.headline}</figcaption>
+        </a>
+      </f:else>
+    </f:if>
+  </div>
+</f:section>
+<!-- text buuble -->
+<f:section name="textBubble">
+  <div class="ib-bubbleslider-item">
+    <div class="ib-bubbleslider-textcontainer">
+      <div class="columns small-12 ib-bubbleslider-item-offset">
+        <h2 class="ib-headline">{slide.ItemWrap.headline}</h2>
+        <div class="columns small-offset-1 small-10 medium-offset-2 medium-8 end text-center">
+          <f:format.html>{slide.ItemWrap.text}</f:format.html>
+        </div>
+      </div>
+    </div>
+  </div>
+</f:section>
+<!-- text bubble link -->
+<f:section name="textBubbleLink">
+  <div class="ib-bubbleslider-item">
+    <div class="ib-bubbleslider-textcontainer">
+      <div class="columns small-12 ib-bubbleslider-item-offset">
+        <f:if condition="{target} =='_self'">
+          <f:then>
+            <f:link.typolink parameter="{link}" class="textBubble">
+              <h2 class="ib-headline">{slide.ItemWrap.headline}</h2>
+              <div class="columns small-offset-1 small-10 medium-offset-2 medium-8 end text-center">
+                <f:format.html>{slide.ItemWrap.text}</f:format.html>
+              </div>
+            </f:link.typolink>
+          </f:then>
+          <f:else>
+            <a href="{link}" target="{target}" class="textBubble">
+              <h2 class="ib-headline">{slide.ItemWrap.headline}</h2>
+              <div class="columns small-offset-1 small-10 medium-offset-2 medium-8 end text-center">
+                <f:format.html>{slide.ItemWrap.text}</f:format.html>
+              </div>
+            </a>
+          </f:else>
+        </f:if>
+
+
+      </div>
+    </div>
+  </div>
+</f:section>

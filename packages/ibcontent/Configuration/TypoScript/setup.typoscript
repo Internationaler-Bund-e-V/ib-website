@@ -1,0 +1,73 @@
+
+plugin.tx_ibcontent {
+    view {
+        templateRootPaths = {$plugin.tx_ibcontent.view.templateRootPath}
+        partialRootPaths >
+        partialRootPaths {
+            10 = {$plugin.tx_ibcontent.view.partialRootPath}
+            #20 = fileadmin/template/html/partial/
+            20 = typo3conf/ext/ib_template/Resources/Private/Template/html/partial/
+        }
+        layoutRootPaths = {$plugin.tx_ibcontent.view.layoutRootPath}
+    }
+
+    persistence {
+        storagePid = {$plugin.tx_ibcontent.persistence.storagePid}
+    }
+
+    settings {
+        searchResultId = {$plugin.tx_ibcontent.settings.searchResultId}
+        navigationID = {$plugin.tx_ibcontent.settings.navigationID}
+        newsProductLocationsFolder = {$plugin.tx_ibcontent.settings.newsProductLocationsFolder}
+        newsDetailsPage = {$plugin.tx_ibcontent.settings.newsDetailsPage}
+        newsUploadFolder = {$plugin.tx_ibcontent.settings.newsUploadFolder}
+    }
+    features.requireCHashArgumentForActionArguments = 0
+}
+
+plugin.tx_ibcontent._CSS_DEFAULT_STYLE >
+
+#
+# ------------------------------------------------------------------
+# add possibility for ajax calls
+# ------------------------------------------------------------------
+# @usage /?id=505&type=98531&ibcontent_dbajaxcalls[action]=submitLocationContactForm&ibcontent_dbajaxcalls[controller]=Ajax
+# @author mk, 2017-04-24
+#
+ajaxCall = PAGE
+ajaxCall {
+    typeNum = 98531
+    config {
+        disableAllHeaderCode = 1
+        xhtml_cleaning = 0
+        admPanel = 0
+        #additionalHeaders = Content-type: text/plain
+        additionalHeaders.10.header = Content-type: text/plain
+        no_cache = 1
+        debug = 0
+    }
+    10 = COA
+    #10 < tt_content.list.20.ibcontent_ajaxfunctions
+    #10 < plugin.tx_ibcontent_dbajaxcalls
+    10 < tt_content.list.20.ibcontent_dbajaxcalls
+}
+
+plugin.tx_be_secure_pw._LOCAL_LANG.default {
+    messageTitle = XXXXX
+    passwordReminderWindow_message = XXXXX
+}
+
+plugin.be_secure_pw._LOCAL_LANG.default {
+    messageTitle = XXXXX
+    passwordReminderWindow_message = XXXXX
+}
+
+plugin.tx_be_secure_pw._LOCAL_LANG.de {
+    messageTitle = XXXXX
+    passwordReminderWindow_message = XXXXX
+}
+
+plugin.be_secure_pw._LOCAL_LANG.de {
+    messageTitle = XXXXX
+    passwordReminderWindow_message = XXXXX
+}

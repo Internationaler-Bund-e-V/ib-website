@@ -1,0 +1,186 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace obfuscateEmail=Rms\Ibcontent\ViewHelpers}
+/*
+* product sorting configuration
+*
+* type sets rendering in t3 extension
+*
+* 1 = accordion
+* 2 = news
+* 3 = gallery
+* 4 = partner
+* 5 = downloads
+*/
+
+<f:layout name="Default" />
+
+<f:section name="main">
+	
+	<div class="ib-db-extension ib-tracking-on-load" data-ibtrackingdata="{product.Network.name},{product.Location.name},{product.Product.name}">
+		<!-- content -->
+		<div id="ib-partial-startpageslider">
+			<!-- render headerslider start -->
+			<f:if condition="{product.Images.Headerslides}">
+				<f:render partial="db/dbSlider" arguments="{slides:product.Images.Headerslides,customSettings:customSettings}" />
+			</f:if>
+			<!-- render headerslider end -->
+		</div>
+		<!-- social share start -->
+		<!-- partial="db/dbSocialShare"-->
+		<v:render.template file="typo3conf/ext/ib_template/Resources/Private/Template/html/partial/SocialShare.html" />
+		<!-- social share end -->
+
+		<div class="row ib-background-white">
+
+			<!-- left column start -->
+			<div class="columns large-8 ib-2col--main ib-background-white ib-db-main-content">
+				<!-- render breadcrumb start -->
+				<f:render partial="db/dbBreadcrumb" arguments="{additionalPages:{0:product.Location,1:product.Product}}" />
+				<!-- render breadcrumb end -->
+
+
+				<!-- rs reader start-->
+				<f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.readspeaker.show')}">
+					<f:then>
+						<div class="row ib-content-module ib-rs-speaker ib-background-white">
+							<div class="columns {f:if(condition: '{settings.layout}=="2col"',then: 'medium-offset-1 medium-11 large-offset-1-2col large-7-2col',else: 'medium-offset-1 medium-11')}">
+								<div id="readspeaker_button1" class="rs_skip rsbtn rs_preserve">
+									<a rel="nofollow" class="rsbtn_play" accesskey="L" title="{f:cObject(typoscriptObjectPath: 'portalSettings.readspeaker.title')}"
+									 href="//app-eu.readspeaker.com/cgi-bin/rsent?customerid={f:cObject(typoscriptObjectPath: 'portalSettings.readspeaker.id')}&amp;lang={f:cObject(typoscriptObjectPath: 'portalSettings.readspeaker.lang')}&amp;readclass=ib-db-main-content,ib-db-right-content">
+										<span class="rsbtn_left rsimg rspart">
+											<span class="rsbtn_text">
+												<span>{f:cObject(typoscriptObjectPath: 'portalSettings.readspeaker.buttonText')}</span>
+											</span>
+										</span>
+										<span class="rsbtn_right rsimg rsplay rspart"></span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</f:then>
+					<f:else></f:else>
+				</f:if>
+				<!-- rs reader end-->
+
+        <!-- render mobile contact overlay start -->
+        <div class="row hide-for-large">
+          <div class="columns small-12 medium-offset-1">
+            <span class="ibCustomButton lightblue toggleContactOverlay"><b>Kontakt</b></span>
+          </div>
+        </div>
+        <!-- render mobile contact overlay end -->
+
+				<!-- render intro headline,subline,description/short-description, sponsor/cooppartner start -->
+				<f:render partial="db/dbIntro" arguments="{uid:uid,customcontent:product.Customcontent,intro:product.Product, sponsor:product.Sponsor,sponsorimages:product.Images.Sponsors, coopPartner:product.CoopPartner, coopPartnerImages:product.Images.CoopPartners,customSettings:customSettings,itemType:'product'}" />
+				<!-- render intro headline,subline,description/short-description end -->
+
+				<!-- render sorted attribtues start -->
+				<f:for each="{product.Product.attributesorting}" as="attribute" iteration="iterator">
+					<f:switch expression="{attribute.type}">
+						<f:case value="1">
+							<!-- render accordion start -->
+							<f:if condition="{attribute.assoc} == 'training_hours' ">
+								<f:then>
+									<f:render partial="db/dbFurtherInformation" arguments="{accordion:product.Product,product:product,attribute:attribute,uid:uid,iterator:iterator}" />
+								</f:then>
+								<f:else>
+									<f:render partial="db/dbSingleAccordion" arguments="{accordion:product.Product,attribute:attribute,uid:uid,iterator:iterator}" />
+								</f:else>
+							</f:if>
+							<!-- render accordion emd -->
+						</f:case>
+						<f:case value="2">
+							<!-- render news start -> see ma#1026 -->
+							<!-- render news end -->
+						</f:case>
+						<f:case value="3">
+							<!-- render gallery start -->
+							<f:render partial="db/dbGallery" arguments="{gallery:product.Images.Impression,customSettings:customSettings}" />
+							<!-- render gallery end -->
+						</f:case>
+						<f:case value="4">
+							<!-- render partner start -->
+							<f:if condition="{product.Links}">
+								<f:render partial="db/dbPartner" arguments="{headline:product.Product.partner_headline,partners:product.Links,uid:uid,customSettings:customSettings}" />
+							</f:if>
+							<!-- render partner end -->
+						</f:case>
+						<f:case value="5">
+							<!-- sidebar download start -->
+							<f:if condition="{product.Document}">
+								<f:render partial="db/dbDownload" arguments="{downloads:product.Document,attribute:attribute,uid:uid,iterator:iterator,customSettings:customSettings}" />
+							</f:if>
+							<!-- sidebar download end -->
+						</f:case>
+					</f:switch>
+				</f:for>
+				<!-- render sorted attribtues end -->
+
+				<f:render partial="db/dbContact" arguments="{contact:product.Product.contact, contact_mail:product.Product.contact_mail, uid:uid, item_id:product_id, form_type:'product',customSettings:customSettings}" />
+
+				<f:render partial="db/dbVideo" arguments="{video:product.Video}" />
+
+			</div>
+
+			<!-- left column end -->
+
+			<!-- right column start -->
+			<div class="columns medium-offset-1 medium-10 large-offset-0 large-3 end ib-2col--sidebar ib-background-white ib-db-right-content">
+
+				<!-- sidebar content start -->
+
+				<!-- render spacer for contacts start -->               
+					<f:render partial="Db/dbSidebarSpacer" />
+                <!-- render spacer for contacts end -->
+
+				<div class="small-12 medium-5 large-12 columns">
+					<!-- sidebar contact start -->
+					<f:render partial="db/dbSidebarContact" arguments="{product:product,customSettings:customSettings, uid:uid}" />
+					<!-- sidebar contact end -->
+				</div>
+
+				<div class="small-12 medium-5 large-12 columns">
+					<!-- sidebar location start -->                    
+          <f:if condition="{product.Product.hide_location_address} != 'FALSE'}">
+            <f:if condition="{product.Location.status}">
+              <f:render partial="db/dbSidebarLocation" arguments="{location:product.Location,pageID:settings.targetpage, network:product.Network}" />
+            </f:if>
+          </f:if>
+					<!-- sidebar location end -->
+				</div>
+
+				<div class="small-12 medium-5 large-12 columns">
+					<!-- sidebar sponsor start -->
+					<f:if condition="{product.Sponsor.sponsor_logo_options} == '1' || {product.Sponsor.sponsor_logo_options} == '2'">
+						<f:render partial="Db/dbSidebarSponsor" arguments="{headline:product.Sponsor.headline,sponsorOptions:product.Sponsor.sponsor_logo_options,type:'sponsor',sponsorimages:product.Images.Sponsors,customSettings:customSettings, uid:uid }"></f:render>
+					</f:if>					
+					<!-- sidebar sponsor end -->
+				</div>
+
+				<div class="small-12 medium-5 large-12 columns">
+					<!-- sidebar coop start -->
+					<f:if condition="{product.CoopPartner.coop_logo_options} == '1' || {product.CoopPartner.coop_logo_options} == '2'">
+						<f:render partial="Db/dbSidebarSponsor" arguments="{headline:product.CoopPartner.headline,sponsorOptions:product.CoopPartner.coop_logo_options,type:'coop',sponsorimages:product.Images.CoopPartners,customSettings:customSettings, uid:uid }"></f:render>
+					</f:if>
+					<!-- sidebar coop end -->
+				</div>
+
+				<!-- sidebar content end  -->
+
+			</div>
+			<!-- right column end -->
+		</div>
+		<!--TYPO3SEARCH_end-->
+
+		<!-- /content wrapper -->
+
+		<!-- include db.js as footer asset -->
+		<f:asset.script identifier="dbjs" src="EXT:ibcontent/Resources/Public/js/db.js" />
+	</div>
+
+      
+<div id="dbContactOverlay" class="hide-for-large">  
+  <f:render partial="db/dbContactOverlay" arguments="{contacts:product.Users,location:product.Location,pageID:settings.targetpage,hideLocation:product.Product.hide_location_address}" />
+</div>
+
+</f:section>

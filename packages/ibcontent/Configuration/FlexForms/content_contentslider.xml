@@ -1,0 +1,173 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	
+  <sheets>
+	<sDEF>
+	  <ROOT>
+		<TCEforms>
+			<sheetTitle>Content Slider Settings</sheetTitle>
+		</TCEforms>
+		<type>array</type>
+		<el>
+			<settings.bgColor>
+				<TCEforms>
+					<label>Choose Background Color</label>
+					<config>
+						<type>select</type>
+						<renderType>selectSingle</renderType>
+						<items type="array">
+							<numIndex index="0" type="array">
+								<numIndex index="0">white</numIndex>
+								<numIndex index="1">white</numIndex>
+							</numIndex>
+							<numIndex index="1" type="array">
+								<numIndex index="0">gray</numIndex>
+								<numIndex index="1">gray</numIndex>
+							</numIndex>
+						</items>
+					</config>
+				</TCEforms>
+			</settings.bgColor>
+			<settings.headline>
+				<TCEforms>
+					<label>Headline</label>
+					<config>
+						<type>input</type>
+						<size>255</size>
+					</config>
+				</TCEforms>
+			</settings.headline>
+			<settings.type>
+				<TCEforms>
+					<label>Choose Element Type</label>
+					<config>
+						<type>select</type>
+						<renderType>selectSingle</renderType>
+						<items type="array">
+							<numIndex index="0" type="array">
+								<numIndex index="0">images</numIndex>
+								<numIndex index="1">image</numIndex>
+							</numIndex>
+							<numIndex index="1" type="array">
+								<numIndex index="0">Leitsätze</numIndex>
+								<numIndex index="1">leitsatz</numIndex>
+							</numIndex>
+						</items>
+					</config>
+				</TCEforms>
+			</settings.type>
+		</el>
+	  </ROOT>
+	</sDEF>
+	<imageContent>
+		  <ROOT>
+			<TCEforms>
+				<sheetTitle>Image Elements</sheetTitle>
+			</TCEforms>
+			<type>array</type>
+			<el>
+				<settings.imageSliderContainer>
+			    <TCEforms>
+			        <tx_templavoila>
+			            <title>Slider</title>
+			        </tx_templavoila>
+			    </TCEforms>
+			    <section>1</section>
+				<title>Hinweis: Für die korrekte Verwendung muss das PlugIn zuerst gespeichert werden!</title>
+			    <type>array</type>
+			    <el>
+			        <ItemWrap>
+			            <type>array</type>
+			            <tx_templavoila>
+			                <title>new slide</title>
+			            </tx_templavoila>
+			            <el>
+			                <image>
+			                    <TCEforms>
+			                        <label>Image *</label>
+                                    <config>
+                                        <type>group</type>
+                                        <internal_type>db</internal_type>
+                                        <appearance>
+                                            <elementBrowserType>file</elementBrowserType>
+                                            <elementBrowserAllowed>gif,jpg,jpeg,png</elementBrowserAllowed>
+                                        </appearance>
+                                        <allowed>sys_file</allowed>
+                                        <size>1</size>
+                                        <minitems>1</minitems>
+                                        <maxitems>1</maxitems>
+                                    </config>
+			                    </TCEforms>
+			                </image>
+			                <imageAlt>
+			                	<TCEforms>
+									<label>Image Alt Text</label>
+									<config>
+										<type>input</type>
+										<size>255</size>
+									</config>
+								</TCEforms>
+			                </imageAlt>
+			               <caption>
+								<TCEforms>
+								    <label>Text</label>
+								    <config>
+								        <type>text</type>
+								        <cols>3</cols>
+								        <rows>3</rows>
+										<enableRichtext>1</enableRichtext>
+								    </config>								    
+								</TCEforms>
+							</caption>
+			            </el>
+			        </ItemWrap>
+			    </el>
+			</settings.imageSliderContainer>
+			</el>
+		  </ROOT>
+	</imageContent>
+	<leitsatzContent>
+		  <ROOT>
+			<TCEforms>
+				<sheetTitle>Guideline Elements</sheetTitle>
+			</TCEforms>
+			<type>array</type>
+			<el>
+				<settings.guidelineSliderContainer>
+			    <TCEforms>
+			        <tx_templavoila>
+			            <title>Slider</title>
+			        </tx_templavoila>
+			    </TCEforms>
+			    <section>1</section>
+				<title>Hinweis: Für die korrekte Verwendung muss das PlugIn zuerst gespeichert werden!</title>
+			    <type>array</type>
+			    <el>
+			        <ItemWrap>
+			            <type>array</type>
+			            <tx_templavoila>
+			                <title>new slide</title>
+			            </tx_templavoila>
+			            <el>
+			                <leitsatz>
+								<TCEforms>
+								    <label>Text</label>
+								    <config>
+								        <type>text</type>
+								        <cols>3</cols>
+								        <rows>3</rows>
+										<enableRichtext>1</enableRichtext>
+								    </config>								    
+								</TCEforms>
+							</leitsatz>
+			            </el>
+			        </ItemWrap>
+			    </el>
+			</settings.guidelineSliderContainer>
+			</el>
+		  </ROOT>
+	</leitsatzContent>
+  </sheets>
+</T3DataStructure>

@@ -1,0 +1,12 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace rms=Rms\Ibcontent\ViewHelpers}
+<f:layout name="Default"/>
+
+<f:section name="main">
+    <div class="ib-content-module ib-sidebar-downloads ib-background-{settings.bgColor}">
+        <h2>{settings.headline}</h2>
+        <f:for each="{settings.fileContainer}" as="file">
+            <a href="{rms:getSysFilePath(uid: file.ItemWrap.file)}">{file.ItemWrap.filename}</a>
+        </f:for>
+    </div>
+</f:section>

@@ -1,0 +1,20 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+	<div class="ib-content-module ib-sidebar-map ib-background-{settings.bgColor}">
+		<h2>{settings.headline}</h2>
+		<f:if condition="{settings.description}">
+			<f:format.html>{settings.description}</f:format.html>
+		</f:if>
+
+		<f:link.page pageUid="{settings.link}">
+			<f:image src="{settings.mapImage}" class="title-image"/>
+		</f:link.page>
+
+		<f:link.page pageUid="{settings.link}">
+			<f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:route_plan" />
+		</f:link.page>
+
+	</div>
+</f:section>

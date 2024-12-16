@@ -1,0 +1,38 @@
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Fundraising Box</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.code>
+                        <TCEforms>
+                            <label>Code einfügen</label>
+                            <config>
+                                <type>input</type>
+                                <size>255</size>
+                                <eval>trim</eval>
+                            </config>
+                        </TCEforms>
+                    </settings.code>
+                    <settings.parameters>
+                        <TCEforms>
+                            <label>Parameter einfügen (z.B. &amp;amount=50 mehrere Parameter:
+                                &amp;amount=50&amp;country=de) </label>
+                            <config>
+                                <type>input</type>
+                                <size>255</size>
+                                <eval>trim</eval>
+                            </config>
+                        </TCEforms>
+                    </settings.parameters>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

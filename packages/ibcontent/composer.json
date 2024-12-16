@@ -1,0 +1,26 @@
+{
+    "name": "rms/ib-content",
+    "type": "typo3-cms-extension",
+    "description": "IB - Content",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "authors": [],
+    "require": {
+        "typo3/cms-core": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rms\\Ibcontent\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rms\\Ibcontent\\Tests\\": "Tests"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "ibcontent"
+        }
+    }
+}

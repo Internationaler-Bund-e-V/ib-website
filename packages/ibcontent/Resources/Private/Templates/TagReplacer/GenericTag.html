@@ -1,0 +1,33 @@
+<f:comment>
+  ###IBSTART###TAG#:#SKRIPTURL#:#TEXTDATEI#:#HINTERGRUNDBILD#:#COOKIEKATEGORIE#:#ANGEZEIGTERKATEGORIENAME#:#HEIGHT###IBEND###
+
+  {SKRIPTURL} => genericTag.1
+  {TEXTDATEI} => genericTag.2
+  {HINTERGRUNDBILD} => genericTag.3
+  {COOKIEKATEGORIE} => genericTag.4
+  {ANGEZEIGTERKATEGORIENAME} => genericTag.5
+  {HEIGHT} => genericTag.6 => default = 0 => 450
+
+  <div class="cb-script-container">
+    <iframe data-src="{SKRIPTURL ->f:format.raw()}" data-cbtext="{TEXTDATEI}" data-cboverlayclass="{HINTERGRUNDBILD}"
+      data-cookieconsent="{COOKIEKATEGORIE}" data-cbcategoryname="{ANGEZEIGTERKATEGORIENAME}" width="100%"
+      height="{HEIGHT}" frameborder="0"></iframe>
+  </div>
+</f:comment>
+
+<f:if condition="{genericTag.6} > 0">
+  <f:then>
+    <f:variable name="customHeight">{genericTag.6}</f:variable>
+  </f:then>
+  <f:else>    
+    <f:variable name="customHeight">450</f:variable>
+  </f:else>
+</f:if>
+
+
+
+<div class="cb-script-container">
+  <iframe data-src="{genericTag.1 ->f:format.raw()}" data-cbtext="{genericTag.2}" data-cboverlayclass="{genericTag.3}"
+    data-cookieconsent="{genericTag.4}" data-cbcategoryname="{genericTag.5}" width="100%" height="{customHeight}"
+    frameborder="0"></iframe>
+</div>

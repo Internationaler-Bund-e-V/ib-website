@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2024-04-22T20:47:10Z" product-name="subheadline">
+		<header/>
+		<body>
+			<trans-unit id="tx_news_domain_model_news.subheadline" xml:space="preserve">
+				<source>Unterüberschrift (wird nur in der Detailansicht angezeigt)</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

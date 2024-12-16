@@ -1,0 +1,96 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace rms=Rms\Ibcontent\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+	<f:if condition="{settings.divider} == 'top'">
+		<f:render section="divider" />
+	</f:if>
+	<f:if condition="{settings.divider} == 'both'">
+		<f:render section="divider" />
+	</f:if>
+	<div class="row ib-content-module ib-mediaelement ib-background-{settings.bgColor}">
+		<div class="columns {f:if(condition: '{settings.layout}=="2col"',then: 'small-12 medium-offset-1 medium-10 large-6-2col large-offset-1-2col',else: 'medium-offset-1 medium-10 small-12')} end">
+			<f:if condition="{settings.headline}"><h2 class="ib-headline">{settings.headline}</h2></f:if>
+			
+			<!-- variante 1: bild mit optionaler caption -->
+			<f:if condition="{settings.type} == 'image'">
+				<f:render section="image" arguments="{_all}" />
+			</f:if>
+			<!-- ende variante 1: bild mit optionaler caption -->
+
+			<!-- variante 2: video mit optionaler caption -->
+			<f:if condition="{settings.type} == 'video'">
+				<f:render section="video" arguments="{_all}" />
+			</f:if>
+			<!-- ende variante 2: video mit optionaler caption -->
+
+			<!-- variante 3: youtubevideo mit optionaler caption -->
+			<f:if condition="{settings.type} == 'youtube'">
+				<f:render section="youtube" arguments="{_all}" />
+			</f:if>
+			<!-- ende variante 3: youtubevideo mit optionaler caption -->
+		</div>
+	</div>
+
+	<f:if condition="{settings.divider} == 'bottom'">
+		<f:render section="divider" />
+	</f:if>
+	<f:if condition="{settings.divider} == 'both'">
+		<f:render section="divider" />
+	</f:if>
+</f:section>
+
+<f:section name="image">
+	<figure>
+	  <f:image src="{settings.image}" alt="{settings.imageAlt}"/>
+	  <f:if condition="{settings.caption}"><figcaption><f:format.html>{settings.caption}</f:format.html></figcaption></f:if>
+	</figure>
+</f:section>
+
+<f:section name="video">
+
+	<figure>
+	  <video poster="{settings.videoPoster}" width="100%" height="720" controls="controls" >
+	    <source src="{rms:getSysFilePath(uid:settings.videoMP4)}" type="video/mp4">
+	    <f:if condition="{video.videoWEBM}">
+	    	<source src="{rms:getSysFilePath(uid:settings.videoWEBM)} type="video/webm">
+	    </f:if>
+	    <f:if condition="{video.videoOGG}">
+	    	<source src="{rms:getSysFilePath(uid:settings.videoOGG)}" type="video/ogg">
+	    </f:if>
+	  </video>
+	  <f:if condition="{settings.caption}"><figcaption><f:format.html>{settings.caption}</f:format.html></figcaption></f:if>
+	</figure>
+</f:section>
+
+<f:section name="youtube">
+	<figure>
+	  <f:if condition="{f:cObject(typoscriptObjectPath:'portalSettings.cookiebot.enabled')}">
+          <f:then>
+            <div class="video-responsive">
+              <iframe width="100%" height="400" frameborder="0"
+                data-src="//www.youtube-nocookie.com/embed/{settings.youtube}?autoplay=0&showinfo=0&controls=1&frameborder='0'"
+                data-cookieconsent="marketing" allowfullscreen></iframe>
+            </div>
+          </f:then>
+          <f:else>
+            <div class="video-responsive">
+              <iframe width="100%" height="400" frameborder="0"
+                src="//www.youtube-nocookie.com/embed/{settings.youtube}?autoplay=0&showinfo=0&controls=1&frameborder='0'" 
+                allowfullscreen></iframe>
+            </div>
+          </f:else>
+        </f:if>
+	  <f:if condition="{settings.caption}"><figcaption><f:format.html>{settings.caption}</f:format.html></figcaption></f:if>
+	</figure>
+</f:section>
+
+
+<f:section name="divider">
+	<div class="row ib-background-{settings.bgColor}">
+		<div class="columns medium-offset-1 medium-10 large-offset-1-2col large-6-2col end">
+			<div class="divider"></div>
+		</div>
+	</div>
+</f:section>

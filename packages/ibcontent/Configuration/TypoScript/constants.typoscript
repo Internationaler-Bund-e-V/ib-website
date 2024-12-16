@@ -1,0 +1,32 @@
+plugin.tx_ibcontent {
+    view {
+        # cat=plugin.tx_ibcontent_ibcontent/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:ibcontent/Resources/Private/Templates/
+        # cat=plugin.tx_ibcontent_ibcontent/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:ibcontent/Resources/Private/Partials/
+        # cat=plugin.tx_ibcontent_ibcontent/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:ibcontent/Resources/Private/Layouts/
+    }
+    persistence {
+        # cat=plugin.tx_ibcontent_ibcontent//a; type=string; label=Default storage PID
+        storagePid = 
+
+        #classes{
+        #	mapping{
+        #		tableName = tt_news
+        #		columns {
+        #			 uid.mapOnProperty = uid
+        #             title.mapOnProperty = title
+        #             image.mapOnProperty = image
+        #		}
+        #	}
+        #}
+    }
+    settings {
+        searchResultId = 43
+        navigationID = 0 # siehe /ext/ib_template/Configuration/TypoScript/constants_general.ts overwrite
+        newsProductLocationsFolder = 47
+        newsDetailsPage = 48
+        newsUploadFolder = uploads/pics/
+    }
+}

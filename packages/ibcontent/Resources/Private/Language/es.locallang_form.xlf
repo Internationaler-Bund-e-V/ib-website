@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="de" target-language="es" datatype="plaintext" original="messages" date="2017-07-12T08:43:45" product-name="recaptcha">
+        <header />
+        <body>
+
+            <trans-unit id="searchcriteria" xml:space="preserve">
+                <source></source>
+                <target>Your searchcriteria</target>
+            </trans-unit>
+            <trans-unit id="distance" xml:space="preserve">
+                <source></source>
+                <target>Area</target>
+            </trans-unit>
+            <trans-unit id="zip" xml:space="preserve">
+                <source></source>
+                <target>ZIP</target>
+            </trans-unit>
+            <trans-unit id="topic" xml:space="preserve">
+                <source></source>
+                <target>Topic</target>
+            </trans-unit>
+            <trans-unit id="education_schools" xml:space="preserve">
+                <source></source>
+                <target>Education &amp; Schools</target>
+            </trans-unit>
+            <trans-unit id="training_development" xml:space="preserve">
+                <source></source>
+                <target>Training &amp; professional development</target>
+            </trans-unit>
+            <trans-unit id="special_situations" xml:space="preserve">
+                <source></source>
+                <target>Special situations</target>
+            </trans-unit>
+            <trans-unit id="search" xml:space="preserve">
+                <source></source>
+                <target>Search</target>
+            </trans-unit>
+            <trans-unit id="route_plan" xml:space="preserve">
+                <source></source>
+                <target>Route Planning</target>
+            </trans-unit>
+            <trans-unit id="to_location" xml:space="preserve">
+                <source></source>
+                <target>See location</target>
+            </trans-unit>
+            <trans-unit id="start_training_hours" xml:space="preserve">
+                <source></source>
+                <target>Angebotsanfang:</target>
+            </trans-unit>
+            <trans-unit id="end_training_hours" xml:space="preserve">
+                <source></source>
+                <target>Angebotsende:</target>
+            </trans-unit>
+            <trans-unit id="training_hours" xml:space="preserve">
+                <source></source>
+                <target>Unterrichtszeiten</target>
+            </trans-unit>
+            <trans-unit id="training_period" xml:space="preserve">
+                <source></source>
+                <target>Ausbildungsdauer</target>
+            </trans-unit>
+            <trans-unit id="promotions" xml:space="preserve">
+                <source></source>
+                <target>Fördermöglichkeiten</target>
+            </trans-unit>
+            <trans-unit id="contact_us" xml:space="preserve">
+                <source></source>
+                <target>Kontaktieren Sie uns</target>
+            </trans-unit>
+            <trans-unit id="sponsors_default_headline" xml:space="preserve">
+                <source></source>
+                <target>Gefördert durch:</target>
+            </trans-unit>
+            <trans-unit id="coop_default_headline" xml:space="preserve">
+                <source></source>
+                <target>Unsere Kooperationspartner:</target>
+            </trans-unit>
+
+            <trans-unit id="contactform_confirm_text_1" xml:space="preserve">
+                <source></source>
+                <target>Thank you for your message!</target>
+            </trans-unit>
+            <trans-unit id="contactform_confirm_text_2" xml:space="preserve">
+                <source></source>
+                <target>An employee will contact you immediately.</target>
+            </trans-unit>
+            <trans-unit id="contactform_salutation" xml:space="preserve">
+                <source></source>
+                <target>Salutation</target>
+            </trans-unit>
+            <trans-unit id="contactform_salutation_none" xml:space="preserve">
+                <source></source>
+                <target>Keine Angabe</target>
+            </trans-unit>
+            <trans-unit id="contactform_salutation_mrs" xml:space="preserve">
+                <source></source>
+                <target>Ms.</target>
+            </trans-unit>
+            <trans-unit id="contactform_salutation_mr" xml:space="preserve">
+                <source></source>
+                <target>Mr.</target>
+            </trans-unit>
+            <trans-unit id="contactform_salutation_neutral" xml:space="preserve">
+                <source></source>
+                <target>Neutrale Anrede</target>
+            </trans-unit>
+            <trans-unit id="contactform_firstname" xml:space="preserve">
+                <source></source>
+                <target>First Name *</target>
+            </trans-unit>
+            <trans-unit id="contactform_firstname_error" xml:space="preserve">
+                <source></source>
+                <target>Enter first name</target>
+            </trans-unit>
+            <trans-unit id="contactform_lastname" xml:space="preserve">
+                <source></source>
+                <target>Last Name *</target>
+            </trans-unit>
+            <trans-unit id="contactform_lastname_error" xml:space="preserve">
+                <source></source>
+                <target>Enter first name</target>
+            </trans-unit>
+            <trans-unit id="contactform_email" xml:space="preserve">
+                <source></source>
+                <target>Your eMail address *</target>
+            </trans-unit>
+            <trans-unit id="contactform_email_error" xml:space="preserve">
+                <source></source>
+                <target>Enter a valid eMail address</target>
+            </trans-unit>
+            <trans-unit id="contactform_msg" xml:space="preserve">
+                <source></source>
+                <target>Your message: *</target>
+            </trans-unit>
+            <trans-unit id="contactform_phone" xml:space="preserve">
+                <source></source>
+                <target>Yor phone number:</target>
+            </trans-unit>
+            <trans-unit id="contactform_msg_error" xml:space="preserve">
+                <source></source>
+                <target>Please enter a message</target>
+            </trans-unit>
+            <trans-unit id="contactform_recaptcha_error" xml:space="preserve">
+                <source></source>
+                <target>Please confirm reCaptcha and wait for the validation to pass</target>
+            </trans-unit>
+            <trans-unit id="contactform_dataPrivacyLink" xml:space="preserve">
+            <source></source>
+                <target>
+                <![CDATA[Toda la información sobre la <a href="%s" target="_blank">protección de sus datos</a> se encuentra en nuestra declaración de protección de datos.]]>
+                </target>
+            </trans-unit>
+            <trans-unit id="contactform_submit" xml:space="preserve">
+                <source></source>
+                <target>Submit</target>
+            </trans-unit>
+            <trans-unit id="email_label" xml:space="preserve">
+                <source></source>
+                <target>
+                    Escribir e-mail
+                </target>
+            </trans-unit>
+            <trans-unit id="email_dialog_text" xml:space="preserve">
+                <source></source>
+                <target>Abrir el programa de correo (si está configurado) o mostrar la dirección de correo electrónico</target>
+            </trans-unit>
+            <trans-unit id="email_dialog_client" xml:space="preserve">
+                <source></source>
+                <target>Programa de correo</target>
+            </trans-unit>
+            <trans-unit id="email_dialog_address" xml:space="preserve">
+                <source></source>
+                <target>correo electrónico</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

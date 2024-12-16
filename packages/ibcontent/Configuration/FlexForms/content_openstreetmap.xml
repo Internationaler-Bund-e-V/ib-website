@@ -1,0 +1,235 @@
+<T3DataStructure>
+  <meta>
+    <langDisable>1</langDisable>
+  </meta>
+
+  <sheets>
+    <sDEF>
+      <ROOT>
+        <TCEforms>
+          <sheetTitle>Openstreet Map</sheetTitle>
+        </TCEforms>
+        <type>array</type>
+        <el>
+          <settings.mapLayout>
+            <TCEforms>
+              <label>Kartenlayout wählen:</label>
+              <config>
+                <type>select</type>
+                <renderType>selectSingle</renderType>
+                <items type="array">
+                  <numIndex index="0" type="array">
+                    <numIndex index="0">Standard</numIndex>
+                    <numIndex index="1">Standard</numIndex>
+                  </numIndex>
+                  <numIndex index="1" type="array">
+                    <numIndex index="0">Navigation</numIndex>
+                    <numIndex index="1">Navigation</numIndex>
+                  </numIndex>
+                </items>
+              </config>
+            </TCEforms>
+          </settings.mapLayout>
+          <settings.osmMapNavigations>
+            <label>Navigationen</label>
+            <config>
+              <type>input</type>
+              <size>20</size>
+              <max>30</max>
+              <eval>trim</eval>
+            </config>
+          </settings.osmMapNavigations>
+          <settings.showCategoryFilter>
+            <label>Kategoriefilter anzeigen:</label>
+            <config>
+              <type>check</type>
+            </config>
+          </settings.showCategoryFilter>
+          <settings.usePreFilterCategory>
+            <label>Vordefinierte Kategorien anzeigen: !Kategorie- und Schlagwortfilter werden
+              ausgeblendet! </label>
+            <config>
+              <type>check</type>
+            </config>
+          </settings.usePreFilterCategory>
+          <settings.preFilterCategoryIDs>
+            <label>Vordefinierte Kategorien IDs (kommasepariert, z.B. "193,171,174"):</label>
+            <config>
+              <type>input</type>
+              <size>20</size>
+              <max>100</max>
+              <eval>trim</eval>
+            </config>
+          </settings.preFilterCategoryIDs>
+          <settings.showTagFilter>
+            <label>Schlagwortfilter anzeigen (sofern vorhanden):</label>
+            <config>
+              <type>check</type>
+            </config>
+          </settings.showTagFilter>
+          <settings.tagFilterHeadline>
+            <label>Überschrift Schlagwortfilter (Standard = Schlagwörter)</label>
+            <config>
+              <type>input</type>
+              <size>20</size>
+              <max>100</max>
+              <eval>trim</eval>
+            </config>
+          </settings.tagFilterHeadline>
+          <settings.useCustomCenter>
+            <label>Angepasstes Kartenzentrum verwenden:</label>
+            <config>
+              <type>check</type>
+            </config>
+          </settings.useCustomCenter>
+          <settings.customCenterLongitude>
+            <label>Längengrad (z.B. 10.451526) - (Nur wenn Kartenzentrum verwenden aktiviert)</label>
+            <config>
+              <type>input</type>
+              <size>20</size>
+              <max>30</max>
+              <eval>trim</eval>
+            </config>
+          </settings.customCenterLongitude>
+          <settings.customCenterLatitude>
+            <label>Breitengrad (z.B. 51.165691) - (Nur wenn Kartenzentrum verwenden aktiviert)</label>
+            <config>
+              <type>input</type>
+              <size>20</size>
+              <max>30</max>
+              <eval>trim</eval>
+            </config>
+          </settings.customCenterLatitude>
+          <settings.customZoomLevel>
+            <label>Start Zoom-Level (6-13, 6 = Full Zoom-Out, 13 = Full Zoom-In)</label>
+            <config>
+              <type>input</type>
+              <size>20</size>
+              <max>2</max>
+              <eval>int</eval>
+              <range>
+                <lower>6</lower>
+                <upper>13</upper>
+              </range>
+            </config>
+          </settings.customZoomLevel>
+          <settings.osmMapColor>
+            <label>Kartenfarbe</label>
+            <config>
+              <type>select</type>
+              <renderType>selectSingle</renderType>
+              <items>
+                <numIndex index="0">
+                  <numIndex index="0">Weiß</numIndex>
+                  <numIndex index="1">#ffffff</numIndex>
+                </numIndex>
+                <numIndex index="1">
+                  <numIndex index="0">IB-Dunkelblau</numIndex>
+                  <numIndex index="1">#005590</numIndex>
+                </numIndex>
+                <numIndex index="2">
+                  <numIndex index="0">IB-Hellblau</numIndex>
+                  <numIndex index="1">#009ddf</numIndex>
+                </numIndex>
+                <numIndex index="3">
+                  <numIndex index="0">IB-Orange</numIndex>
+                  <numIndex index="1">#f18700</numIndex>
+                </numIndex>
+              </items>
+            </config>
+          </settings.osmMapColor>
+          <settings.osmMapBorderColor>
+            <label>Grenzfarbe</label>
+            <config>
+              <type>select</type>
+              <renderType>selectSingle</renderType>
+              <items>
+                <numIndex index="0">
+                  <numIndex index="0">IB-Dunkelblau</numIndex>
+                  <numIndex index="1">#005590</numIndex>
+                </numIndex>
+                <numIndex index="1">
+                  <numIndex index="0">IB-Hellblau</numIndex>
+                  <numIndex index="1">#009ddf</numIndex>
+                </numIndex>
+                <numIndex index="2">
+                  <numIndex index="0">IB-Orange</numIndex>
+                  <numIndex index="1">#f18700</numIndex>
+                </numIndex>
+              </items>
+            </config>
+          </settings.osmMapBorderColor>
+          <settings.osmMapPinColor>
+            <label>Marker-Farbe</label>
+            <config>
+              <type>select</type>
+              <renderType>selectSingle</renderType>
+              <items>
+                <numIndex index="0">
+                  <numIndex index="0">IB-Dunkelblau</numIndex>
+                  <numIndex index="1">#005590</numIndex>
+                </numIndex>
+                <numIndex index="1">
+                  <numIndex index="0">IB-Hellblau</numIndex>
+                  <numIndex index="1">#009ddf</numIndex>
+                </numIndex>
+                <numIndex index="2">
+                  <numIndex index="0">IB-Orange</numIndex>
+                  <numIndex index="1">#f18700</numIndex>
+                </numIndex>
+              </items>
+            </config>
+          </settings.osmMapPinColor>
+          <settings.osmMapBorderButtonColor>
+            <label>Button/Rahmen - Farbe</label>
+            <config>
+              <type>select</type>
+              <renderType>selectSingle</renderType>
+              <items>
+                <numIndex index="0">
+                  <numIndex index="0">IB-Dunkelblau</numIndex>
+                  <numIndex index="1">#005590</numIndex>
+                </numIndex>
+                <numIndex index="1">
+                  <numIndex index="0">IB-Hellblau</numIndex>
+                  <numIndex index="1">#009ddf</numIndex>
+                </numIndex>
+                <numIndex index="2">
+                  <numIndex index="0">IB-Orange</numIndex>
+                  <numIndex index="1">#f18700</numIndex>
+                </numIndex>
+              </items>
+            </config>
+          </settings.osmMapBorderButtonColor>
+          <settings.linkListview>
+            <TCEforms>
+              <label>Seite Listenansicht</label>
+              <config>
+                <type>inputLink</type>
+                <eval>trim</eval>
+                <size>60</size>
+                <default></default>
+                <wizards type="array">
+                  <_PADDING type="integer">2</_PADDING>
+                  <link type="array">
+                    <type>popup</type>
+                    <title>Link</title>
+                    <icon>EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_link.gif</icon>
+                    <module type="array">
+                      <name>wizard_link</name>
+                      <urlParameters type="array">
+                        <mode>wizard</mode>
+                        <act>file</act>
+                      </urlParameters>
+                    </module>
+                  </link>
+                </wizards>
+              </config>
+            </TCEforms>
+          </settings.linkListview>
+
+        </el>
+      </ROOT>
+    </sDEF>
+  </sheets>
+</T3DataStructure>

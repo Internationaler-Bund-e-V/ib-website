@@ -1,0 +1,68 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+  <div class="row ib-content-module ib-contentslider ib-background-{settings.bgColor}">
+    <div class="columns small-12 medium-offset-1 medium-11 large-offset-1-2col small-7-2col end">
+      <f:if condition="{settings.headline}">
+        <h2 class="ib-headline">{settings.headline}</h2>
+      </f:if>
+    </div>
+    <div class="sliderLoading" id="loader_{uid}"></div>
+    <div class="contentSliderContainer useLoadingIndicator loading">
+      <div class="columns small-8-2col">
+        <div id="contentsliderPrevButton-{uid}"
+          class=" columns small-1 large-1-2col ib-color-blue ib-font-size-60 ib-prev-next-button">
+          <i class="ib-icon-arrow-left"></i>
+        </div>
+        <div class="columns small-10 large-6-2col">
+          <div class="ib-contentslider-slider row expanded" data-sliderid="{uid}" data-loaderid="loader_{uid}">
+            <f:if condition="{settings.type} == 'image'">
+              <f:then>
+                <f:render section="image" arguments="{elements: settings.imageSliderContainer}" />
+              </f:then>
+              <f:else>
+                <f:if condition="{settings.type} == 'leitsatz'">
+                  <f:render section="leitsatz" arguments="{elements: settings.guidelineSliderContainer}" />
+                </f:if>
+              </f:else>
+            </f:if>
+          </div>
+        </div>
+        <div id="contentsliderNextButton-{uid}"
+          class="columns small-1 large-1-2col ib-color-blue ib-font-size-60 ib-prev-next-button">
+          <i class="ib-icon-arrow-right float-right "></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- include contentSlider.js as footer asset -->
+  <f:asset.script identifier="contentSliderJs" src="EXT:ibcontent/Resources/Public/js/contentSlider.js" />
+</f:section>
+
+<f:section name="image">
+  <f:for each="{elements}" as="image">
+    <f:if condition="{image}">
+      <div class="ib-contentslider-item ">
+        <figure>
+          <f:image src="{image.ItemWrap.image}" alt="{image.ItemWrap.imageAlt}" class="title-image" title="{image.ItemWrap.imageAlt}" />
+          <f:if condition="{image.ItemWrap.caption}">
+            <figcaption>
+              <f:format.html>{image.ItemWrap.caption}</f:format.html>
+            </figcaption>
+          </f:if>
+        </figure>
+      </div>
+    </f:if>
+  </f:for>
+</f:section>
+
+<f:section name="leitsatz">
+  <f:for each="{elements}" as="guideline">
+    <f:if condition="{guideline}">
+      <div class="ib-contentslider-item  ">
+        <f:format.html>{guideline.ItemWrap.leitsatz}</f:format.html>
+      </div>
+    </f:if>
+  </f:for>
+</f:section>

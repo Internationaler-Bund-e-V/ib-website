@@ -1,0 +1,38 @@
+<div class="ib-content-module ib-sidebar-map ib-background-white columns medium-5 large-12">
+  <div class="row columns ib-font-bold">
+    {location.name}
+  </div>
+  <div class="row columns">
+    {location.street}
+  </div>
+  <div class="row columns">
+    {location.plz} {location.city}
+  </div>
+  <f:if condition="{location.phone_int}">
+    <div class="row columns">
+      <i class="fas fa-phone"></i> Tel.:
+      <a href="tel:{location.phone_int}">{location.phone}</a>
+    </div>
+  </f:if>
+  <f:if condition="{location.fax}">
+    <div class="row columns">
+      <i class="fas fa-fax"></i> Fax.: {location.fax}
+    </div>
+  </f:if>
+  <f:if condition="{location.email}">
+    <div class="row columns">
+      <i class="fas fa-envelope"></i>
+
+      <a data-ibemailreferrer="Standort_mail" data-locationid="{location_id}" data-ibemail="{obfuscateEmail:ObfuscateEmail(emailAddress:location.email)}" class="ibOEmail mail"
+        title="{f:translate(key:'LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contact_us')}">{f:translate(key:
+        'LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:email_label')}</a>
+
+
+    </div>
+  </f:if>
+  <a href="https://maps.google.com/maps?q={location.plz},{location.city},{location.street}" class="" target="_blank"
+    title="{f:translate(key: 'LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:route_plan_title')}">
+    <i class="fas fa-map-marked ib-color-icons"></i>
+    <f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:route_plan" />
+  </a>
+</div>

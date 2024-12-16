@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <general>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Allgemeine Einstellungen</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.targetpage>
+                        <TCEforms>
+                            <label>Zielseite (Kategorie-> Angebot, Angebot -> Standort, Standort ->
+                                Angebot)</label>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                                <minitems>0</minitems>
+                                <show_thumbs>1</show_thumbs>
+                            </config>
+                        </TCEforms>
+                    </settings.targetpage>
+                    <settings.newstargetpage>
+                        <TCEforms>
+                            <label>Zielseite News aus Redaktionstool</label>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                                <minitems>0</minitems>
+                                <show_thumbs>1</show_thumbs>
+                            </config>
+                        </TCEforms>
+                    </settings.newstargetpage>
+                    <settings.singleProductIdToShow>
+                        <TCEforms>
+                            <label>Einzelansicht ANGEBOT. Bitte entsprechende ID eingeben</label>
+                            <config>
+                                <type>input</type>
+                                <size>255</size>
+                                <eval>trim,int</eval>
+                            </config>
+                        </TCEforms>
+                    </settings.singleProductIdToShow>
+                </el>
+            </ROOT>
+        </general>
+    </sheets>
+</T3DataStructure>

@@ -1,0 +1,97 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	
+  <sheets>
+	<sDEF>
+	  <ROOT>
+		<TCEforms>
+			<sheetTitle>Sidebar Map Settings</sheetTitle>
+		</TCEforms>
+		<type>array</type>
+		<el>
+			<settings.bgColor>
+				<TCEforms>
+					<label>Choose Background Color</label>
+					<config>
+						<type>select</type>
+						<renderType>selectSingle</renderType>
+						<items type="array">
+							<numIndex index="0" type="array">
+								<numIndex index="0">white</numIndex>
+								<numIndex index="1">white</numIndex>
+							</numIndex>
+							<numIndex index="1" type="array">
+								<numIndex index="0">gray</numIndex>
+								<numIndex index="1">gray</numIndex>
+							</numIndex>
+						</items>
+					</config>
+				</TCEforms>
+			</settings.bgColor>
+			<settings.mapImage>
+			    <TCEforms>
+			        <label>Map Image</label>
+			        <config>
+			            <type>group</type>
+			            <internal_type>file</internal_type>
+			            <allowed>jpg,jpeg,gif,png</allowed>			            
+			            <size>1</size>
+			            <minitems>1</minitems>
+			            <maxitems>1</maxitems>
+			        </config>
+			    </TCEforms>
+			</settings.mapImage>
+			<settings.headline>
+			    <TCEforms>
+			        <label>Headline</label>
+			        <config>
+			            <type>input</type>
+			            <eval>trim</eval>
+			            <size>255</size>
+			        </config>
+			    </TCEforms>
+			</settings.headline>
+			<settings.description>
+				<TCEforms>
+				    <label>Description</label>
+				    <config>
+				        <type>text</type>
+				        <cols>3</cols>
+				        <rows>1</rows>
+						<enableRichtext>1</enableRichtext>
+				    </config>				    
+				</TCEforms>
+			</settings.description>
+			<settings.link>
+				<TCEforms>
+					<label>Link to Page</label>
+					<config>
+					  <type>input</type>
+					  <eval>trim</eval>
+					  <size>60</size>
+					  <default></default>
+					  <wizards type="array">
+					    <_PADDING type="integer">2</_PADDING>
+					    <link type="array">
+					      <type>popup</type>
+					      <title>Link</title>
+					      <icon>EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_link.gif</icon>
+					      <module type="array">
+							<name>wizard_link</name>
+							<urlParameters type="array">
+								<mode>wizard</mode>
+								<act>file</act>
+							</urlParameters>
+						</module>
+					    </link>
+					  </wizards>                
+					</config>
+				</TCEforms>
+			</settings.link>
+		</el>
+	  </ROOT>
+	</sDEF>
+  </sheets>
+</T3DataStructure>

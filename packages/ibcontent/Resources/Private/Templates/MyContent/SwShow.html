@@ -1,0 +1,53 @@
+{namespace swCode=Rms\Ibcontent\ViewHelpers}
+<f:variable name="dataPrivacySiteID" value="{f:cObject(typoscriptObjectPath: 'portalSettings.dataPrivacySiteID')}" />
+<f:variable name="asboluteDataPrivacyPath" value="{f:uri.page(pageUid:dataPrivacySiteID)}" />
+
+<div class="row ib-content-module ib-socialwall rs_skip rs_preserve ib-background-white">
+    <div class="columns medium-12">
+        <div class="ibFlocklerContainer">
+            <div class="cookieconsent-optout-marketing rs_preserve row">
+                <div class="">
+                    <p>
+                    <h2>Social Media-Inhalte</h2>
+                    </p>
+                </div>
+                <div>
+                    An dieser Stelle ist unsere Social Media Wall eingebunden. Bei Einblendung der Social Media Wall
+                    werden
+                    personenbezogene Daten, etwa die IP-Adresse Ihres Endgeräts, an den Anbieter des Dienstes Flockler
+                    übermittelt. Zum Aktivieren unserer Social Media Wall müssen Sie auf den Link unten klicken. Im
+                    anschließend geöffneten Fenster unseres Cookie-Banners können Sie die „Marketing“-Tools von Flockler
+                    zulassen. Erst mit Ihrer Einwilligung werden die Social Media-Inhalte angezeigt. Wenn Sie dann auf
+                    einen
+                    der angezeigten Beiträge klicken, werden Sie zum Original-Inhalt auf der jeweiligen Social Media
+                    Plattform weitergeleitet und es findet ein Datenaustausch mit der Plattform statt. Dabei kann eine
+                    Datenübertragung in die USA, wo kein gleichwertiges Datenschutzniveau gewährleistet ist, nicht
+                    ausgeschlossen werden. <!-- data privacy start -->
+                    <f:format.raw>
+                        <f:translate arguments="{0:asboluteDataPrivacyPath}"
+                            key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_dataPrivacyLink" />
+                    </f:format.raw>
+                    <!-- data privacy end -->
+                    <a onclick="Cookiebot.renew();">Ihre Einwilligung können Sie in unseren Datenschutzeinstellungen
+                        jederzeit widerrufen.</a>
+
+                </div>
+                <div class="customCBOverlay customCBOverlayFlockler">
+                    <div class="customCBButton" aria-hidden="true"><button onclick="Cookiebot.renew();">Zur Aktivierung
+                            der
+                            Social Media-Inhalte bitte folgende Cookie-Kategorie zulassen: Marketing</button></div>
+                </div>
+            </div>
+
+
+            <div class="cookieconsent-optin-marketing" id="{swCode:SocialWall(code:settings.embedcode,type:'divID')}">
+            </div>
+
+
+
+            <f:asset.script identifier="flocklrSW-{uid}"
+                src="{swCode:SocialWall(code:settings.embedcode,type:'script')}" type="text/plain"
+                data="{cookieconsent: 'marketing'}" />
+        </div>
+    </div>
+</div>

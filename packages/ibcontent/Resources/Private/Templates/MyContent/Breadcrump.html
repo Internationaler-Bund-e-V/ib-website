@@ -1,0 +1,12 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+	<div class="row ib-content-module ib-breadcrumb ib-background-{settings.bgColor}">
+		<div class="columns {f:if(condition: '{settings.layout}=="2col"',then: 'medium-offset-1 medium-11 large-offset-1-2col large-7-2col',else: 'medium-offset-1 medium-11')}">
+			<nav aria-label="You are here:" role="navigation">
+			  <v:page.breadCrumb class="breadcrumbs" classActive="active" classCurrent="current" classFirst="first" classLast="last" linkCurrent="0" excludePages="1" />
+			</nav>
+		</div>
+	</div>
+</f:section>

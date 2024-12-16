@@ -1,0 +1,148 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:layout name="Default" />
+
+<!-- use {settings.layout} for the height selection. -->
+<!-- possible options are: startpage and subpage -->
+
+<f:section name="main">
+  <div class="ib-slider-container {settings.layout} ">
+    <div id="startpagesliderPrevButton" class="columns small-1 ib-font-size-60 ib-prev-next-button">
+      <i class="ib-icon-arrow-left"></i>
+    </div>
+    <div id="startpagesliderNextButton" class="columns small-1 ib-font-size-60 ib-prev-next-button">
+      <i class="ib-icon-arrow-right float-right "></i>
+    </div>
+    <div class="row-fluid ib-startpageslider" id="ib-slider-container">
+      <div class="row expanded">
+        <div class="ib-startpage-slider-container">
+
+          <div class="ib-slider-controls"><i class="fa fa-pause-circle" aria-hidden="true" id="ib-slider-controls-toggle"></i></div>
+
+          <div class="ib-startpage-slider row expanded" data-loaderid="loader_{uid}">
+            <v:condition.type.isArray value="{settings.sliderContainer}">
+              <f:for each="{settings.sliderContainer}" as="slide">
+                <f:variable name="altAttributeValue">{slide.ItemWrap.slideImageAltText}</f:variable>
+                <f:if condition="{altAttributeValue} == ''">
+                  <f:then>
+                    <f:variable name="altAttributeValue"><f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:altTagValue" /></f:variable>
+                  </f:then>
+                </f:if>
+
+
+                <div class="ib-startpage-slider-item">
+                  <div class="ib-startpage-slider-item-wrapper">
+                    <v:condition.string.isNumeric value="{slide.ItemWrap.slideImage}">
+                      <f:then>
+                        <f:variable name="convertToFormat" value="jpg" />
+                        <f:if condition="{slide.ItemWrap.slideLink}">
+                          <f:then>
+                            <f:variable name="tabTarget" value="_self" />
+                            <f:if condition="{slide.ItemWrap.openInNewTab}">
+                              <f:variable name="tabTarget" value="_blank" />
+                            </f:if>
+                            <f:link.typolink parameter="{slide.ItemWrap.slideLink}"
+                              target="{tabTarget}">
+                              <f:image src="{slide.ItemWrap.slideImage}" alt="{altAttributeValue}"
+                                alt="{altAttributeValue}"
+                                additionalAttributes="{srcset:'{f:uri.image(src:slide.ItemWrap.slideImage,maxWidth:800)} 800w,
+                              {f:uri.image(src:slide.ItemWrap.slideImage,maxWidth:1350)} 1350w', sizes:'(max-width: 800px) 800px,1350px'}" />
+                            </f:link.typolink>
+                          </f:then>
+                          <f:else>
+                            <f:image src="{slide.ItemWrap.slideImage}" alt="{altAttributeValue}"
+                              alt="{altAttributeValue}"
+                              additionalAttributes="{srcset:'{f:uri.image(src:slide.ItemWrap.slideImage,maxWidth:800)} 800w,
+                              {f:uri.image(src:slide.ItemWrap.slideImage,maxWidth:1350)} 1350w', sizes:'(max-width: 800px) 800px,1350px'}" />
+
+                          </f:else>
+                        </f:if>
+                        <f:if condition="{slide.ItemWrap.bubbleColor} == 'inactive'">
+                          <f:then></f:then>
+                          <f:else>
+                            <f:render section="bubble" arguments="{slide: slide}" />
+                          </f:else>
+                        </f:if>
+                      </f:then>
+                    </v:condition.string.isNumeric>
+                  </div>
+                </div>
+              </f:for>
+            </v:condition.type.isArray>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- include startPageSlider.js as footer asset -->
+  <f:asset.script identifier="startPageSliderJs" src="EXT:ibcontent/Resources/Public/js/startPageSlider.js" />
+</f:section>
+
+<f:section name="bubble">
+  <!--  show-for-large -->
+  <!-- bubble position-->
+  <f:switch expression="{slide.ItemWrap.bubblePosition}">
+    <f:case value="right">
+      <v:variable.set name="bubblePosition" value="right" />
+    </f:case>
+    <f:case value="left">
+      <v:variable.set name="bubblePosition" value="left" />
+    </f:case>
+    <!-- middle no longer available, use left if selected-->
+    <f:case value="middle">
+      <v:variable.set name="bubblePosition" value="left" />
+    </f:case>
+    <f:defaultCase>
+      <v:variable.set name="bubblePosition" value="left" />
+    </f:defaultCase>
+  </f:switch>
+
+  <!-- bubble color-->
+  <f:switch expression="{slide.ItemWrap.bubbleColor}">
+    <f:case value="blue">
+      <v:variable.set name="bubbleColor" value="blue" />
+    </f:case>
+    <f:case value="orange">
+      <v:variable.set name="bubbleColor" value="orange" />
+    </f:case>
+    <f:defaultCase>
+      <v:variable.set name="bubbleColor" value="blue" />
+    </f:defaultCase>
+  </f:switch>
+
+  <f:if condition="{slide.ItemWrap.slideLink}">
+    <f:then>
+      <f:link.typolink parameter="{slide.ItemWrap.slideLink}" title="{altAttributeValue}">
+        <f:render section="bubbletext"
+          arguments="{slide:slide, bubblePosition:bubblePosition, bubbleColor:bubbleColor}" />
+      </f:link.typolink>
+    </f:then>
+    <f:else>
+      <f:render section="bubbletext"
+        arguments="{slide:slide, bubblePosition:bubblePosition, bubbleColor:bubbleColor}" />
+    </f:else>
+  </f:if>
+
+
+</f:section>
+
+<f:section name="bubbletext">
+  <div class="ib-startpage-slider-bubble ib-startpage-slider-bubble-{bubblePosition} {bubbleColor}">
+    <div class="ib-startpage-slider-bubble-text">
+      <f:if condition="{slide.ItemWrap.textRowOne}">
+        <div class="ib-claim-font ib-font-bold ib-font-size-40">
+          <f:format.html parseFuncTSPath="">{slide.ItemWrap.textRowOne}</f:format.html>
+        </div>
+      </f:if>
+      <f:if condition="{slide.ItemWrap.textRowTwo}">
+        <div class="ib-subclaim-font ib-font-bold ib-font-size-20">
+          <f:format.html parseFuncTSPath="">{slide.ItemWrap.textRowTwo}</f:format.html>
+        </div>
+      </f:if>
+      <f:if condition="{slide.ItemWrap.textRowThree}">
+        <div class="ib-startpage-slider-link-text ib-font-size-16">
+          <f:format.html parseFuncTSPath="">{slide.ItemWrap.textRowThree}</f:format.html>
+        </div>
+      </f:if>
+    </div>
+  </div>
+</f:section>

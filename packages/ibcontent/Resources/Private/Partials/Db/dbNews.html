@@ -1,0 +1,67 @@
+{namespace ib=Rms\Ibcontent\ViewHelpers}
+
+<div class="row columns ib-content-module ib-noTopBottomPadding ib-background-white">
+    <div class="ib-db-news">
+        <div class="row">
+            <div class="columns small-1 large-1-2col"></div>
+            <div class="columns small-10 large-6-2col end">
+                <h2 class="ib-headline">News & Presse</h2>
+            </div>
+        </div>
+        <f:if condition="{news -> f:count()} > 2">
+            <f:then>
+
+                <div class=" row ">
+                    <div id="dbNewsPrevButton" class="columns small-1 large-1-2col ib-prev-next-button ib-slider-nav-left">
+                        <span class="ib-iconwrapper"><i class="ib-icon-arrow-left"></i></span>
+                    </div>
+                    <div class="columns small-10 large-6-2col">
+                        <div class="ib-dbNews-slider">
+                            <f:for each="{news}" as="article">                            
+                                <div class="ib-dbNews-item">
+                                    <p>
+                                        <f:link.page pageUid="{settings.newstargetpage}" additionalParams="{tx_ibcontent: '{nid: article.id}'}">
+                                            <img src="{customSettings.urlIBPdbImages}{ib:newsimage(images: article.image)}" ><h2 class="ib-color-darkblue">{article.headline}</h2>
+                                        </f:link.page>
+                                    </p>
+                                </div>
+                            </f:for>
+                        </div>
+                    </div>
+                    <div id="dbNewsNextButton" class="columns small-1 large-1-2col ib-prev-next-button ib-slider-nav-right">
+                        <span class="ib-iconwrapper"> <i class="ib-icon-arrow-right"></i> </span>
+                    </div>
+                </div>
+            </f:then>
+            <f:else>
+                <div class=" row ">
+                    <div class="columns small-1 large-1-2col ib-prev-next-button ib-slider-nav-left">
+                        <div id="dbNewsPrevButton">
+                            <span class="ib-iconwrapper"><i class="ib-icon-arrow-left"></i></span>
+                        </div>
+                    </div>
+                    <div class="columns small-10 large-6-2col">
+                        <div class="ib-dbNews-slider">
+                            <f:for each="{news}" as="article">                            
+                                <div class="ib-dbNews-item">
+                                    <p>
+                                        <f:link.page pageUid="{settings.newstargetpage}" additionalParams="{tx_ibcontent: '{nid: article.id}'}">
+                                            <img src="{customSettings.urlIBPdbImages}{ib:newsimage(images: article.image)}" ><h2 class="ib-color-darkblue">{article.headline}</h2>
+                                        </f:link.page>
+                                    </p>
+                                </div>
+                            </f:for>
+                        </div>
+                    </div>
+                    <div class="columns small-1 large-1-2col ib-prev-next-button ib-slider-nav-right">
+                        <div id="dbNewsNextButton">
+                            <span class="ib-iconwrapper"> <i class="ib-icon-arrow-right"></i> </span>
+                        </div>
+                    </div>
+                </div>
+
+            </f:else>
+        </f:if>
+    </div>
+</div>
+

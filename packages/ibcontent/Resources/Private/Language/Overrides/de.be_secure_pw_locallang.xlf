@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2013-03-09T18:44:59Z"
+          product-name="examples">
+        <header/>
+        <body>
+            <!--
+                original file see EXT:be_secure_pw/Resources/Private/Language/locallang.xml
+                see 0001996: Passwortschutz des Backends (https://mantis.rm-solutions.de/mantis/view.php?id=1996)
+                mk@rms, 2021-06-16
+            -->
+            <trans-unit id="messageTitle" xml:space="preserve">
+                <source>xxx</source>
+                <target>
+                    Passwortänderung
+                </target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

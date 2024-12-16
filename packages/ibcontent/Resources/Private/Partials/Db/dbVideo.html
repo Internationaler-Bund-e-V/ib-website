@@ -1,0 +1,51 @@
+<f:if condition="{video}">
+  <div class="row columns ib-content-module ib-background-white ib-video">
+
+    <div class="row">
+      <div class="columns medium-1 large-1-2col"></div>
+      <div class="columns medium-10 small-12 large-6-2col end">
+        <h2 class="ib-headline">Video</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="columns medium-1 large-1-2col"></div>
+      <div class="columns medium-10 small-12 large-6-2col end">
+        <div class="sliderLoading" id="loader_locVideos"></div>
+        <div id="ibVideoSlider" class="ibLocVideoContainer useLoadingIndicator loading" data-loaderid="loader_locVideos">
+          <f:for each="{video}" as="ytVideo" iteration="iteration">
+            <div class="ibVideoSlide">
+              <f:if condition="{f:cObject(typoscriptObjectPath:'portalSettings.cookiebot.enabled')}">
+                <f:then>
+                  <div class="video-responsive">
+                    <iframe width="100%" height="400" frameborder="0"
+                      data-src="//www.youtube-nocookie.com/embed/{ytVideo.videoCode}?autoplay=0&showinfo=0&controls=1&frameborder='0'"
+                      data-cookieconsent="marketing" allowfullscreen></iframe>
+                  </div>
+                  <div class="ibVideoDescription">{ytVideo.description}</div>
+                </f:then>
+                <f:else>
+                  <div class="video-responsive">
+                    <iframe width="100%" height="400" frameborder="0"
+                      src="//www.youtube-nocookie.com/embed/{ytVideo.videoCode}?autoplay=0&showinfo=0&controls=1&frameborder='0'"
+                      allowfullscreen></iframe>
+                  </div>
+                  <div class="ibVideoDescription">{ytVideo.description}</div>
+                </f:else>
+              </f:if>
+            </div>
+          </f:for>
+        </div>
+        <div id="ibVideoSliderNavigationContainer">
+          <div id="ibVideoSliderPevious">
+            <i class="ib-icon-arrow-left"></i>
+          </div>
+          <div id="ibVideoSliderDots"></div>
+          <div id="ibVideoSliderNext">
+            <i class="ib-icon-arrow-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</f:if>

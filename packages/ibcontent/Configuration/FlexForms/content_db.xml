@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <general>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Allgemeine Einstellungen</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <switchableControllerActions>
+                        <TCEforms>
+                            <label>Ansicht</label>
+                            <onChange>reload</onChange>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items type="array">
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">Kategorieansicht</numIndex>
+                                        <numIndex index="1">MyContent->dbShowCategory</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2" type="array">
+                                        <numIndex index="0">Angebotansicht</numIndex>
+                                        <numIndex index="1">MyContent->dbShowProduct</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3" type="array">
+                                        <numIndex index="0">Standortansicht</numIndex>
+                                        <numIndex index="1">MyContent->dbShowLocation</numIndex>
+                                    </numIndex>
+                                    <numIndex index="4" type="array">
+                                        <numIndex index="0">Newsansicht</numIndex>
+                                        <numIndex index="1">MyContent->dbShowNews</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </switchableControllerActions>
+                    <settings.targetpage>
+                        <TCEforms>
+                            <label>Zielseite (Kategorie-> Angebot, Angebot -> Standort, Standort -> Angebot)</label>
+                            <displayCond>
+                                <OR>
+                                    <numIndex index="0"><![CDATA[FIELD:switchableControllerActions:=:MyContent->dbShowProduct]]></numIndex>
+                                    <numIndex index="1"><![CDATA[FIELD:switchableControllerActions:=:MyContent->dbShowLocation]]></numIndex>
+                                    <numIndex index="2"><![CDATA[FIELD:switchableControllerActions:=:MyContent->dbShowCategory]]></numIndex>
+                                </OR>
+                            </displayCond>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                                <minitems>0</minitems>
+                                <show_thumbs>1</show_thumbs>
+                            </config>
+                        </TCEforms>
+                    </settings.targetpage>
+                    <settings.locationtargetpage>
+                      <TCEforms>
+                          <label>Zielseite verwandte Sandorte</label>
+                          <displayCond>                              
+                                 FIELD:switchableControllerActions:=:MyContent->dbShowLocation                          
+                          </displayCond>
+                          <config>
+                              <type>group</type>
+                              <internal_type>db</internal_type>
+                              <allowed>pages</allowed>
+                              <size>1</size>
+                              <maxitems>1</maxitems>
+                              <minitems>0</minitems>
+                              <show_thumbs>1</show_thumbs>
+                          </config>
+                      </TCEforms>
+                  </settings.locationtargetpage>
+                    <settings.newstargetpage>
+                        <TCEforms>
+                            <label>Zielseite News aus Redaktionstool</label>
+                            <displayCond>
+                                <OR>
+                                    <numIndex index="0"><![CDATA[FIELD:switchableControllerActions:=:MyContent->dbShowProduct]]></numIndex>
+                                    <numIndex index="1"><![CDATA[FIELD:switchableControllerActions:=:MyContent->dbShowLocation]]></numIndex>
+                                </OR>
+                            </displayCond>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                                <minitems>0</minitems>
+                                <show_thumbs>1</show_thumbs>
+                            </config>
+                        </TCEforms>
+                    </settings.newstargetpage>
+                    <settings.dbcategoryid>
+                        <TCEforms>
+                            <label>Kategorie ID Produktdatenbank (mehrere Kategorien bitte kommasepariert angeben, z.B: 171,194)</label>
+                            <displayCond>
+                                FIELD:switchableControllerActions:=:MyContent->dbShowCategory
+                            </displayCond>
+                            <config>
+                                <type>input</type>
+                                <size>255</size>
+                            </config>
+                        </TCEforms>
+                    </settings.dbcategoryid>
+
+
+                    <settings.singleProductIdToShow>
+                        <TCEforms>
+                            <label>Einzelansicht ANGEBOT. Bitte entsprechende ID eingeben</label>
+                            <displayCond>
+                                FIELD:switchableControllerActions:=:MyContent->dbShowProduct
+                            </displayCond>
+                            <config>
+                                <type>input</type>
+                                <size>255</size>
+                                <eval>trim,int</eval>
+                            </config>
+                        </TCEforms>
+                    </settings.singleProductIdToShow>
+
+                    <settings.singleLocationIdToShow>
+                        <TCEforms>
+                            <label>Einzelansicht STANDORT. Bitte entsprechende ID eingeben</label>
+                            <displayCond>
+                                FIELD:switchableControllerActions:=:MyContent->dbShowLocation
+                            </displayCond>
+                            <config>
+                                <type>input</type>
+                                <size>255</size>
+                                <eval>trim,int</eval>
+                            </config>
+                        </TCEforms>
+                    </settings.singleLocationIdToShow>
+
+
+                </el>
+            </ROOT>
+        </general>
+    </sheets>
+</T3DataStructure>

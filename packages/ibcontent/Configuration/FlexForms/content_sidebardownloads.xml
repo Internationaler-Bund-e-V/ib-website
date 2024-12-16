@@ -1,0 +1,102 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	
+  <sheets>
+	<sDEF>
+	  <ROOT>
+		<TCEforms>
+			<sheetTitle>Sidebar: Downloads Settings</sheetTitle>
+		</TCEforms>
+		<type>array</type>
+		<el>
+			<settings.bgColor>
+				<TCEforms>
+					<label>Choose Background Color</label>
+					<config>
+						<type>select</type>
+						<renderType>selectSingle</renderType>
+						<items type="array">
+							<numIndex index="0" type="array">
+								<numIndex index="0">white</numIndex>
+								<numIndex index="1">white</numIndex>
+							</numIndex>
+							<numIndex index="1" type="array">
+								<numIndex index="0">gray</numIndex>
+								<numIndex index="1">gray</numIndex>
+							</numIndex>
+						</items>
+					</config>
+				</TCEforms>
+			</settings.bgColor>
+			<settings.headline>
+			    <TCEforms>
+			        <label>Headline</label>
+			        <config>
+			            <type>input</type>
+			            <size>255</size>
+			        </config>
+			    </TCEforms>
+			</settings.headline>
+		</el>
+	  </ROOT>
+	</sDEF>
+	<rightSide>
+		  <ROOT>
+			<TCEforms>
+				<sheetTitle>Download Elements</sheetTitle>
+			</TCEforms>
+			<type>array</type>
+			<el>
+				<settings.fileContainer>
+			    <TCEforms>
+			        <tx_templavoila>
+			            <title>Download File</title>
+			        </tx_templavoila>
+			    </TCEforms>
+			    <section>1</section>
+			    <type>array</type>
+			    <el>
+			        <ItemWrap>
+			            <type>array</type>
+			            <tx_templavoila>
+			                <title>new file</title>
+			            </tx_templavoila>
+			            <el>
+							<filename>
+							    <TCEforms>
+							        <label>Filename</label>
+							        <config>
+							            <type>input</type>
+							            <eval>required</eval>
+							            <size>255</size>
+							        </config>
+							    </TCEforms>
+							</filename>
+			                <file>
+			                    <TCEforms>
+			                        <label>File</label>
+                                    <config>
+                                        <type>group</type>
+                                        <internal_type>db</internal_type>
+                                        <appearance>
+                                            <elementBrowserType>file</elementBrowserType>
+                                            <elementBrowserAllowed>jpg,jpeg,gif,png,pdf,docx,doc</elementBrowserAllowed>
+                                        </appearance>
+                                        <allowed>sys_file</allowed>
+                                        <size>1</size>
+                                        <minitems>1</minitems>
+                                        <maxitems>1</maxitems>
+                                    </config>
+			                    </TCEforms>
+			                </file>
+			            </el>
+			        </ItemWrap>
+			    </el>
+			</settings.fileContainer>
+			</el>
+		  </ROOT>
+	</rightSide>
+  </sheets>
+</T3DataStructure>

@@ -1,0 +1,457 @@
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Bubble Slider Settings</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.bgColor>
+                        <TCEforms>
+                            <label>Choose Background Color</label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">white</numIndex>
+                                        <numIndex index="1">white</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">gray</numIndex>
+                                        <numIndex index="1">gray</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.bgColor>
+                    <settings.divider>
+                        <TCEforms>
+                            <label>Divider</label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">none</numIndex>
+                                        <numIndex index="1">none</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">before</numIndex>
+                                        <numIndex index="1">top</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2" type="array">
+                                        <numIndex index="0">after</numIndex>
+                                        <numIndex index="1">bottom</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3" type="array">
+                                        <numIndex index="0">before + after</numIndex>
+                                        <numIndex index="1">both</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.divider>
+                    <settings.headline>
+                        <TCEforms>
+                            <label>Headline</label>
+                            <config>
+                                <type>input</type>
+                                <size>255</size>
+                            </config>
+                        </TCEforms>
+                    </settings.headline>
+                    <settings.text>
+                        <TCEforms>
+                            <label>Description</label>
+                            <config>
+                                <type>text</type>
+                                <cols>15</cols>
+                                <rows>3</rows>
+                                <enableRichtext>1</enableRichtext>
+                            </config>
+                        </TCEforms>
+                    </settings.text>
+                    <settings.linkLabel>
+                        <TCEforms>
+                            <label>Link Label</label>
+                            <config>
+                                <type>input</type>
+                                <size>255</size>
+                            </config>
+                        </TCEforms>
+                    </settings.linkLabel>
+                    <settings.link>
+                        <TCEforms>
+                            <label>Link to Page</label>
+                            <config>
+                                <type>input</type>
+                                <eval>trim</eval>
+                                <size>60</size>
+                                <default></default>
+                                <wizards type="array">
+                                    <_PADDING type="integer">2</_PADDING>
+                                    <link type="array">
+                                        <type>popup</type>
+                                        <title>Link</title>
+                                        <icon>EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_link.gif</icon>
+                                        <module type="array">
+                                            <name>wizard_link</name>
+                                            <urlParameters type="array">
+                                                <mode>wizard</mode>
+                                                <act>file</act>
+                                            </urlParameters>
+                                        </module>
+                                        <JSopenParams>height=500,width=500,status=0,menubJSopenParams</JSopenParams>
+                                    </link>
+                                </wizards>
+                            </config>
+                        </TCEforms>
+                    </settings.link>
+                    <settings.bubblesonly>
+                        <TCEforms>
+                            <label>Nur Bubbles anzeigen!</label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </settings.bubblesonly>
+                    <!--
+                        Clean duplicate content
+                        see 0002439: Bubble Page Slider nicht mehr bearbeitbar
+                        mk@rms, 2022-08-19
+                    -->
+                    <!--
+                    <settings.sliderContainer>
+                        <TCEforms>
+                            <tx_templavoila>
+                                <title>Slider</title>
+                            </tx_templavoila>
+                        </TCEforms>
+                        <section>1</section>
+                        <type>array</type>
+                        <el>
+                            <ItemWrap>
+                                <type>array</type>
+                                <tx_templavoila>
+                                    <title>new slide</title>
+                                </tx_templavoila>
+                                <el>
+                                    <slideImage>
+                                        <TCEforms>
+                                            <label>Slide Image</label>
+                                            <config>
+                                                <type>group</type>
+                                                <internal_type>db</internal_type>
+                                                <appearance>
+                                                    <elementBrowserType>file</elementBrowserType>
+                                                    <elementBrowserAllowed>gif,jpg,jpeg,png</elementBrowserAllowed>
+                                                </appearance>
+                                                <allowed>sys_file</allowed>
+                                                <size>1</size>
+                                                <minitems>1</minitems>
+                                                <maxitems>1</maxitems>
+                                            </config>
+                                        </TCEforms>
+                                    </slideImage>
+                                    <bubbleColor>
+                                        <TCEforms>
+                                            <label>Bubble Color</label>
+                                            <config>
+                                                <type>select</type>
+                                                <renderType>selectSingle</renderType>
+                                                <items type="array">
+                                                    <numIndex index="0" type="array">
+                                                        <numIndex index="0">yellow</numIndex>
+                                                        <numIndex index="1">yellow</numIndex>
+                                                    </numIndex>
+                                                    <numIndex index="1" type="array">
+                                                        <numIndex index="0">blue</numIndex>
+                                                        <numIndex index="1">blue</numIndex>
+                                                    </numIndex>
+                                                </items>
+                                            </config>
+                                        </TCEforms>
+                                    </bubbleColor>
+                                    <bubblePosition>
+                                        <TCEforms>
+                                            <label>Bubble Position</label>
+                                            <config>
+                                                <type>select</type>
+                                                <renderType>selectSingle</renderType>
+                                                <items type="array">
+                                                    <numIndex index="0" type="array">
+                                                        <numIndex index="0">right</numIndex>
+                                                        <numIndex index="1"></numIndex>
+                                                    </numIndex>
+                                                    <numIndex index="1" type="array">
+                                                        <numIndex index="0">left</numIndex>
+                                                        <numIndex index="1">-left</numIndex>
+                                                    </numIndex>
+                                                </items>
+                                            </config>
+                                        </TCEforms>
+                                    </bubblePosition>
+                                    <slideLink>
+                                        <TCEforms>
+                                            <label>Link to page</label>
+                                            <config>
+                                                <type>group</type>
+                                                <internal_type>db</internal_type>
+                                                <allowed>pages</allowed>
+                                                <size>1</size>
+                                                <minitems>0</minitems>
+                                                <maxitems>1</maxitems>
+                                                <show_thumbs>1</show_thumbs>
+                                                <wizards>
+                                                    <_PADDING>1</_PADDING>
+                                                    <_VERTICAL>1</_VERTICAL>
+                                                    <suggest>
+                                                        <type>suggest</type>
+                                                        <default>
+                                                            <searchWholePhrase>1</searchWholePhrase>
+                                                        </default>
+                                                    </suggest>
+                                                </wizards>
+                                            </config>
+                                        </TCEforms>
+                                    </slideLink>
+                                    <textRowOne>
+                                        <TCEforms>
+                                            <label>Text Row 1</label>
+                                            <config>
+                                                <type>input</type>
+                                                <eval>trim</eval>
+                                                <size>255</size>
+                                            </config>
+                                        </TCEforms>
+                                    </textRowOne>
+                                    <textRowOneColor>
+                                        <TCEforms>
+                                            <label>Text Row 1 Color</label>
+                                            <config>
+                                                <type>select</type>
+                                                <renderType>selectSingle</renderType>
+                                                <items type="array">
+                                                    <numIndex index="0" type="array">
+                                                        <numIndex index="0">black</numIndex>
+                                                        <numIndex index="1">black</numIndex>
+                                                    </numIndex>
+                                                    <numIndex index="1" type="array">
+                                                        <numIndex index="0">white</numIndex>
+                                                        <numIndex index="1">white</numIndex>
+                                                    </numIndex>
+                                                </items>
+                                            </config>
+                                        </TCEforms>
+                                    </textRowOneColor>
+                                    <textRowTwo>
+                                        <TCEforms>
+                                            <label>Text Row 2</label>
+                                            <config>
+                                                <type>input</type>
+                                                <eval>trim</eval>
+                                                <size>255</size>
+                                            </config>
+                                        </TCEforms>
+                                    </textRowTwo>
+                                    <textRowTwoColor>
+                                        <TCEforms>
+                                            <label>Text Row 2 Color</label>
+                                            <config>
+                                                <type>select</type>
+                                                <renderType>selectSingle</renderType>
+                                                <items type="array">
+                                                    <numIndex index="0" type="array">
+                                                        <numIndex index="0">black</numIndex>
+                                                        <numIndex index="1">black</numIndex>
+                                                    </numIndex>
+                                                    <numIndex index="1" type="array">
+                                                        <numIndex index="0">white</numIndex>
+                                                        <numIndex index="1">white</numIndex>
+                                                    </numIndex>
+                                                </items>
+                                            </config>
+                                        </TCEforms>
+                                    </textRowTwoColor>
+                                    <textRowThree>
+                                        <TCEforms>
+                                            <label>Text Row 3</label>
+                                            <config>
+                                                <type>input</type>
+                                                <eval>trim</eval>
+                                                <size>255</size>
+                                            </config>
+                                        </TCEforms>
+                                    </textRowThree>
+                                    <textRowThreeColor>
+                                        <TCEforms>
+                                            <label>Text Row 3 Color</label>
+                                            <config>
+                                                <type>select</type>
+                                                <renderType>selectSingle</renderType>
+                                                <items type="array">
+                                                    <numIndex index="0" type="array">
+                                                        <numIndex index="0">black</numIndex>
+                                                        <numIndex index="1">black</numIndex>
+                                                    </numIndex>
+                                                    <numIndex index="1" type="array">
+                                                        <numIndex index="0">white</numIndex>
+                                                        <numIndex index="1">white</numIndex>
+                                                    </numIndex>
+                                                </items>
+                                            </config>
+                                        </TCEforms>
+                                    </textRowThreeColor>
+                                </el>
+                            </ItemWrap>
+                        </el>
+                    </settings.sliderContainer>
+                    -->
+                </el>
+            </ROOT>
+        </sDEF>
+        <rightSide>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Bubble Slides</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.sliderContainer>
+                        <TCEforms>
+                            <tx_templavoila>
+                                <title>Slider</title>
+                            </tx_templavoila>
+                        </TCEforms>
+                        <section>1</section>
+                        <title>Hinweis: Für die korrekte Verwendung muss das PlugIn zuerst gespeichert werden!</title>
+                        <type>array</type>
+                        <el>
+                            <ItemWrap>
+                                <type>array</type>
+                                <tx_templavoila>
+                                    <title>new slide</title>
+                                </tx_templavoila>
+                                <el>
+                                    <headline>
+                                        <TCEforms>
+                                            <label>Text Row 1</label>
+                                            <config>
+                                                <type>input</type>
+                                                <size>255</size>
+                                            </config>
+                                        </TCEforms>
+                                    </headline>
+                                    <text>
+                                        <TCEforms>
+                                            <label>Text</label>
+                                            <config>
+                                                <type>text</type>
+                                                <cols>15</cols>
+                                                <rows>3</rows>
+                                                <enableRichtext>1</enableRichtext>
+                                            </config>
+                                        </TCEforms>
+                                    </text>
+                                    <bubbleImage>
+                                        <TCEforms>
+                                            <label>Bubble Image 235x235 (Wenn gesetzt, wird "Text Row 1" als Image Text verwendet</label>
+                                            <config>
+                                                <type>group</type>
+                                                <internal_type>db</internal_type>
+                                                <appearance>
+                                                    <elementBrowserType>file</elementBrowserType>
+                                                    <elementBrowserAllowed>gif,jpg,jpeg,png</elementBrowserAllowed>
+                                                </appearance>
+                                                <allowed>sys_file</allowed>
+                                                <size>1</size>
+                                                <minitems>0</minitems>
+                                                <maxitems>1</maxitems>
+                                            </config>
+                                        </TCEforms>
+                                    </bubbleImage>
+                                    <bubbleLink>
+                                        <TCEforms>
+                                            <exclude>1</exclude>
+                                            <label>Bubble Link (interne Seite)</label>
+                                            <config>
+                                                <type>input</type>
+                                                <size>30</size>
+                                                <eval>trim</eval>
+                                                <softref>typolink,typolink_tag,images,url</softref>
+                                                <wizards>
+                                                    <_PADDING>2</_PADDING>
+                                                    <link>
+                                                        <type>popup</type>
+                                                        <title>Link</title>
+                                                        <module>
+                                                            <name>wizard_element_browser</name>
+                                                            <urlParameters>
+                                                                <mode>wizard</mode>
+                                                            </urlParameters>
+                                                        </module>
+                                                        <icon>link_popup.gif</icon>
+                                                        <script>browse_links.php?mode=wizard</script>
+                                                        <params>
+                                                            <!--<blindLinkOptions>page,file,folder,url,spec</blindLinkOptions>-->
+                                                        </params>
+                                                        <JSopenParams>height=500,width=500,status=0,menubar=0,scrollbars=1</JSopenParams>
+                                                    </link>
+                                                </wizards>
+                                            </config>
+                                        </TCEforms>
+                                    </bubbleLink>
+                                    <bubbleLinkExtern>
+                                        <TCEforms>
+                                            <label>Bubble Link (externe Seite)</label>
+                                            <config>
+                                                <type>input</type>
+                                                <eval>trim</eval>
+                                                <max>254</max>
+                                                <size>254</size>
+                                            </config>
+                                        </TCEforms>
+                                    </bubbleLinkExtern>
+                                    <slideImage>
+                                        <TCEforms>
+                                            <label>Slide Image</label>
+                                            <config>
+                                                <type>group</type>
+                                                <internal_type>db</internal_type>
+                                                <appearance>
+                                                    <elementBrowserType>file</elementBrowserType>
+                                                    <elementBrowserAllowed>gif,jpg,jpeg,png</elementBrowserAllowed>
+                                                </appearance>
+                                                <allowed>sys_file</allowed>
+                                                <size>1</size>
+                                                <minitems>0</minitems>
+                                                <maxitems>1</maxitems>
+                                            </config>
+                                        </TCEforms>
+                                    </slideImage>
+                                    <slideImageAltText>
+                                        <TCEforms>
+                                            <label>Slide Image Alt Text</label>
+                                            <config>
+                                                <type>input</type>
+                                                <eval>trim</eval>
+                                                <max>254</max>
+                                                <size>254</size>
+                                            </config>
+                                        </TCEforms>
+                                    </slideImageAltText>
+                                </el>
+                            </ItemWrap>
+                        </el>
+                    </settings.sliderContainer>
+                </el>
+            </ROOT>
+        </rightSide>
+    </sheets>
+</T3DataStructure>

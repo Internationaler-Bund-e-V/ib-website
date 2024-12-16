@@ -1,0 +1,92 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	
+  <sheets>
+	<sDEF>
+	  <ROOT>
+		<TCEforms>
+			<sheetTitle>Jobs Slider</sheetTitle>
+		</TCEforms>
+		<type>array</type>
+		<el>
+			<settings.bgColor>
+				<TCEforms>
+					<label>Choose Background Color Headline</label>
+					<config>
+						<type>select</type>
+						<renderType>selectSingle</renderType>
+						<items type="array">
+							<numIndex index="0" type="array">
+								<numIndex index="0">white</numIndex>
+								<numIndex index="1">white</numIndex>
+							</numIndex>
+							<numIndex index="1" type="array">
+								<numIndex index="0">gray</numIndex>
+								<numIndex index="1">gray</numIndex>
+							</numIndex>
+						</items>
+					</config>
+				</TCEforms>
+			</settings.bgColor>
+			<settings.layout>
+				<TCEforms>
+					<label>Choose Layout</label>
+					<config>
+						<type>select</type>
+						<renderType>selectSingle</renderType>
+						<items type="array">
+							<numIndex index="0" type="array">
+								<numIndex index="0">Start Page</numIndex>
+								<numIndex index="1">start</numIndex>
+							</numIndex>
+							<numIndex index="1" type="array">
+								<numIndex index="0">Sub Pages</numIndex>
+								<numIndex index="1">2col</numIndex>
+							</numIndex>
+						</items>
+					</config>
+				</TCEforms>
+			</settings.layout>
+			<settings.divider>
+				<TCEforms>
+					<label>Divider</label>
+					<config>
+						<type>select</type>
+						<renderType>selectSingle</renderType>
+						<items type="array">
+							<numIndex index="0" type="array">
+								<numIndex index="0">none</numIndex>
+								<numIndex index="1">none</numIndex>
+							</numIndex>
+							<numIndex index="1" type="array">
+								<numIndex index="0">before</numIndex>
+								<numIndex index="1">top</numIndex>
+							</numIndex>
+							<numIndex index="2" type="array">
+								<numIndex index="0">after</numIndex>
+								<numIndex index="1">bottom</numIndex>
+							</numIndex>
+							<numIndex index="3" type="array">
+								<numIndex index="0">before + after</numIndex>
+								<numIndex index="1">both</numIndex>
+							</numIndex>
+						</items>
+					</config>
+				</TCEforms>
+			</settings.divider>
+			<settings.headline>
+				<TCEforms>
+					<label>Headline</label>
+					<config>
+						<type>input</type>
+						<size>255</size>
+					</config>
+				</TCEforms>
+			</settings.headline>
+		</el>
+	  </ROOT>
+	</sDEF>
+  </sheets>
+</T3DataStructure>

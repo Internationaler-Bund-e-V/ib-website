@@ -1,0 +1,24 @@
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Flocklr Social Wall</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.embedcode>
+                        <label>Skript:</label>
+                        <config>
+                            <type>text</type>
+                        </config>
+                    </settings.embedcode>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

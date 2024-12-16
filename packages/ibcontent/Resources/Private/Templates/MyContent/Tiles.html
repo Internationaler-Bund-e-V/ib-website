@@ -1,0 +1,166 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:layout name="Default" />
+<f:section name="main">
+  <!-- set layout-->
+  <f:switch expression="{settings.layoutColumns}">
+    <f:case value="25">
+      <v:variable.set name="layoutColumns" value="large-3" />
+    </f:case>
+    <f:case value="33">
+      <v:variable.set name="layoutColumns" value="large-4" />
+    </f:case>
+    <f:case value="50">
+      <v:variable.set name="layoutColumns" value="large-6" />
+    </f:case>
+    <f:defaultCase>
+      <v:variable.set name="layoutColumns" value="large-3" />
+    </f:defaultCase>
+  </f:switch>
+
+  <div class="ib-services">
+    <div class="row ib-content-module ib-tiles ib-background-{settings.bgColor}">
+      <div class="columns medium-10 medium-offset-1 end">
+        <div class="columns row headline-section">
+          <h2 class="ib-headline">
+            <f:format.stripTags>{settings.headline}</f:format.stripTags>
+          </h2>
+          <h3 class="ib-color-darkblue">
+            <f:format.stripTags>{settings.subline}</f:format.stripTags>
+          </h3>
+        </div>
+
+        <div class="row" data-equalizer data-equalizer-on="medium">
+          <f:variable name="altAttributeValue">
+            <f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:altTagValue" />
+          </f:variable>
+          <f:for each="{settings.tiles}" as="tile" iteration="tileIndex">
+            <f:if condition="{tile}">
+              <!-- set tile color-->
+              <f:switch expression="{tile.tile.tileBackgroundColor}">
+                <f:case value="default">
+                  <v:variable.set name="tileColor" value="ib-background-gray" />
+                </f:case>
+                <f:case value="white">
+                  <v:variable.set name="tileColor" value="ib-background-white" />
+                </f:case>
+              </f:switch>
+              <div class="small-12 medium-6 {layoutColumns} columns float-left">
+                <div class="ib-tile {tileColor}" data-equalizer-watch>
+                  <f:if condition="{tile.tile.image}">
+                    <div class="row {f:if(condition: '{tile.tile.showImageMobile} != 1', then: 'show-for-medium')}">
+                      <!-- image exists-->
+                      <f:if condition="{tile.tile.image}">
+                        <v:variable.set name="linkAvailable" value="0" />
+                        <!-- check for targetpageintern-->
+                        <f:if condition="{tile.tile.targetpageintern}">
+                          <f:then>
+                            <v:variable.set name="linkAvailable" value="1" />
+                            <f:link.typolink parameter="{tile.tile.targetpageintern}">
+                              <f:image src="{tile.tile.image}" class="ib-tile-image" alt="{altAttributeValue}" />
+                            </f:link.typolink>
+                          </f:then>
+                        </f:if>
+
+                        <!-- check fortargetpageextern-->
+                        <f:if condition="{tile.tile.targetpageextern}">
+                          <f:then>
+                            <v:variable.set name="linkAvailable" value="1" />
+                            <f:link.external target="_blank" uri="{tile.tile.targetpageextern}">
+                              <f:image src="{tile.tile.image}" class="ib-tile-image" alt="{altAttributeValue}" />
+                            </f:link.external>
+                          </f:then>
+                        </f:if>
+
+                        <!-- if no link but img-->
+                        <f:if condition="{linkAvailable} == '0'">
+                          <f:then>
+                            <f:image src="{tile.tile.image}" class="ib-tile-image" alt="{altAttributeValue}" />
+                          </f:then>
+                        </f:if>
+                      </f:if>
+
+                    </div>
+                  </f:if>
+                  <f:if condition="{tile.tile.headline}">
+                    <div class="row ib-tile-headline ib-color-blue">
+                      <h3>
+                        <f:format.stripTags>{tile.tile.headline}</f:format.stripTags>
+                      </h3>
+                    </div>
+                  </f:if>
+                  <f:if condition="{tile.tile.subline}">
+                    <div class="row ib-color-blue">
+                      <f:format.stripTags>{tile.tile.subline}</f:format.stripTags>
+                    </div>
+                  </f:if>
+                  <f:if condition="{tile.tile.caption}">
+                    <div class="row ib-tile-caption">
+                      <f:format.stripTags>{tile.tile.caption}</f:format.stripTags>
+                    </div>
+                  </f:if>
+                  <!-- show links -->
+                  <f:if condition="{tile.tile.linkimageOnly} != '1'">
+                    <f:if condition="{tile.tile.targetpageintern}">
+                      <f:then>
+                        <div class="row ib-tile-link">
+                          <f:link.typolink parameter="{tile.tile.targetpageintern}" class="ib-link-more-after">
+                            <f:if condition="{tile.tile.linkdescription}">
+                              <f:then>
+                                <f:format.stripTags>{tile.tile.linkdescription}</f:format.stripTags>
+                              </f:then>
+                              <f:else>
+                                <f:format.stripTags>{settings.more}</f:format.stripTags>
+                              </f:else>
+                            </f:if>
+
+                          </f:link.typolink>
+                        </div>
+                      </f:then>
+                      <f:else>
+                        <f:if condition="{tile.tile.targetpageextern}">
+                          <div class="row ib-tile-link">
+                            <f:link.external target="_blank" uri="{tile.tile.targetpageextern}"
+                              class="ib-link-more-after">
+                              <f:if condition="{tile.tile.linkdescription}">
+                                <f:then>
+                                  <f:format.stripTags>{tile.tile.linkdescription}</f:format.stripTags>
+                                </f:then>
+                                <f:else>
+                                  <f:format.stripTags>{settings.more}</f:format.stripTags>
+                                </f:else>
+                              </f:if>
+                            </f:link.external>
+                          </div>
+                        </f:if>
+                      </f:else>
+                    </f:if>
+                  </f:if>
+                  <!-- show modal-->
+
+                  <f:if condition="{tile.tile.showinfomodal}">
+                    <div class="ibTilesInfoButton ib-color-darkblue" data-open="ibTileModal{tileIndex.index}" title="<f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:tilesOverlayLabel" />"
+                    aria-label="<f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:tilesOverlayLabel" />">
+                    <i class="fa fa-info-circle" aria-hidden="true" aria-label="<f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:tilesOverlayLabel" />"></i>
+                </div>
+                <div class="reveal fast ibTileModal" id="ibTileModal{tileIndex.index}" data-reveal
+                  data-animation-in="scale-in-up fast" data-animation-out="fade-out fast" data-reset-on-close="true">
+                  <div class="ibTileInfoText" id="ibTileInfoText{tileIndex.index}">
+                    <f:format.html>{tile.tile.infomodal}</f:format.html>
+                  </div>
+                  <button class="close-button ibTilesModalCloseButton" data-close
+                    aria-label="Close modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+            </f:if>
+
+        </div>
+      </div>
+      </f:if>
+      </f:for>
+
+    </div>
+  </div>
+  </div>
+  </div>
+</f:section>

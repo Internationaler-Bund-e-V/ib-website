@@ -1,0 +1,66 @@
+<div class="ib-contact-form">
+    <div class="row ib-content-module ib-background-white">
+        <div class="columns medium-offset-1 medium-10 large-6-2col large-offset-1-2col end">
+            <div class="columns row">
+                <f:if condition="{settings.sentHeadline}">
+                    <f:then>
+                        <h1>
+                            {settings.sentHeadline}
+                        </h1>
+                    </f:then>
+                    <f:else>
+                        <h1>
+                            <f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_confirm_text_1" />
+                        </h1>
+                    </f:else>
+                </f:if>
+                <f:if condition="{settings.sentText}">
+                    <f:then>
+                        <f:format.html>{settings.sentText}</f:format.html>
+                    </f:then>
+                    <f:else>
+                        <p>
+                            <f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_confirm_text_2" />
+                        </p>
+                    </f:else>
+                </f:if>
+            </div>
+        </div>
+    </div>
+</div>
+
+<f:if condition="{settings.showSentOverlay}">
+    <div id="ibToast">
+        <f:if condition="{settings.sentHeadline}">
+            <f:then>
+                <h1>
+                    {settings.sentHeadline}
+                </h1>
+            </f:then>
+            <f:else>
+                <h1>
+                    <f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_confirm_text_1" />
+                </h1>
+            </f:else>
+        </f:if>
+        <f:if condition="{settings.sentText}">
+            <f:then>
+                <f:format.html>{settings.sentText}</f:format.html>
+            </f:then>
+            <f:else>
+                <p>
+                    <f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_confirm_text_2" />
+                </p>
+            </f:else>
+        </f:if>
+        <button id="ibToastOK" class="ib-link-more-after ib-color-darkblue button">Weiter</button>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('body').append($('#ibToast'));
+            $('#ibToastOK').on('click', function () {
+                $('#ibToast').hide();
+            })
+        });
+    </script>
+</f:if>

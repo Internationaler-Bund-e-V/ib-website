@@ -1,0 +1,20 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Rms\Ibcontent\:
+        resource: "../Classes/*"
+
+    Rms\Ibcontent\Command\ConvertFlexformReferencesForTypo310Command:
+        tags:
+            - name: "console.command"
+              command: "ibcontent:convertflexformreferences"
+              description: "V10 - Convert Flexform References"
+
+    Rms\Ibcontent\Command\CleanFlexformDataCommand:
+        tags:
+            - name: "console.command"
+              command: "ibcontent:cleanflexformdatacommand"
+              description: "V11 - Clean up flexform data"

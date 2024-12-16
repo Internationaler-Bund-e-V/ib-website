@@ -1,0 +1,232 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:variable name="gsitekey" value="{f:cObject(typoscriptObjectPath: 'google.recaptcha.sitekey')}" />
+<f:variable name="rootPid" value="{f:cObject(typoscriptObjectPath: 'portalSettings.root_id')}" />
+<f:variable name="dataPrivacySiteID" value="{f:cObject(typoscriptObjectPath: 'portalSettings.dataPrivacySiteID')}" />
+<f:variable name="asboluteDataPrivacyPath" value="{f:uri.page(pageUid:dataPrivacySiteID)}" />
+
+
+<f:if condition="{contact}">
+  <div id="contact-form-{uid}" data-gsitekey="{gsitekey}" data-uid="{uid}"
+    data-ibdecodeuri="{f:uri.action(pageUid:rootPid,pageType: 98531, action: 'submitLocationContactForm', controller: 'Ajax', absolute: false)}"
+    class="ibContactFormContainer row columns ib-content-module ib-collapsible ib-noTopBottomPadding ib-background-white">
+    <div class="row" id="ib-collapsible-{uid}">
+      <div class="columns small-1 large-1-2col ib-collapsible-icon ib-collapsible-trigger" data-ibcollapsibleid="{uid}">
+        <span class="ib-iconwrapper">
+          <i class="ib-icon-arrow-right"></i>
+        </span>
+      </div>
+      <div class="columns small-10 large-6-2col end">
+        <div class="ib-collapsible-header ib-collapsible-trigger rs_preserve" data-ibcollapsibleid="{uid}"
+          id="dbContactFormHeader">
+          <h2 class="ib-headline">Kontaktformular</h2>
+        </div>
+        <div class="row ib-collapsible-content" id="ib-collapsible-content-{uid}">
+          <!-- style="display: block;" -->
+          <div class="columns medium-12">
+
+            <div class="callout success rs_skip" style="display: none;">
+              <h5>Vielen Dank</h5>
+              <p>Ihre Nachricht wurde erfolgreich verschickt.</p>
+            </div>
+
+            <form method="post" class="ibRTForm"
+              action="{f:uri.action(pageUid:rootPid,pageType: 98531, action: 'submitLocationContactForm', controller: 'Ajax', absolute: false)}"
+              id="rms_contactForm-{uid}" data-abide novalidate data-usetestkeys="{customSettings.useTestKeys}">
+
+              <div class="row salutation-block">
+                <fieldset class="medium-12 columns">
+                  <legend>
+                    <b>Anrede *</b>
+                  </legend>
+                  <input type="radio" name="salutation" value="Keine Angabe" id="salutation_none" checked>
+                  <label for="salutation_none">Keine Angabe</label>
+                  <input type="radio" name="salutation" value="Frau" id="salutation_frau">
+                  <label for="salutation_frau">Frau</label>
+                  <input type="radio" name="salutation" value="Herr" id="salutation_herr">
+                  <label for="salutation_herr">Herr</label>
+                  <input type="radio" name="salutation" value="Neutrale Anrede" id="salutation_neutral">
+                  <label for="salutation_neutral">Neutrale Anrede</label>
+                </fieldset>
+              </div>
+              <div class="row">
+                <div class="medium-12 columns">
+                  <label>Unternehmen
+                    <input type="text" name="company" placeholder="">
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="medium-12 columns">
+                  <label>Nachname, Vorname *
+                    <input type="text" name="full_name" placeholder="" required>
+                    <span class="form-error" role="alert">
+                      <f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_completename" />
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="medium-12 columns">
+                  <label>Adresse (PLZ, Ort, Strasse)
+                    <input type="text" name="full_address" placeholder="">
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="medium-12 columns">
+                  <label>E-Mail *
+                    <input type="email" name="email" placeholder="" required pattern="email">
+                    <span class="form-error" role="alert">
+                      <f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_email_error" />
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="medium-12 columns">
+                  <label>Telefon
+                    <input type="text" name="phone" placeholder="">
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="medium-12 columns">
+                  <label>Betreff der Anfrage
+                    <input type="text" name="subject" placeholder="">
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="medium-12 columns">
+                  <label>Mitteilung *
+                    <textarea name="message" rows="2" placeholder="" required></textarea>
+                    <span class="form-error" role="alert">
+                      <f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_msg_error" />
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <input type="hidden" name="item_id" value="{item_id}" />
+              <input type="hidden" name="form_type" value="{form_type}" />
+
+              <!-- friendly captcha start -->
+              <div class="row columns" id="ib-recaptcha-container">
+                <div class="frc-captcha" data-sitekey="FCMKN6E68LK32MRG"
+                  data-puzzle-endpoint="https://eu-api.friendlycaptcha.eu/api/v1/puzzle" data-callback="fcCallback"
+                  data-lang="{f:cObject(typoscriptObjectPath: 'portalSettings.cookiebot_language')}"></div>
+                <span class="form-error">
+                  <f:translate
+                    key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_recaptcha_error" />
+                </span>
+                </label>
+              </div>
+              <!-- friendly captcha end -->
+
+              <!-- data privacy start -->
+              <div class="row">
+                <div class="medium-12 columns">
+                  <f:format.raw>
+                    <f:translate arguments="{0:asboluteDataPrivacyPath}"
+                      key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_dataPrivacyLink" />
+                  </f:format.raw>
+                </div>
+              </div>
+              <!-- data privacy end -->
+
+              <div class="row">
+                <div class="medium-12 columns submit-button">
+                  <p>Mit * gekennzeichnete Felder sind Pflichtfelder!</p>
+                  <input type="submit" class="button ibCustomButton" value="Senden">
+                </div>
+                <div class="medium-12 columns ajax-loader" style="display: none;">
+                  <img src="/typo3conf/ext/ib_template/Resources/Public/img/ajax-loader.gif" alt="loading" />
+                </div>
+              </div>
+
+
+
+            </form>
+          </div>
+        </div>
+        <div class="row columns ib-collapsible-divider"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var uid = $('.ibContactFormContainer').data('uid');
+    var ibdecodeuri = $('.ibContactFormContainer').data('ibdecodeuri');
+
+
+    var url = decodeURI(ibdecodeuri);
+    url = url.replace(/&amp;/g, '&');
+
+    var doSubmit = false;
+
+    function fcCallback(solution) {
+      if ($('#ib-recaptcha-container .frc-container').hasClass('frc-success')) {
+        doSubmit = true;
+      }
+
+    }
+
+
+
+    $(document).ready(function () {
+
+      var mainSelector = 'div#contact-form-' + uid;
+
+      // submit handler
+      $(mainSelector + " #rms_contactForm-" + uid).submit(function (e) {
+        e.preventDefault();
+      }).bind("formvalid.zf.abide", function (e, $form) {
+
+
+        if (doSubmit) {
+          // show loader, hide submit button -> prevent double submits
+          $(mainSelector + ' form div.ajax-loader').show();
+          $(mainSelector + ' form div.submit-button').hide();
+          $.ajax({
+            type: "POST",
+            url: url,
+            data: $(mainSelector + " #rms_contactForm-" + uid)
+              .serialize(), // serializes the form's elements.
+            success: function (data) {
+              var json = $.parseJSON(data);
+
+              
+              $(mainSelector + ' form label.captcha-label').removeClass('is-invalid-label');
+              $(mainSelector + " form input[name='captcha']").removeClass('is-invalid-input');
+              $(mainSelector + ' form div.salutation-block label').removeClass('is-invalid-label');
+              if (json.errors.captcha) {
+                $(mainSelector + ' form label.captcha-label').addClass('is-invalid-label');
+                $(mainSelector + " form input[name='captcha']").addClass('is-invalid-input');
+              }
+              if (json.errors.salutation) {
+                $(mainSelector + ' form div.salutation-block label').addClass('is-invalid-label');
+              }
+
+
+              $(mainSelector + ' form div.ajax-loader').hide();
+              $(mainSelector + ' form div.submit-button').show();
+
+              // if there are no errors, hide form
+              if (json.errors.length === 0) {
+                $(mainSelector + ' form#rms_contactForm-' + uid)[0].reset();
+                $(mainSelector + ' form#rms_contactForm-' + uid).hide();
+                $(mainSelector + ' form#rms_contactForm-' + uid).addClass('rs_skip');
+                $(mainSelector + ' div.callout.success').removeClass('rs_skip');
+                $(mainSelector + ' div.callout.success').show();
+              }
+            }
+          });
+        } else {
+          $('#ib-recaptcha-container .form-error').fadeIn(100).fadeOut(5000);
+        }
+      });
+    })
+  </script>
+
+
+</f:if>

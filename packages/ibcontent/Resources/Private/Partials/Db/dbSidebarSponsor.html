@@ -1,0 +1,75 @@
+<div class="ib-sidebar-sponsor-container">
+    <div class="row columns">
+        <div class="ib-sidebar-sponsor-headline">
+            <f:if condition="{type} =='sponsor'">
+                <f:then>
+                  <f:if condition="{headline} != ''">
+                    <f:then>
+                      {headline}
+                    </f:then>
+                    <f:else>
+                      Gefördert durch:
+                    </f:else>
+                  </f:if>
+                </f:then>
+                <f:else>
+                  <f:if condition="{headline} != ''">
+                    <f:then>
+                      {headline}                      
+                    </f:then>
+                    <f:else>
+                      Unsere Kooperationspartner:
+                    </f:else>
+                  </f:if>
+                </f:else>
+            </f:if>
+        </div>
+    </div>
+    <div class="ib-sidebar-sponsor-images">
+        <div class="row">
+
+            <f:for each="{sponsorimages}" as="image" iteration="iterator">
+                <f:if condition="{image.alt_tag} != ''">
+                    <f:then>
+                    <f:variable name="altAttributeValue">{image.alt_tag}</f:variable>
+                    </f:then>
+                    <f:else>
+                    <f:variable name="altAttributeValue"><f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:altTagValue" /></f:variable>
+                    </f:else>
+                </f:if>
+
+                <f:if condition="{sponsorOptions} == '2'">
+                    <f:then>
+                        <div class="columns medium-6 ib-sidebar-sponsor-item">
+                            <a class="ib-sidebar-sponsor-imagelink" data-anchorid="{type}_{uid}">
+                                <img src="{customSettings.urlIBPdbImages}{image.img}" alt="{altAttributeValue}">
+                            </a>
+                        </div>
+                    </f:then>
+                    <f:else>
+                        <f:if condition="{image.link} != ''">
+                            <f:then>
+                                <div class="columns medium-6 ib-sidebar-sponsor-item">
+                                    <a href="{image.link}" target="_blank" class="ib-sidebar-sponsor-extern">
+                                        <img src="{customSettings.urlIBPdbImages}{image.img}" alt="{altAttributeValue}">
+                                    </a>
+                                </div>
+                            </f:then>
+                            <f:else>
+                                <div class="columns medium-6 ib-sidebar-sponsor-item">
+                                    <a class="ib-sidebar-sponsor-blank">
+                                        <img src="{customSettings.urlIBPdbImages}{image.img}" alt="{altAttributeValue}">
+                                    </a>
+                                </div>
+                            </f:else>
+                        </f:if>
+
+                    </f:else>
+                </f:if>
+
+            </f:for>
+        </div>
+    </div>
+
+
+</div>

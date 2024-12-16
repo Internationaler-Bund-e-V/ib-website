@@ -1,0 +1,135 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:for each="{customcontent}" as="cc" iteration="iterator">
+    <f:if condition="{cc.Contentimage.file_name}">
+        <f:if condition="{cc.Contentimage.alt_tag} != ''">
+            <f:then>
+                <f:variable name="altAttributeValue">{cc.Contentimage.alt_tag}</f:variable>
+            </f:then>
+            <f:else>
+                <f:variable name="altAttributeValue"><f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:altTagValue" /></f:variable>
+            </f:else>
+        </f:if>
+    </f:if>
+    <f:switch expression="{cc.Customcontent.layout}">
+        <f:case value="1">
+            <f:render section="layout1" arguments="{cc:cc,customSettings:customSettings,iterator:iterator,altAttributeValue:altAttributeValue}"></f:render>
+        </f:case>
+        <f:case value="2">
+            <f:render section="layout2" arguments="{cc:cc,customSettings:customSettings,iterator:iterator,altAttributeValue:altAttributeValue}"></f:render>
+        </f:case>
+        <f:case value="3">
+            <f:render section="layout3" arguments="{cc:cc,customSettings:customSettings,iterator:iterator,altAttributeValue:altAttributeValue}"></f:render>
+        </f:case>
+        <f:case value="4">
+            <f:render section="layout4" arguments="{cc:cc,customSettings:customSettings,iterator:iterator,altAttributeValue:altAttributeValue}"></f:render>
+        </f:case>
+    </f:switch>
+</f:for>
+
+
+<!-- layout 1 -->
+<f:section name="layout1">
+    <div class="ib-custom-content">
+        <div class="row columns ib-background-white ib-custom-content-layout-1">
+            <f:render section="headline" arguments="{cc:cc,customSettings:customSettings}"></f:render>
+            <div class="ib-custom-content-image">
+                <f:if condition="{cc.Contentimage.file_name}">
+                    <img src="{customSettings.urlIBPdbImages}/{cc.Contentimage.url}" alt="{altAttributeValue}">
+                </f:if>
+            </div>
+            <div class="row ib-custom-content-container">
+                <div class="columns medium-6">
+                    <f:format.raw>{cc.Customcontent.left_column}</f:format.raw>
+                </div>
+                <div class="columns medium-6">
+                    <f:format.raw>{cc.Customcontent.right_column}</f:format.raw>
+                </div>
+            </div>
+            <f:if condition="{iterator.isLast} != 1">
+                <div class="row columns ib-custom-content-divider"></div>
+            </f:if>
+        </div>
+    </div>
+</f:section>
+
+<f:section name="layout2">
+    <!-- layout 2 -->
+    <div class="ib-custom-content">
+        <div class="row columns ib-background-white ib-custom-content-layout-2">
+            <f:render section="headline" arguments="{cc:cc,customSettings:customSettings}"></f:render>
+            <div class="ib-custom-content-image">
+                <f:if condition="{cc.Contentimage.file_name}">
+                    <img src="{customSettings.urlIBPdbImages}/{cc.Contentimage.url}" alt="{altAttributeValue}">
+                </f:if>
+            </div>
+            <div class="row ib-custom-content-container">
+                <div class="columns medium-12">
+                    <f:format.raw>{cc.Customcontent.left_column}</f:format.raw>
+                </div>
+            </div>
+            <f:if condition="{iterator.isLast} != 1">
+                <div class="row columns ib-custom-content-divider"></div>
+            </f:if>
+        </div>
+    </div>
+</f:section>
+
+<f:section name="layout3">
+    <!-- layout 3  -->
+    <div class="ib-custom-content">
+        <div class="row columns ib-background-white ib-custom-content-layout-3">
+            <f:render section="headline" arguments="{cc:cc,customSettings:customSettings}"></f:render>
+            <div class="row ib-custom-content-container columns">
+                <f:if condition="{cc.Contentimage.file_name}">
+                    <img src="{customSettings.urlIBPdbImages}/{cc.Contentimage.url}" alt="{altAttributeValue}">
+                </f:if>
+                <f:format.raw>{cc.Customcontent.left_column}</f:format.raw>
+            </div>
+            <f:if condition="{iterator.isLast} != 1">
+                <div class="row columns ib-custom-content-divider"></div>
+            </f:if>
+        </div>
+    </div>
+</f:section>
+
+<f:section name="layout4">
+    <!-- layout 4  -->
+    <div class="ib-custom-content">
+        <div class="row columns ib-background-white ib-custom-content-layout-4">
+            <f:render section="headline" arguments="{cc:cc,customSettings:customSettings}"></f:render>
+            <div class="row ib-custom-content-container columns">
+                <f:if condition="{cc.Contentimage.file_name}">
+                    <img src="{customSettings.urlIBPdbImages}/{cc.Contentimage.url}" alt="{altAttributeValue}">
+                </f:if>
+                <f:format.raw>{cc.Customcontent.left_column}</f:format.raw>
+            </div>
+            <f:if condition="{iterator.isLast} != 1">
+                <div class="row columns ib-custom-content-divider"></div>
+            </f:if>
+        </div>
+    </div>
+</f:section>
+
+
+<!-- headline/icon -->
+<f:section name="headline">
+    <div class="ib-custom-content-header">
+        <h2>
+            <f:if condition="{cc.Icon.file_name}">
+                <f:then>
+                    <span class="ib-custom-content-icon">
+                        <img src="{customSettings.urlIBPdbImages}/{cc.Icon.url}" alt="{altAttributeValue}">
+                    </span>
+                </f:then>
+                <f:else>
+                    <f:if condition="{cc.Customcontent.icon_tag}">
+                        <span>
+                            <f:format.raw>{cc.Customcontent.icon_tag}</f:format.raw>
+                        </span>
+                    </f:if>
+                </f:else>
+            </f:if>
+            <span>{cc.Customcontent.headline}</span>
+        </h2>
+    </div>
+</f:section>

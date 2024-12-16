@@ -1,0 +1,56 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	
+  <sheets>
+	<sDEF>
+	  <ROOT>
+		<TCEforms>
+			<sheetTitle>Breadcrump Settings</sheetTitle>
+		</TCEforms>
+		<type>array</type>
+		<el>
+			<settings.bgColor>
+				<TCEforms>
+					<label>Choose Background Color</label>
+					<config>
+						<type>select</type>
+						<renderType>selectSingle</renderType>
+						<items type="array">
+							<numIndex index="0" type="array">
+								<numIndex index="0">white</numIndex>
+								<numIndex index="1">white</numIndex>
+							</numIndex>
+							<numIndex index="1" type="array">
+								<numIndex index="0">gray</numIndex>
+								<numIndex index="1">gray</numIndex>
+							</numIndex>
+						</items>
+					</config>
+				</TCEforms>
+			</settings.bgColor>
+			<settings.layout>
+				<TCEforms>
+					<label>Choose Layout</label>
+					<config>
+						<type>select</type>
+						<renderType>selectSingle</renderType>
+						<items type="array">
+							<numIndex index="0" type="array">
+								<numIndex index="0">Start Page</numIndex>
+								<numIndex index="1">start</numIndex>
+							</numIndex>
+							<numIndex index="1" type="array">
+								<numIndex index="0">Sub Pages</numIndex>
+								<numIndex index="1">2col</numIndex>
+							</numIndex>
+						</items>
+					</config>
+				</TCEforms>
+			</settings.layout>
+		</el>
+	  </ROOT>
+	</sDEF>
+  </sheets>
+</T3DataStructure>

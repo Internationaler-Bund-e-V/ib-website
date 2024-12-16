@@ -1,0 +1,160 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Plugin Settings</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+
+					<settings.layout>
+						<TCEforms>
+							<label>Choose Layout</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">Start Page</numIndex>
+										<numIndex index="1">start</numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">Sub Pages</numIndex>
+										<numIndex index="1">2col</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</settings.layout>
+
+					<settings.mainTitle>
+						<TCEforms>
+							<label>Title</label>
+							<config>
+								<type>input</type>
+								<eval>required</eval>
+								<size>255</size>
+							</config>
+						</TCEforms>
+					</settings.mainTitle>
+
+					<settings.subline>
+						<TCEforms>
+							<label>Subline</label>
+							<config>
+								<type>text</type>
+								<cols>3</cols>
+								<rows>3</rows>
+								<enableRichtext>1</enableRichtext>
+							</config>							
+						</TCEforms>
+					</settings.subline>
+				</el>
+			</ROOT>
+		</sDEF>
+		<rightSide>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Inhaltsblöcke</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.sliderContainer>
+						<TCEforms>
+							<tx_templavoila>
+								<title>Inhaltsblock</title>
+							</tx_templavoila>
+						</TCEforms>
+						<section>1</section>
+						<title>Hinweis: Für die korrekte Verwendung muss das PlugIn zuerst gespeichert werden!</title>
+						<type>array</type>
+						<el>
+							<ItemWrap>
+								<type>array</type>
+								<tx_templavoila>
+									<title>Neuer Block</title>
+								</tx_templavoila>
+								<el>
+									<title>
+										<TCEforms>
+											<label>Title</label>
+											<config>
+												<type>input</type>
+												<eval>required</eval>
+												<size>255</size>
+											</config>
+										</TCEforms>
+									</title>
+									<contenttext>
+										<TCEforms>
+											<label>Content</label>
+											<config>
+												<type>text</type>
+												<cols>3</cols>
+												<rows>3</rows>
+												<enableRichtext>1</enableRichtext>
+											</config>											
+										</TCEforms>
+									</contenttext>
+									<linkButtonLabel>
+										<TCEforms>
+											<label>Button:Label</label>
+											<config>
+												<type>input</type>
+												<eval>trim</eval>
+												<size>255</size>
+											</config>
+										</TCEforms>
+									</linkButtonLabel>
+									<linkButton>
+										<TCEforms>
+											<label>Button: Link</label>
+											<config>
+												<type>input</type>
+												<eval>trim</eval>
+												<size>60</size>
+												<default></default>
+												<wizards type="array">
+													<_PADDING type="integer">2</_PADDING>
+													<link type="array">
+														<type>popup</type>
+														<title>Link</title>
+														<icon>EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_link.gif</icon>
+														<module type="array">
+															<name>wizard_link</name>
+															<urlParameters type="array">
+																<mode>wizard</mode>
+																<act>file</act>
+															</urlParameters>
+														</module>
+														<JSopenParams>height=500,width=500,status=0,menubJSopenParams</JSopenParams>
+													</link>
+												</wizards>
+											</config>
+										</TCEforms>
+									</linkButton>
+									<accordionContent>
+										<TCEforms>
+											<label>Text in Accordion</label>
+											<config>
+												<type>text</type>
+												<cols>3</cols>
+												<rows>3</rows>
+												<enableRichtext>1</enableRichtext>
+											</config>											
+										</TCEforms>
+									</accordionContent>
+
+								</el>
+							</ItemWrap>
+						</el>
+					</settings.sliderContainer>
+				</el>
+			</ROOT>
+		</rightSide>
+	</sheets>
+</T3DataStructure>

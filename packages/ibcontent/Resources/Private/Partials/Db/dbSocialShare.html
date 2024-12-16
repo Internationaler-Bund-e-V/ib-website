@@ -1,0 +1,24 @@
+<!--
+ * DEPRECATED. Use the partial from fileadmin instead to avoid errors
+ * because of having to take care of duplicate template files
+ * use the partial form the ib_template extension instead: typo3conf/ext/ib_template/Resources/Private/Template/html/partial/SocialShare.html
+ *
+ * @author mk, 2017-04-12
+ -->
+<div class="ib-social">
+    <div class="ib-social-container">
+        <div class="ib-social-content" style="float: right;">
+            <a class="search" href="{f:cObject(typoscriptObjectPath: 'lib.searchPageLink')}" title="Suchen"> <i class="ib-icon-search"></i> </a>
+            <a class="print" href="javascript:window.print()" title="Drucken"><i class="fa fa-print" aria-hidden="true"></i></a>
+
+            <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.ib_english_page_link')}">
+                <a class="link-ib-en" target="_blank" href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.ib_english_page_link')}" title="Englische Webseite">EN</a>
+            </f:if>
+
+            <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portal.social.facebook')}" title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.facebook.titletag')}"><i class="ib-icon-facebook"></i></a>
+            <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portal.social.twitter')}" title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.twitter.titletag')}"><i class="ib-icon-twitter"></i></a>
+            <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portal.social.linkedin')}" title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.linkedin.titletag')}"><i class="ib-icon-linkedin"></i></a>
+            <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portal.social.xing')}" title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.xing.titletag')}"><i class="ib-icon-xing"></i></a>
+        </div>
+    </div>
+</div>

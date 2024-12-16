@@ -1,0 +1,50 @@
+{namespace rms=Rms\Ibcontent\ViewHelpers}
+<div class="row ib-content-module ib-background-white ib-breadcrumb rs_skip">
+	<div class="columns medium-offset-1 medium-10 large-6-2col large-offset-1-2col end">
+		<ul class="breadcrumbs">
+
+			<f:for each="{rms:breadcrumb(additionalPages:additionalPages)}" as="crumb" iteration="iterator">
+
+				<f:if condition="{crumb.type} == 'typo'">
+					<f:render section="renderTypo" arguments="{crumb: crumb,iterator:iterator}"/>
+				</f:if>
+				<f:if condition="{crumb.type} == 'db'">
+					<f:render section="renderDB" arguments="{crumb:crumb}"/>
+				</f:if>
+
+			</f:for>
+		</ul>
+	</div>
+</div>
+
+<!-- render "home" only as link -->
+<f:section name="renderTypo">
+	<li>
+		<f:if condition="{iterator.index} == 0">
+			<f:then>
+				{crumb.title}
+				<!-- <f:link.page pageUid="{crumb.uid}"> {crumb.title}</f:link.page> -->
+			</f:then>
+			<f:else>
+				{crumb.title}
+			</f:else>
+		</f:if>
+	</li>
+</f:section>
+
+<f:section name="renderDB">
+	<li>
+		<f:if condition="{crumb.renderLink}">
+			<f:then>
+				<f:link.page pageUid="{settings.targetpage}"
+							 additionalParams="{tx_ibcontent:'{lid:crumb.id}'}"
+							 title="{f:translate(key: 'LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:to_location_title')}">
+					{crumb.title}
+				</f:link.page>
+			</f:then>
+			<f:else>
+				{crumb.title}
+			</f:else>
+		</f:if>
+	</li>
+</f:section>

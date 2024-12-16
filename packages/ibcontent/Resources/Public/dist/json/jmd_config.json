@@ -1,0 +1,20 @@
+[
+    {
+        "id": 5,
+        "settings": {
+            "fillColor": "#ff0000"
+        }
+    },
+    {
+        "id": 6,
+        "settings": {
+            "fillColor": "#00ff00"
+        }
+    },
+    {
+        "id": 7,
+        "settings": {
+            "fillColor": "#0000ff"
+        }
+    }
+]

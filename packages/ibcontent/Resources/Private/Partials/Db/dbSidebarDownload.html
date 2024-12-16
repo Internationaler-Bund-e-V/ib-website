@@ -1,0 +1,13 @@
+{namespace ib=Rms\Ibcontent\ViewHelpers}
+<f:if condition="{downloads}">
+    <div class="ib-sidebar">
+        <div class="ib-content-module ib-background-white">
+            <h2 class="ib-color-darkblue">Downloads:</h2>
+            <f:for each="{downloads}" as="download">
+                <a target="_blank" class="ib-link-more-after" href="{customSettings.urlIBPdb}{download}">
+                <ib:tools filepath="{download}" />
+                </a>
+            </f:for>
+        </div>
+    </div>
+</f:if>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<T3DataStructure>
+  <meta>
+    <langDisable>1</langDisable>
+  </meta>
+  <sheets>
+    <general>
+      <ROOT>
+        <TCEforms>
+          <sheetTitle>Allgemeine Einstellungen</sheetTitle>
+        </TCEforms>
+        <type>array</type>
+        <el>
+          <switchableControllerActions>
+            <TCEforms>
+              <label>Ansicht</label>
+              <onChange>reload</onChange>
+              <config>
+                <type>select</type>
+                <renderType>selectSingle</renderType>
+                <items type="array">
+                  <numIndex index="1" type="array">
+                    <numIndex index="0">Listenansicht</numIndex>
+                    <numIndex index="1">MyContent->dbShowJoblist</numIndex>
+                  </numIndex>
+                  <numIndex index="2" type="array">
+                    <numIndex index="0">Jobansicht</numIndex>
+                    <numIndex index="1">MyContent->dbShowJob</numIndex>
+                  </numIndex>
+                  <numIndex index="3" type="array">
+                    <numIndex index="0">Jobansicht Ausland</numIndex>
+                    <numIndex index="1">MyContent->dbShowForeignjob</numIndex>
+                  </numIndex>
+                </items>
+              </config>
+            </TCEforms>
+          </switchableControllerActions>
+          <settings.targetpage>
+            <TCEforms>
+              <label>Zielseite Einzelansicht</label>
+              <displayCond>
+								FIELD:switchableControllerActions:=:MyContent->dbShowJoblist
+							</displayCond>
+              <config>
+                <type>group</type>
+                <internal_type>db</internal_type>
+                <allowed>pages</allowed>
+                <size>1</size>
+                <maxitems>1</maxitems>
+                <minitems>0</minitems>
+                <show_thumbs>1</show_thumbs>
+              </config>
+            </TCEforms>
+          </settings.targetpage>
+          <settings.targetpagelocation>
+            <TCEforms>
+              <label>Zielseite Standort</label>
+              <displayCond>
+								FIELD:switchableControllerActions:=:MyContent->dbShowJob
+							</displayCond>
+              <config>
+                <type>group</type>
+                <internal_type>db</internal_type>
+                <allowed>pages</allowed>
+                <size>1</size>
+                <maxitems>1</maxitems>
+                <minitems>0</minitems>
+                <show_thumbs>1</show_thumbs>
+              </config>
+            </TCEforms>
+          </settings.targetpagelocation>
+          <settings.targetpagerelated>
+            <TCEforms>
+              <label>Zielseite Verwandte FWD</label>
+              <displayCond>
+								FIELD:switchableControllerActions:=:MyContent->dbShowJob
+							</displayCond>
+              <config>
+                <type>group</type>
+                <internal_type>db</internal_type>
+                <allowed>pages</allowed>
+                <size>1</size>
+                <maxitems>1</maxitems>
+                <minitems>0</minitems>
+                <show_thumbs>1</show_thumbs>
+              </config>
+            </TCEforms>
+          </settings.targetpagerelated>
+          <settings.dbportalid>
+            <TCEforms>
+              <label>Portal ID (Produktdatenbank)</label>
+              <displayCond>
+								FIELD:switchableControllerActions:=:MyContent->dbShowJoblist
+							</displayCond>
+              <config>
+                <type>input</type>
+                <size>255</size>
+              </config>
+            </TCEforms>
+          </settings.dbportalid>
+          <settings.dbcities>
+            <TCEforms>
+              <label>Städtefilter (kommasepariert z.B. Frankfurt, Stuttgart, etc.)</label>
+              <displayCond>
+								FIELD:switchableControllerActions:=:MyContent->dbShowJoblist
+							</displayCond>
+              <config>
+                <type>input</type>
+                <size>255</size>
+              </config>
+            </TCEforms>
+          </settings.dbcities>
+        </el>
+      </ROOT>
+    </general>
+  </sheets>
+</T3DataStructure>

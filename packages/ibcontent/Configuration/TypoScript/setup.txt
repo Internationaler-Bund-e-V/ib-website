@@ -1,0 +1,2 @@
+
+@import 'EXT:ibcontent/Configuration/TypoScript/setup.typoscript'
