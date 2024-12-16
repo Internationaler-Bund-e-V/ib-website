@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-09-19T15:54:35Z" product-name="ib_contact_person">
+		<header/>
+		<body>
+			<trans-unit id="tx_ibcontactperson_domain_model_contactperson">
+				<source>Contact Person</source>
+			</trans-unit>
+			<trans-unit id="tx_ibcontactperson_domain_model_contactperson.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_ibcontactperson_domain_model_contactperson.position">
+				<source>Position</source>
+			</trans-unit>
+			<trans-unit id="tx_ibcontactperson_domain_model_contactperson.contact_info">
+				<source>Contact Info</source>
+			</trans-unit>
+			<trans-unit id="tx_ibcontactperson_domain_model_contactperson.image">
+				<source>Image</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,30 @@
+
+plugin.tx_ibcontactperson_contactpersonib {
+    view {
+        # cat=plugin.tx_ibcontactperson_contactpersonib/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:ib_contact_person/Resources/Private/Templates/
+        # cat=plugin.tx_ibcontactperson_contactpersonib/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:ib_contact_person/Resources/Private/Partials/
+        # cat=plugin.tx_ibcontactperson_contactpersonib/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:ib_contact_person/Resources/Private/Layouts/
+    }
+    persistence {
+        # cat=plugin.tx_ibcontactperson_contactpersonib//a; type=string; label=Default storage PID
+        storagePid =
+    }
+}
+
+module.tx_ibcontactperson_ibcontactperson {
+    view {
+        # cat=module.tx_ibcontactperson_ibcontactperson/file; type=string; label=Path to template root (BE)
+        templateRootPath = EXT:ib_contact_person/Resources/Private/Backend/Templates/
+        # cat=module.tx_ibcontactperson_ibcontactperson/file; type=string; label=Path to template partials (BE)
+        partialRootPath = EXT:ib_contact_person/Resources/Private/Backend/Partials/
+        # cat=module.tx_ibcontactperson_ibcontactperson/file; type=string; label=Path to template layouts (BE)
+        layoutRootPath = EXT:ib_contact_person/Resources/Private/Backend/Layouts/
+    }
+    persistence {
+        # cat=module.tx_ibcontactperson_ibcontactperson//a; type=string; label=Default storage PID
+        storagePid =
+    }
+}

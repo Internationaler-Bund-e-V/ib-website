@@ -1,0 +1,29 @@
+<table class="tx-ib-contact-person" >    
+    <tr>
+        <td>
+        <f:translate key="tx_ibcontactperson_domain_model_contactperson.name" />
+        </td>
+        <td> {contactPerson.name} </td>
+    </tr>
+    <tr>
+        <td>
+        <f:translate key="tx_ibcontactperson_domain_model_contactperson.position" />
+        </td>
+        <td> {contactPerson.position} </td>
+    </tr>
+    <tr>
+        <td>
+        <f:translate key="tx_ibcontactperson_domain_model_contactperson.contact_info" />
+        </td>
+        <td> {contactPerson.contactInfo} </td>
+    </tr>
+    <tr>
+        <td>
+        <f:translate key="tx_ibcontactperson_domain_model_contactperson.image" />
+        </td>
+        <td>
+        <f:if condition="{contactPerson.image.originalResource.publicUrl}">
+            <f:image src="{contactPerson.image.originalResource.publicUrl}" width="200"/>
+        </f:if></td>
+    </tr>
+</table>
