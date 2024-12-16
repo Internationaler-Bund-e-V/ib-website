@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-04-09T14:00:57Z" product-name="ib_galerie">
+		<header/>
+		<body>
+			<trans-unit id="tx_ibgalerie_domain_model_galerie">
+				<source>Galerie</source>
+			</trans-unit>
+			<trans-unit id="tx_ibgalerie_domain_model_galerie.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_ibgalerie_domain_model_galerie.code">
+				<source>Code- wird automatisch generiert - bitte kopieren und an der entsprechenden Stelle in den Texteditor eintragen</source>
+			</trans-unit>
+			<trans-unit id="tx_ibgalerie_domain_model_galerie.images">
+				<source>Images</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

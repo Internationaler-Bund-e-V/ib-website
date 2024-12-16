@@ -1,0 +1,75 @@
+<!-- overlays -->
+<div class="ext-ibg-overlay-container" id="ext-ibg-overlay-container-0"></div>
+<div class="ext-ibg-overlay" id="ext-ibg-overlay-{counter}">
+    <!-- close button -->
+    <div class="ext-ibg-close" id="ext-ibg-close-{counter}"> X </div>
+    <!-- left arrow -->
+    <div class="ext-ibg-nav-left" id="ext-ibg-nav-left-{counter}">
+        <i class="ib-icon-arrow-left float-right "></i>
+    </div>
+    <!-- right arrow -->
+    <div class="ext-ibg-nav-right" id="ext-ibg-nav-right-{counter}">
+        <i class="ib-icon-arrow-right float-right "></i>
+    </div>
+</div>
+<!-- end -->
+
+<!-- gallery masonry start -->
+<div class="grid hide-for-small-only">
+    <f:for each="{galerie.images}" as="image" iteration="cycle">
+        <div class="grid-item ext-ibg-image-item" data-galleryid="{counter}" data-gotoSlide="{cycle.index}">
+            <f:image src="{image.uid}" absolute="true" alt="{image.originalResorce.alternative}" treatIdAsReference="1" />
+        </div>
+    </f:for>
+</div>
+<!-- gallery masonry end -->
+
+
+
+<!-- sliders main & nav -->
+<div class="ext-ibg-slider-container" id="ext-ibgc-{counter}">
+    <div class="dummyContainer">
+        <div class="ext-ib-slider-main-stage" id="ext-ibg-main-{counter}">
+            <f:for each="{galerie.images}" as="image">
+                <div class="ext-ib-slider-main-item">
+                    <div class="ext-ib-slider-main-image" test="" style="background:url({f:uri.image(image:image,absolute:'true')})">
+                        <f:if condition="{image.originalResource.description}">
+                            <div class="ext-ib-img-caption ">
+                                <f:format.raw>{image.originalResource.description}</f:format.raw>
+                            </div>
+                        </f:if>
+                    </div>
+                </div>
+            </f:for>
+        </div>
+        <div class="ext-ib-slider-nav-items">
+            <div class="ext-ib-slider" id="ext-ibg-nav-{counter}">
+                <f:for each="{galerie.images}" as="image">
+                    <div class="ext-ib-slider-nav-item">
+                        <f:image src="{image.uid}" absolute="true" alt="{image.originalResource.alternative}" treatIdAsReference="1" />
+                    </div>
+                </f:for>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end -->
+
+<!-- mobile slider -->
+<div class="ext-ibg-slider-container-mobile">
+    <div class="ext-ib-slider-main-stage-mobile">
+        <f:for each="{galerie.images}" as="image">
+            <div class="ext-ib-slider-main-item-mobile">
+                <f:image src="{image.uid}" absolute="true" alt="{image.originalResource.alternative}" treatIdAsReference="1" />
+                <f:if condition="{image.originalResource.description}">
+                    <div class="ext-ib-img-caption-mobile">
+                        <f:format.raw>{image.originalResource.description}</f:format.raw>
+                    </div>
+                </f:if>
+            </div>
+        </f:for>
+    </div>
+</div>
+
+
+<!-- monile slider end -->

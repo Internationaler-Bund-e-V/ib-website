@@ -1,0 +1,17 @@
+# Module configuration
+module.tx_ibgalerie_web_ibgalerieibgaleriebe {
+    persistence {
+        storagePid = {$module.tx_ibgalerie_ibgaleriebe.persistence.storagePid}
+    }
+    view {
+        templateRootPaths.0 = EXT:ib_galerie/Resources/Private/Backend/Templates/
+        templateRootPaths.1 = {$module.tx_ibgalerie_ibgaleriebe.view.templateRootPath}
+        partialRootPaths.0 = EXT:ib_galerie/Resources/Private/Backend/Partials/
+        partialRootPaths.1 = {$module.tx_ibgalerie_ibgaleriebe.view.partialRootPath}
+        layoutRootPaths.0 = EXT:ib_galerie/Resources/Private/Backend/Layouts/
+        layoutRootPaths.1 = {$module.tx_ibgalerie_ibgaleriebe.view.layoutRootPath}
+    }
+}
+
+page.includeCSS.ib_galerie_css = EXT:ib_galerie/Resources/Public/dist/ibgallery.min.css
+page.includeJSFooterlibs.ib_galerie_js = EXT:ib_galerie/Resources/Public/dist/ibgallery.min.js

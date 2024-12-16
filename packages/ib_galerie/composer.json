@@ -1,0 +1,26 @@
+{
+    "name": "rms/ib-galerie",
+    "type": "typo3-cms-extension",
+    "description": "IB - Galerie",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "authors": [],
+    "require": {
+        "typo3/cms-core": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rms\\IbGalerie\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rms\\IbGalerie\\Tests\\": "Tests"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "ib_galerie"
+        }
+    }
+}
