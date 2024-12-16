@@ -1,0 +1,95 @@
+<f:comment>
+	<!--
+	# ----------------------------------------------------------------------
+	# this partial is responsible for the rendering of the complete form.
+	# It needs the forms database uid. Otherwise the form can't be submitted.
+	# ----------------------------------------------------------------------
+	-->
+</f:comment>
+
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:variable name="assetBasePath" value="{f:uri.resource(path:'', extensionName: 'ib_formbuilder')}" />
+
+<div class="tx_ibformbuilder-show-frontend-form">
+
+	<div class="row ib-content-module ib-mediaelement ib-background-white">
+		<div class="columns medium-offset-1 medium-10 small-12 end">
+			<f:if condition="{settings.hideFormname}">
+				<f:then>
+					<h2 class="ib-headline">{settings.customFormname}</h2>
+				</f:then>
+				<f:else>
+					<h2 class="ib-headline">{formdata.name}</h2>
+				</f:else>
+			</f:if>
+			<form action="#" id="tx_ibformbuilder_contactform">
+				<div id="fb-render" data-assetbasepath="{assetBasePath}"></div>
+				<input type="hidden" name="hidden_formId" value="{formId}" />
+				<input type="hidden" name="hidden_uid" value="{uid}" />
+			</form>
+
+			<div class="general_error_message" style="display: none">
+				<p> Ihre Eingaben sind nicht vollständig. Bitte überprüfen Sie die markierten Felder. </p>
+			</div>
+		</div>
+	</div>
+
+	<f:comment>
+		<!--
+		# ------------------------------------------------
+		# create a custom js file typo3temp/assets/vhs-assets-form_{formId}_{uid}.js
+		# for each page / form combination. this is necesarry to avion
+		# cached form js files who prevent the use of multiple forms
+		#
+		# @see https://mantis.rm-solutions.de/mantis/view.php?id=1251
+		# ------------------------------------------------
+		-->
+	</f:comment>
+
+	<f:variable name="contactform_recaptcha_error"
+		value="{f:translate(key:'LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_recaptcha_error') -> f:format.raw()}" />
+	<f:variable name="contactform_recaptcha_error" value="{v:format.trim(content:contactform_recaptcha_error)}" />
+
+	<f:comment> <!-- START create link to data privacy site --> </f:comment>
+	<f:variable name="dataPrivacySiteID"
+		value="{f:cObject(typoscriptObjectPath: 'portalSettings.dataPrivacySiteID')}" />
+	<f:variable name="asboluteDataPrivacyPath" value="{f:uri.page(pageUid:dataPrivacySiteID)}" />
+	<f:variable name="contactform_dataPrivacyLink"
+		value="{f:translate(arguments:'{0:asboluteDataPrivacyPath}', key:'LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_dataPrivacyLink') -> f:format.raw()}" />
+	<f:variable name="contactform_dataPrivacyLink" value="{v:format.trim(content:contactform_dataPrivacyLink)}" />
+	<f:comment> <!-- STOP create link to data privacy site --> </f:comment>
+
+	<v:asset.script name="form_{formId}_{uid}">
+		var myFormData = {f:format.htmlentitiesDecode(value: json, keepQuotes: 1)};
+		var formSubmitUri = '{f:uri.action(action: "frontendFormAjaxSubmit", controller: "Form", pageType: 7752)}';
+
+		var rcKey = "{f:cObject(typoscriptObjectPath: 'google.recaptcha.sitekey')}";
+		var rcLangKey = "{settings.reCaptchaLangCode}";
+
+		var contactform_recaptcha_error = "{contactform_recaptcha_error}";
+
+		var contactform_dataPrivacyLink = '{contactform_dataPrivacyLink}';
+	</v:asset.script>
+
+	<f:comment>
+		<!--
+		# ------------------------------------------------
+		# include formrenderer and custom frontendplugin
+		# this files will be created under
+		# typo3temp/assets/vhs-assets-ibFormRenderer-ibFormRendererFE.js
+		# and will be reused in every form implementation
+		#
+		# ------
+		#
+		# recaptcha key. @see main template -> /ts/main_config.ts
+		# testmode can be configured in the controller
+		# ------------------------------------------------
+		-->
+	</f:comment>
+
+	<f:asset.script identifier="ibFormRenderer"
+		src="EXT:ib_formbuilder/Resources/Public/libs/formBuilder/form-render.min.js" />
+	<f:asset.script identifier="ibFormRendererFE"
+		src="EXT:ib_formbuilder/Resources/Public/JavaScript/frontend.min.js" />
+</div>

@@ -1,0 +1,21 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:layout name="Default"/>
+
+<f:render partial="Loader" arguments="{_all}"/>
+
+<f:comment>
+	# -----------------------------------------------------------
+	# render the form
+	# -----------------------------------------------------------
+</f:comment>
+<f:render partial="Form/FrontendRenderForm" arguments="{_all}"/>
+
+<f:comment>
+	# -----------------------------------------------------------
+	# render the form success page
+	# -----------------------------------------------------------
+</f:comment>
+<f:render partial="Form/FrontendRenderFormSuccess" arguments="{_all}"/>
+
+{v:asset.style(path: 'EXT:ib_formbuilder/Resources/Public/Css/frontend.min.css')}

@@ -1,0 +1,65 @@
+/*
+ * ------------------------------
+ * Manage dependencies overlay
+ * ------------------------------
+ */
+.form-wrap.form-builder .form-control:focus {
+	z-index: 800;
+	border: 1px solid red;
+}
+
+div#tx_formbuilder_backend_manage_dependencies {
+	display: none;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background: #f9fafa;
+	opacity: 0.98;
+	z-index: 900;
+	margin: 0;
+
+	a {
+		color: blue;
+		font-size: 14px;
+	}
+
+	a#remove_dependencies_link {
+		color: #db6e01;
+	}
+	div.manage_dependencies-content {
+		padding: 20px;
+		margin: 50px;
+		min-height: 150px;
+		background: #dbdbdb;
+	}
+
+	div.close-link-container {
+		width: 100%;
+		text-align: right;
+	}
+
+	label {
+		font-weight: normal;
+	}
+
+	li.margin-top {
+		margin-top: 20px;
+		margin-bottom: 10px;
+	}
+
+	div.row {
+		margin-top: 30px;
+		width: 100%;
+
+		div.float-left {
+			float: left;
+		}
+
+		div.float-right {
+			float: right;
+		}
+	}
+
+}

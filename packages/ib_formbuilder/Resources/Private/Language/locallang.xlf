@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-07-13T11:37:10Z" product-name="ib_formbuilder">
+		<header/>
+		<body>
+			<trans-unit id="tx_ib_formbuilder_domain_model_showform">
+				<source>IB Formular</source>
+			</trans-unit>
+			<trans-unit id="tx_ib_formbuilder_domain_model_showform.description">
+				<source>Framwork for building forms</source>
+			</trans-unit>
+			<trans-unit id="tx_ibformbuilder_domain_model_form">
+				<source>Form</source>
+			</trans-unit>
+			<trans-unit id="tx_ibformbuilder_domain_model_form.name">
+				<source>Formularname</source>
+			</trans-unit>
+			<trans-unit id="tx_ibformbuilder_domain_model_form.formdata_json">
+				<source>Formdata Json</source>
+			</trans-unit>
+			<trans-unit id="tx_ibformbuilder_domain_model_form.receiver">
+				<!--<source>Empfänger. Mehrere Empfänger kommasepariert (test@mail.de,test2@mail.de,...). Diese Werte können bei der Einbindung des Formulars überschrieben werden.</source>-->
+				<source>ACHTUNG: Dieses Feld nicht mehr verwenden, sondern die Empfänger direkt im Formular eingeben.</source>
+			</trans-unit>
+
+
+			<trans-unit id="tx_ibformbuilder_domain_model_emaildata">
+				<source>Gesendete Emails</source>
+			</trans-unit>
+			<trans-unit id="tx_ibformbuilder_domain_model_emaildata.form_name">
+				<source>Name des Formulars</source>
+			</trans-unit>
+			<trans-unit id="tx_ibformbuilder_domain_model_emaildata.emaildata_html">
+				<source>HTML des verschickten Formulars</source>
+			</trans-unit>
+			<trans-unit id="tx_ibformbuilder_domain_model_emaildata.emaildata_csv">
+				<source>CSV des verschickten Formulars</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,85 @@
+plugin.tx_ibformbuilder_showform {
+    view {
+        templateRootPaths.0 = EXT:ib_formbuilder/Resources/Private/Templates/
+        templateRootPaths.1 = {$plugin.tx_ibformbuilder_showform.view.templateRootPath}
+        partialRootPaths.0 = EXT:ib_formbuilder/Resources/Private/Partials/
+        partialRootPaths.1 = {$plugin.tx_ibformbuilder_showform.view.partialRootPath}
+        layoutRootPaths.0 = EXT:ib_formbuilder/Resources/Private/Layouts/
+        layoutRootPaths.1 = {$plugin.tx_ibformbuilder_showform.view.layoutRootPath}
+    }
+    persistence {
+        storagePid = {$plugin.tx_ibformbuilder_showform.persistence.storagePid}
+        #recursive = 1
+
+        # configure tt_content mapping
+        # deprecated, see https://docs.typo3.org/c/typo3/cms-core/main/en-us/Changelog/10.0/Breaking-87623-ReplaceConfigpersistenceclassesTyposcriptConfiguration.html
+        #classes {
+        #    Rms\IbFormbuilder\Domain\Model\Content {
+        #        mapping {
+        #            tableName = {$plugin.tx_ibformbuilder_showform.persistence.classes.mapping.tableName}
+        #            columns {
+        #                uid.mapOnProperty = {$plugin.tx_ibformbuilder_showform.persistence.classes.mapping.columns.uid.mapOnProperty}
+        #                flexform.mapOnProperty = {$plugin.tx_ibformbuilder_showform.persistence.classes.mapping.columns.flexform.mapOnProperty}
+        #            }
+        #        }
+        #    }
+        #}
+    }
+    features {
+        #skipDefaultArguments = 1
+    }
+    mvc {
+        #callDefaultActionIfActionCantBeResolved = 1
+    }
+}
+
+plugin.tx_ibformbuilder._CSS_DEFAULT_STYLE >
+
+# Module configuration
+module.tx_ibformbuilder_web_ibformbuilderibforms {
+    persistence {
+        storagePid = {$module.tx_ibformbuilder_ibforms.persistence.storagePid}
+    }
+    view {
+        templateRootPaths.0 = EXT:ib_formbuilder/Resources/Private/Backend/Templates/
+        templateRootPaths.1 = {$module.tx_ibformbuilder_ibforms.view.templateRootPath}
+        partialRootPaths.0 = EXT:ib_formbuilder/Resources/Private/Backend/Partials/
+        partialRootPaths.1 = {$module.tx_ibformbuilder_ibforms.view.partialRootPath}
+        layoutRootPaths.0 = EXT:ib_formbuilder/Resources/Private/Backend/Layouts/
+        layoutRootPaths.1 = {$module.tx_ibformbuilder_ibforms.view.layoutRootPath}
+    }
+}
+
+/*
+* ------------------------------------------------------------------
+* add ajax pageType. can be used inside f:uri calls
+* ------------------------------------------------------------------
+* @usage {f:uri.action(action: "frontendFormAjaxSubmit", controller: "Form", pageType: 7752)}
+*/
+tx_ibformbuilder_ajax = PAGE
+tx_ibformbuilder_ajax {
+    typeNum = 7752
+    config {
+        disableAllHeaderCode = 1
+        xhtml_cleaning = 0
+        admPanel = 0
+        #additionalHeaders = Content-type: text/plain
+        additionalHeaders.10.header = Content-type: text/plain
+        no_cache = 1
+        contentObjectExceptionHandler = 0
+        debug = 0
+    }
+    #10 = USER_INT
+    10 = USER
+    10 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        extensionName = IbFormbuilder
+        pluginName = Showform
+        vendorName = Rms
+        controller = Form
+        action = frontendFormAjaxSubmit
+        view < plugin.tx_ibformbuilder_showform.view
+        persistence < plugin.tx_ibformbuilder_showform.persistence
+        settings < plugin.tx_ibformbuilder_showform.settings
+    }
+}

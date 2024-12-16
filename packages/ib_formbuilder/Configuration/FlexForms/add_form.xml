@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Flexform für Typo3 Extbase</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.form>
+                        <TCEforms>
+                            <label>Bestehendes Formular auswählen</label>
+                            <config>
+
+                                <!--
+                                 * @see Configuration/FlexForms/add_form.xml
+                                 * @see Classes/UserFunc/FlexFormUserFunc.php
+                                 -->
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <itemsProcFunc>Rms\IbFormbuilder\UserFunc\FlexFormUserFunc->getForms</itemsProcFunc>
+                            </config>
+                        </TCEforms>
+                    </settings.form>
+                    <settings.hideFormname>
+                        <label>Benutzerdefinierte Überschrift soll angezeigt werden (Standard ist
+                            Formularname) </label>
+                        <config>
+                            <type>check</type>
+                        </config>
+                    </settings.hideFormname>
+                    <settings.customFormname>
+                        <TCEforms>
+                            <label>Benutzerdefinierte Überschrift</label>
+                            <config>
+                                <type>input</type>
+                                <size>250</size>
+                                <eval>trim</eval>
+                            </config>
+                        </TCEforms>
+                    </settings.customFormname>
+
+                    <settings.receiver>
+                        <TCEforms>
+                            <label>Empfänger. Mehrere Empfänger kommasepariert
+                                (test@mail.de,test2@mail.de,...).
+                            </label>
+                            <config>
+                                <type>input</type>
+                                <size>250</size>
+                                <!--<eval>trim</eval>-->
+                                <eval>required,Rms\IbFormbuilder\Evaluation\MultipleEmailEvaluation</eval>
+                            </config>
+                        </TCEforms>
+                    </settings.receiver>
+
+                    <settings.saveDataToDb>
+                        <label>Abgeschickte Mail zusätzlich in der Datenbank speichern</label>
+                        <onChange>reload</onChange>
+                        <config>
+                            <type>check</type>
+                        </config>
+                    </settings.saveDataToDb>
+
+                    <settings.savedDataName>
+                        <TCEforms>
+                            <label>Der Name, unter dem die Daten in der Datenbank gespeichert werden</label>
+                            <displayCond>
+                                FIELD:settings.saveDataToDb:=:1
+                            </displayCond>
+                            <config>
+                                <type>input</type>
+                                <size>250</size>
+                                <eval>trim</eval>
+                            </config>
+                        </TCEforms>
+                    </settings.savedDataName>
+
+                    <!--
+                    <settings.textOnFailure>
+                        <TCEforms>
+                            <label>Hinweistext der angezeigt wird, sollte der Mailversand fehlschlagen (z.B. durch eine
+                    ungültige Mailadresse)</label>
+                            <config>
+                                <type>text</type>
+                                <enableRichtext>1</enableRichtext>
+                            </config>
+                        </TCEforms>
+                    </settings.textOnFailure>
+                    -->
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

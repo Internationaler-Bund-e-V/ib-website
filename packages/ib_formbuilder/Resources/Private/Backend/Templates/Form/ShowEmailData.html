@@ -1,0 +1,22 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:layout name="Default"/>
+
+<f:section name="content">
+	<div class="tx_ibformbuilder-show-emaildata">
+		<h1>Einzelansicht "{emaildata.formName}"</h1>
+		<f:flashMessages/>
+		<div>
+			<p>
+				Datum:
+				<f:format.date format="d.m.Y - H:i">{emaildata.tstamp}</f:format.date>
+			</p>
+
+			<h3>Inhalt: </h3>
+			<div class="emailcontent">
+				<f:format.html>{emaildata.emaildataHtml}</f:format.html>
+			</div>
+		</div>
+		<f:link.action action="list">Back to list</f:link.action>
+		<br/>
+	</div>
+</f:section>

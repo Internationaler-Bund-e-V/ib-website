@@ -1,0 +1,53 @@
+# ------------------------------------------------
+# frontend plugin
+# ------------------------------------------------
+plugin.tx_ibformbuilder_showform {
+    view {
+        # cat=plugin.tx_ibformbuilder_showform/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:ib_formbuilder/Resources/Private/Templates/
+        # cat=plugin.tx_ibformbuilder_showform/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:ib_formbuilder/Resources/Private/Partials/
+        # cat=plugin.tx_ibformbuilder_showform/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:ib_formbuilder/Resources/Private/Layouts/
+    }
+
+    persistence {
+        # cat=plugin.tx_ibformbuilder_showform//a; type=string; label=Default storage PID
+        storagePid =
+
+        # configure tt_content mapping
+        #classes{
+        #    mapping{
+        #        tableName = tt_content
+        #        columns {
+        #            uid.mapOnProperty = uid
+        #            flexform.mapOnProperty = pi_flexform
+        #        }
+        #    }
+        #}
+    }
+}
+
+# ------------------------------------------------
+# backend module
+# ------------------------------------------------
+module.tx_ibformbuilder_ibforms {
+    view {
+        # cat=module.tx_ibformbuilder_ibforms/file; type=string; label=Path to template root (BE)
+        templateRootPath = EXT:ib_formbuilder/Resources/Private/Backend/Templates/
+        # cat=module.tx_ibformbuilder_ibforms/file; type=string; label=Path to template partials (BE)
+        partialRootPath = EXT:ib_formbuilder/Resources/Private/Backend/Partials/
+        # cat=module.tx_ibformbuilder_ibforms/file; type=string; label=Path to template layouts (BE)
+        layoutRootPath = EXT:ib_formbuilder/Resources/Private/Backend/Layouts/
+    }
+
+    persistence {
+        # ---------------------------------------------
+        # to define multiple ids, use addToList
+        # example: toragePid := addToList(1911,1877)
+        # ---------------------------------------------
+
+        # cat=module.tx_ibformbuilder_ibforms//a; type=string; label=Default storage PID
+        storagePid =
+    }
+}

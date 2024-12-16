@@ -1,0 +1,60 @@
+/*
+ * ------------------------------
+ * EDIT / ADD
+ * ------------------------------
+ */
+form.tx_ibformbuilder-submit-external {
+  input#name {
+    width: 80%;
+    height: 40px;
+    border: 1px solid black;
+    padding: 3px;
+  }
+
+  .margin-top {
+    margin-top: 20px;
+  }
+
+  .margin-bottom {
+    margin-bottom: 30px;
+  }
+
+  .tx_ibformbuilder-form-fields-container {
+    #receiver {
+      width: 100% !important;
+    }
+  }
+
+  div#formbuilder-data-holder-container {
+    background-color: #ebebeb;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 2px solid #808080;
+
+    > label {
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #808080;
+      width: 100%;
+    }
+
+    input[data-mytype=dependencyManager] {
+      background-color: #cdcece;
+      width: 100px;
+      visibility: hidden;
+      float: right;
+    }
+
+    div.manage-dependency-link-container {
+      padding-top: 5px;
+      //float:left;
+
+      a {
+        color: blue;
+        text-decoration: underline;
+        font-size: 14px;
+      }
+    }
+  }
+}

@@ -1,0 +1,131 @@
+{
+    "modules": [
+        {
+            "config": {
+                "position": [
+                    143,
+                    232
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": true,
+                    "_default1_show": true,
+                    "_default2_new_create": true,
+                    "_default3_edit_update": true,
+                    "_default4_delete": true,
+                    "customActions": []
+                },
+                "name": "Form",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": true,
+                    "categorizable": true,
+                    "description": "Formulars",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": true,
+                    "type": "Entity",
+                    "uid": "1430879092799"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "name",
+                            "propertyType": "String",
+                            "uid": "793052692245"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "formdataJson",
+                            "propertyType": "Text",
+                            "uid": "761963983899"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "receiver",
+                            "propertyType": "Text",
+                            "uid": "667354421839"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": []
+                }
+            }
+        }
+    ],
+    "properties": {
+        "backendModules": [
+            {
+                "actions": {
+                    "controllerActionCombinations": "Form=>new,create,edit,update,delete,list"
+                },
+                "description": "Create and manage forms",
+                "key": "ibforms",
+                "mainModule": "web",
+                "name": "IB Formulare",
+                "tabLabel": "IB Forms"
+            }
+        ],
+        "description": "Framwork for building forms",
+        "emConf": {
+            "category": "plugin",
+            "custom_category": "",
+            "dependsOn": "typo3 => 7.6.0-7.6.99\n",
+            "disableLocalization": false,
+            "disableVersioning": false,
+            "skipGenerateDocumentationTemplate": false,
+            "sourceLanguage": "en",
+            "state": "alpha",
+            "targetVersion": "7.6.0-7.6.99",
+            "version": "0.0.1"
+        },
+        "extensionKey": "ib_formbuilder",
+        "name": "IB Formbuilder",
+        "originalExtensionKey": "ib_formbuilder",
+        "originalVendorName": "Rms",
+        "persons": [
+            {
+                "company": "rms. relationship marketing solutions GmbH",
+                "email": "mkettel@gmail.com",
+                "name": "Michael Kettel",
+                "role": "Developer"
+            }
+        ],
+        "plugins": [
+            {
+                "actions": {
+                    "controllerActionCombinations": "FormController => list",
+                    "noncacheableActions": "",
+                    "switchableActions": ""
+                },
+                "key": "showform",
+                "name": "IB Formular"
+            }
+        ],
+        "vendorName": "Rms"
+    },
+    "wires": [],
+    "log": {
+        "last_modified": "2018-07-13 11:37",
+        "extension_builder_version": "7.6.18",
+        "be_user": "Michael Kettel (3)"
+    }
+}

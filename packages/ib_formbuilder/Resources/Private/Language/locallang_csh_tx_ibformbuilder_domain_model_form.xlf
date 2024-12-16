@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-07-13T11:37:10Z" product-name="ib_formbuilder">
+		<header/>
+		<body>
+			<trans-unit id="tx_ib_formbuilder_domain_model_showform">
+				<source>IB Formular</source>
+			</trans-unit>
+			<trans-unit id="tx_ib_formbuilder_domain_model_showform.description">
+				<source>Framwork for building forms</source>
+			</trans-unit>
+			<trans-unit id="name.description">
+				<source>name</source>
+			</trans-unit>
+			<trans-unit id="formdata_json.description">
+				<source>formdataJson</source>
+			</trans-unit>
+			<trans-unit id="receiver.description">
+				<source>receiver</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

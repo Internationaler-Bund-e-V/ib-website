@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-07-13T11:37:10Z" product-name="ib_formbuilder">
+		<header/>
+		<body>
+			<trans-unit id="tx_ib_formbuilder_domain_model_showform">
+				<source>Formular Generator</source>
+			</trans-unit>
+			<trans-unit id="tx_ib_formbuilder_domain_model_showform.description">
+				<source>>Formular Generator</source>
+			</trans-unit>
+			<trans-unit id="tx_ibformbuilder_domain_model_form">
+				<source>Formular</source>
+			</trans-unit>
+			<trans-unit id="tx_ibformbuilder_domain_model_form.name">
+				<source>Formularname</source>
+			</trans-unit>
+			<trans-unit id="tx_ibformbuilder_domain_model_form.formdata_json">
+				<source>Formulardaten (Json)</source>
+			</trans-unit>
+			<trans-unit id="tx_ibformbuilder_domain_model_form.receiver">
+				<source>Empfängerliste</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

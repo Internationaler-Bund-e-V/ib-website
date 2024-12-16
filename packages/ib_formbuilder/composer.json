@@ -1,0 +1,26 @@
+{
+    "name": "rms/ib-formbuilder",
+    "type": "typo3-cms-extension",
+    "description": "IB - Formbuilder",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "authors": [],
+    "require": {
+        "typo3/cms-core": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rms\\IbFormbuilder\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rms\\IbFormbuilder\\Tests\\": "Tests"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "ib_formbuilder"
+        }
+    }
+}

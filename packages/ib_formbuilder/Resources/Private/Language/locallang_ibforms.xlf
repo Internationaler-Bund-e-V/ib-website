@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-07-13T11:37:10Z" product-name="ib_formbuilder">
+		<header/>
+		<body>
+			<trans-unit id="tx_ib_formbuilder_domain_model_showform">
+				<source>Formulareditor</source>
+			</trans-unit>
+			<trans-unit id="tx_ib_formbuilder_domain_model_showform.description">
+				<source>Framwork for building forms</source>
+			</trans-unit>
+			<trans-unit id="mlang_tabs_tab">
+				<source>Formulareditor</source>
+			</trans-unit>
+			<trans-unit id="mlang_labels_tabdescr">
+				<source>Create and manage forms</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

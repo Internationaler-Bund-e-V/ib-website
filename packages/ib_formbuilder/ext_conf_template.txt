@@ -1,0 +1,5 @@
+# cat=basic/enable; type=string; label=reCatpcha Code
+reCaptchaCode =
+
+# cat=basic/enable; type=boolean; label= Use Test Keys for reCaptcha
+useTestKeys =

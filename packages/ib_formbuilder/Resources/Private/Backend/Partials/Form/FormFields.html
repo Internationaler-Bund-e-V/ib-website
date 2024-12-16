@@ -1,0 +1,45 @@
+<div class="tx_ibformbuilder-form-fields-container">
+
+
+	<div class="tx_ibformbuilder-description">
+		<p>Hier kann das Formular bearbeitet werden</p>
+		<p><strong>ACHTUNG</strong> Formulare ohne Submit-Button werden nicht korrekt angezeigt! </p>
+	</div>
+
+	<p class="margin-top margin-bottom">
+		<label for="name">
+			<f:translate key="tx_ibformbuilder_domain_model_form.name"/>
+		</label><br/>
+		<f:form.textfield id="name" property="name"/>
+	</p>
+
+	<!--
+	 * this is the container for the form builder and
+	 * will be replaced as soon as he form builder loads
+	-->
+	<div id="formbuilder-data-holder-container">
+		<label for="formbuilder-data-holder">Formulargenerator</label>
+		<div id="formbuilder-data-holder"></div>
+	</div>
+
+	<label for="receiver">
+		<f:translate key="tx_ibformbuilder_domain_model_form.receiver"/>
+	</label><br/>
+	<f:form.textfield property="receiver" id="receiver" disabled="disabled"/>
+	<br/>
+
+	<!--
+	 * this textarea holds the json string that represents the form
+	 * before the form is saved, this gets updated with the curren data of the form
+	 * @see Resources/Public/JavaScript/backend.min.js
+	-->
+	<div style="display: none">
+		<label for="ib-formbuilder-formdataJson">
+			<f:translate key="tx_ibformbuilder_domain_model_form.formdata_json"/>
+		</label><br/>
+		<f:form.textarea property="formdataJson" cols="40" rows="15" id="ib-formbuilder-formdataJson"/>
+		<br/>
+	</div>
+
+	<button id="tx_ibformbuilder-getJSON" type="button" class="backend-button ">Generiertes Formular Speichern</button>
+</div>
