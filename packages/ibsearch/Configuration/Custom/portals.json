@@ -1,0 +1,136 @@
+[
+  {
+    "portalName": "ib.de",
+    "tID": "1",
+    "rID": "5",
+    "locations": true,
+    "products": true,
+    "jobs": {
+      "index": true,
+      "detailPageID": 842,
+      "usePreFilter": false
+    }
+  },
+  {
+    "portalName": "ib-kitas.de",
+    "tID": "121",
+    "rID": "3",
+    "locations": true,
+    "products": true,
+    "jobs": {
+      "index": false
+    }
+  },
+  {
+    "portalName": "ib-freiwilligendienste.de",
+    "tID": "129",
+    "rID": "4",
+    "locations": true,
+    "products": true,
+    "jobs": {
+      "index": false
+    },
+    "fwd": true
+  },
+  {
+    "portalName": "ib-sued.de",
+    "tID": "161",
+    "rID": "10",
+    "locations": true,
+    "products": true,
+    "jobs": {
+      "index": true,
+      "detailPageID": 1022,
+      "usePreFilter": true,
+      "clients": "230",
+      "intern": "0",
+      "locations": "",
+      "categories": "",
+      "titles": ""
+    }
+  },
+  {
+    "portalName": "ib-mitte.de",
+    "tID": "1026",
+    "rID": "9",
+    "locations": true,
+    "products": true,
+    "jobs": {
+      "index": true,
+      "detailPageID": 1041,
+      "usePreFilter": true,
+      "clients": "9710,9720,9750,9760",
+      "intern": "0",
+      "locations": "",
+      "categories": "",
+      "titles": ""
+    }
+  },
+  {
+    "portalName": "ib-nord.de",
+    "tID": "241",
+    "rID": "6",
+    "locations": true,
+    "products": true,
+    "jobs": {
+      "index": true,
+      "detailPageID": 851,
+      "usePreFilter": true,
+      "clients": "520",
+      "intern": "0",
+      "locations": "",
+      "categories": "",
+      "titles": ""
+    }
+  },
+  {
+    "portalName": "ib-berlin.de",
+    "tID": "1481",
+    "rID": "11",
+    "locations": true,
+    "products": true,
+    "jobs": {
+      "index": true,
+      "detailPageID": 1496,
+      "usePreFilter": true,
+      "clients": "9410,9420,9430",
+      "intern": "0",
+      "locations": "",
+      "categories": "",
+      "titles": ""
+    }
+  },
+  {
+    "portalName": "ib-suedwest.de",
+    "tID": "587",
+    "rID": "8",
+    "locations": true,
+    "products": true,
+    "jobs": {
+      "index": true,
+      "detailPageID": 847,
+      "usePreFilter": true,
+      "clients": "9310,9320,9330,9340,9370,9380",
+      "intern": "0",
+      "locations": "Darmstadt,Wetzlar,Frankfurt,Friedberg,Büdingen,Offenbach, Gründau-Gettenbach,Oberursel,Hanau,Elz,Hünstetten-Wallbach,Langen,Grävenwiesbach,Gelnhausen,Hadamar,Bad Homburg,Bad Kreuznach,Cochem-Zell,Bad Sobernheim,Mainz,Ludwigshafen,Germersheim,Wörth,Pirmasens,Zweibrücken,Rodalben,Kaiserslautern",
+      "categories": "",
+      "titles": "Sachgebietsleitung,IT-Leiter,Finanzbuchhalter,Sozialpädagoge,Ausbilder,GaLaBau,Erzieher,Küchenhilfe,Kindertages,Heilerziehungspflleger,Gartenarbeiter,Gruppenleiter,Pflegekräfte,Fachkräfte,Fachkraft,Heilerziehungspfleger,Wirtschafter,Betreuungshelfer,Krankenschwester,Lehrer,Metall"
+    }
+  },
+  {
+    "portalName": "ib-green.de",
+    "tID": "1604",
+    "rID": "12",
+    "locations": true,
+    "products": true,
+    "jobs": false
+  },
+  {
+    "portalName": "jobs.ib.de",
+    "tID": "1026",
+    "rID": "",
+    "locations": false,
+    "products": false,
+    "jobs": false
+  }
+]

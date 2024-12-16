@@ -1,0 +1,75 @@
+.tx_solr.container {
+  .results-list .list-group-item {
+    border-bottom: 1px solid #009fe3;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .tx-solr-submit.button {
+    color: #fff !important;
+    text-decoration: none !important;
+  }
+
+
+
+  .progress {
+    .progress-bar {
+      height: 5px;
+      background: #009fe3;
+    }
+  }
+
+  .facet-result-count.badge {
+    float: right;
+    margin-right: 45px;
+    background: none;
+    color: #666666;
+    font-size: 12px;
+    padding: 0;
+  }
+
+  .ib-facets-active {
+    margin-top: 20px;
+  }
+
+  .ib-facets-active-remove {
+    margin-top: 20px;
+  }
+
+  .results-highlight {
+    background: #009fe3;
+    color: white;
+    padding: 3px;
+  }
+
+  .tx-solr-search-form {
+    .button.ib-color-darkblue {
+      width: 100%;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .ib-search-input {
+      float: left;
+
+      input {
+        height: 40px;
+
+      }
+    }
+
+    .ib-search-submit {
+      float: left;
+    }
+  }
+
+  .searchinfo {
+    padding-bottom: 1rem;
+  }
+
+  .searched-for {
+    font-size: 16px;
+    border: 1px solid grey;
+    padding: 1rem;
+  }
+}

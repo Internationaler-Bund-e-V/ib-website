@@ -1,0 +1,6 @@
+# cat=basic/enable; type=string; label=URL IB-Redaktionstool URL Solr Interface (e.g //redaktion.../solr/')
+baseUrlSolrInterface =
+# cat=basic/enable; type=string; label=IB-Redaktionstool Base Document Path (e.g. /var/www/...)
+baseDocumentPath =
+# cat=basic/enable; type=string; label=URL IB-Redaktionstool File Path (e.g //redaktion.../img/upload/)
+baseUrlPath =

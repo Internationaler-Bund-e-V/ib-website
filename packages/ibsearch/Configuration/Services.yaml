@@ -1,0 +1,17 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Rms\Ibsearch\:
+        resource: '../Classes/*'
+
+    Rms\Ibsearch\Command\IndexMyContentsCommand:
+        tags:
+            - name: 'console.command'
+              command: 'ibsearch:indexcontents'
+              description: 'V10 - IB Search index external contents command'
+
+
+

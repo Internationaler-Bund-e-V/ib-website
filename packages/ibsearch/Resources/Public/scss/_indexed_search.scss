@@ -1,0 +1,7 @@
+// hide the default indexed_search elements
+// they will be processed and moved into the result tab by this extension (ibsearch)
+div.tx-indexedsearch-searchbox,
+div.tx-indexedsearch-browsebox,
+div.tx-indexedsearch-res {
+	display: none;
+}
