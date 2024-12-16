@@ -1,0 +1,18 @@
+
+TCEFORM.tt_content.pi_flexform.ibdataprivacy_dataprivacy.ID_LIST_IMPRESSUM = 4528,4529
+TCEFORM.tt_content.pi_flexform.ibdataprivacy_dataprivacy.ID_LIST_IMPRESSUM_OPTIONS = 4527
+TCEFORM.tt_content.pi_flexform.ibdataprivacy_dataprivacy.ID_LIST_DATENSCHUTZERKLAERUNG = 4528,4529
+TCEFORM.tt_content.pi_flexform.ibdataprivacy_dataprivacy.ID_LIST_DATENSCHUTZERKLAERUNG_OPTIONS = 4532,4527
+TCEFORM.tt_content.pi_flexform.ibdataprivacy_dataprivacy.ID_LIST_DATENSCHUTZERKLAERUNG_DRITTE = 4528,4529
+TCEFORM.tt_content.pi_flexform.ibdataprivacy_dataprivacy.ID_LIST_DATENSCHUTZERKLAERUNG__DRITTE_OPTIONS = 4532,4528,4529
+TCEFORM.tt_content.pi_flexform.ibdataprivacy_dataprivacy.ID_LIST_BARRIEREFREIHEIT = 6922
+# development settings
+[applicationContext == "Development"]
+    TCEFORM.tt_content.pi_flexform.ibdataprivacy_dataprivacy.ID_LIST_BARRIEREFREIHEIT = 6866
+    #TCEFORM.tt_content.pi_flexform.ibdataprivacy_dataprivacy.ID_LIST_IMPRESSUM = 3338,3337
+    #TCEFORM.tt_content.pi_flexform.ibdataprivacy_dataprivacy.ID_LIST_IMPRESSUM_OPTIONS = 3253
+    #TCEFORM.tt_content.pi_flexform.ibdataprivacy_dataprivacy.ID_LIST_DATENSCHUTZERKLAERUNG = 3338,3337
+    #TCEFORM.tt_content.pi_flexform.ibdataprivacy_dataprivacy.ID_LIST_DATENSCHUTZERKLAERUNG_OPTIONS = 3341
+    #TCEFORM.tt_content.pi_flexform.ibdataprivacy_dataprivacy.ID_LIST_DATENSCHUTZERKLAERUNG_DRITTE = 3338,3337
+    #TCEFORM.tt_content.pi_flexform.ibdataprivacy_dataprivacy.ID_LIST_DATENSCHUTZERKLAERUNG__DRITTE_OPTIONS = 3253
+[end]

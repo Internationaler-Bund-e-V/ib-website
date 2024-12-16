@@ -1,0 +1,17 @@
+
+<v:content.render contentUids="{0:settings.dataprivacy.headlineIntro}"></v:content.render>
+
+<v:iterator.explode content="{settings.view2.dataprivacy}" glue="," as="blocks">
+  <f:for each="{blocks}" as="block">
+    <v:content.render contentUids="{0:block}"></v:content.render>
+  </f:for>
+</v:iterator.explode>
+
+<v:iterator.explode content="{settings.view2.options}" glue="," as="blocks">
+  <f:for each="{blocks}" as="block">
+    <v:content.render contentUids="{0:block}"></v:content.render>
+  </f:for>
+</v:iterator.explode>
+
+<v:content.render contentUids="{0:settings.dataprivacy.datenschutzStellenangeboteCID}"></v:content.render>
+<v:content.render contentUids="{0:settings.dataprivacy.datenschutzFreiwilligendiensteCID}"></v:content.render>

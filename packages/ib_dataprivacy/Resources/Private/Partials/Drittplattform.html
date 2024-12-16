@@ -1,0 +1,17 @@
+<v:content.render contentUids="{0:settings.thirdParty.headlineIntro}"></v:content.render>
+
+<v:iterator.explode content="{settings.view3.dataprivacyplattform}" glue="," as="blocks">
+  <f:for each="{blocks}" as="block">
+    <v:content.render contentUids="{0:block}"></v:content.render>
+  </f:for>
+</v:iterator.explode>
+
+<v:content.render contentUids="{0:settings.thirdParty.headlineDatenschutzerklaerung}"></v:content.render>
+
+<v:iterator.explode content="{settings.view3.options}" glue="," as="blocks">
+  <f:for each="{blocks}" as="block">
+    <v:content.render contentUids="{0:block}"></v:content.render>
+  </f:for>
+</v:iterator.explode>
+
+<v:content.render contentUids="{0:settings.thirdParty.verarbeitungPersonenbezogenerDaten}"></v:content.render>

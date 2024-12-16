@@ -1,0 +1,17 @@
+{namespace dataprivacy=Rms\IbDataprivacy\ViewHelpers}
+<div class="IbDataprivacy">
+  <f:switch expression="{settings.view}">
+    <f:case value="1">
+      <f:render partial="Impressum" arguments="{'settings':settings}"></f:render>
+    </f:case>
+    <f:case value="2">
+      <f:render partial="Datenschutz" arguments="{'settings':settings}"></f:render>
+    </f:case>
+    <f:case value="3">
+      <f:render partial="Drittplattform" arguments="{'settings':settings}"></f:render>
+    </f:case>
+    <f:case value="4">
+      <f:render partial="Barrierefreihit" arguments="{'settings':settings}"></f:render>
+    </f:case>
+  </f:switch>
+</div>

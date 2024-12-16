@@ -1,0 +1,27 @@
+page.includeCSS {
+    tx_dataprivacy_1 = EXT:ib_dataprivacy/Resources/Public/dist/ibdataprivacy.css    
+}
+
+plugin.tx_ibdataprivacy.settings.imprint.headline = 13237
+plugin.tx_ibdataprivacy.settings.imprint.gendermainStreamingCID = 13238
+
+plugin.tx_ibdataprivacy.settings.dataprivacy.headlineIntro = 13234  
+plugin.tx_ibdataprivacy.settings.dataprivacy.datenschutzStellenangeboteCID = 13235
+plugin.tx_ibdataprivacy.settings.dataprivacy.datenschutzFreiwilligendiensteCID = 13236
+
+plugin.tx_ibdataprivacy.settings.thirdParty.headlineIntro = 13231
+plugin.tx_ibdataprivacy.settings.thirdParty.headlineDatenschutzerklaerung = 13232
+plugin.tx_ibdataprivacy.settings.thirdParty.verarbeitungPersonenbezogenerDaten = 13233
+
+[applicationContext == "Development"]
+    #plugin.tx_ibdataprivacy.settings.imprint.headline = 9124
+    #plugin.tx_ibdataprivacy.settings.imprint.gendermainStreamingCID = 9109  
+
+    #plugin.tx_ibdataprivacy.settings.dataprivacy.headlineIntro = 9092
+    #plugin.tx_ibdataprivacy.settings.dataprivacy.datenschutzStellenangeboteCID = 9118
+    #plugin.tx_ibdataprivacy.settings.dataprivacy.datenschutzFreiwilligendiensteCID = 9119
+
+    #plugin.tx_ibdataprivacy.settings.thirdParty.headlineIntro = 9116
+    #plugin.tx_ibdataprivacy.settings.thirdParty.headlineDatenschutzerklaerung = 9125
+    #plugin.tx_ibdataprivacy.settings.thirdParty.verarbeitungPersonenbezogenerDaten = 9117
+[end]

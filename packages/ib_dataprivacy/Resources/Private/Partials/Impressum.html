@@ -1,0 +1,15 @@
+
+<v:content.render contentUids="{0:settings.imprint.headline}"></v:content.render>
+
+<v:iterator.explode content="{settings.view1.imprint}" glue="," as="blocks">
+  <f:for each="{blocks}" as="block">        
+    <v:content.render contentUids="{0:block}"></v:content.render>
+  </f:for>
+</v:iterator.explode>
+<v:iterator.explode content="{settings.view1.options}" glue="," as="blocks">
+  <f:for each="{blocks}" as="block">    
+    <v:content.render contentUids="{0:block}"></v:content.render>
+  </f:for>
+</v:iterator.explode>
+
+<v:content.render contentUids="{0:settings.imprint.gendermainStreamingCID}"></v:content.render>

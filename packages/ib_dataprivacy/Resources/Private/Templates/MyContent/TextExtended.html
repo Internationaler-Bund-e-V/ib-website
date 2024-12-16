@@ -1,0 +1,250 @@
+<f:for each="{settings.array}" as="element">
+  <f:if condition="{element}">
+    <f:render section="element" arguments="{settings: element.ItemWrap}" />
+  </f:if>
+</f:for>
+
+
+<f:section name="element">
+  <f:if condition="{settings.divider} == 'top'">
+    <f:render section="divider" />
+  </f:if>
+  <f:if condition="{settings.divider} == 'both'">
+    <f:render section="divider" />
+  </f:if>
+
+  <div
+    class="grid-container SrbDefaultContent {f:if(condition: '{settings.paddingtop}',then:'ib-services-nopaddingtop')} {f:if(condition: '{settings.paddingbottom}',then:'ib-services-nopaddingbottom')}">
+    <div class="ib-content-module grid-x grid-margin-x">
+
+      <div class="cell small-12 headline-section">
+        <f:if condition="{settings.headline_tag}">
+          <f:then>
+            <{settings.headline_tag} class="ib-headline">{settings.headline}</{settings.headline_tag}>
+          </f:then>
+          <f:else>
+            <h2 class="ib-headline">{settings.headline}</h2>
+          </f:else>
+        </f:if>
+
+        <f:if condition="{settings.headline_tag}">
+          <f:then>
+            <{settings.subheadline_tag}>{settings.subheadline}</{settings.subheadline_tag}>
+          </f:then>
+          <f:else>
+            <h2>{settings.subheadline}</h2>
+          </f:else>
+        </f:if>
+
+      </div>
+      <f:switch expression="{settings.numCol}">
+        <f:case value="1">
+          <!-- layout: 100% -->
+          <f:render section="oneCol" arguments="{settings: settings}" />
+        </f:case>
+        <f:case value="2">
+          <!-- layout: 50:50% -->
+          <f:render section="twoCol" arguments="{settings: settings}" />
+        </f:case>
+        <f:case value="3">
+          <!-- layout: 33:33:33% -->
+          <f:render section="threeCol" arguments="{settings: settings}" />
+        </f:case>
+        <f:case value="4">
+          <!-- layout: 66:33% -->
+          <f:render section="two_one" arguments="{settings: settings}" />
+        </f:case>
+        <f:case value="5">
+          <!-- layout: 33:66% -->
+          <f:render section="one_two" arguments="{settings: settings}" />
+        </f:case>
+        <f:case value="6">
+          <!-- layout: 25:75% -->
+          <f:render section="one_three" arguments="{settings: settings}" />
+        </f:case>
+        <f:case value="7">
+          <!-- layout: 75:25% -->
+          <f:render section="three_one" arguments="{settings: settings}" />
+        </f:case>
+
+        <f:case value="8">
+          <!-- layout: 41:41:16% 5:5:2 -->
+          <f:render section="threeCol_5_5_2" arguments="{settings: settings}" />
+        </f:case>
+        <f:case value="9">
+          <!-- layout: 16:41:41% 2:5:5 -->
+          <f:render section="threeCol_2_5_5" arguments="{settings: settings}" />
+        </f:case>
+        <f:case value="10">
+          <!-- layout: 16:16:66% 2:2:8 -->
+          <f:render section="threeCol_2_2_8" arguments="{settings: settings}" />
+        </f:case>
+        <f:case value="11">
+          <!-- layout: 66:16:16% 8:2:2 -->
+          <f:render section="threeCol_8_2_2" arguments="{settings: settings}" />
+        </f:case>
+      </f:switch>
+
+
+    </div>
+  </div>
+
+  <f:if condition="{settings.divider} == 'bottom'">
+    <f:render section="divider" />
+  </f:if>
+  <f:if condition="{settings.divider} == 'both'">
+    <f:render section="divider" />
+  </f:if>
+</f:section>
+
+<!-- 100% Layout -->
+<f:section name="oneCol">
+  <div class="cell ">
+    <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text1}</f:format.html>
+  </div>
+</f:section>
+
+<!-- 50:50% Layout -->
+<f:section name="twoCol">
+  <div class="">
+    <div class="cell medium-6">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text1}</f:format.html>
+    </div>
+    <div class="cell medium-6">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text2}</f:format.html>
+    </div>
+  </div>
+</f:section>
+
+<!-- 33:33:33% Layout -->
+<f:section name="threeCol">
+  <div class="">
+    <div class="cell large-4">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text1}</f:format.html>
+    </div>
+    <div class="cell large-4">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text2}</f:format.html>
+    </div>
+    <div class="cell large-4">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text3}</f:format.html>
+    </div>
+  </div>
+</f:section>
+
+<!-- 66:33% Layout -->
+<f:section name="two_one">
+  <div class="">
+    <div class="cell medium-6 large-8">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text1}</f:format.html>
+    </div>
+    <div class="cell medium-6 large-4">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text2}</f:format.html>
+    </div>
+  </div>
+</f:section>
+
+<!-- 33:66% Layout -->
+<f:section name="one_two">
+  <div class="">
+    <div class="cell medium-6 large-4">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text1}</f:format.html>
+    </div>
+    <div class="cell medium-6 large-8">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text2}</f:format.html>
+    </div>
+  </div>
+</f:section>
+
+<!-- 25:75% Layout -->
+<f:section name="one_three">
+  <div class="">
+    <div class="cell medium-3 large-3">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text1}</f:format.html>
+    </div>
+    <div class="cell medium-9 large-9">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text2}</f:format.html>
+    </div>
+  </div>
+</f:section>
+
+<!-- 75:25% Layout -->
+<f:section name="three_one">
+  <div class="">
+    <div class="cell medium-9 large-9">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text1}</f:format.html>
+    </div>
+    <div class="cell medium-3 large-3">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text2}</f:format.html>
+    </div>
+  </div>
+</f:section>
+
+
+
+<!-- 41:41:16% 5:5:2 Layout -->
+<f:section name="threeCol_5_5_2">
+  <div class="">
+    <div class="cell large-5">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text1}</f:format.html>
+    </div>
+    <div class="cell large-5">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text2}</f:format.html>
+    </div>
+    <div class="cell large-2">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text3}</f:format.html>
+    </div>
+  </div>
+</f:section>
+
+<!-- 41:16:41% 2:2:5 Layout -->
+<f:section name="threeCol_2_5_5">
+  <div class="">
+    <div class="cell large-2">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text1}</f:format.html>
+    </div>
+    <div class="cell large-5">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text2}</f:format.html>
+    </div>
+    <div class="cell large-5">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text3}</f:format.html>
+    </div>
+  </div>
+</f:section>
+
+<!-- 16:16:66% 2:2:8 Layout -->
+<f:section name="threeCol_2_2_8">
+  <div class="">
+    <div class="cell large-2">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text1}</f:format.html>
+    </div>
+    <div class="cell large-2">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text2}</f:format.html>
+    </div>
+    <div class="cell large-8">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text3}</f:format.html>
+    </div>
+  </div>
+</f:section>
+
+<!-- 66:16:16% 8:2:2 Layout -->
+<f:section name="threeCol_8_2_2">
+  <div class="">
+    <div class="cell large-8">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text1}</f:format.html>
+    </div>
+    <div class="cell large-2">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text2}</f:format.html>
+    </div>
+    <div class="cell large-2">
+      <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text3}</f:format.html>
+    </div>
+  </div>
+</f:section>
+
+<f:section name="divider">
+  <div class=" ib-background-{settings.bgColor}">
+    <div class="cell">
+      <div class="divider"></div>
+    </div>
+  </div>
+</f:section>

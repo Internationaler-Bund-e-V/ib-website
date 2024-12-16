@@ -1,0 +1,134 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+  <div id="accordion-container-{uid}"
+    class="grid-container SrbDefaultContent ib-content-module ib-collapsible ib-background-{settings.bgColor} {f:if(condition: '{settings.useSmallLabelFont}==1', then: 'small-headlines',else: '')}">
+    <f:for each="{settings.sliderContainer}" as="collapsible" iteration="iterator">
+      <f:if condition="{collapsible}">
+        <div class="cell" id="ib-collapsible-{uid}{iterator.cycle}">
+          <div class="ib-collapsible-icon ib-collapsible-trigger" data-ibcollapsibleid="{uid}{iterator.cycle}"></div>
+          <div class="cell {f:if(condition: '{settings.layout}==" 2col"',then: 'small-10 large-6-2col'
+            ,else: 'small-10' )} end">
+            <div class="ib-collapsible-header ib-collapsible-trigger rs_preserve clearfix"
+              data-ibcollapsibleid="{uid}{iterator.cycle}"
+              id="{v:format.eliminate(content:collapsible.ItemWrap.title, whitespace:1)}">
+              <h2 class="ib-headline"><span class="ib-iconwrapper"><i
+                class="fas fa-chevron-right"></i></span> {collapsible.ItemWrap.title} </h2>
+              <f:if condition="{collapsible.ItemWrap.accordionImage}">
+                <f:image src="{collapsible.ItemWrap.accordionImage}" class="responsive show-for-medium"
+                  alt="{collapsible.ItemWrap.title}" />
+              </f:if>
+            </div>
+            <div class="row ib-collapsible-content" id="ib-collapsible-content-{uid}{iterator.cycle}">
+              <f:switch expression="{collapsible.ItemWrap.columnStyle}">
+                <f:case value="1">
+                  <!-- layout: 100% -->
+                  <f:render section="oneCol" arguments="{collapsible: collapsible.ItemWrap}" />
+                </f:case>
+                <f:case value="2">
+                  <!-- layout: 50:50% -->
+                  <f:render section="twoCol" arguments="{collapsible: collapsible.ItemWrap}" />
+                </f:case>
+                <f:case value="3">
+                  <!-- layout: 33:33:33% -->
+                  <f:render section="threeCol" arguments="{collapsible: collapsible.ItemWrap}" />
+                </f:case>
+                <f:case value="4">
+                  <!-- layout: 66:33% -->
+                  <f:render section="two_one" arguments="{collapsible: collapsible.ItemWrap}" />
+                </f:case>
+                <f:case value="5">
+                  <!-- layout: 33:66% -->
+                  <f:render section="one_two" arguments="{collapsible: collapsible.ItemWrap}" />
+                </f:case>
+                <f:case value="6">
+                  <!-- layout 25:75% -->
+                  <f:render section="one_three" arguments="{collapsible: collapsible.ItemWrap}" />
+                </f:case>
+                <f:case value="7">
+                  <!-- layout 75:25% -->
+                  <f:render section="three_one" arguments="{collapsible: collapsible.ItemWrap}" />
+                </f:case>
+              </f:switch>
+            </div>
+            <div class="row columns ib-collapsible-divider"></div>
+          </div>
+        </div>
+      </f:if>
+    </f:for>
+  </div>
+  <!-- js see fileadmin/template/js/src/foundation-accordion.js -->
+  <!-- include bubbleSlider.js as footer asset -->
+
+</f:section>
+
+<!-- 100% Layout -->
+<f:section name="oneCol">
+  <div class="columns medium-12">
+    <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{collapsible.text}</f:format.html>
+  </div>
+</f:section>
+
+<!-- 50:50% Layout -->
+<f:section name="twoCol">
+  <div class="columns medium-6">
+    <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{collapsible.text}</f:format.html>
+  </div>
+  <div class="columns medium-6">
+    <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{collapsible.text2}</f:format.html>
+  </div>
+</f:section>
+
+<!-- 33:33:33% Layout -->
+<f:section name="threeCol">
+  <div class="columns large-4">
+    <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{collapsible.text}</f:format.html>
+  </div>
+  <div class="columns large-4">
+    <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{collapsible.text2}</f:format.html>
+  </div>
+  <div class="columns large-4">
+    <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{collapsible.text3}</f:format.html>
+  </div>
+</f:section>
+
+<!-- 66:33% Layout -->
+<f:section name="two_one">
+  <div class="columns medium-6 large-8">
+    <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{collapsible.text}</f:format.html>
+  </div>
+  <div class="columns medium-6 large-4">
+    <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{collapsible.text2}</f:format.html>
+  </div>
+</f:section>
+
+<!-- 33:66% Layout -->
+<f:section name="one_two">
+  <div class="columns medium-6 large-4">
+    <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{collapsible.text}</f:format.html>
+  </div>
+  <div class="columns medium-6 large-8">
+    <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{collapsible.text2}</f:format.html>
+  </div>
+</f:section>
+
+<!-- 25:75% Layout -->
+<f:section name="one_three">
+  <div class="columns medium-3 large-3">
+    <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{collapsible.text}</f:format.html>
+  </div>
+  <div class="columns medium-9 large-9">
+    <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{collapsible.text2}</f:format.html>
+  </div>
+</f:section>
+
+<!-- 75:25% Layout -->
+<f:section name="three_one">
+  <div class="columns medium-9 large-9">
+    <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{collapsible.text}</f:format.html>
+  </div>
+  <div class="columns medium-3 large-3">
+    <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{collapsible.text2}</f:format.html>
+  </div>
+</f:section>

@@ -1,0 +1,14 @@
+<v:iterator.explode content="{settings.view4.barrierefreiheit}" glue="," as="blocks">
+    <f:for each="{blocks}" as="block" iteration="index">
+        <v:content.render contentUids="{0:block}"></v:content.render>
+        <f:if condition="{index.index} == 0">
+            <div class="row ib-content-module ib-background-white ibBarrierefreiheitTLD">
+                <div class="columns medium-10 medium-offset-1 end">
+                    <div class="columns row" id="ibBarrierefreiheitTLD">
+                        <v:site.url />
+                    </div>
+                </div>
+            </div>
+        </f:if>
+    </f:for>
+</v:iterator.explode>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="de" datatype="plaintext" original="messages" date="2014-02-20T18:53:00Z"
+    product-name="ibdataprivacy">
+    <header />
+    <body>
+      <trans-unit id="imprint_imprint">
+        <source></source>
+      </trans-unit>
+      <trans-unit id="imprint_options">
+        <source>Impressum, redaktionelle Verantwortlichkeit, Bildnachweise</source>
+      </trans-unit>
+      <trans-unit id="dataprivacy_dataprivacy">
+        <source></source>
+      </trans-unit>
+      <trans-unit id="dataprivacy_options">
+        <source>Verantwortlicher, Datenschutzbeauftragter, Datenschutz-Blöcke/Akkordeons</source>
+      </trans-unit>
+      <trans-unit id="dataprivacyplattform_dataprivacyplattform">
+        <source>Impressum, redaktionelle Verantwortlichkeit</source>
+      </trans-unit>
+      <trans-unit id="dataprivacyplattform_options">
+        <source>Verantwortlicher, Datenschutzbeauftragter</source>
+      </trans-unit>
+      <trans-unit id="dataprivacyplattform_barrierefreiheit">
+        <source>Texte Barrierefreiheit</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,24 @@
+.IbDataprivacy header {
+  display: none;
+
+}
+
+.ibBarrierefreiheitTLD {
+  padding-top: 0 !important;
+}
+
+.ibBarrierefreiheitTLD #ibBarrierefreiheitTLD {
+  color: #f18700;
+}
+
+
+.IbDataprivacy .ib-content-module.ib-collapsible {
+  padding-top: 0;
+  padding-bottom: 5px;
+}
+
+/**srb config**/
+
+#IbSrb .IbDataprivacy header {
+  display: none;
+}
