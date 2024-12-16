@@ -1,0 +1,4411 @@
+{
+  "locations": [
+    {
+      "Location": {
+        "name": "M\u00e4dchenwohngruppe Aachen",
+        "plz": "52080",
+        "city": "Aachen",
+        "street": "R\u00f6dgener Str. 182",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "6.1426383",
+        "latitude": "50.7808621",
+        "id": "209859"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Projekt \u00dcbergangscoach in Adenau\/ Hocheifel Realschule plus & FOS",
+        "plz": "53518",
+        "city": "Adenau",
+        "street": "Alte Poststra\u00dfe 77",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "6.930451100000001",
+        "latitude": "50.3769482",
+        "id": "211648"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL III 2017\/\u00dcbergangscoach in RLP\/IB_Uebergangscoach_an-Schulen_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Kinder und Jugendtreff Admannshagen ",
+        "plz": "18211",
+        "city": "Admannshagen-Bargeshagen",
+        "street": "Mitteldorf 12b",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "12.0027593",
+        "latitude": "54.1309917",
+        "id": "210931"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/IB_Nord_Standort_6.jpg"
+    },
+    {
+      "Location": {
+        "name": " Berufseinstiegsbegleitung \u2013 Realschule plus Altenkirchen",
+        "plz": "57610",
+        "city": "Altenkirchen (Westerwald)",
+        "street": "Glockenspitze ",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.6537582",
+        "latitude": "50.69034689999999",
+        "id": "211891"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Berufliche Bildung\/IB_BerEb_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "IB Bildungszentrum Alzey \/ Projekt MegaKRASS",
+        "plz": "55232",
+        "city": "Alzey",
+        "street": "Weinrufstra\u00dfe 20",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "8.1096009",
+        "latitude": "49.747782",
+        "id": "211684"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL III 2017\/Alzey\/IB-Alzey-MegaKrass-Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Jugend- und Familiendienst (Sozialraumb\u00fcro)",
+        "plz": "19273",
+        "city": "Amt Neuhaus",
+        "street": "Parkstra\u00dfe 2",
+        "federal_state": "Niedersachsen",
+        "longitude": "10.9285703",
+        "latitude": "53.2853389",
+        "id": "211809"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/IB_Nord_Standort_10.jpg"
+    },
+    {
+      "Location": {
+        "name": "Ambulante Hilfen zur Erziehung Anklam",
+        "plz": "17389",
+        "city": "Anklam",
+        "street": "Stockholmer Str. 21",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "13.685733",
+        "latitude": "53.8464948",
+        "id": "211492"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/IB_Nord_Standort_Jugend4.jpg"
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst Arnsberg ",
+        "plz": "59759",
+        "city": "Arnsberg",
+        "street": "Bahnhofstr. 128 a",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "7.9780043",
+        "latitude": "51.4363829",
+        "id": "201934"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Kindertagesst\u00e4tte Zwickel-Zwackel ",
+        "plz": "59755",
+        "city": "Arnsberg",
+        "street": "K\u00f6nigsbergstr.1",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "7.9796973",
+        "latitude": "51.4444002",
+        "id": "205510"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/Kita-Bilder\/Kita_Standorte\/untitled folder\/zwickel_zwackel_1.jpg"
+    },
+    {
+      "Location": {
+        "name": "Bildungszentrum Arnsberg ",
+        "plz": "59759",
+        "city": "Arnsberg",
+        "street": "Bahnhofstr. 128 a",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "7.9780043",
+        "latitude": "51.4363829",
+        "id": "205562"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Bildungszentrum Arnstadt ",
+        "plz": "99310",
+        "city": "Arnstadt",
+        "street": "Ichtersh\u00e4user Stra\u00dfe 74",
+        "federal_state": "Th\u00fcringen",
+        "longitude": "10.9561127",
+        "latitude": "50.8514282",
+        "id": "209199"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Berufseinstiegsbegleitung \u2013 Albert-Schweitzer-Schule FSP Lernen",
+        "plz": "53567",
+        "city": "Asbach",
+        "street": "Laurentiusstra\u00dfe 1",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.4224535",
+        "latitude": "50.66676030000001",
+        "id": "211876"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Berufliche Bildung\/IB_BerEb_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Berufseinstiegsbegleitung \u2013 Realschule plus Asbach",
+        "plz": "53567",
+        "city": "Asbach",
+        "street": "Flammersfelder Str. 7",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.4298419",
+        "latitude": "50.6655652",
+        "id": "211875"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Berufliche Bildung\/IB_BerEb_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Schule f\u00fcr Logop\u00e4die Aschaffenburg",
+        "plz": "63741",
+        "city": "Aschaffenburg",
+        "street": "Erlenmeyerstr. 6",
+        "federal_state": "Bayern",
+        "longitude": "9.1495523",
+        "latitude": "49.9826814",
+        "id": "200876"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Schule f\u00fcr Ergotherapie Aschaffenburg",
+        "plz": "63741",
+        "city": "Aschaffenburg",
+        "street": "Erlenmeyerstr. 4-6",
+        "federal_state": "Bayern",
+        "longitude": "9.1495523",
+        "latitude": "49.9826814",
+        "id": "202461"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Schule f\u00fcr Physiotherapie Aschaffenburg",
+        "plz": "63741",
+        "city": "Aschaffenburg",
+        "street": "Erlenmeyerstr. 4-6",
+        "federal_state": "Bayern",
+        "longitude": "9.1495523",
+        "latitude": "49.9826814",
+        "id": "210364"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Internationaler Bund (IB) Salzlandkreis",
+        "plz": "06449",
+        "city": "Aschersleben",
+        "street": "Vogelgesang 35",
+        "federal_state": "Sachsen-Anhalt",
+        "longitude": "11.442759",
+        "latitude": "51.7565326",
+        "id": "207640"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Hort \"Pfeilergraben\" ",
+        "plz": "06449",
+        "city": "Aschersleben",
+        "street": "Pfeilergraben 3",
+        "federal_state": "Sachsen-Anhalt",
+        "longitude": "11.4626938",
+        "latitude": "51.748527",
+        "id": "210571"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst Aschersleben",
+        "plz": "06449",
+        "city": "Aschersleben",
+        "street": "Vogelgesang 35",
+        "federal_state": "Sachsen-Anhalt",
+        "longitude": "11.442207000000053",
+        "latitude": "51.7565214",
+        "id": "211600"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Kinderhaus Sta\u00dffurter H\u00f6he",
+        "plz": "06449",
+        "city": "Aschersleben",
+        "street": "Sta\u00dffurter H\u00f6he 42D",
+        "federal_state": "Sachsen-Anhalt",
+        "longitude": "11.46578",
+        "latitude": "51.76223",
+        "id": "211601"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Gemeinsame Wohnform Mutter\/ Vater mit Kind und Kleinkindgruppe, Geschwistereck",
+        "plz": "06449",
+        "city": "Aschersleben",
+        "street": "Vogelgesang 35",
+        "federal_state": "Sachsen-Anhalt",
+        "longitude": "11.442207000000053",
+        "latitude": "51.7565214",
+        "id": "211602"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Bildungszentrum Asperg ",
+        "plz": "71679",
+        "city": "Asperg",
+        "street": "Eglosheimer Str. 92",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "9.1456616",
+        "latitude": "48.9044154",
+        "id": "202494"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcd\/IB Asperg\/IB_Asperg.jpg"
+    },
+    {
+      "Location": {
+        "name": "Freiwilligendienste Schw\u00e4bisch Hall ",
+        "plz": "71679",
+        "city": "Asperg",
+        "street": "Eglosheimer Str. 92-94",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "9.1468089",
+        "latitude": "48.904708",
+        "id": "211239"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcd\/IB Asperg\/IB_Asperg.jpg"
+    },
+    {
+      "Location": {
+        "name": "Freiwilligendienste Asperg",
+        "plz": "71679",
+        "city": "Asperg",
+        "street": "Eglosheimer Str. 92-94",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "9.1468089",
+        "latitude": "48.904708",
+        "id": "211227"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcd\/IB Asperg\/IB_Asperg.jpg"
+    },
+    {
+      "Location": {
+        "name": "Freiwilligendienste Waiblingen",
+        "plz": "71679",
+        "city": "Asperg",
+        "street": "Eglosheimer Str. 92-94",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "9.1468089",
+        "latitude": "48.904708",
+        "id": "211409"
+      },
+      "ListimagePath": "\/img\/upload\/FD Asperg\/29489788_L_Lvnel.jpg"
+    },
+    {
+      "Location": {
+        "name": "Freiwilligendienste Heilbronn",
+        "plz": "71679",
+        "city": "Asperg",
+        "street": "Eglosheimer Str. 92-94",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "9.1468089",
+        "latitude": "48.904708",
+        "id": "211407"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcd\/IB Asperg\/IB_Asperg.jpg"
+    },
+    {
+      "Location": {
+        "name": "Berufliche Schulen Asperg ",
+        "plz": "71679",
+        "city": "Asperg",
+        "street": "Eglosheimer Str. 75",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "9.143860499999999",
+        "latitude": "48.904564",
+        "id": "211273"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcd\/IB Asperg\/Eingang-793.jpg"
+    },
+    {
+      "Location": {
+        "name": "Realschule Asperg ",
+        "plz": "71679",
+        "city": "Asperg",
+        "street": "Eglosheimer Str. 92-94",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "9.1468089",
+        "latitude": "48.904708",
+        "id": "211274"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcd\/IB Asperg\/Hof-540.jpg"
+    },
+    {
+      "Location": {
+        "name": "Berufliche Bildung Asperg ",
+        "plz": "71679",
+        "city": "Asperg",
+        "street": "Eglosheimer Str. 92-94",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "9.1468089",
+        "latitude": "48.904708",
+        "id": "211275"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcd\/IB Asperg\/IB_Berufliche-Bildung_Asperg.jpg"
+    },
+    {
+      "Location": {
+        "name": "Soziale Arbeit Asperg   ",
+        "plz": "71679",
+        "city": "Asperg",
+        "street": "Eglosheimer Str. 92-94",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "9.1468089",
+        "latitude": "48.904708",
+        "id": "211277"
+      },
+      "ListimagePath": "\/img\/upload\/FD Asperg\/4592678_M_Andres Rodriguez.jpg"
+    },
+    {
+      "Location": {
+        "name": "Solaranlage Asperg liefert sauberen Strom",
+        "plz": "71679",
+        "city": "Asperg",
+        "street": "Eglosheimer Str. 92",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "9.146948899999984",
+        "latitude": "48.9047618",
+        "id": "211451"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst Olpe ",
+        "plz": "57439",
+        "city": "Attendorn",
+        "street": "Hohler Weg 1",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "7.8995984",
+        "latitude": "51.1265471",
+        "id": "205583"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Schule f\u00fcr Ergotherapie Augsburg",
+        "plz": "86159",
+        "city": "Augsburg",
+        "street": "Alter Postweg 97b",
+        "federal_state": "Bayern",
+        "longitude": "0",
+        "latitude": "0",
+        "id": "211485"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": " Schule f\u00fcr Physiotherapie Augsburg",
+        "plz": "86159",
+        "city": "Augsburg",
+        "street": " Alter Postweg 97B",
+        "federal_state": "Bayern",
+        "longitude": "0",
+        "latitude": "0",
+        "id": "211813"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Bildungszentrum Backnang ",
+        "plz": "71522",
+        "city": "Backnang",
+        "street": "Am Schillerpl. 5",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "9.431280000000015",
+        "latitude": "48.94555",
+        "id": "202824"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcd\/IMG_3602_blur_IB S\u00fcd Keyvisual_Fu\u00dfzeile 2.jpg"
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst Potsdam-Mittelmark  ",
+        "plz": "14806",
+        "city": "Bad Belzig",
+        "street": "Stra\u00dfe der Einheit 13",
+        "federal_state": "Brandenburg",
+        "longitude": "12.5878336",
+        "latitude": "52.1409506",
+        "id": "207544"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "KreA - Bad Belzig",
+        "plz": "14806",
+        "city": "Bad Belzig",
+        "street": "Bergholzer Str. 2",
+        "federal_state": "Brandenburg",
+        "longitude": "12.5851002",
+        "latitude": "52.131304",
+        "id": "211851"
+      },
+      "ListimagePath": "\/img\/upload\/IB Berlin-Brandenburg\/BBNW\/KreA\/Standortbild_KreA.jpg"
+    },
+    {
+      "Location": {
+        "name": "Beratungsfachdienst Migration Bad Belzig",
+        "plz": "14806",
+        "city": "Bad Belzig",
+        "street": "Marktplatz 5",
+        "federal_state": "Brandenburg",
+        "longitude": "12.5865811",
+        "latitude": "52.1406601",
+        "id": "211733"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Leistungserprobungscenter Bad Belzig",
+        "plz": "14806",
+        "city": "Bad Belzig",
+        "street": "L\u00fcbnitzer Str. 2",
+        "federal_state": "Brandenburg",
+        "longitude": "12.5842884",
+        "latitude": "52.141425",
+        "id": "211853"
+      },
+      "ListimagePath": "\/img\/upload\/IB Berlin-Brandenburg\/BBNW\/Leistungserprobungscenter\/Standortbild_LEC_2.jpg"
+    },
+    {
+      "Location": {
+        "name": "Kindertagesst\u00e4tte \u00abSonnenh\u00f6he\u00bb ",
+        "plz": "99438",
+        "city": "Bad Berka",
+        "street": "Herderstr. 18",
+        "federal_state": "Th\u00fcringen",
+        "longitude": "11.2895758",
+        "latitude": "50.8944727",
+        "id": "208503"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/Kita-Bilder\/Kita_Standorte\/kita_340_11.jpg"
+    },
+    {
+      "Location": {
+        "name": "Kinder- und Jugendhilfe Limburg-Weilburg \/ Oberselters",
+        "plz": "65520",
+        "city": "Bad Camberg",
+        "street": "An den Akazien 1",
+        "federal_state": "Hessen",
+        "longitude": "8.240301799999997",
+        "latitude": "50.3259378",
+        "id": "211444"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/OKJA\/IB_Suedwest_OKJA_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Ambulante Hilfen Bad Doberan",
+        "plz": "18209",
+        "city": "Bad Doberan",
+        "street": "Am Markt 11",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "11.8983259",
+        "latitude": "54.1064019",
+        "id": "206208"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/IB_Nord_StandortKita6.jpg"
+    },
+    {
+      "Location": {
+        "name": "Familienunterst\u00fctzender Dienst Landkreis Rostock",
+        "plz": "18209",
+        "city": "Bad Doberan",
+        "street": "Am Markt 11a",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "11.8983259",
+        "latitude": "54.1064019",
+        "id": "211577"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB_GmbH_Nl_West\/SozialeDienste\/03 Erziehungshilfen\/DRK Familienberatung Koeln\/DRK Familienbildungswerk Koeln Impress 2v2.jpg"
+    },
+    {
+      "Location": {
+        "name": "Beratungsstelle f\u00fcr Betroffene von h\u00e4uslicher Gewalt ",
+        "plz": "18209",
+        "city": "Bad Doberan",
+        "street": "Am Markt 12D",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "11.8985815",
+        "latitude": "54.1060117",
+        "id": "210243"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/IB_Nord_Standort_6.jpg"
+    },
+    {
+      "Location": {
+        "name": "Tagesgruppe Bad Doberan",
+        "plz": "18209",
+        "city": "Bad Doberan",
+        "street": "Am Markt 6A",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "11.8983099",
+        "latitude": "54.1070463",
+        "id": "211555"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/Stralsund\/VR_HZE6.jpg"
+    },
+    {
+      "Location": {
+        "name": "Integrationshilfe \/ Schulbegleitung",
+        "plz": "18209",
+        "city": "Bad Doberan",
+        "street": "Am Markt 11a",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "11.8983259",
+        "latitude": "54.1064019",
+        "id": "210973"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/IB_Nord_Standort_Jugend4.jpg"
+    },
+    {
+      "Location": {
+        "name": "Jugendclub Bad Doberan",
+        "plz": "18209",
+        "city": "Bad Doberan",
+        "street": "Am Walkm\u00fcller Holz 1",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "11.9272519",
+        "latitude": "54.1072558",
+        "id": "211742"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/IB_Nord_Standort_5.jpg"
+    },
+    {
+      "Location": {
+        "name": "Mobile Kinder- und Jugendsozialarbeit",
+        "plz": "18209",
+        "city": "Bad Doberan",
+        "street": "Am Walkm\u00fcller Holz 1",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "11.9272519",
+        "latitude": "54.1072558",
+        "id": "211861"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/Bilder\/Standortbilder\/Jugendsozialarbeit\/fashion-4013456.jpg"
+    },
+    {
+      "Location": {
+        "name": "IB S\u00fcdwest Bad D\u00fcrkheim I",
+        "plz": "67098",
+        "city": "Bad D\u00fcrkheim",
+        "street": "Michelsbergstr. 13",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "8.169930000000022",
+        "latitude": "49.46943",
+        "id": "211082"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Berufliche Bildung\/IB_Suedwest_Berufliche-Bildung_Standort-2.jpg"
+    },
+    {
+      "Location": {
+        "name": "IB S\u00fcdwest Bad D\u00fcrkheim II",
+        "plz": "67098",
+        "city": "Bad D\u00fcrkheim",
+        "street": "Philipp-Heinrich-Messer-Str. 5",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "8.189589999999953",
+        "latitude": "49.4752",
+        "id": "211095"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL IV 2017\/Bad D\u00fcrkheim\/Berufliche Bildung II Standort\/IB_Bad-Duerkheim-II_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Berufseinstiegsbegleitung - Realschule puls Bad Ems",
+        "plz": "56130",
+        "city": "Bad Ems",
+        "street": "Schulstr. 25",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.709619",
+        "latitude": "50.3346408",
+        "id": "211309"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RLIII\/Bad Ems\/IB-Suedwest- Berufseinstiegsbegleitung-Angebot.jpg"
+    },
+    {
+      "Location": {
+        "name": "Projekt \u00dcbergangscoach in Bad Ems\/ Realschule plus Bad Ems Nassau",
+        "plz": "56130",
+        "city": "Bad Ems",
+        "street": "Schulstra\u00dfe 25",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.709793400000002",
+        "latitude": "50.3346665",
+        "id": "211671"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL III 2017\/\u00dcbergangscoach in RLP\/IB_Uebergangscoach_an-Schulen_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst & Sprache Bad Hersfeld ",
+        "plz": "36251",
+        "city": "Bad Hersfeld",
+        "street": "Benno-Schilde-Str. 6",
+        "federal_state": "Hessen",
+        "longitude": "9.70877759999996",
+        "latitude": "50.8691435",
+        "id": "210620"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB_VB_Hessen\/Bad Hersfeld\/855x300 SprachKommunikation4.jpg"
+    },
+    {
+      "Location": {
+        "name": "Betreuungs-und Beratungsstelle Bad Hersfeld",
+        "plz": "36251",
+        "city": "Bad Hersfeld",
+        "street": "Benno-Schilde-Str. 6",
+        "federal_state": "Hessen",
+        "longitude": "9.708777599999962",
+        "latitude": "50.8691435",
+        "id": "210949"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL II 2017\/Bad Hersfeld\/IB_Bad-Hersfeld_Betreuungs-und-Beratungszentrum_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Wohneinrichtung Bad Homburg-Kirdorf",
+        "plz": "61350",
+        "city": "Bad Homburg",
+        "street": "Baierstr. 12",
+        "federal_state": "Hessen",
+        "longitude": "8.6129425",
+        "latitude": "50.241596",
+        "id": "204509"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL II 2017\/Bad Homburg Kirdorf\/IB_Bad-Homburg-Kirdorf_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Wohngruppe Bad Kleinen",
+        "plz": "23996",
+        "city": "Bad Kleinen",
+        "street": "Hauptstr. 46",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "11.4732793",
+        "latitude": "53.7708695",
+        "id": "206390"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/IB_Nord_StandortJugend7.jpg"
+    },
+    {
+      "Location": {
+        "name": "Tagesgruppe Bad Kleinen",
+        "plz": "23996",
+        "city": "Bad Kleinen",
+        "street": "Steinstr. 29",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "11.4678",
+        "latitude": "53.7692",
+        "id": "210974"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/IB_Nord_Standort_Jugend2.jpg"
+    },
+    {
+      "Location": {
+        "name": "IB S\u00fcdwest gGmbH - Region Rheinland-Pfalz Mitte",
+        "plz": "55543",
+        "city": "Bad Kreuznach",
+        "street": "Salinenstra\u00dfe 39",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.859496799999988",
+        "latitude": "49.84036529999999",
+        "id": "210126"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/RL RLP Mitte und Nord\/RLP-Mitte-Standortbild.jpg"
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst und Sprache Bad Kreuznach ",
+        "plz": "55543",
+        "city": "Bad Kreuznach",
+        "street": "Salinenstr. 39 a",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.8607963",
+        "latitude": "49.8412502",
+        "id": "200818"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL III 2017\/Bad Kreuznach\/JMD und Sprache\/IB_Bad Kreuznach_JMD_Sprache_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Salinerie - Integrationsbetrieb & Catering",
+        "plz": "55543",
+        "city": "Bad Kreuznach",
+        "street": "Salinenstr. 39 a",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.8607963",
+        "latitude": "49.8412502",
+        "id": "200954"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL III 2017\/Bad Kreuznach\/Integrationsbetrieb\/IB_Bad-Kreuznach_Integrationsbetrieb_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Schule f\u00fcr Physiotherapie Bad Kreuznach",
+        "plz": "55543",
+        "city": "Bad Kreuznach",
+        "street": "Planiger Str. 4",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.8632916",
+        "latitude": "49.8444876",
+        "id": "202448"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Jugendhilfe Bad Kreuznach ",
+        "plz": "55543",
+        "city": "Bad Kreuznach",
+        "street": "Lina-Hilger-Str.16",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.870008",
+        "latitude": "49.8418296",
+        "id": "204202"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB RLP-Saarl.\/Bilder eingestellt\/KH Jugendhilfe\/Stellwerk Angebote.jpg"
+    },
+    {
+      "Location": {
+        "name": "IB Bad Kreuznach",
+        "plz": "55543",
+        "city": "Bad Kreuznach",
+        "street": "Salinenstr. 39 a",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.8607963",
+        "latitude": "49.8412502",
+        "id": "204216"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB RLP-Saarl.\/Bilder eingestellt\/Geschaeftsstelle KH\/IB Geschaeftsstelle_Rhein_Nahe_Mosel.jpg"
+    },
+    {
+      "Location": {
+        "name": "Schulverweigererprojekt \"Stellwerk\"",
+        "plz": "55543",
+        "city": "Bad Kreuznach",
+        "street": "Salinenstra\u00dfe 52",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.85919009999998",
+        "latitude": "49.84038",
+        "id": "211486"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL III 2017\/Koblenz\/Return\/IB_Koblenz_Return_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Heilp\u00e4dagogisches Jugendhilfe- und Ausbildungszentrum Bad Langensalza ",
+        "plz": "99947",
+        "city": "Bad Langensalza",
+        "street": "Badeweg 7a",
+        "federal_state": "Th\u00fcringen",
+        "longitude": "10.6582331",
+        "latitude": "51.1118548",
+        "id": "208607"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB_Mitte_gGmbH\/IB_Mitte\/HJAZ Bad Langensalza\/IB_LSZ_Klein.jpg"
+    },
+    {
+      "Location": {
+        "name": "Kindertagesst\u00e4tte \"Waldhaus\" ",
+        "plz": "04924",
+        "city": "Bad Liebenwerda",
+        "street": "Heinrich-Heine-Stra\u00dfe 30b",
+        "federal_state": "Brandenburg",
+        "longitude": "13.4029746",
+        "latitude": "51.5280955",
+        "id": "207227"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/Kita-Bilder\/Kita_Standorte\/ib-kitas-standorte-uebersicht.jpg"
+    },
+    {
+      "Location": {
+        "name": "Kindertagesst\u00e4tte \"Villa Kunterbunt\" ",
+        "plz": "04924",
+        "city": "Bad Liebenwerda",
+        "street": "August-Bebel-Str. 12",
+        "federal_state": "Brandenburg",
+        "longitude": "13.3940796",
+        "latitude": "51.509685",
+        "id": "207235"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/Kita-Bilder\/Kita_Standorte\/kita_340_04.jpg"
+    },
+    {
+      "Location": {
+        "name": "Hilfen zur Erziehung Bad Liebenwerda",
+        "plz": "04924",
+        "city": "Bad Liebenwerda",
+        "street": "Dresdener Str. 82",
+        "federal_state": "Brandenburg",
+        "longitude": "13.41971",
+        "latitude": "51.51511",
+        "id": "211845"
+      },
+      "ListimagePath": "\/img\/upload\/IB Berlin-Brandenburg\/BBSO\/HzE BaLi\/HzE_BaLi_Gallerie_1.jpg"
+    },
+    {
+      "Location": {
+        "name": "Berufseinstiegsbegleitung in Bad Marienberg",
+        "plz": "56470",
+        "city": "Bad Marienberg",
+        "street": "Erlenweg",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.9561324",
+        "latitude": "50.6588357",
+        "id": "211329"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RLIII\/Bad Marienberg\/IB-Suedwest- Berufseinstiegsbegleitung-Angebot.jpg"
+    },
+    {
+      "Location": {
+        "name": "Projekt \u00dcbergangscoach in Bad Marienberg\/ Marie-Curie-Realschule plus",
+        "plz": "56470",
+        "city": "Bad Marienberg (Westerwald)",
+        "street": "Erlenweg 3",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.954519999999999",
+        "latitude": "50.65813",
+        "id": "211674"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL III 2017\/\u00dcbergangscoach in RLP\/IB_Uebergangscoach_an-Schulen_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "IB Bildungszentrum Bad S\u00e4ckingen",
+        "plz": "79713",
+        "city": "Bad S\u00e4ckingen",
+        "street": "Kalkdarren 13",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "7.9239",
+        "latitude": "47.55229",
+        "id": "202489"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Berufsfachschule f\u00fcr Gesundheits- und Krankenpflege Bad Salzungen",
+        "plz": "36433",
+        "city": "Bad Salzungen",
+        "street": "Langenfelder Str. 8",
+        "federal_state": "Th\u00fcringen",
+        "longitude": "10.22969",
+        "latitude": "50.81149",
+        "id": "202437"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst Wartburgkreis  ",
+        "plz": "36433",
+        "city": "Bad Salzungen",
+        "street": "Fritz-Wagner-Stra\u00dfe 14",
+        "federal_state": "Th\u00fcringen",
+        "longitude": "10.24513",
+        "latitude": "50.80797",
+        "id": "208507"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Familien- und Jugendhilfezentrum Haus Bernardi",
+        "plz": "55566",
+        "city": "Bad Sobernheim",
+        "street": "Gro\u00dfstr. 90\/92",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.6552014",
+        "latitude": "49.7847471",
+        "id": "204204"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Migrations- und Fl\u00fcchtlingsarbeit\/IB_Suedwest_Migration_Fluechtlingsarbeit_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Projekt \u00dcbergangscoach in Bad Sobernheim\/ Disibod-Realschule plus",
+        "plz": "55566",
+        "city": "Bad Sobernheim",
+        "street": "M\u00fcnchwiesen 41",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.66142",
+        "latitude": "49.78278",
+        "id": "211640"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL III 2017\/\u00dcbergangscoach in RLP\/IB_Uebergangscoach_an-Schulen_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Berufsfachschule f\u00fcr Gesundheits- und Krankenpflege Bad T\u00f6lz",
+        "plz": "83646",
+        "city": "Bad T\u00f6lz",
+        "street": "Sch\u00fctzenstr. 15",
+        "federal_state": "Bayern",
+        "longitude": "11.55113",
+        "latitude": "47.75699",
+        "id": "202467"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Schule f\u00fcr Physiotherapie Baden-Baden",
+        "plz": "76532",
+        "city": "Baden-Baden",
+        "street": "Breisgaustr. 3",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "8.20083",
+        "latitude": "48.7794",
+        "id": "202732"
+      },
+      "ListimagePath": "\/img\/upload\/Medizinische Akademie\/header website 2.jpg"
+    },
+    {
+      "Location": {
+        "name": "Schule f\u00fcr Logop\u00e4die Baden-Baden",
+        "plz": "76532",
+        "city": "Baden-Baden",
+        "street": "Breisgaustr. 3",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "8.20083",
+        "latitude": "48.7794",
+        "id": "210389"
+      },
+      "ListimagePath": "\/img\/upload\/Medizinische Akademie\/header website 2.jpg"
+    },
+    {
+      "Location": {
+        "name": "IB Heilp\u00e4dagogische Wohneinrichtung Badersleben",
+        "plz": "38836",
+        "city": "Badersleben",
+        "street": "Schillerplatz 7",
+        "federal_state": "Sachsen-Anhalt",
+        "longitude": "10.8850146",
+        "latitude": "51.9827824",
+        "id": "211607"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "IB Caf\u00e9 Amarant",
+        "plz": "91083",
+        "city": "Baiersdorf",
+        "street": "Hauptstra\u00dfe 8",
+        "federal_state": "Bayern",
+        "longitude": "0",
+        "latitude": "0",
+        "id": "211569"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Bildungszentrum Balingen ",
+        "plz": "72336",
+        "city": "Balingen",
+        "street": "Adlerstr. 3",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "8.8503522",
+        "latitude": "48.2729584",
+        "id": "211212"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcd\/IMG_3602_blur_IB S\u00fcd Keyvisual_Fu\u00dfzeile 2.jpg"
+    },
+    {
+      "Location": {
+        "name": "Freiwilligendienste Bamberg FSJ\/BFD",
+        "plz": "96047",
+        "city": "Bamberg",
+        "street": "Amalienstra\u00dfe 20",
+        "federal_state": "Bayern",
+        "longitude": "10.8980519",
+        "latitude": "49.8895157",
+        "id": "211180"
+      },
+      "ListimagePath": "\/img\/upload\/FD Asperg\/29489788_L_Lvnel.jpg"
+    },
+    {
+      "Location": {
+        "name": "IB EI-Land",
+        "plz": "96047",
+        "city": "Bamberg",
+        "street": "Amalienstra\u00dfe 20",
+        "federal_state": "Bayern",
+        "longitude": "10.8980519",
+        "latitude": "49.8895157",
+        "id": "211755"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Bildungszentrum Bautzen",
+        "plz": "02625",
+        "city": "Bautzen",
+        "street": "Edisonstra\u00dfe 17",
+        "federal_state": "Sachsen",
+        "longitude": "14.43875",
+        "latitude": "51.18139",
+        "id": "200834"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst (JMD) Bautzen",
+        "plz": "02625",
+        "city": "Bautzen",
+        "street": "Frederic-Joliot-Curie-Stra\u00dfe 68",
+        "federal_state": "Sachsen",
+        "longitude": "14.44858",
+        "latitude": "51.19133",
+        "id": "202850"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst Bebra ",
+        "plz": "36179",
+        "city": "Bebra",
+        "street": "Im Bilder 28",
+        "federal_state": "Hessen",
+        "longitude": "9.7891578",
+        "latitude": "50.9684167",
+        "id": "210621"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL I 2017\/Bad Hersfeld\/IB_Bad-Hersfeld_Galerie_Standort5.jpg"
+    },
+    {
+      "Location": {
+        "name": "Kompetenzagentur Bad Belzig ",
+        "plz": "14806",
+        "city": "Belzig",
+        "street": "Stra\u00dfe der Einheit 13",
+        "federal_state": "Brandenburg",
+        "longitude": "12.5878336",
+        "latitude": "52.1409506",
+        "id": "210821"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Projekt \u00dcbergangscoach in Bendorf\/ Karl-Fries-Schule",
+        "plz": "56170",
+        "city": "Bendorf",
+        "street": "Lohweg 22",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.57757",
+        "latitude": "50.42825999999999",
+        "id": "211655"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL III 2017\/\u00dcbergangscoach in RLP\/IB_Uebergangscoach_an-Schulen_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "IB Bensheim",
+        "plz": "64625",
+        "city": "Bensheim",
+        "street": "Promenadenstra\u00dfe 6-8",
+        "federal_state": "Hessen",
+        "longitude": "8.621037000000001",
+        "latitude": "49.67964689999999",
+        "id": "211608"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Berufliche Bildung\/Beratung_Standort_IB.jpg"
+    },
+    {
+      "Location": {
+        "name": "Stadtteil- und Begegnungszentrum",
+        "plz": "18528",
+        "city": "Bergen auf R\u00fcgen",
+        "street": "St\u00f6rtebekerstra\u00dfe 34",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "13.4182252",
+        "latitude": "54.4134059",
+        "id": "211805"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/Platzhalter\/VB_Nord_Jugend04_1.jpg"
+    },
+    {
+      "Location": {
+        "name": "Bildungszentrum Bergheim ",
+        "plz": "50127",
+        "city": "Bergheim, Erft",
+        "street": "Fischbachstr. 53",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "6.706400000000031",
+        "latitude": "50.92474",
+        "id": "209970"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Betriebsst\u00e4tte Bergisch Gladbach ",
+        "plz": "51469",
+        "city": "Bergisch Gladbach",
+        "street": "Senefelderstr. 15",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "7.1300955",
+        "latitude": "50.9774692",
+        "id": "209455"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Ambulante Wohnhilfen Tempelhof-Sch\u00f6neberg ",
+        "plz": "10829",
+        "city": "Berlin",
+        "street": "Leberstra\u00dfe 1-3",
+        "federal_state": "Berlin",
+        "longitude": "13.3617132",
+        "latitude": "52.4855472",
+        "id": "207204"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Haus am Alboinplatz",
+        "plz": "12105",
+        "city": "Berlin",
+        "street": "Alboinplatz 17-18",
+        "federal_state": "Berlin",
+        "longitude": "13.3702649",
+        "latitude": "52.4585779",
+        "id": "207205"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Aufnahme- und \u00dcbergangswohnheim Trachenbergring ",
+        "plz": "12249",
+        "city": "Berlin",
+        "street": "Trachenbergring 71 - 83",
+        "federal_state": "Berlin",
+        "longitude": "13.3675454",
+        "latitude": "52.4300209",
+        "id": "207207"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Aufnahmewohnheim Grenzstra\u00dfe ",
+        "plz": "13355",
+        "city": "Berlin",
+        "street": "Grenzstra\u00dfe 1-5",
+        "federal_state": "Berlin",
+        "longitude": "13.3757714",
+        "latitude": "52.5403232",
+        "id": "207208"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Ambulante Wohnhilfen Wedding und Reinickendorf",
+        "plz": "13357",
+        "city": "Berlin",
+        "street": "Badstra\u00dfe 22",
+        "federal_state": "Berlin",
+        "longitude": "13.3822163",
+        "latitude": "52.5520457",
+        "id": "207211"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "\u00dcbergangshaus Drontheimer Stra\u00dfe",
+        "plz": "13359",
+        "city": "Berlin",
+        "street": "Drontheimer Stra\u00dfe 27",
+        "federal_state": "Berlin",
+        "longitude": "13.3769832",
+        "latitude": "52.5586989",
+        "id": "207213"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Kindertagesst\u00e4tte \"Pusteblume\"",
+        "plz": "12459",
+        "city": "Berlin",
+        "street": "Otto-Kr\u00fcger-Zeile 6",
+        "federal_state": "Berlin",
+        "longitude": "13.507591",
+        "latitude": "52.4673465",
+        "id": "207219"
+      },
+      "ListimagePath": "\/img\/upload\/IB Berlin-Brandenburg\/Berlin Nordost\/Kita OKZ 6\/Bilder Galerie\/OKZ_6_Galerie6.jpg"
+    },
+    {
+      "Location": {
+        "name": "Kindertagesst\u00e4tte \"Spindlersfelder Orgelpfeifen\"",
+        "plz": "12557",
+        "city": "Berlin",
+        "street": "Rudower Stra\u00dfe 60",
+        "federal_state": "Berlin",
+        "longitude": "13.5629954",
+        "latitude": "52.4426598",
+        "id": "207220"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/Kita-Bilder\/Kita_Standorte\/kita_340_07.jpg"
+    },
+    {
+      "Location": {
+        "name": "Kindertagesst\u00e4tte \"Bucher Wichtel\"",
+        "plz": "13125",
+        "city": "Berlin",
+        "street": "Friedrich-Richter-Str. 36-38",
+        "federal_state": "Berlin",
+        "longitude": "13.4937602",
+        "latitude": "52.6267247",
+        "id": "207221"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/Kita-Bilder\/Kita_Standorte\/kita_340_10.jpg"
+    },
+    {
+      "Location": {
+        "name": "Kindertagesst\u00e4tte \"Regenbogenhaus\"",
+        "plz": "13187",
+        "city": "Berlin",
+        "street": "Vesaliusstr. 68-70",
+        "federal_state": "Berlin",
+        "longitude": "13.4273156",
+        "latitude": "52.5804912",
+        "id": "207223"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/Kita-Bilder\/Kita_Standorte\/kita_340_03.jpg"
+    },
+    {
+      "Location": {
+        "name": "Ambulante Wohnhilfen Neuk\u00f6lln ",
+        "plz": "12055",
+        "city": "Berlin",
+        "street": "Lahnstra\u00dfe 86",
+        "federal_state": "Berlin",
+        "longitude": "13.442076",
+        "latitude": "52.4677026",
+        "id": "207232"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Ambulante Wohnhilfen Friedrichshain-Kreuzberg ",
+        "plz": "10247",
+        "city": "Berlin",
+        "street": "Jessnerstra\u00dfe 7",
+        "federal_state": "Berlin",
+        "longitude": "13.4731806",
+        "latitude": "52.5130259",
+        "id": "207238"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Kita Weserwichtel",
+        "plz": "12059",
+        "city": "Berlin",
+        "street": "Weserstra\u00dfe 106",
+        "federal_state": "Berlin",
+        "longitude": "13.4529765",
+        "latitude": "52.4772662",
+        "id": "207240"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/GF_Berlin_Brandenburg\/Kita weserst\/galerie\/galerie1.jpg"
+    },
+    {
+      "Location": {
+        "name": "Kita \"Kunterbunt - Kinder aus aller Welt\" ",
+        "plz": "12157",
+        "city": "Berlin",
+        "street": "Vorarlberger Damm 17",
+        "federal_state": "Berlin",
+        "longitude": "13.3465172",
+        "latitude": "52.4707237",
+        "id": "207241"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/Kita-Bilder\/Kita_Standorte\/kita_340_10.jpg"
+    },
+    {
+      "Location": {
+        "name": "Ambulante Wohnhilfen Charlottenburg-Wilmersdorf ",
+        "plz": "10717",
+        "city": "Berlin",
+        "street": "Bundesallee 24",
+        "federal_state": "Berlin",
+        "longitude": "13.3307744",
+        "latitude": "52.4926929",
+        "id": "207242"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst Neuk\u00f6lln",
+        "plz": "12051",
+        "city": "Berlin",
+        "street": "Glasower Stra\u00dfe 18",
+        "federal_state": "Berlin",
+        "longitude": "13.434339",
+        "latitude": "52.4641115",
+        "id": "207243"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Kindertagesst\u00e4tte \"Zwergenvilla\"",
+        "plz": "12459",
+        "city": "Berlin",
+        "street": "Otto-Kr\u00fcger-Zeile 4",
+        "federal_state": "Berlin",
+        "longitude": "13.5078783",
+        "latitude": "52.4669179",
+        "id": "207244"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/Kita-Bilder\/Kita_Standorte\/kita_340_04.jpg"
+    },
+    {
+      "Location": {
+        "name": "Kita Kirschnerweg ",
+        "plz": "12353",
+        "city": "Berlin",
+        "street": "Kirschnerweg 29",
+        "federal_state": "Berlin",
+        "longitude": "13.4546953",
+        "latitude": "52.4265883",
+        "id": "207247"
+      },
+      "ListimagePath": "\/img\/upload\/IB Berlin-Brandenburg\/Berlin Nordost\/Kita Kirschnerweg\/galerie8.jpg"
+    },
+    {
+      "Location": {
+        "name": "Ambulante Wohnhilfen Marzahn und Lichtenberg ",
+        "plz": "12681",
+        "city": "Berlin",
+        "street": "Allee der Kosmonauten 32c",
+        "federal_state": "Berlin",
+        "longitude": "13.5326585",
+        "latitude": "52.5246802",
+        "id": "207248"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Ambulante Wohnhilfen Steglitz-Zehlendorf",
+        "plz": "12163",
+        "city": "Berlin",
+        "street": "Feuerbachstra\u00dfe 47-49",
+        "federal_state": "Berlin",
+        "longitude": "13.3357219",
+        "latitude": "52.4642555",
+        "id": "207249"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Gemeinschaftsunterkunft Am Beelitzhof",
+        "plz": "14129",
+        "city": "Berlin",
+        "street": "Am Beelitzhof 12, 14, 14a-c, 16, 16a-c",
+        "federal_state": "Berlin",
+        "longitude": "13.1892265",
+        "latitude": "52.4315426",
+        "id": "211800"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "IB Hochschule f\u00fcr Gesundheit und Soziales \u2013 Studienzentrum Berlin",
+        "plz": "13509",
+        "city": "Berlin",
+        "street": "Breitenbachstr. 23",
+        "federal_state": "Berlin",
+        "longitude": "13.371752900000047",
+        "latitude": "52.545159",
+        "id": "210423"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Aufnahmewohnheim Lahnstra\u00dfe",
+        "plz": "12055",
+        "city": "Berlin",
+        "street": "Lahnstra\u00dfe 56",
+        "federal_state": "Berlin",
+        "longitude": "13.446151699999973",
+        "latitude": "52.4682901",
+        "id": "211384"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "\u00dcbergangswohnheim Marienfelder Allee ",
+        "plz": "12277",
+        "city": "Berlin",
+        "street": "Marienfelder Allee 66-80",
+        "federal_state": "Berlin",
+        "longitude": "13.36709",
+        "latitude": "52.42045",
+        "id": "210516"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Ambulante Wohnhilfen Spandau ",
+        "plz": "13585",
+        "city": "Berlin",
+        "street": "Kirchhofstra\u00dfe 30",
+        "federal_state": "Berlin",
+        "longitude": "13.20461",
+        "latitude": "52.54524",
+        "id": "210607"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Station\u00e4res Jugendwohnen Berlin",
+        "plz": "12159",
+        "city": "Berlin",
+        "street": "Fregestra\u00dfe 16",
+        "federal_state": "Berlin",
+        "longitude": "13.33702930000004",
+        "latitude": "52.4688838",
+        "id": "211576"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Region Berlin Mitte",
+        "plz": "10407",
+        "city": "Berlin",
+        "street": "Storkower Str. 139B",
+        "federal_state": "Berlin",
+        "longitude": "13.4559236",
+        "latitude": "52.5333232",
+        "id": "210715"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Kita ToM ",
+        "plz": "12524",
+        "city": "Berlin",
+        "street": "Sch\u00f6nefelder Chaussee 34-36",
+        "federal_state": "Berlin",
+        "longitude": "13.5320152",
+        "latitude": "52.4163013",
+        "id": "211632"
+      },
+      "ListimagePath": "\/img\/upload\/IB Berlin-Brandenburg\/Berlin Nordost\/Kita ToM\/IB-Standort_Kita_ToM_500x280px.jpg"
+    },
+    {
+      "Location": {
+        "name": "Bildung und Besch\u00e4ftigung Berlin Mitte",
+        "plz": "12057",
+        "city": "Berlin",
+        "street": "Neuk\u00f6llnische Allee 10-12",
+        "federal_state": "Berlin",
+        "longitude": "13.4577049",
+        "latitude": "52.4690423",
+        "id": "210803"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Bildungseinrichtung Tempelhof-Sch\u00f6neberg ",
+        "plz": "12103",
+        "city": "Berlin",
+        "street": "Alboinstra\u00dfe 17-23",
+        "federal_state": "Berlin",
+        "longitude": "13.3707",
+        "latitude": "52.46843",
+        "id": "210805"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Dezentrale Wohnraumversorgung",
+        "plz": "12309",
+        "city": "Berlin",
+        "street": "Nahariyastra\u00dfe 25",
+        "federal_state": "Berlin",
+        "longitude": "13.41938",
+        "latitude": "52.39304",
+        "id": "210879"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst Marzahn ",
+        "plz": "12681",
+        "city": "Berlin",
+        "street": "Allee der Kosmonauten 79",
+        "federal_state": "Berlin",
+        "longitude": "13.5454738",
+        "latitude": "52.5262986",
+        "id": "210881"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Krisenhaus Sch\u00f6neberg ",
+        "plz": "10829",
+        "city": "Berlin",
+        "street": "Kolonnenstra\u00dfe 10",
+        "federal_state": "Berlin",
+        "longitude": "13.3617841",
+        "latitude": "52.4857413",
+        "id": "210882"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Ambulante Wohnhilfen Pankow ",
+        "plz": "10405",
+        "city": "Berlin",
+        "street": "Marienburger Stra\u00dfe 1",
+        "federal_state": "Berlin",
+        "longitude": "13.4225708",
+        "latitude": "52.5353217",
+        "id": "210886"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Ambulante Wohnhilfen Treptow-K\u00f6penick ",
+        "plz": "12439",
+        "city": "Berlin",
+        "street": "Schnellerstra\u00dfe 114",
+        "federal_state": "Berlin",
+        "longitude": "13.5150192",
+        "latitude": "52.455016",
+        "id": "210888"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Betreutes Jugendwohnen Reinickendorf",
+        "plz": "13409",
+        "city": "Berlin",
+        "street": "Reginhardstra\u00dfe 34",
+        "federal_state": "Berlin",
+        "longitude": "13.3720682",
+        "latitude": "52.5610237",
+        "id": "210889"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Fortbildungsangebote in der IB Berlin-Brandenburg gGmbH",
+        "plz": "10247",
+        "city": "Berlin",
+        "street": "Rigaer Str. 44",
+        "federal_state": "Berlin",
+        "longitude": "13.4683802",
+        "latitude": "52.5156662",
+        "id": "210905"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Betreutes Jugendwohnen Kreuzberg",
+        "plz": "10965",
+        "city": "Berlin",
+        "street": "Mehringdamm 107",
+        "federal_state": "Berlin",
+        "longitude": "13.3859603",
+        "latitude": "52.4874651",
+        "id": "210909"
+      },
+      "ListimagePath": "\/img\/upload\/IB Berlin-Brandenburg\/BBMitte\/BJW Kreuzberg\/bjw_kreuzberg_standortliste.jpg"
+    },
+    {
+      "Location": {
+        "name": "Aktionsfonds Berlin-Brandenburg",
+        "plz": "10247",
+        "city": "Berlin",
+        "street": "Rigaer Str. 44",
+        "federal_state": "Berlin",
+        "longitude": "13.4683802",
+        "latitude": "52.5156662",
+        "id": "211224"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Freiwilligendienste Berlin",
+        "plz": "13355",
+        "city": "Berlin",
+        "street": "Grenzstra\u00dfe 1-5",
+        "federal_state": "Berlin",
+        "longitude": "13.3771119",
+        "latitude": "52.5411722",
+        "id": "211215"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Aufnahmewohnheim Rankestra\u00dfe",
+        "plz": "10789",
+        "city": "Berlin",
+        "street": "Rankestra\u00dfe 35",
+        "federal_state": "Berlin",
+        "longitude": "13.3357271",
+        "latitude": "52.5036338",
+        "id": "211351"
+      },
+      "ListimagePath": "\/img\/upload\/IB Berlin-Brandenburg\/Betrieb Berlin S\u00fcdwest\/Rankestra\u00dfe\/Neue Bilder\/Rankestrasse_Gallerie-2.jpg"
+    },
+    {
+      "Location": {
+        "name": "Betreutes Wohnen im Wohnverbund Lichtenberg",
+        "plz": "10367",
+        "city": "Berlin",
+        "street": "Wei\u00dfenseer Weg 7",
+        "federal_state": "Berlin",
+        "longitude": "13.4794065",
+        "latitude": "52.5291021",
+        "id": "211362"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Betreutes Einzelwohnen Berlin-Mitte",
+        "plz": "13357",
+        "city": "Berlin",
+        "street": "Badstra\u00dfe 22",
+        "federal_state": "Berlin",
+        "longitude": "13.3822163",
+        "latitude": "52.5520457",
+        "id": "211268"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Betreutes Einzelwohnen Marzahn-Hellersdorf",
+        "plz": "12681",
+        "city": "Berlin",
+        "street": "Allee der Kosmonauten 32 c",
+        "federal_state": "Berlin",
+        "longitude": "0",
+        "latitude": "0",
+        "id": "211520"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Betreutes Einzelwohnen Treptow-K\u00f6penick",
+        "plz": "12439",
+        "city": "Berlin",
+        "street": "Schnellerstra\u00dfe 114",
+        "federal_state": "Berlin",
+        "longitude": "0",
+        "latitude": "0",
+        "id": "211521"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Berufsfachschule f\u00fcr Sozialassistenz",
+        "plz": "12057",
+        "city": "Berlin",
+        "street": "Neuk\u00f6llnische Allee 10-12",
+        "federal_state": "Berlin",
+        "longitude": "13.45772",
+        "latitude": "52.46884",
+        "id": "211812"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Betreutes Einzelwohnen Friedrichshain-Kreuzberg",
+        "plz": "10247",
+        "city": "Berlin",
+        "street": "Jessnerstra\u00dfe 7",
+        "federal_state": "Berlin",
+        "longitude": "13.4733632",
+        "latitude": "52.5130912",
+        "id": "211565"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Betreutes Einzelwohnen Pankow",
+        "plz": "10405",
+        "city": "Berlin",
+        "street": "Marienburger Stra\u00dfe 1",
+        "federal_state": "Berlin",
+        "longitude": "13.4226301",
+        "latitude": "52.5352541",
+        "id": "211566"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Kita T\u00f6pchiner Weg",
+        "plz": "12309",
+        "city": "Berlin",
+        "street": "T\u00f6pchiner Weg 127-129",
+        "federal_state": "Berlin",
+        "longitude": "13.415332700000022",
+        "latitude": "52.40647999999999",
+        "id": "211631"
+      },
+      "ListimagePath": "\/img\/upload\/IB Berlin-Brandenburg\/Betrieb Berlin S\u00fcdwest\/Kita Toepchiner Weg\/IB-Standort_Kita_Toepi_500x280px.jpg"
+    },
+    {
+      "Location": {
+        "name": "Betreutes Einzelwohnen Tempelhof-Sch\u00f6neberg",
+        "plz": "10829",
+        "city": "Berlin",
+        "street": "Leberstra\u00dfe 1-3",
+        "federal_state": "Berlin",
+        "longitude": "13.3617132",
+        "latitude": "52.4855472",
+        "id": "211828"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Betreutes Einzelwohnen Charlottenburg-Wilmersdorf",
+        "plz": "10719",
+        "city": "Berlin",
+        "street": "Bundesallee 24",
+        "federal_state": "Berlin",
+        "longitude": "13.3306418",
+        "latitude": "52.4983693",
+        "id": "211869"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Guide - Projekt der Berliner Wohnungslosenhilfe",
+        "plz": "10717",
+        "city": "Berlin",
+        "street": "Trautenaustra\u00dfe 5",
+        "federal_state": "Berlin",
+        "longitude": "13.3298266",
+        "latitude": "52.4933457",
+        "id": "211806"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Fachschule f\u00fcr Sozialp\u00e4dagogik",
+        "plz": "10407",
+        "city": "Berlin",
+        "street": "Storkower Stra\u00dfe 139 b",
+        "federal_state": "Berlin",
+        "longitude": "13.4565095",
+        "latitude": "52.5338928",
+        "id": "211814"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Beratungsstelle Frauentreff Kottbusser Stra\u00dfe",
+        "plz": "10999",
+        "city": "Berlin (Friedrichshain-Kreuzberg)",
+        "street": "Kottbusser Str. 17",
+        "federal_state": "Berlin",
+        "longitude": "13.4197",
+        "latitude": "52.49712",
+        "id": "210443"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Region Berlin S\u00fcdwest",
+        "plz": "12103",
+        "city": "Berlin (Tempelhof-Sch\u00f6neberg)",
+        "street": "Alboinstra\u00dfe 17-23",
+        "federal_state": "Berlin",
+        "longitude": "13.3707",
+        "latitude": "52.46843",
+        "id": "211350"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Region Berlin Nordost",
+        "plz": "12435",
+        "city": "Berlin (Treptow-K\u00f6penick)",
+        "street": "Herkomerstra\u00dfe 4",
+        "federal_state": "Berlin",
+        "longitude": "13.4633008",
+        "latitude": "52.4864593",
+        "id": "211361"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "KLUB AM STEINTOR",
+        "plz": "16321",
+        "city": "Bernau",
+        "street": "Berliner Str. 1",
+        "federal_state": "Brandenburg",
+        "longitude": "13.5911448",
+        "latitude": "52.678383",
+        "id": "207523"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Bereich Barnim",
+        "plz": "16321",
+        "city": "Bernau bei Berlin",
+        "street": "Zepernicker Chaussee 1",
+        "federal_state": "Brandenburg",
+        "longitude": "13.5733756",
+        "latitude": "52.6746585",
+        "id": "207513"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Stadtteilzentrum S\u00fcdstern",
+        "plz": "16321",
+        "city": "Bernau bei Berlin",
+        "street": "Merkurstra\u00dfe 17",
+        "federal_state": "Brandenburg",
+        "longitude": "13.6001988",
+        "latitude": "52.6720092",
+        "id": "210990"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Projekt \u00dcbergangscoach in Betzdorf\/ Bertha-von-Suttner Realschule plus",
+        "plz": "57518",
+        "city": "Betzdorf",
+        "street": "Auf dem B\u00fchl 1",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.867359",
+        "latitude": "50.7865906",
+        "id": "211664"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL III 2017\/\u00dcbergangscoach in RLP\/IB_Uebergangscoach_an-Schulen_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Projekt \u00dcbergangscoach in Betzdorf-Kirchen\/ IGS",
+        "plz": "57518",
+        "city": "Betzdorf",
+        "street": "Kirchener Str. 64",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.87869",
+        "latitude": "50.79635",
+        "id": "211679"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL III 2017\/\u00dcbergangscoach in RLP\/IB_Uebergangscoach_an-Schulen_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Berufseinstiegsbegleitung \u2013 Realschule plus Betzdorf",
+        "plz": "57518",
+        "city": "Betzdorf",
+        "street": "Sch\u00fctzenstra\u00dfe 62",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.873300200000001",
+        "latitude": "50.79542600000001",
+        "id": "211892"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Berufliche Bildung\/IB_BerEb_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Berufseinstiegsbegleitung \u2013 Integrierte Gesamtschule\/Realschule plus Betzdorf-Kirchen Geschwister Scholl",
+        "plz": "57518",
+        "city": "Betzdorf",
+        "street": "Kirchener Str. 64",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.878745899999998",
+        "latitude": "50.796436",
+        "id": "211893"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Berufliche Bildung\/IB_BerEb_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "PWG gGmbH \"Haus am Bibowsee\" Fachpflegeeinrichtung",
+        "plz": "19417",
+        "city": "Bibow OT Nisbill",
+        "street": "Am See 1",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "11.61991",
+        "latitude": "53.81233",
+        "id": "211360"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/PWG gGmbH\/PWG_Nisbill_Listenansicht.jpg"
+    },
+    {
+      "Location": {
+        "name": "Sprachinstitut Bielefeld *",
+        "plz": "33602",
+        "city": "Bielefeld",
+        "street": "Herforder Str.14",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "8.53515",
+        "latitude": "52.02488",
+        "id": "210679"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Freiwilligendienste Bielefeld",
+        "plz": "33602",
+        "city": "Bielefeld",
+        "street": "Herforder Str.14",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "8.53515",
+        "latitude": "52.02488",
+        "id": "211269"
+      },
+      "ListimagePath": "\/img\/upload\/FD IB West\/IB West Bielefeld\/DIY FSJ.png"
+    },
+    {
+      "Location": {
+        "name": "Kinder- und Jugendhilfe und Soziale Arbeit Bingen ",
+        "plz": "55411",
+        "city": "Bingen",
+        "street": "Gaustr. 18",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.8939295",
+        "latitude": "49.9628263",
+        "id": "204245"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL III 2017\/Mainz\/KIJU Bopp\/IB_Mainz_Schuelerhilfe_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Kindertagesst\u00e4tte \"L\u00fctt Matten\" Binz",
+        "plz": "18609",
+        "city": "Binz",
+        "street": "Dollahner Str. 77 a",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "13.59179",
+        "latitude": "54.41573",
+        "id": "206359"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/Stralsund\/binz2.jpg"
+    },
+    {
+      "Location": {
+        "name": "Freizeitzentrum Binz",
+        "plz": "18609",
+        "city": "Binz",
+        "street": "Dollahner Str. 77 a",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "13.59179",
+        "latitude": "54.41573",
+        "id": "206363"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/IB_Nord_StandortJugend7.jpg"
+    },
+    {
+      "Location": {
+        "name": "Jugendhilfe Birkenfeld ",
+        "plz": "55765",
+        "city": "Birkenfeld",
+        "street": "Brechkaul 6",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.1704572",
+        "latitude": "49.6451417",
+        "id": "204215"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL III 2017\/Birkenfeld\/IB-Birkenfeld_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Berufseinstiegsbegleitung: Mosel-Hamm-Schule (SFL) & Realschule plus",
+        "plz": "56856",
+        "city": "Blankenrath",
+        "street": "Waldstra\u00dfe",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.302608",
+        "latitude": "50.0433707",
+        "id": "211325"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RLIII\/Blankenrath\/IB-Suedwest- Berufseinstiegsbegleitung-Angebot.jpg"
+    },
+    {
+      "Location": {
+        "name": "Wohnverbund Bliesdorf",
+        "plz": "16269",
+        "city": "Bliesdorf",
+        "street": "Am Gewerbepark 1 und 2",
+        "federal_state": "Brandenburg",
+        "longitude": "14.1382849",
+        "latitude": "52.6997907",
+        "id": "211759"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Soziale Arbeit B\u00f6blingen ",
+        "plz": "71032",
+        "city": "B\u00f6blingen",
+        "street": "Olgastra\u00dfe 11",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "9.1712845",
+        "latitude": "48.7666484",
+        "id": "211163"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Bildungszentrum B\u00f6blingen und Ehningen",
+        "plz": "71032",
+        "city": "B\u00f6blingen",
+        "street": "Bunsenstra\u00dfe 18 und 22",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "9.0181668",
+        "latitude": "48.6889423",
+        "id": "202418"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcd\/IMG_3602_blur_IB S\u00fcd Keyvisual_Fu\u00dfzeile 2.jpg"
+    },
+    {
+      "Location": {
+        "name": "IB Berufliche Schulen B\u00f6blingen",
+        "plz": "71034",
+        "city": "B\u00f6blingen",
+        "street": "Liesel-Bach-Str. 26",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "93.3036439",
+        "latitude": "32.1827068",
+        "id": "210801"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB_Freiwilligendienste\/Hamburg\/2017\/images\/post-img01.jpg"
+    },
+    {
+      "Location": {
+        "name": "Sprachinstitut B\u00f6blingen  ",
+        "plz": "71032",
+        "city": "B\u00f6blingen",
+        "street": "R\u00f6hrer Weg 7",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "9.0139003",
+        "latitude": "48.6728308",
+        "id": "211406"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcd\/IMG_3602_blur_IB S\u00fcd Keyvisual_Fu\u00dfzeile 2.jpg"
+    },
+    {
+      "Location": {
+        "name": "Betriebsst\u00e4tte Bochum Querenburger Str. ",
+        "plz": "44789",
+        "city": "Bochum",
+        "street": "Querenburger Str. 19-23",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "7.229620000000001",
+        "latitude": "51.47002999999999",
+        "id": "209408"
+      },
+      "ListimagePath": "\/img\/upload\/2018 IB West FD Bochum\/Seminarbilder 2017_18\/IB Bochum Au\u00dfenansicht.jpg"
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst Landkreis Mainz-Bingen",
+        "plz": "55294",
+        "city": "Bodenheim, Rhein",
+        "street": "Am K\u00fcmmerling 21-25",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "8.3202944",
+        "latitude": "49.9246653",
+        "id": "211365"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Migrations- und Fl\u00fcchtlingsarbeit\/IB_Suedwest_JMD_Migration_Standort4.jpg"
+    },
+    {
+      "Location": {
+        "name": "Kita- und Schulbegleitung im Landkreis Mainz-Bingen",
+        "plz": "55294",
+        "city": "Bodenheim, Rhein",
+        "street": "Am K\u00fcmmerling 21-25",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "8.3202944",
+        "latitude": "49.9246653",
+        "id": "211358"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Ganztagsbetreuung an Schulen\/IB_Suedwest_Ganztagsbetreuung-an-Schulen_Standort3.jpg"
+    },
+    {
+      "Location": {
+        "name": "Familien- und Erziehungsberatung; sozialp\u00e4dagogische Familienhilfe \/ Erziehungsbeistand ",
+        "plz": "19258",
+        "city": "Boizenburg \/ Elbe",
+        "street": "Markt 7",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "10.7231895",
+        "latitude": "53.3741107",
+        "id": "206303"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/IB_Nord_Standort_Jugend1.jpg"
+    },
+    {
+      "Location": {
+        "name": "Schulsozialarbeit Regionale Schule \"Rudolf Tarnow\" Boizenburg",
+        "plz": "19258",
+        "city": "Boizenburg \/ Elbe",
+        "street": "Richard-Markmann-Str. 59",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "10.7308694",
+        "latitude": "53.3824156",
+        "id": "206375"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/IB_Nord_Standort_Jugend3.jpg"
+    },
+    {
+      "Location": {
+        "name": "Schulsozialarbeit F\u00f6rderschule Boizenburg",
+        "plz": "19258",
+        "city": "Boizenburg \/ Elbe",
+        "street": "Theodor-K\u00f6rner-Str. 5A",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "10.7293",
+        "latitude": "53.38211",
+        "id": "206376"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/IB_Nord_Standort_Jugend4.jpg"
+    },
+    {
+      "Location": {
+        "name": "Schulsozialarbeit Grundschule Ludwig Reinhard",
+        "plz": "19258",
+        "city": "Boizenburg \/ Elbe",
+        "street": "An der Qu\u00f6bbe 10",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "10.72365",
+        "latitude": "53.37683",
+        "id": "210747"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/IB_Nord_Standort_Jugend1.jpg"
+    },
+    {
+      "Location": {
+        "name": "Schulsozialarbeit Elbe-Gymnasium Boizenburg",
+        "plz": "19258",
+        "city": "Boizenburg \/ Elbe",
+        "street": "Ludwig-Reinhard-Str. 21",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "10.7319199999999",
+        "latitude": "53.38411",
+        "id": "210748"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/IB_Nord_Standort_8.jpg"
+    },
+    {
+      "Location": {
+        "name": "Schulsozialarbeit Grundschule An den Eichen Boizenburg",
+        "plz": "19258",
+        "city": "Boizenburg \/ Elbe",
+        "street": "Breitscheidstr. 32",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "10.72392",
+        "latitude": "53.38167",
+        "id": "210871"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/IB_Nord_Standort_Jugend3.jpg"
+    },
+    {
+      "Location": {
+        "name": "IB Kinder- und Jugendwohnung \"Boizehaus\" ",
+        "plz": "19258",
+        "city": "Boizenburg\/Elbe",
+        "street": "M\u00fchlenteich 1",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "10.72078",
+        "latitude": "53.37773",
+        "id": "210060"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/IB_Nord_StandortJugend5.jpg"
+    },
+    {
+      "Location": {
+        "name": "Betriebsst\u00e4tte Bonn ",
+        "plz": "53121",
+        "city": "Bonn",
+        "street": "Justus-von-Liebig-Stra\u00dfe 18",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "7.0576981",
+        "latitude": "50.7400622",
+        "id": "210100"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Kinderhaus \u00bbPestalozzi\u00ab",
+        "plz": "04552",
+        "city": "Borna",
+        "street": "Johann-Sebastian-Bach-Str. 12",
+        "federal_state": "Sachsen",
+        "longitude": "12.4989934",
+        "latitude": "51.127169",
+        "id": "208419"
+      },
+      "ListimagePath": "\/img\/upload\/IB-Mitte_NEU2017\/S1_Erziehungshilfen\/Sachsen\/U_HzE_Borna_KiHa_2017_Logo.jpg"
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst Leipzig - Beratungsstelle Borna",
+        "plz": "04552",
+        "city": "Borna",
+        "street": "Abtsdorfer Str. 36",
+        "federal_state": "Sachsen",
+        "longitude": "12.4849186",
+        "latitude": "51.1268928",
+        "id": "210231"
+      },
+      "ListimagePath": "\/img\/upload\/IB-Mitte_NEU2017\/S4_Migration\/Sachsen\/P_JMD_Leipzig_2017.jpg"
+    },
+    {
+      "Location": {
+        "name": "Tagesgruppe \"Apfelb\u00e4umchen\" ",
+        "plz": "14772",
+        "city": "Brandenburg a. d. Havel",
+        "street": "Beethovenstr. 24",
+        "federal_state": "Brandenburg",
+        "longitude": "12.5218272",
+        "latitude": "52.427506",
+        "id": "201953"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Kinder- und Jugendwohngruppe \"Hoffnung\" ",
+        "plz": "14770",
+        "city": "Brandenburg a. d. Havel",
+        "street": "Kapellenstr. 24",
+        "federal_state": "Brandenburg",
+        "longitude": "12.5540298",
+        "latitude": "52.4152165",
+        "id": "202866"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Heilp\u00e4dagogische Kinder- und Jugendwohngruppe \"Regenbogen\" ",
+        "plz": "14776",
+        "city": "Brandenburg a. d. Havel",
+        "street": "Gro\u00dfe Gartenstr. 39",
+        "federal_state": "Brandenburg",
+        "longitude": "12.563721",
+        "latitude": "52.40174",
+        "id": "207215"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Kindertagesst\u00e4tte \"Pusteblume\" ",
+        "plz": "14772",
+        "city": "Brandenburg a. d. Havel",
+        "street": "Beethovenstra\u00dfe 24",
+        "federal_state": "Brandenburg",
+        "longitude": "12.5218272",
+        "latitude": "52.427506",
+        "id": "207216"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/Kita-Bilder\/Kita_Standorte\/kita_340_04.jpg"
+    },
+    {
+      "Location": {
+        "name": "Hort \"Max und Moritz\"",
+        "plz": "14770",
+        "city": "Brandenburg a. d. Havel",
+        "street": "Neuendorfer Stra\u00dfe 12",
+        "federal_state": "Brandenburg",
+        "longitude": "12.5459778",
+        "latitude": "52.4085456",
+        "id": "207239"
+      },
+      "ListimagePath": "\/img\/upload\/IB Berlin-Brandenburg\/BBNW\/brb_max_moritz13.jpg"
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst (JMD) Brandenburg ",
+        "plz": "14772",
+        "city": "Brandenburg a. d. Havel",
+        "street": "Walther-Ausl\u00e4nder-Str. 1",
+        "federal_state": "Brandenburg",
+        "longitude": "12.5223137",
+        "latitude": "52.4348953",
+        "id": "210034"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Ambulante Erziehungshilfen in Brandenburg a. d. Havel ",
+        "plz": "14772",
+        "city": "Brandenburg a. d. Havel",
+        "street": "Johannisburger Anger 4",
+        "federal_state": "Brandenburg",
+        "longitude": "12.49558",
+        "latitude": "52.42989",
+        "id": "209960"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Mutter-Vater-Kind-Haus \"Brummkreisel\" ",
+        "plz": "14770",
+        "city": "Brandenburg a. d. Havel",
+        "street": "Gobbinstr. 19",
+        "federal_state": "Brandenburg",
+        "longitude": "12.52549",
+        "latitude": "52.41283",
+        "id": "210059"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Jugendwohngemeinschaft \"Sternendach\" ",
+        "plz": "14776",
+        "city": "Brandenburg a. d. Havel",
+        "street": "Kleine Gartenstr. 50c",
+        "federal_state": "Brandenburg",
+        "longitude": "12.562132",
+        "latitude": "52.4040815",
+        "id": "209961"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Betreutes Einzelwohnen in Brandenburg a. d. Havel",
+        "plz": "14772",
+        "city": "Brandenburg a. d. Havel",
+        "street": "Johannisburger Anger 4",
+        "federal_state": "Brandenburg",
+        "longitude": "12.49558",
+        "latitude": "52.42989",
+        "id": "211695"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Freiwilligendienste Region Brandenburg Nordwest",
+        "plz": "14772",
+        "city": "Brandenburg a.d. Havel",
+        "street": "Johannisburger Anger 4",
+        "federal_state": "Brandenburg",
+        "longitude": "12.49558",
+        "latitude": "52.42989",
+        "id": "27897"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Projekt Jugendhilfe \/ Schule 2020 \u2013 Modell B",
+        "plz": "14772",
+        "city": "Brandenburg an der Havel",
+        "street": "Johannisburger Anger 4",
+        "federal_state": "Brandenburg",
+        "longitude": "12.49558",
+        "latitude": "52.42989",
+        "id": "211834"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Mehrf\u00f6rderung in Kindergarten und Hort",
+        "plz": "14772",
+        "city": "Brandenburg an der Havel",
+        "street": "Johannisburger Anger 4",
+        "federal_state": "Brandenburg",
+        "longitude": "12.49558",
+        "latitude": "52.42989",
+        "id": "211844"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Fachdienstberatung Migration Brandenburg an der Havel",
+        "plz": "14776",
+        "city": "Brandenburg an der Havel",
+        "street": "Gro\u00dfe Gartenstra\u00dfe 4",
+        "federal_state": "Brandenburg",
+        "longitude": "12.5599053",
+        "latitude": "52.4035975",
+        "id": "211734"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Lernf\u00f6rderung und Nachhilfe beim IB",
+        "plz": "14772",
+        "city": "Brandenburg an der Havel",
+        "street": "Johannisburger Anger 4",
+        "federal_state": "Brandenburg",
+        "longitude": "12.49558",
+        "latitude": "52.42989",
+        "id": "211811"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Sozialarbeit an Schulen Braunfels",
+        "plz": "35619",
+        "city": "Braunfels",
+        "street": "Felsenkellerweg 21",
+        "federal_state": "Hessen",
+        "longitude": "8.4032313",
+        "latitude": "50.5092299",
+        "id": "211025"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Ganztagsbetreuung an Schulen\/IB_Suedwest_Ganztagsbetreuung-an-Schulen_Jugendliche_Standort1.jpg"
+    },
+    {
+      "Location": {
+        "name": "Betriebsst\u00e4tte Bremen ",
+        "plz": "28207",
+        "city": "Bremen",
+        "street": "Hastedter Heerstra\u00dfe 290",
+        "federal_state": "Bremen",
+        "longitude": "8.87608590000002",
+        "latitude": "53.0663088",
+        "id": "211006"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Freiwilligendienste Bremen",
+        "plz": "28207",
+        "city": "Bremen",
+        "street": "Hastedter Heerstra\u00dfe 290",
+        "federal_state": "Bremen",
+        "longitude": "8.87608590000002",
+        "latitude": "53.0663088",
+        "id": "210999"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB RLP-Saarl.\/Bilder eingestellt\/FSJ\/IB_FSJ 1.JPG"
+    },
+    {
+      "Location": {
+        "name": "Wohnanlage Breuberg mit integrierter Tagesstruktur",
+        "plz": "64747",
+        "city": "Breuberg",
+        "street": "Am Alten S\u00e4gewerk 6",
+        "federal_state": "Hessen",
+        "longitude": "9.0497654",
+        "latitude": "49.8145823",
+        "id": "211848"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL I 2017\/Breuberg\/Breuberg_Galerie4.jpg"
+    },
+    {
+      "Location": {
+        "name": "Jugendarbeit Britz-Chorin-Oderberg",
+        "plz": "16230",
+        "city": "Britz bei Eberswalde",
+        "street": "Eisenwerkstr. 9",
+        "federal_state": "Brandenburg",
+        "longitude": "13.8219794",
+        "latitude": "52.8751208",
+        "id": "210987"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Bildungszentrum Bruchsal",
+        "plz": "76646",
+        "city": "Bruchsal",
+        "street": "Kinzigstr. 10",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "8.59419",
+        "latitude": "49.13385",
+        "id": "202318"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Betriebsst\u00e4tte Br\u00fchl, Hilfen f\u00fcr Auszubildende",
+        "plz": "50321",
+        "city": "Br\u00fchl (Rheinland)",
+        "street": "M\u00fchlenstr. 59",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "6.901964200000066",
+        "latitude": "50.828998",
+        "id": "210102"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Betriebsst\u00e4tte Br\u00fchl, Herm\u00fclheimer Str. ",
+        "plz": "50321",
+        "city": "Br\u00fchl (Rheinland)",
+        "street": "Herm\u00fclheimer Str. 10",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "6.90611",
+        "latitude": "50.84493",
+        "id": "211218"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Famili\u00e4re Aussenstelle Rautenberg ",
+        "plz": "17039",
+        "city": "Brunn",
+        "street": "Am Anger 4",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "13.3319123",
+        "latitude": "53.5869268",
+        "id": "206347"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/IB_Nord_StandortKita4.jpg"
+    },
+    {
+      "Location": {
+        "name": "Kinder - und Jugendwohngruppe B\u00fcchen",
+        "plz": "21514",
+        "city": "B\u00fcchen",
+        "street": "An den Eichgr\u00e4ben 3",
+        "federal_state": "Schleswig-Holstein",
+        "longitude": "10.6167399999999",
+        "latitude": "53.48114",
+        "id": "211472"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/Schleswig-Holstein\/Bilder\/KiJu-Wo B\u00fcchen\/Haus R\u00fcckseite.JPG"
+    },
+    {
+      "Location": {
+        "name": "Kinder- und Jugendheim \"Friedrich Fr\u00f6bel\" Buchfart ",
+        "plz": "99438",
+        "city": "Buchfart",
+        "street": "Am Oetterschen Weg 27 b",
+        "federal_state": "Th\u00fcringen",
+        "longitude": "11.3345277",
+        "latitude": "50.9201727",
+        "id": "208612"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "IB B\u00fcdingen",
+        "plz": "63654",
+        "city": "B\u00fcdingen",
+        "street": "Bismarckstra\u00dfe 24",
+        "federal_state": "Hessen",
+        "longitude": "9.11334510000006",
+        "latitude": "50.2849871",
+        "id": "211561"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Migrations- und Fl\u00fcchtlingsarbeit\/Migration_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Psychosoziale Kontakt- und Beratungsstelle B\u00fcdingen",
+        "plz": "63654",
+        "city": "B\u00fcdingen, Hessen",
+        "street": "Berliner Str. 9",
+        "federal_state": "Hessen",
+        "longitude": "9.10731",
+        "latitude": "50.28853",
+        "id": "210943"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL II 2017\/Friedberg\/IB_Friedberg_Buedingen_PSK_photocase_jala_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "IB Butzbach",
+        "plz": "35510",
+        "city": "Butzbach",
+        "street": "Griedeler Str. 42",
+        "federal_state": "Hessen",
+        "longitude": "8.67525",
+        "latitude": "50.435119",
+        "id": "211354"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Migrations- und Fl\u00fcchtlingsarbeit\/IB_Suedwest_Migration_Fluechtlinge_Galerie.jpg"
+    },
+    {
+      "Location": {
+        "name": "Wohngruppe B\u00fctzow  ",
+        "plz": "18246",
+        "city": "B\u00fctzow",
+        "street": "Andreassteig 10",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "11.99402",
+        "latitude": "53.83753",
+        "id": "206319"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/IB_Nord_StandortJugend6.jpg"
+    },
+    {
+      "Location": {
+        "name": "Bildungszentrum Nordschwarzwald Au\u00dfenstelle Calw",
+        "plz": "75365",
+        "city": "Calw",
+        "street": "Gottlob-Bauknecht-Str. 31",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "8.76833",
+        "latitude": "48.70602",
+        "id": "202515"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcd\/IMG_3602_blur_IB S\u00fcd Keyvisual_Fu\u00dfzeile 2.jpg"
+    },
+    {
+      "Location": {
+        "name": "Betriebsst\u00e4tte Celle ",
+        "plz": "29221",
+        "city": "Celle",
+        "street": "Altencellertorstr. 4",
+        "federal_state": "Niedersachsen",
+        "longitude": "10.0864231839573",
+        "latitude": "52.6237516441494",
+        "id": "210892"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Seniorenzentrum Chemnitz                      \u00abEmanuel Gottlieb Flemming\u00bb",
+        "plz": "09116",
+        "city": "Chemnitz",
+        "street": "Flemmingstr. 8",
+        "federal_state": "Sachsen",
+        "longitude": "12.875856",
+        "latitude": "50.8414775",
+        "id": "202802"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB Sachsen\/Fu\u00dfzeile\/VB-Sa_F_FD_2.jpg"
+    },
+    {
+      "Location": {
+        "name": "Physiotherapie und Fu\u00dfpflege im Reha-Zentrum Chemnitz",
+        "plz": "09116",
+        "city": "Chemnitz",
+        "street": "Flemmingstr. 8, Haus 10",
+        "federal_state": "Sachsen",
+        "longitude": "12.875856",
+        "latitude": "50.8414775",
+        "id": "202882"
+      },
+      "ListimagePath": "\/img\/upload\/IB-Mitte_NEU2017\/S7_Seniorenarbeit\/Sachsen\/minikarte_physio_06.2018_SeiteI.jpg"
+    },
+    {
+      "Location": {
+        "name": "Gesch\u00e4ftsf\u00fchrung IB Mitte gGmbH ",
+        "plz": "09116",
+        "city": "Chemnitz",
+        "street": "Flemmingstr. 8, Haus 23",
+        "federal_state": "Sachsen",
+        "longitude": "12.875856",
+        "latitude": "50.8414775",
+        "id": "209073"
+      },
+      "ListimagePath": "\/img\/upload\/IB-Mitte_NEU2017\/Mitte Gesamt\/GF_500-280.jpg"
+    },
+    {
+      "Location": {
+        "name": "Bildungszentrum Chemnitz ",
+        "plz": "09116",
+        "city": "Chemnitz",
+        "street": "Flemmingstr. 8, Haus 48",
+        "federal_state": "Sachsen",
+        "longitude": "12.875856",
+        "latitude": "50.8414775",
+        "id": "209129"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Berufseinstiegsbegleitung - Realschule plus Cochem",
+        "plz": "56812",
+        "city": "Cochem",
+        "street": "Schlo\u00dfstra\u00dfe 34",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.163619999999999",
+        "latitude": "50.14291",
+        "id": "211308"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL III 2017\/Koblenz\/Berufseinstiegsbegleitung\/IB_Koblenz_Berufseinstiegsbegleitung_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Soziale Arbeit Cochem",
+        "plz": "56812",
+        "city": "Cochem",
+        "street": "Endertstr. 84-88",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.1577723",
+        "latitude": "50.1500718",
+        "id": "204277"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Projekt \u00dcbergangscoach in Cochem\/ Realschule plus Cochem",
+        "plz": "56812",
+        "city": "Cochem",
+        "street": "Schlossstra\u00dfe 34",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.163619999999999",
+        "latitude": "50.14291",
+        "id": "211649"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL III 2017\/\u00dcbergangscoach in RLP\/IB_Uebergangscoach_an-Schulen_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Betriebsst\u00e4tte   Coesfeld-Stockum ",
+        "plz": "48653",
+        "city": "Coesfeld",
+        "street": "Stockum 1",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "7.1312905",
+        "latitude": "51.9389857",
+        "id": "209499"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Betriebsst\u00e4tte Coesfeld S\u00fcdring",
+        "plz": "48653",
+        "city": "Coesfeld",
+        "street": "S\u00fcdring 12",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "7.1691184",
+        "latitude": "51.9426383",
+        "id": "210810"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Jugendhilfe & Migration Jugendmigrationsdienst Dachau",
+        "plz": "85221",
+        "city": "Dachau",
+        "street": "Friedenstra\u00dfe 51",
+        "federal_state": "Bayern",
+        "longitude": "11.4492617",
+        "latitude": "48.2634962",
+        "id": "211476"
+      },
+      "ListimagePath": "\/img\/upload\/JuhiMi\/JMD_3_Galerie.gif"
+    },
+    {
+      "Location": {
+        "name": "IB Kindertagesst\u00e4tte Danstedt",
+        "plz": "38855",
+        "city": "Danstedt",
+        "street": "Sandfurter Str. 66",
+        "federal_state": "Sachsen-Anhalt",
+        "longitude": "10.88829",
+        "latitude": "51.91237",
+        "id": "211603"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Bildungszentrum Darmstadt",
+        "plz": "64293",
+        "city": "Darmstadt",
+        "street": "Frankfurter Str. 73",
+        "federal_state": "Hessen",
+        "longitude": "8.6523409",
+        "latitude": "49.8871034",
+        "id": "204405"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL I 2017\/IB_Darmstadt_Bildungszentrum_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Bildungszentrum Darmstadt Justizvollzugsanstalt (JVA), Eberstadt",
+        "plz": "64297",
+        "city": "Darmstadt",
+        "street": "Marienburger Str. 74",
+        "federal_state": "Hessen",
+        "longitude": "8.6342625",
+        "latitude": "49.7764268",
+        "id": "204407"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Berufliche Bildung\/IB_Suedwest_Berufliche-Bildung_Standort-5.jpg"
+    },
+    {
+      "Location": {
+        "name": "Jugendcaf\u00e9 Chillmo Darmstadt-Kranichstein",
+        "plz": "64289",
+        "city": "Darmstadt",
+        "street": "Bartningstr. 26",
+        "federal_state": "Hessen",
+        "longitude": "8.682314",
+        "latitude": "49.899722",
+        "id": "204430"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL I\/Darmstadt\/Chillmo\/IB_Darmstadt_Cafe_Chillmo_Angebote.jpg"
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst (JMD) Darmstadt",
+        "plz": "64289",
+        "city": "Darmstadt",
+        "street": "Marburger Str. 2",
+        "federal_state": "Hessen",
+        "longitude": "8.653547",
+        "latitude": "49.887315",
+        "id": "210276"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Migrations- und Fl\u00fcchtlingsarbeit\/IB_Suedwest_Migration_Fluechtlingsarbeit_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "IB Fanprojekt Darmstadt ",
+        "plz": "64283",
+        "city": "Darmstadt",
+        "street": "Erbacher Str. 1",
+        "federal_state": "Hessen",
+        "longitude": "8.6615936",
+        "latitude": "49.8746099",
+        "id": "210185"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL I 2017\/Fu\u00dfballfanprojekt Darmstadt\/IB_Darmstadt_Fu\u00dfballfanprojekt_Galerie-1.jpg"
+    },
+    {
+      "Location": {
+        "name": "IB Sprachzentrum Darmstadt",
+        "plz": "64289",
+        "city": "Darmstadt",
+        "street": "Marburger Str. 2",
+        "federal_state": "Hessen",
+        "longitude": "8.65343",
+        "latitude": "49.8874342",
+        "id": "211785"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL I 2017\/Sprachzentrum Darmstadt\/IB Sprachzentrum_Darmstadt_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Integrationsfachdienst Darmstadt-Dieburg",
+        "plz": "64293",
+        "city": "Darmstadt",
+        "street": "Frankfurter Str. 73",
+        "federal_state": "Hessen",
+        "longitude": "8.6525086",
+        "latitude": "49.8868348",
+        "id": "210508"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Behindertenhilfe\/IB_Suedwest_Integrationsfachdienste_IFD_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Freiwilligendienste Darmstadt ",
+        "plz": "64293",
+        "city": "Darmstadt",
+        "street": "Frankfurter Stra\u00dfe 73",
+        "federal_state": "Hessen",
+        "longitude": "8.653547",
+        "latitude": "49.887315",
+        "id": "210913"
+      },
+      "ListimagePath": "\/img\/upload\/FWD Darmstadt\/Neuer Ordner 1\/Darmi.jpg"
+    },
+    {
+      "Location": {
+        "name": "Integration durch Qualifizierung",
+        "plz": "64293",
+        "city": "Darmstadt",
+        "street": "Frankfurter Str. 73",
+        "federal_state": "Hessen",
+        "longitude": "8.6525086",
+        "latitude": "49.8868348",
+        "id": "210933"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL I 2017\/Integration durch Qualifizierung\/IB_Integration-durch-Qualifizierung.jpg"
+    },
+    {
+      "Location": {
+        "name": "Schulsozialarbeit an den Berufsschulen in Darmstadt",
+        "plz": "64293",
+        "city": "Darmstadt",
+        "street": "Frankfurter Str. 73",
+        "federal_state": "Hessen",
+        "longitude": "8.652508599999997",
+        "latitude": "49.8868348",
+        "id": "211776"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Ganztagsbetreuung an Schulen\/IB_Suedwest_Ganztagsbetreuung-an-Schulen_Jugendliche_Standort1.jpg"
+    },
+    {
+      "Location": {
+        "name": " IB S\u00fcdwest gGmbH ",
+        "plz": "64289",
+        "city": "Darmstadt",
+        "street": "Bad Nauheimer Str. 6",
+        "federal_state": "Hessen",
+        "longitude": "8.6523409",
+        "latitude": "49.8871034",
+        "id": "211216"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Geschaeftsfuehrung\/IB S\u00fcdwest Banner_Angebot.jpg"
+    },
+    {
+      "Location": {
+        "name": "IB S\u00fcdwest gGmbH - Region Hessen S\u00fcd",
+        "plz": "64293",
+        "city": "Darmstadt",
+        "street": "Frankfurter Str. 73",
+        "federal_state": "Hessen",
+        "longitude": "8.65250860000003",
+        "latitude": "49.8868348",
+        "id": "211522"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL I 2017\/IB S\u00fcdhessen\/IB_Suedhessen_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Ambulante Angebote f\u00fcr Menschen mit Beeintr\u00e4chtigung",
+        "plz": "64293",
+        "city": "Darmstadt",
+        "street": "Frankfurter Str. 73",
+        "federal_state": "Hessen",
+        "longitude": "8.652508599999997",
+        "latitude": "49.8868348",
+        "id": "211757"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL I 2017\/Ambulante Angebote f\u00fcr mensche mit Beeintr\u00e4chtigung\/Ambulante-Unterstuezung-fuer-Menschen-mit-Beeintraechtigung_IB_Teaser.jpg"
+    },
+    {
+      "Location": {
+        "name": "Kinderhaus Paradies",
+        "plz": "64297",
+        "city": "Darmstadt-Eberstadt",
+        "street": "Stresemannstr. 1",
+        "federal_state": "Hessen",
+        "longitude": "8.64209",
+        "latitude": "49.80569",
+        "id": "204422"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL I 2017\/DA Kinderhaus Paradies\/IB_Darmstadt_Kinderhaus-Paradies_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst (JMD) Darmstadt-Eberstadt ",
+        "plz": "64297",
+        "city": "Darmstadt-Eberstadt",
+        "street": "Kirnbergerstr.12",
+        "federal_state": "Hessen",
+        "longitude": "8.64944",
+        "latitude": "49.8706",
+        "id": "210215"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Migrations- und Fl\u00fcchtlingsarbeit\/IB_Suedwest_Migration_Fluechtlingsarbeit_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Kinderwohngruppe \"Kindervilla\" Dassendorf",
+        "plz": "21521",
+        "city": "Dassendorf",
+        "street": "Flachsthumweg ",
+        "federal_state": "Schleswig-Holstein",
+        "longitude": "10.3600259",
+        "latitude": "53.4987412",
+        "id": "211856"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/Bilder\/Standortbilder\/Hilfen zur Erziehung\/baby-3369549.jpg"
+    },
+    {
+      "Location": {
+        "name": "EUTB Delmenhorst",
+        "plz": "27749",
+        "city": "Delmenhorst",
+        "street": "Kirchpl. 8-10",
+        "federal_state": "Niedersachsen",
+        "longitude": "8.630589999999984",
+        "latitude": "53.05032",
+        "id": "211487"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Kindertagesst\u00e4tte \"S\u00fcdmauer\" ",
+        "plz": "17109",
+        "city": "Demmin",
+        "street": "S\u00fcdmauer 8",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "13.03371",
+        "latitude": "53.90599",
+        "id": "206346"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/Neubrandenburg\/MSP_Demmin4.JPG"
+    },
+    {
+      "Location": {
+        "name": "IB Kinder- und Jugendwohnungen Dersenow",
+        "plz": "19260",
+        "city": "Dersenow",
+        "street": "Bergstr. 20",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "10.89156",
+        "latitude": "53.38007",
+        "id": "206305"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/IB_Nord_StandortJugend8.jpg"
+    },
+    {
+      "Location": {
+        "name": "IB Dessau-Ro\u00dflau  WG \"Die kleinen Strolche\"",
+        "plz": "06847",
+        "city": "Dessau-Ro\u00dflau",
+        "street": "Junkersstra\u00dfe 8",
+        "federal_state": "Sachsen-Anhalt",
+        "longitude": "12.222629",
+        "latitude": "51.8287599",
+        "id": "211730"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "IB WB - Unterst\u00fctzte Besch\u00e4ftigung, Standort Dessau",
+        "plz": "06842",
+        "city": "Dessau-Ro\u00dflau",
+        "street": "Gutenbergstra\u00dfe 4",
+        "federal_state": "Sachsen-Anhalt",
+        "longitude": "12.236970299999939",
+        "latitude": "51.82134479999999",
+        "id": "211526"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "IB WB - Diagnose der Arbeitsmarktf\u00e4higkeit (DIA-AM), Standort Dessau",
+        "plz": "06842",
+        "city": "Dessau-Ro\u00dflau",
+        "street": "Gutenbergstra\u00dfe 4",
+        "federal_state": "Sachsen-Anhalt",
+        "longitude": "12.2369702999999",
+        "latitude": "51.8213448",
+        "id": "211525"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "IB Dessau-Ro\u00dflau",
+        "plz": "06844",
+        "city": "Dessau-Ro\u00dflau",
+        "street": "K\u00f6rnerstra\u00dfe 10 ",
+        "federal_state": "Sachsen -Anhalt",
+        "longitude": "0",
+        "latitude": "0",
+        "id": "211575"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "IB Dessau-Ro\u00dflau  WG \"Nest\"",
+        "plz": "06847",
+        "city": "Dessau-Ro\u00dflau",
+        "street": "Junkersstra\u00dfe 8",
+        "federal_state": "Sachsen-Anhalt",
+        "longitude": "12.222629",
+        "latitude": "51.8287599",
+        "id": "211731"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Projekt \u00dcbergangscoach in Dierdorf\/ Nelson-Mandela-Realschule plus",
+        "plz": "56269",
+        "city": "Dierdorf",
+        "street": "Schulstra\u00dfe 22",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.663919999999998",
+        "latitude": "50.54453999999999",
+        "id": "211666"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL III 2017\/\u00dcbergangscoach in RLP\/IB_Uebergangscoach_an-Schulen_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Berufseinstiegsbegleitung \u2013 Nelson-Mandela-Schule Realschule plus",
+        "plz": "56269",
+        "city": "Dierdorf",
+        "street": "Schulstra\u00dfe 22",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.6637435",
+        "latitude": "50.5451391",
+        "id": "211877"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Berufliche Bildung\/IB_BerEb_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst Dietenheim ",
+        "plz": "89165",
+        "city": "Dietenheim",
+        "street": "K\u00f6nigstr. 63",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "10.0698644",
+        "latitude": "48.2111161",
+        "id": "202431"
+      },
+      "ListimagePath": "\/img\/upload\/JuhiMi\/JMD_3_Galerie.gif"
+    },
+    {
+      "Location": {
+        "name": "Projekt \u00dcbergangscoach in Diez\/ Theodissa Realschule plus",
+        "plz": "65582",
+        "city": "Diez",
+        "street": "Danziger Str. 32",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "8.018508299999997",
+        "latitude": "50.3660547",
+        "id": "211669"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL III 2017\/\u00dcbergangscoach in RLP\/IB_Uebergangscoach_an-Schulen_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Bildungszentrum Dillenburg",
+        "plz": "35683",
+        "city": "Dillenburg",
+        "street": "Maibachstra\u00dfe 9",
+        "federal_state": "Hessen",
+        "longitude": "8.28991930000007",
+        "latitude": "50.7388569",
+        "id": "211634"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL I 2017\/Dillenburg\/IB-Dillenburg_Frau-Stark_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Betrieb Dinslaken Betriebsleitung u. Verwaltung",
+        "plz": "46535",
+        "city": "Dinslaken",
+        "street": "Thyssenstra\u00dfe 70",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "6.75112450000006",
+        "latitude": "51.5678723",
+        "id": "210310"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Offene Ganztagsschule Hagenschule (OGS)",
+        "plz": "46535",
+        "city": "Dinslaken",
+        "street": "Hagenstr. 139",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "6.7235953",
+        "latitude": "51.5674248",
+        "id": "210010"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/Hamburg\/Bilder\/Kita Schilfparkkinder\/Fleetkinder_IMG_1668.JPG"
+    },
+    {
+      "Location": {
+        "name": "Offene Ganztagsschule an der Gartenstra\u00dfe (OGS)",
+        "plz": "46535",
+        "city": "Dinslaken",
+        "street": "Gartenstr. 17",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "6.7330111",
+        "latitude": "51.5602432",
+        "id": "210011"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB NiSAB\/Bielefeld\/Kinder malen IB Bielefeld_deutsch lernen in Bielefeld.jpg"
+    },
+    {
+      "Location": {
+        "name": "Offene Ganztagsschule Am Weyer (OGS)",
+        "plz": "46539",
+        "city": "Dinslaken",
+        "street": "H\u00fcgelstr. 19",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "6.7700928",
+        "latitude": "51.5548871",
+        "id": "210012"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB Sachsen\/Fu\u00dfzeile\/VB-Sa_F_Kinder_1.jpg"
+    },
+    {
+      "Location": {
+        "name": "Offene Ganztagsschule Moltkeschule (OGS)",
+        "plz": "46539",
+        "city": "Dinslaken",
+        "street": "Tackenstr. 51",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "6.77784",
+        "latitude": "51.54566",
+        "id": "210013"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB_Mitte_gGmbH\/NL Sa-Anhalt\/ABZ Magdeburg\/Horte\/Hort Schatzkiste (2).JPG"
+    },
+    {
+      "Location": {
+        "name": "Betriebsst\u00e4tte Dinslaken Kleiststr.",
+        "plz": "46535",
+        "city": "Dinslaken",
+        "street": "Kleiststr. 32",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "6.7484139",
+        "latitude": "51.5646201",
+        "id": "209470"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Jugendberatungsstelle und Jugendmigrationsdienst Dinslaken",
+        "plz": "46537",
+        "city": "Dinslaken",
+        "street": "Hauerstr. 14",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "6.75807",
+        "latitude": "51.58538",
+        "id": "210488"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Intensives Sozialp\u00e4dagogisches Betreuungsangebot",
+        "plz": "56812",
+        "city": "Dohr",
+        "street": "Hauptstra\u00dfe 1",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "7.128220000000056",
+        "latitude": "50.13324",
+        "id": "204256"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Erziehungshilfe\/IB_Hilfen-zur-Erziehung_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Bildungszentrum Donaueschingen ",
+        "plz": "78166",
+        "city": "Donaueschingen",
+        "street": "Irmastr. 3",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "8.49813",
+        "latitude": "47.94988",
+        "id": "210388"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB W\u00fcrttemberg\/Bereich Scwarzwald-Baar\/IB BZ DS\/IB_BZ_DS_455_255_06.jpg"
+    },
+    {
+      "Location": {
+        "name": "Ambulante Hilfen Nordwestmecklenburg",
+        "plz": "23972",
+        "city": "Dorf Mecklenburg",
+        "street": "Am Wehberg 11 b",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "11.4695241",
+        "latitude": "53.8435923",
+        "id": "210928"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/IB_Nord_Standort_Jugend2.jpg"
+    },
+    {
+      "Location": {
+        "name": "Betreutes Wohnen Dorf Mecklenburg ",
+        "plz": "23972",
+        "city": "Dorf Mecklenburg",
+        "street": "Am Wehberg 11 b",
+        "federal_state": "Mecklenburg-Vorpommern",
+        "longitude": "11.4695241",
+        "latitude": "53.8435923",
+        "id": "210929"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB_Nord\/IB_Nord_StandortKita3.jpg"
+    },
+    {
+      "Location": {
+        "name": "Beratungsstelle Sprung(s)chance",
+        "plz": "41540",
+        "city": "Dormagen",
+        "street": "Heesenstra\u00dfe 8",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "6.81343",
+        "latitude": "51.09649",
+        "id": "205524"
+      },
+      "ListimagePath": "\/img\/upload\/Neuer Ordner\/Neuer Ordner\/Sprung(s)chance 6.jpg"
+    },
+    {
+      "Location": {
+        "name": "Kinder- und Jugendzentrum \"Dreizack\" Projekt \"\u00d6ffnung von Schule\"",
+        "plz": "41542",
+        "city": "Dormagen",
+        "street": "Marie-Schlei-Str. 6",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "6.7803084",
+        "latitude": "51.1194314",
+        "id": "205527"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Bildungszentrum Nievenheim ",
+        "plz": "41542",
+        "city": "Dormagen",
+        "street": "Bismarckstr. 54a",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "6.7768531",
+        "latitude": "51.1187938",
+        "id": "205528"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Schuldner und Insolvenzberatung Dormagen",
+        "plz": "41542",
+        "city": "Dormagen",
+        "street": "Bismarckstr. 54a",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "6.7768531",
+        "latitude": "51.1187938",
+        "id": "210875"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Wohnhaus Dorndorf",
+        "plz": "65599",
+        "city": "Dornburg",
+        "street": "Hauptstra\u00dfe 36",
+        "federal_state": "Hessen",
+        "longitude": "8.002029099999959",
+        "latitude": "50.505049",
+        "id": "211419"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL II 2017\/Dornburg\/Header_IB Dornburg_Besenbinder_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Betriebsst\u00e4tte Dortmund ",
+        "plz": "44143",
+        "city": "Dortmund",
+        "street": "Kaiserstr. 127",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "7.48845089999998",
+        "latitude": "51.5134851",
+        "id": "211086"
+      },
+      "ListimagePath": "\/img\/upload\/Betrieb Herne\/Betriebsst\u00e4tte Dortmund.jpg"
+    },
+    {
+      "Location": {
+        "name": "Freiwilligendienste Sachsen Ost",
+        "plz": "01067",
+        "city": "Dresden",
+        "street": "L\u00f6btauer Stra\u00dfe 4-6",
+        "federal_state": "Sachsen",
+        "longitude": "14.6663",
+        "latitude": "51.09794",
+        "id": "208217"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB Sachsen\/Fu\u00dfzeile\/VB-Sa_F_Gruppe_1.jpg"
+    },
+    {
+      "Location": {
+        "name": "IB Berufsschule Dresden",
+        "plz": "01067",
+        "city": "Dresden",
+        "street": "L\u00f6btauer Str. 4 - 6",
+        "federal_state": "Sachsen",
+        "longitude": "13.7185299",
+        "latitude": "51.0538271",
+        "id": "211185"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB Sachsen\/Header\/VB-Sa_H_Schulung_3.jpg"
+    },
+    {
+      "Location": {
+        "name": "Der Internationale Bund (IB) - Region Sachsen Ost",
+        "plz": "01067",
+        "city": "Dresden",
+        "street": "L\u00f6btauer Str. 4 - 6",
+        "federal_state": "Sachsen",
+        "longitude": "13.7185299",
+        "latitude": "51.0538271",
+        "id": "210288"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB Sachsen\/Fu\u00dfzeile\/VB-Sa_F_Elektro_1.jpg"
+    },
+    {
+      "Location": {
+        "name": "Bildungszentrum Dresden ",
+        "plz": "01067",
+        "city": "Dresden",
+        "street": "L\u00f6btauer Str. 4 - 6",
+        "federal_state": "Sachsen",
+        "longitude": "13.7185299",
+        "latitude": "51.0538271",
+        "id": "210534"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "SBW Betreutes Wohnen Plus Duisburg",
+        "plz": "47119",
+        "city": "Duisburg",
+        "street": "Spatenstr. 18",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "6.72727",
+        "latitude": "51.46366",
+        "id": "210651"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Intensivp\u00e4dagogische M\u00e4dchenwohngruppe Duisburg-Hamborn",
+        "plz": "47166",
+        "city": "Duisburg",
+        "street": "Lessingstr. 54",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "6.7792",
+        "latitude": "51.49819",
+        "id": "210914"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "M\u00e4dchenwohnheim Duisburg",
+        "plz": "47119",
+        "city": "Duisburg",
+        "street": "Austr. 29",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "6.7295237",
+        "latitude": "51.4648723",
+        "id": "211376"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Jugendhaus Durmersheim ",
+        "plz": "76448",
+        "city": "Durmersheim",
+        "street": "Weissenburger Str. 52",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "8.2670905",
+        "latitude": "48.9360982",
+        "id": "202315"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Freiwilligendienste D\u00fcsseldorf ",
+        "plz": "40239",
+        "city": "D\u00fcsseldorf",
+        "street": "K\u00fchlwetterstra\u00dfe 49",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "6.801206800000045",
+        "latitude": "51.2418669",
+        "id": "211396"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/dia waltershausen\/Logo_FD.jpg"
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst (JMD) im LK G\u00f6rlitz",
+        "plz": "02730",
+        "city": "Ebersbach-Neugersdorf",
+        "street": "Hofeweg 47",
+        "federal_state": "Sachsen",
+        "longitude": "14.60985",
+        "latitude": "50.99274",
+        "id": "208408"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/VB Sachsen\/Header\/VB-Sa_H_Migration_1.jpg"
+    },
+    {
+      "Location": {
+        "name": "Sozialp\u00e4dagogisch betreute Kinder- u. Jugendwohngruppe Ebersbach",
+        "plz": "02730",
+        "city": "Ebersbach-Neugersdorf",
+        "street": "Bahnhofstr. 44",
+        "federal_state": "Sachsen",
+        "longitude": "14.57678",
+        "latitude": "51.00379",
+        "id": "210634"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB_Mitte_gGmbH\/Fu\u00dfzeile\/Mitte_F_BeWo_Ebersbach_1.jpg"
+    },
+    {
+      "Location": {
+        "name": "Jugendberatungsstelle Ebersbach ",
+        "plz": "02730",
+        "city": "Ebersbach-Neugersdorf",
+        "street": "Sachsenstr. 36",
+        "federal_state": "Sachsen",
+        "longitude": "14.611928499999976",
+        "latitude": "50.992651",
+        "id": "210912"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Jugendclub STINO",
+        "plz": "16225",
+        "city": "Eberswalde",
+        "street": "Heegerm\u00fchler Str. 2",
+        "federal_state": "Brandenburg",
+        "longitude": "13.7958329",
+        "latitude": "52.8354215",
+        "id": "210989"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst (JMD) Ehingen ",
+        "plz": "89584",
+        "city": "Ehingen",
+        "street": "Talstr. 21",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "9.7317695",
+        "latitude": "48.2720944",
+        "id": "202422"
+      },
+      "ListimagePath": "\/img\/upload\/JuhiMi\/JMD_3_Galerie.gif"
+    },
+    {
+      "Location": {
+        "name": "IB Berufliche Schulen Ehingen ",
+        "plz": "89584",
+        "city": "Ehingen",
+        "street": "Hehlestr. 26",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "9.73282",
+        "latitude": "48.28352",
+        "id": "210453"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB_Freiwilligendienste\/Hamburg\/2017\/images\/post-img05.jpg"
+    },
+    {
+      "Location": {
+        "name": "Sprachinstitut Ehingen ",
+        "plz": "89584",
+        "city": "Ehingen",
+        "street": "Talstr. 21",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "0",
+        "latitude": "0",
+        "id": "211850"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Bildungszentrum Ehningen ",
+        "plz": "71139",
+        "city": "Ehningen",
+        "street": "Mercedesstr. 10",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "8.95302",
+        "latitude": "48.66589",
+        "id": "202424"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcd\/IMG_3602_blur_IB S\u00fcd Keyvisual_Fu\u00dfzeile 2.jpg"
+    },
+    {
+      "Location": {
+        "name": "Region Brandenburg S\u00fcdost  - Bereich Eisenh\u00fcttenstadt",
+        "plz": "15890",
+        "city": "Eisenh\u00fcttenstadt",
+        "street": "F\u00e4hrstr. 43",
+        "federal_state": "Brandenburg",
+        "longitude": "14.6454141",
+        "latitude": "52.1462962",
+        "id": "207505"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Bildungszentrum Eislingen ",
+        "plz": "73054",
+        "city": "Eislingen",
+        "street": "Stuttgarter Str. 92",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "9.69735",
+        "latitude": "48.69562",
+        "id": "202407"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcd\/IMG_3602_blur_IB S\u00fcd Keyvisual_Fu\u00dfzeile 2.jpg"
+    },
+    {
+      "Location": {
+        "name": "Wohnverbund Elsterwerda",
+        "plz": "04910",
+        "city": "Elsterwerda",
+        "street": "August-Bebel-Stra\u00dfe 16",
+        "federal_state": "Brandenburg",
+        "longitude": "13.5129696",
+        "latitude": "51.4611341",
+        "id": "211762"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Ambulante Hilfen zur Erziehung Limburg-Weilburg\/ Elz",
+        "plz": "65604",
+        "city": "Elz",
+        "street": "Weberstra\u00dfe 3",
+        "federal_state": "Hessen",
+        "longitude": "8.035029200000054",
+        "latitude": "50.4100772",
+        "id": "211543"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL II 2017\/Elz\/HzE Elz\/IB_HzE-Elz_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Leistungen zum Wohnen in eigener H\u00e4uslichkeit in Limburg-Weilburg \/ Elz",
+        "plz": "65604",
+        "city": "Elz",
+        "street": "Weberstra\u00dfe 3",
+        "federal_state": "Hessen",
+        "longitude": "8.035029200000054",
+        "latitude": "50.4100772",
+        "id": "211557"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL II 2017\/Elz\/Bewo Elz\/IB-Bewo-Elz_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Betriebsst\u00e4tte Emmerich ",
+        "plz": "46446",
+        "city": "Emmerich am Rhein",
+        "street": "Baustr. 46",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "6.243339999999989",
+        "latitude": "51.83398",
+        "id": "211123"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Bildungszentrum Erfurt ",
+        "plz": "99085",
+        "city": "Erfurt",
+        "street": "Hallesche Stra\u00dfe 20",
+        "federal_state": "Th\u00fcringen",
+        "longitude": "11.049154",
+        "latitude": "50.98159",
+        "id": "208502"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Jugendwohnheim Erfurt ",
+        "plz": "99085",
+        "city": "Erfurt",
+        "street": "Hallesche Str. 20 a",
+        "federal_state": "Th\u00fcringen",
+        "longitude": "11.049154",
+        "latitude": "50.98159",
+        "id": "208527"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Zentrum f\u00fcr Integration und Migration Erfurt ",
+        "plz": "99086",
+        "city": "Erfurt",
+        "street": "Rosa-Luxemburg-Str. 50",
+        "federal_state": "Th\u00fcringen",
+        "longitude": "11.029725",
+        "latitude": "50.988824",
+        "id": "210361"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst Erfurt ",
+        "plz": "99085",
+        "city": "Erfurt",
+        "street": "Hallesche Stra\u00dfe 20a",
+        "federal_state": "Th\u00fcringen",
+        "longitude": "11.049154",
+        "latitude": "50.98159",
+        "id": "210362"
+      },
+      "ListimagePath": "\/img\/upload\/JMD Erfurt\/JMD\/G14_JMD_Fotopool.jpg"
+    },
+    {
+      "Location": {
+        "name": "Streetworker Erfurt Ost ",
+        "plz": "99089",
+        "city": "Erfurt",
+        "street": "Papierm\u00fchlenweg 14",
+        "federal_state": "Th\u00fcringen",
+        "longitude": "11.022160999999983",
+        "latitude": "50.990565",
+        "id": "210838"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Sprachkurse Erfurt",
+        "plz": "99085",
+        "city": "Erfurt",
+        "street": "Hallesche Str. 20",
+        "federal_state": "Th\u00fcringen",
+        "longitude": "11.0485451",
+        "latitude": "50.981487",
+        "id": "211560"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Internationales Studentenwohnheim Erlangen ",
+        "plz": "91052",
+        "city": "Erlangen",
+        "street": "Wichernstr. 18",
+        "federal_state": "Bayern",
+        "longitude": "10.9957784",
+        "latitude": "49.5806811",
+        "id": "202612"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB_Freiwilligendienste\/Hamburg\/2017\/images\/post-img02.jpg"
+    },
+    {
+      "Location": {
+        "name": "IB Kita Ankerplatz",
+        "plz": "91058",
+        "city": "Erlangen",
+        "street": "Buckenhofer Weg 71",
+        "federal_state": "Bayern",
+        "longitude": "10.9976595000001",
+        "latitude": "49.576735",
+        "id": "211621"
+      },
+      "ListimagePath": "\/img\/upload\/Header_Kita Ankerplatz.jpg"
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst Erlangen und Landkreis Erlangen-H\u00f6chstadt",
+        "plz": "91058",
+        "city": "Erlangen",
+        "street": "F\u00fcrther Str. 34",
+        "federal_state": "Bayern",
+        "longitude": "10.9852726",
+        "latitude": "49.5731168",
+        "id": "211713"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "IB Sprachkurse Erlangen",
+        "plz": "91058",
+        "city": "Erlangen",
+        "street": "F\u00fcrther Str. 34",
+        "federal_state": "Bayern",
+        "longitude": "10.9852726",
+        "latitude": "49.5731168",
+        "id": "211720"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Heilp\u00e4dagogische Wohngruppe Beerwalde",
+        "plz": "09306",
+        "city": "Erlau OT Beerwalde",
+        "street": "Am Berg 6",
+        "federal_state": "Sachsen",
+        "longitude": "12.8342244",
+        "latitude": "51.018689",
+        "id": "210555"
+      },
+      "ListimagePath": "\/img\/upload\/IB-Mitte_NEU2017\/S1_Erziehungshilfen\/Sachsen\/Beerwalde\/U_HzE_Beerwalde_WG_2017_03.JPG"
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst (JMD) Eschwege ",
+        "plz": "37269",
+        "city": "Eschwege",
+        "street": "Jasminweg 9-10",
+        "federal_state": "Hessen",
+        "longitude": "10.02769",
+        "latitude": "51.18451",
+        "id": "210648"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL I 2017\/Eschwege\/IB_Eschwege_Jugendmigrationsdienst_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst Esslingen  ",
+        "plz": "73728",
+        "city": "Esslingen",
+        "street": "Maillestr. 4",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "9.309664",
+        "latitude": "48.738009",
+        "id": "202404"
+      },
+      "ListimagePath": "\/img\/upload\/JuhiMi\/JMD_3_Galerie.gif"
+    },
+    {
+      "Location": {
+        "name": "IB Berufliche Schulen Esslingen ",
+        "plz": "73728",
+        "city": "Esslingen",
+        "street": "Kollwitzstr. 1",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "9.2994",
+        "latitude": "48.74049",
+        "id": "210519"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB_Freiwilligendienste\/Hamburg\/2017\/images\/post-img03.jpg"
+    },
+    {
+      "Location": {
+        "name": "Bildungszentrum Esslingen - \"Das Quist\"",
+        "plz": "73728",
+        "city": "Esslingen am Neckar",
+        "street": "Martinstra\u00dfe 42-44",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "9.296294799999941",
+        "latitude": "48.7420059",
+        "id": "211414"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcd\/IMG_3602_blur_IB S\u00fcd Keyvisual_Fu\u00dfzeile 2.jpg"
+    },
+    {
+      "Location": {
+        "name": "IB-Kita Regenbogen",
+        "plz": "73734",
+        "city": "Esslingen-Zollberg",
+        "street": "Neuffenstr. 14",
+        "federal_state": "Baden-W\u00fcrttemberg",
+        "longitude": "9.3021",
+        "latitude": "48.72904",
+        "id": "202406"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcd\/IB-Kitas\/standort-kita-regenbogen.jpg"
+    },
+    {
+      "Location": {
+        "name": "Betriebsst\u00e4tte  Euskirchen, Mittelstra\u00dfe",
+        "plz": "53879",
+        "city": "Euskirchen",
+        "street": "Mittelstra\u00dfe 4",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "6.7888136",
+        "latitude": "50.6614872",
+        "id": "211367"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Betriebsst\u00e4tte Euskirchen Oststra\u00dfe",
+        "plz": "53879",
+        "city": "Euskirchen",
+        "street": "Oststra\u00dfe 45",
+        "federal_state": "Nordrhein-Westfalen",
+        "longitude": "6.7951545999999325",
+        "latitude": "50.65987559999999",
+        "id": "211456"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Standort Falkensee",
+        "plz": "14612",
+        "city": "Falkensee",
+        "street": "Nachtigallstra\u00dfe 24",
+        "federal_state": "Brandenburg",
+        "longitude": "13.0693423",
+        "latitude": "52.5529791",
+        "id": "211838"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Region Brandenburg Nordwest",
+        "plz": "14612",
+        "city": "Falkensee",
+        "street": "Nachtigallstra\u00dfe 24",
+        "federal_state": "Brandenburg",
+        "longitude": "13.0706044",
+        "latitude": "52.5531641",
+        "id": "211234"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Fachberatung Migration Falkensee",
+        "plz": "14612",
+        "city": "Falkensee",
+        "street": "Nachtigallstra\u00dfe 24",
+        "federal_state": "Brandenburg",
+        "longitude": "13.0693423",
+        "latitude": "52.5529791",
+        "id": "211549"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Eingliederungshilfe f\u00fcr Menschen mit Behinderungen",
+        "plz": "14612",
+        "city": "Falkensee",
+        "street": "Nachtigallstra\u00dfe 24",
+        "federal_state": "Brandenburg",
+        "longitude": "13.0693423",
+        "latitude": "52.5529791",
+        "id": "211836"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Migrationssozialarbeit im Landkreis Elbe-Elster",
+        "plz": "03238",
+        "city": "Finsterwalde",
+        "street": "Berliner Str. 1",
+        "federal_state": "Brandenburg",
+        "longitude": "13.7080297",
+        "latitude": "51.6311774",
+        "id": "211530"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Hilfen zur Erziehung, Finsterwalde",
+        "plz": "03238",
+        "city": "Finsterwalde",
+        "street": "Berliner Str. 1",
+        "federal_state": "Brandenburg",
+        "longitude": "13.7080297",
+        "latitude": "51.6311774",
+        "id": "211682"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Projekt \u00dcbergangscoach in Flomborn\/ Realschule plus",
+        "plz": "55234",
+        "city": "Flomborn",
+        "street": "Schulstra\u00dfe 14",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "8.1557104",
+        "latitude": "49.6901148",
+        "id": "211647"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL III 2017\/\u00dcbergangscoach in RLP\/IB_Uebergangscoach_an-Schulen_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Projekt \u00dcbergangscoach in Fl\u00f6rsheim-Dalsheim\/ Realschule plus",
+        "plz": "67592",
+        "city": "Fl\u00f6rsheim-Dalsheim",
+        "street": "Albert-Schweitzer-Stra\u00dfe 1",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "8.210090899999999",
+        "latitude": "49.6608349",
+        "id": "211680"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL III 2017\/\u00dcbergangscoach in RLP\/IB_Uebergangscoach_an-Schulen_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst Waldeck-Frankenberg",
+        "plz": "35066",
+        "city": "Frankenberg (Eder)",
+        "street": "Geismarer Str. 11",
+        "federal_state": "Hessen",
+        "longitude": "8.803577599999926",
+        "latitude": "51.0605239",
+        "id": "211564"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL I 2017\/Waldeck-Frankenberg\/IB_JMD_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "JMD Frankenthal (Jugendmigrationsdienst) ",
+        "plz": "67227",
+        "city": "Frankenthal",
+        "street": "Mahlastr. 35",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "8.3545975",
+        "latitude": "49.5262554",
+        "id": "204368"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Migrations- und Fl\u00fcchtlingsarbeit\/IB_Suedwest_Migration_Fluechtlingsarbeit_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Selbstbestimmt Wohnen\/ Ambulante Eingliederungshilfe Frankenthal",
+        "plz": "67227",
+        "city": "Frankenthal",
+        "street": "Neumayerring ",
+        "federal_state": "Rheinland-Pfalz",
+        "longitude": "8.351722399999971",
+        "latitude": "49.5329394",
+        "id": "211559"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL II 2017\/Elz\/Bewo Elz\/IB-Bewo-Elz_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Quartiersmanagement Frankfurt a. Main \/ Griesheim",
+        "plz": "65933",
+        "city": "Frankfurt",
+        "street": "Waldschulstr. 17 A",
+        "federal_state": "Hessen",
+        "longitude": "8.60669",
+        "latitude": "50.0967",
+        "id": "211378"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL V 2017\/Quartiersmanagement Griesheim\/IB_Frankfurt-am-Main_Quartiersmanagement_Griesheim_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Region Brandenburg S\u00fcdost ",
+        "plz": "15236",
+        "city": "Frankfurt (Oder)",
+        "street": "S\u00fcdring 59",
+        "federal_state": "Brandenburg",
+        "longitude": "14.52754",
+        "latitude": "52.3247",
+        "id": "207501"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Freizeitzentrum Nordstern",
+        "plz": "15230",
+        "city": "Frankfurt (Oder)",
+        "street": "Bergstr. 123",
+        "federal_state": "Brandenburg",
+        "longitude": "14.5348133",
+        "latitude": "52.3501706",
+        "id": "207521"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Jugendmigrationsdienst Frankfurt (Oder)",
+        "plz": "15230",
+        "city": "Frankfurt (Oder)",
+        "street": "Gro\u00dfe Scharrnstra\u00dfe 18",
+        "federal_state": "Brandenburg",
+        "longitude": "14.5523977",
+        "latitude": "52.3456925",
+        "id": "207543"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Wohnheim und Hostel \"Am Hochseilgarten\"",
+        "plz": "15236",
+        "city": "Frankfurt (Oder)",
+        "street": "S\u00fcdring 59",
+        "federal_state": "Brandenburg",
+        "longitude": "14.52754",
+        "latitude": "52.3247",
+        "id": "210071"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Familienunterst\u00fctzender Dienst",
+        "plz": "15236",
+        "city": "Frankfurt (Oder)",
+        "street": "S\u00fcdring 59",
+        "federal_state": "Brandenburg",
+        "longitude": "14.52754",
+        "latitude": "52.3247",
+        "id": "211106"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Haus Einstein ",
+        "plz": "15234",
+        "city": "Frankfurt (Oder)",
+        "street": "Nuhnenstr. 47",
+        "federal_state": "Brandenburg",
+        "longitude": "14.50187",
+        "latitude": "52.34473",
+        "id": "211107"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Gemeinschaftsunterkunft Seefichten",
+        "plz": "15234",
+        "city": "Frankfurt (Oder)",
+        "street": "An den Seefichten 20",
+        "federal_state": "Brandenburg",
+        "longitude": "14.498083",
+        "latitude": "52.354572",
+        "id": "211150"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Erlebnisp\u00e4dagogik Hochseilgarten",
+        "plz": "15236",
+        "city": "Frankfurt (Oder)",
+        "street": "S\u00fcdring 59",
+        "federal_state": "Brandenburg",
+        "longitude": "14.52754",
+        "latitude": "52.3247",
+        "id": "210070"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Erziehungshilfen in Frankfurt (Oder)",
+        "plz": "15234",
+        "city": "Frankfurt (Oder)",
+        "street": "Nuhnenstra\u00dfe 47",
+        "federal_state": "Brandenburg",
+        "longitude": "14.50190889999999",
+        "latitude": "52.34466279999999",
+        "id": "211584"
+      },
+      "ListimagePath": ""
+    },
+    {
+      "Location": {
+        "name": "Jugendhilfe in der Anne-Frank-Schule",
+        "plz": "60320",
+        "city": "Frankfurt am Main",
+        "street": "Fritz-Tarnow-Stra\u00dfe 29",
+        "federal_state": "Hessen",
+        "longitude": "8.672769999999998",
+        "latitude": "50.14329",
+        "id": "211685"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL V 2017\/Jugendhilfe an der Schule\/Anne Frank Schule\/IB Jugendhilfe an Schulen_Anne Frank Schule_ Frankfurt am Main.jpg"
+    },
+    {
+      "Location": {
+        "name": "Freiwilligendienste Frankfurt am Main\/Main-Taunus-Kreis",
+        "plz": "65933",
+        "city": "Frankfurt am Main",
+        "street": "An der Zingelswiese 21-25",
+        "federal_state": "Hessen",
+        "longitude": "8.5944478",
+        "latitude": "50.1040432",
+        "id": "200907"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Freiwilligendienste\/IB_Suedwest_Freiwilligendienste_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Quartiersmanagement Frankfurt a. Main \/ Zeilsheim",
+        "plz": "65931",
+        "city": "Frankfurt am Main",
+        "street": "Pfaffenwiese 14",
+        "federal_state": "Hessen",
+        "longitude": "8.4978597",
+        "latitude": "50.1003711",
+        "id": "211379"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL V 2017\/Quartiersmanagement Zeilsheim\/IB_Quartiersmanagement_Frankfurt_Zeilsheim_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Jugendbildung Hessen",
+        "plz": "65933",
+        "city": "Frankfurt am Main",
+        "street": "An der Zingelswiese 21-25",
+        "federal_state": "Hessen",
+        "longitude": "8.5944478",
+        "latitude": "50.1040432",
+        "id": "201931"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL V 2017\/Jugendbildung Hessen\/IB_Frankfurt_Jugendbildung-Hessen_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "IB S\u00fcdwest gGmbH - Region Frankfurt am Main\/Main-Taunus-Kreis",
+        "plz": "65933",
+        "city": "Frankfurt am Main",
+        "street": "An der Zingelswiese 21-25",
+        "federal_state": "Hessen",
+        "longitude": "8.5944478",
+        "latitude": "50.1040432",
+        "id": "211230"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL V 2017\/Regionalleitung\/IB_S\u00fcdwest_Regionalleitung_Frankfurt.jpg"
+    },
+    {
+      "Location": {
+        "name": "Wohnhaus Nieder-Erlenbach",
+        "plz": "60437",
+        "city": "Frankfurt am Main",
+        "street": "Mecklenburger Str. 12",
+        "federal_state": "Hessen",
+        "longitude": "8.70329",
+        "latitude": "50.2064003",
+        "id": "204515"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/RL II 2017\/Frankfurt\/Nieder-Erlenbach\/IB_Frankfurt_Nieder-Erlenbach_Standort.jpg"
+    },
+    {
+      "Location": {
+        "name": "Jugendzentrum - Gutleut",
+        "plz": "60327",
+        "city": "Frankfurt am Main",
+        "street": "Gutleutstra\u00dfe 121",
+        "federal_state": "Hessen",
+        "longitude": "8.6627534",
+        "latitude": "50.103018",
+        "id": "204602"
+      },
+      "ListimagePath": "\/img\/upload\/IB\/IB S\u00fcdwest gGmbH\/Gesch\u00e4ftsf\u00fchrung 2017\/Jugendsozialarbeit\/IB_Suedwest_Jugendliche_OKJA_Standort.jpg"
+    }
+  ]
+}
