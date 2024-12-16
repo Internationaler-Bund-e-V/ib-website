@@ -1,0 +1,64 @@
+base: 'https://sprachkurse-karlsruhe.ib.de/'
+disableStaticFileCache: false
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    languageId: 0
+    base: /
+    typo3Language: de
+    locale: de_DE
+    iso-639-1: de
+    navigationTitle: Deutsch
+    hreflang: de-DE
+    direction: ''
+    flag: de
+    solr_core_read: core_de
+rootPageId: 3319
+routeEnhancers:
+  PageTypeSuffix:
+    type: PageType
+    map:
+      sitemap.xml: 1533906435
+      robots.txt: 84358734
+  IbcontentExtensionProducts:
+    type: Plugin
+    limitToPages:
+      - 3334
+    namespace: tx_ibcontent
+    routePath: '/{aid}'
+  IbcontentExtensionLocations:
+    type: Plugin
+    limitToPages:
+      - 3333
+    namespace: tx_ibcontent
+    routePath: '/{lid}'
+  News:
+    type: Extbase
+    limitToPages:
+      - 14
+    extension: News
+    plugin: Pi1
+    routes:
+      -
+        routePath: '/article/{news-title}'
+        _controller: 'News::detail'
+        _arguments:
+          news-title: news
+    aspects:
+      news-title:
+        type: PersistedAliasMapper
+        tableName: tx_news_domain_model_news
+        routeFieldName: path_segment
+routes:
+  -
+    route: robots.txt
+    type: staticText
+    content: "User-Agent: *\r\nAllow: /standort/202301\r\nDisallow: /standort/\r\nDisallow: /angebot/\r\nUser-Agent: SemrushBot\r\nDisallow: /\r\n\r\nSitemap: https://sprachkurse-karlsruhe.ib.de/sitemap.xml"
+solr_enabled_read: false
+websiteTitle: ''
+imports:
+  -
+    resource: 'EXT:ib_template/Configuration/siteconfig/global.yaml'
+  -
+    resource: 'EXT:ib_template/Configuration/siteconfig/solr.yaml'

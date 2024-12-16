@@ -1,0 +1,43 @@
+base: 'https://ib-recruiting.rmsdev.de/'
+baseVariants: {  }
+disableStaticFileCache: false
+
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    base: 'https://ib-recruiting.rmsdev.de/'
+    typo3Language: de
+    locale: de_DE
+    iso-639-1: de
+    navigationTitle: Deutsch
+    hreflang: de-DE
+    direction: ltr
+    flag: de
+    solr_core_read: core_de
+    languageId: '0'
+  -
+    title: en
+    enabled: true
+    base: /en/
+    typo3Language: default
+    locale: en_US.UTF-8
+    iso-639-1: en
+    navigationTitle: English
+    hreflang: en_US
+    direction: ltr
+    fallbackType: strict
+    fallbacks: ''
+    flag: gb
+    languageId: '1'
+rootPageId: 4386
+routes: {  }
+imports:
+  - { resource: "EXT:ib_template/Configuration/siteconfig/global.yaml" }
+  - { resource: "EXT:ib_template/Configuration/siteconfig/solr.yaml" }
+
+errorHandling:
+  -
+    errorCode: '404'
+    errorHandler: Page
+    errorContentSource: 't3://page?uid=4396'

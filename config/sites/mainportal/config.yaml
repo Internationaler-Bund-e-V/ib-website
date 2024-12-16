@@ -1,0 +1,111 @@
+base: 'https://www.internationaler-bund.de/'
+baseVariants:
+  -
+    base: 'https://ib.ddev.site/'
+    condition: 'getenv("IS_DDEV_PROJECT") == "true"'
+  -
+    base: 'https://ib-staging.rmsdev.de/'
+    condition: 'getenv("SITECONFIG_ENV") == "IBSTAGING"'
+disableStaticFileCache: false
+errorHandling:
+  -
+    errorCode: 404
+    errorHandler: Page
+    errorContentSource: 't3://page?uid=413'
+friendlycaptcha_js_path: 'EXT:friendlycaptcha_official/Resources/Public/JavaScript/lib/widget-0.9.12.min.js'
+friendlycaptcha_puzzle_url: 'https://eu-api.friendlycaptcha.eu/api/v1/puzzle'
+friendlycaptcha_secret_key: ''
+friendlycaptcha_site_key: ''
+friendlycaptcha_skip_dev_validation: false
+friendlycaptcha_verify_url: 'https://eu-api.friendlycaptcha.eu/api/v1/siteverify'
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    languageId: 0
+    base: /
+    typo3Language: de
+    locale: de_DE
+    iso-639-1: de
+    navigationTitle: DE
+    hreflang: de-DE
+    direction: ''
+    flag: de
+    solr_core_read: core_ib_mainportal_de
+    websiteTitle: ''
+  -
+    title: English
+    enabled: true
+    base: /en/
+    typo3Language: default
+    locale: en_US.UTF-8
+    iso-639-1: en
+    websiteTitle: ''
+    navigationTitle: EN
+    hreflang: en-US
+    direction: ltr
+    fallbackType: strict
+    fallbacks: ''
+    flag: gb
+    solr_core_read: core_en
+    languageId: 1
+rootPageId: 1
+routeEnhancers:
+  PageTypeSuffix:
+    type: PageType
+    map:
+      sitemap.xml: 1533906435
+      robots.txt: 84358734
+  IbcontentExtensionProducts:
+    type: Plugin
+    limitToPages:
+      - 39
+    namespace: tx_ibcontent
+    routePath: '/{aid}'
+  IbcontentExtensionLocations:
+    type: Plugin
+    limitToPages:
+      - 40
+    namespace: tx_ibcontent
+    routePath: '/{lid}'
+  News:
+    type: Extbase
+    limitToPages:
+      - 14
+      - 6116
+    extension: News
+    plugin: Pi1
+    routes:
+      -
+        routePath: '/article/{news-title}'
+        _controller: 'News::detail'
+        _arguments:
+          news-title: news
+    aspects:
+      news-title:
+        type: PersistedAliasMapper
+        tableName: tx_news_domain_model_news
+        routeFieldName: path_segment
+routes:
+  -
+    route: /ib-gruppe/stellenboerse/jobdetails
+    type: uri
+    source: 't3://page?uid=509'
+  -
+    route: /news-details
+    type: uri
+    source: 't3://page?uid=508'
+  -
+    route: /standort
+    type: uri
+    source: 't3://page?uid=34'
+  -
+    route: /angebot
+    type: uri
+    source: 't3://page?uid=32'
+websiteTitle: ''
+imports:
+  -
+    resource: 'EXT:ib_template/Configuration/siteconfig/global.yaml'
+  -
+    resource: 'EXT:ib_template/Configuration/siteconfig/solr.yaml'

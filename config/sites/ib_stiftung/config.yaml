@@ -1,0 +1,35 @@
+rootPageId: 2723
+base: 'https://ib-stiftung.de/'
+baseVariants: {  }
+disableStaticFileCache: false
+
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    base: /
+    typo3Language: de
+    locale: de_DE
+    iso-639-1: de
+    navigationTitle: German
+    hreflang: de-DE
+    direction: ltr
+    flag: de
+    solr_core_read: core_de
+    languageId: '0'
+routes: {  }
+routeEnhancers:
+  PageTypeSuffix:
+    type: PageType
+    map:
+      sitemap.xml: 1533906435
+      robots.txt: 84358734
+imports:
+  - { resource: "EXT:ib_template/Configuration/siteconfig/global.yaml" }
+  - { resource: "EXT:ib_template/Configuration/siteconfig/solr.yaml" }
+
+errorHandling:
+  -
+    errorCode: '404'
+    errorHandler: Page
+    errorContentSource: 't3://page?uid=2734'

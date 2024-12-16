@@ -1,0 +1,73 @@
+base: 'https://medius-pflegedienst.de/'
+disableStaticFileCache: false
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    languageId: 0
+    base: /
+    typo3Language: de
+    locale: de_DE.UTF-8
+    iso-639-1: de
+    navigationTitle: DE
+    hreflang: de-de
+    direction: ltr
+    flag: de
+    websiteTitle: ''
+    solr_core_read: core_de
+  -
+    title: English
+    enabled: true
+    base: /en/
+    typo3Language: default
+    locale: en_US.UTF-8
+    iso-639-1: en
+    websiteTitle: ''
+    navigationTitle: EN
+    hreflang: en-US
+    direction: ltr
+    fallbackType: strict
+    fallbacks: ''
+    flag: gb
+    solr_core_read: ''
+    languageId: 1
+  -
+    title: Russisch
+    enabled: true
+    base: /ru/
+    typo3Language: ru
+    locale: ru_RU.UTF-8
+    iso-639-1: ru
+    websiteTitle: ''
+    navigationTitle: RU
+    hreflang: ru-RU
+    direction: ltr
+    fallbackType: strict
+    fallbacks: ''
+    flag: ru
+    solr_core_read: core_ru
+    languageId: 10
+  -
+    title: Ukrainisch
+    enabled: true
+    base: /ua/
+    typo3Language: uk
+    locale: uk_UA.UTF-8
+    iso-639-1: uk
+    websiteTitle: ''
+    navigationTitle: UA
+    hreflang: uk-UA
+    direction: ltr
+    fallbackType: strict
+    fallbacks: ''
+    flag: ua
+    solr_core_read: ''
+    languageId: 11
+rootPageId: 6285
+solr_enabled_read: true
+solr_host_read: ib-solr.rm-solutions.de
+solr_path_read: /solr/
+solr_port_read: '443'
+solr_scheme_read: https
+solr_use_write_connection: false
+websiteTitle: medius-pflegedienst.de

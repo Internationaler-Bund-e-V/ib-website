@@ -1,0 +1,50 @@
+base: 'https://einfach-demokratie.ib-berlin.de/'
+disableStaticFileCache: false
+errorHandling:
+  -
+    errorCode: 404
+    errorHandler: Page
+    errorContentSource: 't3://page?uid=4957'
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    languageId: 0
+    base: 'https://einfach-demokratie.ib-berlin.de/'
+    typo3Language: de
+    locale: de_DE.UTF-8
+    iso-639-1: de
+    navigationTitle: English
+    hreflang: en-us
+    direction: ltr
+    flag: de
+    websiteTitle: ''
+    solr_core_read: core_de
+rootPageId: 4947
+routeEnhancers:
+  PageTypeSuffix:
+    type: PageType
+    map:
+      sitemap.xml: 1533906435
+      robots.txt: 84358734
+  News:
+    type: Extbase
+    limitToPages:
+      - 4966
+    extension: News
+    plugin: Pi1
+    routes:
+      -
+        routePath: '/article/{news-title}'
+        _controller: 'News::detail'
+        _arguments:
+          news-title: news
+    aspects:
+      news-title:
+        type: PersistedAliasMapper
+        tableName: tx_news_domain_model_news
+        routeFieldName: path_segment
+websiteTitle: 'Einfach Demokratie'
+imports:
+  - { resource: "EXT:ib_template/Configuration/siteconfig/global.yaml" }
+  - { resource: "EXT:ib_template/Configuration/siteconfig/solr.yaml" }

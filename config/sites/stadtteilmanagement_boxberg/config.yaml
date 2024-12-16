@@ -1,0 +1,70 @@
+base: 'https://stm-hd-boxberg.rmsdev.de/'
+disableStaticFileCache: false
+friendlycaptcha_js_path: 'EXT:friendlycaptcha_official/Resources/Public/JavaScript/lib/widget-0.9.12.min.js'
+friendlycaptcha_puzzle_url: 'https://eu-api.friendlycaptcha.eu/api/v1/puzzle'
+friendlycaptcha_secret_key: ''
+friendlycaptcha_site_key: ''
+friendlycaptcha_skip_dev_validation: false
+friendlycaptcha_verify_url: 'https://eu-api.friendlycaptcha.eu/api/v1/siteverify'
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    languageId: 0
+    base: 'https://stm-hd-boxberg.rmsdev.de/'
+    typo3Language: de
+    locale: de_DE.UTF-8
+    iso-639-1: de
+    navigationTitle: DE
+    hreflang: de-de
+    direction: ltr
+    flag: de
+    websiteTitle: ''
+    solr_core_read: core_de
+  -
+    title: English
+    enabled: true
+    base: /en/
+    typo3Language: default
+    locale: en_GB.UTF-8
+    iso-639-1: en
+    websiteTitle: ''
+    navigationTitle: EN
+    hreflang: en-US
+    direction: ltr
+    fallbackType: strict
+    fallbacks: ''
+    flag: gb
+    solr_core_read: core_en
+    languageId: 1
+rootPageId: 7284
+solr_enabled_read: true
+solr_host_read: ib-solr.rm-solutions.de
+solr_path_read: /solr/
+solr_port_read: '443'
+solr_scheme_read: https
+solr_use_write_connection: false
+websiteTitle: 'Stadtteilmanagement Boxberg'
+routeEnhancers:
+ News:
+    type: Extbase
+    limitToPages:
+      - 7303
+    extension: News
+    plugin: Pi1
+    routes:
+      -
+        routePath: '/article/{news-title}'
+        _controller: 'News::detail'
+        _arguments:
+          news-title: news
+    aspects:
+      news-title:
+        type: PersistedAliasMapper
+        tableName: tx_news_domain_model_news
+        routeFieldName: path_segment
+imports:
+  -
+    resource: 'EXT:ib_template/Configuration/siteconfig/global.yaml'
+  -
+    resource: 'EXT:ib_template/Configuration/siteconfig/solr.yaml'

@@ -1,0 +1,84 @@
+base: 'https://ib-suedwest-imd.de/'
+disableStaticFileCache: false
+errorHandling:
+  -
+    errorCode: 404
+    errorHandler: Page
+    errorContentSource: 't3://page?uid=5254'
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    languageId: 0
+    base: /
+    typo3Language: de
+    locale: de_DE.UTF-8
+    iso-639-1: de
+    navigationTitle: DE
+    hreflang: de-de
+    direction: ltr
+    flag: de
+    websiteTitle: ''
+    solr_core_read: core_de
+  -
+    title: English
+    enabled: true
+    base: /en/
+    typo3Language: default
+    locale: en_GB.UTF-8
+    iso-639-1: en
+    websiteTitle: ''
+    navigationTitle: EN
+    hreflang: en-GB
+    direction: ltr
+    fallbackType: strict
+    fallbacks: ''
+    flag: gb
+    solr_core_read: core_en
+    languageId: 1
+  -
+    title: Spanisch
+    enabled: true
+    base: /es/
+    typo3Language: es
+    locale: es_ES.UTF-8
+    iso-639-1: es
+    websiteTitle: ''
+    navigationTitle: ES
+    hreflang: es-ES
+    direction: ltr
+    fallbackType: strict
+    fallbacks: ''
+    flag: es
+    solr_core_read: core_es
+    languageId: 7
+rootPageId: 5244
+routeEnhancers:
+  PageTypeSuffix:
+    type: PageType
+    map:
+      sitemap.xml: 1533906435
+      robots.txt: 84358734
+  News:
+    type: Extbase
+    limitToPages:
+      - 5269
+    extension: News
+    plugin: Pi1
+    routes:
+      -
+        routePath: '/article/{news-title}'
+        _controller: 'News::detail'
+        _arguments:
+          news-title: news
+    aspects:
+      news-title:
+        type: PersistedAliasMapper
+        tableName: tx_news_domain_model_news
+        routeFieldName: path_segment
+websiteTitle: ''
+imports:
+  -
+    resource: 'EXT:ib_template/Configuration/siteconfig/global.yaml'
+  -
+    resource: 'EXT:ib_template/Configuration/siteconfig/solr.yaml'

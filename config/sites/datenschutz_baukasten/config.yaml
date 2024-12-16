@@ -1,0 +1,185 @@
+base: 'https://datenschutzbaukasten/'
+disableStaticFileCache: false
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    base: /
+    typo3Language: de
+    locale: de_DE.UTF-8
+    iso-639-1: de
+    websiteTitle: ''
+    navigationTitle: DE
+    hreflang: de-DE
+    direction: ltr
+    flag: de
+    solr_core_read: ''
+    languageId: 0
+  -
+    title: en
+    enabled: true
+    base: /en/
+    typo3Language: default
+    locale: en_GB.UTF-8
+    iso-639-1: en
+    websiteTitle: ''
+    navigationTitle: ''
+    hreflang: en-GB
+    direction: ''
+    fallbackType: strict
+    fallbacks: ''
+    flag: gb
+    solr_core_read: ''
+    languageId: 1
+  -
+    title: chinese
+    enabled: true
+    base: /zh/
+    typo3Language: zh
+    locale: zh_CN.UTF-8
+    iso-639-1: zh
+    websiteTitle: ''
+    navigationTitle: ZH
+    hreflang: zh-CN
+    direction: ''
+    fallbackType: strict
+    fallbacks: ''
+    flag: cn
+    solr_core_read: ''
+    languageId: 3
+  -
+    title: Italian
+    enabled: true
+    base: /it/
+    typo3Language: it
+    locale: it_IT.UTF-8
+    iso-639-1: it
+    websiteTitle: ''
+    navigationTitle: IT
+    hreflang: it-IT
+    direction: ''
+    fallbackType: strict
+    fallbacks: ''
+    flag: it
+    solr_core_read: ''
+    languageId: 2
+  -
+    title: Polish
+    enabled: true
+    base: /pl/
+    typo3Language: pl
+    locale: pl_PL.UTF-8
+    iso-639-1: pl
+    websiteTitle: ''
+    navigationTitle: PL
+    hreflang: pl-PL
+    direction: ''
+    fallbackType: strict
+    fallbacks: ''
+    flag: pl
+    solr_core_read: ''
+    languageId: 4
+  -
+    title: Slowenisch
+    enabled: true
+    base: /sl/
+    typo3Language: sl
+    locale: sl_SI.UTF-8
+    iso-639-1: sl
+    websiteTitle: ''
+    navigationTitle: SL
+    hreflang: sl-SI
+    direction: ''
+    fallbackType: strict
+    fallbacks: ''
+    flag: si
+    solr_core_read: ''
+    languageId: 5
+  -
+    title: Lettisch
+    enabled: true
+    base: /lv/
+    typo3Language: lv
+    locale: lv-LV.UTF-8
+    iso-639-1: lv
+    websiteTitle: ''
+    navigationTitle: LV
+    hreflang: lv-LV
+    direction: ''
+    fallbackType: strict
+    fallbacks: ''
+    flag: lv
+    solr_core_read: ''
+    languageId: 6
+  -
+    title: Spanisch
+    enabled: true
+    base: /es/
+    typo3Language: es
+    locale: es_ES.UTF-8
+    iso-639-1: es
+    websiteTitle: ''
+    navigationTitle: ''
+    hreflang: es-ES
+    direction: ''
+    fallbackType: strict
+    fallbacks: ''
+    flag: es
+    solr_core_read: ''
+    languageId: 7
+  -
+    title: Türkisch
+    enabled: true
+    base: /tr/
+    typo3Language: tr
+    locale: tr_TR.UTF-8
+    iso-639-1: tr
+    websiteTitle: ''
+    navigationTitle: ''
+    hreflang: tr-TR
+    direction: ltr
+    fallbackType: strict
+    fallbacks: ''
+    flag: tr
+    solr_core_read: core_tr
+    languageId: 8
+  -
+    title: Russisch
+    enabled: true
+    base: /ru/
+    typo3Language: ru
+    locale: ru_RU.UTF-8
+    iso-639-1: ru
+    websiteTitle: ''
+    navigationTitle: RU
+    hreflang: ru-RU
+    direction: ltr
+    fallbackType: strict
+    fallbacks: ''
+    flag: ru
+    solr_core_read: ''
+    languageId: 10
+  -
+    title: Ukrainisch
+    enabled: true
+    base: /uk/
+    typo3Language: uk
+    locale: uk_UA.UTF-8
+    iso-639-1: uk
+    websiteTitle: ''
+    navigationTitle: UA
+    hreflang: uk-UA
+    direction: ltr
+    fallbackType: strict
+    fallbacks: ''
+    flag: ua
+    solr_core_read: ''
+    languageId: 11
+rootPageId: 4522
+solr_enabled_read: false
+solr_host_read: localhost
+solr_path_read: /solr/
+solr_port_read: '8983'
+solr_scheme_read: http
+solr_use_write_connection: false
+websiteTitle: Datenschutz-Baukasten

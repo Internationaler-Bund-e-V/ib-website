@@ -1,0 +1,107 @@
+base: 'https://ai-future-project.eu/'
+baseVariants:
+  -
+    base: 'https://ai-future-project.ddev.site/'
+    condition: 'getenv("IS_DDEV_PROJECT") == "true"'
+disableStaticFileCache: false
+errorHandling:
+  -
+    errorCode: 404
+    errorHandler: Page
+    errorContentSource: 't3://page?uid=4731'
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    languageId: 0
+    base: /
+    typo3Language: de
+    locale: de_DE.UTF-8
+    iso-639-1: de
+    navigationTitle: DE
+    hreflang: de-de
+    direction: ltr
+    flag: de
+    websiteTitle: ''
+    solr_core_read: core_de
+  -
+    title: English
+    enabled: true
+    base: /en/
+    typo3Language: default
+    locale: en_US.UTF-8
+    iso-639-1: en
+    websiteTitle: ''
+    navigationTitle: EN
+    hreflang: en-US
+    direction: ltr
+    fallbackType: strict
+    fallbacks: ''
+    flag: gb
+    solr_core_read: core_en
+    languageId: 1
+  -
+    title: Spanisch
+    enabled: true
+    base: /es/
+    typo3Language: es
+    locale: es_ES.UTF-8
+    iso-639-1: es
+    websiteTitle: ''
+    navigationTitle: ES
+    hreflang: es-ES
+    direction: ltr
+    fallbackType: strict
+    fallbacks: ''
+    flag: es
+    solr_core_read: core_es
+    languageId: 7
+  -
+    title: Lettisch
+    enabled: true
+    base: /lv/
+    typo3Language: lv
+    locale: lv_LV.UTF-8
+    iso-639-1: lv
+    websiteTitle: ''
+    navigationTitle: LV
+    hreflang: lv-LV
+    direction: ''
+    fallbackType: strict
+    fallbacks: ''
+    flag: lv
+    solr_core_read: core_lv
+    languageId: 6
+rootPageId: 4721
+routeEnhancers:
+  PageTypeSuffix:
+    type: PageType
+    map:
+      sitemap.xml: 1533906435
+      robots.txt: 84358734
+  News:
+    type: Extbase
+    limitToPages:
+      - 4746
+    extension: News
+    plugin: Pi1
+    routes:
+      -
+        routePath: '/article/{news-title}'
+        _controller: 'News::detail'
+        _arguments:
+          news-title: news
+    aspects:
+      news-title:
+        type: PersistedAliasMapper
+        tableName: tx_news_domain_model_news
+        routeFieldName: path_segment
+routes:
+  -
+    route: robots.txt
+    type: staticText
+    content: "User-Agent: *\r\nDisallow: /index.php?id=1986\r\nDisallow: /index.php?id=1987\r\nDisallow: /index.php?id=1986/\r\nDisallow: /index.php?id=1987/\r\nDisallow: /ib-stellen-intern\r\nDisallow: /ib-stellen-intern/\r\nDisallow: /ib-gruppe/stellenboerse-intern/\r\nDisallow: /ib-gruppe/stellenboerse-intern\r\nDisallow: /ib-gruppe/stellenboerse-intern/jobdetails/\r\nDisallow: /fileadmin/user_upload/storage_ib_redaktion/P_und_P_Newsletter/\r\n\r\nUser-agent: SemrushBot\r\nDisallow: /\r\n\r\nSitemap: https://ai-future-project.eu/sitemap.xml\r\nSitemap: https://ai-future-project.eu/en/sitemap.xml\r\nSitemap: https://ai-future-project.eu/es/sitemap.xml\r\nSitemap: https://ai-future-project.eu/lv/sitemap.xml"
+websiteTitle: ai-future-project
+imports:
+  - { resource: "EXT:ib_template/Configuration/siteconfig/global.yaml" }
+  - { resource: "EXT:ib_template/Configuration/siteconfig/solr.yaml" }

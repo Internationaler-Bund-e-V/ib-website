@@ -1,0 +1,94 @@
+base: 'https://bvbbi.de/'
+baseVariants:
+  -
+    base: 'https://ib-bvbbi.ddev.site/'
+    condition: 'getenv("IS_DDEV_PROJECT") == "true"'
+disableStaticFileCache: false
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    base: /
+    typo3Language: de
+    locale: de_DE.UTF-8
+    iso-639-1: de
+    websiteTitle: ''
+    navigationTitle: DE
+    hreflang: de-DE
+    direction: ltr
+    flag: de
+    solr_core_read: core_de
+    languageId: 0
+  -
+    title: English
+    enabled: true
+    base: /en/
+    typo3Language: default
+    locale: en_GB.UTF-8
+    iso-639-1: en
+    websiteTitle: ''
+    navigationTitle: EN
+    hreflang: en-GB
+    direction: ltr
+    fallbackType: strict
+    fallbacks: ''
+    flag: gb
+    solr_core_read: core_en
+    languageId: 1
+  -
+    title: French
+    enabled: true
+    base: /fr/
+    typo3Language: fr
+    locale: fr_FR.UTF-8
+    iso-639-1: fr
+    websiteTitle: ''
+    navigationTitle: FR
+    hreflang: fr-FR
+    direction: ltr
+    fallbackType: strict
+    fallbacks: ''
+    flag: fr
+    solr_core_read: core_fr
+    languageId: 9
+  -
+    title: Spanisch
+    enabled: true
+    base: /es/
+    typo3Language: es
+    locale: es_ES.UTF-8
+    iso-639-1: es
+    websiteTitle: ''
+    navigationTitle: ES
+    hreflang: es-ES
+    direction: ''
+    fallbackType: strict
+    fallbacks: ''
+    flag: es
+    solr_core_read: core_es
+    languageId: 7
+rootPageId: 5527
+routeEnhancers:
+  News:
+    type: Extbase
+    limitToPages:
+      - 5532
+    extension: News
+    plugin: Pi1
+    routes:
+      -
+        routePath: '/article/{news-title}'
+        _controller: 'News::detail'
+        _arguments:
+          news-title: news
+    aspects:
+      news-title:
+        type: PersistedAliasMapper
+        tableName: tx_news_domain_model_news
+        routeFieldName: path_segment
+websiteTitle: ''
+imports:
+  -
+    resource: 'EXT:ib_template/Configuration/siteconfig/global.yaml'
+  -
+    resource: 'EXT:ib_template/Configuration/siteconfig/solr.yaml'

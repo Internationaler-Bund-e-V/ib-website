@@ -1,0 +1,94 @@
+base: 'https://ib.international/'
+disableStaticFileCache: false
+errorHandling:
+  -
+    errorCode: 404
+    errorHandler: Page
+    errorContentSource: 't3://page?uid=434'
+languages:
+  -
+    title: Deutsch
+    enabled: false
+    languageId: 0
+    base: /de/
+    typo3Language: de
+    locale: de_DE
+    iso-639-1: de
+    navigationTitle: ''
+    hreflang: ''
+    direction: ''
+    flag: de
+    solr_core_read: core_de
+    websiteTitle: ''
+  -
+    title: en
+    enabled: true
+    languageId: 1
+    base: /
+    typo3Language: default
+    locale: en_DE.UTF-8
+    iso-639-1: en
+    navigationTitle: ''
+    hreflang: en-DE
+    direction: ''
+    fallbackType: strict
+    fallbacks: '0'
+    flag: gb
+    solr_core_read: core_en
+    websiteTitle: ''
+  -
+    title: chinese
+    enabled: false
+    languageId: 3
+    base: /zh/
+    typo3Language: zh
+    locale: zh_CN.UTF-8
+    iso-639-1: zh
+    navigationTitle: Chinese
+    hreflang: zg-CN
+    direction: ''
+    fallbackType: free
+    fallbacks: ''
+    flag: cn
+    solr_core_read: core_zh
+rootPageId: 249
+routeEnhancers:
+  PageTypeSuffix:
+    type: PageType
+    map:
+      sitemap.xml: 1533906435
+      robots.txt: 84358734
+
+  IbcontentExtensionProducts:
+    type: Plugin
+    limitToPages:
+      - 39
+    namespace: tx_ibcontent
+    routePath: '/{aid}'
+  IbcontentExtensionLocations:
+    type: Plugin
+    limitToPages:
+      - 40
+    namespace: tx_ibcontent
+    routePath: '/{lid}'
+  News:
+    type: Extbase
+    limitToPages:
+      - 250
+    extension: News
+    plugin: Pi1
+    routes:
+      -
+        routePath: '/article/{news-title}'
+        _controller: 'News::detail'
+        _arguments:
+          news-title: news
+    aspects:
+      news-title:
+        type: PersistedAliasMapper
+        tableName: tx_news_domain_model_news
+        routeFieldName: path_segment
+websiteTitle: ''
+imports:
+  - { resource: "EXT:ib_template/Configuration/siteconfig/global.yaml" }
+  - { resource: "EXT:ib_template/Configuration/siteconfig/solr.yaml" }

@@ -1,0 +1,51 @@
+base: 'https://wychowawcy.ib-berlin.de/'
+disableStaticFileCache: false
+errorHandling:
+  -
+    errorCode: 404
+    errorHandler: Page
+    errorContentSource: 't3://page?uid=2638'
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    base: 'https://wychowawcy.ib-berlin.de/'
+    typo3Language: de
+    locale: de_DE
+    iso-639-1: de
+    navigationTitle: DE
+    hreflang: de-DE
+    direction: ltr
+    flag: de
+    solr_core_read: core_de
+    languageId: 0
+  -
+    title: Polnisch
+    enabled: true
+    base: /pl/
+    typo3Language: pl
+    locale: pl_PL
+    iso-639-1: pl
+    navigationTitle: PL
+    hreflang: pl-PL
+    direction: ''
+    fallbackType: strict
+    fallbacks: ''
+    flag: pl
+    languageId: 4
+rootPageId: 2627
+routeEnhancers:
+  PageTypeSuffix:
+    type: PageType
+    map:
+      sitemap.xml: 1533906435
+      robots.txt: 84358734
+routes:
+  -
+    route: robots.txt
+    type: staticText
+    content: "User-Agent: *\r\nDisallow: /index.php?id=1986\r\nDisallow: /index.php?id=1987\r\nDisallow: /index.php?id=1986/\r\nDisallow: /index.php?id=1987/\r\nDisallow: /ib-stellen-intern\r\nDisallow: /ib-stellen-intern/\r\nDisallow: /ib-gruppe/stellenboerse-intern/\r\nDisallow: /ib-gruppe/stellenboerse-intern\r\nDisallow: /ib-gruppe/stellenboerse-intern/jobdetails/\r\nDisallow: /fileadmin/user_upload/storage_ib_redaktion/P_und_P_Newsletter/\r\n\r\nUser-agent: SemrushBot\r\nDisallow: /\r\n\r\nSitemap: https://wychowawcy.ib-berlin.de/sitemap.xml\r\nSitemap: https://wychowawcy.ib-berlin.de/pl/sitemap.xml"
+websiteTitle: ''
+imports:
+  - { resource: "EXT:ib_template/Configuration/siteconfig/global.yaml" }
+  - { resource: "EXT:ib_template/Configuration/siteconfig/solr.yaml" }

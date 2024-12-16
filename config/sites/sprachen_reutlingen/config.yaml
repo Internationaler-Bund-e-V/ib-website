@@ -1,0 +1,75 @@
+base: 'https://sprachen-reutlingen.rmsdev.de/'
+disableStaticFileCache: false
+errorHandling:
+  -
+    errorCode: 404
+    errorHandler: Page
+    errorContentSource: 't3://page?uid=7575'
+friendlycaptcha_js_path: 'EXT:friendlycaptcha_official/Resources/Public/JavaScript/lib/widget-0.9.12.min.js'
+friendlycaptcha_puzzle_url: 'https://eu-api.friendlycaptcha.eu/api/v1/puzzle'
+friendlycaptcha_secret_key: ''
+friendlycaptcha_site_key: ''
+friendlycaptcha_skip_dev_validation: false
+friendlycaptcha_verify_url: 'https://eu-api.friendlycaptcha.eu/api/v1/siteverify'
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    languageId: 0
+    base: /
+    typo3Language: de
+    locale: de_DE
+    iso-639-1: de
+    navigationTitle: DE
+    hreflang: de-de
+    direction: ltr
+    flag: de
+    websiteTitle: ''
+    solr_core_read: core_ib_mainportal_de
+  -
+    title: English
+    enabled: true
+    base: /en/
+    typo3Language: default
+    locale: en_US.UTF-8
+    iso-639-1: en
+    websiteTitle: ''
+    navigationTitle: EN
+    hreflang: en-US
+    direction: ltr
+    fallbackType: strict
+    fallbacks: ''
+    flag: gb
+    solr_core_read: ''
+    languageId: 1
+rootPageId: 7564
+routeEnhancers:
+  PageTypeSuffix:
+    type: PageType
+    map:
+      sitemap.xml: 1533906435
+      robots.txt: 84358734
+  News:
+    type: Extbase
+    limitToPages:
+      - 7618
+    extension: News
+    plugin: Pi1
+    routes:
+      -
+        routePath: '/article/{news-title}'
+        _controller: 'News::detail'
+        _arguments:
+          news-title: news
+    aspects:
+      news-title:
+        type: PersistedAliasMapper
+        tableName: tx_news_domain_model_news
+        routeFieldName: path_segment
+solr_enabled_read: true
+solr_host_read: ib-solr.rm-solutions.de
+solr_path_read: /solr/
+solr_port_read: '443'
+solr_scheme_read: https
+solr_use_write_connection: false
+websiteTitle: 'Sprachen Reutlingen'

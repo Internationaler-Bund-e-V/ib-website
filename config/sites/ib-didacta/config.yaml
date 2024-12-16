@@ -1,0 +1,29 @@
+base: 'https://ib-didacta.rmsdev.de/'
+baseVariants: {  }
+disableStaticFileCache: false
+errorHandling: {  }
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    base: /
+    typo3Language: de
+    locale: de_DE.UTF-8
+    iso-639-1: de
+    navigationTitle: Deutsch
+    hreflang: de-DE
+    direction: ''
+    flag: de
+    solr_core_read: core_de
+    languageId: '0'
+rootPageId: 3424
+routes: {  }
+routeEnhancers:
+  PageTypeSuffix:
+    type: PageType
+    map:
+      sitemap.xml: 1533906435
+      robots.txt: 84358734
+imports:
+  - { resource: "EXT:ib_template/Configuration/siteconfig/global.yaml" }
+  - { resource: "EXT:ib_template/Configuration/siteconfig/solr.yaml" }

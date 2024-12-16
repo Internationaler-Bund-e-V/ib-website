@@ -1,0 +1,22 @@
+base: 'https://erzieherschule-berlin.de'
+disableStaticFileCache: false
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    base: /
+    typo3Language: de
+    locale: de_DE.UTF-8
+    iso-639-1: de
+    websiteTitle: ''
+    navigationTitle: Deutsch
+    hreflang: de-DE
+    direction: ltr
+    flag: de
+    solr_core_read: core_de
+    languageId: 0
+rootPageId: 2595
+websiteTitle: 'Erzieher Berlin'
+imports:
+  - { resource: "EXT:ib_template/Configuration/siteconfig/global.yaml" }
+  - { resource: "EXT:ib_template/Configuration/siteconfig/solr.yaml" }

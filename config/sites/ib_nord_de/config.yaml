@@ -1,0 +1,69 @@
+base: 'https://ib-nord.de'
+disableStaticFileCache: false
+errorHandling:
+  -
+    errorCode: 404
+    errorHandler: Page
+    errorContentSource: 't3://page?uid=433'
+friendlycaptcha_js_path: 'EXT:friendlycaptcha_official/Resources/Public/JavaScript/lib/widget-0.9.12.min.js'
+friendlycaptcha_puzzle_url: 'https://eu-api.friendlycaptcha.eu/api/v1/puzzle'
+friendlycaptcha_secret_key: ''
+friendlycaptcha_site_key: ''
+friendlycaptcha_verify_url: 'https://eu-api.friendlycaptcha.eu/api/v1/siteverify'
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    languageId: 0
+    base: /
+    typo3Language: de
+    locale: de_DE
+    iso-639-1: de
+    navigationTitle: ''
+    hreflang: de-DE
+    direction: ltr
+    flag: de
+    solr_core_read: core_de
+    websiteTitle: ''
+rootPageId: 241
+routeEnhancers:
+  PageTypeSuffix:
+    type: PageType
+    map:
+      sitemap.xml: 1533906435
+      robots.txt: 84358734
+  IbcontentExtensionProducts:
+    type: Plugin
+    limitToPages:
+      - 550
+    namespace: tx_ibcontent
+    routePath: '/{aid}'
+  IbcontentExtensionLocations:
+    type: Plugin
+    limitToPages:
+      - 551
+    namespace: tx_ibcontent
+    routePath: '/{lid}'
+  News:
+    type: Extbase
+    limitToPages:
+      - 14
+    extension: News
+    plugin: Pi1
+    routes:
+      -
+        routePath: '/article/{news-title}'
+        _controller: 'News::detail'
+        _arguments:
+          news-title: news
+    aspects:
+      news-title:
+        type: PersistedAliasMapper
+        tableName: tx_news_domain_model_news
+        routeFieldName: path_segment
+websiteTitle: ''
+imports:
+  -
+    resource: 'EXT:ib_template/Configuration/siteconfig/global.yaml'
+  -
+    resource: 'EXT:ib_template/Configuration/siteconfig/solr.yaml'

@@ -1,0 +1,65 @@
+base: 'https://schwarz-rot-bunt.de/'
+baseVariants:
+  - base: 'https://srb.ddev.site/'
+    condition: 'getenv("IS_DDEV_PROJECT") == "true"'
+  - base: 'https://schwarz-rot-bunt.rmsdev.de/'
+    condition: 'getenv("SITECONFIG_ENV") == "IBSTAGING"'
+disableStaticFileCache: false
+errorHandling:
+  -
+    errorCode: 404
+    errorHandler: Page
+    errorContentSource: 't3://page?uid=4256'
+friendlycaptcha_js_path: 'EXT:friendlycaptcha_official/Resources/Public/JavaScript/lib/widget-0.9.12.min.js'
+friendlycaptcha_puzzle_url: 'https://eu-api.friendlycaptcha.eu/api/v1/puzzle'
+friendlycaptcha_secret_key: A19AL5TOUJO9UDFKPTDK9IJP3QJ7A0OVK0ICUEUJJ9B9VTA4OK1EO4UP44
+friendlycaptcha_site_key: FCMKN6E68M952O9F
+friendlycaptcha_verify_url: 'https://eu-api.friendlycaptcha.eu/api/v1/siteverify'
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    base: /
+    typo3Language: de
+    locale: de_DE
+    iso-639-1: de
+    navigationTitle: Deutsch
+    hreflang: de-DE
+    direction: ltr
+    flag: de
+    solr_core_read: core_de
+    languageId: 0
+    websiteTitle: ''
+rootPageId: 4243
+routeEnhancers:
+  PageTypeSuffix:
+    type: PageType
+    map:
+      sitemap.xml: 1533906435
+      robots.txt: 84358734
+  News:
+    type: Extbase
+    limitToPages:
+      - 4411
+      - 4304
+      - 4303
+      - 4313
+    extension: News
+    plugin: Pi1
+    routes:
+      -
+        routePath: '/{news-title}'
+        _controller: 'News::detail'
+        _arguments:
+          news-title: news
+    aspects:
+      news-title:
+        type: PersistedAliasMapper
+        tableName: tx_news_domain_model_news
+        routeFieldName: path_segment
+websiteTitle: ''
+imports:
+  -
+    resource: 'EXT:ib_template/Configuration/siteconfig/global.yaml'
+  -
+    resource: 'EXT:ib_template/Configuration/siteconfig/solr.yaml'

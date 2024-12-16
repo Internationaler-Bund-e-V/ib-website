@@ -1,0 +1,78 @@
+base: 'https://ib-sim.rmsdev.de/'
+disableStaticFileCache: false
+friendlycaptcha_js_path: 'EXT:friendlycaptcha_official/Resources/Public/JavaScript/lib/widget-0.9.12.min.js'
+friendlycaptcha_puzzle_url: 'https://eu-api.friendlycaptcha.eu/api/v1/puzzle'
+friendlycaptcha_secret_key: ''
+friendlycaptcha_site_key: ''
+friendlycaptcha_skip_dev_validation: false
+friendlycaptcha_verify_url: 'https://eu-api.friendlycaptcha.eu/api/v1/siteverify'
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    languageId: 0
+    base: /
+    typo3Language: de
+    locale: de_DE
+    iso-639-1: de
+    navigationTitle: DE
+    hreflang: de-de
+    direction: ltr
+    flag: de
+    websiteTitle: ''
+    solr_core_read: core_de
+  -
+    title: English
+    enabled: true
+    base: /en/
+    typo3Language: default
+    locale: en_US.UTF-8
+    iso-639-1: en
+    websiteTitle: ''
+    navigationTitle: EN
+    hreflang: en-US
+    direction: ltr
+    fallbackType: strict
+    fallbacks: ''
+    flag: gb
+    solr_core_read: ''
+    languageId: 1
+  -
+    title: French
+    enabled: true
+    base: /fr/
+    typo3Language: fr
+    locale: fr_FR.UTF-8
+    iso-639-1: fr
+    websiteTitle: ''
+    navigationTitle: FR
+    hreflang: fr-FR
+    direction: ltr
+    fallbackType: strict
+    fallbacks: ''
+    flag: fr
+    solr_core_read: core_fr
+    languageId: 9
+  -
+    title: Russisch
+    enabled: true
+    base: /ru/
+    typo3Language: ru
+    locale: ru_RU.UTF-8
+    iso-639-1: ru
+    websiteTitle: ''
+    navigationTitle: RU
+    hreflang: ru-RU
+    direction: ltr
+    fallbackType: strict
+    fallbacks: ''
+    flag: ru
+    solr_core_read: core_ru
+    languageId: 10
+rootPageId: 7391
+websiteTitle: 'IB Sprachinstitut München'
+imports:
+  -
+    resource: 'EXT:ib_template/Configuration/siteconfig/global.yaml'
+  -
+    resource: 'EXT:ib_template/Configuration/siteconfig/solr.yaml'

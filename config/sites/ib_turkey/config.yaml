@@ -1,0 +1,79 @@
+base: 'https://ib-turkey.com/'
+disableStaticFileCache: false
+errorHandling:
+  -
+    errorCode: 404
+    errorHandler: Page
+    errorContentSource: 't3://page?uid=5151'
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    languageId: 0
+    base: /de/
+    typo3Language: de
+    locale: de_DE.UTF-8
+    iso-639-1: de
+    navigationTitle: DE
+    hreflang: de-de
+    direction: ltr
+    flag: de
+    websiteTitle: ''
+    solr_core_read: core_de
+  -
+    title: English
+    enabled: true
+    base: /en/
+    typo3Language: default
+    locale: en_GB.UTF-8
+    iso-639-1: en
+    websiteTitle: ''
+    navigationTitle: EN
+    hreflang: en-GB
+    direction: ltr
+    fallbackType: strict
+    fallbacks: ''
+    flag: gb
+    solr_core_read: core_en
+    languageId: 1
+  -
+    title: Türkisch
+    enabled: true
+    base: /
+    typo3Language: tr
+    locale: tr_TR.UTF-8
+    iso-639-1: tr
+    websiteTitle: ''
+    navigationTitle: TR
+    hreflang: tr-TR
+    direction: ltr
+    fallbackType: strict
+    fallbacks: ''
+    flag: tr
+    solr_core_read: core_tr
+    languageId: 8
+rootPageId: 5141
+routeEnhancers:
+  News:
+    type: Extbase
+    limitToPages:
+      - 5163
+    extension: News
+    plugin: Pi1
+    routes:
+      -
+        routePath: '/article/{news-title}'
+        _controller: 'News::detail'
+        _arguments:
+          news-title: news
+    aspects:
+      news-title:
+        type: PersistedAliasMapper
+        tableName: tx_news_domain_model_news
+        routeFieldName: path_segment
+websiteTitle: ''
+imports:
+  -
+    resource: 'EXT:ib_template/Configuration/siteconfig/global.yaml'
+  -
+    resource: 'EXT:ib_template/Configuration/siteconfig/solr.yaml'

@@ -1,0 +1,28 @@
+base: 'https://maedchentreff-solingen-ib.rmsdev.de/'
+disableStaticFileCache: false
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    languageId: 0
+    base: /
+    typo3Language: de
+    locale: de_DE.UTF-8
+    iso-639-1: de
+    navigationTitle: DE
+    hreflang: de-de
+    direction: ltr
+    flag: de
+    websiteTitle: ''
+    solr_core_read: core_de
+rootPageId: 4774
+solr_enabled_read: true
+solr_host_read: ib-solr.rm-solutions.de
+solr_path_read: /solr/
+solr_port_read: '443'
+solr_scheme_read: https
+solr_use_write_connection: false
+websiteTitle: 'Mädchentreff Solingen'
+imports:
+  - { resource: "EXT:ib_template/Configuration/siteconfig/global.yaml" }
+  - { resource: "EXT:ib_template/Configuration/siteconfig/solr.yaml" }
