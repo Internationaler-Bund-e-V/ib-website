@@ -1,0 +1,30 @@
+
+/*
+  * xml fields
+  */
+  .ib-jobs-xml{
+    color:red;
+    display: none;
+  }
+
+  .ib-jobs-template{
+    display: none;
+  }
+
+  .ib-jobs-p-tag{
+    margin:0;
+  }  
+
+  .ib-jobs-footertext-container, .ib-jobs-expectations-container, .ib-jobs-requirements-container, .ib-jobs-offer-container{ 
+    padding-top:1rem;
+  }
+  .ib-jobs-application-container{
+    padding-top:1rem;
+    img.responsive{
+      float:right;
+      max-width: 350px;
+    }
+  }
+  .ib-jobs-padding{
+    padding-top:60px;    
+  }

@@ -1,0 +1,42 @@
+{
+    "modules": [],
+    "properties": {
+        "backendModules": [],
+        "description": "",
+        "emConf": {
+            "category": "plugin",
+            "custom_category": "",
+            "dependsOn": "typo3 => 7.6.0-7.6.99\n",
+            "disableLocalization": false,
+            "disableVersioning": false,
+            "skipGenerateDocumentationTemplate": false,
+            "sourceLanguage": "en",
+            "state": "alpha",
+            "targetVersion": "7.6.0-7.6.99",
+            "version": "1.0.0"
+        },
+        "extensionKey": "ibjobs",
+        "name": "IB LOGA Jobs",
+        "originalExtensionKey": "ibjobs",
+        "originalVendorName": "Rms",
+        "persons": [],
+        "plugins": [
+            {
+                "actions": {
+                    "controllerActionCombinations": "JobsController => show",
+                    "noncacheableActions": "",
+                    "switchableActions": ""
+                },
+                "key": "iblogajobs",
+                "name": "IB Loga Jobs"
+            }
+        ],
+        "vendorName": "Rms"
+    },
+    "wires": [],
+    "log": {
+        "last_modified": "2017-06-30 09:20",
+        "extension_builder_version": "7.6.18",
+        "be_user": " (5)"
+    }
+}

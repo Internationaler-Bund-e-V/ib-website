@@ -1,0 +1,113 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>IB Jobs</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.clients>
+						<TCEforms>
+							<label>Mandanten IDs kommasepariert (9340,9760,...)</label>
+							<config>
+								<type>input</type>
+								<size>255</size>
+							</config>
+						</TCEforms>
+          </settings.clients>
+          <settings.srclients>
+						<TCEforms>
+							<label>SR ID fix (InternationalerBund)</label>
+							<config>
+								<type>input</type>
+								<size>255</size>
+							</config>
+						</TCEforms>
+					</settings.srclients>
+					<settings.intern>
+						<label>Anzeige intern/extern</label>
+						<config>
+							<type>radio</type>
+							<default>both</default>
+							<items type="array">
+								<numIndex index="0" type="array">
+									<numIndex index="0">Alle</numIndex>
+									<numIndex index="1">both</numIndex>
+								</numIndex>
+								<numIndex index="1" type="array">
+									<numIndex index="0">nur intern</numIndex>
+									<numIndex index="1">intern</numIndex>
+								</numIndex>
+								<numIndex index="3" type="array">
+									<numIndex index="0">nur extern</numIndex>
+									<numIndex index="1">extern</numIndex>
+								</numIndex>
+							</items>
+						</config>
+					</settings.intern>
+					<settings.deactivateSearch>
+						<TCEforms>
+							<label>Suche/Erweiterte Such deaktivieren</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.deactivateSearch>
+					<settings.prefilter>
+						<TCEforms>
+							<label>Vorfilter verwenden</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.prefilter>
+					<settings.locations>
+						<TCEforms>
+							<label>Vorfilter - Standorte/Städte kommasepariert (Asperg,Dortmund,...)</label>
+							<config>
+								<type>input</type>
+								<size>255</size>
+							</config>
+						</TCEforms>
+					</settings.locations>
+					<settings.categories>
+						<TCEforms>
+							<label>Vorfilter - Arbeitsfelder kommasepariert (Behindertenhilfe,Offene Jugendarbeit,...)</label>
+							<config>
+								<type>input</type>
+								<size>255</size>
+							</config>
+						</TCEforms>
+					</settings.categories>
+					<settings.titles>
+						<TCEforms>
+							<label>Vorfilter - Titelbezeichnungen kommasepariert (Arbeit,pädagog,sozial,...)</label>
+							<config>
+								<type>input</type>
+								<size>255</size>
+							</config>
+						</TCEforms>
+					</settings.titles>
+					<settings.targetpage>
+						<TCEforms>
+							<label>Zielseite IB Jobs Einzelansicht (intern typo3)</label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<size>1</size>
+								<maxitems>1</maxitems>
+								<minitems>0</minitems>
+								<show_thumbs>1</show_thumbs>
+							</config>
+						</TCEforms>
+					</settings.targetpage>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

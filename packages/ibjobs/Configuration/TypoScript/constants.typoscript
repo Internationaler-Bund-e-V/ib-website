@@ -1,0 +1,21 @@
+
+plugin.tx_ibjobs_iblogajobs {
+    view {
+        # cat=plugin.tx_ibjobs_iblogajobs/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:ibjobs/Resources/Private/Templates/
+        # cat=plugin.tx_ibjobs_iblogajobs/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:ibjobs/Resources/Private/Partials/
+        # cat=plugin.tx_ibjobs_iblogajobs/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:ibjobs/Resources/Private/Layouts/
+    }
+  
+    persistence {
+        # cat=plugin.tx_ibjobs_iblogajobs//a; type=string; label=Default storage PID
+        storagePid = 
+    }
+  
+    settings {
+        useCustomRedirect = 1
+        customRedirectPageID = 34
+    }
+}

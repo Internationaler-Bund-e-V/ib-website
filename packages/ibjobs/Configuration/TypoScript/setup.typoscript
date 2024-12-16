@@ -1,0 +1,79 @@
+plugin.tx_ibjobs {
+    view {
+        partialRootPaths >
+        partialRootPaths {
+            1 = EXT:ibjobs/Resources/Private/Partials/
+            #2 = fileadmin/template/html/partial/
+            2 = EXT:ib_template/Resources/Private/Template/html/partial/
+        }
+    
+        templateRootPaths >
+        templateRootPaths {
+            1 = EXT:ibjobs/Resources/Private/Templates/
+        }
+    
+        layoutRootPaths >
+        layoutRootPaths {
+            1 = EXT:ibjobs/Resources/Private/Layouts/
+        }
+    }
+  
+    persistence {
+        storagePid = {$plugin.tx_ibjobs_iblogajobs.persistence.storagePid}
+        #recursive = 1
+    }
+    
+    features {
+        #skipDefaultArguments = 1
+    }
+    mvc {
+        #callDefaultActionIfActionCantBeResolved = 1
+    }
+    settings {
+        useCustomRedirect = {$plugin.tx_ibjobs_iblogajobs.settings.useCustomRedirect}
+        customRedirectPageID = {$plugin.tx_ibjobs_iblogajobs.settings.customRedirectPageID}
+    }
+}
+
+plugin.tx_ibjobs._CSS_DEFAULT_STYLE (
+    textarea.f3-form-error {
+        background-color:#FF9F9F;
+        border: 1px #FF0000 solid;
+    }
+    input.f3-form-error {
+        background-color:#FF9F9F;
+        border: 1px #FF0000 solid;
+    }
+    .tx-ibjobs table {
+        border-collapse:separate;
+        border-spacing:10px;
+    }
+    .tx-ibjobs table th {
+        font-weight:bold;
+    }
+    .tx-ibjobs table td {
+        vertical-align:top;
+    }
+    .typo3-messages .message-error {
+        color:red;
+    }
+    .typo3-messages .message-ok {
+        color:green;
+    }
+)
+
+#page.includeJSFooter {
+#    tx_ibjobs_1 = EXT:ibjobs/Resources/Public/dist/ibjobs.min.js
+#}
+
+page.includeCSS {
+    tx_ibjobs_1 = EXT:ibjobs/Resources/Public/dist/ibjobs.min.css
+}
+
+# -------------------------------------------------
+# custom fluid parser for jobs
+# -------------------------------------------------
+lib.parseFunc_fluid < lib.parseFunc_RTE
+lib.parseFunc_fluid {
+    nonTypoTagStdWrap.encapsLines.addAttributes.P.class = ib-jobs-p-tag
+}

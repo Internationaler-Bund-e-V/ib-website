@@ -1,0 +1,87 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:layout name="Default" />
+<f:section name="main">
+  <div id="ib-jobs-data" data-baseurl="{settings.productDbBaseUrl}" data-intern="{settings.intern}"
+    data-clients="{settings.clients}" data-srclients="{settings.srclients}" data-locations="{settings.locations}" data-categories="{settings.categories}"
+    data-titles="{settings.titles}" data-target="{f:uri.page(pageUid:settings.targetpage)}"
+    data-prefilter="{settings.prefilter}">
+  </div>
+  <div class="ib-jobs-loader">
+    <img src="/typo3conf/ext/ib_template/Resources/Public/img/ajax-loader.gif">
+  </div>
+  <div id="ibjobsloga-container-{uid}" class="row ib-content-module ib-background-white ib-jobs-container">
+    <div class="columns medium-10 medium-offset-1 end">
+      <f:if condition="{settings.deactivateSearch} != 1">
+        <!-- Suche -->
+        <div id="toStick"></div>
+        <div class="ib-jobs-search-container rs_preserve rs_skip">
+          <div class="searchHeader">
+            <div class="row">
+              <div class="medium-8 columns">
+                <div class="cLabel">
+                  Suchen
+                </div>
+                <input type="text" id="ib-jobs-search" placeholder="Ort, Bundesland, Bezeichnung, ...">
+              </div>
+              <div class="medium-4 columns end text-right">
+                <div class="ib-color-blue ib-jobs-extended-search-container">
+                  <i class="ib-icon-arrow-right"></i>Erweiterte Suche
+                </div>
+              </div>
+            </div>
+
+            <!-- erweiterte Suche -->
+            <div class="" id="ib-jobs-extended-search">
+              <div class="row">
+                <div class="medium-4 columns">
+                  <label class="">Standort
+                    <f:form.select name="jobs" options="{jobs.locations}" prependOptionLabel="Auswählen..."
+                      class="ib-jobs-ext-filter" additionalAttributes="{data-val:1}" />
+                </div>
+                <div class="medium-4 columns">
+                  <label class="">Arbeitsfeld
+                    <f:form.select name="jobs" options="{jobs.categories}" prependOptionLabel="Auswählen..."
+                      class="ib-jobs-ext-filter" additionalAttributes="{data-val:2}" />
+                </div>
+                <div class="medium-4 columns">
+                  <label class="">Bundesland
+                    <f:form.select name="jobs" options="{jobs.federal_states}" prependOptionLabel="Auswählen..."
+                      class="ib-jobs-ext-filter" additionalAttributes="{data-val:4}" />
+                </div>
+              </div>
+              <div class="row columns text-right ib-color-blue">
+                <div id="ib-jobs-reset">
+                  <i class="ib-icon-arrow-right"></i>Zurücksetzen
+                </div>
+              </div>
+            </div>
+            <!-- erweiterte Suchen end -->
+
+            <div class="row">
+              <div class="columns medium-6 end ib-font-bold">
+                Ergebnisse:
+                <span id="ib-jobs-results-count"></span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </f:if>
+
+      <!-- result table start -->
+      <div id="ib-jobs-lazy">
+        <div id="ib-jobs-lazy-container" class="columns medium-12 rs_preserve">
+
+        </div>
+      </div>
+      <div class="ib-jobs-scroll-indicator">
+        <i class="ib-icon-arrow-down-bold"></i>
+      </div>
+      <!-- result table end -->
+
+    </div>
+
+  </div>
+  <!-- include db.js as footer asset -->
+  <f:asset.script identifier="dbJobsMin" src="EXT:ibjobs/Resources/Public/dist/ibjobs.min.js" />
+</f:section>
