@@ -1,0 +1,97 @@
+services:
+  ApacheSolrForTypo3\Solrconsole\Command\SolrConnectionGetCommand:
+    tags:
+      - name: 'console.command'
+        command: 'solr:connection:get'
+        schedulable: false
+
+  ApacheSolrForTypo3\Solrconsole\Command\SolrQueueDeleteCommand:
+    tags:
+      - name: 'console.command'
+        command: 'solr:queue:delete'
+        schedulable: false
+
+  ApacheSolrForTypo3\Solrconsole\Command\SolrQueueResetErrorsCommand:
+    tags:
+      - name: 'console.command'
+        command: 'solr:queue:reset-errors'
+        schedulable: false
+
+  ApacheSolrForTypo3\Solrconsole\Command\SolrQueueGetCommand:
+    tags:
+      - name: 'console.command'
+        command: 'solr:queue:get'
+        schedulable: false
+
+  ApacheSolrForTypo3\Solrconsole\Command\SolrQueueInitializeCommand:
+    tags:
+      - name: 'console.command'
+        command: 'solr:queue:initialize'
+        schedulable: false
+
+  ApacheSolrForTypo3\Solrconsole\Command\SolrQueueIndexCommand:
+    tags:
+      - name: 'console.command'
+        command: 'solr:queue:index'
+        schedulable: false
+
+  ApacheSolrForTypo3\Solrconsole\Command\SolrQueueProgressCommand:
+    tags:
+      - name: 'console.command'
+        command: 'solr:queue:progress'
+        schedulable: false
+
+  ApacheSolrForTypo3\Solrconsole\Command\SolrIndexGetCommand:
+    tags:
+      - name: 'console.command'
+        command: 'solr:index:get'
+        schedulable: false
+
+  ApacheSolrForTypo3\Solrconsole\Command\SolrIndexDeleteCommand:
+    tags:
+      - name: 'console.command'
+        command: 'solr:index:delete'
+        schedulable: false
+
+  ApacheSolrForTypo3\Solrconsole\Command\SolrIndexFlushCommand:
+    tags:
+      - name: 'console.command'
+        command: 'solr:index:flush'
+        schedulable: false
+
+  ApacheSolrForTypo3\Solrconsole\Command\SolrIndexVerifyCommand:
+    tags:
+      - name: 'console.command'
+        command: 'solr:index:verify'
+        schedulable: false
+
+  ApacheSolrForTypo3\Solrconsole\Command\SolrfalQueueDeleteCommand:
+    tags:
+      - name: 'console.command'
+        command: 'solrfal:queue:delete'
+        schedulable: false
+
+  ApacheSolrForTypo3\Solrconsole\Command\SolrfalQueueGetCommand:
+    tags:
+      - name: 'console.command'
+        command: 'solrfal:queue:get'
+        schedulable: false
+
+  ApacheSolrForTypo3\Solrconsole\Command\SolrfalQueueIndexCommand:
+    tags:
+      - name: 'console.command'
+        command: 'solrfal:queue:index'
+        schedulable: false
+
+  ApacheSolrForTypo3\Solrconsole\Command\SolrfalQueueProgressCommand:
+    tags:
+      - name: 'console.command'
+        command: 'solrfal:queue:progress'
+        schedulable: false
+
+  ApacheSolrForTypo3\Solrconsole\Command\SolrfalQueueResetErrorsCommand:
+    tags:
+      - name: 'console.command'
+        command: 'solrfal:queue:reset-errors'
+        schedulable: false
+
