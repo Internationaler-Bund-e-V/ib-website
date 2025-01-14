@@ -1,4 +1,4 @@
-name: ib-website
+name: ib
 type: typo3
 docroot: public
 php_version: "8.1"
@@ -198,7 +198,7 @@ corepack_enable: false
 # Provide extra flags to the "ngrok http" command, see
 # https://ngrok.com/docs/ngrok-agent/config or run "ngrok http -h"
 
-# disable_settings_management: false
+disable_settings_management: false
 # If true, DDEV will not create CMS-specific settings files like
 # Drupal's settings.php/settings.ddev.php or TYPO3's additional.php
 # In this case the user must provide all such settings.
