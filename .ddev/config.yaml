@@ -4,7 +4,14 @@ docroot: public
 php_version: "8.1"
 webserver_type: nginx-fpm
 xdebug_enabled: false
-additional_hostnames: []
+additional_hostnames:
+  - "ai-future-project"
+  - "ib-bvbbi"
+  - "ib-berlin"
+  - "ib-freiwilligendienste"
+  - "ib-kitas"
+  - "ib-suedwest"
+  - "srb"
 additional_fqdns: []
 database:
     type: mariadb
@@ -199,6 +206,7 @@ corepack_enable: false
 # https://ngrok.com/docs/ngrok-agent/config or run "ngrok http -h"
 
 disable_settings_management: false
+
 # If true, DDEV will not create CMS-specific settings files like
 # Drupal's settings.php/settings.ddev.php or TYPO3's additional.php
 # In this case the user must provide all such settings.
