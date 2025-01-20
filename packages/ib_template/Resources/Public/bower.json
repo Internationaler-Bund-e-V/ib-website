@@ -1,0 +1,22 @@
+{  
+  "name": "ib_responsive_relaunch",
+  "version": "1.0.0",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation-sites": "~6.1.1",
+    "modernizr": "~2.7",
+    "slick-carousel": "~1.6.0",
+    "clipboard": "^1.5.12",
+    "headroom.js": "https://unpkg.com/headroom.js/bower.zip",
+    "angular": "~1.6",
+    "select2": "^4.0.3"
+  },
+  "devDependencies": {}
+}

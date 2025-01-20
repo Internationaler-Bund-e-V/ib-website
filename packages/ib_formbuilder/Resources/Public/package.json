@@ -1,0 +1,32 @@
+{
+  "name": "ib-formbuilder",
+  "version": "0.0.1",
+  "description": "IB FormBuilder Plugin",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rms",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "autoprefixer": "^10.4.7",
+    "formBuilder": "^3.19.7",
+    "grunt": "^1.5.3",
+    "grunt-autoprefixer": "^3.0.4",
+    "grunt-bless": "^1.0.2",
+    "grunt-cli": "^1.4.3",
+    "grunt-contrib-clean": "^2.0.1",
+    "grunt-contrib-compass": "^1.1.1",
+    "grunt-contrib-concat": "^2.1.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^4.0.0",
+    "grunt-contrib-sass": "^2.0.0",
+    "grunt-contrib-uglify": "^5.2.1",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-postcss": "^0.9.0",
+    "grunt-sass": "^3.1.0",
+    "install": "^0.13.0",
+    "node-sass": "^7.0.1",
+    "npm": "^8.10.0"
+  }
+}
