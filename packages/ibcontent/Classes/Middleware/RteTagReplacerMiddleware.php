@@ -83,7 +83,7 @@ class RteTagReplacerMiddleware implements MiddlewareInterface
             case 'TAG':
                 $this->standaloneView->setTemplate('GenericTag');
                 $this->template = $this->standaloneView;
-                $this->template->assignMultiple( array('genericTag' => $options));
+                $this->template->assignMultiple(array('genericTag' => $options));
 
                 return $this->template->render();
             case 'YT':
