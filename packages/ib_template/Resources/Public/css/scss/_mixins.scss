@@ -5,3 +5,16 @@
     -webkit-transition: $transition;
     transition:         $transition;
 }
+
+// visually hide text(spans) from styling flow, but still screen readable
+@mixin visually_hidden {
+    position: absolute;
+    width: 1px;         
+    height: 1px;        
+    padding: 0;         
+    margin: -1px;       // negativer rand, um den platzbedarf zu minimieren
+    overflow: hidden;   // verhindert, dass es sichtbar ist
+    clip: rect(0, 0, 0, 0); // beschneidet es vollständig
+    white-space: nowrap; // verhindert zeilenumbrüche
+    border: 0;          // entfernt eventuelle rahmen
+  }
