@@ -20,22 +20,27 @@
         <div class="row ib-content-module ib-background-{settings.bgColor}">
             <div class="columns {f:if(condition: '{settings.layout}=="2col"',then: 'medium-offset-1 medium-10 large-6-2col large-offset-1-2col',else: 'medium-10 medium-offset-1')} end">
                 <div class="columns row headline-section">
-                    <f:if condition="{settings.headline_tag}">
-                        <f:then>
-                            <{settings.headline_tag} class="ib-headline">{settings.headline}</{settings.headline_tag}>
-                        </f:then>
-                        <f:else>
-                            <h2 class="ib-headline">{settings.headline}</h2>
-                        </f:else>
+
+                    <f:if condition="{settings.headline} != ''">
+                        <f:if condition="{settings.headline_tag}">
+                            <f:then>
+                                <{settings.headline_tag} class="ib-headline">{settings.headline}</{settings.headline_tag}>
+                            </f:then>
+                            <f:else>
+                                <h2 class="ib-headline">{settings.headline}</h2>
+                            </f:else>
+                        </f:if>
                     </f:if>
 
-                    <f:if condition="{settings.headline_tag}">
-                        <f:then>
-                            <{settings.subheadline_tag}>{settings.subheadline}</{settings.subheadline_tag}>
-                        </f:then>
-                        <f:else>
-                            <h2>{settings.subheadline}</h2>
-                        </f:else>
+                    <f:if condition="{settings.subheadline} != ''">
+                        <f:if condition="{settings.subheadline_tag}">
+                            <f:then>
+                                <{settings.subheadline_tag}>{settings.subheadline}</{settings.subheadline_tag}>
+                            </f:then>
+                            <f:else>
+                                <h2>{settings.subheadline}</h2>
+                            </f:else>
+                        </f:if>
                     </f:if>
 
                 </div>
