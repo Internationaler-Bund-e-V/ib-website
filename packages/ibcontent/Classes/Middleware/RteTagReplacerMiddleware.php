@@ -89,7 +89,7 @@ class RteTagReplacerMiddleware implements MiddlewareInterface
             case 'YT':
                 $this->standaloneView->setTemplate('YoutubeTag');
                 $this->template = $this->standaloneView;
-                $this->template->assignMultiple(array('youtubecode' => $options[1], 'startAt' => $options[2]));
+                $this->template->assignMultiple(array('youtubecode' => $options[1], 'startAt' => $options[2] ?? 0, 'videoTitle' => $options[3] ?? ''));
 
                 return $this->template->render();
             case 'IFRAME':
