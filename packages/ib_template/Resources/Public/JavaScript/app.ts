@@ -3,45 +3,38 @@
 // any CSS you import will output into a single css file (app.css in this case)
 // import './styles/foundation.scss';
 import '../Css/app.scss';
-
-
 import './config/readSpeakerConfig';
-import 'friendly-challenge/widget';
 
+import 'friendly-challenge/widget';
 import Foundation from 'foundation-sites';
 import Headroom from 'headroom.js';
-
 const Shariff = require('shariff');
 const $ = require('jquery');
 
-/*
-/min/libs.min.js
+require('./components/anchor.js')
+require('./components/contactOverlay.js')
+require('./components/cookie.js')
+require('./components/customCookiebot.js')
+require('./components/fab.js')
+require('./components/foundation-accordion.js')
+require('./components/headerSearchBar.js')
+require('./components/ibClipboard.js')
+require('./components/matomoEvents.js')
+require('./components/nav-tab-detection.js')
+require('./components/newsCategory.js')
+require('./components/newsSlider.js')
+require('./components/obfuscateEmail.js')
+require('./components/sliderLoader.js')
+require('./components/social-content-sticky-nav.js')
+require('./components/tabsBar.js')
+require('./components/videoSlider.js')
+// 'node_modules/clipboard/dist/clipboard.min.js',
+// 'node_modules/motion-ui/dist/motion-ui.min.js'
 
-
-require('../js/src/anchor.js')
-require('../js/src/contactOverlay.js')
-require('../js/src/cookie.js')
-require('../js/src/customCookiebot.js')
-require('../js/src/fab.js')
-require('../js/src/foundation-accordion.js')
-require('../js/src/headerSearchBar.js')
-require('../js/src/ibClipboard.js')
-require('../js/src/matomoEvents.js')
-require('../js/src/nav-tab-detection.js')
-require('../js/src/newsCategory.js')
-require('../js/src/newsSlider.js')
-require('../js/src/obfuscateEmail.js')
-require('../js/src/sliderLoader.js')
-require('../js/src/social-content-sticky-nav.js')
-require('../js/src/tabsBar.js')
-require('../js/src/videoSlider.js')
-'node_modules/clipboard/dist/clipboard.min.js',
-'node_modules/motion-ui/dist/motion-ui.min.js'
 
 require('select2');
-require('slick');
+require('slick-carousel');
 require('./jetmenu.js');
-
 $(document).ready(function () {  
     const options = {
         'offset': 100,
@@ -64,7 +57,6 @@ $(document).ready(function () {
     new Shariff($('.shariff'));
 
     $(document).foundation();
-
     $().jetmenu({
         indicator: false
     });
