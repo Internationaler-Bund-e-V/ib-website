@@ -78,84 +78,66 @@ page.10 {
     }
 }
 
-# -----------------------------------------------------------------------------
-# include CSS & JS
-# -----------------------------------------------------------------------------
-page.includeJS {
-    jsLibsHeader = {$template_path.js}/min/header.min.js
-    jsRSconfig = {$template_path.js}/src/rsConfig.js
-    #jquery = {$template_path.bower}/foundation/js/vendor/jquery.js
-    #modernizr = {$template_path.bower}/foundation/js/vendor/modernizr.js
-}
-
-page.includeJSFooter {
-    libs = {$template_path.js}/min/libs.min.js
-    frontend = {$template_path.js}/min/frontend.min.js
-    shariff = {$template_path.js}/min/shariff.min.js  
-}
-
-#### overwrite EXT:db_friendlycaptcha for local source + version control -> see 
-page.includeJSFooterlibs{
-    friendlycaptchaModule = {$template_path.js}/min/widget.module.min.js
-    friendlycaptchaModule.external = 0
-
-    friendlycaptcha ={$template_path.js}/min/widget.min.js
-    friendlycaptcha.external = 0
-}
-
 #
 # deaktiviere das Laden von einer in Solr integrierten jQuery Version (jQuery v3.1.1)
 # https://mantis.rm-solutions.de/mantis/view.php?id=2338
 # mk@rms, 2022-08-12
 #
-page.includeJSFooterlibs.solr-jquery >
-page.includeJS {
-    jquery = typo3conf/ext/ib_template/Resources/Public/js/min/jquery.min.js
-}
+#page.includeJSFooterlibs.solr-jquery >
+#page.includeJS {
+#    jquery = typo3conf/ext/ib_template/Resources/Public/js/min/jquery.min.js
+#}
 
-page.jsFooterInline {
-    10 = TEXT
-    10.value (
-        $(document).foundation();
-        $(window).load(function() {
-            $().jetmenu({
-                indicator: false
-            });
-        });
+#page.jsFooterInline {
+#    10 = TEXT
+#    10.value (
+#        $(document).foundation();
+#        $(window).load(function() {
+#            $().jetmenu({
+#                indicator: false
+#            });
+#         });
 
-        $(document).ready(function() {            
+#         $(document).ready(function() {            
 
-            $('.twoColLayout .ib-news-slider').slick({
-                prevArrow : $('#newsPrevButton'),
-                nextArrow : $('#newsNextButton'),
-                slidesToShow : 2,
-                dots: true,
-                responsive : [
-                {
-                    breakpoint : 900,
-                    settings : {
-                        slidesToShow : 2,
-                        slidesToScroll : 2
-                    }
-                }, {
-                    breakpoint : 480,
-                    settings : {
-                        slidesToShow : 1,
-                        slidesToScroll : 1
-                    }
-                }]
-            });
-        });
-    )
-}
+#             $('.twoColLayout .ib-news-slider').slick({
+#                 prevArrow : $('#newsPrevButton'),
+#                 nextArrow : $('#newsNextButton'),
+#                 slidesToShow : 2,
+#                 dots: true,
+#                 responsive : [
+#                 {
+#                     breakpoint : 900,
+#                     settings : {
+#                         slidesToShow : 2,
+#                         slidesToScroll : 2
+#                     }
+#                 }, {
+#                     breakpoint : 480,
+#                     settings : {
+#                         slidesToShow : 1,
+#                         slidesToScroll : 1
+#                     }
+#                 }]
+#             });
+#         });
+#     )
+# }
 
+
+# -----------------------------------------------------------------------------
+# include CSS & JS
+# -----------------------------------------------------------------------------
 page.includeCSS {
-    app = {$template_path.css}/min/app.min.css
-    app.media = screen
-    print = {$template_path.css}/min/print.min.css
-    print.media = print
-    print.excludeFromConcatenation = 1
-    shariff = {$template_path.css}/min/shariff.complete.css
+    # Pattern typo3_encore:entryName
+    app = typo3_encore:app
+    # If you want to ensure that this file is loaded first uncomment the next line
+    # app.forceOnTop = 1
+}
+
+page.includeJSFooter {
+    # Pattern typo3_encore:entryName
+    app = typo3_encore:app
 }
 
 # -----------------------------------------------------------------------------

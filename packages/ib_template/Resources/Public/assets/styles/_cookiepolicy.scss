@@ -1,0 +1,141 @@
+.ibConsentComment {
+  display: none;
+}
+
+
+.IB-CookiePolicy-Container {
+  width: 100%;
+  height: auto;
+  padding: 10px 0;
+  background: #005691;
+  opacity: .8;
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+  color: white;
+  display: none;
+  left: 0;
+
+  a.CookiePolicyLink {
+    text-decoration: underline;
+    color: white !important;
+  }
+
+  .CookiePolicyButton {
+    border: 1px solid white;
+    padding: 3px;
+    margin: 0 5px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+  }
+}
+
+#CybotCookiebotDialogDetailBodyContentCookieContainerPreference {
+  //display: none;
+}
+
+#CybotCookiebotDialogBodyLevelButtonPreferences+label {
+  //display: none !important;
+}
+
+#CookieDeclarationChangeConsent {
+  a {
+    color: $ib-anchor-color !important;
+    font-weight: bold;
+  }
+}
+
+#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowallSelectionWrapper {
+  a {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    font-weight: bold !important;
+  }
+}
+
+#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowallSelectionWrapper {
+  padding-bottom: 10px;
+}
+
+#CybotCookiebotDialogBody {
+  padding-top: 10px;
+}
+
+label[for=CybotCookiebotDialogBodyLevelButtonNecessary] {
+  background-image: none !important;
+}
+
+.customCBOverlay {
+  text-align: center;
+  width: 100%;
+  //background-image: url('../../img/IB_Cookiebanner_a_1.jpg');
+  background-image: url('../../img/opacityMap.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 0;
+  padding-top: 70%;
+  position: relative;
+  z-index: 1;
+
+  &.customCBOverlayYouTube {
+    background-image: url('../../img/cb_yt_overlay.jpg');
+    padding-top: 57%;
+  }
+
+  &.customCBOverlayFlockler {
+    background-image: url('../../img/cb_flockler_overlay.jpeg');
+    padding-top: 33%;
+  }
+
+  &.genericCBOverlay {
+    background-image: url('../../img/consent/generic.jpg');
+    padding-top: 33%;
+  }
+  &.youtubeCBOverlay{
+    background-image: url('../../img/consent/cb_yt_overlay.jpg');
+    padding-top: 57%;
+  }
+  &.mapsCBOverlay{
+    background-image: url('../../img/consent/cb_maps_overlay.png');
+    padding-top: 45%;
+  }
+
+  .customCBButton {
+    position: absolute;
+    top: 45%;
+    width: 100%;
+
+    button {
+      position: relative;
+      z-index: 3;
+      margin: 0 auto;
+      background: $ib-orange;
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+
+  }
+}
+
+
+
+//if cookiebot is not available
+.noCookieBot {
+
+  .cookieconsent-optout-marketing,
+  .cookieconsent-optout-statistics {
+    display: none !important;
+  }
+}

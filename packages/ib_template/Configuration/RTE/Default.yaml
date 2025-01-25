@@ -10,10 +10,9 @@ editor:
     # RTE default config removes image plugin - restore it:
     format_tags: "p;h1;h2;h3;h4;h5;pre"
 
-    contentsCss:
+    contentsCss: 
       - 'EXT:rte_ckeditor/Resources/Public/Css/contents.css'
-      #- '../fileadmin/template/css/typo3_backend_rte.css'
-      - 'EXT:ib_template/Resources/Public/css/typo3_backend_rte.css'
+      - "typo3_encore:rte"
 
     toolbarGroups:
       - { name: styles, groups: [ styles, format ] }

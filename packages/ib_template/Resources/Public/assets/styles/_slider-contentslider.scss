@@ -1,0 +1,30 @@
+.ib-contentslider{
+  .ib-contentslider-item{
+    figure{
+      margin: 0;
+    }
+    h4 {
+      font-weight: 700;
+      font-size: rem-calc(21);
+      line-height: rem-calc(30);
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+}
+
+/* Small only */
+@media screen and (max-width: 39.9375em) {
+  
+  .ib-contentslider{    
+      .ib-prev-next-button{
+        padding-top:15%;
+        font-size:2rem;
+        padding-left:0;
+        padding-right:0;
+        
+      }
+  }
+  
+  
+}

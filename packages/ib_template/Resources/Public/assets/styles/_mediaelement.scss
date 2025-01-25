@@ -1,0 +1,45 @@
+/*Media element with Video / images*/
+.ib-mediaelement {
+	
+	figure {
+		margin: 0;
+	}
+
+		video {
+			height: auto !important;
+		}
+}
+
+.responsive-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-width:980px;
+  height: 100%;
+}
+
+.responsive-video {
+position: relative;
+padding-bottom: 56.25%; /* Default for 1600x900 videos 16:9 ratio*/
+padding-top: 0px;
+height: 0;
+min-width:980px;
+overflow: hidden;
+}
+
+.video-responsive{
+  overflow:hidden;
+  padding-bottom:56.25%;
+  position:relative;
+  height:0;
+
+
+}
+.video-responsive iframe{
+  left:0;
+  top:0;
+  height:100%;
+  width:100%;
+  position:absolute;
+}

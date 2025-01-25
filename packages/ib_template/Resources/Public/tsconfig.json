@@ -6,10 +6,10 @@
         "preserveConstEnums": true,
         "sourceMap": true,
         "typeRoots": [
-            "./node_modules/@types",
-            "./assets/types"
+            "node_modules/@types",
+            "assets/types"
         ]
     },
-    "include": ["assets/**/*"],
-    "exclude": ["**/*.spec.ts"]
+    "include": [ "assets/**/*"],
+    "exclude": [ "**/*.spec.ts" ]
 }

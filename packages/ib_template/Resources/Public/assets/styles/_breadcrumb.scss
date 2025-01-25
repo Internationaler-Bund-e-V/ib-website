@@ -1,0 +1,34 @@
+.ib-breadcrumb {
+  padding-top: 20px;
+  padding-bottom: 0;
+
+  .breadcrumbs {
+    li {
+      a {
+        &:hover {
+          color: #f18700 !important;
+        }
+      }
+
+      &.current {
+        color: #f18700 !important;
+      }
+    }
+  }
+
+  .breadcrumbs li:not(:last-child)::after {
+    font-family: 'ib-font' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: inherit;
+    -webkit-font-smoothing: antialiased;
+    content: "\e90c";
+    padding-left: 0rem;
+    font-size: 0.6em;
+    vertical-align: middle;
+    top: -1px;
+  }
+}

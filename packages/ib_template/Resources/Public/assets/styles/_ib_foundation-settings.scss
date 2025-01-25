@@ -1,0 +1,50 @@
+/* IB fonts */
+$font-merriweather: 'Merriweather', serif;
+$font-opensans: 'Open Sans';
+
+/* IB colors */
+$ib-gray: #f3f6f8; 
+$ib-darkgray: #b1b1b1; 
+/*$ib-darkblue: #005691;*/
+$ib-darkblue: #005590;
+$ib-blue: #009fe3;
+/*$ib-lightblue: #97d2f0;*/
+$ib-lightblue: #009ddf;
+$ib-brown: #aca258;
+$ib-orange: #f18700;
+$ib-standard-font-color: #666666;
+$ib-anchor-color: #f18700;
+$ib-anchor-hover: #009ddf;
+$ib-tabs-color-alpha: rgba(241,135,0,0.7); 
+$ib-bubble-orange: #f18700;
+$ib-bubble-blue: #009cdf;
+
+/* IB settings */
+$ib-global-width:1188;
+$ib-header-weight: 200;
+
+
+/* IB H1 */
+$font-size-h1: 2rem;
+$font-weight-h1: 700 !important;
+$font-color-h1: #009ddf;
+$font-family-h1: $font-merriweather;
+$margin-bottom-h1:1.2rem;
+$letter-spacing-h1: -0.5px;
+
+/* IB H2 */
+$font-size-h2: 1.4rem;
+$font-weight-h2: 700 !important;
+$font-color-h2: #005590;
+$font-family-h2: $font-merriweather;
+$margin-bottom-h2: 3.2rem;
+
+/* IB H3 */
+$font-size-h3: 1.1rem;
+$font-weight-h3: 700;
+$font-family-h3: $font-opensans; 
+
+/* IB H4 */
+$font-size-h4: 1rem;
+$font-weight-h4: 700;
+$font-family-h4: $font-opensans; 

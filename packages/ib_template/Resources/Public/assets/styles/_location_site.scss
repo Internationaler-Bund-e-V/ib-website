@@ -1,0 +1,26 @@
+.ib-location-site{
+  li{
+    list-style:none;   
+  }
+  ul{
+    margin:0;
+    padding:0;
+  }
+  .ib-slider-container{
+    margin-bottom:-3rem; 
+  }
+  .content{
+    padding:2rem 0;
+  }
+  .breadcrumb{
+    padding: 0 0 2rem 0;
+    color: $ib-blue;
+  }
+  .divider{
+    border-bottom:1px solid $ib-blue; 
+    margin-bottom:1rem;
+  }
+  #map{   
+    height:150px;
+  }
+}

@@ -1,0 +1,16 @@
+@media only screen and (min-width: 1024px) {
+    .ib-FWD #ib-main-menu {
+        ul.jetmenu {
+            >li {
+                width: auto;
+                padding-left: 10px;
+                padding-right: 10px;
+
+                a {
+                    white-space: nowrap;
+
+                }
+            }
+        }
+    }
+}

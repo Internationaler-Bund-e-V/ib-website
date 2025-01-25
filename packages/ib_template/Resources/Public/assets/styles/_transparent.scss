@@ -1,0 +1,11 @@
+/**
+ * this file configures elements that have the class "ib-transparent"
+ * this is i.e. used on the startpage slider on the IB home page
+ *
+ * @author 20170316 mkettel
+ */
+.ib-transparent {
+	opacity: 0.85;
+	filter: alpha(opacity=85); /* For IE8 and earlier */
+}
+

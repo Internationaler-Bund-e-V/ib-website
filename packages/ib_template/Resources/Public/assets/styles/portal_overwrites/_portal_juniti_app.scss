@@ -1,0 +1,41 @@
+.juniti-app {
+    font-family: 'Figtree';
+    font-weight: 400;
+
+    #ib-footer .ib-footer-container {
+        background: #5B41E1;
+    }
+
+    .jetmenu {
+        border-bottom: 6px solid #5B41E1;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-family: 'Figtree';
+    }
+
+    h1 {
+        color: #2F3036;
+        font-weight: bold;
+        font-size: 24px;
+    }
+
+    h2 {
+        color: #494A50;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    h3 {
+        color: #5B41E1;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .ib-social-content {
+        display: none !important;
+    }
+}

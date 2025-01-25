@@ -1,0 +1,63 @@
+#dbContactOverlay {
+  display: none;
+  position: fixed;
+  /* height: 100vh; */
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: rgba(200, 200, 200, .7);
+  padding: 1rem;
+
+  h2 {
+    margin-top: 0;
+  }
+
+  .dbContactOverlayContent {
+    padding: 1rem;
+    background: white;
+    position: relative;
+    float: left;
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+    overflow: scroll;
+    max-height: calc(100%);
+
+    .ib-content-module {
+      float: left;
+      width: 100%;
+
+      a {
+        color: #f18700 !important;
+        text-decoration: none !important;
+
+      }
+    }
+
+    .columns {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .ib-sidebar {
+      float: left;
+    }
+
+    .ib-sidebar-map {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .dbContactOverlayCloseButton {
+
+    color: #045591 !important;
+    font-size: 2rem;
+    position: absolute;
+    right: 10px;
+    z-index: 1000;
+  }
+
+}

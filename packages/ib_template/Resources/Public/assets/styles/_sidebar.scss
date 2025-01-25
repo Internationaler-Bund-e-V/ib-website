@@ -1,0 +1,130 @@
+/*styles for all modules inside sidebar*/
+.ib-sidebar {
+	padding-top: 50px;
+
+	h2 {
+		font-weight: 700;
+		font-size: 15px;
+		margin-top: 0;
+		//margin-bottom: 30px;
+		margin-bottom: 15px;
+	}
+
+	.ib-content-module:not(:first-child) {
+		border-top: 1px solid $ib-lightblue;
+	}
+
+	// ------------------------------------------
+	// wrap around contacts in the sidebar
+	// if there is more than one contact,
+	// add borders to the bottom (only-child selector)
+	// ------------------------------------------
+	div.contacts-container {
+		padding-bottom: 20px;
+	}
+
+	div.contacts-container>div.pdb-single-contact-container {
+		//border-bottom: 1px solid $ib-standard-font-color;
+		margin-top: 15px;
+		//padding-bottom: 15px;
+	}
+
+	div.contacts-container>div.pdb-single-contact-container:only-child {
+		border: none;
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+}
+
+
+
+
+.ib-contact-sidebar-header {
+	padding-bottom: 0;
+}
+
+.ib-sidebar-contact {
+	h2 {
+		margin-top: 30px;
+	}
+
+	.fas {
+		margin-right: 5px;
+	}
+}
+
+.ib-sidebar-sponsor-container {
+	margin: 20px 0;
+
+	.ib-sidebar-sponsor-item {
+		margin-bottom: 15px;
+
+		&:last-child:not(:first-child) {
+			float: left;
+		}
+	}
+
+	.ib-sidebar-sponsor-blank {
+		cursor: default;
+	}
+
+	.ib-sidebar-sponsor-headline {
+		font-weight: bold;
+		margin-bottom: 5px;
+	}
+}
+
+.ib-sidebar-map {
+	a {
+		display: inline;
+
+		&+a {
+			margin-top: 1rem;
+		}
+
+		&>img {
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	.fas {
+		margin-right: 5px;
+	}
+}
+
+.db-contactform-jump {
+	cursor: pointer;
+	color: $ib-orange;
+}
+
+.ib-sidebar-downloads {
+	a {
+		display: block;
+
+		&+a {
+			margin-top: 1rem;
+		}
+	}
+}
+
+/* Small only */
+@media screen and (max-width: 39.9375em) {
+	.ib-sidebar {
+		padding-top: 0;
+	}
+}
+
+/* Large and up */
+@media screen and (min-width: 64em) {
+	.dbSidebarSpacer {
+		&.pRS {
+			padding-top: 100px;
+		}
+
+		&.pWORS {
+			padding-top: 50px;
+		}
+
+	}
+}

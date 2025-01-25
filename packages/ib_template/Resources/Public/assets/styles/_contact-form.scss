@@ -1,0 +1,24 @@
+.ib-contact-form {
+  fieldset {
+    margin-top: 1rem;
+  }
+
+  input {
+    font-weight: normal;
+  }
+
+  #ib-recaptcha-container {
+    padding-bottom: 1rem;
+  }
+
+  button[type="submit"] {
+    color: white !important;
+    padding: 10px 15px;
+    border-radius: 1.3em / 1em;
+    text-decoration: none !important;
+    display: inline-block;
+    margin: 5px 0;
+    background-color: #009ddf;
+  }
+
+}

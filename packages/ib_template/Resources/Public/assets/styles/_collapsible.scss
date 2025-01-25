@@ -1,0 +1,63 @@
+.ib-collapsible {
+	.ib-collapsible-header {
+		cursor: pointer;
+		margin-top: 0.2rem;
+	}
+	.ib-collapsible-header {
+		h1, h2 {
+			display: inline-block;
+		}
+		img {
+			float: right;
+			min-height: 48px;
+			margin-top: 10px;
+		}
+	}
+	.ib-collapsible-divider {
+		border-top: 1px solid $ib-standard-font-color;
+		margin-top: 0.6rem;
+		margin-bottom: 0.6rem;
+	}
+	.ib-collapsible-content {
+		padding: 10px 0;
+		display: none;
+		.flex-video {
+			visibility: hidden;
+		}
+	}
+	.ib-collapsible-icon {
+		cursor: pointer;
+		margin-top: 0.2rem;
+		font-size: 1.5rem;
+		color:$ib-darkblue;
+	}
+	.ib-link-more-before::before {
+		font-size: 0.5rem;
+		vertical-align: middle;
+	}
+
+}
+
+@media screen and (min-width: 40em) {
+	.ib-collapsible {
+		.ib-collapsible-icon i {
+			float: right;
+		}
+	}
+
+	div.ib-collapsible.small-headlines {
+		.ib-collapsible-header {
+			.ib-headline {
+				//font-size: 1.5rem;
+			}
+		}
+		.ib-collapsible-icon i {
+			font-size: 1.5rem;
+		}
+		.ib-collapsible-divider {
+			margin-top: 0.1rem;
+		}
+	}
+}
+
+

@@ -1,0 +1,84 @@
+@import 'foundation';
+
+/** shariff **/
+@import 'shariff/dist/shariff.complete.css';
+
+@import 'select2/dist/css/select2.min.css';
+@import 'motion-ui/dist/motion-ui.css';
+@import 'slick-carousel/slick/slick.css';
+
+@import 'mixins';
+@import 'colors';
+@import 'contact-form';
+@import 'fonts';
+
+@import 'header';
+@import 'jetmenu';
+@import 'main_nav';
+@import 'ib-themes/_ib_themes_main.scss';
+@import 'slick';
+@import 'collapsible';
+@import 'customcontent';
+@import 'slider-bubbleslider';
+@import 'slider-newsslider';
+@import 'slider-jobslider';
+@import 'slider-contentslider';
+@import 'slider-startpageslider';
+@import 'typo3.scss';
+@import 'searchbox';
+@import 'locations';
+@import 'location_site';
+@import 'product_site';
+@import 'map_site';
+@import 'divider';
+@import 'flockler';
+@import 'breadcrumb';
+@import 'pagetitle';
+@import 'social';
+@import 'social_action_button';
+@import 'sidebar';
+@import 'services';
+@import 'template_2col';
+@import 'tiles';
+@import 'footer';
+@import 'mediaelement';
+@import 'newslist';
+@import 'newsCategories';
+@import 'news-detail';
+@import 'headerSearchBar';
+@import 'tabsBar';
+@import 'shariff';
+@import 'fab';
+@import 'font-awesome';
+@import 'dbContactOverlay';
+@import 'dbVideoSlider';
+@import 'dbRTForm';
+@import 'ib-font';
+@import 'google-fonts';
+@import 'transparent';
+@import 'loader';
+@import 'cookiepolicy';
+@import 'ibClipboard';
+@import 'db-extensions/_dbproductlist.scss';
+@import 'tables';
+@import 'emailDialog';
+@import 'tx_form';
+@import 'rs-speaker-custom';
+@import 'fontawesome_5/fontawesome.scss';
+@import 'fontawesome_5/solid.scss';
+
+@include foundation-everything;
+
+@import 'main';
+@import 'rte_classes';
+@import 'ckeditor';
+@import 'portal_overwrites/_portal_ibkongress.scss';
+@import 'portal_overwrites/_portal_sozialassistenz_berlin.scss';
+@import 'portal_overwrites/_portal_project_value.scss';
+@import 'portal_overwrites/_portal_ai_future.scss';
+@import 'portal_overwrites/_portal_ib_suedwest_imd.scss';
+@import 'portal_overwrites/_portal_prowood.scss';
+@import 'portal_overwrites/_portal_ib_fwd.scss';
+@import 'portal_overwrites/_portal_juniti_app.scss';
+@import 'portal_overwrites/_portal_stm_boxberg.scss';
+@import 'portal_overwrites/_portal_seniorenzentrum_meissen.scss';

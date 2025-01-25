@@ -399,3 +399,4 @@ lib.parseFunc_RTE.externalBlocks.table.stdWrap.HTMLparser.tags.table.fixAttrib.c
 lib.parseFunc.htmlSanitize = 1
 lib.parseFunc_RTE.htmlSanitize = 0
  
+@import 'EXT:ib_template/Configuration/TypoScript/encore.ts'
