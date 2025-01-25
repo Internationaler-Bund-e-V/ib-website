@@ -53,8 +53,8 @@ RTE.default.proc.entryHTMLparser_db.allowTags := addToList(iframe,embed,object,p
 RTE.default.proc.allowTagsOutside := addToList(iframe,embed,object,param)
 
 RTE.default.contentCSS {
-	file1 = typo3conf/ext/ib_template/Resources/Public/css/min/app.min.css
-	file2 = typo3conf/ext/ib_template/Resources/Public/css/typo3_backend_rte.css
+	file1 = EXT:ib_template/Resources/Public/css/min/app.min.css
+	file2 = EXT:ib_template/Resources/Public/css/typo3_backend_rte.css
 }
 
 # Disable Upload and Drag&Drop tabs for images

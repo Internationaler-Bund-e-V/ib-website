@@ -3,17 +3,17 @@ plugin.tx_news {
         templateRootPaths >
         templateRootPaths {
             0 = EXT:news/Resources/Private/Templates/
-            1 = typo3conf/ext/ib_template/Resources/Private/Template/html/ext/news/Templates/
+            1 = EXT:ib_template/Resources/Private/Template/html/ext/news/Templates/
         }
         partialRootPaths >
         partialRootPaths {
             0 = EXT:news/Resources/Private/Partials/
-            1 = typo3conf/ext/ib_template/Resources/Private/Template/html/ext/news/Partials/
+            1 = EXT:ib_template/Resources/Private/Template/html/ext/news/Partials/
         }
         layoutRootPaths >
         layoutRootPaths {
             0 = EXT:news/Resources/Private/Layouts/
-            1 = typo3conf/ext/ib_template/Resources/Private/Template/html/ext/news/Layouts/
+            1 = EXT:ib_template/Resources/Private/Template/html/ext/news/Layouts/
         }
     }
     settings{
@@ -45,7 +45,7 @@ plugin.tx_news {
                         maxWidth = 320
                         maxHeight = 150
                 }
-                #dummyImage = typo3conf/ext/news/Resources/Public/Images/dummy-preview-image.png
+                #dummyImage = EXT:news/Resources/Public/Images/dummy-preview-image.png
             }
         }
     }

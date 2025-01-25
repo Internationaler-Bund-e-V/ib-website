@@ -1,0 +1,75 @@
+/*
+ * this file contains portal specific overwrites
+ * this can be enabled/disabled via a class that is set for the body
+ * the constant {$portalSettings.bodyClassName} is used for this
+ * @see EXT:ib_template/Configuration/TypoScript/constants_general.ts
+ * @see EXT:ib_template/Configuration/TypoScript/layout.ts
+ * @see EXT:ib_template/Configuration/TypoScript/constants_portals/ib-kongress.t3s
+ * @author mk@rms, 2019-08-16
+ */
+
+body.portal_ibkongress {
+
+  div.tx_ibformbuilder-show-frontend-form {
+
+    div.rendered-form {
+
+      div.fb-checkbox-group {
+        span.fb-required {
+          //color: #fff;
+        }
+      }
+    }
+  }
+
+  $tabs_bar_color_1: rgb(148, 25, 144);
+  $tabs_bar_color_1_alpha: rgba(148, 25, 144, 0.76);
+  $tabs_bar_color_2: rgb(254, 204, 0);
+  $tabs_bar_color_2_alpha: rgba(254, 204, 0, 0.76);
+
+  #ib-tabs-bar {
+
+
+
+    background: $tabs_bar_color_1;
+
+    .ib-tabs-bar-item-active {
+      background: $tabs_bar_color_2 !important;
+
+      &.ib-tabs-bar-item-last {
+        background: $tabs_bar_color_1 !important;
+      }
+    }
+
+    .ib-tabs-bar-ul {
+      li {
+        background: $tabs_bar_color_2_alpha;
+
+        &:hover {
+          background: $tabs_bar_color_2;
+        }
+
+        &.ib-tabs-bar-item-last {
+          background: $tabs_bar_color_1_alpha;
+
+          &:hover {
+            background: $tabs_bar_color_1;
+          }
+        }
+
+        &.ib-tabs-bar-item-first {
+          background: $tabs_bar_color_2_alpha;
+
+          &:hover {
+            background: $tabs_bar_color_2
+          }
+        }
+      }
+    }
+  }
+
+
+  #ibFAB {
+    background: $tabs_bar_color_2;
+  }
+}

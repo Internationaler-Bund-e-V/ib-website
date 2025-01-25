@@ -61,7 +61,7 @@ editor:
       - { name: "Button orange", element: "a", attributes: { class: "ibCustomButton orange"}}
 
   externalPlugins:
-    #youtube: { resource: "typo3conf/ext/ib_template/Resources/Public/JavaScript/Ckeditor/Plugins/youtube/" }
+    #youtube: { resource: "EXT:ib_template/Resources/Public/JavaScript/Ckeditor/Plugins/youtube/" }
     typo3link: { resource: "EXT:rte_ckeditor/Resources/Public/JavaScript/Plugins/typo3link.js", route: "rteckeditor_wizard_browse_links" }
     #showbrokenlinks: { resource: "EXT:rte_ckeditor/Resources/Public/JavaScript/Plugins/showbrokenlinks/plugin.js"}
     # This is a plugin, found here: https://github.com/ufdada/quicktable

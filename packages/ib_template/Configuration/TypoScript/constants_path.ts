@@ -1,7 +1,7 @@
 # html template path
 template_path {
-    html = typo3conf/ext/ib_template/Resources/Private/Template/html
-    img = typo3conf/ext/ib_template/Resources/Public/img
-    js = typo3conf/ext/ib_template/Resources/Public/js
-    css = typo3conf/ext/ib_template/Resources/Public/css
+    html = EXT:ib_template/Resources/Private/Template/html
+    img = EXT:ib_template/Resources/Public/build/img
+    js = EXT:ib_template/Resources/Public/build/js
+    css = EXT:ib_template/Resources/Public/build/css
 }

@@ -3,7 +3,7 @@
 # -----------------------------------------------------------------------------
 page = PAGE
 page.typeNum = 0
-page.shortcutIcon = {$template_path.img}/logos_portals/{$portalSettings.portal_logo.file_favicon}
+page.shortcutIcon = {path: EXT:ib_template/Resources/Public/Images/logos_portals/}{$portalSettings.portal_logo.file_favicon}
 page {
     # Neuen title Tag in headerData setzen
     headerData {
@@ -51,7 +51,7 @@ page.meta {
     description.field = description
 
     # set to MOINDEX if robots_noindex_nofollow flag is set
-    # @see htdocs/typo3conf/ext/ib_page_extension
+    # @see htdocs/EXT:ib_page_extension
     # @see https://mantis.rm-solutions.de/mantis/view.php?id=317
     robots = INDEX,FOLLOW
     #robots.override = NOINDEX,NOFOLLOW
@@ -68,7 +68,7 @@ page.10 {
         menuStyle.value = {$lang.menuStyle}
 
         imgPath = TEXT
-        imgPath.value = {$template_path.img}
+        imgPath.value = {path: EXT:ib_template/Resources/Public/Images/}
     }
     dataProcessing {
         10 = TYPO3\CMS\Frontend\DataProcessing\LanguageMenuProcessor
@@ -85,7 +85,7 @@ page.10 {
 #
 #page.includeJSFooterlibs.solr-jquery >
 #page.includeJS {
-#    jquery = typo3conf/ext/ib_template/Resources/Public/js/min/jquery.min.js
+#    jquery = EXT:ib_template/Resources/Public/js/min/jquery.min.js
 #}
 
 #page.jsFooterInline {
@@ -262,16 +262,16 @@ page.includeJSFooter {
 # -----------------------------------------------------------------------------
 lib.contentElement{
     templateRootPaths{
-        10 = typo3conf/ext/ib_template/Resources/Private/Template/html/fsc/Templates/
-        11 = typo3conf/ext/ib_template/Resources/Private/Template/html/ext/solr/Templates/
+        10 = EXT:ib_template/Resources/Private/Template/html/fsc/Templates/
+        11 = EXT:ib_template/Resources/Private/Template/html/ext/solr/Templates/
     }
     partialRootPaths{
-        10 = typo3conf/ext/ib_template/Resources/Private/Template/html/fsc/Partials/
-        11 = typo3conf/ext/ib_template/Resources/Private/Template/html/ext/solr/Partials/
+        10 = EXT:ib_template/Resources/Private/Template/html/fsc/Partials/
+        11 = EXT:ib_template/Resources/Private/Template/html/ext/solr/Partials/
     }
     layoutRootPaths{
-        10 = typo3conf/ext/ib_template/Resources/Private/Template/html/fsc/Layouts/
-        11 = typo3conf/ext/ib_template/Resources/Private/Template/html/ext/solr/Layouts/
+        10 = EXT:ib_template/Resources/Private/Template/html/fsc/Layouts/
+        11 = EXT:ib_template/Resources/Private/Template/html/ext/solr/Layouts/
     }
 }
 
@@ -285,13 +285,14 @@ lib.linkedLogo {
         parameter = {$portalSettings.mainnav_start_id}
         returnLast = url
     }
-    10.wrap = <a href="|"><img src="{$template_path.img}/logos_portals/{$portalSettings.portal_logo.file}" class="responsive" alt="Portal Logo"></a>
+    #10.wrap = <a href="|"><img src="{f:uri.resource(path: EXT:ib_template/Resources/Public/Images/logos_portals/}{$portalSettings.portal_logo.file}" class="responsive" alt="Portal Logo"></a>
+    10.wrap = |
 }
 
 [{$portalSettings.analytics.matomo_enabled} == 1]
     # script part: add code in the <head> section
     # to make it work on productdb pages,
-    # add into typo3/public/typo3conf/ext/ibcontent/Classes/Controller/MyContentController.php
+    # add into typo3/public/EXT:ibcontent/Classes/Controller/MyContentController.php
     page.headerData.9990 = TEXT
     page.headerData.9990.value (
     <link rel="dns-prefetch" href="https://matomo.ib.de">
@@ -362,7 +363,7 @@ lib.linkedLogo {
 [{$portalSettings.analytics.matomo_tagmanager_enabled} == 1]
     # script part: add code in the <head> section
     # to make it work on productdb pages,
-    # add into typo3/public/typo3conf/ext/ibcontent/Classes/Controller/MyContentController.php
+    # add into typo3/public/EXT:ibcontent/Classes/Controller/MyContentController.php
     page.headerData.9990 = TEXT
     page.headerData.9990.value (
     <link rel="dns-prefetch" href="https://matomo.ib.de">
@@ -396,7 +397,7 @@ lib.linkedLogo {
 # -----------------------------------------------------------------------------
 [{$portalSettings.cookiebot.enabled} == 1]
     # script part: add code in the <head> section
-    # add for product pages into typo3/public/typo3conf/ext/ibcontent/Classes/Controller/MyContentController.php
+    # add for product pages into typo3/public/EXT:ibcontent/Classes/Controller/MyContentController.php
     page.headerData.9999 = TEXT
     page.headerData.9999.value (
     <script id='Cookiebot' data-culture="{$portalSettings.cookiebot.language}" src='https://consent.cookiebot.eu/uc.js' data-cbid='{$portalSettings.cookiebot.cbid}' data-blockingmode='auto' type='text/javascript'></script>

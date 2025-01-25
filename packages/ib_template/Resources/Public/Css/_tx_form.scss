@@ -1,0 +1,100 @@
+/**
+ * styles for the sysext mailform
+ * @author mkettel, 2018-03-01
+ * @see EXT:ib_template/Configuration/TypoScript/mailform.ts
+ * @see typo3_src-xxx/typo3/sysext/form/Configuration/TypoScript/setup.txt
+ */
+
+div.csc-mailform {
+
+	$font-color: #666;
+
+	fieldset, legend {
+		color: $font-color;
+	}
+	legend, fieldset.fieldset-subgroup legend {
+		font-weight: bold;
+		padding-left: 1rem;
+		width: 100%;
+		margin-left: 0;
+	}
+
+	legend, label {
+
+		strong, em {
+			display: inline;
+			position: relative;
+			top: 0;
+		}
+		strong {
+			margin-left: 1rem;
+		}
+		em {
+			float: none;
+			color: $font-color;
+		}
+	}
+
+	fieldset {
+		color: #57665E;
+		//border: 1px solid #ccc;
+		border: none;
+		background-color: #f9f9f9;
+		li {
+			padding: 0;
+			margin-bottom: 0;
+
+			label {
+				width: 70%;
+			}
+		}
+
+		li.csc-form-element-radio:nth-child(even) {
+			background-color: #eff0f0;
+		}
+		li.csc-form-element-radio:hover {
+			background-color: #d9dada;
+		}
+	}
+
+	/*li.csc-form-element-radiogroup, li.csc-form-element-fieldset, li.csc-form-element-submit, li.csc-form-element-textline {*/
+	form > ol > li.csc-form-element {
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+	fieldset.fieldset-subgroup ol {
+		margin-left: 0.5rem;
+		margin-top: 1rem;
+	}
+
+	li.csc-form-element-radio, li.csc-form-element-textline, li.csc-form-element-select {
+		label {
+			font-weight: normal;
+		}
+	}
+	li.csc-form-element-radio {
+		label {
+			padding-left: 5px;
+		}
+	}
+
+	[type='file'], [type='checkbox'], [type='radio'] {
+		margin-bottom: 0;
+	}
+
+	[type='text'] {
+		padding: 0;
+	}
+}
+
+label strong, legend strong {
+	display: inline-block;
+	color: $ib-standard-font-color;
+	font-size: initial;
+	font-weight: normal;
+	text-transform: initial;
+}
+
+legend strong {
+
+}
