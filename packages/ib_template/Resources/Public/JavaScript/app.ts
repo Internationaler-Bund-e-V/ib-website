@@ -11,8 +11,8 @@ import Headroom from 'headroom.js';
 const Shariff = require('shariff');
 const $ = require('jquery');
 
-require('./components/anchor.js')
-require('./components/contactOverlay.js')
+import IBAnchorHandler from './components/IBAnchorHandler';
+import IBContactOverlayHandler from './components/IBContactOverlayHandler';
 require('./components/cookie.js')
 require('./components/customCookiebot.js')
 require('./components/fab.js')
@@ -53,7 +53,8 @@ $(document).ready(function () {
       .removeClass('download internal-link internal-link-new-window external-link external-link-new-window');
   
     Foundation.reInit([ 'equalizer' ]);
-
+    new IBAnchorHandler();
+    new IBContactOverlayHandler();
     new Shariff($('.shariff'));
 
     $(document).foundation();
