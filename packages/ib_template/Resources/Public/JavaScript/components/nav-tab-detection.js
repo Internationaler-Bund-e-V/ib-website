@@ -1,5 +1,7 @@
+import $ from 'jquery';
+
 // use jquery.appear to detect which 1st-level-link in jetmenu is active
-$( document ).ready(function() {
+$(function() {
   // initialize appear on megamenus
 
 	// apply class 'submenu--open' when a megamenu appears
@@ -9,5 +11,5 @@ $( document ).ready(function() {
   // remove class 'submenu--open' when a megamenu appears
   $('.megamenu').on('disappear', function(event, $all_disappeared_elements) {
     $(this).closest('li').removeClass('submenu--open');
-  });  
-}); 
+  });
+});

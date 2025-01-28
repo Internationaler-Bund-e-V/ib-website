@@ -385,8 +385,8 @@
 
       float: left;
       width: 100%;
-      padding-left: map-get($grid-column-gutter, 'medium') / 2;
-      padding-right: map-get($grid-column-gutter, 'medium') / 2;
+      padding-left: map-get($grid-column-gutter, 'medium') * 0.5;
+      padding-right: map-get($grid-column-gutter, 'medium') * 0.5;
       padding-top: rem-calc(10);
       padding-bottom: rem-calc(10);
 
@@ -436,8 +436,8 @@
     }
 
     div.ib-startpage-slider-bubble {
-      padding-left: map-get($grid-column-gutter, 'small') / 2;
-      padding-right: map-get($grid-column-gutter, 'small') / 2;
+      padding-left: map-get($grid-column-gutter, 'small') * 0.5;
+      padding-right: map-get($grid-column-gutter, 'small') * 0.5;
     }
   }
 }

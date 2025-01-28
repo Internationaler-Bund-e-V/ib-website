@@ -1,3 +1,5 @@
+@use "sass:color";
+
 /*
 NAME: Jet Responsive Megamenu 
 AUTHOR PAGE: http://codecanyon.net/user/marcoarib
@@ -183,7 +185,7 @@ ITEM PAGE: http://codecanyon.net/item/jet-responsive-megamenu/5719593
 }
 
 .jetmenu li > .megamenu a:hover {
-	color: darken($ib-blue, 10%);
+	color: color.adjust($ib-blue, $lightness: -10%, $space: hsl);
 }
 
 /* megamenu images */

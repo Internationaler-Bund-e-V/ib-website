@@ -1,3 +1,6 @@
+import $ from 'jquery';
+import 'slick-carousel';
+
 //video slider
 var ibVideoSlider = $('#ibVideoSlider');
 ibVideoSlider.slick({

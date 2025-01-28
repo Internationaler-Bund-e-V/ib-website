@@ -1,5 +1,7 @@
+import $ from 'jquery';
+
 /**
- * initialzie mailcrypt 
+ * initialzie mailcrypt
  */
 function initializeMailcrypt() {
   var ibMail;
@@ -58,7 +60,7 @@ function UnCryptMailto(s) {
   return r;
 }
 
-$(document).ready(function () {
+$(function () {
   initializeMailcrypt();
 })
 

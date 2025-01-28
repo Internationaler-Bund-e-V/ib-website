@@ -1,5 +1,6 @@
-$(document).ready(function () {
-  console.log("fab loaded");
+import $ from 'jquery';
+
+$(function() {
 
   var fab = $('#ibFAB');
   var fabButton = $('#navButtonIconContainer');
@@ -13,4 +14,4 @@ $(document).ready(function () {
     $('#fabIC-' + fabContainerID).toggle();
   })
 
-})
+});

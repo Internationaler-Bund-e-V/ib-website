@@ -1,4 +1,4 @@
-(window as any).rsConf = {
+window.rsConf = {
     general: {
         usePost: true,
         cookieLifetime: 87000000
@@ -32,4 +32,4 @@
             detachfocus: 'shift+alt+KeyU'
         }
     }
-}; 
+};

@@ -1,5 +1,7 @@
-$(document).ready(function () {
-    
+import $ from 'jquery';
+
+$(function () {
+
     /**
      * initialize startbpage newsslider
      */

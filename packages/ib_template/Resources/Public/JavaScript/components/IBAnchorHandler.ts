@@ -12,14 +12,14 @@ class IBAnchorHandler {
         if (ibAnchor == '') {
             return;
         }
-        
+
         let anchorElement:HTMLElement|null;
 
         if (!ibAnchor.match("^c")) {
             anchorElement = document.getElementById('ib-collapsible-' + ibAnchor);
-            
+
             if (anchorElement !== null) {
-                $(anchorElement).find('.small-1.ib-collapsible-trigger').click();
+                $(anchorElement).find('.small-1.ib-collapsible-trigger').trigger('click');
             }
         } else {
             anchorElement = document.getElementById(ibAnchor);
@@ -38,7 +38,7 @@ class IBAnchorHandler {
         name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
         let regex:RegExp = new RegExp('[\\?&]' + name + '=([^&#]*)');
         let results:Array<string>|null = regex.exec(location.search);
-        
+
         if (results === null) {
             return '';
         }

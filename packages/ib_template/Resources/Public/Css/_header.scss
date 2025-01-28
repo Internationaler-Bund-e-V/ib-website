@@ -1,3 +1,5 @@
+@use "sass:color";
+
 /*
 this files holds styles for the header with logo, bubble and navigation placement
 navigation styles are found in _jetmenu.scss
@@ -89,7 +91,7 @@ $nav-height--collapsed: 60px;
   box-shadow: 0px 0px 0px 0px rgba($ib-orange, .2);
 
   &:hover {
-    box-shadow: 0px 10px 20px -10px rgba(darken($ib-orange, 30%), .5);
+    box-shadow: 0px 10px 20px -10px rgba(color.adjust($ib-orange, $lightness: -30%, $space: hsl), .5);
   }
 
   a {

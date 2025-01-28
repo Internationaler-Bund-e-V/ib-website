@@ -1,19 +1,16 @@
 /*
-NAME: Jet Responsive Megamenu 
+NAME: Jet Responsive Megamenu
 AUTHOR PAGE: http://codecanyon.net/user/marcoarib
 ITEM PAGE: http://codecanyon.net/item/jet-responsive-megamenu/5719593
 */
-
-
-
+import $ from 'jquery';
 
 /*!!!! CUSTOMIZED !!!! */
 
 (function ($) {
-
-  jQuery.fn.jetmenu = function (options) {
+  $.fn.jetmenu = function (options) {
     var settings = {
-      indicator: true,
+      indicator: false,
       speed: 300,
       delay: 0,
       hideDelay: 0,
@@ -40,7 +37,6 @@ ITEM PAGE: http://codecanyon.net/item/jet-responsive-megamenu/5719593
         }
       });
     }
-
     screenSize();
 
     $(window).resize(function () {
@@ -228,9 +224,9 @@ ITEM PAGE: http://codecanyon.net/item/jet-responsive-megamenu/5719593
         }
       }
     }
-    
+
     function unbindEvents() {
-      
+
       $(menu).find("li, a").unbind();
       $(menu).find(".showhidemobile").unbind();
       $(document).unbind("click.menu touchstart.menu");
@@ -253,6 +249,5 @@ ITEM PAGE: http://codecanyon.net/item/jet-responsive-megamenu/5719593
     }
   }
 
-}(jQuery));
-
+}($));
 

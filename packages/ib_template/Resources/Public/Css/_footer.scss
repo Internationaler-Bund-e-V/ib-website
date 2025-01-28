@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $footer-buttonSize: 40px;
 
 
@@ -35,7 +37,7 @@ $footer-buttonSize: 40px;
 
 		a {
 			&:hover {
-				color: darken($ib-darkgray, 5%);
+				color: color.adjust($ib-darkgray, $lightness: -5%, $space: hsl);
 			}
 		}
 	}
@@ -102,7 +104,7 @@ $footer-buttonSize: 40px;
 
 
 			&:hover {
-				color: darken($ib-darkgray, 5%);
+				color: color.adjust($ib-darkgray, $lightness: -5%, $space: hsl);
 			}
 
 			&+a {

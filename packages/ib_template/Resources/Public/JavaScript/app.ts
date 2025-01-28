@@ -5,21 +5,27 @@
 import '../Css/app.scss';
 import './config/readSpeakerConfig';
 
+import $ from 'jquery';
 import 'friendly-challenge/widget';
 import Foundation from 'foundation-sites';
 import Headroom from 'headroom.js';
-const Shariff = require('shariff');
-const $ = require('jquery');
+import Shariff from 'shariff';
+import 'slick-carousel';
+require('select2');
 
 import IBAnchorHandler from './components/IBAnchorHandler';
 import IBContactOverlayHandler from './components/IBContactOverlayHandler';
-require('./components/cookie.js')
-require('./components/customCookiebot.js')
-require('./components/fab.js')
+import IBCookieBot from './components/IBCookieBot';
+//import IBMenu from './components/IBMenu';
+import IBClipboard from './components/IBClipboard';
+import IBStartPageSlider from './components/IBStartPageSlider';
+
+import './components/matomoEvents';
+
+require('./components/jetmenu.js');
+require('./components/fab.js');
 require('./components/foundation-accordion.js')
 require('./components/headerSearchBar.js')
-require('./components/ibClipboard.js')
-require('./components/matomoEvents.js')
 require('./components/nav-tab-detection.js')
 require('./components/newsCategory.js')
 require('./components/newsSlider.js')
@@ -28,15 +34,16 @@ require('./components/sliderLoader.js')
 require('./components/social-content-sticky-nav.js')
 require('./components/tabsBar.js')
 require('./components/videoSlider.js')
-// 'node_modules/clipboard/dist/clipboard.min.js',
-// 'node_modules/motion-ui/dist/motion-ui.min.js'
 
+if (Foundation) {
+  // if `Foundation` is left as an unused variable webpack will exclude it from the build output;
+  // therefore, any expression that uses it will work.
+}
 
-require('select2');
-require('slick-carousel');
-require('./jetmenu.js');
-$(document).ready(function () {  
-    const options = {
+$(() => {
+    $(document).foundation();
+
+    const headroom = new Headroom(document.body, {
         'offset': 100,
         'tolerance': 3,
         'classes': {
@@ -44,24 +51,31 @@ $(document).ready(function () {
             'pinned': 'headroom--expanded',
             'unpinned': 'headroom--collapsed'
         }
-    };
-  
-    const headroom = new Headroom(document.body, options);
+    });
     headroom.init();
-  
+
     $('.ib-content-module .download img, .ib-content-module .internal-link img, .ib-content-module .internal-link-new-window img, .ib-content-module .external-link img, .ib-content-module .external-link-new-window img').parent()
       .removeClass('download internal-link internal-link-new-window external-link external-link-new-window');
-  
-    Foundation.reInit([ 'equalizer' ]);
-    new IBAnchorHandler();
-    new IBContactOverlayHandler();
-    new Shariff($('.shariff'));
 
-    $(document).foundation();
-    $().jetmenu({
-        indicator: false
-    });
-    
+
+    new IBAnchorHandler();
+    new IBClipboard();
+    new IBCookieBot();
+    new IBContactOverlayHandler();
+
+    if (document.querySelector('.shariff')) {
+        new Shariff($('.shariff'));
+    }
+    ($() as any).jetmenu();
+
+    if (document.querySelector('.jetmenu')) {
+        // new IBMenu(document.querySelector('.jetmenu') as HTMLElement, { indicator: false });
+    }
+
+    if (document.querySelector('.ib-startpage-slider')) {
+        new IBStartPageSlider(document.querySelector('.ib-startpage-slider') as HTMLElement);
+    }
+
     $('.twoColLayout .ib-news-slider').slick({
         prevArrow : $('#newsPrevButton'),
         nextArrow : $('#newsNextButton'),
@@ -82,35 +96,5 @@ $(document).ready(function () {
             }
         }]
     });
+//    Foundation.reInit([ 'equalizer' ]);
 });
-
-
-
-/*
-'node_modules/foundation-sites/js/foundation.core.js',
-'node_modules/foundation-sites/js/foundation.abide.js',
-'node_modules/foundation-sites/js/foundation.tabs.js',
-'node_modules/foundation-sites/js/foundation.reveal.js',
-'node_modules/foundation-sites/js/foundation.util.box.js',
-'node_modules/foundation-sites/js/foundation.util.mediaQuery.js',
-'node_modules/foundation-sites/js/foundation.util.imageLoader.js',
-'node_modules/foundation-sites/js/foundation.util.triggers.js',
-'node_modules/foundation-sites/js/foundation.util.touch.js',
-'node_modules/foundation-sites/js/foundation.equalizer.js',
-'node_modules/foundation-sites/js/foundation.util.keyboard.js',
-'node_modules/foundation-sites/js/foundation.util.motion.js',
-'node_modules/foundation-sites/js/foundation.util.timerAndImageLoader.js',
-
-'node_modules/jquery.appear/jquery.appear.js',
-'node_modules/slick-carousel/slick/slick.js',
-
-'node_modules/select2/dist/js/select2.full.js',
-'node_modules/clipboard/dist/clipboard.min.js',
-'node_modules/motion-ui/dist/motion-ui.min.js'
-
-ibcontent/Resources/Public/js/startPageSlider.js
-
-
-}
-
-*/

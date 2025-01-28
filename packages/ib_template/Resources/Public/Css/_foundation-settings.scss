@@ -76,7 +76,7 @@
   @if $color == transparent {
     $color: $body-background;
   }
-  @if (lightness($color) > $threshold) {
+  @if (color.channel($color, 'lightness', $space: hsl) > $threshold) {
     @return $yes;
   }
   @else {
@@ -116,7 +116,7 @@ $global-radius: 0;
 $global-menu-padding: 0.7rem 1rem;
 $global-menu-nested-margin: 1rem;
 $global-text-direction: ltr;
-$global-flexbox: true;
+$global-flexbox: false;
 $global-prototype-breakpoints: false;
 $global-button-cursor: auto;
 $global-color-pick-contrast-tolerance: 0;
@@ -829,8 +829,8 @@ $table-color-scale: 0%;
 $table-border: 1px solid smart-scale($table-background, $table-color-scale);
 $table-padding: rem-calc(8 10 10);
 $table-hover-scale: 2%;
-$table-row-hover: darken($table-background, $table-hover-scale);
-$table-row-stripe-hover: darken($table-background, $table-color-scale + $table-hover-scale);
+$table-row-hover: color.adjust($table-background, $lightness: -$table-hover-scale, $space: hsl);
+$table-row-stripe-hover: color.adjust($table-background, $lightness: -($table-color-scale + $table-hover-scale), $space: hsl);
 $table-is-striped: true;
 $table-striped-background: smart-scale($ib-gray, $table-color-scale);
 $table-stripe: even;
@@ -912,7 +912,7 @@ $topbar-unstack-breakpoint: medium;
 // 57. Xy Grid
 // -----------
 
-$xy-grid: true;
+$xy-grid: false;
 $grid-container: $global-width;
 $grid-columns: 12;
 $grid-margin-gutters: (

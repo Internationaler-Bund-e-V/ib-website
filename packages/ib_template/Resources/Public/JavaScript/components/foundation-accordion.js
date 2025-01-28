@@ -8,7 +8,9 @@
  * @see /typo3conf/ext/ibcontent/Resources/Private/Templates/MyContent/Accordion.html
  *
  */
-$(document).ready(function () {
+import $ from 'jquery';
+
+$(function () {
 
     $('.ib-collapsible-trigger').on('click', function () {
         var collapsibleID = $(this).data('ibcollapsibleid');

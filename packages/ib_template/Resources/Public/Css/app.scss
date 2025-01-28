@@ -6,6 +6,8 @@
 @import 'select2/dist/css/select2.min.css';
 @import 'motion-ui/dist/motion-ui.css';
 @import 'slick-carousel/slick/slick.css';
+@import '../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '../node_modules/@fortawesome/fontawesome-free/scss/solid.scss';
 
 @import 'mixins';
 @import 'colors';
@@ -49,7 +51,7 @@
 @import 'tabsBar';
 @import 'shariff';
 @import 'fab';
-@import 'font-awesome';
+//@import 'font-awesome';
 @import 'dbContactOverlay';
 @import 'dbVideoSlider';
 @import 'dbRTForm';
@@ -64,8 +66,6 @@
 @import 'emailDialog';
 @import 'tx_form';
 @import 'rs-speaker-custom';
-@import 'fontawesome_5/fontawesome.scss';
-@import 'fontawesome_5/solid.scss';
 
 @include foundation-everything;
 

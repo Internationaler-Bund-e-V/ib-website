@@ -1,9 +1,11 @@
+import $ from 'jquery';
+
 /**
  * ---------------------------------------------
  * SOCIAL SHARE STICKY NAV
  * ---------------------------------------------
  */
-$(document).ready(function () {
+$(function () {
 
 
 	//

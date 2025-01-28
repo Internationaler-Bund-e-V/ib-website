@@ -1,3 +1,5 @@
+@use "sass:color";
+
 /*theme for kitas*/
 
 $ib-kitas-maincolor: #ec6838;
@@ -17,7 +19,7 @@ $ib-kitas-maincolor: #ec6838;
     }
     #ib-head-bubble { 
       background-color: $ib-kitas-maincolor;
-      &:hover {box-shadow: 0px 10px 20px -10px rgba(darken($ib-kitas-maincolor, 30%), .5);}
+      &:hover {box-shadow: 0px 10px 20px -10px rgba(color.adjust($ib-kitas-maincolor, $lightness: -30%, $space: hsl), .5);}
     }
 	
     .ib-pagetitle {background: $ib-kitas-maincolor;}

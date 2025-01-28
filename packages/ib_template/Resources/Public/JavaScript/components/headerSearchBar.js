@@ -1,4 +1,6 @@
-$(document).ready(function () {
+import $ from 'jquery';
+
+$(function () {
     $('.autocomplete-suggestions').first().addClass('searchHeaderBarFocus');
     var solrACElement = $('.autocomplete-suggestions').first().detach();
 
@@ -10,7 +12,7 @@ $(document).ready(function () {
         $('.headerSearchBarIcon i').toggleClass('ib-hsb-hide');
         $('#inputSearchIcon').toggle();
         $('.headerSearchBarSearch').toggleClass('expanded');
-        var status = $('.headerSearchBarSearch input').prop('disabled');        
+        var status = $('.headerSearchBarSearch input').prop('disabled');
         $('.headerSearchBarSearch input').prop('disabled', !status).focus().val("");
     })
 });

@@ -1,9 +1,9 @@
 /**
  * select categories for news
  */
+import $ from 'jquery';
 
-
-$(document).ready(function () {
+$(function () {
     console.log("news categories...");
     $("#ibNewsCategories").select2({
         placeholder: "Kategorie auswählen",

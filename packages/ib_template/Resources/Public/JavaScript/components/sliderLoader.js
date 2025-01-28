@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 //startpage slider
 ibSliderLoader($('.ib-startpage-slider'), $('.ib-slider-container'));
 //news
