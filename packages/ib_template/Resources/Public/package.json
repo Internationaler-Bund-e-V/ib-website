@@ -29,6 +29,8 @@
     "sass-migrator": "sass-migrator module --verbose --migrate-deps --dry-run Css/app.scss"
   },
   "devDependencies": {
+    "@babel/core": "^7.26.7",
+    "@babel/preset-env": "^7.26.7",
     "@babel/preset-react": "^7.26.3",
     "@symfony/webpack-encore": "^5.0.1",
     "@tsconfig/recommended": "^1.0.8",
@@ -42,6 +44,8 @@
     "sass-migrator": "^2.3.1",
     "ts-loader": "^9.5.2",
     "typescript": "^5.7.3",
-    "url": "^0.11.4"
+    "url": "^0.11.4",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1"
   }
 }
