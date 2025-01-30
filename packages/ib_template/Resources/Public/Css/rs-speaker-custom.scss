@@ -44,12 +44,12 @@ a.rsbtn_play {
 }
 
 // "Vorlesen" span 
-// a.rsbtn_play 
-// span.rsbtn_left.rsimg.rspart 
-// span.rsbtn_text[aria-hidden="true"]
-// span {
-    // color: #333;
-// }
+a.rsbtn_play span.rsbtn_left.rsimg.rspart span.rsbtn_text[aria-hidden="true"] span,
+a.rsbtn_play > span.rsbtn_right.rsimg.rsplay.rspart {
+    // color: red;
+    // background-color: #009fe3;
+    margin-top: .1rem;
+}
 
 // Buttons Stopp, Rewind, Forward, Speed etc.
 .rsbtn .rsbtn_exp .rsbtn_exp_inner button.rsbtn_player_item {
