@@ -39,10 +39,10 @@
 			<div id="ib-logo" class="show-for-large">
 				<f:variable name="src" value="EXT:ib_template/Resources/Public/Images/logos_portals/{f:cObject(typoscriptObjectPath: 'portalSettings.portal_logo.file')}" />
 				<a href="{f:uri.page(pageUid: portalSettings.id)}">
-					<img src="{f:uri.resource(path: src)}" class="responsive" alt="Portal Logo">
+					<img src="{f:uri.resource(path: src)}" class="responsive" alt="Portal Logo" width="70" height="70">
 				</a>
 			</div>
-			<f:render partial="menu/mainMenuEntryPoint" arguments="{_all}" />
+			<f:render partial="Menu/mainMenuEntryPoint" arguments="{_all}" />
 			<div id="ib-menu-overlay"></div>
 			<!-- buddy start -->
 			<f:if condition="{buddy_hide} == 0">

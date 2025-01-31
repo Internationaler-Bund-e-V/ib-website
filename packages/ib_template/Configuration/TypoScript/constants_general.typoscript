@@ -235,7 +235,7 @@ social.youtube.titletag = Offizieller YouTube-Kanal des Internationalen Bund
 
 ## RTE fontawesome for FE
 plugin.tx_ckeditor_fontawesome.loadCSS = 1
-plugin.tx_ckeditor_fontawesome.css = EXT:ib_template/Resources/Public/css/faAll.css
+#plugin.tx_ckeditor_fontawesome.css = EXT:ib_template/Resources/Public/css/faAll.css
 
 # gallery pid
 gallery.folder.pid = 1351
