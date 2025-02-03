@@ -21,9 +21,9 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
-    .addEntry('app', './JavaScript/app.ts')
+    // .addEntry('app', './JavaScript/app.ts')
 
-    .addStyleEntry('rte', './Css/rte.scss')
+    .addStyleEntry('ib_cmt', './Css/app.scss')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -45,15 +45,15 @@ Encore
     // enables hashed filenames (e.g. app.abc123.css)
     .enableVersioning(Encore.isProduction())
 
-    .configureBabel((config) => {
-        config.plugins.push('@babel/plugin-transform-class-properties');
-    })
+    // .configureBabel((config) => {
+    //     config.plugins.push('@babel/plugin-transform-class-properties');
+    // })
 
     // enables @babel/preset-env polyfills
-    .configureBabelPresetEnv((config) => {
-        config.useBuiltIns = 'usage';
-        config.corejs = 3;
-    })
+    // .configureBabelPresetEnv((config) => {
+    //     config.useBuiltIns = 'usage';
+    //     config.corejs = 3;
+    // })
 
     .configureImageRule({
         // tell Webpack it should consider inlining
@@ -70,7 +70,7 @@ Encore
     .enableSassLoader()
 
     // uncomment if you use TypeScript
-    .enableTypeScriptLoader()
+    // .enableTypeScriptLoader()
 
     // uncomment if you use React
     //.enableReactPreset()
@@ -80,7 +80,7 @@ Encore
     .enableIntegrityHashes(Encore.isProduction())
 
     // uncomment if you're having problems with a jQuery plugin
-    .autoProvidejQuery()
+    // .autoProvidejQuery()
 ;
 
 module.exports = Encore.getWebpackConfig();
