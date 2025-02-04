@@ -2,31 +2,37 @@
   "name": "ib-formbuilder",
   "version": "0.0.1",
   "description": "IB FormBuilder Plugin",
-  "main": "Gruntfile.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "rms",
   "license": "UNLICENSED",
   "dependencies": {
-    "autoprefixer": "^10.4.7",
-    "formBuilder": "^3.19.7",
-    "grunt": "^1.5.3",
-    "grunt-autoprefixer": "^3.0.4",
-    "grunt-bless": "^1.0.2",
-    "grunt-cli": "^1.4.3",
-    "grunt-contrib-clean": "^2.0.1",
-    "grunt-contrib-compass": "^1.1.1",
-    "grunt-contrib-concat": "^2.1.0",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-cssmin": "^4.0.0",
-    "grunt-contrib-sass": "^2.0.0",
-    "grunt-contrib-uglify": "^5.2.1",
-    "grunt-contrib-watch": "^1.1.0",
-    "grunt-postcss": "^0.9.0",
-    "grunt-sass": "^3.1.0",
-    "install": "^0.13.0",
-    "node-sass": "^7.0.1",
-    "npm": "^8.10.0"
+    "core-js": "^3.40.0",
+    "formBuilder": "^3.19.13",
+    "jquery": "^3.7.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 3 versions"
+  ],
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.26.3",
+    "@symfony/webpack-encore": "^5.0.1",
+    "@tsconfig/recommended": "^1.0.8",
+    "@types/headroom.js": "^0.12.4",
+    "@types/jquery": "^3.5.32",
+    "@types/slick-carousel": "^1.6.40",
+    "babel-loader": "^9.2.1",
+    "postcss-loader": "^8.1.1",
+    "sass": "^1.58.3",
+    "sass-loader": "^16.0.4",
+    "sass-migrator": "^2.3.1",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.7.3",
+    "url": "^0.11.4"
   }
 }
