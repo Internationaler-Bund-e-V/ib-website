@@ -20,7 +20,9 @@
                 <div class="ibNewsCategoriesContainer columns row">
                     <f:if condition="{categories}">
                         <f:then>
-                            <select id="ibNewsCategories"
+                            <select 
+                                id="ibNewsCategories"
+                                autocomplete="off"
                                 data-ibnewsmainurl="{f:uri.page(pageUid:settings.listPid,absolute:'true')}">
                                 <option></option>
                                 <f:render section="selectOptions"
