@@ -64,21 +64,38 @@ a.rsbtn_play > span.rsbtn_right.rsimg.rsplay.rspart {
 
 .rsbtn .rsbtn_exp .rsbtn_exp_inner button.rsbtn_player_item span.rsicn-pause {
     color: #288144;
-
+    
 }
 
 // hide Volume button
 div.rsbtn_exp.rsimg.rspart span.rsbtn_exp_inner button.rsbtn_volume {
     // background-color: red;
     display: none;
-  }
+}
 
 // dropdown regler
-  div.rsbtn_exp.rsimg.rspart 
-  span.rsbtn_exp_inner 
-  span.rsbtn_dropdown {
+div.rsbtn_exp.rsimg.rspart 
+span.rsbtn_exp_inner 
+span.rsbtn_dropdown {
     top: 2.35em;
     margin: auto .5rem;
+}
 
-  }
-
+.rsbtn { left: 36px; }
+.rsbtn.mega_toggle .rsbtn_tooltoggle {
+    left: -36px!important;
+    background:#fff;
+    border: none;
+    border-right: 1px solid #677077;
+    cursor: pointer;
+}
+.zoom-tooltoggler.rsbtn.mega_toggle .rsbtn_tooltoggle {
+    background:#fff!important;
+    border: none;
+    border-right: 1px solid #677077;
+}
+.rsbtn .rsbtn_tooltoggle:hover,
+.rsbtn .rsbtn_tooltoggle:focus,
+.rsbtn .rsbtn_tooltoggle:active{
+    background: #fff;
+}
