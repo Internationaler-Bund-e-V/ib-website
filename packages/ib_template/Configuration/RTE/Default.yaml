@@ -10,10 +10,9 @@ editor:
     # RTE default config removes image plugin - restore it:
     format_tags: "p;h1;h2;h3;h4;h5;pre"
 
-    contentsCss:
+    contentsCss: 
       - 'EXT:rte_ckeditor/Resources/Public/Css/contents.css'
-      #- '../fileadmin/template/css/typo3_backend_rte.css'
-      - 'EXT:ib_template/Resources/Public/css/typo3_backend_rte.css'
+      - "typo3_encore:rte"
 
     toolbarGroups:
       - { name: styles, groups: [ styles, format ] }
@@ -62,7 +61,7 @@ editor:
       - { name: "Button orange", element: "a", attributes: { class: "ibCustomButton orange"}}
 
   externalPlugins:
-    #youtube: { resource: "typo3conf/ext/ib_template/Resources/Public/JavaScript/Ckeditor/Plugins/youtube/" }
+    #youtube: { resource: "EXT:ib_template/Resources/Public/JavaScript/Ckeditor/Plugins/youtube/" }
     typo3link: { resource: "EXT:rte_ckeditor/Resources/Public/JavaScript/Plugins/typo3link.js", route: "rteckeditor_wizard_browse_links" }
     #showbrokenlinks: { resource: "EXT:rte_ckeditor/Resources/Public/JavaScript/Plugins/showbrokenlinks/plugin.js"}
     # This is a plugin, found here: https://github.com/ufdada/quicktable

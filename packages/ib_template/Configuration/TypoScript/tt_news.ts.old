@@ -6,7 +6,7 @@ plugin.tt_news {
 	pid_list = {$portalSettings.tt_news.pid_list}
 	singlePid = {$portalSettings.tt_news.single_pid}
 	backPid = {$portalSettings.tt_news.list_view_pid}
-	templateFile = typo3conf/ext/ib_template/Resources/Private/Template/html/ext/tt_news_v3_template.html
+	templateFile = EXT:ib_template/Resources/Private/Template/html/ext/tt_news_v3_template.html
 	allowCaching = 1
 
 

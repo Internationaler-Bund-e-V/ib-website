@@ -1,0 +1,14 @@
+// transitions
+@mixin transition($transition...) {
+    -moz-transition:    $transition;
+    -o-transition:      $transition;
+    -webkit-transition: $transition;
+    transition:         $transition;
+}
+
+@mixin flex-justify-align-dir ($jc, $ai, $dir) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+    flex-direction: $dir;
+}

@@ -58,7 +58,9 @@
         "beechit/fal-securedownload": "^5.0",
         "studiomitte/recordlist-thumbnail": "^1.0",
         "studiomitte/friendlycaptcha": "^0.1",
-        "dirkpersky/typo3-rte-ckeditor-fontawesome": "^11.5.6"
+        "dirkpersky/typo3-rte-ckeditor-fontawesome": "^11.5.6",
+        "ssch/typo3-encore": "^5.0",
+        "symfony/webpack-encore-bundle": "^2.2"
     },
     "require-dev": {
         "ssch/typo3-rector": "^2.5",

@@ -1,0 +1,37 @@
+@use "sass:color";
+
+/*theme for kitas*/
+
+$ib-kitas-maincolor: #ec6838;
+// Navigation
+.ib-theme-kitas {
+	.row{position:relative;z-index:1}
+    
+    //menu and header
+    .jetmenu .title,
+    .jetmenu .title h5 {color: #fff;}
+    .jetmenu li > .megamenu a {color: #fff;}
+    .jetmenu > li > .megamenu {background: $ib-kitas-maincolor !important;}
+    @media screen and (min-width: 64em) {
+        .jetmenu > li.submenu--open {background: $ib-kitas-maincolor;}
+        .jetmenu > li.submenu--open > a {color: #fff;}
+        .jetmenu > li .megamenu {box-shadow: 0px 86px 92px -90px rgba($ib-kitas-maincolor, .75);}
+    }
+    #ib-head-bubble { 
+      background-color: $ib-kitas-maincolor;
+      &:hover {box-shadow: 0px 10px 20px -10px rgba(color.adjust($ib-kitas-maincolor, $lightness: -30%, $space: hsl), .5);}
+    }
+	
+    .ib-pagetitle {background: $ib-kitas-maincolor;}
+    .ib-pagetitle h1 {color: #fff;}
+
+    .ib-breadcrumb li, .ib-breadcrumb li a {color: $ib-kitas-maincolor;}
+
+    .ib-services h4 { color: $ib-kitas-maincolor;}
+
+    .ib-contentslider h4 {color: $ib-kitas-maincolor; }
+
+    //sidebar
+    .ib-sidebar h2 {color: $ib-kitas-maincolor;}
+
+}

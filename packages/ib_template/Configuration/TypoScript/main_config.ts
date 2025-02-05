@@ -273,6 +273,9 @@ portalSettings.main_bubble_en.hide.value = {$portalSettings.main_bubble_en.hide}
 portalSettings.portal_logo.format = TEXT
 portalSettings.portal_logo.format.value = {$portalSettings.portal_logo.format}
 
+portalSettings.portal_logo.file = TEXT
+portalSettings.portal_logo.file.value = {$portalSettings.portal_logo.file}
+
 portalSettings.showLanguageMenu = TEXT
 portalSettings.showLanguageMenu.value = {$portalSettings.showLanguageMenu}
 
@@ -399,3 +402,4 @@ lib.parseFunc_RTE.externalBlocks.table.stdWrap.HTMLparser.tags.table.fixAttrib.c
 lib.parseFunc.htmlSanitize = 1
 lib.parseFunc_RTE.htmlSanitize = 0
  
+@import 'EXT:ib_template/Configuration/TypoScript/encore.ts'

@@ -1,0 +1,226 @@
+$ib-blue: #009fe3;
+$ib-orange: #fabb51;
+
+.ext-ibgallery {
+    width: 100%;
+
+    .columns:last-child:not(:first-child) {
+        float: left !important;
+    }
+
+    .ext-ibg-row {
+        padding: 5px 0;
+    }
+
+    .ext-ibg-image-item {
+        cursor: pointer;
+    }
+}
+
+.ext-ibg-slider-container {
+    display: none;
+}
+
+.ext-ibg-overlay-container {
+    display: none;
+    background: gray;
+    opacity: .7;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1005;
+}
+
+.ext-ibg-overlay {
+    display: none;
+    height: 80%;
+    width: 80%;
+    max-width: 1200px;
+    margin: auto;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1100;
+    top: 50px;
+
+    .dummyContainer {
+        position: relative;
+        height: 100%;
+
+        .slick-list,
+        .slick-track {
+            position: relative;
+            height: 100%;
+        }
+
+        .slick-dots {
+            position: absolute;
+            bottom: 0;
+        }
+    }
+
+    .ext-ib-slider-main-stage {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        padding-top: 20px;
+        background: white;
+
+        .ext-ib-slider-main-item {
+            margin: 0 40px;
+            height: 90%;
+            position: relative;
+            padding: 10px;
+
+            .ext-ib-slider-main-image {
+                background-repeat: no-repeat !important;
+                background-position: center !important;
+                //background-size: 100% !important;
+                background-size: contain !important;
+                height: 100%;
+                width: 100%;
+            }
+
+
+            img {
+                display: block;
+                margin: 0 auto; //max-width: 90%;
+                max-width: 100%;
+                max-height: 100%;
+                height: auto;
+                width: auto;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+
+            .ext-ib-img-caption {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                background: white;
+                padding: 10px;
+            }
+        }
+    }
+
+    .ext-ib-slider-nav-items {
+        background: white;
+        padding-bottom: 10px;
+
+        .slick-current {
+            padding: 0 !important;
+            border: 3px solid $ib-orange !important;
+        }
+
+        .slick-slide {
+            padding: 3px;
+            height: auto;
+            overflow: hidden;
+        }
+
+        .ext-ib-slider {
+            display: block;
+            margin: 0 auto;
+            width: 90%;
+            height: 100px;
+        }
+    }
+
+    .ext-ibg-close {
+        font-weight: 200;
+        font-size: 30px;
+        color: $ib-blue;
+        cursor: pointer;
+        z-index: 10;
+        position: absolute;
+        right: 10px;
+    }
+
+    .ext-ibg-nav-left {
+        font-size: 40px;
+        color: $ib-blue;
+        cursor: pointer;
+        z-index: 10;
+        position: absolute;
+        left: 0;
+        top: 50%;
+    }
+
+    .ext-ibg-nav-right {
+        font-size: 40px;
+        color: $ib-blue;
+        cursor: pointer;
+        z-index: 10;
+        position: absolute;
+        right: 0;
+        top: 50%;
+    }
+}
+
+/* Backend Styles */
+.ibg-be-row {
+    padding: 10px 0;
+    position: relative;
+
+    .ibg-be-image {
+        position: relative;
+
+        img {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: auto;
+            max-width: 900px;
+        }
+
+    }
+}
+
+/* Mobile Style */
+.ext-ibg-slider-container-mobile {
+    display: none;
+
+    .ext-ib-slider-main-item-mobile {
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            max-height: 150px;
+            width: auto;
+        }
+    }
+}
+
+.grid {
+    display: block;
+}
+
+
+@media screen and (max-width: 767px) {
+    .ext-ibg-slider-container-mobile {
+        display: block;
+    }
+
+    .grid {
+        display: none;
+    }
+}
+
+/* Masonry Styles */
+.grid-item {
+    float: left;
+    width: 20%;
+    padding: 5px;
+    cursor: pointer;
+
+}
+
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+    .grid-item {
+        width: 33%;
+    }
+}

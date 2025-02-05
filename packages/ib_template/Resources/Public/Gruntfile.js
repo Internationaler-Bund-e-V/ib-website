@@ -4,7 +4,7 @@
  * grunt build
  * grunt
  */
-const sass = require('node-sass');
+const sass = require('sass');
 module.exports = function (grunt) {
 
 	grunt.initConfig({
@@ -12,7 +12,7 @@ module.exports = function (grunt) {
 			dist: {
 				options: {
 					implementation: sass,
-					includePaths: ['bower_components/foundation-sites/scss',],
+					includePaths: ['node_modules/foundation-sites/scss',],
 					style: 'expanded'
 				},
 				files: {
@@ -54,7 +54,7 @@ module.exports = function (grunt) {
 		concat: {
 			CSS_App: {
 				src: [
-					'bower_components/select2/dist/css/select2.css',
+					'node_modules/select2/dist/css/select2.css',
 					'node_modules/motion-ui/dist/motion-ui.min.css',
 					'css/min/app.min.css'
 				],
@@ -62,26 +62,26 @@ module.exports = function (grunt) {
 			},
 			JS_LIBS: {
 				src: [
-					'bower_components/foundation-sites/js/foundation.core.js',
-					'bower_components/foundation-sites/js/foundation.abide.js',
-					'bower_components/foundation-sites/js/foundation.tabs.js',
-					'bower_components/foundation-sites/js/foundation.reveal.js',
-					'bower_components/foundation-sites/js/foundation.util.box.js',
-					'bower_components/foundation-sites/js/foundation.util.mediaQuery.js',
-					'bower_components/foundation-sites/js/foundation.util.imageLoader.js',
-					'bower_components/foundation-sites/js/foundation.util.triggers.js',
-					'bower_components/foundation-sites/js/foundation.util.touch.js',
-					'bower_components/foundation-sites/js/foundation.equalizer.js',
-					'bower_components/foundation-sites/js/foundation.util.keyboard.js',
-					'bower_components/foundation-sites/js/foundation.util.motion.js',
-					'bower_components/foundation-sites/js/foundation.util.timerAndImageLoader.js',
-					//'bower_components/jquery-appear/src/jquery.appear.js',
-					//'bower_components/slick-carousel/slick/slick.js',
+					'node_modules/foundation-sites/js/foundation.core.js',
+					'node_modules/foundation-sites/js/foundation.abide.js',
+					'node_modules/foundation-sites/js/foundation.tabs.js',
+					'node_modules/foundation-sites/js/foundation.reveal.js',
+					'node_modules/foundation-sites/js/foundation.util.box.js',
+					'node_modules/foundation-sites/js/foundation.util.mediaQuery.js',
+					'node_modules/foundation-sites/js/foundation.util.imageLoader.js',
+					'node_modules/foundation-sites/js/foundation.util.triggers.js',
+					'node_modules/foundation-sites/js/foundation.util.touch.js',
+					'node_modules/foundation-sites/js/foundation.equalizer.js',
+					'node_modules/foundation-sites/js/foundation.util.keyboard.js',
+					'node_modules/foundation-sites/js/foundation.util.motion.js',
+					'node_modules/foundation-sites/js/foundation.util.timerAndImageLoader.js',
+					//'node_modules/jquery-appear/src/jquery.appear.js',
+					//'node_modules/slick-carousel/slick/slick.js',
 					'node_modules/jquery.appear/jquery.appear.js',
 					'node_modules/slick-carousel/slick/slick.js',
-					'bower_components/headroom.js/dist/headroom.js',
-					'bower_components/headroom.js/dist/jQuery.headroom.js',
-					'bower_components/select2/dist/js/select2.full.js',
+					'node_modules/headroom.js/dist/headroom.js',
+					'node_modules/headroom.js/dist/jQuery.headroom.js',
+					'node_modules/select2/dist/js/select2.full.js',
 					'node_modules/clipboard/dist/clipboard.min.js',
 					'node_modules/motion-ui/dist/motion-ui.min.js'
 				],
@@ -89,8 +89,7 @@ module.exports = function (grunt) {
 			},
 			JS_HEADER: {
 				src: [
-					'bower_components/modernizr/modernizr.js',
-					'bower_components/angular/angular.js',
+					'node_modules/angular/angular.js',
 					'js/header/header.js'
 				],
 				dest: 'js/min/header.min.js'
@@ -214,7 +213,9 @@ module.exports = function (grunt) {
 		'concat:CSS_App',
 		'postcss',
 		'cssmin',
-		'concat:JS_LIBS', 'concat:JS_HEADER', 'concat:JQUERY',
+		'concat:JS_LIBS', 
+		'concat:JS_HEADER', 
+		'concat:JQUERY',
 		'uglify:Frontend',
 		'uglify:BuildForProduction'
 	]); //'bless',

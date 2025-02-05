@@ -1,0 +1,15 @@
+{
+    "extends": "@tsconfig/recommended/tsconfig.json",
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true,
+        "typeRoots": [
+            "node_modules/@types",
+            "JavaScript/types"
+        ]
+    },
+    "include": [ "JavaScript/**/*", "JavaScript/jetmenu.js", "JavaScript/config", "JavaScript/types", "JavaScript/app.ts"],
+    "exclude": [ "**/*.spec.ts" ]
+}

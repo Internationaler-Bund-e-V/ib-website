@@ -1,0 +1,36 @@
+.ib-locations{
+  color:white; 
+  #ib-locations-map{
+    height:500px;
+  }  
+  .ib-locations-controls{
+    padding:1rem 0;
+  }
+  label{
+      color:$ib-standard-font-color;
+      font-size:1rem;    
+    }  
+  select{
+    color:$ib-blue;
+    color:$ib-standard-font-color;
+    background-image:url('../Images/Pfeil_oben_unten.png');
+    background-size:10px 20px;
+  }
+  .button.expanded{
+    background-color:$ib-blue;
+  }
+  input{
+    color:$ib-standard-font-color;
+  }
+}
+
+
+/* Large max*/
+@media screen and (max-width: 39.9375em) {
+    .ib-locations{     
+      #ib-locations-map{
+        height:200px;
+      }     
+    }     
+       
+}
