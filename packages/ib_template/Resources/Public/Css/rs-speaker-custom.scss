@@ -1,6 +1,4 @@
 div.row.ib-content-module.ib-rs-speaker.ib-background-white {
-    // padding-top:10px;
-    // padding-bottom:0;
     display: flex;
     align-items: center;
 }
@@ -46,14 +44,11 @@ a.rsbtn_play {
 // "Vorlesen" span 
 a.rsbtn_play span.rsbtn_left.rsimg.rspart span.rsbtn_text[aria-hidden="true"] span,
 a.rsbtn_play > span.rsbtn_right.rsimg.rsplay.rspart {
-    // color: red;
-    // background-color: #009fe3;
     margin-top: .1rem;
 }
 
 // Buttons Stopp, Rewind, Forward, Speed etc.
 .rsbtn .rsbtn_exp .rsbtn_exp_inner button.rsbtn_player_item {
-    // background: pink;
     font-size: 18px;
     padding: .4rem;
     width: 2.2em;
@@ -69,7 +64,6 @@ a.rsbtn_play > span.rsbtn_right.rsimg.rsplay.rspart {
 
 // hide Volume button
 div.rsbtn_exp.rsimg.rspart span.rsbtn_exp_inner button.rsbtn_volume {
-    // background-color: red;
     display: none;
 }
 
@@ -83,19 +77,129 @@ span.rsbtn_dropdown {
 
 .rsbtn { left: 36px; }
 .rsbtn.mega_toggle .rsbtn_tooltoggle {
-    left: -36px!important;
+    left: -34px!important;
     background:#fff;
     border: none;
-    border-right: 1px solid #677077;
+    // border-right: 1px solid red;
+    // border-right: 1px solid #677077;
+    height: 1.8rem !important;
+    // padding-right: .75rem;
     cursor: pointer;
 }
 .zoom-tooltoggler.rsbtn.mega_toggle .rsbtn_tooltoggle {
     background:#fff!important;
     border: none;
-    border-right: 1px solid #677077;
 }
 .rsbtn .rsbtn_tooltoggle:hover,
 .rsbtn .rsbtn_tooltoggle:focus,
 .rsbtn .rsbtn_tooltoggle:active{
     background: #fff;
+}
+
+
+
+// Menu by john
+
+.rsbtn.mega_toggle .rsbtn_tooltoggle span.rsicn {
+    // background-color: rgb(247, 161, 146);
+    font-size: 2em;
+
+    &::before {
+        font-style: helvetica;
+        font-size: 24px;
+        color: #3d3d43e8;
+
+    }
+}
+
+.rsbtn .rsbtn_toolpanel.vertical div.rsbtn_tools {
+    border-radius: 12.5px;
+    // border: 5px tomato solid;    
+    width: 18rem !important;
+    overflow: hidden;
+}
+
+// list item
+.rsbtn .rsbtn_toolpanel.vertical .rsbtn_tools .rsbtn_tools_inner .rsbtn_toolcontainer ul.rsbtn_toollist li {
+    min-height: 3.6em !important;
+    width: auto !important;
+}
+
+// list item > button
+.rsbtn .rsbtn_toolpanel.vertical .rsbtn_tools .rsbtn_tools_inner .rsbtn_toolcontainer ul.rsbtn_toollist li button.rsbtn_tool {
+    transition: 0.2s ease-in;
+    padding: 0 12px !important;
+
+    span.rsbtn_btnlabel {
+        transition: 0.2s ease-in;
+        width: 6rem;
+        white-space: nowrap; 
+        overflow: visible;
+        text-align: left;
+    }
+
+    span.rs_minitoggler {
+        background-color: $ib-darkblue;
+        margin: 5.2px 2px 0 20px;
+
+       .on-icon {
+            color: #addfad;
+        }
+    }
+
+    &:hover {
+
+        // apply this style only on span - if user hovers on parent_button
+        span.rsbtn_btnlabel {
+            font-size: 13.75px;
+        }
+    }
+}
+
+.rsbtn .rsbtn_toolpanel.vertical 
+.rsbtn_tools .rsbtn_tools_inner 
+.rsbtn_toolcontainer ul.rsbtn_toollist li button.rsbtn_tool.active 
+.rs_minitoggler::after {
+    background-color: #addfad !important;
+}
+
+.rspopup {
+    border-radius: 12.5px !important;
+    width: 10rem;
+    
+    div.rspopup_btn {
+        // overflow: hidden;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        transition: 0.2s ease-in;
+        border-top: none;
+        padding-bottom: .55rem;
+        
+    }
+
+
+}
+
+.rspopup .rspopup_btn.rspopup_play {
+    border-top-left-radius: 12.5px;
+    border-top-right-radius: 12.5px;
+}
+
+.rspopup .rspopup_btn.rspopup_translation {
+    border-bottom-left-radius: 12.5px;
+    border-bottom-right-radius: 12.5px;
+}
+
+#rsmpl_container .rsmpl-tools .lang-picker .lang-picker-item[data-type=search], .rspopup .lang-picker .lang-picker-item[data-type=search] {
+    background-color: $ib-lightblue;
+}
+
+.rspopup .lang-picker[data-position~=left] {
+    border-radius: 12.5px;
+    overflow: hidden;
+}
+
+.rspopup .lang-picker .lang-picker-item {
+    transition: 0.2s ease-in;
 }
