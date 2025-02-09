@@ -1,0 +1,30 @@
+import:
+  - recipe/typo3.php
+
+config:
+  repository: 'https://github.com/Internationaler-Bund-e-V/ib-website.git'
+
+hosts:
+  prod:
+    label: prod
+    hostname: ib.de
+    port: 4567
+    remote_user: ib
+    forward_agent: true
+    config_file: '~/ssh_config'
+    deploy_path: 'ib-website'
+  stage:
+    label: stage
+    hostname: ib-staging.rmsdev.de
+    port: 4567
+    remote_user: ib
+    forward_agent: true
+    config_file: '~/ssh_config'
+    deploy_path: 'ib-website'
+
+tasks:
+  build:
+    - run: uptime
+
+after:
+  deploy:failed: deploy:unlock

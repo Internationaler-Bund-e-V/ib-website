@@ -273,7 +273,7 @@ disable_settings_management: false
 hooks:
   post-start:
     - composer: install
-    - exec: cd packages/ib_template/Resources/Public && yarn install && yarn run watch
+    - exec: cd packages/ib_template/Resources/Public && yarn install && yarn run watch &
 # or
 # web_environment: []
 # or

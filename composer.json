@@ -65,7 +65,8 @@
     "require-dev": {
         "ssch/typo3-rector": "^2.5",
         "cakephp/cakephp-codesniffer": "^5.0",
-        "phpstan/phpstan": "^1.10"
+        "phpstan/phpstan": "^1.10",
+        "deployer/deployer": "^7.5"
     },
     "extra": {
         "typo3/cms": {
