@@ -59,7 +59,7 @@ page.meta {
     #robots.override.if.isTrue.field = no_search
 }
 
-page.10 = FLUIDTEMPLATE 
+page.10 = FLUIDTEMPLATE
 page.10 {
     partialRootPath = {$template_path.html}/partial/
     layoutRootPath = {$template_path.html}/layout/
@@ -98,7 +98,7 @@ page.10 {
 #            });
 #         });
 
-#         $(document).ready(function() {            
+#         $(document).ready(function() {
 
 #             $('.twoColLayout .ib-news-slider').slick({
 #                 prevArrow : $('#newsPrevButton'),
@@ -135,7 +135,7 @@ page.includeCSS {
     # app.forceOnTop = 1
 }
 
-page.includeJSFooter {
+page.includeJSFooterLibs {
     # Pattern typo3_encore:entryName
     app = typo3_encore:app
 }

@@ -6,6 +6,8 @@ import '../Css/app.scss';
 import './config/readSpeakerConfig';
 
 import $ from 'jquery';
+(window as any).jQuery = $;
+(window as any).$ = $;
 import 'friendly-challenge/widget';
 import Foundation from 'foundation-sites';
 import Headroom from 'headroom.js';

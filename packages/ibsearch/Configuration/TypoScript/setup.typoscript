@@ -100,7 +100,7 @@ plugin.tx_solr.search {
 }
 
 # Load js files
-page.includeJSFooterlibs {
+page.includeJSFooter {
     solr-autocomplete = EXT:solr/Resources/Public/JavaScript/JQuery/jquery.autocomplete.min.js
     solr-suggest = EXT:solr/Resources/Public/JavaScript/suggest_controller.js
     solr-options = EXT:solr/Resources/Public/JavaScript/facet_options_controller.js
