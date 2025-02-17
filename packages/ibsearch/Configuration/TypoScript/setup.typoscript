@@ -101,13 +101,13 @@ plugin.tx_solr.search {
 
 # Load js files
 page.includeJSFooter {
-    ibsearch = EXT:ibsearch/Resources/Public/build/ibsearch.js
+    ibsearch = typo3_encore:ibsearch
 //    solr-autocomplete = EXT:solr/Resources/Public/JavaScript/JQuery/jquery.autocomplete.min.js
     // solr-suggest = EXT:solr/Resources/Public/JavaScript/suggest_controller.js
     // solr-options = EXT:solr/Resources/Public/JavaScript/facet_options_controller.js
 }
 
 page.includeCSS {
-    ibsearch = EXT:ibsearch/Resources/Public/build/ibsearch.css
+    ibsearch = typo3_encore:ibsearch
     // solr-suggest = EXT:solr/Resources/Public/StyleSheets/Frontend/suggest.css
 }

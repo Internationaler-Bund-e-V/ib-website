@@ -22,7 +22,7 @@ $(function () {
 
         // read data-assetbasepath value from #fb-render element
         var assetBasePath = jQuery(fbRenderer).data('assetbasepath');
-
+console.log(myFormData);
         $(fbRenderer).formRender({
             formData: myFormData,
             dataType: 'json',

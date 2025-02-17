@@ -11,7 +11,7 @@ Encore
     .setOutputPath('build/')
     // public path used by the web server to access the output path
 //    .setPublicPath('/build')
-    .setPublicPath('/typo3conf/ext/ib_template/Resources/Public/build')
+    .setPublicPath('/typo3conf/ext/ib_dataprivacy/Resources/Public/build')
     // only needed for CDN's or sub-directory deploy
     .setManifestKeyPrefix('build/')
 
@@ -21,9 +21,9 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
-    .addEntry('ib_template', './JavaScript/app.ts')
+    // .addEntry('ib_dataprivacy', './JavaScript/app.ts')
 
-    .addStyleEntry('rte', './Css/rte.scss')
+    .addStyleEntry('ib_dataprivacy', './Css/app.scss')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -43,7 +43,7 @@ Encore
     // .enableBuildNotifications()
     .enableSourceMaps(!Encore.isProduction())
     // enables hashed filenames (e.g. app.abc123.css)
-    .enableVersioning(Encore.isProduction())
+    // .enableVersioning(Encore.isProduction())
 
     .configureBabel((config) => {
         config.plugins.push('@babel/plugin-transform-class-properties');

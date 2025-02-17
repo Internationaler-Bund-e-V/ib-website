@@ -78,66 +78,16 @@ page.10 {
     }
 }
 
-#
-# deaktiviere das Laden von einer in Solr integrierten jQuery Version (jQuery v3.1.1)
-# https://mantis.rm-solutions.de/mantis/view.php?id=2338
-# mk@rms, 2022-08-12
-#
-#page.includeJSFooterlibs.solr-jquery >
-#page.includeJS {
-#    jquery = EXT:ib_template/Resources/Public/js/min/jquery.min.js
-#}
-
-#page.jsFooterInline {
-#    10 = TEXT
-#    10.value (
-#        $(document).foundation();
-#        $(window).load(function() {
-#            $().jetmenu({
-#                indicator: false
-#            });
-#         });
-
-#         $(document).ready(function() {
-
-#             $('.twoColLayout .ib-news-slider').slick({
-#                 prevArrow : $('#newsPrevButton'),
-#                 nextArrow : $('#newsNextButton'),
-#                 slidesToShow : 2,
-#                 dots: true,
-#                 responsive : [
-#                 {
-#                     breakpoint : 900,
-#                     settings : {
-#                         slidesToShow : 2,
-#                         slidesToScroll : 2
-#                     }
-#                 }, {
-#                     breakpoint : 480,
-#                     settings : {
-#                         slidesToShow : 1,
-#                         slidesToScroll : 1
-#                     }
-#                 }]
-#             });
-#         });
-#     )
-# }
-
-
 # -----------------------------------------------------------------------------
 # include CSS & JS
 # -----------------------------------------------------------------------------
 page.includeCSS {
-    # Pattern typo3_encore:entryName
-    app = typo3_encore:app
-    # If you want to ensure that this file is loaded first uncomment the next line
-    # app.forceOnTop = 1
+    ib_template = typo3_encore:ib_template
 }
 
-page.includeJSFooterLibs {
-    # Pattern typo3_encore:entryName
-    app = typo3_encore:app
+page.includeJS {
+    ib_template = typo3_encore:ib_template
+    ib_template.forceTop = 1
 }
 
 # -----------------------------------------------------------------------------
@@ -310,7 +260,9 @@ lib.linkedLogo {
                 _paq.push(['setSiteId', "{$portalSettings.analytics.matomo_siteid}"]);
                 var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
                 g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-                ibTrackLocation();
+                if (typeof ibTrackLocation !== 'undefined') {
+                    ibTrackLocation();
+                }
             })();
         </script>
     <!-- End Matomo Code -->
@@ -377,7 +329,9 @@ lib.linkedLogo {
     (function(){
         var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
         g.async=true; g.src='https://matomo.ib.de/js/container_{$portalSettings.analytics.matomo_containerid}.js'; s.parentNode.insertBefore(g,s);
-        ibTrackLocation();
+        if (typeof ibTrackLocation !== 'undefined') {
+            ibTrackLocation();
+        }
     })();
     </script>
     <!-- End Matomo Tag Manager -->

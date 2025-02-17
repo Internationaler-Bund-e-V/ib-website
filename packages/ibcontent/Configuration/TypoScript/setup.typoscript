@@ -73,5 +73,5 @@ plugin.be_secure_pw._LOCAL_LANG.de {
 }
 
 page.includeJSFooter {
-    ib_template = EXT:ibcontent/Resources/Public/build/ibcontent.js
+    ibcontent = typo3_encore:ibcontent
 }

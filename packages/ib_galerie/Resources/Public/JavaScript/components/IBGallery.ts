@@ -5,7 +5,7 @@ import Masonry from 'masonry-layout';
 import 'slick-carousel';
 
 class IBGallery {
-    constructor() {
+    constructor(elements:any) {
         let currentGallery:string;
         let mainStage:JQuery<HTMLElement>;
         let navStage:JQuery<HTMLElement>;
@@ -18,7 +18,7 @@ class IBGallery {
         overlayContainer.appendTo('html');
         overlay.appendTo('html');
 
-        $('.ext-ibg-image-item').on('click', function () {
+        $(elements).on('click', function () {
 
             currentGallery = $(this).data('galleryid');
             mainStage = $(mainID + currentGallery);

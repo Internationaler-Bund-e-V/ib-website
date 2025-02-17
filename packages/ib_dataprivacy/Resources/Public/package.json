@@ -1,13 +1,11 @@
 {
-  "name": "ib-formbuilder",
-  "version": "0.0.1",
-  "description": "IB FormBuilder Plugin",
-  "author": "rms",
-  "license": "UNLICENSED",
+  "name": "ib_template",
+  "version": "1.0.0",
+  "description": "Template for the website of the Internationaler Bund e.V.",
+  "main": "js/min/app.js",
+  "author": "Martin Jahn <martin.jahn@ib.de> (<https://internationaler-bund.de>)",
+  "license": "MIT",
   "dependencies": {
-    "core-js": "^3.40.0",
-    "formBuilder": "^3.19.13",
-    "jquery": "^3.7.1"
   },
   "browserslist": [
     "> 1%",
@@ -17,7 +15,8 @@
     "dev-server": "encore dev-server",
     "dev": "encore dev",
     "watch": "encore dev --watch",
-    "build": "encore production --progress"
+    "build": "encore production --progress",
+    "sass-migrator": "sass-migrator module --verbose --migrate-deps --dry-run Css/app.scss"
   },
   "devDependencies": {
     "@babel/core": "^7.26.8",
