@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 $(document).ready(function() {
     $('.ib-bubble-slider').slick({
         centerMode: true,

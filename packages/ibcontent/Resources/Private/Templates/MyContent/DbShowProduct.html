@@ -15,7 +15,7 @@
 <f:layout name="Default" />
 
 <f:section name="main">
-	
+
 	<div class="ib-db-extension ib-tracking-on-load" data-ibtrackingdata="{product.Network.name},{product.Location.name},{product.Product.name}">
 		<!-- content -->
 		<div id="ib-partial-startpageslider">
@@ -129,7 +129,7 @@
 
 				<!-- sidebar content start -->
 
-				<!-- render spacer for contacts start -->               
+				<!-- render spacer for contacts start -->
 					<f:render partial="Db/dbSidebarSpacer" />
                 <!-- render spacer for contacts end -->
 
@@ -140,7 +140,7 @@
 				</div>
 
 				<div class="small-12 medium-5 large-12 columns">
-					<!-- sidebar location start -->                    
+					<!-- sidebar location start -->
           <f:if condition="{product.Product.hide_location_address} != 'FALSE'}">
             <f:if condition="{product.Location.status}">
               <f:render partial="db/dbSidebarLocation" arguments="{location:product.Location,pageID:settings.targetpage, network:product.Network}" />
@@ -153,7 +153,7 @@
 					<!-- sidebar sponsor start -->
 					<f:if condition="{product.Sponsor.sponsor_logo_options} == '1' || {product.Sponsor.sponsor_logo_options} == '2'">
 						<f:render partial="Db/dbSidebarSponsor" arguments="{headline:product.Sponsor.headline,sponsorOptions:product.Sponsor.sponsor_logo_options,type:'sponsor',sponsorimages:product.Images.Sponsors,customSettings:customSettings, uid:uid }"></f:render>
-					</f:if>					
+					</f:if>
 					<!-- sidebar sponsor end -->
 				</div>
 
@@ -173,13 +173,10 @@
 		<!--TYPO3SEARCH_end-->
 
 		<!-- /content wrapper -->
-
-		<!-- include db.js as footer asset -->
-		<f:asset.script identifier="dbjs" src="EXT:ibcontent/Resources/Public/js/db.js" />
 	</div>
 
-      
-<div id="dbContactOverlay" class="hide-for-large">  
+
+<div id="dbContactOverlay" class="hide-for-large">
   <f:render partial="db/dbContactOverlay" arguments="{contacts:product.Users,location:product.Location,pageID:settings.targetpage,hideLocation:product.Product.hide_location_address}" />
 </div>
 

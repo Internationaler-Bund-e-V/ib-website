@@ -71,3 +71,7 @@ plugin.be_secure_pw._LOCAL_LANG.de {
     messageTitle = XXXXX
     passwordReminderWindow_message = XXXXX
 }
+
+page.includeJSFooter {
+    ib_template = EXT:ibcontent/Resources/Public/build/ibcontent.js
+}

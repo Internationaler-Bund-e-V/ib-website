@@ -6,8 +6,8 @@
     <div class="row ib-content-module ib-dbproductlist rs_preserve ib-background-white">
         <div class="columns medium-10 medium-offset-1 end">
             <div class="row rs_prevent">
-                <input class="citySearchInput" type="text" placeholder="Stadt...">                
-            </div>          
+                <input class="citySearchInput" type="text" placeholder="Stadt...">
+            </div>
             <f:for each="{productsByCity.Locations}" as="city" key="citytitle" iteration="iterator">
                 <div class="row db-citycontainer citytitle enabled rs_prevent" data-citysearch="{citytitle}">
                     <div class="columns medium-6">
@@ -16,7 +16,7 @@
                     <div class="columns medium-6">
                         <ul class="productlist">
                             <f:for each="{city}" as="product" iteration="pIterator">
-                                <li>                                    
+                                <li>
                                     <f:if condition="{product.type} == 'product'">
                                         <f:link.page pageUid="{settings.targetpage}" additionalParams="{tx_ibcontent:'{aid:product.id}'}" class="ib-link-more-after" title="{product.name}">
                                             {product.name}
@@ -37,9 +37,5 @@
         </div>
 
     </div>
-
-    <!-- include db.js as footer asset -->
-    <f:asset.script identifier="dbjs" src="EXT:ibcontent/Resources/Public/js/db.js" />
-
 </f:section>
 
