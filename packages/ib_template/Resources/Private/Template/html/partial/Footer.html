@@ -9,7 +9,7 @@
 </f:if>
 
 <f:section name="defaultFooter">
-  <div id="ib-footer">
+  <footer id="ib-footer">
     <div class="row ib-footer-container">
       <div class="columns medium-10 medium-offset-1">
         <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.footer.hide_footer')}">
@@ -94,6 +94,7 @@
                 </f:then>
               </f:if>
               <!-- textcontent RIGHT end-->
+            </div>
 
               <!-- social links start-->
               <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.footer.hide_social_links')}">
@@ -101,7 +102,7 @@
                 <f:else>
 
                   <f:if condition="{f:cObject(typoscriptObjectPath: 'social.headline')}">
-                    <div class="columns medium-12 large-2">
+                    <div class="row columns small-12">
                       <ul class="menu simple ib-footer-social">
                         <f:if condition="{f:cObject(typoscriptObjectPath: 'social.facebook')}">
                           <li>
@@ -165,9 +166,8 @@
                   </f:if>
                 </f:else>
               </f:if>
-              <!-- solical links end-->
+              <!-- social links end-->
 
-            </div>
           </f:else>
         </f:if>
 
@@ -182,9 +182,10 @@
             <img class="ib-footer-logo" src="{f:uri.resource(path: src)}" alt="Portal Logo Footer">
           </div>
         </div>
+            </div>
       </div>
     </div>
-  </div>
+</footer>
 </f:section>
 
 <!-- Footer End-->

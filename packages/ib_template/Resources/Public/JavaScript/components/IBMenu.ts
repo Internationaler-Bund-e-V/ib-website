@@ -46,16 +46,26 @@ class IBMenu {
         this.lastScreenWidth = this.windowWidth();
 
         if (this.settings.indicator == true) {
-            this.menu.find("a").each(function () {
-                if ($(this).siblings(".dropdown, .megamenu").length > 0) {
-                    $(this).append("<span class='indicator'>+</span>");
+            this.menu.find("a").each((index, element:HTMLAnchorElement) => {
+                if ($(element).siblings(".dropdown, .megamenu").length > 0) {
+                    $(element).append("<span class='indicator'>+</span>");
                 }
             });
         }
 
+        // apply class 'submenu--open' when a megamenu appears
+        $('.megamenu').on('appear', function(event, $all_appeared_elements) {
+            $(this).closest('li').addClass('submenu--open');
+        });
+        // remove class 'submenu--open' when a megamenu appears
+        $('.megamenu').on('disappear', function(event, $all_disappeared_elements) {
+            $(this).closest('li').removeClass('submenu--open');
+        });
+
+
         this.screenSize();
 
-        $(window).resize(() => {
+        window.addEventListener('resize', () => {
             if (this.lastScreenWidth <= 767 && this.windowWidth() > 767) {
                 this.unbindEvents();
                 this.hideCollapse();
@@ -119,23 +129,23 @@ class IBMenu {
             this.menu.find("a").on("click touchstart", (e) => {
                 e.stopPropagation();
                 e.preventDefault();
-                $(this).parent("li").siblings("li").find(".dropdown, .megamenu").stop(true, true).fadeOut(this.settings.speed);
-                if ($(this).siblings(".dropdown, .megamenu").css("display") == "none") {
-                    $(this).siblings(".dropdown, .megamenu").stop(true, true).delay(this.settings.delay!).fadeIn(this.settings.speed);
+                $(e.currentTarget).parent("li").siblings("li").find(".dropdown, .megamenu").stop(true, true).fadeOut(this.settings.speed);
+                if ($(e.currentTarget).siblings(".dropdown, .megamenu").css("display") == "none") {
+                    $(e.currentTarget).siblings(".dropdown, .megamenu").stop(true, true).delay(this.settings.delay!).fadeIn(this.settings.speed);
                     return false;
                 }
                 else {
-                    $(this).siblings(".dropdown, .megamenu").stop(true, true).fadeOut(this.settings.speed);
-                    $(this).siblings(".dropdown").find(".dropdown").stop(true, true).fadeOut(this.settings.speed);
-                    if ($(this).siblings(".dropdown, .megamenu").length) {
+                    $(e.currentTarget).siblings(".dropdown, .megamenu").stop(true, true).fadeOut(this.settings.speed);
+                    $(e.currentTarget).siblings(".dropdown").find(".dropdown").stop(true, true).fadeOut(this.settings.speed);
+                    if ($(e.currentTarget).siblings(".dropdown, .megamenu").length) {
                         return false;
                     }
                 }
-                if ($(this).attr("target") == "_blank" || $(this).attr("target") == "blank") {
-                    window.open($(this).attr("href"));
+                if ($(e.currentTarget).attr("target") == "_blank" || $(e.currentTarget).attr("target") == "blank") {
+                    window.open($(e.currentTarget).attr("href"));
                 }
                 else {
-                    window.location.href = $(this).attr("href")!;
+                    window.location.href = $(e.currentTarget).attr("href")!;
                 }
             });
 
@@ -152,10 +162,10 @@ class IBMenu {
             }
         }
         else {
-            this.menu.find("li").on("mouseenter", (event) => {
-                $(event.target).children(".dropdown, .megamenu").stop(true, true).delay(this.settings.delay!).fadeIn(this.settings.speed);
-            }).on("mouseleave", (event) => {
-                $(event.target).children(".dropdown, .megamenu").stop(true, true).delay(this.settings.hideDelay!).fadeOut(this.settings.speed);
+            this.menu.find("li").on("mouseenter", (e) => {
+                $(e.currentTarget).children(".dropdown, .megamenu").stop(true, true).delay(this.settings.delay!).fadeIn(this.settings.speed);
+            }).on("mouseleave", (e) => {
+                $(e.currentTarget).children(".dropdown, .megamenu").stop(true, true).delay(this.settings.hideDelay!).fadeOut(this.settings.speed);
             });
         }
     }
@@ -164,13 +174,13 @@ class IBMenu {
         this.menu.find("li:not(.showhide)").each((index:number, element:HTMLElement)  => {
             if ($(element).children(".dropdown, .megamenu").length > 0) {
                 $(element).children("a").on("click", (event) => {
-                    if ($(event.target).siblings(".dropdown, .megamenu").css("display") == "none") {
-                        $(event.target).siblings(".dropdown, .megamenu").delay(this.settings.delay!).slideDown(this.settings.speed).trigger('focus');
-                        $(event.target).parent("li").siblings("li").find(".dropdown, .megamenu").slideUp(this.settings.speed);
+                    if ($(event.currentTarget).siblings(".dropdown, .megamenu").css("display") == "none") {
+                        $(event.currentTarget).siblings(".dropdown, .megamenu").delay(this.settings.delay!).slideDown(this.settings.speed).trigger('focus');
+                        $(event.currentTarget).parent("li").siblings("li").find(".dropdown, .megamenu").slideUp(this.settings.speed);
                         return false;
                     }
                     else {
-                        $(this).siblings(".dropdown, .megamenu").slideUp(this.settings.speed).trigger('focus');
+                        $(event.currentTarget).siblings(".dropdown, .megamenu").slideUp(this.settings.speed).trigger('focus');
                         //firstItemClick = 1;
                         return false;
                     }
@@ -183,7 +193,7 @@ class IBMenu {
         this.menu.children("li:not(.showhide)").hide(0);
         this.menu.children("li.showhide").show(0);
         this.menu.find(".showhidemobile").on("click", (event) => {
-            $(event.target).toggleClass('mobilenav--open');
+            $(event.currentTarget).toggleClass('mobilenav--open');
             if (this.menu.children("li").is(":hidden")) {
                 this.menu.children("li").slideDown(this.settings.speed);
                 this.scrollable(true);

@@ -1,18 +1,14 @@
 import $ from 'jquery';
 
-$(function () {
+class IBStartpageNewsSlider {
+    constructor(elements:Element|HTMLElement|JQuery<HTMLElement>) {
+        const slidesToShow = 3;
+        const arrows = true;
+        const childElements = $(elements).children().length;
 
-    /**
-     * initialize startbpage newsslider
-     */
-    var ibNewsSliders = $('.startPage .ib-news-slider');
-    if (ibNewsSliders.length > 0) {
-        var slidesToShow = 3;
-        var arrows = true;
-        var childElements = $('.startPage .ib-news-slider').children().length;
-        ibNewsSliders.each(function (index) {
-            var sliderID = $(this).data('sliderid');
-            $(this).slick({
+        $(elements).each((index:number, element:Element|HTMLElement) => {
+            const sliderID = $(element).data('sliderid');
+            $(element).slick({
                 prevArrow: $('.ibSliderPrev-' + sliderID),
                 nextArrow: $('.ibSliderNext-' + sliderID),
                 slidesToShow: slidesToShow,
@@ -36,5 +32,6 @@ $(function () {
             });
         });
     }
+}
 
-});
+export default IBStartpageNewsSlider;

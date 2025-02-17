@@ -1,7 +1,7 @@
 <!-- header -->
 <f:render partial="header" arguments="{_all}" />
 <!-- content -->
-<div id="ib-container" class="container-fluid">
+<main id="ib-container" class="container-fluid">
 
   <div id="ib-partial-startpageslider">
     <f:format.raw>{header_element}</f:format.raw>
@@ -55,7 +55,7 @@
             <f:render partial="contactPerson"
               arguments="{contact_person: data.contact_person, bgColor: data.contact_person_bg}" />
           </div>
-        </f:if>        
+        </f:if>
         <f:format.raw>{content_element_sidebar}</f:format.raw>
       </div>
       <!-- sidebar content end  -->
@@ -64,7 +64,7 @@
   </div>
   <!--TYPO3SEARCH_end-->
 
-</div>
+</main>
 <!-- /content wrapper -->
 
 <!-- tabs start-->

@@ -315,7 +315,7 @@ gallery.folder.pid = 1351
 [applicationContext == "Development"]
     portalSettings.analytics.enable_tracking = 0
     #portalSettings.ibjobs.ibjobsBaseUrl = https://redaktionstool.ddev.site/
-    portalSettings.ibjobs.ibjobsBaseUrl = https://redaktion-relaunch.ddev.site/
+    portalSettings.ibjobs.ibjobsBaseUrl = https://ib-redaktionstool.ddev.site/
     portalSettings.tabs_bar {
         show = 0
         folder_id = 2801
@@ -323,7 +323,7 @@ gallery.folder.pid = 1351
     }
 
     #portalSettings.misc.productDbBaseUrl = https://redaktionstool.ddev.site
-    portalSettings.misc.productDbBaseUrl = https://redaktion-relaunch.ddev.site
+    portalSettings.misc.productDbBaseUrl = https://ib-redaktionstool.ddev.site/
     portalSettings.readspeaker.show = 1
     portalSettings.analytics.enable_tracking = 0
     portalSettings.cookiepolicy.show = 0
@@ -357,7 +357,7 @@ gallery.folder.pid = 1351
 # INCLUDE PORTAL CONSTANTS
 # --------------------------------------------------------------------------------------------
 #<INCLUDE_TYPOSCRIPT: source="DIR:EXT:ib_template/Configuration/TypoScript/constants_developer">
-@import 'DIR:EXT:ib_template/Configuration/TypoScript/constants_developer'
+@import 'EXT:ib_template/Configuration/TypoScript/constants_developer'
 
 ## get protocol
 protocol = http

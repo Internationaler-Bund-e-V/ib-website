@@ -5,44 +5,39 @@
 import '../Css/app.scss';
 import './config/readSpeakerConfig';
 
-import $ from 'jquery';
-(window as any).jQuery = $;
-(window as any).$ = $;
+(window as any).jQuery = (window as any).$ = require('jquery');
 import 'friendly-challenge/widget';
 import Foundation from 'foundation-sites';
 import Headroom from 'headroom.js';
 import Shariff from 'shariff';
 import 'slick-carousel';
-require('select2');
 
 import IBAnchorHandler from './components/IBAnchorHandler';
+import IBClipboard from './components/IBClipboard';
 import IBContactOverlayHandler from './components/IBContactOverlayHandler';
 import IBCookieBot from './components/IBCookieBot';
-//import IBMenu from './components/IBMenu';
-import IBClipboard from './components/IBClipboard';
+import IBEmailProtection from './components/IBEmailProtection';
+import IBFloatingActionButton from './components/IBFloatingActionButton';
+import IBHeaderSearchBar from './components/IBHeaderSearchBar';
+import IBMenu from './components/IBMenu';
+import IBNewsCategoryFilter from './components/IBNewsCategoryFilter';
+import IBNewsSlider from './components/IBNewsSlider';
+import IBSliderLoader from './components/IBSliderLoader';
+import IBStartpageNewsSlider from './components/IBStartpageNewsSlider';
 import IBStartPageSlider from './components/IBStartPageSlider';
+import IBTabsBar from './components/IBTabsBar';
+import IBVideoSlider from './components/IBVideoSlider';
 
-import './components/matomoEvents';
+require('./components/matomoEvents');
 
-require('./components/jetmenu.js');
-require('./components/fab.js');
 require('./components/foundation-accordion.js')
-require('./components/headerSearchBar.js')
-require('./components/nav-tab-detection.js')
-require('./components/newsCategory.js')
-require('./components/newsSlider.js')
-require('./components/obfuscateEmail.js')
-require('./components/sliderLoader.js')
-require('./components/social-content-sticky-nav.js')
-require('./components/tabsBar.js')
-require('./components/videoSlider.js')
 
 if (Foundation) {
   // if `Foundation` is left as an unused variable webpack will exclude it from the build output;
   // therefore, any expression that uses it will work.
 }
 
-$(() => {
+$(function() {
     $(document).foundation();
 
     const headroom = new Headroom(document.body, {
@@ -62,41 +57,41 @@ $(() => {
 
     new IBAnchorHandler();
     new IBClipboard();
-    new IBCookieBot();
     new IBContactOverlayHandler();
+    new IBCookieBot();
+    new IBFloatingActionButton();
+    new IBHeaderSearchBar();
+    new IBNewsCategoryFilter();
+    new IBSliderLoader();
+    new IBTabsBar();
 
-    if (document.querySelector('.shariff')) {
-        new Shariff($('.shariff'));
+    if (document.querySelectorAll('.ibOEmail')) {
+        new IBEmailProtection(document.querySelectorAll('.ibOEmail'));
     }
-    ($() as any).jetmenu();
+
+    if (document.querySelectorAll('.shariff').length > 0) {
+        new Shariff(document.querySelectorAll('.shariff'));
+    }
 
     if (document.querySelector('.jetmenu')) {
-        // new IBMenu(document.querySelector('.jetmenu') as HTMLElement, { indicator: false });
+        new IBMenu(document.querySelector('.jetmenu') as HTMLElement, { indicator: false });
     }
 
     if (document.querySelector('.ib-startpage-slider')) {
         new IBStartPageSlider(document.querySelector('.ib-startpage-slider') as HTMLElement);
     }
 
-    $('.twoColLayout .ib-news-slider').slick({
-        prevArrow : $('#newsPrevButton'),
-        nextArrow : $('#newsNextButton'),
-        slidesToShow : 2,
-        dots: true,
-        responsive : [
-        {
-            breakpoint : 900,
-            settings : {
-                slidesToShow : 2,
-                slidesToScroll : 2
-            }
-        }, {
-            breakpoint : 480,
-            settings : {
-                slidesToShow : 1,
-                slidesToScroll : 1
-            }
-        }]
-    });
-//    Foundation.reInit([ 'equalizer' ]);
+    if (document.querySelector('.startPage .ib-news-slider')) {
+        new IBStartpageNewsSlider(document.querySelector('.startPage .ib-news-slider')!);
+    }
+
+    if (document.querySelectorAll('.twoColLayout .ib-news-slider').length > 0) {
+        new IBNewsSlider(document.querySelectorAll('.twoColLayout .ib-news-slider'));
+    }
+
+    if (document.querySelector('#ibVideoSlider')) {
+        new IBVideoSlider(document.querySelector('#ibVideoSlider')!);
+    }
+
+    //    Foundation.reInit([ 'equalizer' ]);
 });
