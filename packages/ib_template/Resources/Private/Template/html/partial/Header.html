@@ -38,9 +38,9 @@
 			{f:cObject(typoscriptObjectPath:'portalSettings.portal_logo.format')}=='wide' ", then: 'header-ib-logo-wide')}">
 			<div id="ib-logo" class="show-for-large">
 				<f:variable name="src" value="EXT:ib_template/Resources/Public/Images/logos_portals/{f:cObject(typoscriptObjectPath: 'portalSettings.portal_logo.file')}" />
-				<a href="{f:uri.page(pageUid: portalSettings.id)}">
+                <f:link.page pageUid="{f:cObject(typoscriptObjectPath: 'portalSettings.root_id')}">
 					<img src="{f:uri.resource(path: src)}" class="responsive" alt="Portal Logo" style="width: auto; height: 70px">
-				</a>
+				</f:link.page>
 			</div>
 			<f:render partial="Menu/mainMenuEntryPoint" arguments="{_all}" />
 			<div id="ib-menu-overlay"></div>
