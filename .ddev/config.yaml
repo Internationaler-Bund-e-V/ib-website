@@ -9,6 +9,7 @@ additional_hostnames:
   - "ib-bvbbi"
   - "ib-berlin"
   - "ib-freiwilligendienste"
+  - "ib-training"
   - "ib-kitas"
   - "ib-suedwest"
   - "srb"

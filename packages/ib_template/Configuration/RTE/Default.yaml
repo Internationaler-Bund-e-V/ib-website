@@ -3,16 +3,16 @@ imports:
   - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
   - { resource: "EXT:rte_ckeditor_image/Configuration/RTE/Plugin.yaml" }
   - { resource: "EXT:rte_ckeditor_fontawesome/Configuration/RTE/PluginFA6.yaml" }
-  
+
 
 editor:
   config:
     # RTE default config removes image plugin - restore it:
     format_tags: "p;h1;h2;h3;h4;h5;pre"
 
-    contentsCss: 
+    contentsCss:
       - 'EXT:rte_ckeditor/Resources/Public/Css/contents.css'
-      - "typo3_encore:rte"
+      - "typo3_encore:ib_template_rte"
 
     toolbarGroups:
       - { name: styles, groups: [ styles, format ] }
@@ -46,7 +46,7 @@ editor:
     #extraAllowedContent: 'iframe(*)'
     #extraAllowedContent: "*(*)[data-*]"
     allowedContent: true
-    
+
     stylesSet:
       - { name: "Hellblauer Text", element: "p", attributes: { class: "text-color-light-blue"}}
       - { name: "Dunkelblauer Text", element: "p", attributes: { class: "text-color-dark-blue"}}

@@ -6,23 +6,23 @@ plugin.tx_ibjobs {
             #2 = fileadmin/template/html/partial/
             2 = EXT:ib_template/Resources/Private/Template/html/partial/
         }
-    
+
         templateRootPaths >
         templateRootPaths {
             1 = EXT:ibjobs/Resources/Private/Templates/
         }
-    
+
         layoutRootPaths >
         layoutRootPaths {
             1 = EXT:ibjobs/Resources/Private/Layouts/
         }
     }
-  
+
     persistence {
         storagePid = {$plugin.tx_ibjobs_iblogajobs.persistence.storagePid}
         #recursive = 1
     }
-    
+
     features {
         #skipDefaultArguments = 1
     }
@@ -62,12 +62,12 @@ plugin.tx_ibjobs._CSS_DEFAULT_STYLE (
     }
 )
 
-#page.includeJSFooter {
-#    tx_ibjobs_1 = EXT:ibjobs/Resources/Public/dist/ibjobs.min.js
-#}
+page.includeJSFooter {
+    ib_jobs = typo3_encore:ibjobs
+}
 
 page.includeCSS {
-    tx_ibjobs_1 = EXT:ibjobs/Resources/Public/dist/ibjobs.min.css
+    ib_jobs = typo3_encore:ibjobs
 }
 
 # -------------------------------------------------

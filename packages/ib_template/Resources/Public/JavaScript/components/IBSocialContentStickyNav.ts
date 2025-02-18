@@ -84,7 +84,7 @@ class IBSocialContentStickyNav
         $(window).on('scroll', (event) => {
 
             var ibSocial = $('.ib-social');
-            var y = $(subject).scrollTop();
+            var y = $(subject).scrollTop()!;
             if (y >= stickytop) {
                 $(ibSocial).addClass('fixed');
                 $(ibSocial).css('top', stickyoffset + stickydifference + "px");
@@ -105,4 +105,6 @@ class IBSocialContentStickyNav
     // init function after slick init if header slider
     // present else add class fixed to social
     // -----------------------------------------------
-});
+}
+
+export default IBSocialContentStickyNav;
