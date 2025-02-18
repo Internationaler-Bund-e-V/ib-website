@@ -2,67 +2,58 @@
 <f:layout name="Default" />
 
 <f:section name="main">
-  <div class="cookieconsent-optout-marketing rs_preserve row" id="osmMapConsent">
-    <div class="">
-      <p>
-      <h2>Kartenanwendung</h2>
-      </p>
-    </div>
-    <div>Möchten Sie die Karte nutzen, müssen Sie diese aktivieren, indem Sie unten den Button "Zur Aktivierung der
-      Karte bitte folgende Cookie-Kategorie zulassen" anklicken. Anschließend wird in Ihrem Browser ein Fenster zu den
-      Cookie-Einstellungen geöffnet. Über dieses Fenster können Sie die Datenverarbeitung zwecks "Statistik" zulassen,
-      die der Anbieter des Kartendienstes, die Open-Street-Map Foundation (OSMF), bei Nutzung der Kartenausschnitte aus
-      OpenStreetMap vornehmen kann, ohne dass wir dies beeinflussen können. Erst mit Ihrer Zustimmung hierzu kann die
-      Karte angezeigt werden. Durch Aktivieren der Karte erhält OSMF personenbezogene Daten wie Ihre IP-Adresse, Ihr
-      Klick-Verhalten bei Nutzung der Karte und ggf. Ihren Standort. OSMF verarbeitet diese Daten gemäß der
-      Datenschutzerklärung von OSMF (etwa zur Bereitstellung und ggf. Verbesserung des Kartendienstes). <a
-        onclick="Cookiebot.renew();">Ihre Einwilligung können Sie hier jederzeit für die Zukunft widerrufen.</a><a
-        href="/datenschutz">
-      </a></div>
-    <div class="customCBOverlay mapsCBOverlay aria-hidden=">
-      <div class="customCBButton" aria-hidden="true"><button onclick="Cookiebot.renew();">Zur Aktivierung der Karte
-          bitte folgende Cookie-Kategorie zulassen: Marketing</button></div>
-    </div>
-  </div>
+    <div class="cookieconsent-optout-marketing rs_preserve row" id="osmMapConsent">
+        <div class="">
+            <p>
+                <h2>Kartenanwendung</h2>
+            </p>
+        </div>
+        <div>Möchten Sie die Karte nutzen, müssen Sie diese aktivieren, indem Sie unten den Button "Zur Aktivierung der
+            Karte bitte folgende Cookie-Kategorie zulassen" anklicken. Anschließend wird in Ihrem Browser ein Fenster zu den
+            Cookie-Einstellungen geöffnet. Über dieses Fenster können Sie die Datenverarbeitung zwecks "Statistik" zulassen,
+            die der Anbieter des Kartendienstes, die Open-Street-Map Foundation (OSMF), bei Nutzung der Kartenausschnitte aus
+            OpenStreetMap vornehmen kann, ohne dass wir dies beeinflussen können. Erst mit Ihrer Zustimmung hierzu kann die
+            Karte angezeigt werden. Durch Aktivieren der Karte erhält OSMF personenbezogene Daten wie Ihre IP-Adresse, Ihr
+            Klick-Verhalten bei Nutzung der Karte und ggf. Ihren Standort. OSMF verarbeitet diese Daten gemäß der
+            Datenschutzerklärung von OSMF (etwa zur Bereitstellung und ggf. Verbesserung des Kartendienstes). <a
+            onclick="Cookiebot.renew();">Ihre Einwilligung können Sie hier jederzeit für die Zukunft widerrufen.</a><a
+            href="/datenschutz">
+        </a></div>
+        <div class="customCBOverlay mapsCBOverlay aria-hidden=">
+            <div class="customCBButton" aria-hidden="true"><button onclick="Cookiebot.renew();">Zur Aktivierung der Karte
+                bitte folgende Cookie-Kategorie zulassen: Marketing</button></div>
+            </div>
+        </div>
 
 
-  <div id="osmMapContainer" data-map="{settings.osmMap}" data-pincolor="{settings.osmMapPinColor}"
-    data-borderbuttoncolor="{settings.osmMapBorderButtonColor}" data-mapcolor="{settings.osmMapColor}"
-    data-bordercolor="{settings.osmMapBorderColor}" data-appid="{settings.mapLayout}"
-    class="cookieconsent-optin-marketing row ib-content-module ib-osmmap rs_preserve ib-background-white"
-    data-navigations="{settings.osmMapNavigations}" data-showtagfilter="{settings.showTagFilter}"
-    data-usecustomcenter="{settings.useCustomCenter}" data-customlongitude="{settings.customCenterLongitude}"
-    data-useprefiltercategory="{settings.usePreFilterCategory}"
-    data-prefiltercategoryids="{settings.preFilterCategoryIDs}" data-customlatitude="{settings.customCenterLatitude}"
-    data-tagfilterheadlline="{settings.tagFilterHeadline}" data-customzoomlevel="{settings.customZoomLevel}"
-    data-showcategoryfilter="{settings.showCategoryFilter}" style="max-width:100%;">
-    <f:if condition="{settings.mapLayout} == 'Standard'">
-      <div id="osmMapApp" class="columns"></div>
+        <div id="osmMapContainer" data-map="{settings.osmMap}" data-pincolor="{settings.osmMapPinColor}"
+        data-borderbuttoncolor="{settings.osmMapBorderButtonColor}" data-mapcolor="{settings.osmMapColor}"
+        data-bordercolor="{settings.osmMapBorderColor}" data-appid="{settings.mapLayout}"
+        class="cookieconsent-optin-marketing row ib-content-module ib-osmmap rs_preserve ib-background-white"
+        data-navigations="{settings.osmMapNavigations}" data-showtagfilter="{settings.showTagFilter}"
+        data-usecustomcenter="{settings.useCustomCenter}" data-customlongitude="{settings.customCenterLongitude}"
+        data-useprefiltercategory="{settings.usePreFilterCategory}"
+        data-prefiltercategoryids="{settings.preFilterCategoryIDs}" data-customlatitude="{settings.customCenterLatitude}"
+        data-tagfilterheadlline="{settings.tagFilterHeadline}" data-customzoomlevel="{settings.customZoomLevel}"
+        data-showcategoryfilter="{settings.showCategoryFilter}" style="max-width:100%;">
+        <f:if condition="{settings.mapLayout} == 'Standard'">
+        <div id="osmMapApp" class="columns"></div>
     </f:if>
     <f:if condition="{settings.mapLayout} == 'Navigation'">
-      <div id="osmMapApp" class="columns"></div>
+    <div id="osmMapApp" class="columns"></div>
     </f:if>
 
-  </div>
-  <!-- show link to list view for mobile devices-->
-  <div id="osmMapListHint">
-    <p>{f:translate(key: 'LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:osmmaplistviewlinktext')}</p>
-    <f:link.typolink parameter="{settings.linkListview}" class="ibCustomButton lightblue">
-      Listenansicht
+    </div>
+    <!-- show link to list view for mobile devices-->
+    <div id="osmMapListHint">
+        <p>{f:translate(key: 'LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:osmmaplistviewlinktext')}</p>
+        <f:link.typolink parameter="{settings.linkListview}" class="ibCustomButton lightblue">
+        Listenansicht
     </f:link.typolink>
 
 
-  </div>
+    </div>
 
-  <!-- include db.js as footer asset -->
-  <!--
-  <f:asset.script identifier="osmMapVue" src="EXT:ibcontent/osmmap-vue/dist/js/osmMap.min.js" type="text/plain"
-    data="{cookieconsent: 'marketing'}" />
--->
-  <f:asset.script identifier="select2" src="EXT:ibcontent/Resources/Public/js/select2.full.js"
-    data="{cookieconsent: 'necessary'}" />
-  <f:asset.script identifier="osmMapVue" src="EXT:ibcontent/osmmap-vue/dist/js/osmMapApp.js" type="module"
-    data="{cookieconsent: 'marketing'}" />
-  <f:asset.css identifier="osmMapVueCss" href="EXT:ibcontent/osmmap-vue/dist/assets/index.css" />
-
+    <f:asset.script identifier="osmMapVue" src="EXT:ibcontent/Resources/Public/build/osmmap/js/osmMapApp.js" type="module" data="{cookieconsent: 'marketing'}" />
+    <f:asset.css identifier="osmMapVueCss" href="EXT:ibcontent/Resources/Public/build/osmmap/assets/index.css" />
 </f:section>

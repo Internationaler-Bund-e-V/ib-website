@@ -19,14 +19,8 @@
 
     </div>
 
-    <!-- include db.js as footer asset -->
-    <!--
-    <f:asset.script identifier="osmMapVue" src="EXT:ibcontent/osmmap-vue/dist/js/osmMap.min.js" />
-    -->
-    <f:asset.script identifier="select2" src="EXT:ibcontent/Resources/Public/js/select2.full.js"
+    <f:asset.script identifier="osmMapVue" src="EXT:ibcontent/Resources/Public/build/osmmap/js/osmMapApp.js" type="module"
         data="{cookieconsent: 'necessary'}" />
-    <f:asset.script identifier="osmMapVue" src="EXT:ibcontent/osmmap-vue/dist/js/osmMapApp.js" type="module"
-        data="{cookieconsent: 'necessary'}" />
-    <f:asset.css identifier="osmMapVueCss" href="EXT:ibcontent/osmmap-vue/dist/assets/index.css" />
+    <f:asset.css identifier="osmMapVueCss" href="EXT:ibcontent/Resources/Public/build/osmmap/assets/index.css" />
 
 </f:section>
