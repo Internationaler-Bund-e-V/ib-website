@@ -30,7 +30,7 @@
 
 
                 <div class="ib-startpage-slider-item">
-                  <div class="ib-startpage-slider-item-wrapper">
+                  <div class="ib-startpage-slider-item-wrapper full-width-container">
                     <v:condition.string.isNumeric value="{slide.ItemWrap.slideImage}">
                       <f:then>
                         <f:variable name="convertToFormat" value="jpg" />
@@ -42,17 +42,34 @@
                             </f:if>
                             <f:link.typolink parameter="{slide.ItemWrap.slideLink}"
                               target="{tabTarget}">
-                              <f:image src="{slide.ItemWrap.slideImage}" alt="{altAttributeValue}"
+                              <!-- <f:image src="{slide.ItemWrap.slideImage}" alt="{altAttributeValue}"
                                 alt="{altAttributeValue}"
                                 additionalAttributes="{srcset:'{f:uri.image(src:slide.ItemWrap.slideImage,maxWidth:800)} 800w,
-                              {f:uri.image(src:slide.ItemWrap.slideImage,maxWidth:1350)} 1350w', sizes:'(max-width: 800px) 800px,1350px'}" />
+                              {f:uri.image(src:slide.ItemWrap.slideImage,maxWidth:1350)} 1350w', sizes:'(max-width: 800px) 800px,1350px'}" /> -->
+                              <f:image 
+                                class="full-width-image"
+                                src="{slide.ItemWrap.slideImage}" 
+                                alt="{altAttributeValue}"
+                                additionalAttributes="{srcset:'{f:uri.image(src:slide.ItemWrap.slideImage, maxWidth:800)} 800w,
+                                {f:uri.image(src:slide.ItemWrap.slideImage, maxWidth:1350)} 1350w', 
+                                sizes:'100vw'}" />
+
                             </f:link.typolink>
                           </f:then>
                           <f:else>
-                            <f:image src="{slide.ItemWrap.slideImage}" alt="{altAttributeValue}"
+                            <!-- <f:image src="{slide.ItemWrap.slideImage}" alt="{altAttributeValue}"
                               alt="{altAttributeValue}"
                               additionalAttributes="{srcset:'{f:uri.image(src:slide.ItemWrap.slideImage,maxWidth:800)} 800w,
-                              {f:uri.image(src:slide.ItemWrap.slideImage,maxWidth:1350)} 1350w', sizes:'(max-width: 800px) 800px,1350px'}" />
+                              {f:uri.image(src:slide.ItemWrap.slideImage,maxWidth:1350)} 1350w', sizes:'(max-width: 800px) 800px,1350px'}" /> -->
+
+
+                              <f:image 
+                                class="full-width-image"
+                                src="{slide.ItemWrap.slideImage}" 
+                                alt="{altAttributeValue}"
+                                additionalAttributes="{srcset:'{f:uri.image(src:slide.ItemWrap.slideImage,maxWidth:1920)} 1920w,
+                                {f:uri.image(src:slide.ItemWrap.slideImage,maxWidth:2560)} 2560w', 
+                                sizes:'100vw'}" />
 
                           </f:else>
                         </f:if>
