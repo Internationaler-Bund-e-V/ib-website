@@ -39,7 +39,7 @@
 			<div id="ib-logo" class="show-for-large">
 				<f:variable name="src" value="EXT:ib_template/Resources/Public/Images/logos_portals/{f:cObject(typoscriptObjectPath: 'portalSettings.portal_logo.file')}" />
 				<a href="{f:uri.page(pageUid: portalSettings.id)}">
-					<img src="{f:uri.resource(path: src)}" class="responsive" alt="Portal Logo" width="70" height="70">
+					<img src="{f:uri.resource(path: src)}" class="responsive" alt="Portal Logo" style="width: auto; height: 70px">
 				</a>
 			</div>
 			<f:render partial="Menu/mainMenuEntryPoint" arguments="{_all}" />
