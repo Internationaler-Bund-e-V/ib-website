@@ -2,8 +2,7 @@ import { createApp } from 'vue';
 import SearchFWDApp from './App.vue'
 
 const customEnv = process.env.NODE_ENV;
-//let baseURL = "https://redaktionstool.ddev.site/";
-let baseURL = "https://redaktion-relaunch.ddev.site/";
+let baseURL = "https://ib-redaktionstool.ddev.site/";
 
 
 if (customEnv == 'staging') {
@@ -16,4 +15,4 @@ if (customEnv == 'production') {
 
 const searchFwdApp = createApp(SearchFWDApp);
 searchFwdApp.provide('baseURL', baseURL);
-searchFwdApp.mount('#searchFWDApp'); 
+searchFwdApp.mount('#searchFWDApp');
