@@ -46,7 +46,7 @@ class IBMenu {
         this.lastScreenWidth = this.windowWidth();
 
         if (this.settings.indicator == true) {
-            this.menu.find("a").each((index, element:HTMLAnchorElement) => {
+            this.menu.find("a").each((index:number, element:Element) => {
                 if ($(element).siblings(".dropdown, .megamenu").length > 0) {
                     $(element).append("<span class='indicator'>+</span>");
                 }

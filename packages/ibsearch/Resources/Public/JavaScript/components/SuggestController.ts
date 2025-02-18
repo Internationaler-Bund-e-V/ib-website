@@ -1,5 +1,5 @@
 import $ from 'jquery';
-require('devbridge-autocomplete');
+import 'devbridge-autocomplete';
 
 
 class SuggestController

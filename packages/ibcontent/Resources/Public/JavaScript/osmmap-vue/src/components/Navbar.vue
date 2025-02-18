@@ -8,7 +8,7 @@
 </template>
 <script>
 import { ref, inject } from "vue";
-import pinIcon from "@/assets/map-pin-icon.png";
+import pinIcon from "../assets/map-pin-icon.png";
 export default {
   name: "Navbar",
   components: {},

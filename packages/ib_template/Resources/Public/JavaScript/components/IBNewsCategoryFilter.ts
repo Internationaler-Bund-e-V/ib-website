@@ -1,5 +1,5 @@
 import $ from 'jquery';
-require('select2');
+import 'select2';
 
 class IBNewsCategoryFilter
 {

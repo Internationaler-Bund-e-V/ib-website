@@ -1,4 +1,6 @@
-{namespace v=FluidTYPO3\Vhs\ViewHelpers} {namespace j=Rms\Ibcontent\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace j=Rms\Ibcontent\ViewHelpers}
+{namespace encore = Ssch\Typo3Encore\ViewHelpers}
 <f:layout name="Default" />
 
 <f:section name="main">
@@ -8,8 +10,8 @@
 
   <!-- include db.js as footer asset -->
 
-<f:asset.script identifier="searchFWDAppJs" src="EXT:ibcontent/Resources/Public/build/fwd/js/fwd.js" />
-<f:asset.css identifier="searchFWDAppCss" href="EXT:ibcontent/Resources/Public/build/fwd/assets/index.css" />
+<encore:renderWebpackLinkTags entryName="fwd" />
+<encore:renderWebpackScriptTags entryName="fwd" />
 
 
 </f:section>

@@ -4,8 +4,9 @@
 // import './styles/foundation.scss';
 import '../Css/app.scss';
 import './config/readSpeakerConfig';
+import $ from 'jquery';
 
-(window as any).jQuery = (window as any).$ = require('jquery');
+(window as any).jQuery = (window as any).$ = $;
 import 'friendly-challenge/widget';
 import Foundation from 'foundation-sites';
 import Headroom from 'headroom.js';
@@ -28,9 +29,9 @@ import IBStartPageSlider from './components/IBStartPageSlider';
 import IBTabsBar from './components/IBTabsBar';
 import IBVideoSlider from './components/IBVideoSlider';
 
-require('./components/matomoEvents');
+import './components/matomoEvents';
 
-require('./components/foundation-accordion.js')
+import './components/foundation-accordion.js';
 
 if (Foundation) {
   // if `Foundation` is left as an unused variable webpack will exclude it from the build output;

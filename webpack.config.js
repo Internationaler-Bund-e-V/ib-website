@@ -31,6 +31,10 @@ Encore
     .addEntry('ib_formbuilder_frontend', './packages/ib_formbuilder/Resources/Public/JavaScript/frontend/app.js')
     .addEntry('ib_formbuilder_backend', './packages/ib_formbuilder/Resources/Public/JavaScript/backend/app.js')
 
+    .addEntry('fwd', './packages/ibcontent/Resources/Public/JavaScript/fwd-vue/src/main.js')
+    .addEntry('osmmap', './packages/ibcontent/Resources/Public/JavaScript/osmmap-vue/src/main.js')
+
+
     .addStyleEntry('ib_template_rte', './packages/ib_template/Resources/Public/Css/rte.scss')
     .addStyleEntry('ib_dataprivacy', './packages/ib_dataprivacy/Resources/Public/Css/app.scss')
     .addStyleEntry('ib_cmt', './packages/ib_cmt/Resources/Public/Css/app.scss')
@@ -50,8 +54,11 @@ Encore
      * https://symfony.com/doc/current/frontend.html#adding-more-features
      */
     .cleanupOutputBeforeBuild()
-    // .enableBuildNotifications()
+
+    .enableBuildNotifications()
+
     .enableSourceMaps(!Encore.isProduction())
+
     // enables hashed filenames (e.g. app.abc123.css)
     .enableVersioning(Encore.isProduction())
 
@@ -85,12 +92,19 @@ Encore
     // uncomment if you use React
     //.enableReactPreset()
 
+    // uncomment if you use Vue.js
+    .enableVueLoader()
+
     // uncomment to get integrity="..." attributes on your script & link tags
     // requires WebpackEncoreBundle 1.4 or higher
     .enableIntegrityHashes(Encore.isProduction())
 
     // uncomment if you're having problems with a jQuery plugin
-    .autoProvidejQuery()
-;
+    // .autoProvidejQuery()
 
+    .addAliases({
+        'ol/control/Control': 'ol/control/Control.js',
+        'ol/MapBrowserEvent': 'ol/MapBrowserEvent.js'
+    })
+;
 module.exports = Encore.getWebpackConfig();

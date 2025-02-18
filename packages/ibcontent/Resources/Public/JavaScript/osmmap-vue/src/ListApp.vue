@@ -16,7 +16,7 @@
 <script>
 import { inject } from "vue";
 import ListView from "./components/ListView/ListView.vue";
-import loadingImage from "@/assets/loading.svg";
+import loadingImage from "./assets/loading.svg";
 
 export default {
   name: "ListApp",

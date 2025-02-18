@@ -59,7 +59,7 @@
 
 <script>
 import { ref, inject, onMounted, reactive } from "vue";
-import dummyLocationImage from "@/assets/locationFallback.jpg";
+import dummyLocationImage from "../../assets/locationFallback.jpg";
 import VLazyImage from "v-lazy-image";
 
 export default {

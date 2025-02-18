@@ -1,10 +1,10 @@
 /**
- * 
- * @param {*} tags 
+ *
+ * @param {*} tags
  * @returns String
  */
 
-import tagConfig from "@/assets/tags_config.json";
+import tagConfig from "../assets/tags_config.json";
 
 export function generateTagDots(tags) {
     var content = "";

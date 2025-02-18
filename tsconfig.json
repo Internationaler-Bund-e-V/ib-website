@@ -7,9 +7,9 @@
         "sourceMap": true,
         "typeRoots": [
             "node_modules/@types",
-            "JavaScript/types"
+            "./packages/ib_template/Resources/Public/JavaScript/types/"
         ]
     },
-    "include": [ "JavaScript/**/*", "JavaScript/jetmenu.js", "JavaScript/config", "JavaScript/types", "JavaScript/app.ts"],
+    "include": [ "node_modules/**/*", "packages/**/*" ],
     "exclude": [ "**/*.spec.ts" ]
 }

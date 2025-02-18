@@ -1,4 +1,4 @@
-import tagConfig from "@/assets/tags_config.json";
+import tagConfig from "../assets/tags_config.json";
 export function generateTags(Tags, locations) {
     Tags.value = [];
     //add "placeholder"
@@ -20,7 +20,7 @@ export function generateTags(Tags, locations) {
         }
     }
     Tags.value = [...new Map(Tags.value.map((item) => [item["id"], item])).values()];
-        
+
     // sort by name
     Tags.value.sort((a, b) => {
         const nameA = a.title.toUpperCase(); // ignore upper and lowercase

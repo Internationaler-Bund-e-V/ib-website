@@ -140,7 +140,7 @@ import { ref, inject, watch } from "vue";
 import { fromLonLat } from "ol/proj";
 import Mapoverlay from "./Mapoverlay.vue";
 import Clusteroverlay from "./Partials/Clusteroverlay.vue";
-import centerIcon from "@/assets/map-pin-icon.png";
+import centerIcon from "../assets/map-pin-icon.png";
 
 export default {
   name: "Osmmap",
