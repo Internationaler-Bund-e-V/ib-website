@@ -1,9 +1,9 @@
 <?php
-namespace Rms\IbContactPerson\Tests\Unit\Controller;
+namespace Ib\IbContactPerson\Tests\Unit\Controller;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2016 
+ *  (c) 2016
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -24,20 +24,20 @@ namespace Rms\IbContactPerson\Tests\Unit\Controller;
  ***************************************************************/
 
 /**
- * Test case for class Rms\IbContactPerson\Controller\ContactPersonController.
+ * Test case for class Ib\IbContactPerson\Controller\ContactPersonController.
  *
  */
 class ContactPersonControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
 
 	/**
-	 * @var \Rms\IbContactPerson\Controller\ContactPersonController
+	 * @var \Ib\IbContactPerson\Controller\ContactPersonController
 	 */
 	protected $subject = NULL;
 
 	public function setUp()
 	{
-		$this->subject = $this->getMock('Rms\\IbContactPerson\\Controller\\ContactPersonController', array('redirect', 'forward', 'addFlashMessage'), array(), '', FALSE);
+		$this->subject = $this->getMock('Ib\\IbContactPerson\\Controller\\ContactPersonController', array('redirect', 'forward', 'addFlashMessage'), array(), '', FALSE);
 	}
 
 	public function tearDown()
@@ -50,7 +50,7 @@ class ContactPersonControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 	 */
 	public function showActionAssignsTheGivenContactPersonToView()
 	{
-		$contactPerson = new \Rms\IbContactPerson\Domain\Model\ContactPerson();
+		$contactPerson = new \Ib\IbContactPerson\Domain\Model\ContactPerson();
 
 		$view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
 		$this->inject($this->subject, 'view', $view);

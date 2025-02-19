@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\IbFormbuilder\Evaluation;
+namespace Ib\IbFormbuilder\Evaluation;
 
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessage;

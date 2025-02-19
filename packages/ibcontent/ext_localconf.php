@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-use Rms\Ibcontent\Controller\AjaxController;
-use Rms\Ibcontent\Controller\ContactFormController;
-use Rms\Ibcontent\Controller\MyContentController;
-use Rms\Ibcontent\Hooks\NewsFlexFormHook;
-use Rms\Ibcontent\Updates\PluginPermissionUpdaterDBJob;
-use Rms\Ibcontent\Updates\PluginPermissionUpdaterDBProductList;
-use Rms\Ibcontent\Updates\PluginUpdaterDBJob;
-use Rms\Ibcontent\Updates\PluginUpdaterDBProductList;
+use Ib\Ibcontent\Controller\AjaxController;
+use Ib\Ibcontent\Controller\ContactFormController;
+use Ib\Ibcontent\Controller\MyContentController;
+use Ib\Ibcontent\Hooks\NewsFlexFormHook;
+use Ib\Ibcontent\Updates\PluginPermissionUpdaterDBJob;
+use Ib\Ibcontent\Updates\PluginPermissionUpdaterDBProductList;
+use Ib\Ibcontent\Updates\PluginUpdaterDBJob;
+use Ib\Ibcontent\Updates\PluginUpdaterDBProductList;
 use TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools;
 use TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider;
 use TYPO3\CMS\Core\Imaging\IconRegistry;
@@ -378,7 +378,7 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][FlexFormTools::class]['flexParsing']['
 
 //register RteTagReplacer hook for MA#2041
 #$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-output'][]
-#    = \Rms\Ibcontent\Hooks\RteTagReplacerHook::class . '->contentPostProcAll';
+#    = \Ib\Ibcontent\Hooks\RteTagReplacerHook::class . '->contentPostProcAll';
 
 // overwrite locallang of be_secure_pw
 // see 0001996: Passwortschutz des Backends (https://mantis.rm-solutions.de/mantis/view.php?id=1996)

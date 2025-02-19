@@ -125,7 +125,7 @@ return [
             'label' => 'LLL:EXT:ib_galerie/Resources/Private/Language/locallang_db.xlf:tx_ibgalerie_domain_model_galerie.code',
             'config' => [
                 'type' => 'user',
-                //'userFunc' => Rms\IbGalerie\Form\CodeRenderer::class . '->specialField',
+                //'userFunc' => Ib\IbGalerie\Form\CodeRenderer::class . '->specialField',
                 'renderType' => 'codeRenderer',
                 'parameters' => [
                     'color' => 'blue',

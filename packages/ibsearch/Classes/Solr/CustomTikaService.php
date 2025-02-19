@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\Ibsearch\Solr;
+namespace Ib\Ibsearch\Solr;
 
 use ApacheSolrForTypo3\Tika\Service\Tika\AppService;
 use ApacheSolrForTypo3\Tika\Utility\FileUtility;

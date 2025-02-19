@@ -1,9 +1,9 @@
-{namespace rms=Rms\Ibcontent\ViewHelpers}
+{namespace ib=Ib\Ibcontent\ViewHelpers}
 <div class="row ib-content-module ib-background-white ib-breadcrumb rs_skip">
 	<div class="columns medium-offset-1 medium-10 large-6-2col large-offset-1-2col end">
 		<ul class="breadcrumbs">
 
-			<f:for each="{rms:breadcrumb(additionalPages:additionalPages)}" as="crumb" iteration="iterator">
+			<f:for each="{ib:breadcrumb(additionalPages:additionalPages)}" as="crumb" iteration="iterator">
 
 				<f:if condition="{crumb.type} == 'typo'">
 					<f:render section="renderTypo" arguments="{crumb: crumb,iterator:iterator}"/>

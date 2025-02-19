@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Rms\Ibjobs\Controller\JobsController;
+use Ib\Ibjobs\Controller\JobsController;
 use TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider;
 use TYPO3\CMS\Core\Imaging\IconRegistry;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;

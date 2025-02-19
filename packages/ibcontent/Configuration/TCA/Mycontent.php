@@ -8,4 +8,4 @@ if (!defined('TYPO3')) {
 /*
  * render custom content header
  */
-$GLOBALS['TCA']['tt_content']['ctrl']['label_userFunc'] = 'Rms\\Ibcontent\\Utility\\ContentElementLabelRenderer->getContentElementTitle';
+$GLOBALS['TCA']['tt_content']['ctrl']['label_userFunc'] = 'Ib\\Ibcontent\\Utility\\ContentElementLabelRenderer->getContentElementTitle';

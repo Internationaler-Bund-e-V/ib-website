@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\IbDataprivacy\Controller;
+namespace Ib\IbDataprivacy\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;

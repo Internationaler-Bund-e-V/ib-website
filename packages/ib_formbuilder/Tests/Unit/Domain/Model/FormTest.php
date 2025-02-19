@@ -1,5 +1,5 @@
 <?php
-namespace Rms\IbFormbuilder\Tests\Unit\Domain\Model;
+namespace Ib\IbFormbuilder\Tests\Unit\Domain\Model;
 
 /**
  * Test case.
@@ -9,14 +9,14 @@ namespace Rms\IbFormbuilder\Tests\Unit\Domain\Model;
 class FormTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
     /**
-     * @var \Rms\IbFormbuilder\Domain\Model\Form
+     * @var \Ib\IbFormbuilder\Domain\Model\Form
      */
     protected $subject = null;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \Rms\IbFormbuilder\Domain\Model\Form();
+        $this->subject = new \Ib\IbFormbuilder\Domain\Model\Form();
     }
 
     protected function tearDown()

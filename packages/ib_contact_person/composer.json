@@ -1,5 +1,5 @@
 {
-    "name": "rms/ib-contact-person",
+    "name": "ib/ib-contact-person",
     "type": "typo3-cms-extension",
     "description": "IB - Contact Persion",
     "minimum-stability": "dev",
@@ -10,12 +10,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Rms\\IbContactPerson\\": "Classes"
+            "Ib\\IbContactPerson\\": "Classes"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Rms\\IbContactPerson\\Tests\\": "Tests"
+            "Ib\\IbContactPerson\\Tests\\": "Tests"
         }
     },
     "extra": {

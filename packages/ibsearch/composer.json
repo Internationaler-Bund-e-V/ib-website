@@ -1,5 +1,5 @@
 {
-    "name": "rms/ib-search",
+    "name": "ib/ib-search",
     "type": "typo3-cms-extension",
     "description": "IB - Search",
     "minimum-stability": "dev",
@@ -10,12 +10,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Rms\\Ibsearch\\": "Classes"
+            "Ib\\Ibsearch\\": "Classes"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Rms\\Ibsearch\\Tests\\": "Tests"
+            "Ib\\Ibsearch\\Tests\\": "Tests"
         }
     },
     "extra": {

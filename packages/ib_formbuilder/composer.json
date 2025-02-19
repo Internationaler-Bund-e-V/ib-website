@@ -1,5 +1,5 @@
 {
-    "name": "rms/ib-formbuilder",
+    "name": "ib/ib-formbuilder",
     "type": "typo3-cms-extension",
     "description": "IB - Formbuilder",
     "minimum-stability": "dev",
@@ -10,12 +10,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Rms\\IbFormbuilder\\": "Classes"
+            "Ib\\IbFormbuilder\\": "Classes"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Rms\\IbFormbuilder\\Tests\\": "Tests"
+            "Ib\\IbFormbuilder\\Tests\\": "Tests"
         }
     },
     "extra": {

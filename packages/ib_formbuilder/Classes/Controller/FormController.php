@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Rms\IbFormbuilder\Controller;
+namespace Ib\IbFormbuilder\Controller;
 
 use Psr\Http\Message\ResponseInterface;
-use Rms\IbFormbuilder\Domain\Model\Emaildata;
-use Rms\IbFormbuilder\Domain\Model\Form;
-use Rms\IbFormbuilder\Domain\Repository\ContentRepository;
-use Rms\IbFormbuilder\Domain\Repository\EmaildataRepository;
-use Rms\IbFormbuilder\Domain\Repository\FormRepository;
+use Ib\IbFormbuilder\Domain\Model\Emaildata;
+use Ib\IbFormbuilder\Domain\Model\Form;
+use Ib\IbFormbuilder\Domain\Repository\ContentRepository;
+use Ib\IbFormbuilder\Domain\Repository\EmaildataRepository;
+use Ib\IbFormbuilder\Domain\Repository\FormRepository;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Core\Environment;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\Ibcontent\Updates;
+namespace Ib\Ibcontent\Updates;
 
 use GeorgRinger\News\Event\PluginUpdaterListTypeEvent;
 use Psr\EventDispatcher\EventDispatcherInterface;

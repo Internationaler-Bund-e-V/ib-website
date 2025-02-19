@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\Ibcontent\Domain\Model;
+namespace Ib\Ibcontent\Domain\Model;
 
 /**
  * News

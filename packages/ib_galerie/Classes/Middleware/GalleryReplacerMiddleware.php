@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Rms\IbGalerie\Middleware;
+namespace Ib\IbGalerie\Middleware;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Rms\IbGalerie\Domain\Repository\GalerieRepository;
+use Ib\IbGalerie\Domain\Repository\GalerieRepository;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 //use TYPO3\CMS\Core\Database\QueryGenerator;
@@ -142,7 +142,7 @@ class GalleryReplacerMiddleware implements MiddlewareInterface
         $querySettings->setStoragePageIds($this->getTreePids($pid));
 
         //get gallery repository
-        //$this->galerieRepository = $objectManager->get('Rms\\IbGalerie\\Domain\\Repository\\GalerieRepository');
+        //$this->galerieRepository = $objectManager->get('Ib\\IbGalerie\\Domain\\Repository\\GalerieRepository');
         $this->galerieRepository->setDefaultQuerySettings($querySettings);
         //replace code with gallery
 

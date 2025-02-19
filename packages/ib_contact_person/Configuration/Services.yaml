@@ -4,6 +4,6 @@ services:
     autoconfigure: true
     public: true
 
-  Rms\IbContactPerson\:
+  Ib\IbContactPerson\:
     resource: '../Classes/*'
     exclude: '../Classes/Domain/Model/*'

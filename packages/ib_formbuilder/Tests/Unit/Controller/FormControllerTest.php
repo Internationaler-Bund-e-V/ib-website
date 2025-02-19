@@ -1,5 +1,5 @@
 <?php
-namespace Rms\IbFormbuilder\Tests\Unit\Controller;
+namespace Ib\IbFormbuilder\Tests\Unit\Controller;
 
 /**
  * Test case.
@@ -9,14 +9,14 @@ namespace Rms\IbFormbuilder\Tests\Unit\Controller;
 class FormControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
     /**
-     * @var \Rms\IbFormbuilder\Controller\FormController
+     * @var \Ib\IbFormbuilder\Controller\FormController
      */
     protected $subject = null;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = $this->getMockBuilder(\Rms\IbFormbuilder\Controller\FormController::class)
+        $this->subject = $this->getMockBuilder(\Ib\IbFormbuilder\Controller\FormController::class)
             ->setMethods(['redirect', 'forward', 'addFlashMessage'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -37,7 +37,7 @@ class FormControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $formRepository = $this->getMockBuilder(\Rms\IbFormbuilder\Domain\Repository\FormRepository::class)
+        $formRepository = $this->getMockBuilder(\Ib\IbFormbuilder\Domain\Repository\FormRepository::class)
             ->setMethods(['findAll'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -56,7 +56,7 @@ class FormControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function showActionAssignsTheGivenFormToView()
     {
-        $form = new \Rms\IbFormbuilder\Domain\Model\Form();
+        $form = new \Ib\IbFormbuilder\Domain\Model\Form();
 
         $view = $this->getMockBuilder(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface::class)->getMock();
         $this->inject($this->subject, 'view', $view);
@@ -70,9 +70,9 @@ class FormControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function createActionAddsTheGivenFormToFormRepository()
     {
-        $form = new \Rms\IbFormbuilder\Domain\Model\Form();
+        $form = new \Ib\IbFormbuilder\Domain\Model\Form();
 
-        $formRepository = $this->getMockBuilder(\Rms\IbFormbuilder\Domain\Repository\FormRepository::class)
+        $formRepository = $this->getMockBuilder(\Ib\IbFormbuilder\Domain\Repository\FormRepository::class)
             ->setMethods(['add'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -88,7 +88,7 @@ class FormControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function editActionAssignsTheGivenFormToView()
     {
-        $form = new \Rms\IbFormbuilder\Domain\Model\Form();
+        $form = new \Ib\IbFormbuilder\Domain\Model\Form();
 
         $view = $this->getMockBuilder(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface::class)->getMock();
         $this->inject($this->subject, 'view', $view);
@@ -102,9 +102,9 @@ class FormControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function updateActionUpdatesTheGivenFormInFormRepository()
     {
-        $form = new \Rms\IbFormbuilder\Domain\Model\Form();
+        $form = new \Ib\IbFormbuilder\Domain\Model\Form();
 
-        $formRepository = $this->getMockBuilder(\Rms\IbFormbuilder\Domain\Repository\FormRepository::class)
+        $formRepository = $this->getMockBuilder(\Ib\IbFormbuilder\Domain\Repository\FormRepository::class)
             ->setMethods(['update'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -120,9 +120,9 @@ class FormControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function deleteActionRemovesTheGivenFormFromFormRepository()
     {
-        $form = new \Rms\IbFormbuilder\Domain\Model\Form();
+        $form = new \Ib\IbFormbuilder\Domain\Model\Form();
 
-        $formRepository = $this->getMockBuilder(\Rms\IbFormbuilder\Domain\Repository\FormRepository::class)
+        $formRepository = $this->getMockBuilder(\Ib\IbFormbuilder\Domain\Repository\FormRepository::class)
             ->setMethods(['remove'])
             ->disableOriginalConstructor()
             ->getMock();

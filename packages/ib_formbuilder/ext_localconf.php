@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Rms\IbFormbuilder\Controller\FormController;
-use Rms\IbFormbuilder\Evaluation\MultipleEmailEvaluation;
+use Ib\IbFormbuilder\Controller\FormController;
+use Ib\IbFormbuilder\Evaluation\MultipleEmailEvaluation;
 use TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider;
 use TYPO3\CMS\Core\Imaging\IconRegistry;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;

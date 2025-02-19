@@ -1,5 +1,5 @@
 {
-    "name": "rms/ib-galerie",
+    "name": "ib/ib-galerie",
     "type": "typo3-cms-extension",
     "description": "IB - Galerie",
     "minimum-stability": "dev",
@@ -10,12 +10,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Rms\\IbGalerie\\": "Classes"
+            "Ib\\IbGalerie\\": "Classes"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Rms\\IbGalerie\\Tests\\": "Tests"
+            "Ib\\IbGalerie\\Tests\\": "Tests"
         }
     },
     "extra": {

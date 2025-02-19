@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\IbFormbuilder\Domain\Model;
+namespace Ib\IbFormbuilder\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 

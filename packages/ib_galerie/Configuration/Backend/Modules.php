@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Rms\IbGalerie\Controller\GalerieController;
+use Ib\IbGalerie\Controller\GalerieController;
 
 return [
     'ib_galerie' => [

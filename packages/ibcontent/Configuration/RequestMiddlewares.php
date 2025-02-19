@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Rms\Ibcontent\Middleware\RteMailtoReplacerMiddleware;
-use Rms\Ibcontent\Middleware\RteTagReplacerMiddleware;
+use Ib\Ibcontent\Middleware\RteMailtoReplacerMiddleware;
+use Ib\Ibcontent\Middleware\RteTagReplacerMiddleware;
 
 return [
     // 'backend => []

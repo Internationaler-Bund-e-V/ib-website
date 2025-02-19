@@ -4,13 +4,13 @@ services:
     autoconfigure: true
     public: false
 
-  Rms\IbGalerie\:
+  Ib\IbGalerie\:
     resource: "../Classes/*"
   cache.ib_galerie:
     class: TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
     factory: ['@TYPO3\CMS\Core\Cache\CacheManager', "getCache"]
     arguments: ["ib_galerie"]
-  Rms\IbGalerie\Middleware\GalleryReplacerMiddleware:
+  Ib\IbGalerie\Middleware\GalleryReplacerMiddleware:
     arguments:
       $cache: "@cache.ib_galerie"
-      $galerieRepository: '@Rms\IbGalerie\Domain\Repository\GalerieRepository'
+      $galerieRepository: '@Ib\IbGalerie\Domain\Repository\GalerieRepository'

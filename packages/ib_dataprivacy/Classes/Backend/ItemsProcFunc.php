@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\IbDataprivacy\Backend;
+namespace Ib\IbDataprivacy\Backend;
 
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Database\Connection;
@@ -146,7 +146,7 @@ class ItemsProcFunc
     {
         $depth = 999999;
         $childPids = $this->getRecursivePageIds($parent, $depth);
-        
+
         if ($as_array) {
             $childPids = explode(',', $childPids);
             $childPids[] = $parent;

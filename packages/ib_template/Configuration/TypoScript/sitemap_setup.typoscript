@@ -7,7 +7,7 @@
                     provider = TYPO3\CMS\Seo\XmlSitemap\RecordsXmlSitemapDataProvider
                     config {
                         table = tx_news_domain_model_news
-                        additionalWhere = 
+                        additionalWhere =
                         sortField = sorting
                         lastModifiedField = tstamp
                         pid = {$portalSettings.NewsSitemap.NewsFolderPid}
@@ -36,7 +36,7 @@
         xmlSitemap {
             sitemaps {
                 standorte {
-                    provider = Rms\Ibcontent\Seo\IbXmlSitemapDataProvider
+                    provider = Ib\Ibcontent\Seo\IbXmlSitemapDataProvider
                     config {
                         entity = Location
                         navigationID = {$portalSettings.LocationSitemap.NavigationID}
@@ -57,7 +57,7 @@
         xmlSitemap {
             sitemaps {
                 freiwilligendienste {
-                    provider = Rms\Ibcontent\Seo\IbXmlSitemapDataProvider
+                    provider = Ib\Ibcontent\Seo\IbXmlSitemapDataProvider
                     config {
                         entity = FWD
                         redaktionURL = {$portalSettings.misc.productDbBaseUrl}

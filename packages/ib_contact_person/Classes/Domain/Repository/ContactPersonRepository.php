@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Rms\IbContactPerson\Domain\Repository;
+namespace Ib\IbContactPerson\Domain\Repository;
 
-use Rms\IbContactPerson\Domain\Model\ContactPerson;
+use Ib\IbContactPerson\Domain\Model\ContactPerson;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 

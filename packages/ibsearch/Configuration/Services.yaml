@@ -4,10 +4,10 @@ services:
         autoconfigure: true
         public: false
 
-    Rms\Ibsearch\:
+    Ib\Ibsearch\:
         resource: '../Classes/*'
 
-    Rms\Ibsearch\Command\IndexMyContentsCommand:
+    Ib\Ibsearch\Command\IndexMyContentsCommand:
         tags:
             - name: 'console.command'
               command: 'ibsearch:indexcontents'

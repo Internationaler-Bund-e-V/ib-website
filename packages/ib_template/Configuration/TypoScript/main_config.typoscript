@@ -409,7 +409,7 @@ google.recaptcha.sitekey.value = {$portalSettings.misc.google.recaptchaSiteKey}
 # set tt_news user_func for hiding teaser image in single view -> MA#694
 #plugin.tt_news {
      # call user function
-     #imageMarkerFunc = Rms\ibNewsExt\teaserMarkerFunc->user_imageMarkerFunc
+     #imageMarkerFunc = Ib\ibNewsExt\teaserMarkerFunc->user_imageMarkerFunc
      #includeLibs = EXT:ib_tt_news_ext/Resources/Public/UserFuncs/teaserMarkerFunc.php
  #}
  #set tt_news none cached for immediate update -> MA#792

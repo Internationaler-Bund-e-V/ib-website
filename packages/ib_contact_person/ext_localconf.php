@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Rms\IbContactPerson\Controller\ContactPersonController;
+use Ib\IbContactPerson\Controller\ContactPersonController;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 $_EXTKEY = 'ib_contact_person';

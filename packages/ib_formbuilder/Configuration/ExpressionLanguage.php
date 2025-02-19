@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Rms\IbFormbuilder\Condition\CustomTypoScriptConditionProvider;
+use Ib\IbFormbuilder\Condition\CustomTypoScriptConditionProvider;
 
 return [
     'typoscript' => [

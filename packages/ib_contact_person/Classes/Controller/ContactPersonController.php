@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Rms\IbContactPerson\Controller;
+namespace Ib\IbContactPerson\Controller;
 
 use Psr\Http\Message\ResponseInterface;
-use Rms\IbContactPerson\Domain\Model\ContactPerson;
-use Rms\IbContactPerson\Domain\Repository\ContactPersonRepository;
+use Ib\IbContactPerson\Domain\Model\ContactPerson;
+use Ib\IbContactPerson\Domain\Repository\ContactPersonRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /***************************************************************

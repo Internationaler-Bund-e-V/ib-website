@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\Ibcontent\ViewHelpers;
+namespace Ib\Ibcontent\ViewHelpers;
 
 use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;

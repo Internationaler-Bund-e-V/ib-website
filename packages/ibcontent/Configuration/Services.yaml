@@ -4,34 +4,34 @@ services:
         autoconfigure: true
         public: false
 
-    Rms\Ibcontent\:
+    Ib\Ibcontent\:
         resource: "../Classes/*"
 
-    Rms\Ibcontent\Command\ConvertFlexformReferencesForTypo310Command:
+    Ib\Ibcontent\Command\ConvertFlexformReferencesForTypo310Command:
         tags:
             - name: "console.command"
               command: "ibcontent:convertflexformreferences"
               description: "V10 - Convert Flexform References"
 
-    Rms\Ibcontent\Command\CleanFlexformDataCommand:
+    Ib\Ibcontent\Command\CleanFlexformDataCommand:
         tags:
             - name: "console.command"
               command: "ibcontent:cleanflexformdatacommand"
               description: "V11 - Clean up flexform data"
 
-    Rms\Ibcontent\Command\ConvertProcessedImagePathsCommand:
+    Ib\Ibcontent\Command\ConvertProcessedImagePathsCommand:
         tags:
             - name: "console.command"
               command: "ibcontent:convertprocessedimagepathscommand"
               description: "V12 - Convert Processed Image Paths to real paths"
 
-    Rms\Ibcontent\EventListener\AfterFlexFormDataStructureParsedEventListener:
+    Ib\Ibcontent\EventListener\AfterFlexFormDataStructureParsedEventListener:
         tags:
             - name: event.listener
               identifier: "ibcontent.parse_data_structure_listener"
               event: TYPO3\CMS\Core\Configuration\Event\AfterFlexFormDataStructureParsedEvent
 
-    Rms\Ibcontent\Command\ConvertFlexformFileReferencesForTypo312Command:
+    Ib\Ibcontent\Command\ConvertFlexformFileReferencesForTypo312Command:
         tags:
             - name: "console.command"
               command: "ibcontent:convertflexformfilereferencesfortypo312command"

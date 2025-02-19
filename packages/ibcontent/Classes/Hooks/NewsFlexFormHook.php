@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\Ibcontent\Hooks;
+namespace Ib\Ibcontent\Hooks;
 
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\GeneralUtility;

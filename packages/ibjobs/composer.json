@@ -1,5 +1,5 @@
 {
-    "name": "rms/ib-jobs",
+    "name": "ib/ib-jobs",
     "type": "typo3-cms-extension",
     "description": "IB - Jobs",
     "minimum-stability": "dev",
@@ -10,12 +10,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Rms\\Ibjobs\\": "Classes"
+            "Ib\\Ibjobs\\": "Classes"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Rms\\Ibjobs\\Tests\\": "Tests"
+            "Ib\\Ibjobs\\Tests\\": "Tests"
         }
     },
     "extra": {

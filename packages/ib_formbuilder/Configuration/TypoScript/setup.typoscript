@@ -14,7 +14,7 @@ plugin.tx_ibformbuilder_showform {
         # configure tt_content mapping
         # deprecated, see https://docs.typo3.org/c/typo3/cms-core/main/en-us/Changelog/10.0/Breaking-87623-ReplaceConfigpersistenceclassesTyposcriptConfiguration.html
         #classes {
-        #    Rms\IbFormbuilder\Domain\Model\Content {
+        #    Ib\IbFormbuilder\Domain\Model\Content {
         #        mapping {
         #            tableName = {$plugin.tx_ibformbuilder_showform.persistence.classes.mapping.tableName}
         #            columns {

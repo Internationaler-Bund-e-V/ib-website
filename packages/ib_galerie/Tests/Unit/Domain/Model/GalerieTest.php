@@ -1,5 +1,5 @@
 <?php
-namespace Rms\IbGalerie\Tests\Unit\Domain\Model;
+namespace Ib\IbGalerie\Tests\Unit\Domain\Model;
 
 /**
  * Test case.
@@ -7,14 +7,14 @@ namespace Rms\IbGalerie\Tests\Unit\Domain\Model;
 class GalerieTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
     /**
-     * @var \Rms\IbGalerie\Domain\Model\Galerie
+     * @var \Ib\IbGalerie\Domain\Model\Galerie
      */
     protected $subject = null;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \Rms\IbGalerie\Domain\Model\Galerie();
+        $this->subject = new \Ib\IbGalerie\Domain\Model\Galerie();
     }
 
     protected function tearDown()

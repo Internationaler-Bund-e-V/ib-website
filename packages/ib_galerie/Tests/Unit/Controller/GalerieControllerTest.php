@@ -1,5 +1,5 @@
 <?php
-namespace Rms\IbGalerie\Tests\Unit\Controller;
+namespace Ib\IbGalerie\Tests\Unit\Controller;
 
 /**
  * Test case.
@@ -7,14 +7,14 @@ namespace Rms\IbGalerie\Tests\Unit\Controller;
 class GalerieControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
     /**
-     * @var \Rms\IbGalerie\Controller\GalerieController
+     * @var \Ib\IbGalerie\Controller\GalerieController
      */
     protected $subject = null;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = $this->getMockBuilder(\Rms\IbGalerie\Controller\GalerieController::class)
+        $this->subject = $this->getMockBuilder(\Ib\IbGalerie\Controller\GalerieController::class)
             ->setMethods(['redirect', 'forward', 'addFlashMessage'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -35,7 +35,7 @@ class GalerieControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $galerieRepository = $this->getMockBuilder(\Rms\IbGalerie\Domain\Repository\GalerieRepository::class)
+        $galerieRepository = $this->getMockBuilder(\Ib\IbGalerie\Domain\Repository\GalerieRepository::class)
             ->setMethods(['findAll'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -54,7 +54,7 @@ class GalerieControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function showActionAssignsTheGivenGalerieToView()
     {
-        $galerie = new \Rms\IbGalerie\Domain\Model\Galerie();
+        $galerie = new \Ib\IbGalerie\Domain\Model\Galerie();
 
         $view = $this->getMockBuilder(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface::class)->getMock();
         $this->inject($this->subject, 'view', $view);
@@ -68,9 +68,9 @@ class GalerieControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function createActionAddsTheGivenGalerieToGalerieRepository()
     {
-        $galerie = new \Rms\IbGalerie\Domain\Model\Galerie();
+        $galerie = new \Ib\IbGalerie\Domain\Model\Galerie();
 
-        $galerieRepository = $this->getMockBuilder(\Rms\IbGalerie\Domain\Repository\GalerieRepository::class)
+        $galerieRepository = $this->getMockBuilder(\Ib\IbGalerie\Domain\Repository\GalerieRepository::class)
             ->setMethods(['add'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -86,7 +86,7 @@ class GalerieControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function editActionAssignsTheGivenGalerieToView()
     {
-        $galerie = new \Rms\IbGalerie\Domain\Model\Galerie();
+        $galerie = new \Ib\IbGalerie\Domain\Model\Galerie();
 
         $view = $this->getMockBuilder(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface::class)->getMock();
         $this->inject($this->subject, 'view', $view);
@@ -100,9 +100,9 @@ class GalerieControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function updateActionUpdatesTheGivenGalerieInGalerieRepository()
     {
-        $galerie = new \Rms\IbGalerie\Domain\Model\Galerie();
+        $galerie = new \Ib\IbGalerie\Domain\Model\Galerie();
 
-        $galerieRepository = $this->getMockBuilder(\Rms\IbGalerie\Domain\Repository\GalerieRepository::class)
+        $galerieRepository = $this->getMockBuilder(\Ib\IbGalerie\Domain\Repository\GalerieRepository::class)
             ->setMethods(['update'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -118,9 +118,9 @@ class GalerieControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function deleteActionRemovesTheGivenGalerieFromGalerieRepository()
     {
-        $galerie = new \Rms\IbGalerie\Domain\Model\Galerie();
+        $galerie = new \Ib\IbGalerie\Domain\Model\Galerie();
 
-        $galerieRepository = $this->getMockBuilder(\Rms\IbGalerie\Domain\Repository\GalerieRepository::class)
+        $galerieRepository = $this->getMockBuilder(\Ib\IbGalerie\Domain\Repository\GalerieRepository::class)
             ->setMethods(['remove'])
             ->disableOriginalConstructor()
             ->getMock();

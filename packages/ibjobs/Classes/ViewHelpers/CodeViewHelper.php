@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\Ibjobs\ViewHelpers;
+namespace Ib\Ibjobs\ViewHelpers;
 
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 

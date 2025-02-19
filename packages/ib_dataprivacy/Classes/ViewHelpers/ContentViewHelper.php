@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\IbDataprivacy\ViewHelpers;
+namespace Ib\IbDataprivacy\ViewHelpers;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;

@@ -1,5 +1,5 @@
 {
-    "name": "rms/ib-content",
+    "name": "ib/ib-content",
     "type": "typo3-cms-extension",
     "description": "IB - Content",
     "minimum-stability": "dev",
@@ -10,12 +10,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Rms\\Ibcontent\\": "Classes"
+            "Ib\\Ibcontent\\": "Classes"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Rms\\Ibcontent\\Tests\\": "Tests"
+            "Ib\\Ibcontent\\Tests\\": "Tests"
         }
     },
     "extra": {

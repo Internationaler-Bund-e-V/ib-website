@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\Ibcontent\EventListener;
+namespace Ib\Ibcontent\EventListener;
 
 use TYPO3\CMS\Core\Configuration\Event\AfterFlexFormDataStructureParsedEvent;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
@@ -34,7 +34,7 @@ class AfterFlexFormDataStructureParsedEventListener
     private function getFilePath(): string
     {
         $FLEXFORM = 'EXT:ibcontent/Configuration/FlexForms/NewsCustomHeadline.xml';
-        
+
         return PathUtility::getAbsoluteWebPath(GeneralUtility::getFileAbsFileName($FLEXFORM));
     }
 }

@@ -1,4 +1,3 @@
-{namespace rms=Rms\Ibcontent\ViewHelpers}
 <div class="result-custom-contact-data">
     <div class="row">
         <div class="columns medium-6">
@@ -41,9 +40,9 @@
                 <div class="customContatctDataContainer">
                     <fieldset>
                         <legend>Ansprechpartner</legend>
-                        <f:for each="{v:format.json.decode(json: document.contacts_stringS)}" as="contact">                            
+                        <f:for each="{v:format.json.decode(json: document.contacts_stringS)}" as="contact">
                             <label>{contact.first_name} {contact.last_name}</label>
-                            <label>{contact.phone} </label>                            
+                            <label>{contact.phone} </label>
                         </f:for>
                     </fieldset>
                 </div>

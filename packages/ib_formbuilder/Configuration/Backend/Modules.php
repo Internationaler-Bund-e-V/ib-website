@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Rms\IbFormbuilder\Controller\FormController;
+use Ib\IbFormbuilder\Controller\FormController;
 
 return [
     'ib_formbuilder' => [

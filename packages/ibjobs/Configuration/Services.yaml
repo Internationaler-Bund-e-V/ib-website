@@ -4,5 +4,5 @@ services:
     autoconfigure: true
     public: false
 
-  Rms\Ibjobs\:
+  Ib\Ibjobs\:
     resource: "../Classes/*"

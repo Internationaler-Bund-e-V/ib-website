@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "332ad81850df1ddf0b50b8b0c96ec691",
+    "content-hash": "f0083d95244739979afb873dce165a06",
     "packages": [
         {
             "name": "apache-solr-for-typo3/solr",
@@ -282,7 +282,7 @@
         },
         {
             "name": "apache-solr-for-typo3/solrfal",
-            "version": "dev-modernize_build_system",
+            "version": "dev-modernize-bv_bbe",
             "dist": {
                 "type": "path",
                 "url": "./packages/solrfal",
@@ -2532,8 +2532,31 @@
             "time": "2024-12-27T16:56:20+00:00"
         },
         {
+            "name": "ib/bv_bbe",
+            "version": "dev-modernize-bv_bbe",
+            "dist": {
+                "type": "path",
+                "url": "./packages/bv_bbe",
+                "reference": "612ebd16c21f3ca1e7bef702c5a4fc9d08e5a8c1"
+            },
+            "require": {
+                "typo3/cms-core": "^12.4"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "bv_bbe"
+                }
+            },
+            "description": "BVBBE",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
             "name": "ib/ib-cmt",
-            "version": "dev-modernize_build_system",
+            "version": "dev-modernize-bv_bbe",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_cmt",
@@ -2559,6 +2582,306 @@
                 }
             },
             "description": "IB - CMT",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "ib/ib-contact-person",
+            "version": "dev-modernize-bv_bbe",
+            "dist": {
+                "type": "path",
+                "url": "./packages/ib_contact_person",
+                "reference": "5f5b48c8d022cf80162067ee52768c52d221579b"
+            },
+            "require": {
+                "typo3/cms-core": "^12.4"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "ib_contact_person"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ib\\IbContactPerson\\": "Classes"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Ib\\IbContactPerson\\Tests\\": "Tests"
+                }
+            },
+            "description": "IB - Contact Persion",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "ib/ib-content",
+            "version": "dev-modernize-bv_bbe",
+            "dist": {
+                "type": "path",
+                "url": "./packages/ibcontent",
+                "reference": "117c91ba8b49440b7f8451c7e69831259e0f660c"
+            },
+            "require": {
+                "typo3/cms-core": "^12.4"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "ibcontent"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ib\\Ibcontent\\": "Classes"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Ib\\Ibcontent\\Tests\\": "Tests"
+                }
+            },
+            "description": "IB - Content",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "ib/ib-dataprivacy",
+            "version": "dev-modernize-bv_bbe",
+            "dist": {
+                "type": "path",
+                "url": "./packages/ib_dataprivacy",
+                "reference": "5e8f301288f235b9bbc8e73476555bda0542393b"
+            },
+            "require": {
+                "typo3/cms-core": "^12.4"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "ib_dataprivacy"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ib\\IbDataprivacy\\": "Classes"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Ib\\IbDataprivacy\\Tests\\": "Tests"
+                }
+            },
+            "description": "IB - Dataprivacy",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "ib/ib-formbuilder",
+            "version": "dev-modernize-bv_bbe",
+            "dist": {
+                "type": "path",
+                "url": "./packages/ib_formbuilder",
+                "reference": "56904631150f724a04a0fe4c89c5d4249499e642"
+            },
+            "require": {
+                "typo3/cms-core": "^12.4"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "ib_formbuilder"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ib\\IbFormbuilder\\": "Classes"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Ib\\IbFormbuilder\\Tests\\": "Tests"
+                }
+            },
+            "description": "IB - Formbuilder",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "ib/ib-galerie",
+            "version": "dev-modernize-bv_bbe",
+            "dist": {
+                "type": "path",
+                "url": "./packages/ib_galerie",
+                "reference": "837f6ece421aea9f7d6a760f521cf2b95d2c4951"
+            },
+            "require": {
+                "typo3/cms-core": "^12.4"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "ib_galerie"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ib\\IbGalerie\\": "Classes"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Ib\\IbGalerie\\Tests\\": "Tests"
+                }
+            },
+            "description": "IB - Galerie",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "ib/ib-jobs",
+            "version": "dev-modernize-bv_bbe",
+            "dist": {
+                "type": "path",
+                "url": "./packages/ibjobs",
+                "reference": "3b72b627124cdc37602ce653ef8c680266193d16"
+            },
+            "require": {
+                "typo3/cms-core": "^12.4"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "ibjobs"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ib\\Ibjobs\\": "Classes"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Ib\\Ibjobs\\Tests\\": "Tests"
+                }
+            },
+            "description": "IB - Jobs",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "ib/ib-page-extension",
+            "version": "dev-modernize-bv_bbe",
+            "dist": {
+                "type": "path",
+                "url": "./packages/ib_page_extension",
+                "reference": "90531981413cf57d04975ba243bb9b6240e8fe22"
+            },
+            "require": {
+                "typo3/cms-core": "^12.4"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "ib_page_extension"
+                }
+            },
+            "description": "IB - Page Extension",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "ib/ib-search",
+            "version": "dev-modernize-bv_bbe",
+            "dist": {
+                "type": "path",
+                "url": "./packages/ibsearch",
+                "reference": "01145e863bf86c0facf5c0ddeb45dcb1937c95e5"
+            },
+            "require": {
+                "typo3/cms-core": "^12.4"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "ibsearch"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ib\\Ibsearch\\": "Classes"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Ib\\Ibsearch\\Tests\\": "Tests"
+                }
+            },
+            "description": "IB - Search",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "ib/ib-srb",
+            "version": "dev-modernize-bv_bbe",
+            "dist": {
+                "type": "path",
+                "url": "./packages/ib_srb",
+                "reference": "f07f2384cfc2eab3c851a8267c4d504dfcfd589d"
+            },
+            "require": {
+                "typo3/cms-core": "^12.4"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "ib_srb"
+                }
+            },
+            "description": "IB - SRB",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "ib/ib-template",
+            "version": "dev-modernize-bv_bbe",
+            "dist": {
+                "type": "path",
+                "url": "./packages/ib_template",
+                "reference": "63de5ce59e7e28a1d041251262c55740a9b81d8e"
+            },
+            "require": {
+                "typo3/cms-core": "^12.4"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "ib_template"
+                }
+            },
+            "description": "IB - Template",
             "transport-options": {
                 "symlink": true,
                 "relative": true
@@ -3844,329 +4167,6 @@
                 "source": "https://github.com/ralouphie/getallheaders/tree/develop"
             },
             "time": "2019-03-08T08:55:37+00:00"
-        },
-        {
-            "name": "rms/bv_bbe",
-            "version": "dev-modernize_build_system",
-            "dist": {
-                "type": "path",
-                "url": "./packages/bv_bbe",
-                "reference": "7acd1fbef69eadba87a4d6dfe2cce958bdf74b43"
-            },
-            "require": {
-                "typo3/cms-core": "^12.4"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "typo3/cms": {
-                    "extension-key": "bv_bbe"
-                }
-            },
-            "description": "BVBBE",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
-            "name": "rms/ib-contact-person",
-            "version": "dev-modernize_build_system",
-            "dist": {
-                "type": "path",
-                "url": "./packages/ib_contact_person",
-                "reference": "a0baad04bbedb46bbcbe599df926ccc39b3ce641"
-            },
-            "require": {
-                "typo3/cms-core": "^12.4"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "typo3/cms": {
-                    "extension-key": "ib_contact_person"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Rms\\IbContactPerson\\": "Classes"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Rms\\IbContactPerson\\Tests\\": "Tests"
-                }
-            },
-            "description": "IB - Contact Persion",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
-            "name": "rms/ib-content",
-            "version": "dev-modernize_build_system",
-            "dist": {
-                "type": "path",
-                "url": "./packages/ibcontent",
-                "reference": "cb58e09d8612271ddcc1d3b0e6edfe0800de259d"
-            },
-            "require": {
-                "typo3/cms-core": "^12.4"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "typo3/cms": {
-                    "extension-key": "ibcontent"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Rms\\Ibcontent\\": "Classes"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Rms\\Ibcontent\\Tests\\": "Tests"
-                }
-            },
-            "description": "IB - Content",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
-            "name": "rms/ib-dataprivacy",
-            "version": "dev-modernize_build_system",
-            "dist": {
-                "type": "path",
-                "url": "./packages/ib_dataprivacy",
-                "reference": "3f318341b96091ca829ab3608f3d7d9e4bb7b66e"
-            },
-            "require": {
-                "typo3/cms-core": "^12.4"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "typo3/cms": {
-                    "extension-key": "ib_dataprivacy"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Rms\\IbDataprivacy\\": "Classes"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Rms\\IbDataprivacy\\Tests\\": "Tests"
-                }
-            },
-            "description": "IB - Dataprivacy",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
-            "name": "rms/ib-formbuilder",
-            "version": "dev-modernize_build_system",
-            "dist": {
-                "type": "path",
-                "url": "./packages/ib_formbuilder",
-                "reference": "08d1bb9b20af68ee4582ff87c055fecc6941fb86"
-            },
-            "require": {
-                "typo3/cms-core": "^12.4"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "typo3/cms": {
-                    "extension-key": "ib_formbuilder"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Rms\\IbFormbuilder\\": "Classes"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Rms\\IbFormbuilder\\Tests\\": "Tests"
-                }
-            },
-            "description": "IB - Formbuilder",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
-            "name": "rms/ib-galerie",
-            "version": "dev-modernize_build_system",
-            "dist": {
-                "type": "path",
-                "url": "./packages/ib_galerie",
-                "reference": "6999602fd637b02748824690910623ea28cd319b"
-            },
-            "require": {
-                "typo3/cms-core": "^12.4"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "typo3/cms": {
-                    "extension-key": "ib_galerie"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Rms\\IbGalerie\\": "Classes"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Rms\\IbGalerie\\Tests\\": "Tests"
-                }
-            },
-            "description": "IB - Galerie",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
-            "name": "rms/ib-jobs",
-            "version": "dev-modernize_build_system",
-            "dist": {
-                "type": "path",
-                "url": "./packages/ibjobs",
-                "reference": "469fae01e52a5c3781eae58968ef46fa02a216b7"
-            },
-            "require": {
-                "typo3/cms-core": "^12.4"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "typo3/cms": {
-                    "extension-key": "ibjobs"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Rms\\Ibjobs\\": "Classes"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Rms\\Ibjobs\\Tests\\": "Tests"
-                }
-            },
-            "description": "IB - Jobs",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
-            "name": "rms/ib-page-extension",
-            "version": "dev-modernize_build_system",
-            "dist": {
-                "type": "path",
-                "url": "./packages/ib_page_extension",
-                "reference": "d09518e0e7c6ecf23ce8522ab8821a00a61f5a4a"
-            },
-            "require": {
-                "typo3/cms-core": "^12.4"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "typo3/cms": {
-                    "extension-key": "ib_page_extension"
-                }
-            },
-            "description": "IB - Page Extension",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
-            "name": "rms/ib-search",
-            "version": "dev-modernize_build_system",
-            "dist": {
-                "type": "path",
-                "url": "./packages/ibsearch",
-                "reference": "7bcd3339cc0ef9275b6cbb1a7d34211584396e8e"
-            },
-            "require": {
-                "typo3/cms-core": "^12.4"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "typo3/cms": {
-                    "extension-key": "ibsearch"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Rms\\Ibsearch\\": "Classes"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Rms\\Ibsearch\\Tests\\": "Tests"
-                }
-            },
-            "description": "IB - Search",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
-            "name": "rms/ib-srb",
-            "version": "dev-modernize_build_system",
-            "dist": {
-                "type": "path",
-                "url": "./packages/ib_srb",
-                "reference": "307512f761b3be299458ebc9e314d54b7b28b440"
-            },
-            "require": {
-                "typo3/cms-core": "^12.4"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "typo3/cms": {
-                    "extension-key": "ib_srb"
-                }
-            },
-            "description": "IB - SRB",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
-            "name": "rms/ib-template",
-            "version": "dev-modernize_build_system",
-            "dist": {
-                "type": "path",
-                "url": "./packages/ib_template",
-                "reference": "c49c8ea8c8cc288c9e58f08839c63a5c0fa118c0"
-            },
-            "require": {
-                "typo3/cms-core": "^12.4"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "typo3/cms": {
-                    "extension-key": "ib_template"
-                }
-            },
-            "description": "IB - Template",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
         },
         {
             "name": "solarium/solarium",
@@ -9905,16 +9905,16 @@
         },
         {
             "name": "deployer/deployer",
-            "version": "v7.5.11",
+            "version": "v7.5.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/deployphp/deployer.git",
-                "reference": "448761221383877d61bed6700805001f872c0ad3"
+                "reference": "efc71dac9ccc86b3f9946e75d50cb106b775aae2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/deployphp/deployer/zipball/448761221383877d61bed6700805001f872c0ad3",
-                "reference": "448761221383877d61bed6700805001f872c0ad3",
+                "url": "https://api.github.com/repos/deployphp/deployer/zipball/efc71dac9ccc86b3f9946e75d50cb106b775aae2",
+                "reference": "efc71dac9ccc86b3f9946e75d50cb106b775aae2",
                 "shasum": ""
             },
             "require": {
@@ -9955,7 +9955,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-10T14:27:00+00:00"
+            "time": "2025-02-19T16:45:27+00:00"
         },
         {
             "name": "league/flysystem",
@@ -10281,16 +10281,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.12.18",
+            "version": "1.12.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "fef9f07814a573399229304bb0046affdf558812"
+                "reference": "c42ba9bab7a940ed00092ecb1c77bad98896d789"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/fef9f07814a573399229304bb0046affdf558812",
-                "reference": "fef9f07814a573399229304bb0046affdf558812",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c42ba9bab7a940ed00092ecb1c77bad98896d789",
+                "reference": "c42ba9bab7a940ed00092ecb1c77bad98896d789",
                 "shasum": ""
             },
             "require": {
@@ -10335,7 +10335,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-13T12:44:44+00:00"
+            "time": "2025-02-19T15:42:21+00:00"
         },
         {
             "name": "rector/rector",
@@ -10823,19 +10823,19 @@
     "stability-flags": {
         "apache-solr-for-typo3/solrconsole": 20,
         "apache-solr-for-typo3/solrfal": 20,
+        "ib/bv_bbe": 20,
         "ib/ib-cmt": 20,
-        "netresearch/rte-ckeditor-image": 20,
-        "rms/bv_bbe": 20,
-        "rms/ib-contact-person": 20,
-        "rms/ib-content": 20,
-        "rms/ib-dataprivacy": 20,
-        "rms/ib-formbuilder": 20,
-        "rms/ib-galerie": 20,
-        "rms/ib-jobs": 20,
-        "rms/ib-page-extension": 20,
-        "rms/ib-search": 20,
-        "rms/ib-srb": 20,
-        "rms/ib-template": 20
+        "ib/ib-contact-person": 20,
+        "ib/ib-content": 20,
+        "ib/ib-dataprivacy": 20,
+        "ib/ib-formbuilder": 20,
+        "ib/ib-galerie": 20,
+        "ib/ib-jobs": 20,
+        "ib/ib-page-extension": 20,
+        "ib/ib-search": 20,
+        "ib/ib-srb": 20,
+        "ib/ib-template": 20,
+        "netresearch/rte-ckeditor-image": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

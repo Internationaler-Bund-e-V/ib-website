@@ -36,7 +36,7 @@
               <config>
                 <type>input</type>
                 <size>255</size>
-                <eval>required,Rms\IbFormbuilder\Evaluation\MultipleEmailEvaluation</eval>
+                <eval>required,Ib\IbFormbuilder\Evaluation\MultipleEmailEvaluation</eval>
               </config>
             </TCEforms>
           </settings.emailreceiver>

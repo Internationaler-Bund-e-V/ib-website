@@ -1,11 +1,11 @@
 <?php
 
-namespace Rms\IbContactPerson\Tests\Unit\Domain\Model;
+namespace Ib\IbContactPerson\Tests\Unit\Domain\Model;
 
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2016 
+ *  (c) 2016
  *
  *  All rights reserved
  *
@@ -27,7 +27,7 @@ namespace Rms\IbContactPerson\Tests\Unit\Domain\Model;
  ***************************************************************/
 
 /**
- * Test case for class \Rms\IbContactPerson\Domain\Model\ContactPerson.
+ * Test case for class \Ib\IbContactPerson\Domain\Model\ContactPerson.
  *
  * @copyright Copyright belongs to the respective authors
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
@@ -36,13 +36,13 @@ namespace Rms\IbContactPerson\Tests\Unit\Domain\Model;
 class ContactPersonTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
 	/**
-	 * @var \Rms\IbContactPerson\Domain\Model\ContactPerson
+	 * @var \Ib\IbContactPerson\Domain\Model\ContactPerson
 	 */
 	protected $subject = NULL;
 
 	public function setUp()
 	{
-		$this->subject = new \Rms\IbContactPerson\Domain\Model\ContactPerson();
+		$this->subject = new \Ib\IbContactPerson\Domain\Model\ContactPerson();
 	}
 
 	public function tearDown()

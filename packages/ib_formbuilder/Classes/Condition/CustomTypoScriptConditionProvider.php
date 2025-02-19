@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\IbFormbuilder\Condition;
+namespace Ib\IbFormbuilder\Condition;
 
 use TYPO3\CMS\Core\ExpressionLanguage\AbstractProvider;
 
