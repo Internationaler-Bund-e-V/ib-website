@@ -15,9 +15,7 @@ module.tx_ibgalerie_web_ibgalerieibgaleriebe {
 
 page.includeCSS {
     ib_galerie = typo3_encore:ib_galerie
-    // ib_galerie = EXT:ib_galerie/Resources/Public/build/ib_galerie.css
 }
 page.includeJSFooterlibs {
     ib_galerie = typo3_encore:ib_galerie
-    // ib_galerie_js = EXT:ib_galerie/Resources/Public/build/ib_galerie.js
 }
