@@ -1,4 +1,10 @@
 {namespace obfuscateEmail=Rms\Ibcontent\ViewHelpers}
-<a data-ibemail="{obfuscateEmail:ObfuscateEmail(emailAddress:mailto)}" class="ibOEmail mail"
-                  title="{f:translate(key:'LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contact_us')}">{f:translate(key:
-                  'LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:email_label')}</a>
+<a 
+    href="#" 
+    onclick="event.preventDefault();"
+    data-ibemail="{obfuscateEmail:ObfuscateEmail(emailAddress:mailto)}" 
+    class="ibOEmail mail"
+    title="{f:translate(key:'LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contact_us')}"
+    >
+    {f:translate(key:'LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:email_label')}
+</a>

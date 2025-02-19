@@ -1,6 +1,8 @@
-.ib-rs-speaker{
-    padding-top:10px;
-    padding-bottom:0;
+div.row.ib-content-module.ib-rs-speaker.ib-background-white {
+    // padding-top:10px;
+    // padding-bottom:0;
+    display: flex;
+    align-items: center;
 }
 
 .rsbtn .rsbtn_exp .rsbtn_exp_inner,
@@ -32,4 +34,68 @@
 
 .ib-theme-portal .row:not(.ib-startpage-slider-controls) {
     z-index: unset;
+}
+
+
+// <a> tag "Vorlesen" after expanded
+.rsbtn.rsexpanded 
+a.rsbtn_play {
+    margin-top: .3rem;
+}
+
+// "Vorlesen" span 
+a.rsbtn_play span.rsbtn_left.rsimg.rspart span.rsbtn_text[aria-hidden="true"] span,
+a.rsbtn_play > span.rsbtn_right.rsimg.rsplay.rspart {
+    // color: red;
+    // background-color: #009fe3;
+    margin-top: .1rem;
+}
+
+// Buttons Stopp, Rewind, Forward, Speed etc.
+.rsbtn .rsbtn_exp .rsbtn_exp_inner button.rsbtn_player_item {
+    // background: pink;
+    font-size: 18px;
+    padding: .4rem;
+    width: 2.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rsbtn .rsbtn_exp .rsbtn_exp_inner button.rsbtn_player_item span.rsicn-pause {
+    color: #288144;
+    
+}
+
+// hide Volume button
+div.rsbtn_exp.rsimg.rspart span.rsbtn_exp_inner button.rsbtn_volume {
+    // background-color: red;
+    display: none;
+}
+
+// dropdown regler
+div.rsbtn_exp.rsimg.rspart 
+span.rsbtn_exp_inner 
+span.rsbtn_dropdown {
+    top: 2.35em;
+    margin: auto .5rem;
+}
+
+.rsbtn { left: 36px; }
+.rsbtn.mega_toggle .rsbtn_tooltoggle {
+    left: -36px!important;
+    background:#fff;
+    border: none;
+    border-right: 1px solid #677077;
+    cursor: pointer;
+}
+.zoom-tooltoggler.rsbtn.mega_toggle .rsbtn_tooltoggle {
+    background:#fff!important;
+    border: none;
+    border-right: 1px solid #677077;
+}
+.rsbtn .rsbtn_tooltoggle:hover,
+.rsbtn .rsbtn_tooltoggle:focus,
+.rsbtn .rsbtn_tooltoggle:active{
+    background: #fff;
 }

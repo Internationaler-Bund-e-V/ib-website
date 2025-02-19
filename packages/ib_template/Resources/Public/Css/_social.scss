@@ -1,5 +1,9 @@
 $social-buttonSize: 40px;
 
+.hidden-text {
+	@include visually_hidden;
+  }
+
 .ib-social {
 	z-index: 1;
 	position: absolute;

@@ -5,3 +5,22 @@
     -webkit-transition: $transition;
     transition:         $transition;
 }
+
+@mixin flex-justify-align-dir ($jc, $ai, $dir) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+    flex-direction: $dir;
+}
+
+@mixin visually_hidden {
+    position: absolute;
+    width: 1px;         
+    height: 1px;        
+    padding: 0;         
+    margin: -1px;       // negativer rand, um den platzbedarf zu minimieren
+    overflow: hidden;   // verhindert, dass es sichtbar ist
+    clip: rect(0, 0, 0, 0); // beschneidet es vollständig
+    white-space: nowrap; // verhindert zeilenumbrüche
+    border: 0;          // entfernt eventuelle rahmen
+  }
