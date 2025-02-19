@@ -379,6 +379,13 @@ plugin.tx_ibcontent.settings.newsDetailsPage = {$portalSettings.ib_content.newsD
 plugin.tx_ibcontent.settings.newsUploadFolder = {$portalSettings.ib_content.newsUploadFolder}
 plugin.tx_ibcontent.settings.dbCategoryLocationPage = {$portalSettings.ib_content.dbCategoryLocationPage}
 
+plugin.tx_typo3encore {
+    settings {
+        entrypointJsonPath = EXT:ib_template/Resources/Public/build/entrypoints.json
+        manifestJsonPath = EXT:ib_template/Resources/Public/build/manifest.json
+    }
+}
+
 plugin.tx_ibjobs.settings {
     productDbBaseUrl 	= {$portalSettings.ibjobs.ibjobsBaseUrl}
     #jobSingleViewPage	= {$portalSettings.ibjobs.jobSingleViewPage}

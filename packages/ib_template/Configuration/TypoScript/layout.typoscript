@@ -59,7 +59,7 @@ page.meta {
     #robots.override.if.isTrue.field = no_search
 }
 
-page.10 = FLUIDTEMPLATE 
+page.10 = FLUIDTEMPLATE
 page.10 {
     partialRootPath = {$template_path.html}/partial/
     layoutRootPath = {$template_path.html}/layout/
@@ -81,81 +81,14 @@ page.10 {
 # -----------------------------------------------------------------------------
 # include CSS & JS
 # -----------------------------------------------------------------------------
-page.includeJS {
-    jsLibsHeader = {$template_path.js}/min/header.min.js
-    jsRSconfig = {$template_path.js}/src/rsConfig.js
-    #jquery = {$template_path.bower}/foundation/js/vendor/jquery.js
-    #modernizr = {$template_path.bower}/foundation/js/vendor/modernizr.js
-}
-
-page.includeJSFooter {
-    libs = {$template_path.js}/min/libs.min.js
-    frontend = {$template_path.js}/min/frontend.min.js
-    shariff = {$template_path.js}/min/shariff.min.js  
-}
-
-#### overwrite EXT:db_friendlycaptcha for local source + version control -> see 
-page.includeJSFooterlibs{
-    friendlycaptchaModule = {$template_path.js}/min/widget.module.min.js
-    friendlycaptchaModule.external = 0
-
-    friendlycaptcha ={$template_path.js}/min/widget.min.js
-    friendlycaptcha.external = 0
-}
-
-#
-# deaktiviere das Laden von einer in Solr integrierten jQuery Version (jQuery v3.1.1)
-# https://mantis.rm-solutions.de/mantis/view.php?id=2338
-# mk@rms, 2022-08-12
-#
-page.includeJSFooterlibs.solr-jquery >
-page.includeJS {
-    jquery = EXT:ib_template/Resources/Public/js/min/jquery.min.js
-}
-
-page.jsFooterInline {
-    10 = TEXT
-    10.value (
-        $(document).foundation();
-        $(window).load(function() {
-            $().jetmenu({
-                indicator: false
-            });
-        });
-
-        $(document).ready(function() {            
-
-            $('.twoColLayout .ib-news-slider').slick({
-                prevArrow : $('#newsPrevButton'),
-                nextArrow : $('#newsNextButton'),
-                slidesToShow : 2,
-                dots: true,
-                responsive : [
-                {
-                    breakpoint : 900,
-                    settings : {
-                        slidesToShow : 2,
-                        slidesToScroll : 2
-                    }
-                }, {
-                    breakpoint : 480,
-                    settings : {
-                        slidesToShow : 1,
-                        slidesToScroll : 1
-                    }
-                }]
-            });
-        });
-    )
+page.includeJSFooterlibs {
+    ib_template = typo3_encore:ib_template
+    ib_template.forceOnTop = 1
 }
 
 page.includeCSS {
-    app = {$template_path.css}/min/app.min.css
-    app.media = screen
-    print = {$template_path.css}/min/print.min.css
-    print.media = print
-    print.excludeFromConcatenation = 1
-    shariff = {$template_path.css}/min/shariff.complete.css
+    ib_template = typo3_encore:ib_template
+    ib_template.forceOnTop = 1
 }
 
 # -----------------------------------------------------------------------------
