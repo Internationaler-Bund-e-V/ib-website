@@ -7,7 +7,7 @@
       </div>
     </div>
     <Navbar />
-    <CategoryFilter v-if="TypoSettings.showCategoryFilter == 1 && TypoSettings.usePreFilterCategory != 1" />
+    <CategoryFitler v-if="TypoSettings.showCategoryFilter == 1 && TypoSettings.usePreFilterCategory != 1" />
     <Tagfilter v-if="TypoSettings.showTagFilter == 1 && TypoSettings.usePreFilterCategory != 1" />
     <FederalStateFilter v-if="TypoSettings.showFederalStateFilter == 1" />
     <SidebarRight />
@@ -22,12 +22,12 @@ import SidebarRight from "./components/Partials/SidebarRight.vue";
 import Navbar from "./components/Navbar.vue";
 import Tagfilter from "./components/Filter/TagsFilter.vue";
 import FederalStateFilter from "./components/Filter/FederalStateFilter.vue";
-import CategoryFilter from "./components/Filter/CategoryFilter.vue";
+import CategoryFitler from "./components/Filter/CategoryFilter.vue";
 import TagLegend from "./components/Partials/TagLegend.vue";
 
 import OsmMap from "./components/Osmmap.vue";
 import { inject } from "vue";
-export default {
+export default { 
   name: "App",
   components: {
     SidebarLeft,
@@ -35,8 +35,8 @@ export default {
     SidebarRight,
     Navbar,
     Tagfilter,
-    FederalStateFilter,
-    CategoryFilter,
+    FederalStateFilter, 
+    CategoryFitler,
     TagLegend,
   },
   setup() {

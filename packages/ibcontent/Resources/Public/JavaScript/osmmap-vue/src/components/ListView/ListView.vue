@@ -287,12 +287,12 @@ export default {
     const updateTag = () => {
       tmpLocations.value = [];
       setTimeout(() => {
-        if (selectedTag.value.toLowerCase() != "alle") {
+        if (typeof selectedTag.value !== 'string') {
           tmpLocations.value = locations.value.filter((location) => {
             return (
               location.Location.tags
                 .toLowerCase()
-                .indexOf("-" + selectedTag.value.toLowerCase() + "-") != -1
+                .indexOf("-" + selectedTag.value + "-") != -1
             );
           });
         } else {

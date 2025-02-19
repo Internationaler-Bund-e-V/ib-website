@@ -140,7 +140,6 @@ import { ref, inject, watch } from "vue";
 import { fromLonLat } from "ol/proj";
 import Mapoverlay from "./Mapoverlay.vue";
 import Clusteroverlay from "./Partials/Clusteroverlay.vue";
-import centerIcon from "../assets/map-pin-icon.png";
 
 export default {
   name: "Osmmap",
@@ -167,7 +166,7 @@ export default {
     const selectConditions = inject("ol-selectconditions");
     const selectCondition = selectConditions.pointerMove;
 
-    let centerIcon = TypoSettings.publicTypo3Path + "JavaScript/osmmap-vue/src/assets/map-pin-icon.png";
+    let centerIcon = TypoSettings.publicTypo3Path + "osmmap-vue/dist/assets/map-pin-icon.png";
 
     // pin styles
     const radius = ref(5);
@@ -182,7 +181,7 @@ export default {
     /////////////////
 
     // border styles
-    const borderURL = ref(TypoSettings.publicTypo3Path + "Json/borderGermany.json");
+    const borderURL = ref(TypoSettings.publicTypo3Path + "dist/json/borderGermany.json");
     const format = inject("ol-format");
     const geoJson = new format.GeoJSON();
     //////////////////
