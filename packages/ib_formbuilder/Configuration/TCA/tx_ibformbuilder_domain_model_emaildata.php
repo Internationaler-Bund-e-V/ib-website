@@ -8,7 +8,6 @@ return [
         'label' => 'name',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
         'sortby' => 'sorting',
         'versioningWS' => true,
         'languageField' => 'sys_language_uid',
@@ -55,7 +54,10 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['', 0],
+                    [
+                        'label' => '',
+                        'value' => 0,
+                    ],
                 ],
                 'foreign_table' => 'tx_ibformbuilder_domain_model_emaildata',
                 'foreign_table_where' => 'AND tx_ibformbuilder_domain_model_emaildata.pid=###CURRENT_PID### AND tx_ibformbuilder_domain_model_emaildata.sys_language_uid IN (-1,0)',
@@ -86,8 +88,8 @@ return [
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    '1' => [
-                        '0' => 'LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.enabled',
+                    [
+                        'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.enabled',
                     ],
                 ],
             ],
@@ -96,10 +98,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'size' => 13,
-                'eval' => 'datetime',
                 'default' => 0,
                 'behaviour' => array(
                     'allowLanguageSynchronization' => 1,
@@ -110,10 +110,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'size' => 13,
-                'eval' => 'datetime',
                 'default' => 0,
                 'behaviour' => array(
                     'allowLanguageSynchronization' => 1,
@@ -164,8 +162,8 @@ return [
                 'readOnly' => 1,
                 'type' => 'check',
                 'items' => [
-                    '1' => [
-                        '0' => 'no errors',
+                    [
+                        'label' => 'no errors',
                     ],
                 ],
             ],

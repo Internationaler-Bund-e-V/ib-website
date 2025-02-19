@@ -5,35 +5,22 @@ $EM_CONF[$_EXTKEY] = [
     'description' => 'Add indexing for FileAbstractionLayer based files in TYPO3 CMS.',
     'category' => 'misc',
     'state' => 'stable',
-    'uploadfolder' => '0',
-    'createDirs' => '',
-    'author' => 'Steffen Ritter, Timo Hund, Markus Friedrich, Rafael Kähm',
-    'author_email' => 'solr-eb-support@dkd.de',
-    'author_company' => '[rs]websystems',
-    'clearCacheOnLoad' => 1,
-    'version' => '11.0.0',
+    'author' => 'Rafael Kaehm, Markus Friedrich',
+    'author_email' => 'info@dkd.de',
+    'author_company' => 'dkd Internet Service GmbH',
+    'version' => '12.0.2',
     'constraints' =>
     [
         'depends' => [
-            'typo3' => '11.5.14-11.5.99',
+            'typo3' => '12.4.1-12.4.99',
             'filemetadata' => '',
             'frontend' => '',
             'scheduler' => '',
-            'solr' => '11.5.0-11.6.99',
+            'solr' => '12.0.4-12.99.99',
         ],
         'conflicts' => [],
         'suggests' => [
-            'tika' => '11.0.0-',
-        ],
-    ],
-    'autoload' => [
-        'psr-4' => [
-            'ApacheSolrForTypo3\\Solrfal\\' => 'Classes',
-        ],
-    ],
-    'autoload-dev' => [
-        'psr-4' => [
-            'ApacheSolrForTypo3\\Solrfal\\Tests\\' => 'Tests',
+            'tika' => '12.0.2-',
         ],
     ],
 ];

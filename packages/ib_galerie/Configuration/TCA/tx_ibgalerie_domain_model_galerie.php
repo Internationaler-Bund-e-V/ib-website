@@ -6,11 +6,10 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 return [
     'ctrl' => [
-        'title'    => 'LLL:EXT:ib_galerie/Resources/Private/Language/locallang_db.xlf:tx_ibgalerie_domain_model_galerie',
+        'title' => 'LLL:EXT:ib_galerie/Resources/Private/Language/locallang_db.xlf:tx_ibgalerie_domain_model_galerie',
         'label' => 'name',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
         'versioningWS' => true,
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
@@ -55,9 +54,7 @@ return [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'items' => [
-                    ['', 0],
-                ],
+                'items' => [[]],
                 'foreign_table' => 'tx_ibgalerie_domain_model_galerie',
                 'foreign_table_where' => 'AND tx_ibgalerie_domain_model_galerie.pid=###CURRENT_PID### AND tx_ibgalerie_domain_model_galerie.sys_language_uid IN (-1,0)',
             ],
@@ -81,8 +78,8 @@ return [
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    '1' => [
-                        '0' => 'LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.enabled',
+                    [
+                        'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.enabled',
                     ],
                 ],
             ],
@@ -91,10 +88,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'size' => 13,
-                'eval' => 'datetime',
                 'default' => 0,
                 'behaviour' => array(
                     'allowLanguageSynchronization' => 1,
@@ -105,10 +100,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'size' => 13,
-                'eval' => 'datetime',
                 'default' => 0,
                 'behaviour' => array(
                     'allowLanguageSynchronization' => 1,
@@ -142,61 +135,60 @@ return [
         'images' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ib_galerie/Resources/Private/Language/locallang_db.xlf:tx_ibgalerie_domain_model_galerie.images',
-            'config' => ExtensionManagementUtility::getFileFieldTCAConfig(
-                'images',
-                [
-                    'appearance' => [
-                        'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference',
-                        'fileUploadAllowed' => 0,
-                        'useSortable' => true,
-                        'enabledControls' => [
-                            'info' => false,
-                            'new' => false,
-                            'dragdrop' => true,
-                            'sort' => true,
-                            'hide' => true,
-                            'delete' => true,
-                            'localize' => true,
-                        ],
+            'config' => [
+                ### !!! Watch out for fieldName different from columnName
+                'type' => 'file',
+                'allowed' => $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'],
+                'appearance' => [
+                    'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference',
+                    'fileUploadAllowed' => 0,
+                    'useSortable' => true,
+                    'enabledControls' => [
+                        'info' => false,
+                        'new' => false,
+                        'dragdrop' => true,
+                        'sort' => true,
+                        'hide' => true,
+                        'delete' => true,
+                        'localize' => true,
                     ],
-                    'overrideChildTca' => array(
-                        'columns' => array(
-                            'uid_local' => array(
-                                'config' => array(
-                                    'appearance' => array(
-                                        'elementBrowserAllowed' => 'gif,jpg,jpeg,tif,tiff,bmp,pcx,tga,png,pdf,ai,svg',
-                                        'elementBrowserType' => 'file',
-                                    ),
+                ],
+                'overrideChildTca' => array(
+                    'columns' => array(
+                        'uid_local' => array(
+                            'config' => array(
+                                'appearance' => array(
+                                    'elementBrowserAllowed' => 'gif,jpg,jpeg,tif,tiff,bmp,pcx,tga,png,pdf,ai,svg',
+                                    'elementBrowserType' => 'file',
                                 ),
                             ),
-
                         ),
-                        'types' => array(
-                            '0' => array(
-                                'showitem' => '--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette, --palette--;;filePalette',
-                            ),
-                            '1' => array(
-                                'showitem' => '--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette, --palette--;;filePalette',
-                            ),
-                            '2' => array(
-                                'showitem' => '--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette, --palette--;;filePalette',
-                            ),
-                            '3' => array(
-                                'showitem' => '--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette, --palette--;;filePalette',
-                            ),
-                            '4' => array(
-                                'showitem' => '--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette, --palette--;;filePalette',
-                            ),
-                            '5' => array(
-                                'showitem' => '--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette, --palette--;;filePalette',
-                            ),
 
-                        ),
                     ),
-                    'maxitems' => 100,
-                ],
-                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
-            ),
+                    'types' => array(
+                        '0' => array(
+                            'showitem' => '--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette, --palette--;;filePalette',
+                        ),
+                        '1' => array(
+                            'showitem' => '--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette, --palette--;;filePalette',
+                        ),
+                        '2' => array(
+                            'showitem' => '--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette, --palette--;;filePalette',
+                        ),
+                        '3' => array(
+                            'showitem' => '--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette, --palette--;;filePalette',
+                        ),
+                        '4' => array(
+                            'showitem' => '--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette, --palette--;;filePalette',
+                        ),
+                        '5' => array(
+                            'showitem' => '--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette, --palette--;;filePalette',
+                        ),
+
+                    ),
+                ),
+                'maxitems' => 100,
+            ],
         ],
     ],
 ];

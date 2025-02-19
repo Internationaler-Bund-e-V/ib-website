@@ -5,9 +5,11 @@
 
 .. include:: ../Includes.txt
 
-============================================
-Apache Solr for TYPO3 - Console tools 11.0.0
-============================================
+.. _releases_11-0:
+
+==========================================
+Apache Solr for TYPO3 - Console tools 11.0
+==========================================
 
 We are happy to release EXT:solrconsole 11.0.0.
 The focus of this release was the compatibility with TYPO3 11 LTS and EXT:solr v11.5.x.
@@ -16,7 +18,7 @@ New in this release
 ===================
 
 [FEATURE] Verbose and non verbose output for \*:queue:progress commands
-------------------------------------------------------------------------
+-----------------------------------------------------------------------
 
 This feature makes the outpup of queue:progress less verbose and more concise by default.
 
@@ -29,21 +31,10 @@ This feature makes the outpup of queue:progress less verbose and more concise by
      0/34 [>ooooooooooooooooooooooooooo]   0%
 
 
-[TASK] Fix linter issues :: part 1
-----------------------------------
-
-[BUGFIX] Fix type hinting issues not covered by tests
------------------------------------------------------
-
 [BUGFIX] queue:progress output for multiple sites mixing domains with previous site
 -----------------------------------------------------------------------------------
 
 The output of the queue:progress command is now more clearer and does not confuse users by mixing the attributes of sites.
-
-[BUGFIX] Fix CI configuration
------------------------------
-
-Adapts and fixes the CI configuration, GitHub actions are replacing Travis CI.
 
 [TASK] Standardize \*.php files header declaration
 --------------------------------------------------
@@ -57,6 +48,14 @@ Additionally needless namespace includes were removed and some test class names 
 -----------------------------
 
 Introduce new service configuration for console commands. This replaces the old configuration file 'Commands.php'
+
+
+Small improvements and bugfixes
+-------------------------------
+
+*   [TASK] Fix linter issues :: part 1
+*   [BUGFIX] Fix type hinting issues not covered by tests
+*   [BUGFIX] Fix CI configuration
 
 Contributors
 ============
@@ -106,21 +105,3 @@ or Apache Solr EB for TYPO3 9 ELTS (Extended):
 * wegewerk GmbH
 * werkraum Digitalmanufaktur GmbH
 * WIND Internet
-
-How to Get Involved
-===================
-
-There are many ways to get involved with Apache Solr for TYPO3:
-
-* Submit bug reports and feature requests on [GitHub](https://github.com/TYPO3-Solr/ext-solr)
-* Ask or help or answer questions in our [Slack channel](https://typo3.slack.com/messages/ext-solr/)
-* Provide patches through Pull Request or review and comment on existing [Pull Requests](https://github.com/TYPO3-Solr/ext-solr/pulls)
-* Go to [www.typo3-solr.com](http://www.typo3-solr.com) or call [dkd](http://www.dkd.de) to sponsor the ongoing development of Apache Solr for TYPO3
-
-Support us by becoming an EB partner:
-
-https://shop.dkd.de/Produkte/Apache-Solr-fuer-TYPO3/
-
-or call:
-
-+49 (0)69 - 2475218 0

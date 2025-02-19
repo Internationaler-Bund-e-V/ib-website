@@ -24,53 +24,36 @@ use TYPO3\CMS\Backend\Utility\BackendUtility;
  */
 class ReferenceIndexEntry
 {
-
     /**
-     * Properties
-     *
-     * @var array $properties
+     * @var array<string, string|int|bool|null> $properties
      */
-    protected $properties;
+    protected array $properties;
+
+    protected string $tableName;
+
+    protected string $tableField;
+
+    protected int $recordUid;
+
+    protected string $referenceTableName;
+
+    protected int $referenceUid;
 
     /**
-     * Table name
-     *
-     * @var string $tableName
-     */
-    protected $tableName;
-
-    /**
-     * Table field
-     *
-     * @var string $tableField
-     */
-    protected $tableField;
-
-    /**
-     * Record uid
-     *
-     * @var int $recordUid
-     */
-    protected $recordUid;
-
-    /**
-     * Reference table name
-     *
-     * @var string $referenceTableName
-     */
-    protected $referenceTableName;
-
-    /**
-     * Reference uid
-     *
-     * @var int $referenceUid
-     */
-    protected $referenceUid;
-
-    /**
-     * Class constructor
-     *
-     * @param array $referenceIndexRow
+     * @param array{
+     *   hash: string,
+     *   tablename: string,
+     *   recuid: int,
+     *   field: string,
+     *   flexpointer: string,
+     *   softref_key: string,
+     *   softref_id: string,
+     *   sorting: int,
+     *   workspace: int,
+     *   ref_table: string,
+     *   ref_uid: int,
+     *   ref_string: string,
+     * } $referenceIndexRow
      */
     public function __construct(array $referenceIndexRow)
     {
@@ -84,8 +67,6 @@ class ReferenceIndexEntry
 
     /**
      * Returns the table name
-     *
-     * @return string
      */
     public function getTableName(): string
     {
@@ -94,8 +75,6 @@ class ReferenceIndexEntry
 
     /**
      * Returns the table field
-     *
-     * @return string
      */
     public function getTableField(): string
     {
@@ -104,8 +83,6 @@ class ReferenceIndexEntry
 
     /**
      * Returns the record uid
-     *
-     * @return int
      */
     public function getRecordUid(): int
     {
@@ -115,7 +92,7 @@ class ReferenceIndexEntry
     /**
      * Returns the record
      *
-     * @return ?array
+     * @return ?array<string, string|int|bool|null>
      */
     public function getRecord(): ?array
     {
@@ -124,9 +101,6 @@ class ReferenceIndexEntry
 
     /**
      * Returns the reference table name
-     *
-     * @return string
-     * @noinspection PhpUnused
      */
     public function getReferenceTableName(): string
     {
@@ -135,9 +109,6 @@ class ReferenceIndexEntry
 
     /**
      * Returns the reference uid
-     *
-     * @return int
-     * @noinspection PhpUnused
      */
     public function getReferenceUid(): int
     {
@@ -146,8 +117,6 @@ class ReferenceIndexEntry
 
     /**
      * Returns a record hash identifying the referenced record
-     *
-     * @return string
      */
     public function getRecordHash(): string
     {

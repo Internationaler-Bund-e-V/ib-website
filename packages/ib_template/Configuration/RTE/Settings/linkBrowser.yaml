@@ -1,0 +1,56 @@
+buttons:
+  link:
+    # Global Link Browser options
+    options:
+      # Optional comma-separated list of Link Types to be specifically removed
+      removeItems: 'telephone'
+    # Specifically enable the "rel" attribute entry, needed when set in "allowedOptions"
+    relAttribute:
+        enabled: true
+    # Specifically enable the "params" (URL query arguments) attribute entry, needed when set in "allowedOptions"
+    queryParametersSelector:
+        enabled: true
+    # Optionally disable showing the "target" field (even though when set in "allowedOptions")
+    targetSelector:
+      disabled: false
+
+    # Define general CSS options for the Link Browser
+    # This is needed to perform any of the link classing below!
+    properties:
+      class:
+        # If set to "true", a CSS class must be selected
+        required: false
+        # Available CSS classes
+        allowedClasses: ''
+
+    # Define default CSS classes per LinkType. The CSS class name listed here
+    # must also be part of the "allowedClasses" attribute above.
+    # The attribute "required" is also available for each block.
+    page:
+      properties:
+        class:
+          default: ""
+          required: false
+    url:
+      properties:
+        class:
+          default: ""
+          required: false
+    file:
+      properties:
+        class:
+          default: ""
+          required: false
+    folder:
+      properties:
+        class:
+          default: ""
+    telephone:
+      properties:
+        class:
+          default: ""
+    email:
+      properties:
+        class:
+          default: ""
+          required: false

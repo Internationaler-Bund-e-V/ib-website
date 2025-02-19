@@ -4,31 +4,35 @@ declare(strict_types=1);
 
 namespace Rms\Ibcontent\Domain\Repository;
 
+use Rms\Ibcontent\Domain\Model\News;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
- * The repository for tt_news
+ * @extends Repository<News>
  */
 class NewsRepository extends Repository
 {
     /**
-     * @return array<object>|QueryResultInterface
+     * Gibt eine Liste von News-Objekten zurück, die sich in einem bestimmten Ordner befinden und eine der angegebenen IDs haben.
+     *
+     * @param int $newsProductLocationsFolder Die PID des Ordners, in dem nach News gesucht wird.
+     * @param int[] $newsIDS Die Liste von News-IDs, nach denen gefiltert wird.
+     * @return QueryResultInterface<int, News> Ein QueryResultInterface mit den News-Objekten.
      */
-    public function getNewsByFolder(int $newsProductLocationsFolder, array $newsIDS)
+    public function getNewsByFolder(int $newsProductLocationsFolder, array $newsIDS): QueryResultInterface
     {
         $query = $this->createQuery();
-        //$query->statement('SELECT * FROM tt_news where hidden = 0 and deleted = 0 and pid =' . $newsProductLocationsFolder . ' and uid in(' . $newsIDS . ')');
 
-        $query->matching(
-            $query->logicalAnd([
-                $query->equals('hidden', 0),
-                $query->equals('deleted', 0),
-                $query->equals('pid', $newsProductLocationsFolder),
-                $query->in('uid', $newsIDS),
-            ]),
+        $constraint = $query->logicalAnd(
+            $query->equals('hidden', 0),
+            $query->equals('deleted', 0),
+            $query->equals('pid', $newsProductLocationsFolder),
+            $query->in('uid', $newsIDS)
         );
 
-        return $query->execute(true);
+        $query->matching($constraint);
+
+        return $query->execute();
     }
 }

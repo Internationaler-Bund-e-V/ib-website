@@ -2,7 +2,7 @@
 	<meta>
 		<langDisable>1</langDisable>
 	</meta>
-	
+
   <sheets>
 	<sDEF>
 	  <ROOT>
@@ -131,6 +131,7 @@
 
 							</OR>
 						</displayCond>
+					<!--
                     <config>
                         <type>group</type>
                         <internal_type>db</internal_type>
@@ -143,6 +144,16 @@
                         <minitems>1</minitems>
                         <maxitems>1</maxitems>
                     </config>
+					-->
+					<config>
+						<type>link</type>
+						<allowedTypes>
+							<numIndex index="0">file</numIndex>
+							<!--<numIndex index="1">page</numIndex>-->
+						</allowedTypes>
+						<minitems>1</minitems>
+						<maxitems>1</maxitems>
+					</config>
 			    </TCEforms>
 			</settings.image>
 			<settings.imageAlt>
@@ -169,6 +180,7 @@
 					<displayCond>
 						FIELD:settings.type:=:video
 					</displayCond>
+					<!--
                     <config>
                         <type>group</type>
                         <internal_type>db</internal_type>
@@ -181,6 +193,16 @@
                         <minitems>0</minitems>
                         <maxitems>1</maxitems>
                     </config>
+					-->
+					<config>
+						<type>link</type>
+						<allowedTypes>
+							<numIndex index="0">file</numIndex>
+							<!--<numIndex index="1">page</numIndex>-->
+						</allowedTypes>
+						<minitems>1</minitems>
+						<maxitems>1</maxitems>
+					</config>
 			    </TCEforms>
 			</settings.videoPoster>
 
@@ -190,6 +212,7 @@
 					    <displayCond>
 							FIELD:settings.type:=:video
 						</displayCond>
+					<!--
                     <config>
                         <type>group</type>
                         <internal_type>db</internal_type>
@@ -202,6 +225,16 @@
                         <minitems>1</minitems>
                         <maxitems>1</maxitems>
                     </config>
+					-->
+					<config>
+						<type>link</type>
+						<allowedTypes>
+							<numIndex index="0">file</numIndex>
+							<!--<numIndex index="1">page</numIndex>-->
+						</allowedTypes>
+						<minitems>1</minitems>
+						<maxitems>1</maxitems>
+					</config>
 			    </TCEforms>
 			</settings.videoMP4>
 			<settings.videoWEBM>
@@ -210,6 +243,7 @@
 					    <displayCond>
 							FIELD:settings.type:=:video
 						</displayCond>
+						<!--
                     <config>
                         <type>group</type>
                         <internal_type>db</internal_type>
@@ -222,6 +256,7 @@
                         <minitems>0</minitems>
                         <maxitems>1</maxitems>
                     </config>
+					-->
 			    </TCEforms>
 			</settings.videoWEBM>
 			<settings.videoOGG>
@@ -230,6 +265,7 @@
 					    <displayCond>
 							FIELD:settings.type:=:video
 						</displayCond>
+						<!--
                     <config>
                         <type>group</type>
                         <internal_type>db</internal_type>
@@ -242,6 +278,7 @@
                         <minitems>0</minitems>
                         <maxitems>1</maxitems>
                     </config>
+					-->
 			    </TCEforms>
 			</settings.videoOGG>
 
@@ -267,7 +304,7 @@
 					        <cols>3</cols>
 					        <rows>3</rows>
 							<enableRichtext>1</enableRichtext>
-					    </config>					    
+					    </config>
 					</TCEforms>
 				</settings.caption>
 			</el>

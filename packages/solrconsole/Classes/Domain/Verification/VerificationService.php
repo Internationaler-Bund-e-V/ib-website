@@ -19,10 +19,10 @@ namespace ApacheSolrForTypo3\Solrconsole\Domain\Verification;
 
 use ApacheSolrForTypo3\Solr\ConnectionManager;
 use ApacheSolrForTypo3\Solr\Domain\Index\Queue\QueueItemRepository;
-use ApacheSolrForTypo3\Solr\Domain\Site\Site;
-use ApacheSolrForTypo3\Solr\System\Configuration\TypoScriptConfiguration;
 use ApacheSolrForTypo3\Solr\Domain\Search\Query\SearchQuery;
+use ApacheSolrForTypo3\Solr\Domain\Site\Site;
 use ApacheSolrForTypo3\Solr\NoSolrConnectionFoundException;
+use ApacheSolrForTypo3\Solr\System\Configuration\TypoScriptConfiguration;
 use ApacheSolrForTypo3\Solr\System\Solr\Service\SolrReadService;
 use ApacheSolrForTypo3\Solr\System\Solr\SolrConnection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -34,26 +34,23 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * * Check each indexing configuration of a site
  * * Check which documents are missing in Solr
  * * Check which documents are missing in TYPO3
- *
- * @package ApacheSolrForTypo3\Solrconsole\Domain\Verification
  */
 class VerificationService
 {
-
     /**
      * @var ConnectionManager
      */
-    protected $connectionManager;
+    protected ConnectionManager $connectionManager;
 
     /**
      * @var QueueItemRepository
      */
-    protected $queueItemRepository;
+    protected QueueItemRepository $queueItemRepository;
 
     /**
      * @var ConnectionPool
      */
-    protected $connectionPool;
+    protected ConnectionPool $connectionPool;
 
     /**
      * @param Site $site
@@ -62,21 +59,20 @@ class VerificationService
      * @param bool $fix
      * @return SiteVerificationResult
      */
-    public function verifySite(Site $site, array $languagesToCheck = [], array $configurationNamesToChecks = [], $fix = false)
+    public function verifySite(Site $site, array $languagesToCheck = [], array $configurationNamesToChecks = [], $fix = false): SiteVerificationResult
     {
-
         /** @var SiteVerificationResult $result */
         $result = GeneralUtility::makeInstance(SiteVerificationResult::class);
 
         $solrConfiguration = $site->getSolrConfiguration();
         if (!$solrConfiguration->getEnabled()) {
-            $result->addGlobalError('Site with rootPageId ' . intval(($site->getRootPageId())).' is disabled');
+            $result->addGlobalError('Site with rootPageId ' . (int)(($site->getRootPageId())) . ' is disabled');
             return $result;
         }
 
         $domain = $site->getDomain();
         if (empty($domain)) {
-            $result->addGlobalError('Site with rootPageId ' . intval(($site->getRootPageId())).' has no domain');
+            $result->addGlobalError('Site with rootPageId ' . (int)(($site->getRootPageId())) . ' has no domain');
             return $result;
         }
 
@@ -90,14 +86,14 @@ class VerificationService
         }
 
         foreach ($configurationNamesToChecks as $configurationName) {
-            $table = $solrConfiguration->getIndexQueueTableNameOrFallbackToConfigurationName($configurationName);
+            $table = $solrConfiguration->getIndexQueueTypeOrFallbackToConfigurationName($configurationName);
 
-            if($table === 'sys_file_storage') {
+            if ($table === 'sys_file_storage') {
                 // handled by solfal
                 continue;
             }
             /**
-             * @var $configurationVerificationResult ConfigurationVerificationResult
+             * @var ConfigurationVerificationResult $configurationVerificationResult
              */
             $configurationVerificationResult = GeneralUtility::makeInstance(ConfigurationVerificationResult::class);
             $configurationVerificationResult->setConfigurationName($configurationName);
@@ -132,7 +128,6 @@ class VerificationService
                     if ($fix && $missingInSolrCount > 0) {
                         $this->queueItemsThatAreMissingInSolr($site, $missingInSolr, $table, $configurationName);
                     }
-
                 } catch (NoSolrConnectionFoundException $ex) {
                     $configurationVerificationResult->addError("No solr connection found for site {$site->getRootPageId()}, language {$language}.");
                 } catch (\Exception $ex) {
@@ -151,9 +146,11 @@ class VerificationService
      * @param SearchQuery $searchQuery
      * @return array
      */
-    protected function getRecordUidsFromSolrIndex(SolrReadService $readService, SearchQuery $searchQuery)
+    protected function getRecordUidsFromSolrIndex(SolrReadService $readService, SearchQuery $searchQuery): array
     {
-        $response = $readService->search($searchQuery, 0, 9999999, ['fl' => 'id,uid']);
+        $searchQuery->setFields('id,uid');
+        $searchQuery->setRows(9999999);
+        $response = $readService->search($searchQuery);
         $solrUids = [];
         if (isset($response->response->docs)) {
             foreach ($response->response->docs as $doc) {
@@ -171,7 +168,7 @@ class VerificationService
      * @param string $table
      * @return int
      */
-    protected function getIndexQueueErrorCount(array $missingInSolr, string $table)
+    protected function getIndexQueueErrorCount(array $missingInSolr, string $table): int
     {
         $indexQueueErrors = 0;
         if (count($missingInSolr) <= 0) {
@@ -191,10 +188,10 @@ class VerificationService
      * @param SolrConnection $solrConnection
      * @param array $missingInTYPO3
      */
-    protected function deleteDocumentsFromSolrThatAreMissingInTYPO3(SolrConnection $solrConnection, $missingInTYPO3):void
+    protected function deleteDocumentsFromSolrThatAreMissingInTYPO3(SolrConnection $solrConnection, $missingInTYPO3): void
     {
         $writeService = $solrConnection->getWriteService();
-        $rawQuery = "(id:" . implode(' OR id:', array_keys($missingInTYPO3)) . ")";
+        $rawQuery = '(id:' . implode(' OR id:', array_keys($missingInTYPO3)) . ')';
         $writeService->deleteByQuery($rawQuery);
     }
 
@@ -204,7 +201,7 @@ class VerificationService
      * @param $table
      * @param $configurationName
      */
-    protected function queueItemsThatAreMissingInSolr(Site $site, $missingInSolr, $table, $configurationName):void
+    protected function queueItemsThatAreMissingInSolr(Site $site, $missingInSolr, $table, $configurationName): void
     {
         foreach ($missingInSolr as $itemUid) {
             $present = $this->getQueueItemRepository()->containsItem($table, $itemUid);
@@ -229,7 +226,7 @@ class VerificationService
     /**
      * @param QueueItemRepository $queueItemRepository
      */
-    public function setQueueItemRepository(QueueItemRepository $queueItemRepository)
+    public function setQueueItemRepository(QueueItemRepository $queueItemRepository): void
     {
         $this->queueItemRepository = $queueItemRepository;
     }
@@ -242,7 +239,7 @@ class VerificationService
      * @param int $language
      * @return array
      */
-    protected function getRecordUidsFromDatabaseTable(Site $site, TypoScriptConfiguration $configuration, string $configurationName, string $table, int  $language)
+    protected function getRecordUidsFromDatabaseTable(Site $site, TypoScriptConfiguration $configuration, string $configurationName, string $table, int $language): array
     {
         $indexQueueConfiguration = $configuration->getIndexQueueConfigurationByName($configurationName);
         $pageUids = $this->getRelevantParentPageIds($site, $configurationName, $indexQueueConfiguration, $table);
@@ -264,7 +261,7 @@ class VerificationService
                 implode(',', $pageUids)
             ));
         }
-        $result = $result->execute();
+        $result = $result->executeQuery()->fetchAllAssociative();
 
         foreach ($result as $entry) {
             $typo3Uid = $entry['uid'];
@@ -276,15 +273,15 @@ class VerificationService
     /**
      * @param ConnectionPool $connectionPool
      */
-    public function setConnectionPool(ConnectionPool $connectionPool)
+    public function setConnectionPool(ConnectionPool $connectionPool): void
     {
         $this->connectionPool = $connectionPool;
     }
 
     /**
-     * @return object|ConnectionPool
+     * @return ConnectionPool
      */
-    protected function getConnectionPool()
+    protected function getConnectionPool(): ConnectionPool
     {
         if (!$this->connectionPool instanceof ConnectionPool) {
             $this->connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
@@ -304,7 +301,6 @@ class VerificationService
         return $this->getConnectionManager()->getConnectionByPageId($rootPageUid, $language);
     }
 
-
     /**
      * @return ConnectionManager
      */
@@ -319,7 +315,7 @@ class VerificationService
     /**
      * @param ConnectionManager $connectionManager
      */
-    public function setConnectionManager(ConnectionManager $connectionManager)
+    public function setConnectionManager(ConnectionManager $connectionManager): void
     {
         $this->connectionManager = $connectionManager;
     }
@@ -332,14 +328,14 @@ class VerificationService
      * @param string $table
      * @return array A (sorted) array of page IDs in a site
      */
-    protected function getRelevantParentPageIds(Site $site, string $configurationName, array $indexQueueConfiguration, $table)
+    protected function getRelevantParentPageIds(Site $site, string $configurationName, array $indexQueueConfiguration, $table): array
     {
         $pages = $site->getPages(null, $configurationName);
 
         // when we have a pages table the pid of the rootPage need to be added as well because when we look for pid's
         // this needs to be retrieved to fetch the root page
         if ($table === 'pages') {
-            $pages[] = $site->getRootPage()['pid'];
+            $pages[] = $site->getRootPageId();
         }
 
         $additionalPageIds = [];
@@ -359,7 +355,7 @@ class VerificationService
      * @param $table
      * @return SearchQuery
      */
-    protected function getQueryForDocumentsInSolr(Site $site, $domain, $table):SearchQuery
+    protected function getQueryForDocumentsInSolr(Site $site, $domain, $table): SearchQuery
     {
         $searchQuery = new SearchQuery();
         $solrQuery = "(site:{$domain} AND type:{$table} AND siteHash:{$site->getSiteHash()})";

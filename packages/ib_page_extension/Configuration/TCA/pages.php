@@ -9,13 +9,13 @@ if (!defined('TYPO3')) {
 }
 
 /*
-* ------------------------------------------------------------------------------------------------
-* extend pages table with custom field(s)
-* ------------------------------------------------------------------------------------------------
-* add custom field to pages table
-* for details see // see https://docs.typo3.org/typo3cms/TCAReference/ExtendingTca/Examples/Index.html
-    * @author mkettel @ rms, 2016-06
-    */
+ * ------------------------------------------------------------------------------------------------
+ * extend pages table with custom field(s)
+ * ------------------------------------------------------------------------------------------------
+ * add custom field to pages table
+ * for details see // see https://docs.typo3.org/typo3cms/TCAReference/ExtendingTca/Examples/Index.html
+ * @author mkettel @ rms, 2016-06
+ */
 
 // Adding fields to pages TCA
 $temporaryColumns = array(
@@ -50,8 +50,8 @@ $temporaryColumns = array(
             "type" => "select",
             "renderType" => "selectSingle",
             "items" => array(
-                array('default (portal)', 'ib-theme-portal'),
-                array('Kitas', 'ib-theme-kitas'),
+                array('label' => 'default (portal)', 'value' => 'ib-theme-portal'),
+                array('label' => 'Kitas', 'value' => 'ib-theme-kitas'),
             ),
         ),
     ),
@@ -63,7 +63,7 @@ $temporaryColumns = array(
             "renderType" => "selectSingle",
             "default" => 0,
             "items" => array(
-                array('none', 0),
+                array('label' => 'none', 'value' => 0),
             ),
             'foreign_table' => 'tx_ibcontactperson_domain_model_contactperson',
         ),
@@ -76,8 +76,8 @@ $temporaryColumns = array(
             "type" => "select",
             "renderType" => "selectSingle",
             "items" => array(
-                array('white', 'white'),
-                array('gray', 'gray'),
+                array('label' => 'white', 'value' => 'white'),
+                array('label' => 'gray', 'value' => 'gray'),
             ),
         ),
     ),
@@ -88,11 +88,11 @@ $temporaryColumns = array(
             "type" => "select",
             "renderType" => "selectSingle",
             "items" => array(
-                array('IB - Images and no subpoints', 0),
-                array('Map', 1),
-                array('Service - incl. sublevel', 2),
-                array('Nur in mobiler Navigation anzeigen', 3),
-                array('Exclude from Menu', 99),
+                array('label' => 'IB - Images and no subpoints', 'value' => 0),
+                array('label' => 'Map', 'value' => 1),
+                array('label' => 'Service - incl. sublevel', 'value' => 2),
+                array('label' => 'Nur in mobiler Navigation anzeigen', 'value' => 3),
+                array('label' => 'Exclude from Menu', 'value' => 99),
             ),
         ),
     ),

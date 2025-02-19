@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace ApacheSolrForTypo3\Solrfal\Scheduler;
 
+use LogicException;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Scheduler\AbstractAdditionalFieldProvider;
 use TYPO3\CMS\Scheduler\Controller\SchedulerModuleController;
@@ -24,23 +25,24 @@ use TYPO3\CMS\Scheduler\Task\AbstractTask;
 
 /**
  * Additional field provider for the IndexingTask
- *
- * @author Markus Goldbach <markus.goldbach@dkd.de>
- * @author Ingo Renner <ingo@typo3.org>
- * @author Steffen Ritter <steffen.ritter@typo3.org>
  */
 class IndexingTaskAdditionalFieldProvider extends AbstractAdditionalFieldProvider
 {
     /**
-     * @param array $taskInfo
-     * @param IndexingTask $task
-     * @param SchedulerModuleController $schedulerModule
+     * @param array{filesToIndexLimit: int, forcedWebRoot: string} $taskInfo values of the fields from the add/edit task form
+     * @param IndexingTask $task The task object being edited. Null when adding a task!
+     * @param SchedulerModuleController $schedulerModule Reference to the scheduler backend module
      *
-     * @return array
-     * @noinspection PhpUnused
+     * @return array{
+     *     forcedWebRoot: array{code: string, label: string, cshKey: string, cshLabel: string},
+     *     forcedWebRoot: array{code: string, label: string, cshKey: string, cshLabel: string}
+     *     }
      */
-    public function getAdditionalFields(array &$taskInfo, $task, SchedulerModuleController $schedulerModule)
-    {
+    public function getAdditionalFields(
+        array &$taskInfo,
+        $task,
+        SchedulerModuleController $schedulerModule,
+    ): array {
         $additionalFields = [];
 
         // set default value
@@ -70,17 +72,19 @@ class IndexingTaskAdditionalFieldProvider extends AbstractAdditionalFieldProvide
 
         return $additionalFields;
     }
+
     /**
      * Checks any additional data that is relevant to this task. If the task
      * class is not relevant, the method is expected to return true
      *
-     * @param array	$submittedData reference to the array containing the data submitted by the user
+     * @param array{filesToIndexLimit: int}	$submittedData reference to the array containing the data submitted by the user
      * @param SchedulerModuleController	$schedulerModule reference to the calling object (Scheduler's BE module)
      * @return bool TRUE if validation was ok (or selected class is not relevant), FALSE otherwise
-     * @noinspection PhpUnused
      */
-    public function validateAdditionalFields(array &$submittedData, SchedulerModuleController $schedulerModule)
-    {
+    public function validateAdditionalFields(
+        array &$submittedData,
+        SchedulerModuleController $schedulerModule,
+    ): bool {
         if (!MathUtility::canBeInterpretedAsInteger($submittedData['filesToIndexLimit'])) {
             return false;
         }
@@ -88,17 +92,23 @@ class IndexingTaskAdditionalFieldProvider extends AbstractAdditionalFieldProvide
         $submittedData['filesToIndexLimit'] = (int)($submittedData['filesToIndexLimit']);
         return true;
     }
+
     /**
-     * Saves any additional input into the current task object if the task
-     * class matches.
+     * Saves any additional input into the current task object if the task class matches.
      *
-     * @param array $submittedData array containing the data submitted by the user
-     * @param AbstractTask $task reference to the current task object
-     * @noinspection PhpUnused
+     * @param array{filesToIndexLimit: int, forcedWebRoot: string} $submittedData
+     * @param AbstractTask|IndexingTask $task
      */
-    public function saveAdditionalFields(array $submittedData, AbstractTask $task)
+    public function saveAdditionalFields(array $submittedData, AbstractTask|IndexingTask $task): void
     {
-        $task->setFileCountLimit($submittedData['filesToIndexLimit']);
+        if (!$task instanceof IndexingTask) {
+            throw new LogicException(
+                '$task must be an instance of IndexQueueWorkerTask, '
+                . 'other instances are not supported.',
+                1689327482
+            );
+        }
+        $task->setFileCountLimit((int)$submittedData['filesToIndexLimit']);
         $task->setForcedWebRoot($submittedData['forcedWebRoot']);
     }
 }

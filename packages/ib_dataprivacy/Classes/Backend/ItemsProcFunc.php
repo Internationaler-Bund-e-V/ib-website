@@ -8,7 +8,7 @@ use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
-use TYPO3\CMS\Core\Database\QueryGenerator;
+//use TYPO3\CMS\Core\Database\QueryGenerator;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class ItemsProcFunc
@@ -35,7 +35,7 @@ class ItemsProcFunc
         $pageIds = array();
         $recursive = false;
 
-        // values of $ibTSconfig see typo3/public/typo3conf/ext/ib_dataprivacy/Configuration/TSconfig/tsConfig.tsconfig
+        // values of $ibTSconfig see EXT:ib_dataprivacy/Configuration/TSconfig/tsConfig.tsconfig
         switch ($flexformView) {
             //Impressum
             case 'settings.view1.imprint':
@@ -123,13 +123,11 @@ class ItemsProcFunc
             }
         }
     }
-
+    /*
     public function getTreePids(int $parent = 0, bool $as_array = true): array
     {
         $depth = 999999;
         //$queryGenerator = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Database\\QueryGenerator');
-
-        /** @var QueryGenerator $queryGenerator */
         $queryGenerator = GeneralUtility::makeInstance(QueryGenerator::class);
         $childPids = $queryGenerator->getTreeList($parent, $depth, 0, "1"); //Will be a string like 1,2,3
         if ($as_array) {
@@ -141,5 +139,48 @@ class ItemsProcFunc
         }
 
         return $childPids;
+    }
+        */
+
+    public function getTreePids(int $parent = 0, bool $as_array = true): array
+    {
+        $depth = 999999;
+        $childPids = $this->getRecursivePageIds($parent, $depth);
+        
+        if ($as_array) {
+            $childPids = explode(',', $childPids);
+            $childPids[] = $parent;
+        }
+
+        if (!\is_array($childPids)) {
+            $childPids = [];
+        }
+
+        return $childPids;
+    }
+
+    private function getRecursivePageIds(int $parentId, int $depth): string
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable('pages');
+
+        $result = $queryBuilder
+            ->select('uid')
+            ->from('pages')
+            ->where(
+                $queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter($parentId, \PDO::PARAM_INT))
+            )
+            ->executeQuery()
+            ->fetchFirstColumn();
+
+        $pageIds = implode(',', $result);
+
+        if ($depth > 0 && !empty($result)) {
+            foreach ($result as $childId) {
+                $pageIds .= ',' . $this->getRecursivePageIds((int) $childId, $depth - 1);
+            }
+        }
+
+        return $pageIds;
     }
 }

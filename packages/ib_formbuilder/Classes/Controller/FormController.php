@@ -10,9 +10,12 @@ use Rms\IbFormbuilder\Domain\Model\Form;
 use Rms\IbFormbuilder\Domain\Repository\ContentRepository;
 use Rms\IbFormbuilder\Domain\Repository\EmaildataRepository;
 use Rms\IbFormbuilder\Domain\Repository\FormRepository;
+use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\Http\ApplicationType;
 use TYPO3\CMS\Core\Mail\MailMessage;
+use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Annotation\IgnoreValidation;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
@@ -42,12 +45,16 @@ class FormController extends ActionController
     //private readonly array $customSettings;
     private readonly array $customSettingsIbContent;
 
+    protected ModuleTemplateFactory $moduleTemplateFactory;
+
+    protected PageRenderer $pageRenderer;
+
     /**
      * @var ConfigurationManagerInterface
      */
     protected $configurationManager;
 
-    public function __construct(EmaildataRepository $emaildataRepository, FormRepository $formRepository, ContentRepository $contentRepository)
+    public function __construct(EmaildataRepository $emaildataRepository, FormRepository $formRepository, ContentRepository $contentRepository, ModuleTemplateFactory $moduleTemplateFactory, PageRenderer $pageRenderer)
     {
         $this->emaildataRepository = $emaildataRepository;
         $this->formRepository = $formRepository;
@@ -57,6 +64,29 @@ class FormController extends ActionController
         $ext_conf = GeneralUtility::makeInstance(ExtensionConfiguration::class);
         //$this->customSettings = $ext_conf->get('ib_formbuilder');
         $this->customSettingsIbContent = $ext_conf->get('ibcontent');
+        $this->moduleTemplateFactory = $moduleTemplateFactory;
+        $this->pageRenderer = $pageRenderer;
+    }
+
+    protected function initializeAction(): void
+    {
+        $version = time();
+
+        // see typo3/packages/ib_formbuilder/Configuration/JavaScriptModules.php
+        #$this->pageRenderer->addJsLibrary('jquery', 'EXT:ib_formbuilder/Resources/Public/libs/jQuery/jquery.min.js');
+        #$this->pageRenderer->addJsLibrary('jquery_sortable', 'EXT:ib_formbuilder/Resources/Public/libsStatic/jquery-ui-sortable/jquery-ui-sortable.min.js');
+        #$this->pageRenderer->addJsLibrary('form_builder', 'EXT:ib_formbuilder/Resources/Public/libs/formBuilder/form-builder.min.js');
+        #$this->pageRenderer->addJsLibrary('form_renderer', 'EXT:ib_formbuilder/Resources/Public/libs/formBuilder/form-render.min.js');
+        #$this->pageRenderer->addJsLibrary('form_backend', 'EXT:ib_formbuilder/Resources/Public/JavaScript/backend.min.js');
+        #$this->pageRenderer->addJsLibrary('form_scripts', 'EXT:ib_formbuilder/Resources/Public/libsStatic/initBackendFormBuilderScripts.js');
+
+        // only load backend modules (including jQuery) in the backend
+        // to avoid errors in the frontend where jQuery is loaded elsewhere
+        // mk@rms, 2024-11-21
+        if (ApplicationType::fromRequest($this->request)->isBackend()) {
+            $this->pageRenderer->loadJavaScriptModule('@rms/mfbb');
+            $this->pageRenderer->loadJavaScriptModule('@rms/myinit');
+        }
     }
 
     /**
@@ -104,13 +134,13 @@ class FormController extends ActionController
         /** @var Form $formdata */
         $formdata = $this->formRepository->findByUid($formId);
 
-        $json = html_entity_decode((string)$formdata->getFormdataJson());
+        $json = html_entity_decode((string) $formdata->getFormdataJson());
         //$json = $formdata->getFormdataJson();
         $this->view->assign('formdata', $formdata);
         $this->view->assign('json', $json);
         //$this->view->assign('language', $GLOBALS['TSFE']->lang);
         $this->view->assign('formId', $formId);
-        $this->view->assign('uid', $this->configurationManager->getContentObject()->data['uid']);
+        $this->view->assign('uid', $this->request->getAttribute('currentContentObject')->data['uid']);
 
         return $this->htmlResponse();
     }
@@ -141,8 +171,8 @@ class FormController extends ActionController
         // flexform configuration
         $allArguments = $this->request->getArguments();
 
-        if ((int)$allArguments['formdata']['hidden_uid'] >= 1 && $this->request->hasArgument('formdata')) {
-            $ttcontentUid = (int)$allArguments['formdata']['hidden_uid'];
+        if ((int) $allArguments['formdata']['hidden_uid'] >= 1 && $this->request->hasArgument('formdata')) {
+            $ttcontentUid = (int) $allArguments['formdata']['hidden_uid'];
 
             // this holds the formdata, entered by the user
             $formData = $allArguments['formdata'];
@@ -150,8 +180,8 @@ class FormController extends ActionController
             // loop through the formdata and create the final email text
             $emailContent .= '<ul>';
             foreach ($allArguments['formdata'] as $key => $value) {
-                $is_not_hidden = strpos((string)$key, 'hidden_') === false;
-                $is_not_captcha_data = strpos((string)$key, 'frc-captcha-solution') === false;
+                $is_not_hidden = strpos((string) $key, 'hidden_') === false;
+                $is_not_captcha_data = strpos((string) $key, 'frc-captcha-solution') === false;
                 if ($is_not_hidden && $is_not_captcha_data) {
                     $emailContent .= '<li><b>' . $key . '</b> : ' . $value . '</li>';
                 }
@@ -162,11 +192,11 @@ class FormController extends ActionController
             // get the formbuilders json data (the structure of this form)
             // we use this to validate the user input
             // ---------------------------------------------------------------
-            $formId = (int)$allArguments['formdata']['hidden_formId'];
+            $formId = (int) $allArguments['formdata']['hidden_formId'];
 
             /** @var Form $formDataDb */
             $formDataDb = $this->formRepository->findByUid($formId);
-            $formDataDbArray = json_decode((string)$formDataDb->getFormdataJson(), true);
+            $formDataDbArray = json_decode((string) $formDataDb->getFormdataJson(), true);
             $formDataDbName = $formDataDb->getName();
 
             // ---------------------------------------------------------------
@@ -219,7 +249,7 @@ class FormController extends ActionController
             /** @var Form $mytmpform */
             $mytmpform = $this->formRepository->findByUid($formId);
             $receiversDatabase = $mytmpform->getReceiver();
-            $receiversDatabase = array_map('trim', explode(',', (string)$receiversDatabase));
+            $receiversDatabase = array_map('trim', explode(',', (string) $receiversDatabase));
             $receivers = $receiversDatabase;
 
             $flexformData = $this->contentRepository->getFlexformForContentUid($ttcontentUid);
@@ -233,7 +263,7 @@ class FormController extends ActionController
                 if (!filter_var($receiver, FILTER_VALIDATE_EMAIL)) {
                     $mail_has_valid_receivers = false;
                 } else {
-                    $final_valid_receivers[] = trim((string)$receiver);
+                    $final_valid_receivers[] = trim((string) $receiver);
                 }
             }
 
@@ -277,7 +307,7 @@ class FormController extends ActionController
                 }
 
                 $context = stream_context_create($opts);
-                $result = json_decode((string)file_get_contents($requestURL, false, $context), true);
+                $result = json_decode((string) file_get_contents($requestURL, false, $context), true);
 
                 if ($result['success'] === false) {
                     $errors['captcha'] = true;
@@ -322,10 +352,9 @@ class FormController extends ActionController
                 // Prepare and send the email
                 // --------------------------
                 $mail_send_success = $mail
-                    ->setSubject((string)$name)
+                    ->setSubject((string) $name)
                     ->setFrom(array('noreply@internationaler-bund.de' => 'noreply@internationaler-bund.de'))
                     ->setTo($final_valid_receivers)
-                    ->setBody()
                     ->html($emailContent)
                     //->addPart($emailContent, 'text/html')
                     ->send();
@@ -378,7 +407,7 @@ class FormController extends ActionController
         */
 
         //return json_encode($toReturn);
-        return $this->jsonResponse((string)json_encode($toReturn));
+        return $this->jsonResponse((string) json_encode($toReturn));
     }
 
     /**
@@ -397,11 +426,14 @@ class FormController extends ActionController
         $emails = $this->emaildataRepository->findAll();
 
         $forms = $this->formRepository->findAll();
-        $this->view->assign('forms', $forms);
-        $this->view->assign('emails', $emails);
-        $this->view->assign('storagePid', $storagePid);
 
-        return $this->htmlResponse();
+        $values = [
+            'forms' => $forms,
+            'emails' => $emails,
+            'storagePid' => $storagePid,
+        ];
+
+        return $this->moduleTemplateFactory->create($this->request)->setModuleClass('tx-ibformbuilder')->assignMultiple($values)->renderResponse('Backend/List');
     }
 
     /**
@@ -419,36 +451,39 @@ class FormController extends ActionController
      */
     public function newAction(): ResponseInterface
     {
-        return $this->htmlResponse();
+        return $this->moduleTemplateFactory->create($this->request)->setModuleClass('tx-ibformbuilder')->renderResponse('Backend/New');
     }
 
     /**
      * action create
      */
-    public function createAction(Form $newForm): never
+    public function createAction(Form $newForm): ResponseInterface
     {
         //$this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html',
         //    '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->formRepository->add($newForm);
-        $this->redirect('list');
+
+        return $this->redirect('list');
     }
 
     /**
      * action edit
-     *
-     * @IgnoreValidation("form")
      */
+    #[IgnoreValidation(['argumentName' => 'form'])]
     public function editAction(Form $form): ResponseInterface
     {
-        $this->view->assign('form', $form);
 
-        return $this->htmlResponse();
+        $values = [
+            'form' => $form,
+        ];
+
+        return $this->moduleTemplateFactory->create($this->request)->setModuleClass('tx-ibformbuilder')->assignMultiple($values)->renderResponse('Backend/Edit');
     }
 
     /**
      * action update
      */
-    public function updateAction(Form $form): never
+    public function updateAction(Form $form): ResponseInterface
     {
         //$this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html',
         //    '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
@@ -475,18 +510,19 @@ class FormController extends ActionController
             closedir($handle);
         }
 
-        $this->redirect('edit', 'Form', null, array('form' => $form));
+        return $this->redirect('edit', 'Form', null, array('form' => $form));
     }
 
     /**
      * action delete
      */
-    public function deleteAction(Form $form): never
+    public function deleteAction(Form $form): ResponseInterface
     {
         //$this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html',
         //    '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->formRepository->remove($form);
-        $this->redirect('list');
+
+        return $this->redirect('list');
     }
 
     /**
@@ -494,18 +530,22 @@ class FormController extends ActionController
      */
     public function showEmailDataAction(Emaildata $emaildata): ResponseInterface
     {
-        $this->view->assign('emaildata', $emaildata);
 
-        return $this->htmlResponse();
+        $values = [
+            'emaildata' => $emaildata,
+        ];
+
+        return $this->moduleTemplateFactory->create($this->request)->setModuleClass('tx-ibformbuilder')->assignMultiple($values)->renderResponse('Backend/ShowEmailData');
     }
 
     /**
      * action delete emailData
      */
-    public function deleteEmailDataAction(Emaildata $emaildata): never
+    public function deleteEmailDataAction(Emaildata $emaildata): ResponseInterface
     {
         $this->emaildataRepository->remove($emaildata);
-        $this->redirect('list');
+
+        return $this->redirect('list');
     }
 
     /**
@@ -542,7 +582,7 @@ class FormController extends ActionController
             foreach ($emails as $email) {
                 $error_on_send = $email->getErrorOnSend();
                 $content = $email->getEmaildataHtml();
-                $content = str_replace('</li>', "---nl---</li>", (string)$content);
+                $content = str_replace('</li>', "---nl---</li>", (string) $content);
                 $content = str_replace(' : ', ": ", $content);
                 $content = strip_tags($content);
 
@@ -550,7 +590,7 @@ class FormController extends ActionController
                  * generate header row(s) and prepare row data
                  */
                 $record = explode("---nl---", $content);
-                $record[] = 'error_on_send: ' . (int)$error_on_send;
+                $record[] = 'error_on_send: ' . (int) $error_on_send;
                 $attributes = array('datum' => date('d.m.Y - H:i', $email->getTstamp()));
 
                 foreach ($record as $rec) {

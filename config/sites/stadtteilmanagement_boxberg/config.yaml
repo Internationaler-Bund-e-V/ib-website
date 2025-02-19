@@ -1,4 +1,4 @@
-base: 'https://stm-hd-boxberg.rmsdev.de/'
+base: 'https://hd-boxberg.de/'
 disableStaticFileCache: false
 friendlycaptcha_js_path: 'EXT:friendlycaptcha_official/Resources/Public/JavaScript/lib/widget-0.9.12.min.js'
 friendlycaptcha_puzzle_url: 'https://eu-api.friendlycaptcha.eu/api/v1/puzzle'
@@ -11,7 +11,7 @@ languages:
     title: Deutsch
     enabled: true
     languageId: 0
-    base: 'https://stm-hd-boxberg.rmsdev.de/'
+    base: 'https://hd-boxberg.de/'
     typo3Language: de
     locale: de_DE.UTF-8
     iso-639-1: de
@@ -38,15 +38,8 @@ languages:
     solr_core_read: core_en
     languageId: 1
 rootPageId: 7284
-solr_enabled_read: true
-solr_host_read: ib-solr.rm-solutions.de
-solr_path_read: /solr/
-solr_port_read: '443'
-solr_scheme_read: https
-solr_use_write_connection: false
-websiteTitle: 'Stadtteilmanagement Boxberg'
 routeEnhancers:
- News:
+  News:
     type: Extbase
     limitToPages:
       - 7303
@@ -63,6 +56,13 @@ routeEnhancers:
         type: PersistedAliasMapper
         tableName: tx_news_domain_model_news
         routeFieldName: path_segment
+solr_enabled_read: true
+solr_host_read: ib-solr.rm-solutions.de
+solr_path_read: /solr/
+solr_port_read: '443'
+solr_scheme_read: https
+solr_use_write_connection: false
+websiteTitle: 'Stadtteilmanagement Boxberg'
 imports:
   -
     resource: 'EXT:ib_template/Configuration/siteconfig/global.yaml'

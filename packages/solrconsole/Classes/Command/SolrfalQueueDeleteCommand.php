@@ -40,47 +40,42 @@ class SolrfalQueueDeleteCommand extends AbstractSolrfalCommand
     /**
      * @var Sites
      */
-    protected $sitesHelper;
-
-    /**
-     * @var Configurations
-     */
-    protected $configurationsHelper;
+    protected Sites $sitesHelper;
 
     /**
      * @var ItemRepository
      */
-    protected $itemRepository;
+    protected ItemRepository $itemRepository;
 
     /**
      * @var array
      */
-    private $sites;
+    private array $sites;
 
     /**
      * @var array
      */
-    private $configurations;
+    private array $configurations;
 
     /**
      * @var array
      */
-    private $contextNames;
+    private array $contextNames;
 
     /**
      * @var array
      */
-    private $itemUids;
+    private array $itemUids;
 
     /**
      * @var array
      */
-    private $languageUids;
+    private array $languageUids;
 
     /**
      * @var array
      */
-    private $uids;
+    private array $uids;
 
     /**
      * Configure the command by defining the name, options and arguments
@@ -103,34 +98,34 @@ class SolrfalQueueDeleteCommand extends AbstractSolrfalCommand
      * @param OutputInterface $output
      * @return bool
      * @throws DBALDriverException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
-    protected function loadOptions(SymfonyStyle $io, InputInterface $input, OutputInterface $output)
+    protected function loadOptions(SymfonyStyle $io, InputInterface $input, OutputInterface $output): bool
     {
         $this->sites = $this->getSitesHelper()->run($io, $input, $output);
 
-        /** @var $configurationHelper Configurations */
+        /** @var Configurations $configurationHelper */
         $configurationHelper = GeneralUtility::makeInstance(Configurations::class);
         $this->configurations = $configurationHelper->run($io, $input);
 
-        /** @var $contextNames ContextNames */
+        /** @var ContextNames $contextNamesHelper */
         $contextNamesHelper = GeneralUtility::makeInstance(ContextNames::class);
         $this->contextNames = $contextNamesHelper->run($io, $input);
 
-        /** @var $itemUidsHelper ItemUids */
+        /** @var ItemUids $itemUidsHelper */
         $itemUidsHelper = GeneralUtility::makeInstance(ItemUids::class);
         $this->itemUids = $itemUidsHelper->run($io, $input);
 
-        /** @var $languagesUidHelper Languages */
+        /** @var Languages $languagesUidHelper */
         $languagesUidHelper = GeneralUtility::makeInstance(Languages::class);
         $this->languageUids = $languagesUidHelper->run($io, $input);
 
-        /** @var $uidsHelper Uids */
+        /** @var Uids $uidsHelper */
         $uidsHelper = GeneralUtility::makeInstance(Uids::class);
         $this->uids = $uidsHelper->run($io, $input);
 
         $count = $this->getItemRepository()->countBy($this->sites, $this->configurations, $this->contextNames, $this->itemUids, $this->uids, $this->languageUids);
-        $io->write("Items that will be deleted (Filters combined with AND): " . $count);
+        $io->write('Items that will be deleted (Filters combined with AND): ' . $count);
         $io->newLine(2);
 
         return $io->confirm('Is this correct?', true);
@@ -143,28 +138,28 @@ class SolrfalQueueDeleteCommand extends AbstractSolrfalCommand
      * @param OutputInterface $output
      * @throws \Exception
      *
-     * @return integer
+     * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $io->title($this->getDescription());
         $confirmed = $this->loadOptions($io, $input, $output);
 
-        if(!$confirmed) {
+        if (!$confirmed) {
             $io->write('Skipped');
             $io->newLine(1);
-            return;
+            return self::FAILURE;
         }
 
-            // @todo we need to think about if we want to allow a deletion in solr on queue deletion as well, by now consitent with solr:queue:delete command => no deletion from solr
+        // @todo we need to think about if we want to allow a deletion in solr on queue deletion as well, by now consitent with solr:queue:delete command => no deletion from solr
         $deleteInSolr = false;
         $this->getItemRepository()->removeBy($this->sites, $this->configurations, $this->contextNames, $this->itemUids, $this->uids, $this->languageUids, $deleteInSolr);
 
         $io->write('<fg=green>Done</>');
         $io->newLine(1);
 
-        return 0;
+        return self::SUCCESS;
     }
 
     /**
@@ -197,7 +192,7 @@ class SolrfalQueueDeleteCommand extends AbstractSolrfalCommand
     /**
      * @param Sites $sitesHelper
      */
-    public function setSitesHelper(Sites $sitesHelper)
+    public function setSitesHelper(Sites $sitesHelper): void
     {
         $this->sitesHelper = $sitesHelper;
     }

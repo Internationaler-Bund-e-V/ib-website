@@ -69,7 +69,7 @@
 			<trans-unit id="solrfal.backend.file_indexing_module.errors.file_uid" xml:space="preserve">
 				<source>File Uid</source>
 			</trans-unit>
-			<trans-unit id="solrfal.backend.file_indexing_module.errors.context_record_page" xml:space="preserve">
+			<trans-unit id="solrfal.backend.file_indexing_module.errors.context_record_pid" xml:space="preserve">
 				<source>Record Storage</source>
 			</trans-unit>
 			<trans-unit id="solrfal.backend.file_indexing_module.errors.error_message" xml:space="preserve">

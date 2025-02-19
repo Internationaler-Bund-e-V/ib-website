@@ -1,7 +1,8 @@
+.. include:: /Includes.rst.txt
 
-
+==========
 How to use
-----------
+==========
 
 
 1. **Setup EXT:solr** >=3.0.0

@@ -1,14 +1,17 @@
-{namespace v=FluidTYPO3\Vhs\ViewHelpers} {namespace j=Rms\Ibcontent\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace j=Rms\Ibcontent\ViewHelpers}
+{namespace encore = Ssch\Typo3Encore\ViewHelpers}
 <f:layout name="Default" />
 
 <f:section name="main">
   <div class="row ib-content-module ib-dbproductlist rs_preserve ib-background-white">
-    <div id="searchFWDApp" class="columns medium-10 medium-offset-1 end"></div>
+    <div id="searchFWDApp" class="columns medium-10 medium-offset-1 end" data-proxyurl="{f:uri.resource(path:'dist/proxy.php', extensionName: 'ibcontent', absolute:'true')}"></div>
   </div>
 
   <!-- include db.js as footer asset -->
 
-  <f:asset.script identifier="searchFWDAppjs" src="EXT:ibcontent/fwd-vue/dist/js/searchFWDApp.min.js" />
+<encore:renderWebpackLinkTags entryName="fwd" />
+<encore:renderWebpackScriptTags entryName="fwd" />
 
 
 </f:section>

@@ -1,0 +1,423 @@
+# -----------------------------------------------------------------------------
+# config object
+# -----------------------------------------------------------------------------
+config {
+    doctype = html5
+    prefixLocalAnchors = all
+    #baseURL = {$portalSettings.baseURL}
+    absRefPrefix = /
+    #absRefPrefix = {$portalSettings.baseURL}
+    absRelPath = /
+    tx_realurl_enable = 1
+    simulateStaticDocuments = 0
+    sendCacheHeaders = 1
+
+    compressJS = 0
+    compressCss = 0
+    disablePrefixComment = 1
+
+    sys_language_uid = {$lang.sys_language_uid}
+    language = {$lang.language}
+    locale_all = {$lang.locale_all}
+    htmlTag.attributes.class = no-js
+    htmlTag_langKey = {$lang.htmlTag_langKey}
+
+    #linkVars = L
+    linkVars = L(0-4)
+    uniqueLinkVars = 1
+    sys_language_mode = {$lang.sys_language_mode}
+
+    extTarget = _blank
+    fileTarget = _blank
+
+    # remove default title
+    noPageTitle = 1
+
+    # make realurl use "de" as default language indicator
+    # and prevent duplicate content for google
+    #defaultGetVars.L = 0
+    defaultGetVars.L = {$portalSettings.defaultGetVars.L}
+
+    contentObjectExceptionHandler = 0
+
+    # allow links across portals
+    typolinkCheckRootline = 1
+    typolinkEnableLinksAcrossDomains = 1
+
+    ## concat js and css files
+    concatenateJsAndCss = 1
+
+    # @see ma 776 and ma 693
+    # @author mk, 2018-05-11
+    sendCacheHeaders = 1
+    cache_clearAtMidnight = 1
+    cache_period = 14400
+}
+
+# -----------------------------------------------------------------------------
+# Set FELogin Template
+# -----------------------------------------------------------------------------
+
+plugin.tx_felogin_login {
+    view {
+        templateRootPaths {
+            0 = EXT:felogin/Resources/Private/Templates/
+            10 = EXT:ib_template/Resources/Private/Template/html/fsc/Templates/
+        }
+    }
+}
+
+
+# -----------------------------------------------------------------------------
+# social share links
+# -----------------------------------------------------------------------------
+
+# footer
+social.headline = TEXT
+social.facebook = TEXT
+#social.twitter = TEXT
+social.bluesky = TEXT
+social.mastodon = TEXT
+social.instagram = TEXT
+social.linkedin = TEXT
+social.xing = TEXT
+social.kununu = TEXT
+social.youtube = TEXT
+
+social.facebook.titletag = TEXT
+#social.twitter.titletag = TEXT
+social.bluesky.titletag = TEXT
+social.mastodon.titletag = TEXT
+social.instagram.titletag = TEXT
+social.linkedin.titletag = TEXT
+social.xing.titletag = TEXT
+social.kununu.titletag = TEXT
+social.youtube.titletag = TEXT
+
+social.headline.value = {$social.headline}
+social.facebook.value = {$social.facebook}
+#social.twitter.value = {$social.twitter}
+social.bluesky.value = {$social.bluesky}
+social.mastodon.value = {$social.mastodon}
+social.instagram.value = {$social.instagram}
+social.linkedin.value = {$social.linkedin}
+social.xing.value = {$social.xing}
+social.kununu.value = {$social.kununu}
+social.youtube.value = {$social.youtube}
+
+social.facebook.titletag.value = {$social.facebook.titletag}
+#social.twitter.titletag.value = {$social.twitter.titletag}
+social.bluesky.titletag.value = {$social.bluesky.titletag}
+social.mastodon.titletag.value = {$social.mastodon.titletag}
+social.instagram.titletag.value = {$social.instagram.titletag}
+social.linkedin.titletag.value = {$social.linkedin.titletag}
+social.xing.titletag.value = {$social.xing.titletag}
+social.kununu.titletag.value = {$social.kununu.titletag}
+social.youtube.titletag.value = {$social.youtube.titletag}
+
+# fixed bar
+
+portalSettings.social.facebook = TEXT
+#portalSettings.social.twitter = TEXT
+portalSettings.social.bluesky = TEXT
+portalSettings.social.mastodon = TEXT
+portalSettings.social.instagram = TEXT
+portalSettings.social.linkedin = TEXT
+portalSettings.social.xing = TEXT
+portalSettings.social.kununu = TEXT
+portalSettings.social.youtube = TEXT
+portalSettings.social.facebook.titletag = TEXT
+#portalSettings.social.twitter.titletag = TEXT
+portalSettings.social.bluesky.titletag = TEXT
+portalSettings.social.mastodon.titletag = TEXT
+portalSettings.social.instagram.titletag = TEXT
+portalSettings.social.linkedin.titletag = TEXT
+portalSettings.social.xing.titletag = TEXT
+portalSettings.social.kununu.titletag = TEXT
+portalSettings.social.youtube.titletag = TEXT
+portalSettings.social.facebook.value = {$portalSettings.social.facebook}
+#portalSettings.social.twitter.value = {$portalSettings.social.twitter}
+portalSettings.social.bluesky.value = {$portalSettings.social.bluesky}
+portalSettings.social.mastodon.value = {$portalSettings.social.mastodon}
+portalSettings.social.instagram.value = {$portalSettings.social.instagram}
+portalSettings.social.linkedin.value = {$portalSettings.social.linkedin}
+portalSettings.social.xing.value = {$portalSettings.social.xing}
+portalSettings.social.kununu.value = {$portalSettings.social.kununu}
+portalSettings.social.youtube.value = {$portalSettings.social.youtube}
+portalSettings.social.facebook.titletag.value = {$portalSettings.social.facebook.titletag}
+#portalSettings.social.twitter.titletag.value = {$portalSettings.social.twitter.titletag}
+portalSettings.social.bluesky.titletag.value = {$portalSettings.social.bluesky.titletag}
+portalSettings.social.mastodon.titletag.value = {$portalSettings.social.mastodon.titletag}
+portalSettings.social.instagram.titletag.value = {$portalSettings.social.instagram.titletag}
+portalSettings.social.linkedin.titletag.value = {$portalSettings.social.linkedin.titletag}
+portalSettings.social.xing.titletag.value = {$portalSettings.social.xing.titletag}
+portalSettings.social.kununu.titletag.value = {$portalSettings.social.kununu.titletag}
+portalSettings.social.youtube.titletag.value = {$portalSettings.social.youtube.titletag}
+
+portalSettings.social.ib_english_page_link = TEXT
+portalSettings.social.ib_english_page_link.value = {$portalSettings.social.ib_english_page_link}
+
+portalSettings.social.ib_german_page_link = TEXT
+portalSettings.social.ib_german_page_link.value = {$portalSettings.social.ib_german_page_link}
+
+# -----------------------------------------------------------------------------
+# set footer variables
+# -----------------------------------------------------------------------------
+portalSettings.footer.hide_footer = TEXT
+portalSettings.footer.hide_footer.value = {$portalSettings.footer_hide_footer}
+portalSettings.footer.hide_social_links = TEXT
+portalSettings.footer.hide_social_links.value = {$portalSettings.footer_hide_social_links}
+portalSettings.footer.hide_central_links = TEXT
+portalSettings.footer.hide_central_links.value = {$portalSettings.footer.hide_central_links}
+
+portalSettings.footer.central_links_num_columns = TEXT
+portalSettings.footer.central_links_num_columns.value = {$portalSettings.footer.central_links_num_columns}
+
+portalSettings.footer.hide_further_links = TEXT
+portalSettings.footer.hide_further_links.value = {$portalSettings.footer.hide_further_links}
+portalSettings.footer.central_links_headline = TEXT
+portalSettings.footer.central_links_headline.value = {$portalSettings.footer_central_links_headline}
+portalSettings.footer.further_links_headline = TEXT
+portalSettings.footer.further_links_headline.value = {$portalSettings.footer_further_links_headline}
+portalSettings.footer.logo = TEXT
+portalSettings.footer.logo.value = {$portalSettings.footer_logo}
+
+portalSettings.footer.show_textcontent_left = TEXT
+portalSettings.footer.show_textcontent_left.value = {$portalSettings.footer.show_textcontent_left}
+
+portalSettings.footer.show_textcontent_middle = TEXT
+portalSettings.footer.show_textcontent_middle.value = {$portalSettings.footer.show_textcontent_middle}
+
+portalSettings.footer.show_textcontent_right = TEXT
+portalSettings.footer.show_textcontent_right.value = {$portalSettings.footer.show_textcontent_right}
+
+// get tt_content.bodytext and render it for usage in the footer
+portalSettings.footer.textcontent_right = RECORDS
+portalSettings.footer.textcontent_right {
+    tables = tt_content
+    source = {$portalSettings.footer.tt_content_uid_right}
+    dontCheckPid = 1
+    conf.tt_content {
+        stdWrap.field = bodytext
+        stdWrap.wrap = <div>|</div>
+    }
+}
+portalSettings.footer.textcontent_left < portalSettings.footer.textcontent_right
+portalSettings.footer.textcontent_left.source = {$portalSettings.footer.tt_content_uid_left}
+portalSettings.footer.textcontent_middle < portalSettings.footer.textcontent_right
+portalSettings.footer.textcontent_middle.source = {$portalSettings.footer.tt_content_uid_middle}
+
+portalSettings.footer.use_three_columns = TEXT
+portalSettings.footer.use_three_columns.value = {$portalSettings.footer.use_three_columns}
+
+# -----------------------------------------------------------------------------
+# set readspeaker variables
+# -----------------------------------------------------------------------------
+portalSettings.readspeaker.show = TEXT
+portalSettings.readspeaker.show.value =  {$portalSettings.readspeaker.show}
+portalSettings.readspeaker.id = TEXT
+portalSettings.readspeaker.id.value =  {$portalSettings.readspeaker.id}
+portalSettings.readspeaker.lang = TEXT
+portalSettings.readspeaker.lang.value =  {$portalSettings.readspeaker.lang}
+portalSettings.readspeaker.buttonText = TEXT
+portalSettings.readspeaker.buttonText.value =  {$portalSettings.readspeaker.buttonText}
+portalSettings.readspeaker.title = TEXT
+portalSettings.readspeaker.title.value =  {$portalSettings.readspeaker.title}
+
+# -----------------------------------------------------------------------------
+# set portal/domain variables
+# -----------------------------------------------------------------------------
+portalSettings.id = TEXT
+portalSettings.id.value = {$portalSettings.mainnav_start_id}
+portalSettings.servicesMenuId = TEXT
+portalSettings.servicesMenuId.value = {$portalSettings.services_menu_start_id}
+portalSettings.firstMenuTitle = TEXT
+portalSettings.firstMenuTitle.value = {$portalSettings.firstMenuTitle}
+
+portalSettings.analytics_account_id = TEXT
+portalSettings.analytics_account_id.value = {$portalSettings.analytics.account_id}
+portalSettings.analytics_enable_tracking = TEXT
+portalSettings.analytics_enable_tracking.value = {$portalSettings.analytics.enable_tracking}
+
+
+# -----------------------------------------------------------------------------
+# set cookie policy
+# -----------------------------------------------------------------------------
+portalSettings.cookiepolicy.show = TEXT
+portalSettings.cookiepolicy.text = TEXT
+portalSettings.cookiepolicy.link = TEXT
+portalSettings.cookiepolicy.ok_button_text = TEXT
+portalSettings.cookiepolicy.link_page = TEXT
+
+portalSettings.cookiepolicy.show.value = {$portalSettings.cookiepolicy.show}
+portalSettings.cookiepolicy.text.value = {$portalSettings.cookiepolicy.text}
+portalSettings.cookiepolicy.link.value = {$portalSettings.cookiepolicy.link}
+portalSettings.cookiepolicy.link_page.value = {$portalSettings.cookiepolicy.link_page}
+portalSettings.cookiepolicy.ok_button_text.value = {$portalSettings.cookiepolicy.ok_button_text}
+
+# -----------------------------------------------------------------------------
+# set facebook pixel enabled
+# -----------------------------------------------------------------------------
+portalSettings.facebook_pixel.enabled = TEXT
+portalSettings.facebook_pixel.enabled.value = {$portalSettings.facebook_pixel.enabled}
+
+# -----------------------------------------------------------------------------
+# set additional partial
+# -----------------------------------------------------------------------------
+portalSettings.additional_partial = TEXT
+portalSettings.additional_partial.value = {$portalSettings.additional_partial}
+
+# -----------------------------------------------------------------------------
+# allow JWD Template -> see MA#2127
+# -----------------------------------------------------------------------------
+portalSettings.allowFWDJobTemplate = TEXT
+portalSettings.allowFWDJobTemplate.value = {$portalSettings.allowFWDJobTemplate}
+
+# -----------------------------------------------------------------------------
+# other stuff
+# -----------------------------------------------------------------------------
+
+portalSettings.social_bar.show = TEXT
+portalSettings.social_bar.show.value = {$portalSettings.social_bar.show}
+
+portalSettings.main_bubble.hide = TEXT
+portalSettings.main_bubble.hide.value = {$portalSettings.main_bubble.hide}
+
+portalSettings.main_bubble_en.hide = TEXT
+portalSettings.main_bubble_en.hide.value = {$portalSettings.main_bubble_en.hide}
+
+portalSettings.portal_logo.format = TEXT
+portalSettings.portal_logo.format.value = {$portalSettings.portal_logo.format}
+
+portalSettings.portal_logo.file = TEXT
+portalSettings.portal_logo.file.value = {$portalSettings.portal_logo.file}
+
+portalSettings.showLanguageMenu = TEXT
+portalSettings.showLanguageMenu.value = {$portalSettings.showLanguageMenu}
+
+portalSettings.showNavigationSearch = TEXT
+portalSettings.showNavigationSearch.value = {$portalSettings.showNavigationSearch}
+
+portalSettings.showSearchButton = TEXT
+portalSettings.showSearchButton.value = {$portalSettings.showSearchButton}
+
+portalSettings.cookiebot_language = TEXT
+portalSettings.cookiebot_language.value = {$portalSettings.cookiebot.language}
+
+portalSettings.root_id = TEXT
+portalSettings.root_id.value = {$portalSettings.root_id}
+
+portalSettings.dataPrivacySiteID = TEXT
+portalSettings.dataPrivacySiteID.value = {$portalSettings.dataPrivacySiteID}
+
+# -----------------------------------------------------------------------------
+# tabs bar
+# -----------------------------------------------------------------------------
+portalSettings.tabs_bar.show = TEXT
+portalSettings.tabs_bar.show.value = {$portalSettings.tabs_bar.show}
+portalSettings.tabs_bar.folder_id = TEXT
+portalSettings.tabs_bar.folder_id.value = {$portalSettings.tabs_bar.folder_id}
+portalSettings.tabs_bar.orientation = TEXT
+portalSettings.tabs_bar.orientation.value = {$portalSettings.tabs_bar.orientation}
+
+# -----------------------------------------------------------------------------
+# custom layouts -> deprecated, see EXT:ib_template/Resources/Private/Template/fsc for fluid styled content, use legacy_support.t3s
+# -----------------------------------------------------------------------------
+#<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ib_template/Configuration/TypoScript/setup_tt_content_custom_layout.ts">
+#<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ib_template/Configuration/TypoScript/legacy_support.t3s">
+@import 'EXT:ib_template/Configuration/TypoScript/legacy_support.typoscript'
+
+# -----------------------------------------------------------------------------
+# form configuration
+# -----------------------------------------------------------------------------
+@import 'EXT:ib_template/Configuration/TypoScript/mailform.typoscript'
+
+# -----------------------------------------------------------------------------
+# news configuration
+# -----------------------------------------------------------------------------
+@import 'EXT:ib_template/Configuration/TypoScript/news.typoscript'
+
+# -----------------------------------------------------------------------------
+# cookiebot configuration
+# -----------------------------------------------------------------------------
+@import 'EXT:ib_template/Configuration/TypoScript/cookiebot_setup.typoscript'
+
+# -----------------------------------------------------------------------------
+# sitemap configuration
+# -----------------------------------------------------------------------------
+#<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ib_template/Configuration/TypoScript/sitemap_setup.t3s">
+@import 'EXT:ib_template/Configuration/TypoScript/sitemap_setup.typoscript'
+
+# -----------------------------------------------------------------------------
+# robots.txt configuration
+# -----------------------------------------------------------------------------
+#<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ib_template/Configuration/TypoScript/robots.t3s">
+@import 'EXT:ib_template/Configuration/TypoScript/robots.typoscript'
+
+
+# -----------------------------------------------------------------------------
+# configure IB MAPS, CONTENT, ... PLUGINS
+# -----------------------------------------------------------------------------
+
+plugin.tx_ibsearch.settings {
+    productDbBaseUrl = {$portalSettings.misc.productDbBaseUrl}
+    locationSingleViewId = {$portalSettings.misc.locationSingleViewId}
+    showOnlyTYPO3SearchResults = {$portalSettings.misc.showOnlyTYPO3SearchResults}
+}
+
+plugin.tx_ibsearch.settings {
+    productDbBaseUrl = {$portalSettings.misc.productDbBaseUrl}
+    locationSingleViewId = {$portalSettings.misc.locationSingleViewId}
+    productSingleViewId = {$portalSettings.misc.productSingleViewId}
+    searchResultId = {$portalSettings.misc.searchResultId}
+}
+
+plugin.tx_ibcontent.settings.searchResultId = {$portalSettings.misc.searchResultId}
+plugin.tx_ibcontent.settings.navigationID = {$portalSettings.ib_content.dbNavigationId}
+plugin.tx_ibcontent.settings.newsProductLocationsFolder = {$portalSettings.ib_content.newsProductLocationsFolder}
+plugin.tx_ibcontent.settings.newsDetailsPage = {$portalSettings.ib_content.newsDetailsPage}
+plugin.tx_ibcontent.settings.newsUploadFolder = {$portalSettings.ib_content.newsUploadFolder}
+plugin.tx_ibcontent.settings.dbCategoryLocationPage = {$portalSettings.ib_content.dbCategoryLocationPage}
+
+plugin.tx_typo3encore {
+    settings {
+        entrypointJsonPath = EXT:ib_template/Resources/Public/build/entrypoints.json
+        manifestJsonPath = EXT:ib_template/Resources/Public/build/manifest.json
+    }
+}
+
+plugin.tx_ibjobs.settings {
+    productDbBaseUrl 	= {$portalSettings.ibjobs.ibjobsBaseUrl}
+    #jobSingleViewPage	= {$portalSettings.ibjobs.jobSingleViewPage}
+}
+
+
+## gallery folder/pid
+module.tx_ibgalerie_web_ibgalerieibgaleriebe.persistence.storagePid = {$gallery.folder.pid}
+
+
+tx_ddgooglesitemap.forceStartPid = {$portalSettings.misc.sitemapStartId}
+
+# set google api key
+gmaps.apiKey = TEXT
+gmaps.apiKey.value = {$portalSettings.misc.googleAps.apiKey}
+
+# set google recaptcha key
+google.recaptcha.sitekey = TEXT
+google.recaptcha.sitekey.value = {$portalSettings.misc.google.recaptchaSiteKey}
+
+# set tt_news user_func for hiding teaser image in single view -> MA#694
+#plugin.tt_news {
+     # call user function
+     #imageMarkerFunc = Rms\ibNewsExt\teaserMarkerFunc->user_imageMarkerFunc
+     #includeLibs = EXT:ib_tt_news_ext/Resources/Public/UserFuncs/teaserMarkerFunc.php
+ #}
+ #set tt_news none cached for immediate update -> MA#792
+ #plugin.tt_news = USER_INT
+
+ #allow custom RTE classes for tables
+lib.parseFunc_RTE.externalBlocks.table.stdWrap.HTMLparser.tags.table.fixAttrib.class.list >
+
+
+lib.parseFunc.htmlSanitize = 1
+lib.parseFunc_RTE.htmlSanitize = 0

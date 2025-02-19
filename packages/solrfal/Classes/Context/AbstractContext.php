@@ -21,122 +21,69 @@ use ApacheSolrForTypo3\Solr\Access\Rootline;
 use ApacheSolrForTypo3\Solr\Domain\Site\Site;
 use ApacheSolrForTypo3\Solr\FrontendEnvironment;
 use ApacheSolrForTypo3\Solr\System\Configuration\TypoScriptConfiguration;
-use Doctrine\DBAL\Driver\Exception as DBALDriverException;
-use function json_encode;
+use Doctrine\DBAL\Exception as DBALException;
+use TYPO3\CMS\Core\Context\Context as TYPO3CoreContext;
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
+use function json_encode;
+
 /**
- * Class Context
+ * Class AbstractContext
  */
 abstract class AbstractContext implements ContextInterface
 {
     /**
-     * @var Site
-     */
-    protected Site $site;
-
-    /**
-     * @var Rootline
-     */
-    protected Rootline $accessRestrictions;
-
-    /**
-     * @var int
-     */
-    protected int $language = 0;
-
-    /**
-     * @var array
+     * @var array<string, string|int>
      */
     protected array $additionalDocumentFields = [];
 
-    /**
-     * @var string
-     */
-    protected string $indexingConfiguration = '';
-
-    /**
-     * @var bool
-     */
     protected bool $error = false;
 
-    /**
-     * @var string
-     */
     protected string $errorMessage = '';
 
-    /**
-     * @param Site $site
-     * @param Rootline $accessRestrictions
-     * @param string $indexingConfiguration
-     * @param int $language
-     */
     public function __construct(
-        Site $site,
-        Rootline $accessRestrictions,
-        string $indexingConfiguration = '',
-        int $language = 0
-    ) {
-        $this->site               = $site;
-        $this->accessRestrictions = $accessRestrictions;
-        $this->language           = $language;
-        $this->indexingConfiguration = $indexingConfiguration;
-    }
+        protected readonly Site $site,
+        protected readonly Rootline $accessRestrictions,
+        protected readonly int $uid,
+        protected readonly int $pid,
+        protected readonly string $indexingConfiguration = '',
+        protected readonly int $language = 0,
+    ) {}
 
-    /**
-     * @return string
-     */
     public function getIndexingConfiguration(): string
     {
         return $this->indexingConfiguration;
     }
 
-    /**
-     * @return bool
-     */
     public function getError(): bool
     {
         return $this->error;
     }
 
-    /**
-     * @return string
-     */
     public function getErrorMessage(): string
     {
         return $this->errorMessage;
     }
 
-    /**
-     * @return Rootline
-     */
     public function getAccessRestrictions(): Rootline
     {
         return $this->accessRestrictions;
     }
 
-    /**
-     * @return int
-     */
     public function getLanguage(): int
     {
         return $this->language;
     }
 
-    /**
-     * @return Site
-     */
     public function getSite(): Site
     {
         return $this->site;
     }
 
     /**
-     * Returns the array representation for database storage
-     *
-     * @return array
+     * @inheritDoc
      */
     public function toArray(): array
     {
@@ -147,31 +94,47 @@ abstract class AbstractContext implements ContextInterface
             'context_site'                => $this->getSite()->getRootPageId(),
             'context_additional_fields'   => json_encode($this->additionalDocumentFields),
             'context_record_indexing_configuration' => $this->getIndexingConfiguration(),
+            'context_record_uid'                    => $this->getUid(),
+            'context_record_pid'                    => $this->getPid(),
             'error'                       => (int)$this->getError(),
             'error_message'               => $this->getErrorMessage(),
         ];
     }
 
     /**
-     * Returns the pageId of this context
-     *
-     * @return int
+     * @inheritDoc
      */
-    public function getPageId(): int
+    final public function getUid(): int
+    {
+        return $this->uid;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getPid(): int
+    {
+        return $this->pid;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getPidForCoreContext(): int
     {
         return $this->getSite()->getRootPageId();
     }
 
     /**
-     * @param array $additionalDocumentFields
+     * @param array<string, string|int> $additionalDocumentFields
      */
-    public function setAdditionalDocumentFields(array $additionalDocumentFields)
+    public function setAdditionalDocumentFields(array $additionalDocumentFields): void
     {
         $this->additionalDocumentFields = $additionalDocumentFields;
     }
 
     /**
-     * @return array
+     * @inheritDoc
      */
     public function getAdditionalStaticDocumentFields(): array
     {
@@ -179,12 +142,7 @@ abstract class AbstractContext implements ContextInterface
     }
 
     /**
-     * Returns an array of context specific field to add to the solr document,
-     * dynamically calculated from the FILE
-     *
-     * @param File $file
-     *
-     * @return array
+     * @inheritDoc
      */
     public function getAdditionalDynamicDocumentFields(File $file): array
     {
@@ -192,23 +150,21 @@ abstract class AbstractContext implements ContextInterface
     }
 
     /**
-     * Resolves the field-processing TypoScript configuration which is specific
-     * to the current context.
-     * Will be merged in the default field-processing configuration and takes
-     * precedence over the default configuration.
+     * @inheritDoc
      *
-     * @return array
-     * @throws DBALDriverException
+     * @throws DBALException
      */
     public function getSpecificFieldConfigurationTypoScript(): array
     {
-        /* @var TypoScriptConfiguration $fileConfiguration */
+        /** @var TypoScriptConfiguration $fileConfiguration */
         $fileConfiguration = GeneralUtility::makeInstance(FrontendEnvironment::class)->getSolrConfigurationFromPageId(
             $this->getSite()->getRootPageId(),
             $this->getLanguage()
         );
 
-        $contextConfiguration = $fileConfiguration->getObjectByPathOrDefault('plugin.tx_solr.index.queue._FILES.' . $this->getContextIdentifier() . 'Context.', []);
+        $contextConfiguration = $fileConfiguration->getObjectByPathOrDefault(
+            'plugin.tx_solr.index.queue._FILES.' . $this->getContextIdentifier() . 'Context.'
+        );
         $configurationArray = [];
 
         if (array_key_exists('default.', $contextConfiguration) && is_array($contextConfiguration['default.'])) {
@@ -225,12 +181,15 @@ abstract class AbstractContext implements ContextInterface
         return $configurationArray;
     }
 
+    protected function getTYPO3CoreContext(): TYPO3CoreContext
+    {
+        return GeneralUtility::makeInstance(TYPO3CoreContext::class);
+    }
+
     /**
      * Returns an identifier, which will be used for looking up special
      * configurations in TypoScript like storage uid in storageContext
      * or table name in recordContext
-     *
-     * @return string
      */
     abstract protected function getIdentifierForItemSpecificFieldConfiguration(): string;
 }

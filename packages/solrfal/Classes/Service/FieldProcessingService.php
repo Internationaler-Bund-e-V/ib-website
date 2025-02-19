@@ -17,13 +17,17 @@ declare(strict_types=1);
 
 namespace ApacheSolrForTypo3\Solrfal\Service;
 
+use ApacheSolrForTypo3\Solr\Exception;
 use ApacheSolrForTypo3\Solr\FieldProcessor\Service;
 use ApacheSolrForTypo3\Solr\FrontendEnvironment;
+use ApacheSolrForTypo3\Solr\FrontendEnvironment\Exception\Exception as FrontendEnvironmentException;
 use ApacheSolrForTypo3\Solr\FrontendEnvironment\Tsfe;
 use ApacheSolrForTypo3\Solr\IndexQueue\AbstractIndexer;
 use ApacheSolrForTypo3\Solr\System\Configuration\TypoScriptConfiguration;
 use ApacheSolrForTypo3\Solr\System\Solr\Document\Document;
 use ApacheSolrForTypo3\Solrfal\Context\ContextInterface;
+use Doctrine\DBAL\Exception as DBALException;
+use TYPO3\CMS\Core\Exception\SiteNotFoundException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -31,29 +35,27 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class FieldProcessingService extends AbstractIndexer
 {
-    /**
-     * @var FieldProcessingService
-     */
-    protected static $instance;
+    protected static ?FieldProcessingService $instance = null;
 
     /**
-     * @param Document $document
-     * @param ContextInterface $context
+     * @throws Exception
+     * @throws DBALException
      */
-    public static function processFieldInstructions(Document $document, ContextInterface $context)
-    {
+    public static function processFieldInstructions(
+        Document $document,
+        ContextInterface $context,
+    ): void {
         $documents = [$document];
 
-        /* @var TypoScriptConfiguration $solrConfiguration */
+        /** @var TypoScriptConfiguration $solrConfiguration */
         // needs to respect the TS settings of the page the item is on, conditions apply
         $solrConfiguration = GeneralUtility::makeInstance(FrontendEnvironment::class)->getSolrConfigurationFromPageId($context->getSite()->getRootPageId());
         $fieldProcessingInstructions = $solrConfiguration->getObjectByPathOrDefault(
             'plugin.tx_solr.index.fieldProcessingInstructions.',
-            []
         );
 
         // same as in the FE indexer
-        if (is_array($fieldProcessingInstructions)) {
+        if (!empty($fieldProcessingInstructions)) {
             /** @var Service $service */
             $service = GeneralUtility::makeInstance(Service::class);
             $service->processDocuments(
@@ -66,14 +68,23 @@ class FieldProcessingService extends AbstractIndexer
     /**
      * Adds fields to the document as defined in $indexingConfiguration
      *
-     * @param ContextInterface $context
+     * @param ContextInterface $context the EXT:solrfal context
      * @param Document $document base document to add fields to
-     * @param array $indexingConfiguration Indexing configuration / mapping
-     * @param array $data The record Data
+     * @param array<string, mixed> $indexingConfiguration Indexing configuration / mapping
+     * @param array<string, int|string|bool|null> $data The record Data
+     *
      * @return Document Modified document with added fields
+     *
+     * @throws DBALException
+     * @throws FrontendEnvironmentException
+     * @throws SiteNotFoundException
      */
-    public static function addTypoScriptFieldsToDocument(ContextInterface $context, Document $document, array $indexingConfiguration, array $data)
-    {
+    public static function addTypoScriptFieldsToDocument(
+        ContextInterface $context,
+        Document $document,
+        array $indexingConfiguration,
+        array $data
+    ): Document {
         if (self::$instance == null) {
             self::$instance = GeneralUtility::makeInstance(__CLASS__);
             self::$instance->type = 'sys_file_metadata';

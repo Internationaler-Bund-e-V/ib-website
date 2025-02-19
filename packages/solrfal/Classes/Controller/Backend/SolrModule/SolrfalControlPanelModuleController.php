@@ -19,78 +19,81 @@ namespace ApacheSolrForTypo3\Solrfal\Controller\Backend\SolrModule;
 
 use ApacheSolrForTypo3\Solr\Controller\Backend\Search\AbstractModuleController;
 use ApacheSolrForTypo3\Solrfal\Queue\ItemRepository;
-use Exception;
+use Doctrine\DBAL\Exception as DBALException;
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Core\Messaging\FlashMessage;
+use Throwable;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Mvc\Exception\StopActionException;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  * Solrfal control panel
  *
- * @author Timo Hund <timo.hund@dkd.de>
  * @noinspection PhpUnused
  */
 class SolrfalControlPanelModuleController extends AbstractModuleController
 {
-
     /**
      * Index action
      *
-     * @throws Exception
-     * @noinspection PhpUnused
+     * @throws DBALException
      */
     public function indexAction(): ResponseInterface
     {
         if ($this->selectedSite === null) {
-            $this->view->assign('can_not_proceed', true);
-            return $this->getModuleTemplateResponse();
+            $this->moduleTemplate->assign('can_not_proceed', true);
+            return $this->moduleTemplate->renderResponse('Index');
         }
 
         $repository = $this->getItemRepository();
         $statistics = $repository->getStatisticsBySite($this->selectedSite);
 
-        $this->view->assign('site_item_count', $statistics->getTotalCount());
-        $this->view->assign('total_item_count', $repository->count());
-        $this->view->assign('indexqueue_statistics', $statistics);
-        $this->view->assign('indexqueue_errors', $repository->findErrorsBySite($this->selectedSite));
-        return $this->getModuleTemplateResponse();
+        $this->moduleTemplate->assign('site_item_count', $statistics->getTotalCount());
+        $this->moduleTemplate->assign('total_item_count', $repository->count());
+        $this->moduleTemplate->assign('indexqueue_statistics', $statistics);
+        $this->moduleTemplate->assign('indexqueue_errors', $repository->findErrorsBySite($this->selectedSite));
+        return $this->moduleTemplate->renderResponse('Index');
     }
 
     /**
      * Clears the file index queue for the current site.
      *
-     * @throws Exception
      * @noinspection PhpUnused
      */
-    public function clearSitesFileIndexQueueAction()
+    public function clearSitesFileIndexQueueAction(): ResponseInterface
     {
         try {
             $this->getItemRepository()->removeBySite($this->selectedSite);
             $this->addFlashMessage(LocalizationUtility::translate('solrfal.backend.file_indexing_module.success.queue_emptied', 'Solrfal', [$this->selectedSite->getLabel()]));
-        } catch (Exception $e) {
-            $this->addFlashMessage(LocalizationUtility::translate('solrfal.backend.file_indexing_module.error.on_empty_queue', 'Solrfal', [$e->__toString()]), '', FlashMessage::ERROR);
+        } catch (Throwable $e) {
+            $this->addFlashMessage(
+                LocalizationUtility::translate(
+                    'solrfal.backend.file_indexing_module.error.on_empty_queue',
+                    'Solrfal',
+                    [$e->__toString()]
+                ),
+                '',
+                ContextualFeedbackSeverity::ERROR
+            );
         }
 
-        $this->redirect('index');
+        return $this->redirect('index');
     }
 
     /**
      * Removes all errors in the index queue list. So that the items can be indexed again.
      *
-     * @throws StopActionException
      * @noinspection PhpUnused
      */
-    public function resetLogErrorsAction()
+    public function resetLogErrorsAction(): ResponseInterface
     {
         $resetResult = $this->getItemRepository()->flushErrorsBySite($this->selectedSite);
 
         $label = 'solrfal.backend.file_indexing_module.flashmessage.success.reset_errors';
-        $severity = FlashMessage::OK;
+        $severity = ContextualFeedbackSeverity::OK;
         if (!$resetResult) {
             $label = 'solrfal.backend.file_indexing_module.flashmessage.error.reset_errors';
-            $severity = FlashMessage::ERROR;
+            $severity = ContextualFeedbackSeverity::ERROR;
         }
 
         $this->addFlashMessage(
@@ -99,39 +102,35 @@ class SolrfalControlPanelModuleController extends AbstractModuleController
             $severity
         );
 
-        $this->redirect('index');
+        return $this->redirect('index');
     }
 
     /**
      * Shows the error message for one queue item.
      *
-     * @param int $indexQueueItemId
+     * @throws DBALException
      * @noinspection PhpUnused
      */
-    public function showErrorAction(int $indexQueueItemId)
+    public function showErrorAction(?int $indexQueueItemId): ResponseInterface
     {
         if (is_null($indexQueueItemId)) {
-            $severity = FlashMessage::ERROR;
+            $severity = ContextualFeedbackSeverity::ERROR;
             $this->addFlashMessage(
                 LocalizationUtility::translate('solrfal.backend.file_indexing_module.flashmessage.error.no_queue_item_for_queue_error', 'Solrfal'),
                 LocalizationUtility::translate('solrfal.backend.file_indexing_module.flashmessage.title', 'Solrfal'),
                 $severity
             );
 
-            return $this->getModuleTemplateResponse();
+            return $this->moduleTemplate->renderResponse('ShowError');
         }
 
         $item = $this->getItemRepository()->findByUid($indexQueueItemId);
-        $this->view->assign('indexQueueItem', $item);
-        return $this->getModuleTemplateResponse();
+        $this->moduleTemplate->assign('indexQueueItem', $item);
+        return $this->moduleTemplate->renderResponse('ShowError');
     }
 
-    /**
-     * @return ItemRepository
-     */
     protected function getItemRepository(): ItemRepository
     {
-        /* @noinspection PhpIncompatibleReturnTypeInspection */
         return GeneralUtility::makeInstance(ItemRepository::class);
     }
 }

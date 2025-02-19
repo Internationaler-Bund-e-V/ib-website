@@ -10,11 +10,15 @@
 
 <div id="ib-main-menu">
   <ul class="jetmenu">
-    <li class='showhide'>
-      <span class='title'>
-        <f:cObject typoscriptObjectPath="lib.linkedLogo" />
+    <li class="showhide">
+      <span class="title">
+        <f:variable name="src"
+            value="EXT:ib_template/Resources/Public/Images/logos_portals/{f:cObject(typoscriptObjectPath: 'portalSettings.portal_logo.file')}" />
+        <f:link.page pageUid="{f:cObject(typoscriptObjectPath: 'portalSettings.root_id')}">
+            <img src="{f:uri.resource(path: src)}" class="responsive" alt="Portal Logo" style="height: 35px; width: auto">
+        </f:link.page>
       </span>
-      <span class='icon showhidemobile'>
+      <span class="icon showhidemobile">
         <em></em>
         <em></em>
         <em></em>

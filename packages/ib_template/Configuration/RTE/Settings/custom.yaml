@@ -1,0 +1,84 @@
+imports:
+  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml" }
+  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
+  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml" }
+  - { resource: "EXT:rte_ckeditor_fontawesome/Configuration/RTE/PluginFA6.yaml" }
+
+
+editor:
+  config:
+    debug: true
+    # RTE default config removes image plugin - restore it:
+    format_tags: "p;h1;h2;h3;h4;h5;pre"
+
+    contentsCss:
+      - 'EXT:rte_ckeditor/Resources/Public/Css/contents.css'
+      #- '../fileadmin/template/css/typo3_backend_rte.css'
+      - 'EXT:ib_template/Resources/Public/css/typo3_backend_rte.css'
+
+    toolbarGroups:
+      - { name: styles, groups: [ styles, format ] }
+      - { name: basicstyles, groups: [ basicstyles ] }
+      - { name: paragraph, groups: [ list, indent, blocks, align ] }
+      - { name: links, groups: [ links ] }
+      - { name: clipboard, groups: [ clipboard, cleanup, undo ] }
+      - { name: editing, groups: [ spellchecker ] }
+      - { name: insert, groups: [ insert ] }
+      - { name: tools, groups: [ table, specialchar, insertcharacters, DPFontAwesome ] }
+      - { name: document, groups: [ mode ] }
+
+    justifyClasses:
+      - text-left
+      - text-center
+      - text-right
+      - text-justify
+
+    extraPlugins:
+      - justify
+
+    removeButtons:
+      - Anchor
+      - Underline
+      - Strike
+      #- Styles
+
+    removePlugins: null
+    fillEmptyBlocks: false
+
+    #extraAllowedContent: 'iframe(*)'
+    #extraAllowedContent: "*(*)[data-*]"
+    allowedContent: true
+
+    stylesSet:
+      - { name: "Hellblauer Text", element: "p", attributes: { class: "text-color-light-blue"}}
+      - { name: "Dunkelblauer Text", element: "p", attributes: { class: "text-color-dark-blue"}}
+      - { name: "Text kopieren", element: "span", attributes: { class: "ibCopyThis"}}
+      - { name: "Trenner", element: "p", attributes: { class: "rte-divider"}}
+      - { name: "Tabelle weiß ohne Rahmen", element: "table", attributes: { class: "contenttable stack"}}
+      - { name: "Tabelle alle Rahmenlinien", element: "table", attributes: { class: "ibCustomTable stack grid"}}
+      - { name: "Tabelle blau/weiß", element: "table", attributes: { class: "ibCustomTable stack alternate"}}
+      - { name: "Tabelle responsive Darstellung", element: "table", attributes: { class: "stack"}}
+      - { name: "Button lightblue", element: "a", attributes: { class: "ibCustomButton lightblue"}}
+      - { name: "Button darkblue", element: "a", attributes: { class: "ibCustomButton darkblue"}}
+      - { name: "Button orange", element: "a", attributes: { class: "ibCustomButton orange"}}
+
+    table:
+      contentToolbar:
+        - tableColumn
+        - tableRow
+        - mergeTableCells
+        - splitTableCellVertically
+        - splitTableCellHorizontally
+        - tableCellProperties
+        - tableProperties
+
+  externalPlugins:
+    typo3link: { resource: "EXT:rte_ckeditor/Resources/Public/JavaScript/Plugins/typo3link.js", route: "rteckeditor_wizard_browse_links" }
+    #showbrokenlinks: { resource: "EXT:rte_ckeditor/Resources/Public/JavaScript/Plugins/showbrokenlinks/plugin.js"}
+    # This is a plugin, found here: https://github.com/ufdada/quicktable
+    quicktable: { resource: "EXT:rte_ckeditor/Resources/Public/JavaScript/Plugins/quicktable/plugin.js" }
+    autolinking: { resource: "EXT:rte_ckeditor/Resources/Public/JavaScript/Plugins/autolinking.js" }
+    # softhyphen plugin for adding ctrl+dash support to insert a conditional word break
+    softhyphen:
+      resource: "EXT:rte_ckeditor/Resources/Public/JavaScript/Plugins/softhyphen/"
+      enableShortcut: true

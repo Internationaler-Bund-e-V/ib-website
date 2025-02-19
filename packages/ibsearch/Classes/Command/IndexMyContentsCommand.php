@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Rms\Ibsearch\Command;
 
 use ApacheSolrForTypo3\Solr\ConnectionManager;
-use ApacheSolrForTypo3\Solr\Domain\Site\SiteInterface as SiteSiteInterface;
+use ApacheSolrForTypo3\Solr\Domain\Site\Site;
 use ApacheSolrForTypo3\Solr\Domain\Site\SiteRepository;
 use ApacheSolrForTypo3\Solr\NoSolrConnectionFoundException;
 use ApacheSolrForTypo3\Solr\System\Solr\Document\Document;
@@ -39,7 +39,7 @@ class IndexMyContentsCommand extends AbstractCommand
      * @param InputInterface $input
      * @param OutputInterface $output
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->outputInterface = $output;
 
@@ -195,10 +195,10 @@ class IndexMyContentsCommand extends AbstractCommand
             $entities = json_decode(
                 (string) $this->getURL(
                     $this->baseUrlSolrInterface . "solrGetIbJobsFiltered/clients:" . $configuration['clients']
-                    . "/intern:" . urlencode((string) $configuration['intern'])
-                    . "/locations:" . urlencode((string) $configuration['locations'])
-                    . "/categories:" . urlencode((string) $configuration['categories'])
-                    . "/titles:" . urlencode((string) $configuration['titles'])
+                        . "/intern:" . urlencode((string) $configuration['intern'])
+                        . "/locations:" . urlencode((string) $configuration['locations'])
+                        . "/categories:" . urlencode((string) $configuration['categories'])
+                        . "/titles:" . urlencode((string) $configuration['titles'])
                 ),
                 true
             );
@@ -328,7 +328,7 @@ class IndexMyContentsCommand extends AbstractCommand
         /** @var SiteRepository $siteRepository */
         $siteRepository = GeneralUtility::makeInstance(SiteRepository::class);
 
-        /** @var SiteSiteInterface $site */
+        /** @var Site $site */
         $site = $siteRepository->getSiteByRootPageId($rootPageId);
 
         /** @var Document $document */

@@ -21,7 +21,7 @@ use ApacheSolrForTypo3\Solr\Access\Rootline;
 use ApacheSolrForTypo3\Solr\Domain\Site\Site;
 use ApacheSolrForTypo3\Solr\FrontendEnvironment;
 use ApacheSolrForTypo3\Solr\System\Configuration\TypoScriptConfiguration;
-use Doctrine\DBAL\Driver\Exception as DBALDriverException;
+use Doctrine\DBAL\Exception as BDALException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -29,98 +29,65 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class RecordContext extends AbstractContext
 {
-    /**
-     * @var string
-     */
-    protected string $table;
-
-    /**
-     * @var string
-     */
-    protected string $field;
-
-    /**
-     * @var int
-     */
-    protected int $uid;
-
-    /**
-     * RecordContext constructor.
-     * @param Site $site
-     * @param Rootline $accessRestrictions
-     * @param string $table
-     * @param string $field
-     * @param int $uid
-     * @param string $indexingConfiguration
-     * @param int $language
-     */
     public function __construct(
         Site $site,
         Rootline $accessRestrictions,
-        string $table,
-        string $field,
+        protected readonly string $table,
+        protected readonly string $field,
         int $uid,
+        int $pid,
         string $indexingConfiguration,
-        int $language = 0
+        int $language = 0,
     ) {
-        parent::__construct($site, $accessRestrictions, $indexingConfiguration, $language);
-        $this->table = $table;
-        $this->field = $field;
-        $this->uid = $uid;
+        parent::__construct(
+            $site,
+            $accessRestrictions,
+            $uid,
+            $pid,
+            $indexingConfiguration,
+            $language,
+        );
     }
 
-    /**
-     * @return array
-     */
     public function toArray(): array
     {
         return array_merge(
             parent::toArray(),
             [
                 'context_record_table'                  => $this->getTable(),
-                'context_record_uid'                    => $this->getUid(),
                 'context_record_field'                  => $this->getField(),
                 'context_record_indexing_configuration' => $this->getIndexingConfiguration(),
             ]
         );
     }
 
-    /**
-     * @return string
-     */
+    public function getPid(): int
+    {
+        return $this->pid;
+    }
+
+    public function getPidForCoreContext(): int
+    {
+        return $this->getPid();
+    }
+
     public function getContextIdentifier(): string
     {
         return 'record';
     }
 
-    /**
-     * @return string
-     */
     public function getField(): string
     {
         return $this->field;
     }
 
-    /**
-     * @return string
-     */
     public function getTable(): string
     {
         return $this->table;
     }
 
     /**
-     * @return int
-     */
-    public function getUid(): int
-    {
-        return $this->uid;
-    }
-
-    /**
-     * Returns an array of context specific field to add to the solr document
-     *
-     * @return array
+     * @inheritDoc
      */
     public function getAdditionalStaticDocumentFields(): array
     {
@@ -139,8 +106,7 @@ class RecordContext extends AbstractContext
      * Will be merged in the default field-processing configuration and takes
      * precedence over the default configuration.
      *
-     * @return array
-     * @throws DBALDriverException
+     * @throws BDALException
      */
     public function getSpecificFieldConfigurationTypoScript(): array
     {
@@ -152,21 +118,21 @@ class RecordContext extends AbstractContext
      * Injects configuration so FileReferenceTitle and FileReferenceUrl
      * are set from related record.
      *
-     * @param array $fieldConfiguration
+     * @param array<string, string|int|array<string, mixed>> $fieldConfiguration
+     * @return array<string, string|int|array<string, mixed>>
      *
-     * @return array
-     * @throws DBALDriverException
+     * @throws BDALException
      */
     protected function injectReferenceInformation(array $fieldConfiguration = []): array
     {
         // if there are no reference title / url configured manually, try to copy configuration form record index-queue
         if (!isset($fieldConfiguration['__RecordContext']) && !is_array($fieldConfiguration['__RecordContext.'] ?? null)) {
-            /* @var TypoScriptConfiguration $indexingConfigurations */
+            /** @var TypoScriptConfiguration $indexingConfigurations */
             $indexingConfigurations = GeneralUtility::makeInstance(FrontendEnvironment::class)->getSolrConfigurationFromPageId(
                 $this->getSite()->getRootPageId(),
                 $this->getLanguage()
             );
-            $fieldConfigurationOfRecord = $indexingConfigurations->getObjectByPathOrDefault('plugin.tx_solr.index.queue.' . $this->getIndexingConfiguration() . '.fields.', []);
+            $fieldConfigurationOfRecord = $indexingConfigurations->getObjectByPathOrDefault('plugin.tx_solr.index.queue.' . $this->getIndexingConfiguration() . '.fields.');
             $fieldConfiguration['__RecordContext'] = '_';
             $fieldConfiguration['__RecordContext.'] = [];
 
@@ -190,8 +156,6 @@ class RecordContext extends AbstractContext
      * Returns an identifier, which will be used for looking up special
      * configurations in TypoScript like storage uid in storageContext
      * or table name in recordContext
-     *
-     * @return string
      */
     protected function getIdentifierForItemSpecificFieldConfiguration(): string
     {

@@ -13,7 +13,7 @@ $extKey = 'ib_formbuilder';
 
 call_user_func(
     static function ($extKey) {
-
+        /*
         ExtensionUtility::registerModule(
             'IbFormbuilder',
             'web', // Make module a submodule of 'web'
@@ -29,6 +29,7 @@ call_user_func(
                 'labels' => 'LLL:EXT:' . $extKey . '/Resources/Private/Language/locallang_ibforms.xlf',
             ]
         );
+        */
 
         ExtensionManagementUtility::addLLrefForTCAdescr(
             'tx_ibformbuilder_domain_model_form',

@@ -1,0 +1,30 @@
+{
+	"name": "fwd-vue",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"build": "env VITE_MODE=production vite build",
+		"serveVite": "vite preview",
+		"lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
+		"staging": "env VITE_MODE=staging vite build",
+		"watch": "env VITE_MODE=watch vite build --watch"
+	},
+	"dependencies": {
+		"core-js": "^3.40.0",
+		"vue": "^3.5.13"
+	},
+	"devDependencies": {
+		"@vitejs/plugin-vue": "^1.6.1",
+		"@vue/compiler-sfc": "^3.0.0",
+		"@vue/eslint-config-standard": "^5.1.2",
+		"eslint-plugin-import": "^2.20.2",
+		"eslint-plugin-node": "^11.1.0",
+		"eslint-plugin-promise": "^4.2.1",
+		"eslint-plugin-standard": "^4.0.0",
+		"eslint-plugin-vue": "8",
+		"eslint": "8",
+		"sass": "^1.26.5",
+		"vite-plugin-dts": "^3.6.1",
+		"vite": "^4.5.0"
+	}
+}

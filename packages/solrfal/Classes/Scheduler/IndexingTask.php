@@ -21,6 +21,8 @@ use ApacheSolrForTypo3\Solr\System\Environment\CliEnvironment;
 use ApacheSolrForTypo3\Solr\System\Environment\WebRootAllReadyDefinedException;
 use ApacheSolrForTypo3\Solrfal\Indexing\Indexer;
 use ApacheSolrForTypo3\Solrfal\Queue\ItemRepository;
+use Doctrine\DBAL\Exception as DBALException;
+use Psr\Http\Client\ClientExceptionInterface;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Resource\Exception\FileDoesNotExistException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -32,16 +34,9 @@ use TYPO3\CMS\Scheduler\Task\AbstractTask;
  */
 class IndexingTask extends AbstractTask implements ProgressProviderInterface
 {
+    protected int $fileCountLimit = 10;
 
-    /**
-     * @var int
-     */
-    protected $fileCountLimit = 10;
-
-    /**
-     * @var string
-     */
-    protected $forcedWebRoot = '';
+    protected string $forcedWebRoot = '';
 
     /**
      * This is the main method that is called when a task is executed
@@ -51,11 +46,12 @@ class IndexingTask extends AbstractTask implements ProgressProviderInterface
      * Should return TRUE on successful execution, FALSE on error.
      *
      * @return bool Returns TRUE on successful execution, FALSE on error
+     *
      * @throws WebRootAllReadyDefinedException
      * @throws FileDoesNotExistException
-     * @noinspection PhpUnused
+     * @throws ClientExceptionInterface
      */
-    public function execute()
+    public function execute(): bool
     {
         $cliEnvironment = null;
 
@@ -63,7 +59,7 @@ class IndexingTask extends AbstractTask implements ProgressProviderInterface
         // should only be done in the case when running it from outside TYPO3 BE
         // @see #921 and #934 on https://github.com/TYPO3-Solr
         if (Environment::isCli()) {
-            /** @var $cliEnvironment CliEnvironment */
+            /** @var CliEnvironment $cliEnvironment */
             $cliEnvironment = GeneralUtility::makeInstance(CliEnvironment::class);
             $cliEnvironment->backup();
             $cliEnvironment->initialize($this->getWebRoot());
@@ -82,8 +78,10 @@ class IndexingTask extends AbstractTask implements ProgressProviderInterface
      * Gets the progress of a task.
      *
      * @return float Progress of the task as a two decimal float. f.e. 44.87
+     *
+     * @throws DBALException
      */
-    public function getProgress()
+    public function getProgress(): float
     {
         $itemsIndexedPercentage = 0.0;
 
@@ -104,12 +102,12 @@ class IndexingTask extends AbstractTask implements ProgressProviderInterface
      * Returns some additional information about indexing progress, shown in
      * the scheduler's task overview list.
      *
-     * @return	string	Information to display
-     * @noinspection PhpUnused
+     * @return string Information to display
+     *
+     * @throws DBALException
      */
-    public function getAdditionalInformation()
+    public function getAdditionalInformation(): string
     {
-        /** @noinspection PhpDeprecationInspection */
         $message = sprintf(
             $this->getLanguageService()->sL('LLL:EXT:solrfal/Resources/Private/Language/locallang.xlf:scheduler.additionalInformation'),
             $this->getItemRepository()->countFailures()
@@ -125,8 +123,6 @@ class IndexingTask extends AbstractTask implements ProgressProviderInterface
      * Since we need it for the TSFE related things we allow to set it
      * in the scheduler task and use the ###PATH_typo3### marker in the
      * setting to be able to define relative paths.
-     *
-     * @return string
      */
     public function getWebRoot(): string
     {
@@ -139,68 +135,44 @@ class IndexingTask extends AbstractTask implements ProgressProviderInterface
         return Environment::getPublicPath();
     }
 
-    /**
-     * @param string $webRoot
-     * @return string
-     */
-    protected function replaceWebRootMarkers($webRoot): string
+    protected function replaceWebRootMarkers(string $webRoot): string
     {
-        if (strpos($webRoot, '###PATH_typo3###') !== false) {
+        if (str_contains($webRoot, '###PATH_typo3###')) {
             $webRoot = str_replace('###PATH_typo3###', Environment::getPublicPath() . '/typo3/', $webRoot);
         }
 
-        if (strpos($webRoot, '###PATH_site###') !== false) {
+        if (str_contains($webRoot, '###PATH_site###')) {
             $webRoot = str_replace('###PATH_site###', Environment::getPublicPath(), $webRoot);
         }
 
         return $webRoot;
     }
 
-    /**
-     * @param int $fileCountLimit
-     */
-    public function setFileCountLimit($fileCountLimit)
+    public function setFileCountLimit(int $fileCountLimit): void
     {
-        $this->fileCountLimit = (int)$fileCountLimit;
+        $this->fileCountLimit = $fileCountLimit;
     }
 
-    /**
-     * @return int
-     */
     public function getFileCountLimit(): int
     {
         return $this->fileCountLimit;
     }
 
-    /**
-     * @return ItemRepository
-     */
     protected function getItemRepository(): ItemRepository
     {
-        /* @noinspection PhpIncompatibleReturnTypeInspection */
         return GeneralUtility::makeInstance(ItemRepository::class);
     }
 
-    /**
-     * @return Indexer
-     */
     protected function getIndexer(): Indexer
     {
-        /* @noinspection PhpIncompatibleReturnTypeInspection */
         return GeneralUtility::makeInstance(Indexer::class);
     }
 
-    /**
-     * @param string $forcedWebRoot
-     */
-    public function setForcedWebRoot($forcedWebRoot)
+    public function setForcedWebRoot(string $forcedWebRoot): void
     {
         $this->forcedWebRoot = $forcedWebRoot;
     }
 
-    /**
-     * @return string
-     */
     public function getForcedWebRoot(): string
     {
         return $this->forcedWebRoot;

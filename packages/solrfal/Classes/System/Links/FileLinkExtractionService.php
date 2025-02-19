@@ -25,8 +25,7 @@ class FileLinkExtractionService
     /**
      * Extracts all fileLinks in the format t3://
      *
-     * @param string $content
-     * @return array
+     * @return string[]
      */
     public function extract(string $content): array
     {

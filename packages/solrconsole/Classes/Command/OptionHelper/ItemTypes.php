@@ -22,7 +22,8 @@ class ItemTypes extends AbstractCommaSeparatedList
     /**
      * Configurations constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->option = 'item-types';
         $this->defaultValue = '*';
         $this->label = 'Item types';

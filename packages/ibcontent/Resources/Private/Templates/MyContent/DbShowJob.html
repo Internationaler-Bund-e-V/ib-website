@@ -2,7 +2,7 @@
 {namespace obfuscateEmail=Rms\Ibcontent\ViewHelpers}
 <f:layout name="Default" />
 
-<f:section name="main">    
+<f:section name="main">
     <div class="ib-db-extension">
         <div id="ib-partial-startpageslider">
             <!-- render headerslider start -->
@@ -12,14 +12,14 @@
             <!-- render headerslider end -->
         </div>
         <!-- partial="db/dbSocialShare"-->
-        <v:render.template file="typo3conf/ext/ib_template/Resources/Private/Template/html/partial/SocialShare.html" />
+        <v:render.template file="EXT:ib_template/Resources/Private/Template/html/partial/SocialShare.html" />
         <!-- social share end -->
 
         <div class="row ib-background-white">
 
             <!-- left column start -->
             <div class="columns large-8 ib-2col--main ib-background-white ib-db-main-content">
-               
+
                 <!-- rs reader start-->
                 <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.readspeaker.show')}">
                   <f:then>
@@ -63,15 +63,15 @@
             <!-- left column end -->
 
             <!-- right column start -->
-            <div class="columns medium-offset-1 medium-10 large-offset-0 large-3 end ib-2col--sidebar ib-background-white ib-db-right-content">                
-                <!-- sidebar content start -->               
+            <div class="columns medium-offset-1 medium-10 large-offset-0 large-3 end ib-2col--sidebar ib-background-white ib-db-right-content">
+                <!-- sidebar content start -->
                 <div class="small-12 medium-5 large-12 columns">
-                    
+
                     <!-- sidebar contact start -->
-                    <div class="ib-sidebar">                      
+                    <div class="ib-sidebar">
                         <!-- render contact person details -->
                         <div class="ib-content-module ib-sidebar-contact ib-background-white">
-                          
+
                           <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.allowFWDJobTemplate')}">
                             <div class="show-for-large">
                               <!-- share buttton -->
@@ -86,7 +86,7 @@
                                 <div class="pdb-single-contact-container">
                                     <f:if condition="{job.Job.email}">
                                         <div class="row columns">
-                                            
+
                                             <a data-ibemailreferrer="FWD_mail" data-ibemail="{obfuscateEmail:ObfuscateEmail(emailAddress:job.Job.email)}" class="ibOEmail mail"
                                             title="{f:translate(key:'LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contact_us')}">{f:translate(key:
                                             'LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:email_label')}</a>
@@ -112,8 +112,5 @@
             </div>
             <!-- right column end -->
         </div>
-
-        <!-- include db.js as footer asset -->
-        <f:asset.script identifier="dbjs" src="EXT:ibcontent/Resources/Public/js/db.js" />
     </div>
 </f:section>

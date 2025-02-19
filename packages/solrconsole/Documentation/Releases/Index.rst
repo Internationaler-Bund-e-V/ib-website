@@ -5,7 +5,6 @@
 
 .. include:: ../Includes.txt
 
-
 .. _releases:
 
 Releases
@@ -15,9 +14,7 @@ Releases
 	:maxdepth: 5
 	:glob:
 
+	solrconsole-release-12-0
 	solrconsole-release-11-0
 	solrconsole-release-10-0
-	solrconsole-release-4-0
-	solrconsole-release-3-0
-	solrconsole-release-2-0
-	solrconsole-release-1-0
+	Archive/Index

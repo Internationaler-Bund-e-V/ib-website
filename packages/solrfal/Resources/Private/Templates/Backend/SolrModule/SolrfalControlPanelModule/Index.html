@@ -6,7 +6,7 @@
 	<f:layout name="Backend/WithPageTree"/>
 
 	<f:section name="Main">
-		<f:be.pageRenderer includeRequireJsModules="{0:'TYPO3/CMS/Solr/FormModal'}"/>
+		<f:be.pageRenderer includeJavaScriptModules="{0: '@apache-solr-for-typo3/solr/FormModal.js'}"/>
 
 		<f:render partial="Backend/FlashMessages" />
 
@@ -85,7 +85,7 @@
 			</f:then>
 			<f:else>
 				<p>The file index queue is empty, you need to queue items from the storage context in the solr Index Queue Module, or enable the record or page context to index files during page and record indexing:</p>
-                <f:be.link route="searchbackend_SolrIndexqueue" parameters="{id:pageUID}">Solr Index Queue Module</f:be.link>
+                <f:be.link route="searchbackend_indexqueue" parameters="{id:pageUID}">Solr Index Queue Module</f:be.link>
 			</f:else>
 		</f:if>
 

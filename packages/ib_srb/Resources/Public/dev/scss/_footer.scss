@@ -1,9 +1,19 @@
 #IbSrb {
   #footer {
+
     h3 {
       font-style: italic;
       text-transform: uppercase;
       font-size: 1.75rem;
+
+      &.triangleContainer {
+        display: flex;
+        align-items: baseline;
+
+        .triangle {
+          margin-right: .5rem;
+        }
+      }
     }
 
     .nav-link {

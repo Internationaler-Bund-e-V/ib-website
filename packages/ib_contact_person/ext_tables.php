@@ -38,4 +38,3 @@ array(
 */
 
 ExtensionManagementUtility::addLLrefForTCAdescr('tx_ibcontactperson_domain_model_contactperson', 'EXT:ib_contact_person/Resources/Private/Language/locallang_csh_tx_ibcontactperson_domain_model_contactperson.xlf');
-ExtensionManagementUtility::allowTableOnStandardPages('tx_ibcontactperson_domain_model_contactperson');

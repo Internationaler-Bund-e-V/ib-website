@@ -1,61 +1,45 @@
 <!-- header -->
 <f:render partial="LandingpageHeader" arguments="{_all}"/>
 <!-- content -->
-<div id="ib-container" class="container-fluid {f:if(condition: "{f:cObject(typoscriptObjectPath:'portalSettings.cookiebot.enabled')}!='1' ", then: 'noCookieBot')}"">
+<main id="ib-container" data-ibtemplatefolder="{f:uri.resource(path:'',extensionName:'ib_template')}" class="container-fluid {f:if(condition: "{f:cObject(typoscriptObjectPath:'portalSettings.cookiebot.enabled')}!='1' ", then: 'noCookieBot')}"">
     <div id="ib-partial-startpageslider">
-        <f:format.raw>
-            {header_element}
-        </f:format.raw>
+        <f:format.raw>{header_element}</f:format.raw>
     </div>
-       
-    <f:if condition="{data.hide_breadcrumb} == '0'">
-        <!-- breadcrumb start -->
-        <f:then>
-          <f:render partial="breadcrumb" arguments="{_all}"/>
-        </f:then>
-        <!-- breadcrumb end -->
-        <f:else>
-          <f:render partial="BreadcrumbSpacer"/>
-        </f:else>
-    </f:if>
 
-    <!-- rs reader start-->    
+    <!-- breadcrumb start -->
+    <f:if condition="{data.hide_breadcrumb} == '0'"><f:then>
+    <f:render partial="breadcrumb" arguments="{_all}"/>
+    </f:then><f:else>
+    <f:render partial="BreadcrumbSpacer"/>
+    </f:else></f:if>
+    <!-- breadcrumb end -->
+
     <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.readspeaker.show')}">
-        <f:then>
-            <f:render partial="rsReader" />
-        </f:then>
-        <f:else></f:else>
-    </f:if>
+    <!-- rs reader start-->
+    <f:render partial="rsReader" />
     <!-- rs reader end-->
-
-   
+    </f:if>
 
     <!--TYPO3SEARCH_begin-->
     <div class="ib-rs-content">
-        <f:format.raw>
-            {content_element}
-        </f:format.raw>
+        <f:format.raw>{content_element}</f:format.raw>
     </div>
     <!--TYPO3SEARCH_end-->
-
-</div>
+</main>
 <!-- /content wrapper -->
-<f:render partial="footer" arguments="{_all}" /> 
- 
+<f:render partial="footer" arguments="{_all}" />
+<!-- tabs start-->
+<f:render partial="TabsBar" arguments="{_all}"/>
+<!-- tabs end-->
 
- <!-- tabs start-->
- <f:render partial="TabsBar" arguments="{_all}"/>
- <!-- tabs end-->
+<f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.additional_partial')} != ''">
+<!-- additional partial/snippet-->
+<f:render partial="snippets{f:cObject(typoscriptObjectPath: 'portalSettings.additional_partial')}" />
+</f:if>
 
- <!-- additional partial/snippet-->
- <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.additional_partial')} != ''">
-   <f:render partial="snippets{f:cObject(typoscriptObjectPath: 'portalSettings.additional_partial')}" />   
- </f:if>
+<!-- email dialog-->
+<f:render partial="EmailDialog" />
 
-
- <!-- email dialog-->
- <f:render partial="EmailDialog" />
- 
 <!-- readspeaker lib start-->
 <!-- <script type="text/javascript" data-cookieconsent="necessary" src="https://f1-eu.readspeaker.com/script/{f:cObject(typoscriptObjectPath: 'portalSettings.readspeaker.id')}/webReader/webReader.js?pids=wr&notools=1"></script> -->
 

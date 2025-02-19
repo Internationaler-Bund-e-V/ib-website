@@ -1,0 +1,40 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+
+<f:asset.css identifier="module-ib-cmt" href="EXT:ib_cmt/Resources/Public/dist/css/app.min.css" />
+
+<div class="typo3-fullDoc" id="ibCmtModules">
+    <!-- Header für das Backend-Modul -->
+    <div id="typo3-docheader">
+        <div class="typo3-docheader-functions">
+            <div class="left">
+
+                <div class="btn-group" role="group" aria-label="Menu" style="padding-bottom: 20px;">
+                    <f:link.action action="list" class="btn btn-light">List Typo3 Content</f:link.action>
+                    <f:link.action action="listNews" class="btn btn-light">List Typo3 News</f:link.action>
+                    <f:link.action action="listRedaktion" class="btn btn-light">List Redaktionstool Content
+                    </f:link.action>
+                    <f:link.action action="snippets" class="btn btn-light">Show snippets</f:link.action>
+                </div>
+            </div>
+            <div class="right">
+                <f:be.pagePath />
+                <f:be.pageInfo />
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <!-- Hauptinhalt des Backend-Moduls -->
+    <div id="typo3-docbody">
+        <div id="typo3-inner-docbody">
+            <f:flashMessages />
+            <f:render section="content" />
+        </div>
+    </div>
+</div>
+
+
+</html>

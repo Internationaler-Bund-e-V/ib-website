@@ -25,6 +25,8 @@ class CheckContentTagsCommand extends AbstractCommand
 
     /** @var PersistenceManager */
     protected $persistenceManager = null;
+
+    /** @var int<0, max> $storagePid */
     private int $storagePid = 0;
     private string $pathToRTJSON = '';
     private string $mailContent = "";
@@ -64,14 +66,15 @@ class CheckContentTagsCommand extends AbstractCommand
      * @param InputInterface $input
      * @param OutputInterface $output
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         //get ext settings
         /** @var ExtensionConfiguration $conf */
         $conf = GeneralUtility::makeInstance(ExtensionConfiguration::class);
         $extensionConfiguration = $conf->get('ib_cmt');
         $this->pathToRTJSON = $extensionConfiguration['pathRTJSON'];
-        $this->storagePid = intval($extensionConfiguration['cmtStoragePid']);
+        // @phpstan-ignore-next-line
+        $this->storagePid = (int) $extensionConfiguration['cmtStoragePid'];
 
         //$objectManager = GeneralUtility::makeInstance(ObjectManager::class);
         //$this->contentRepository = $objectManager->get(ContentRepository::class);
@@ -111,7 +114,7 @@ class CheckContentTagsCommand extends AbstractCommand
             ->from($tableName)
             ->where(
                 $queryBuilder->expr()->eq('deleted', $queryBuilder->createNamedParameter(0, \PDO::PARAM_INT)),
-                $queryBuilder->expr()->orX(...$constraints)
+                $queryBuilder->expr()->or(...$constraints)
             );
 
         $result = $statement->executeQuery()->fetchAllAssociative();
@@ -147,7 +150,7 @@ class CheckContentTagsCommand extends AbstractCommand
         foreach ($result as $row) {
             //$output->writeln("pid: " . $row['pid'] . "   uid: " . $row['uid'] . "    tstamp: " . $row['tstamp']);
             //check and update database
-            $content = $this->contentRepository->findByContentid((string)$row['uid']);
+            $content = $this->contentRepository->findByContentid((string) $row['uid']);
             if (count($content) == 1) {
                 $tmpContent = $content[0];
                 $this->keepContents[] = $tmpContent->getUid();
@@ -182,7 +185,7 @@ class CheckContentTagsCommand extends AbstractCommand
 
     private function importJSON(): void
     {
-        $json = json_decode((string)file_get_contents($this->pathToRTJSON), true);
+        $json = json_decode((string) file_get_contents($this->pathToRTJSON), true);
         $rtEntities = array(
             'locations' => 'Location',
             'products' => 'Product',
@@ -196,7 +199,7 @@ class CheckContentTagsCommand extends AbstractCommand
                 $tmpData = array();
                 $tmpData['uid'] = intval($data[$name]['id']);
                 $tmpData['pid'] = 'n/a';
-                $tmpData['tstamp'] = strtotime((string)$data[$name]['modified']);
+                $tmpData['tstamp'] = strtotime((string) $data[$name]['modified']);
                 $tmpData['rtcontenttype'] = $i;
                 $tmpData['comment'] = '';
                 if ($name == 'Customcontent') {
@@ -239,7 +242,7 @@ class CheckContentTagsCommand extends AbstractCommand
             ->from($tableName)
             ->where(
                 $queryBuilder->expr()->eq('deleted', $queryBuilder->createNamedParameter(0, \PDO::PARAM_INT)),
-                $queryBuilder->expr()->orX(...$constraints)
+                $queryBuilder->expr()->or(...$constraints)
             );
 
         $result = $statement->executeQuery()->fetchAllAssociative();

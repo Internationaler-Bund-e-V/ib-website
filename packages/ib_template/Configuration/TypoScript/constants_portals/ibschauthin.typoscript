@@ -1,0 +1,63 @@
+# -----------------------------------------------------------------------------
+# PORTAL IB GREEN
+# -----------------------------------------------------------------------------
+[site("identifier") == "ib_schaut_hin_de"]
+    host = ib-schaut-hin.de
+    portalSettings {
+        pageTitle = IB Schaut Hin
+        firstMenuTitle = IB Schaut Hin
+        root_id = 389
+        misc.sitemapStartId = 389
+        mainnav_start_id = 390
+        misc.searchResultId = 395
+        tt_news.single_pid = 543
+        ib_content.dbNavigationId = 1
+        misc.showOnlyTYPO3SearchResults = 1
+        readspeaker.show = 1
+
+        #data privacy site ID
+        dataPrivacySiteID = 462
+
+        //generate news sitemap     
+        NewsSitemap.generate = 1
+        NewsSitemap.NewsFolderPid = 534
+        NewsSitemap.NewsDetailPid = 543
+
+        analytics {
+            account_id = 
+            enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 16
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = RtmaNTmN
+        }
+
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+
+        main_bubble {
+            id = 441
+            text = Kontakt<br>+<br>Support
+            title_text = Kontaktieren Sie uns hier bei Fragen, Wünschen und Anregungen
+        }
+
+        social.facebook = https://www.facebook.com/IBschauthin
+        social.facebook.titletag = Offizielle Facebook-Seite von IB schaut hin
+
+        #threecolumn footer layout
+        footer.use_three_columns = 1
+        footer.show_textcontent_left = 1
+        footer.show_textcontent_middle = 1
+        footer.show_textcontent_right = 1
+        footer.tt_content_uid_left = 18588
+        footer.tt_content_uid_middle = 18587
+        footer.tt_content_uid_right = 18586
+    }
+    const_navigation {
+        footernav_central_folder_id = 3
+        footernav_misc_folder_id = 15
+        footernav_meta_folder_id = 461
+    }
+[end]

@@ -2,7 +2,7 @@ import $ from 'jquery';
 import 'slick-carousel';
 
 class IBStartPageSlider {
-    constructor(element:HTMLElement|JQuery<HTMLElement>) {
+    constructor(element:Element|HTMLElement|JQuery<HTMLElement>) {
         $(element).slick({
             prevArrow: $('#startpagesliderPrevButton'),
             nextArrow: $('#startpagesliderNextButton'),

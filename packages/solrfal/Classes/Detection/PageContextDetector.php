@@ -18,13 +18,17 @@ declare(strict_types=1);
 namespace ApacheSolrForTypo3\Solrfal\Detection;
 
 use ApacheSolrForTypo3\Solr\Access\Rootline;
+use ApacheSolrForTypo3\Solr\Domain\Site\Exception\UnexpectedTYPO3SiteInitializationException;
 use ApacheSolrForTypo3\Solr\Domain\Site\Site;
-use ApacheSolrForTypo3\Solr\Util;
 use ApacheSolrForTypo3\Solrfal\Context\PageContext;
-use ApacheSolrForTypo3\Solrfal\Exception\Detection\InvalidHookException;
-use Exception;
+use ApacheSolrForTypo3\Solrfal\Exception\Detection\InvalidHookException as InvalidDetectionHookException;
+use ApacheSolrForTypo3\Solrfal\Exception\Service\InvalidHookException as InvalidServiceHookException;
+use Doctrine\DBAL\Exception as DBALException;
+use Throwable;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Context\Context;
+use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
+use TYPO3\CMS\Core\LinkHandling\Exception\UnknownLinkHandlerException;
 use TYPO3\CMS\Core\Resource\Exception\ResourceDoesNotExistException;
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
@@ -33,39 +37,64 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
  * Class PageContextDetector
- * @author Steffen Ritter <steffen.ritter@typo3.org>
  */
 class PageContextDetector extends AbstractRecordDetector
 {
-
     /**
-     * @param array $initializationStatus
+     * @param string $indexingConfigurationName
+     * @param bool $indexQueueForConfigurationNameIsInitialized
+     * @inheritDoc
+     *
+     * @throws DBALException
      */
-    public function initializeQueue(array $initializationStatus)
-    {
-        // files will be detected on frontend indexing - so remove all entries
-        if (empty($initializationStatus) || (array_key_exists('pages', $initializationStatus) && $initializationStatus['pages'] == true)) {
-            $this->getItemRepository()->removeBySiteAndContext($this->site, 'page');
+    public function initializeQueue(
+        string $indexingConfigurationName,
+        ?bool $indexQueueForConfigurationNameIsInitialized = false,
+    ): bool {
+        // skip if context disabled or not pages related, this is no initialisation failure
+        if (!$this->isIndexingEnabledForContext('page') || $indexingConfigurationName !== 'pages') {
+            return true;
         }
+
+        try {
+            $this->getItemRepository()->removeBySiteAndContext($this->site, 'page');
+        } catch (DBALException) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
-     * @param TypoScriptFrontendController $page
-     * @param Rootline $pageAccessRootline
-     * @param int[] $allowedFileUids
-     * @param array $contentElements
-     * @param int[] $successfulUids
-     * @return int[] $successfulUids
-     * @throws InvalidHookException
+     * Add detected files to given page.
+     *
+     * @param TypoScriptFrontendController $responsibleTsfe Responsible TSFE
+     * @param Rootline $pageAccessRootline Access rootline of PID
+     * @param int[] $allowedFileUids The list of allowed file UIDs
+     * @param array<string, string|int|bool>[] $contentElements The content elements records
+     * @param int[] $successfulUids The list of successful file UIDs
+     *
+     * @return array|int[]
+     *
+     * @throws DBALException
+     * @throws InvalidDetectionHookException
+     * @throws InvalidServiceHookException
+     * @throws ResourceDoesNotExistException
+     * @throws UnknownLinkHandlerException
      */
-    public function addDetectedFilesToPage(TypoScriptFrontendController $page, Rootline $pageAccessRootline, array $allowedFileUids = [], array $contentElements = [], array $successfulUids = [])
-    {
+    public function addDetectedFilesToPage(
+        TypoScriptFrontendController $responsibleTsfe,
+        Rootline $pageAccessRootline,
+        array $allowedFileUids = [],
+        array $contentElements = [],
+        array $successfulUids = [],
+    ): array {
         if (!$this->isIndexingEnabledForContext('page')) {
             return [];
         }
         $contentTypeFieldMapping = $this->getContentElementTypeToFieldMapping();
 
-        $this->logger->info('Adding trigger indexing files for page ' . $page->id, $contentTypeFieldMapping);
+        $this->logger->info('Adding trigger indexing files for page ' . $responsibleTsfe->id, $contentTypeFieldMapping);
         $this->logger->info('Files with calls on "getPublicUrl" ', $allowedFileUids);
         $this->logger->info('Content element count:' . count($contentElements));
 
@@ -74,8 +103,9 @@ class PageContextDetector extends AbstractRecordDetector
         // the indexing process
         $fileAccessRootline = GeneralUtility::makeInstance(Rootline::class);
 
+        /** @var array{uid: int, pid: int, CType: string} $singleElement */
         foreach ($contentElements as $singleElement) {
-            $contentType = $singleElement['CType'];
+            $contentType = $singleElement['CType'] ?? '';
             if (array_key_exists($contentType, $contentTypeFieldMapping)) {
                 $indexableFields = GeneralUtility::trimExplode(',', $contentTypeFieldMapping[$contentType]);
 
@@ -93,11 +123,11 @@ class PageContextDetector extends AbstractRecordDetector
                             PageContext::class,
                             $this->site,
                             $fileAccessRootline,
-                            $page->id,
                             'tt_content',
                             $field,
                             $singleElement['uid'],
-                            Util::getLanguageUid()
+                            $responsibleTsfe->id,
+                            $responsibleTsfe->getLanguage()->getLanguageId()
                         );
                         $this->logger->info('Context created');
 
@@ -109,11 +139,16 @@ class PageContextDetector extends AbstractRecordDetector
 
         // Find attachments
         $this->logger->info('isPageAttachmentsEnabled:' . $this->isPageAttachmentsEnabled());
+        /** @var array{uid: int, pid: int} $responsiblePageRecord */
+        $responsiblePageRecord = $responsibleTsfe->page;
         if ($this->isPageAttachmentsEnabled()) {
             foreach ($this->getPageAttachmentFields() as $field) {
-                $table = Util::getLanguageUid() === 0 ? 'pages' : 'pages_language_overlay';
-                $this->logger->info('Indexing field ' . $table . '.' . $field);
-                $attachedFileUids = $this->getFileAttachmentResolver()->detectFilesInField($table, $field, $page->page);
+                $this->logger->info('Indexing field pages.' . $field);
+                $attachedFileUids = $this->getFileAttachmentResolver()->detectFilesInField(
+                    'pages',
+                    $field,
+                    $responsiblePageRecord,
+                );
                 $this->logger->info('Found-Files: ' . implode(', ', $attachedFileUids));
 
                 $linkedFiles = array_intersect($attachedFileUids, $allowedFileUids);
@@ -125,11 +160,11 @@ class PageContextDetector extends AbstractRecordDetector
                         PageContext::class,
                         $this->site,
                         $fileAccessRootline,
-                        $page->id,
                         'pages',
                         $field,
-                        $page->id,
-                        Util::getLanguageUid()
+                        $responsibleTsfe->id,
+                        $responsiblePageRecord['pid'],
+                        $responsibleTsfe->getLanguage()->getLanguageId()
                     );
                     $this->logger->info('Context created');
 
@@ -138,18 +173,18 @@ class PageContextDetector extends AbstractRecordDetector
             }
         }
 
-        $this->getItemRepository()->removeOldEntriesInPageContext($this->site, (int)$page->id, Util::getLanguageUid(), ...$successfulUids);
+        $this->getItemRepository()->removeOldEntriesInPageContext($this->site, $responsibleTsfe->id, $responsibleTsfe->getLanguage()->getLanguageId(), ...$successfulUids);
 
-        $forcedFiles = $this->getForcedFilesForPage($page, $this->site);
+        $forcedFiles = $this->getForcedFilesForPage($responsibleTsfe, $this->site);
         $context = GeneralUtility::makeInstance(
             PageContext::class,
             $this->site,
             $fileAccessRootline,
-            $page->id,
             'pages',
             '',
-            $page->id,
-            Util::getLanguageUid()
+            $responsibleTsfe->id,
+            $responsiblePageRecord['pid'],
+            $responsibleTsfe->getLanguage()->getLanguageId()
         );
         $successfulUids = $this->addFileUidsToQueue($successfulUids, $forcedFiles, $context);
 
@@ -158,13 +193,17 @@ class PageContextDetector extends AbstractRecordDetector
     }
 
     /**
-     * @param array $successfulUids
-     * @param $linkedFiles
-     * @param $context
-     * @return array
+     * @param int[] $successfulUids array with successful file UIDs
+     * @param int[] $linkedFiles array with linked file UIDs
+     * @param PageContext $context Current Page-Context definition
+     * @return int[] Merged list of $successfulUids and $linkedFiles.
+     *               **Note:** only $linkedFiles, for which the file index queue entry could be created
      */
-    protected function addFileUidsToQueue(array $successfulUids, $linkedFiles, $context): array
-    {
+    protected function addFileUidsToQueue(
+        array $successfulUids,
+        array $linkedFiles,
+        PageContext $context
+    ): array {
         foreach ($linkedFiles as $fileUid) {
             if ($this->createIndexQueueEntryForFile($fileUid, $context)) {
                 $this->logger->info('Indexed-Filed: ' . $fileUid);
@@ -178,23 +217,19 @@ class PageContextDetector extends AbstractRecordDetector
     /**
      * Returns the referenced pageContextDetectorAspects
      *
-     * @throws InvalidHookException
      * @return PageContextDetectorAspectInterface[]
+     *
+     * @throws InvalidDetectionHookException
      */
-    protected function getPageContextDetectorAspectAspects()
+    protected function getPageContextDetectorAspects(): array
     {
-        $hasFileAttachmentResolverProcessor = !empty($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['solrfal']) && is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['solrfal']['PageContextDetectorAspectInterface']);
-        if (!$hasFileAttachmentResolverProcessor) {
-            return [];
-        }
-
         $result = [];
-        $fileAttachmentResolverAspectReferences = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['solrfal']['PageContextDetectorAspectInterface'];
+        $fileAttachmentResolverAspectReferences = (array)($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['solrfal']['PageContextDetectorAspectInterface'] ?? []);
 
         foreach ($fileAttachmentResolverAspectReferences as $fileAttachmentResolverAspectReference) {
             $fileAttachmentResolverAspect = GeneralUtility::makeInstance($fileAttachmentResolverAspectReference);
             if (!$fileAttachmentResolverAspect instanceof PageContextDetectorAspectInterface) {
-                throw new InvalidHookException('Invalid hook definition for PageContextDetectorAspectInterface', 1661774407);
+                throw new InvalidDetectionHookException('Invalid hook definition for PageContextDetectorAspectInterface', 1661774407);
             }
             $result[] = $fileAttachmentResolverAspect;
         }
@@ -203,14 +238,13 @@ class PageContextDetector extends AbstractRecordDetector
     }
 
     /**
-     * @param TypoScriptFrontendController $page
-     * @param Site $site
-     * @return array
-     * @throws InvalidHookException
+     * @return int[]
+     *
+     * @throws InvalidDetectionHookException
      */
-    protected function getForcedFilesForPage(TypoScriptFrontendController $page, Site $site)
+    protected function getForcedFilesForPage(TypoScriptFrontendController $page, Site $site): array
     {
-        $fileAttachmentResolverAspects = $this->getPageContextDetectorAspectAspects();
+        $fileAttachmentResolverAspects = $this->getPageContextDetectorAspects();
         if (count($fileAttachmentResolverAspects) == 0) {
             return [];
         }
@@ -226,16 +260,13 @@ class PageContextDetector extends AbstractRecordDetector
 
     /**
      * Create Index Queue entry for a concrete file uid and it's context
-     *
-     * @param int $fileUid
-     * @param PageContext $context
-     *
-     * @return bool
      */
-    protected function createIndexQueueEntryForFile($fileUid, PageContext $context)
-    {
+    protected function createIndexQueueEntryForFile(
+        int $fileUid,
+        PageContext $context,
+    ): bool {
         try {
-            $file = $this->getResourceFactory()->getFileObject((int)$fileUid);
+            $file = $this->getResourceFactory()->getFileObject($fileUid);
             $this->logger->info('Got File Object for identifier ' . $file->getCombinedIdentifier());
             if ($this->isAllowedFileExtension($file)) {
                 $this->logger->info('File extension allowed ' . $file->getExtension());
@@ -249,10 +280,10 @@ class PageContextDetector extends AbstractRecordDetector
                 $this->logger->info('File extension is not allowed: ' . $file->getExtension());
                 return false;
             }
-        } catch (ResourceDoesNotExistException $e) {
+        } catch (ResourceDoesNotExistException) {
             $this->logger->error('File not found: ' . $fileUid);
             return false;
-        } catch (Exception $e) {
+        } catch (Throwable) {
             $this->logger->error('Unknown exception while loading file: ' . $fileUid);
             return false;
         }
@@ -263,31 +294,25 @@ class PageContextDetector extends AbstractRecordDetector
     /**
      * Get the configured mapping, which fields of which content-element type should be indexed
      *
-     * @return array
+     * @return array<string, string>
      */
-    protected function getContentElementTypeToFieldMapping()
+    protected function getContentElementTypeToFieldMapping(): array
     {
-        return $this->siteConfiguration->getObjectByPathOrDefault('plugin.tx_solr.index.enableFileIndexing.pageContext.contentElementTypes.', []);
+        return $this->siteConfiguration->getObjectByPathOrDefault('plugin.tx_solr.index.enableFileIndexing.pageContext.contentElementTypes.');
     }
 
     /**
      * Check if the content element type is configured to be allowed for indexing
-     *
-     * @param string $contentType
-     * @return bool
      */
-    protected function isContentElementTypeAllowed($contentType)
+    protected function isContentElementTypeAllowed(string $contentType): bool
     {
         $contentTypeFieldMapping = $this->getContentElementTypeToFieldMapping();
         return array_key_exists($contentType, $contentTypeFieldMapping);
     }
 
-    /**
-     * @return bool
-     */
     protected function isPageAttachmentsEnabled(): bool
     {
-        $config = $this->siteConfiguration->getObjectByPathOrDefault('plugin.tx_solr.index.enableFileIndexing.pageContext.', []);
+        $config = $this->siteConfiguration->getObjectByPathOrDefault('plugin.tx_solr.index.enableFileIndexing.pageContext.');
 
         return !empty($config['attachments']);
     }
@@ -299,21 +324,17 @@ class PageContextDetector extends AbstractRecordDetector
      */
     protected function getPageAttachmentFields(): array
     {
-        $config = $this->siteConfiguration->getObjectByPathOrDefault('plugin.tx_solr.index.enableFileIndexing.pageContext.attachments.', []);
+        $config = $this->siteConfiguration->getObjectByPathOrDefault('plugin.tx_solr.index.enableFileIndexing.pageContext.attachments.');
 
         return GeneralUtility::trimExplode(',', $config['fields'] ?? '');
     }
 
     /**
      * Check if the file extension is configured to be allowed for indexing
-     *
-     * @param File $file
-     *
-     * @return bool
      */
-    protected function isAllowedFileExtension(File $file)
+    protected function isAllowedFileExtension(File $file): bool
     {
-        $pageConfig = $this->siteConfiguration->getObjectByPathOrDefault('plugin.tx_solr.index.enableFileIndexing.pageContext.', []);
+        $pageConfig = $this->siteConfiguration->getObjectByPathOrDefault('plugin.tx_solr.index.enableFileIndexing.pageContext.');
         $extensions = isset($pageConfig['fileExtensions']) ? strtolower(trim($pageConfig['fileExtensions'])) : '';
         if ($extensions === '*') {
             return true;
@@ -323,24 +344,19 @@ class PageContextDetector extends AbstractRecordDetector
     }
 
     /**
-     * @param string $table
-     * @param int $uid
-     *
      * @noinspection PhpUnused
      */
-    public function recordCreated(string $table, int $uid)
+    public function recordCreated(string $table, int $uid): void
     {
-        // nothing to do since editing page already
+        // nothing to do since editing page already.
         // already triggers re-indexing.
     }
 
     /**
-     * @param string $table
-     * @param int $uid
-     *
-     * @noinspection PhpUnused
+     * @throws AspectNotFoundException
+     * @throws DBALException
      */
-    public function recordUpdated(string $table, int $uid)
+    public function recordUpdated(string $table, int $uid): void
     {
         if ($table === 'pages') {
             $page = BackendUtility::getRecord('pages', $uid);
@@ -382,12 +398,9 @@ class PageContextDetector extends AbstractRecordDetector
     }
 
     /**
-     * @param string $table
-     * @param int $uid
-     *
-     * @noinspection PhpUnused
+     * @throws DBALException
      */
-    public function recordDeleted(string $table, int $uid)
+    public function recordDeleted(string $table, int $uid): void
     {
         if ($table === 'pages') {
             $this->getItemRepository()->removeOldEntriesInPageContext($this->site, $uid);
@@ -414,13 +427,14 @@ class PageContextDetector extends AbstractRecordDetector
     /**
      * Handles updates on sys_file entries
      *
-     * @param string $table
-     * @param int $uid
-     *
-     * @noinspection PhpUnused
+     * @throws DBALException
+     * @throws UnexpectedTYPO3SiteInitializationException
+     * @throws AspectNotFoundException
      */
-    public function fileIndexRecordUpdated(string $table, int $uid)
-    {
+    public function fileIndexRecordUpdated(
+        string $table,
+        int $uid,
+    ): void {
         // skip if record context is not enabled or file not allowed
         if (!$this->isIndexingEnabledForContext('page')) {
             return;
@@ -444,20 +458,28 @@ class PageContextDetector extends AbstractRecordDetector
     /**
      * Returns referenced pages that have to be updated
      *
-     * @param int $fileUid
-     *
      * @return int[]
+     *
+     * @throws DBALException
      */
-    protected function getReferencedPages($fileUid)
+    protected function getReferencedPages(int $fileUid): array
     {
         $referencedPages = [];
         $referenceIndexRepository = $this->getReferenceIndexEntryRepository();
 
-        // get and process references
+        // get and process the references
         // restrict to pages, tt_content and sys_file_reference
-        $references = $referenceIndexRepository->findByReferenceRecord('sys_file', $fileUid, [], ['pages', 'tt_content', 'pages_language_overlay', 'sys_file_reference']);
+        $references = $referenceIndexRepository->findByReferenceRecord(
+            'sys_file',
+            $fileUid,
+            [],
+            [
+                'pages',
+                'tt_content',
+                'sys_file_reference',
+            ]
+        );
         foreach ($references as $reference) {
-
             // try to get right reference to index record if reference refers to sys_file_reference
             if ($reference->getTableName() == 'sys_file_reference') {
                 // get record reference if this is only a reference to sys_file_reference
@@ -470,28 +492,23 @@ class PageContextDetector extends AbstractRecordDetector
             switch ($reference->getTableName()) {
                 case 'pages':
                     $referencedPages[] = $reference->getRecordUid();
-                break;
+                    break;
 
                 case 'tt_content':
                     if ($record = $reference->getRecord()) {
                         $referencedPages[] = (int)$record['pid'];
                     }
-                break;
+                    break;
 
                 default:
-
             }
         }
 
         return array_unique($referencedPages);
     }
 
-    /**
-     * @return ResourceFactory
-     */
     protected function getResourceFactory(): ResourceFactory
     {
-        /* @noinspection PhpIncompatibleReturnTypeInspection */
         return GeneralUtility::makeInstance(ResourceFactory::class);
     }
 }

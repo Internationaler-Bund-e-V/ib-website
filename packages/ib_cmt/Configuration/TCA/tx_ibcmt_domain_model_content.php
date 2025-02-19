@@ -39,9 +39,9 @@ return [
                 'renderType' => 'selectSingle',
                 'readOnly' => 1,
                 'items' => [
-                    ['Typo3', 0],
-                    ['Redaktionstool', 1],
-                    ['Typo3 News', 2],
+                    ['label' => 'Typo3', 'value' => 0],
+                    ['label' => 'Redaktionstool', 'value' => 1],
+                    ['label' => 'Typo3 News', 'value' => 2],
                 ],
             ],
         ],
@@ -52,9 +52,9 @@ return [
                 'renderType' => 'selectSingle',
                 'readOnly' => 1,
                 'items' => [
-                    ['Standort', 0],
-                    ['Angebot', 1],
-                    ['Contentelement', 2],
+                    ['label' => 'Standort', 'value' => 0],
+                    ['label' => 'Angebot', 'value' => 1],
+                    ['label' => 'Contentelement', 'value' => 2],
                 ],
             ],
         ],
@@ -76,18 +76,14 @@ return [
         'contenttstamp' => [
             'label' => 'LLL:EXT:ib_cmt/Resources/Private/Language/locallang_db.xlf:tx_ibcmt_domain_model_content.contenttstamp',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime',
+                'type' => 'datetime',
                 'readOnly' => 1,
             ],
         ],
         'tstampallowed' => [
             'label' => 'LLL:EXT:ib_cmt/Resources/Private/Language/locallang_db.xlf:tx_ibcmt_domain_model_content.tstampallowed',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime',
+                'type' => 'datetime',
                 'readOnly' => 1,
             ],
         ],

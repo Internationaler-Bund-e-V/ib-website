@@ -1,8 +1,7 @@
-<f:render partial="AltrujaCode" />
 <f:render partial="Header"
   arguments="{searchUID:searchUID,spendenUID:spendenUID,mainMenu:mainMenu,currentUID:data.uid,mainMenuHomeUID:mainMenuHomeUID}" />
 <div class="grid-container full">
-  <div id="SrbMainContent">
+  <div id="SrbMainContent" data-publicurl="{f:uri.resource(path:'', extensionName: 'ib_template', absolute:'true')}">
     <!--TYPO3SEARCH_begin-->
     <f:format.raw>{content}</f:format.raw>
     <!--TYPO3SEARCH_end-->

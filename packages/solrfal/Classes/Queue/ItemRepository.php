@@ -20,35 +20,36 @@ namespace ApacheSolrForTypo3\Solrfal\Queue;
 use ApacheSolrForTypo3\Solr\Domain\Index\Queue\Statistic\QueueStatistic;
 use ApacheSolrForTypo3\Solr\Domain\Site\Site;
 use ApacheSolrForTypo3\Solr\System\Records\AbstractRepository;
+use ApacheSolrForTypo3\Solr\System\Util\SiteUtility;
 use ApacheSolrForTypo3\Solrfal\Context\ContextFactory;
-use Doctrine\DBAL\Driver\Exception as DBALDriverException;
+use ApacheSolrForTypo3\Solrfal\Event\Repository\AfterFileQueueItemHasBeenRemovedEvent;
+use ApacheSolrForTypo3\Solrfal\Event\Repository\AfterMultipleFileQueueItemsHaveBeenRemovedEvent;
+use ApacheSolrForTypo3\Solrfal\Event\Repository\BeforeFileQueueItemHasBeenRemovedEvent;
+use ApacheSolrForTypo3\Solrfal\Event\Repository\BeforeMultipleFileQueueItemsHaveBeenRemovedEvent;
 use Doctrine\DBAL\Exception as DBALException;
 use Doctrine\DBAL\Query\Expression\CompositeExpression;
 use PDO;
+use Psr\EventDispatcher\EventDispatcherInterface;
+use Throwable;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
+use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Resource\Exception\FileDoesNotExistException;
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
-use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException;
-use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException;
 
 /**
- * Class PersistenceManager
- *
- * @author Steffen Ritter <steffen.ritter@typo3.org>
+ * Class ItemRepository
  */
 class ItemRepository extends AbstractRepository
 {
+    protected EventDispatcherInterface $eventDispatcher;
+
     /**
      * @var Item[]
      */
     protected static array $identityMap = [];
 
-    /**
-     * @var string
-     */
     protected string $table = 'tx_solr_indexqueue_file';
 
     /**
@@ -66,13 +67,18 @@ class ItemRepository extends AbstractRepository
         'context_record_uid',
         'context_record_table',
         'context_record_field',
-        'context_record_page',
+        'context_record_pid',
         'context_record_indexing_configuration',
         'context_additional_fields',
         'error',
         'error_message',
         'merge_id',
     ];
+
+    public function __construct(?EventDispatcherInterface $eventDispatcher = null)
+    {
+        $this->eventDispatcher = $eventDispatcher ?? GeneralUtility::makeInstance(EventDispatcher::class);
+    }
 
     /*++++++++++++++++++++++++++++++*
      *                              *
@@ -83,12 +89,9 @@ class ItemRepository extends AbstractRepository
     /**
      * Finds queue item by uid
      *
-     * @param int $uid
-     * @return Item|null
-     * @throws DBALDriverException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
-    public function findByUid(int $uid): ?Item
+    public function findByUid(int|string $uid): ?Item
     {
         $records = $this->fetchRecordsFromDatabase($this->getSimpleEqWhereClauseExpression('uid', $uid, PDO::PARAM_INT));
         if (!empty($records)) {
@@ -104,8 +107,8 @@ class ItemRepository extends AbstractRepository
      * Finds all queue items
      *
      * @return Item[]
-     * @throws DBALDriverException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     *
+     * @throws DBALException
      */
     public function findAll(): array
     {
@@ -117,32 +120,33 @@ class ItemRepository extends AbstractRepository
      * Removes items in the index queue filtered by the passed arguments.
      * If no filter is passed, all items get deleted!
      *
-     * @param array $sites
-     * @param array $indexQueueConfigurationNames
-     * @param array $contextName
-     * @param array $itemUids
-     * @param array $uids
-     * @param array $languageUids
+     * @param Site[] $sites
+     * @param string[] $indexQueueConfigurationNames
+     * @param string[] $contextNames
+     * @param int[] $itemUids
+     * @param int[] $uids
+     * @param int[] $languageUids
      * @param int $offset
      * @param int $limit
-     * @return Item[]|array
-     * @throws DBALDriverException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     *
+     * @return Item[]
+     *
+     * @throws DBALException
      */
     public function findBy(
         array $sites = [],
         array $indexQueueConfigurationNames = [],
-        array $contextName = [],
+        array $contextNames = [],
         array $itemUids = [],
         array $uids = [],
         array $languageUids = [],
         int $offset = 0,
-        int $limit = 10
+        int $limit = 10,
     ): array {
         $whereClauseExpression = $this->buildByWhereClause(
             $sites,
             $indexQueueConfigurationNames,
-            $contextName,
+            $contextNames,
             $itemUids,
             $uids,
             $languageUids
@@ -153,10 +157,9 @@ class ItemRepository extends AbstractRepository
     /**
      * Finds queue item by file uid
      *
-     * @param int $fileUid
      * @return Item[]
-     * @throws DBALDriverException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     *
+     * @throws DBALException
      */
     public function findByFileUid(int $fileUid): array
     {
@@ -167,10 +170,9 @@ class ItemRepository extends AbstractRepository
     /**
      * Finds queue item by file uid
      *
-     * @param File $file
      * @return Item[]
-     * @throws DBALDriverException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     *
+     * @throws DBALException
      */
     public function findByFile(File $file): array
     {
@@ -178,13 +180,11 @@ class ItemRepository extends AbstractRepository
     }
 
     /**
-     * @param null $itemCountLimit
-     *
      * @return Item[]
-     * @throws DBALDriverException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     *
+     * @throws DBALException
      */
-    public function findAllIndexingOutStanding($itemCountLimit = null): array
+    public function findAllIndexingOutStanding(int $itemCountLimit = null): array
     {
         $queryBuilder = $this->getQueryBuilder();
         $whereClauseExpression = $queryBuilder->where(
@@ -196,12 +196,9 @@ class ItemRepository extends AbstractRepository
     }
 
     /**
-     * @param int|null $itemCountLimit
-     * @param int $limitToSiteId
+     * @return string[]
      *
-     * @return Item[]
-     * @throws DBALDriverException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
     public function findAllOutStandingMergeIdSets(int $itemCountLimit = null, int $limitToSiteId = 0): array
     {
@@ -213,7 +210,7 @@ class ItemRepository extends AbstractRepository
             )
             ->groupBy('merge_id');
 
-        if (null !== $itemCountLimit) {
+        if ($itemCountLimit !== null) {
             $queryBuilder->setMaxResults($itemCountLimit);
         }
 
@@ -224,16 +221,14 @@ class ItemRepository extends AbstractRepository
         }
 
         return $queryBuilder
-            ->execute()
+            ->executeQuery()
             ->fetchFirstColumn();
     }
 
     /**
-     * @param string $mergeId
-     *
      * @return Item[]
-     * @throws DBALDriverException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     *
+     * @throws DBALException
      */
     public function findAllByMergeId(string $mergeId): array
     {
@@ -251,18 +246,13 @@ class ItemRepository extends AbstractRepository
     /**
      * Counts all items that match the whereClause.
      *
-     * @param CompositeExpression $whereClause
-     * @return int
-     * @throws DBALDriverException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
     protected function countByWhereClause(CompositeExpression $whereClause): int
     {
         $queryBuilder = $this->getQueryBuilder();
         return (int)$queryBuilder
-            ->count('*')->from($this->table)
-            ->andWhere($whereClause)
-            ->execute()
+            ->count('*')->from($this->table)->andWhere($whereClause)->executeQuery()
             ->fetchOne();
     }
 
@@ -270,38 +260,31 @@ class ItemRepository extends AbstractRepository
      * Removes items in the index queue filtered by the passed arguments.
      * If no filter is passed, all items get deleted!
      *
-     * @param array $sites
-     * @param array $indexQueueConfigurationNames
-     * @param array $contextName
-     * @param array $itemUids
-     * @param array $uids
-     * @param array $languageUids
-     * @return int
-     * @throws DBALDriverException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @param Site[] $sites
+     * @param string[] $indexQueueConfigurationNames
+     * @param string[] $contextNames
+     * @param int[] $itemUids
+     * @param int[] $uids
+     * @param int[] $languageUids
+     *
+     * @throws DBALException
      */
     public function countBy(
         array $sites = [],
         array $indexQueueConfigurationNames = [],
-        array $contextName = [],
+        array $contextNames = [],
         array $itemUids = [],
         array $uids = [],
-        array $languageUids = []
+        array $languageUids = [],
     ): int {
-        $whereClause = $this->buildByWhereClause($sites, $indexQueueConfigurationNames, $contextName, $itemUids, $uids, $languageUids);
+        $whereClause = $this->buildByWhereClause($sites, $indexQueueConfigurationNames, $contextNames, $itemUids, $uids, $languageUids);
         return $this->countByWhereClause($whereClause);
     }
 
     /**
-     * Extracts the number of pending, indexed and erroneous items from the
-     * Index Queue.
+     * Extracts the number of pending, indexed and erroneous items from the Index Queue.
      *
-     * @param Site $site
-     * @param string $indexingConfigurationName
-     *
-     * @return QueueStatistic
-     * @throws DBALDriverException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
     public function getStatisticsBySite(Site $site, string $indexingConfigurationName = ''): QueueStatistic
     {
@@ -311,12 +294,7 @@ class ItemRepository extends AbstractRepository
     /**
      * Retrieves the statistic for a site by a given rootPageId.
      *
-     * @param int $rootPageId
-     * @param string $indexingConfigurationName
-     *
-     * @return QueueStatistic
-     * @throws DBALDriverException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
     public function getStatisticsByRootPageId(int $rootPageId, string $indexingConfigurationName = ''): QueueStatistic
     {
@@ -341,18 +319,23 @@ class ItemRepository extends AbstractRepository
             );
         }
 
-        return $this->buildStatisticsObjectFromRows($queryBuilder->execute()->fetchAllAssociative());
+        return $this->buildStatisticsObjectFromRows(
+            $queryBuilder
+                ->executeQuery()
+                ->fetchAllAssociative()
+        );
     }
 
     /**
      * Builds a statistics object from the statistic queue database rows.
      *
-     * @param array $indexQueueStats
-     * @return QueueStatistic
+     * @param list<array{pending:int, failed:int, count:int}>|array<int, array<string, mixed>> $indexQueueStats
+     *
+     * @todo: Provide proper format for $indexQueueStats PHPDoc
      */
     protected function buildStatisticsObjectFromRows(array $indexQueueStats): QueueStatistic
     {
-        /** @var $statistic QueueStatistic */
+        /** @var QueueStatistic $statistic */
         $statistic = GeneralUtility::makeInstance(QueueStatistic::class);
 
         if (empty($indexQueueStats)) {
@@ -381,46 +364,43 @@ class ItemRepository extends AbstractRepository
     /**
      * Counts all Queue\Items which need to updated in Solr
      *
-     * @return int
-     * @throws DBALDriverException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
     public function countIndexingOutstanding(): int
     {
         $queryBuilder = $this->getQueryBuilder();
-        return (int)$queryBuilder->count('uid')->from($this->table)
-           ->andWhere(
-               $queryBuilder->expr()->gt('last_update', $queryBuilder->quoteIdentifier('last_indexed')),
-               $queryBuilder->expr()->eq('error', $queryBuilder->quote(0, PDO::PARAM_INT))
-           )
-            ->execute()
+        return (int)$queryBuilder
+            ->count('uid')
+            ->from($this->table)
+            ->andWhere(
+                $queryBuilder->expr()->gt('last_update', $queryBuilder->quoteIdentifier('last_indexed')),
+                $queryBuilder->expr()->eq('error', $queryBuilder->quote(0, PDO::PARAM_INT))
+            )->executeQuery()
             ->fetchOne();
     }
 
     /**
      * Returns the count of Queue\Items failed to send to solr.
      *
-     * @return int
-     * @throws DBALDriverException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
     public function countFailures(): int
     {
         $queryBuilder = $this->getQueryBuilder();
-        return (int)$queryBuilder->count('uid')->from($this->table)
-            ->where($queryBuilder->expr()->eq('error', $queryBuilder->createNamedParameter(1, PDO::PARAM_INT)))
-            ->execute()->fetchOne();
+        return (int)$queryBuilder
+            ->count('uid')
+            ->from($this->table)
+            ->where(
+                $queryBuilder->expr()->eq('error', $queryBuilder->createNamedParameter(1, PDO::PARAM_INT))
+            )->executeQuery()
+            ->fetchOne();
     }
 
     /**
      * Checks whether an item with same information (context and file) already is in index queue
      *
-     * @param Item $item
-     *
-     * @return bool
-     * @throws DBALDriverException
      * @throws FileDoesNotExistException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
     public function exists(Item $item): bool
     {
@@ -430,9 +410,13 @@ class ItemRepository extends AbstractRepository
         $data = array_intersect_key($data, array_flip($this->fields));
 
         $queryBuilder = $this->getQueryBuilder();
-        return (int)$queryBuilder->count('uid')->from($this->table)
-            ->where($this->getWhereClauseForItemData($data))
-            ->execute()->fetchOne() > 0;
+        return (int)$queryBuilder
+                ->count('uid')
+                ->from($this->table)
+                ->where(
+                    $this->getWhereClauseForItemData($data)
+                )->executeQuery()
+                ->fetchOne() > 0;
     }
 
     /*++++++++++++++++++++++++++++++*
@@ -442,18 +426,18 @@ class ItemRepository extends AbstractRepository
      *++++++++++++++++++++++++++++++*/
 
     /**
-     * @param Item $item
-     *
      * @throws AspectNotFoundException
      * @throws FileDoesNotExistException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
      */
-    public function add(Item $item)
+    public function add(Item $item): int
     {
         $data = $this->getEnrichedStandardData($item);
 
         $queryBuilder = $this->getQueryBuilder();
-        $queryBuilder->insert($this->table)->values($data)->execute();
+        return $queryBuilder
+            ->insert($this->table)
+            ->values($data)
+            ->executeStatement();
         // todo - no identity map update
     }
 
@@ -466,12 +450,8 @@ class ItemRepository extends AbstractRepository
     /**
      * Updates the Item
      *
-     * @param Item $item
-     *
-     * @return int the number of affected rows
      * @throws AspectNotFoundException
      * @throws FileDoesNotExistException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
      */
     public function update(Item $item): int
     {
@@ -483,62 +463,55 @@ class ItemRepository extends AbstractRepository
             $queryBuilder->set($column, $value);
         }
 
-        return $queryBuilder->execute();
+        return $queryBuilder
+            ->executeStatement();
     }
 
-    /**
-     * @param Item $item
-     *
-     * @return int the number of affected rows
-     * @throws DBALException|\Doctrine\DBAL\DBALException
-     */
     public function markAsNotIndexed(Item $item): int
     {
         $queryBuilder = $this->getQueryBuilder();
-        return (int)$queryBuilder->update($this->table)
-            ->where($queryBuilder->expr()->eq('uid', $queryBuilder->quote($item->getUid(), PDO::PARAM_INT)))
-            ->set('error', 0)
+        return $queryBuilder
+            ->update($this->table)
+            ->where(
+                $queryBuilder->expr()->eq('uid', $queryBuilder->quote($item->getUid(), PDO::PARAM_INT))
+            )->set('error', 0)
             ->set('error_message', '')
             ->set('last_indexed', 0)
-            ->execute();
+            ->executeStatement();
     }
 
-    /**
-     * @param Item $item
-     * @param string $errorMessage
-     *
-     * @return int the number of affected rows
-     * @throws DBALException|\Doctrine\DBAL\DBALException
-     */
     public function markFailed(Item $item, string $errorMessage = ''): int
     {
         $item->setError(true);
+        return $this->markFailedByUid($item->getUid(), $errorMessage);
+    }
+
+    protected function markFailedByUid(int $itemUid, string $errorMessage = ''): int
+    {
         $queryBuilder = $this->getQueryBuilder();
-        return (int)$queryBuilder->update($this->table)
-            ->where($queryBuilder->expr()->eq('uid', $queryBuilder->quote($item->getUid(), PDO::PARAM_INT)))
+        return $queryBuilder->update($this->table)
+            ->where(
+                $queryBuilder->expr()->eq('uid', $queryBuilder->quote($itemUid, PDO::PARAM_INT))
+            )
             ->set('error', 1)
             ->set('error_message', $errorMessage)
-            ->execute();
+            ->executeStatement();
     }
 
     /**
-     * @param Item $item
-     *
      * @throws AspectNotFoundException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
      */
-    public function markIndexedSuccessfully(Item $item)
+    public function markIndexedSuccessfully(Item $item): int
     {
-        $this->markMultipleIndexedSuccessfully([$item]);
+        return $this->markMultipleIndexedSuccessfully([$item]);
     }
 
     /**
      * @param Item[] $items
      *
-     * @throws DBALException|\Doctrine\DBAL\DBALException
      * @throws AspectNotFoundException
      */
-    public function markMultipleIndexedSuccessfully(array $items)
+    public function markMultipleIndexedSuccessfully(array $items): int
     {
         $uids = [];
         $executionTime = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'timestamp') ?: time();
@@ -548,22 +521,20 @@ class ItemRepository extends AbstractRepository
             $uids[] = $item->getUid();
         }
         $queryBuilder = $this->getQueryBuilder();
-        $queryBuilder->update($this->table)
+        return $queryBuilder->update($this->table)
             ->where($queryBuilder->expr()->in('uid', $uids))
             ->set('error', 0)
-            ->set('error_message', '')
-            ->set('last_indexed', $executionTime)
-            ->execute();
+            ->set('error_message', '')->set('last_indexed', $executionTime)->executeStatement();
     }
 
     /**
-     * @param int $fileUid
-     * @param array $contextFilter array with key = field, value => field value to combine to where clause
+     * @param array<string, string|int|string[]|int[]> $contextFilter array with key = field, value => field value to combine to where clause
+     *
+     * @return int Affected rows.
      *
      * @throws AspectNotFoundException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
      */
-    public function markFileUpdated(int $fileUid, array $contextFilter = [])
+    public function markFileUpdated(int $fileUid, array $contextFilter = []): int
     {
         $executionTime = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'timestamp') ?: time();
 
@@ -577,11 +548,11 @@ class ItemRepository extends AbstractRepository
                 $queryBuilder->expr()->eq($field, $queryBuilder->createNamedParameter($desiredValue))
             );
         }
-        $queryBuilder
+        return $queryBuilder
             ->set('error', 0)
             ->set('error_message', '')
             ->set('last_update', $executionTime)
-            ->execute();
+            ->executeStatement();
     }
 
     /*++++++++++++++++++++++++++++++*
@@ -594,55 +565,55 @@ class ItemRepository extends AbstractRepository
      * Removes items in the index queue filtered by the passed arguments.
      * If no filter is passed, all items get deleted!
      *
-     * @param array $sites
-     * @param array $indexQueueConfigurationNames
-     * @param array $contextName
-     * @param array $itemUids
-     * @param array $uids
-     * @param array $languageUids
-     * @param bool $triggerSignals Should signals (e.g. for deletion in solr be triggered)
+     * @param Site[] $sites
+     * @param string[] $indexQueueConfigurationNames
+     * @param string[] $contextNames
+     * @param int[] $itemUids
+     * @param int[] $uids
+     * @param int[] $languageUids
+     * @param bool $triggerEvents
      *
-     * @throws DBALDriverException
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @return int Affected rows.
+     *
+     * @throws DBALException
      */
     public function removeBy(
         array $sites = [],
         array $indexQueueConfigurationNames = [],
-        array $contextName = [],
+        array $contextNames = [],
         array $itemUids = [],
         array $uids = [],
         array $languageUids = [],
-        bool $triggerSignals = true
-    ) {
-        $whereClause = $this->buildByWhereClause($sites, $indexQueueConfigurationNames, $contextName, $itemUids, $uids, $languageUids);
-        $this->removeByWhereClause($whereClause, $triggerSignals);
+        bool $triggerEvents = true,
+    ): int {
+        $whereClause = $this->buildByWhereClause($sites, $indexQueueConfigurationNames, $contextNames, $itemUids, $uids, $languageUids);
+        return $this->removeByWhereClause($whereClause, $triggerEvents);
     }
 
     /**
      * Build a CompositeExpression of a whereClause that matches the passed filters.
      *
-     * @param array $sites
-     * @param array $indexQueueConfigurationNames
-     * @param array $contextName
-     * @param array $itemUids
-     * @param array $uids
-     * @param array $languageUids
+     * @param Site[] $sites
+     * @param string[] $indexQueueConfigurationNames
+     * @param string[] $contextNames
+     * @param int[] $itemUids
+     * @param int[] $uids
+     * @param int[] $languageUids
+     *
      * @return CompositeExpression
      */
     protected function buildByWhereClause(
         array $sites,
         array $indexQueueConfigurationNames,
-        array $contextName,
+        array $contextNames,
         array $itemUids,
         array $uids,
         array $languageUids
     ): CompositeExpression {
         $indexQueueConfigurationList = implode(',', $indexQueueConfigurationNames);
-        $contextNameList = implode(',', $contextName);
+        $contextNameList = implode(',', $contextNames);
 
-        $rootPageIds = array_map('intval', Site::getRootPageIdsFromSites($sites));
+        $rootPageIds = array_map('intval', SiteUtility::getRootPageIdsFromSites($sites));
         $itemUids = array_map('intval', $itemUids);
         $uids = array_map('intval', $uids);
         $languageUids = array_map('intval', $languageUids);
@@ -663,14 +634,15 @@ class ItemRepository extends AbstractRepository
      *
      * @param CompositeExpression $whereClause
      * @param string $fieldName
-     * @param string|array $data
+     * @param string|int|string[]|int[] $data
      * @param int $quotingType
+     *
      * @return CompositeExpression
      */
     protected function addInWhereWhenNotEmpty(
         CompositeExpression $whereClause,
         string $fieldName,
-        $data,
+        string|int|array $data,
         int $quotingType = PDO::PARAM_STR
     ): CompositeExpression {
         if (empty($data)) {
@@ -682,14 +654,9 @@ class ItemRepository extends AbstractRepository
     /**
      * Removes items in the index queue filtered by the passed table and record uid
      *
-     * @param string $tableName
-     * @param int $uid
-     * @throws DBALDriverException
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
-    public function removeByTableAndUid(string $tableName, int $uid): void
+    public function removeByTableAndUid(string $tableName, int $uid): int
     {
         $queryBuilder = $this->getQueryBuilder();
         $whereClause = $queryBuilder
@@ -699,131 +666,93 @@ class ItemRepository extends AbstractRepository
             )
             ->getQueryPart('where');
 
-        $this->removeByWhereClause($whereClause);
+        return $this->removeByWhereClause($whereClause);
     }
 
     /**
      * Removes an Item from the queue and triggers the events to remove it from solr.
-     *
-     * @param Item $item
-     *
-     * @throws DBALException|\Doctrine\DBAL\DBALException
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
      */
-    public function remove(Item $item)
+    public function remove(Item $item): int
     {
         $this->emitBeforeItemRemovedFromQueue($item);
-        $this->removeItemFromDatabase($item);
+        $removedCount = $this->removeItemFromDatabase($item);
         $this->emitItemRemovedFromQueue($item);
         if (array_key_exists($item->getUid(), self::$identityMap)) {
             unset(self::$identityMap[$item->getUid()]);
         }
+        return $removedCount;
     }
 
     /**
      * Removes the items from the database only.
-     *
-     * @param Item $item
-     * @throws DBALException|\Doctrine\DBAL\DBALException
      */
-    protected function removeItemFromDatabase(Item $item)
+    protected function removeItemFromDatabase(Item $item): int
     {
         $queryBuilder = $this->getQueryBuilder();
-        $queryBuilder->delete($this->table)
-            ->where($queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($item->getUid(), PDO::PARAM_INT)))
-            ->execute();
+        return $queryBuilder
+            ->delete($this->table)
+            ->where(
+                $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($item->getUid(), PDO::PARAM_INT))
+            )->executeStatement();
     }
 
     /**
-     * @param File $file
-     *
-     * @throws DBALDriverException
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
-    public function removeByFile(File $file)
+    public function removeByFile(File $file): int
     {
-        $this->removeByFileUid($file->getUid());
+        return $this->removeByFileUid($file->getUid());
     }
 
     /**
      * Removes an file index queue entry
      *
-     * @param int $fileUid
-     *
-     * @throws DBALDriverException
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
-    public function removeByFileUid(int $fileUid)
+    public function removeByFileUid(int $fileUid): int
     {
         $whereClause = $this->getSimpleEqWhereClauseExpression('file', $fileUid, PDO::PARAM_INT);
-        $this->removeByWhereClause($whereClause);
+        return $this->removeByWhereClause($whereClause);
     }
 
     /**
      * Removes all entries of a certain site from the File Index Queue.
      *
-     * @param Site $site The site to remove items for.
-     *
-     * @throws DBALDriverException
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
-    public function removeBySite(Site $site)
+    public function removeBySite(Site $site): int
     {
         $whereClause = $this->getSimpleEqWhereClauseExpression('context_site', $site->getRootPageId(), PDO::PARAM_INT);
-        $this->removeByWhereClause($whereClause);
+        return $this->removeByWhereClause($whereClause);
     }
 
     /**
      * Removes all entries of a certain site from the File Index Queue.
      *
-     * @param Site $site The site to remove items for.
-     * @param string $contextType
-     *
-     * @throws DBALDriverException
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
-    public function removeBySiteAndContext(Site $site, string $contextType)
+    public function removeBySiteAndContext(Site $site, string $contextType): int
     {
         $whereClause = $this->getSimpleEqWhereClauseExpression('context_site', $site->getRootPageId(), PDO::PARAM_INT)
             ->with($this->getSimpleEqWhereClauseExpression('context_type', $contextType));
-        $this->removeByWhereClause($whereClause);
+        return $this->removeByWhereClause($whereClause);
     }
 
     /**
      * Removes all entries of a certain site from the File Index Queue.
      *
-     * @param string $contextType
-     *
-     * @throws DBALDriverException
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
-    public function purgeContext(string $contextType)
+    public function purgeContext(string $contextType): int
     {
         $whereClause = $this->getSimpleEqWhereClauseExpression('context_type', $contextType);
-        $this->removeByWhereClause($whereClause);
+        return $this->removeByWhereClause($whereClause);
     }
 
     /**
-     * @param Site $site
-     * @param string $tableName
-     *
-     * @throws DBALDriverException
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
-    public function removeByTableInRecordContext(Site $site, string $tableName)
+    public function removeByTableInRecordContext(Site $site, string $tableName): int
     {
         $whereClause = $this->getSimpleEqWhereClauseExpression(
             'context_site',
@@ -833,20 +762,16 @@ class ItemRepository extends AbstractRepository
             'context_type',
             'record'
         ))->with($this->getSimpleEqWhereClauseExpression('context_record_table', $tableName));
-        $this->removeByWhereClause($whereClause);
+        return $this->removeByWhereClause($whereClause);
     }
 
     /**
-     * @param Site $site
-     * @param string $indexingConfiguration
-     *
-     * @throws DBALDriverException
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
-    public function removeByIndexingConfigurationInRecordContext(Site $site, string $indexingConfiguration)
-    {
+    public function removeByIndexingConfigurationInRecordContext(
+        Site $site,
+        string $indexingConfiguration,
+    ): int {
         $whereClause = $this->getSimpleEqWhereClauseExpression(
             'context_site',
             $site->getRootPageId(),
@@ -857,23 +782,20 @@ class ItemRepository extends AbstractRepository
                 $indexingConfiguration
             ));
 
-        $this->removeByWhereClause($whereClause);
+        return $this->removeByWhereClause($whereClause);
     }
 
     /**
-     * @param string $context
-     * @param Site $site
-     * @param string $tableName
-     * @param int $contextRecordUid Context record Uid
-     * @param int|null $fileUid optional If set, only given file will be removed
-     *
-     * @throws DBALDriverException
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
-    public function removeByTableAndUidInContext(string $context, Site $site, string $tableName, int $contextRecordUid, int $fileUid = null)
-    {
+    public function removeByTableAndUidInContext(
+        string $context,
+        Site $site,
+        string $tableName,
+        int $contextRecordUid,
+        ?int $fileUidToRemoveExplicitly = null,
+        ?int $languageUid = null
+    ): int {
         $whereClause = $this->getSimpleEqWhereClauseExpression(
             'context_site',
             $site->getRootPageId(),
@@ -890,32 +812,35 @@ class ItemRepository extends AbstractRepository
             PDO::PARAM_INT
         ));
 
-        if (null !== $fileUid) {
+        if ($languageUid !== null && $languageUid > 0) {
+            $whereClause = $whereClause->with($this->getSimpleEqWhereClauseExpression(
+                'context_language',
+                $languageUid
+            ));
+        }
+
+        if ($fileUidToRemoveExplicitly !== null) {
             $whereClause = $whereClause->with($this->getSimpleEqWhereClauseExpression(
                 'file',
-                $fileUid,
+                $fileUidToRemoveExplicitly,
                 PDO::PARAM_INT
             ));
         }
 
-        $this->removeByWhereClause($whereClause);
+        return $this->removeByWhereClause($whereClause);
     }
 
     /**
-     * @param Site $site
-     * @param string $tableName
-     * @param int $contextRecordUid
-     * @param int $language
-     * @param string $fieldName
-     * @param int ...$relatedFiles
-     *
-     * @throws DBALDriverException
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
-    public function removeOldEntriesFromFieldInRecordContext(Site $site, string $tableName, int $contextRecordUid, int $language, string $fieldName, int ...$relatedFiles)
-    {
+    public function removeOldEntriesFromFieldInRecordContext(
+        Site $site,
+        string $tableName,
+        int $contextRecordUid,
+        int $language,
+        string $fieldName,
+        int ...$relatedFiles,
+    ): int {
         array_walk($relatedFiles, 'intval');
         $whereClause = $this->getSimpleEqWhereClauseExpression('context_site', $site->getRootPageId(), PDO::PARAM_INT)
             ->with($this->getSimpleEqWhereClauseExpression('context_type', 'record'))
@@ -928,28 +853,24 @@ class ItemRepository extends AbstractRepository
             $whereClause = $whereClause->with($queryBuilder->andWhere($queryBuilder->expr()->notIn('file', $relatedFiles))->getQueryPart('where'));
         }
 
-        $this->removeByWhereClause($whereClause);
+        return $this->removeByWhereClause($whereClause);
     }
 
     /**
-     * @param Site $site
-     * @param int $pageId
-     * @param int|null $language
-     * @param int ...$relatedFiles
-     *
-     * @throws DBALDriverException
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
-    public function removeOldEntriesInPageContext(Site $site, int $pageId, int $language = null, int ...$relatedFiles)
-    {
+    public function removeOldEntriesInPageContext(
+        Site $site,
+        int $pageId,
+        int $language = null,
+        int ...$relatedFiles,
+    ): int {
         array_walk($relatedFiles, 'intval');
         $whereClause = $this->getSimpleEqWhereClauseExpression('context_site', $site->getRootPageId(), PDO::PARAM_INT)
             ->with($this->getSimpleEqWhereClauseExpression('context_type', 'page'))
-            ->with($this->getSimpleEqWhereClauseExpression('context_record_page', $pageId, PDO::PARAM_INT));
+            ->with($this->getSimpleEqWhereClauseExpression('context_record_pid', $pageId, PDO::PARAM_INT));
 
-        if (null !== $language) {
+        if ($language !== null) {
             $whereClause = $whereClause->with($this->getSimpleEqWhereClauseExpression('context_language', $language, PDO::PARAM_INT));
         }
 
@@ -958,23 +879,19 @@ class ItemRepository extends AbstractRepository
             $whereClause = $whereClause->with($queryBuilder->andWhere($queryBuilder->expr()->notIn('file', $relatedFiles))->getQueryPart('where'));
         }
 
-        $this->removeByWhereClause($whereClause);
+        return $this->removeByWhereClause($whereClause);
     }
 
     /**
      * Remove queue entries by given file storage uid, considering the site
      *
-     * @param Site $site
-     * @param int $fileStorageUid
-     * @param string|null $indexingConfiguration
-     *
-     * @throws DBALDriverException
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
-    public function removeByFileStorage(Site $site, int $fileStorageUid, string $indexingConfiguration = null)
-    {
+    public function removeByFileStorage(
+        Site $site,
+        int $fileStorageUid,
+        string $indexingConfiguration = null,
+    ): int {
         $queryBuilder = $this->getQueryBuilder();
         $whereClause = $this->getSimpleEqWhereClauseExpression('context_site', $site->getRootPageId(), PDO::PARAM_INT)
             ->with($this->getSimpleEqWhereClauseExpression('context_type', 'storage'))
@@ -989,44 +906,53 @@ class ItemRepository extends AbstractRepository
                 )->getQueryPart('where')
             );
 
-        if (null !== $indexingConfiguration) {
+        if ($indexingConfiguration !== null) {
             $whereClause = $whereClause->with($this->getSimpleEqWhereClauseExpression(
                 'context_record_indexing_configuration',
                 $indexingConfiguration
             ));
         }
 
-        $this->removeByWhereClause($whereClause);
+        return $this->removeByWhereClause($whereClause);
     }
 
     /**
      * Finds indexing errors for the current site
      *
-     * @param Site $contextSite
-     * @return array Error items for the current site's Index Queue
-     * @throws DBALDriverException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @return list<array<string,mixed>>|array{
+     *     uid: int,
+     *     last_update: int,
+     *     last_indexed: int,
+     *     file: int,
+     *     merge_id: string,
+     *     context_type: string,
+     *     context_site: int,
+     *     context_access_restrictions: string,
+     *     context_language: int,
+     *     context_record_indexing_configuration: string,
+     *     context_record_uid: int,
+     *     context_record_table: string,
+     *     context_record_field: string,
+     *     context_record_page: int,
+     *     context_additional_fields: string,
+     *     error_message: string,
+     *     error: int,
+     *     context_record_pid: int,
+     * }
+     *
+     * @throws DBALException
      */
     public function findErrorsBySite(Site $contextSite): array
     {
         $queryBuilder = $this->getQueryBuilder();
         return $queryBuilder
             ->select('*')
-            ->from($this->table)
-            ->andWhere(
-                $queryBuilder->expr()->eq('error', $queryBuilder->createNamedParameter(1, PDO::PARAM_INT)),
-                $queryBuilder->expr()->eq('context_site', $contextSite->getRootPageId())
-            )
-            ->execute()
+            ->from($this->table)->andWhere($queryBuilder->expr()->eq('error', $queryBuilder->createNamedParameter(1, PDO::PARAM_INT)), $queryBuilder->expr()->eq('context_site', $contextSite->getRootPageId()))->executeQuery()
             ->fetchAllAssociative();
     }
 
     /**
      * Resets all the errors for all index queue items.
-     *
-     * @param Site $contextSite
-     * @return int affected rows
-     * @throws DBALException|\Doctrine\DBAL\DBALException
      */
     public function flushErrorsBySite(Site $contextSite): int
     {
@@ -1034,19 +960,11 @@ class ItemRepository extends AbstractRepository
         return $queryBuilder
             ->update($this->table)
             ->set('error', 0)
-            ->set('error_message', '')
-            ->andWhere(
-                $queryBuilder->expr()->eq('error', $queryBuilder->createNamedParameter(1, PDO::PARAM_INT)),
-                $queryBuilder->expr()->eq('context_site', $queryBuilder->createNamedParameter($contextSite->getRootPageId(), PDO::PARAM_INT))
-            )
-            ->execute();
+            ->set('error_message', '')->andWhere($queryBuilder->expr()->eq('error', $queryBuilder->createNamedParameter(1, PDO::PARAM_INT)), $queryBuilder->expr()->eq('context_site', $queryBuilder->createNamedParameter($contextSite->getRootPageId(), PDO::PARAM_INT)))->executeStatement();
     }
 
     /**
      * Resets all the errors for all index queue items.
-     *
-     * @return int affected rows
-     * @throws DBALException|\Doctrine\DBAL\DBALException
      */
     public function flushAllErrors(): int
     {
@@ -1057,31 +975,25 @@ class ItemRepository extends AbstractRepository
             ->set('error_message', '')
             ->andWhere(
                 $queryBuilder->expr()->eq('error', $queryBuilder->createNamedParameter(1, PDO::PARAM_INT))
-            )
-            ->execute();
+            )->executeStatement();
     }
 
     /**
      * Removes items by whereClause.
      *
-     * @param CompositeExpression $whereClause
-     * @param bool $emitSignals
-     * @throws DBALDriverException
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
-    protected function removeByWhereClause(CompositeExpression $whereClause, bool $emitSignals = true)
-    {
+    protected function removeByWhereClause(
+        CompositeExpression $whereClause,
+        bool $emitSignals = true,
+    ): int {
         $queryBuilder = $this->getQueryBuilder();
         $uidsToDelete = $queryBuilder->select('uid')
-            ->from($this->table)
-            ->andWhere($whereClause)
-            ->execute()
+            ->from($this->table)->andWhere($whereClause)->executeQuery()
             ->fetchFirstColumn();
 
         if ($uidsToDelete === []) {
-            return;
+            return 0;
         }
 
         if ($emitSignals) {
@@ -1089,7 +1001,11 @@ class ItemRepository extends AbstractRepository
         }
 
         $queryBuilder = $this->getQueryBuilder();
-        $queryBuilder->delete($this->table)->where($queryBuilder->expr()->in('uid', $uidsToDelete))->execute();
+        $deletedCount = $queryBuilder
+            ->delete($this->table)
+            ->where(
+                $queryBuilder->expr()->in('uid', $uidsToDelete)
+            )->executeStatement();
 
         if ($emitSignals) {
             $this->emitMultipleItemsRemovedFromQueue($uidsToDelete);
@@ -1100,6 +1016,8 @@ class ItemRepository extends AbstractRepository
                 unset(self::$identityMap[$deletedUid]);
             }
         }
+
+        return $deletedCount;
     }
 
     /*++++++++++++++++++++++++++++++*
@@ -1109,7 +1027,25 @@ class ItemRepository extends AbstractRepository
      *++++++++++++++++++++++++++++++*/
 
     /**
-     * @param array $rows
+     * @param list<array{
+     *    uid: int,
+     *    last_update: int,
+     *    last_indexed: int,
+     *    file: int,
+     *    merge_id: string,
+     *    context_type: string,
+     *    context_site: int,
+     *    context_access_restrictions: string,
+     *    context_language: int,
+     *    context_record_indexing_configuration: string,
+     *    context_record_uid: int,
+     *    context_record_pid: int,
+     *    context_record_table: string,
+     *    context_record_field: string,
+     *    context_additional_fields: string,
+     *    error_message: string,
+     *    error: int,
+     *  }>|array<int, array<string, mixed>> $rows
      *
      * @return Item[]
      */
@@ -1117,16 +1053,41 @@ class ItemRepository extends AbstractRepository
     {
         $itemArray = [];
         foreach ($rows as $singleRow) {
-            $itemArray[] = $this->createObject($singleRow);
+            try {
+                $object = $this->createObject($singleRow);
+                $itemArray[] = $object;
+            } catch (Throwable $e) {
+                $this->markFailedByUid(
+                    $singleRow['uid'],
+                    $e->getMessage() . '[' . $e->getCode() . ']'
+                );
+            }
         }
 
         return $itemArray;
     }
 
     /**
-     * @param array $row
-     *
-     * @return Item
+     * @param array{
+     *   uid: int,
+     *   last_update: int,
+     *   last_indexed: int,
+     *   file: int,
+     *   merge_id: string,
+     *   context_type: string,
+     *   context_site: int,
+     *   context_access_restrictions: string,
+     *   context_language: int,
+     *   context_record_indexing_configuration: string,
+     *   context_record_uid: int,
+     *   context_record_pid: int,
+     *   context_record_table: string,
+     *   context_record_field: string,
+     *   context_additional_fields: string,
+     *   error_message: string,
+     *   error: int,
+     * }|array<string, mixed> $row
+     * @throws DBALException
      */
     protected function createObject(array $row): Item
     {
@@ -1149,15 +1110,12 @@ class ItemRepository extends AbstractRepository
             $item = self::$identityMap[$uid];
             $item->setError($row['error'] == 1);
             $item->setLastIndexed($row['last_indexed']);
-            $item->setLastUpdate($row['last_update']);
+            $item->setLastUpdated($row['last_update']);
         }
 
         return self::$identityMap[$uid];
     }
 
-    /**
-     * @return ContextFactory
-     */
     protected function getContextFactory(): ContextFactory
     {
         return GeneralUtility::makeInstance(ContextFactory::class);
@@ -1169,52 +1127,30 @@ class ItemRepository extends AbstractRepository
      *                              *
      *++++++++++++++++++++++++++++++*/
 
-    /**
-     * @param Item $item
-     *
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
-     */
-    protected function emitItemRemovedFromQueue(Item $item)
+    protected function emitItemRemovedFromQueue(Item $item): void
     {
-        $signalSlotDispatcher = GeneralUtility::makeInstance(Dispatcher::class);
-        $signalSlotDispatcher->dispatch(__CLASS__, 'itemRemoved', [$item]);
+        $this->eventDispatcher->dispatch(new AfterFileQueueItemHasBeenRemovedEvent($item));
     }
 
     /**
      * @param int[] $itemUids
-     *
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
      */
-    protected function emitMultipleItemsRemovedFromQueue(array $itemUids)
+    protected function emitMultipleItemsRemovedFromQueue(array $itemUids): void
     {
-        $signalSlotDispatcher = GeneralUtility::makeInstance(Dispatcher::class);
-        $signalSlotDispatcher->dispatch(__CLASS__, 'multipleItemsRemoved', [$itemUids]);
+        $this->eventDispatcher->dispatch(new AfterMultipleFileQueueItemsHaveBeenRemovedEvent($itemUids));
     }
 
-    /**
-     * @param Item $item
-     *
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
-     */
-    protected function emitBeforeItemRemovedFromQueue(Item $item)
+    protected function emitBeforeItemRemovedFromQueue(Item $item): void
     {
-        $signalSlotDispatcher = GeneralUtility::makeInstance(Dispatcher::class);
-        $signalSlotDispatcher->dispatch(__CLASS__, 'beforeItemRemoved', [$item]);
+        $this->eventDispatcher->dispatch(new BeforeFileQueueItemHasBeenRemovedEvent($item));
     }
 
     /**
      * @param int[] $itemUids
-     *
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
      */
-    protected function emitBeforeMultipleItemsRemovedFromQueue(array $itemUids)
+    protected function emitBeforeMultipleItemsRemovedFromQueue(array $itemUids): void
     {
-        $signalSlotDispatcher = GeneralUtility::makeInstance(Dispatcher::class);
-        $signalSlotDispatcher->dispatch(__CLASS__, 'beforeMultipleItemsRemoved', [$itemUids]);
+        $this->eventDispatcher->dispatch(new BeforeMultipleFileQueueItemsHaveBeenRemovedEvent($itemUids));
     }
 
     /*++++++++++++++++++++++++++++++*
@@ -1225,13 +1161,13 @@ class ItemRepository extends AbstractRepository
 
     /**
      * @param string $fieldName
-     * @param $value
+     * @param string|int|string[]|int[] $value
      * @param int $quotingType
      * @return CompositeExpression
      */
     protected function getSimpleEqWhereClauseExpression(
         string $fieldName,
-        $value,
+        string|int|array $value,
         int $quotingType = PDO::PARAM_STR
     ): CompositeExpression {
         $queryBuilder = $this->getQueryBuilder();
@@ -1242,25 +1178,25 @@ class ItemRepository extends AbstractRepository
 
     /**
      * @param string $fieldName
-     * @param $value
+     * @param string|int|string[]|int[] $value
      * @param int $quotingType
+     *
      * @return CompositeExpression
      */
     protected function getSimpleInWhereClauseExpression(
         string $fieldName,
-        $value,
+        string|int|array $value,
         int $quotingType = PDO::PARAM_STR
     ): CompositeExpression {
         $queryBuilder = $this->getQueryBuilder();
-        $quotedValue = $quotingType >= 0 ? $queryBuilder->quote($value, $quotingType): $value;
+        $quotedValue = $quotingType >= 0 ? $queryBuilder->quote($value, $quotingType) : $value;
         return $queryBuilder->andWhere(
             $queryBuilder->expr()->in($fieldName, $quotedValue)
         )->getQueryPart('where');
     }
 
     /**
-     * @param array $data
-     * @return CompositeExpression
+     * @param array<string, string|int|bool|null> $data
      */
     protected function getWhereClauseForItemData(array $data): CompositeExpression
     {
@@ -1283,12 +1219,28 @@ class ItemRepository extends AbstractRepository
     }
 
     /**
-     * @param ?CompositeExpression $whereClauseExpression
-     * @param ?int $offset
-     * @param ?int $limit
-     * @return array
-     * @throws DBALDriverException
-     * @throws DBALException|\Doctrine\DBAL\DBALException
+     * @return list<array{
+     *   uid: int|string,
+     *   last_update: int,
+     *   last_indexed: int,
+     *   file: int,
+     *   merge_id: string,
+     *   context_type: string,
+     *   context_site: int,
+     *   context_access_restrictions: string,
+     *   context_language: int,
+     *   context_record_indexing_configuration: string,
+     *   context_record_uid: int,
+     *   context_record_table: string,
+     *   context_record_field: string,
+     *   context_record_page: int,
+     *   context_additional_fields: string,
+     *   error_message: string,
+     *   error: int,
+     *   context_record_pid: int,
+     *  }>|list<array<string,mixed>>
+     *
+     * @throws DBALException
      */
     protected function fetchRecordsFromDatabase(
         CompositeExpression $whereClauseExpression = null,
@@ -1298,25 +1250,25 @@ class ItemRepository extends AbstractRepository
         $queryBuilder = $this->getQueryBuilder();
         $queryBuilder->select(...$this->fields)->from($this->table);
 
-        if (null !== $whereClauseExpression) {
+        if ($whereClauseExpression !== null) {
             $queryBuilder->andWhere($whereClauseExpression);
         }
 
-        if (null !== $offset) {
+        if ($offset !== null) {
             $queryBuilder->setFirstResult($offset);
         }
 
-        if (null !== $limit) {
+        if ($limit !== null) {
             $queryBuilder->setMaxResults($limit);
         }
         return $queryBuilder
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
     }
 
     /**
-     * @param Item $item
-     * @return array
+     * @return array<string, string|int|bool|null>
+     *
      * @throws AspectNotFoundException
      * @throws FileDoesNotExistException
      */
@@ -1324,7 +1276,8 @@ class ItemRepository extends AbstractRepository
     {
         $data = [];
         $data['file'] = $item->getFile()->getUid();
-        $data['last_update'] = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'timestamp') ?: time();
+        $data['last_update'] = GeneralUtility::makeInstance(Context::class)
+            ->getPropertyFromAspect('date', 'timestamp') ?: time();
         $data['merge_id'] = $item->getMergeId();
 
         $data = array_merge($data, $item->getContext()->toArray());

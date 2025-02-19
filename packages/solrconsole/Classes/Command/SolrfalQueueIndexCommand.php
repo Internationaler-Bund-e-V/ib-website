@@ -35,22 +35,22 @@ class SolrfalQueueIndexCommand extends AbstractSolrfalCommand
     /**
      * @var Sites
      */
-    protected $sitesHelper;
+    protected Sites $sitesHelper;
 
     /**
      * @var array
      */
-    private $sites;
+    private array$sites;
 
     /**
      * @var int
      */
-    private $amount;
+    private int $amount;
 
     /**
      * @var Indexer
      */
-    protected $indexer;
+    protected Indexer $indexer;
 
     /**
      * Configure the command by defining the name, options and arguments
@@ -70,7 +70,7 @@ class SolrfalQueueIndexCommand extends AbstractSolrfalCommand
      * @return bool
      * @throws DBALDriverException
      */
-    protected function loadOptions(SymfonyStyle $io, InputInterface $input, OutputInterface $output)
+    protected function loadOptions(SymfonyStyle $io, InputInterface $input, OutputInterface $output): bool
     {
         $this->sites = $this->getSitesHelper()->run($io, $input, $output);
 
@@ -86,21 +86,21 @@ class SolrfalQueueIndexCommand extends AbstractSolrfalCommand
      * @param InputInterface $input
      * @param OutputInterface $output
      *
-     * @return integer
+     * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $io->title($this->getDescription());
 
         $confirmed = $this->loadOptions($io, $input, $output);
-        if(!$confirmed) {
+        if (!$confirmed) {
             $io->write('Skipped');
             $io->newLine(1);
-            return 1;
+            return self::FAILURE;
         }
 
-        foreach($this->sites as $site) {
+        foreach ($this->sites as $site) {
             /** @var $site Site */
             try {
                 $this->getIndexer()->processIndexQueue($this->amount, false, $site);
@@ -109,10 +109,10 @@ class SolrfalQueueIndexCommand extends AbstractSolrfalCommand
                 $state = '<fg=red>Errored</>';
                 $io->error('Error during indexing: ' . $e->getMessage());
             }
-            $io->writeln('Indexed ' . $this->amount . ' items for site ' . $site->getDomain(). ': ' . $state);
+            $io->writeln('Indexed ' . $this->amount . ' items for site ' . $site->getDomain() . ': ' . $state);
         }
 
-        return 0;
+        return self::SUCCESS;
     }
 
     /**
@@ -127,7 +127,7 @@ class SolrfalQueueIndexCommand extends AbstractSolrfalCommand
     /**
      * @param Sites $sitesHelper
      */
-    public function setSitesHelper(Sites $sitesHelper)
+    public function setSitesHelper(Sites $sitesHelper): void
     {
         $this->sitesHelper = $sitesHelper;
     }
@@ -144,7 +144,7 @@ class SolrfalQueueIndexCommand extends AbstractSolrfalCommand
     /**
      * @param Indexer $indexer
      */
-    public function setIndexer(Indexer $indexer)
+    public function setIndexer(Indexer $indexer): void
     {
         $this->indexer = $indexer;
     }

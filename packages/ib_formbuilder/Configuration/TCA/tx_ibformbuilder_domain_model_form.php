@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 return [
     'ctrl' => [
-        'title'    => 'LLL:EXT:ib_formbuilder/Resources/Private/Language/locallang_db.xlf:tx_ibformbuilder_domain_model_form',
+        'title' => 'LLL:EXT:ib_formbuilder/Resources/Private/Language/locallang_db.xlf:tx_ibformbuilder_domain_model_form',
         'label' => 'name',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
         'sortby' => 'sorting',
         'versioningWS' => true,
         'languageField' => 'sys_language_uid',
@@ -54,9 +53,7 @@ return [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'items' => [
-                    ['', 0],
-                ],
+                'items' => [],
                 'default' => 0,
                 'foreign_table' => 'tx_ibformbuilder_domain_model_form',
                 'foreign_table_where' => 'AND tx_ibformbuilder_domain_model_form.pid=###CURRENT_PID### AND tx_ibformbuilder_domain_model_form.sys_language_uid IN (-1,0)',
@@ -81,8 +78,8 @@ return [
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    '1' => [
-                        '0' => 'LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.enabled',
+                    [
+                        'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.enabled',
                     ],
                 ],
             ],
@@ -91,10 +88,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'size' => 13,
-                'eval' => 'datetime',
                 'default' => 0,
                 'behaviour' => array(
                     'allowLanguageSynchronization' => 1,
@@ -105,10 +100,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'size' => 13,
-                'eval' => 'datetime',
                 'default' => 0,
                 'behaviour' => array(
                     'allowLanguageSynchronization' => 1,

@@ -19,18 +19,22 @@ namespace ApacheSolrForTypo3\Solrfal\Service;
 
 use ApacheSolrForTypo3\Solrfal\Exception\Service\InvalidHookException;
 use ApacheSolrForTypo3\Solrfal\System\Links\FileLinkExtractionService;
-use Exception;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
+use Throwable;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\LinkHandling\Exception\UnknownLinkHandlerException;
 use TYPO3\CMS\Core\LinkHandling\LinkService;
-use TYPO3\CMS\Core\Log\Logger;
-use TYPO3\CMS\Core\Log\LogManager;
+use TYPO3\CMS\Core\Resource\AbstractFile;
 use TYPO3\CMS\Core\Resource\Collection\AbstractFileCollection;
 use TYPO3\CMS\Core\Resource\Exception\FolderDoesNotExistException;
+use TYPO3\CMS\Core\Resource\Exception\ResourceDoesNotExistException;
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\FileCollectionRepository;
 use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Resource\FileRepository;
+use TYPO3\CMS\Core\Resource\ProcessedFile;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -39,20 +43,28 @@ use TYPO3\CMS\Frontend\Resource\FileCollector;
 /**
  * Class FileAttachmentResolver
  */
-class FileAttachmentResolver implements SingletonInterface
+class FileAttachmentResolver implements SingletonInterface, LoggerAwareInterface
 {
+    use LoggerAwareTrait;
+
     /**
-     * Detects attachments of an single field
+     * Detects attachments of a single field
      *
-     * @param string $tableName
-     * @param string $fieldName
-     * @param array $record
+     * @param string $tableName The table name to extract file references from.
+     * @param string $fieldName The field name to extract file references from.
+     * @param array{uid: int, pid: int}|array<string, int|string|bool|null> $record
      *
-     * @return int[]
+     * @return int[] uids of valid files
+     *
      * @throws InvalidHookException
+     * @throws ResourceDoesNotExistException
+     * @throws UnknownLinkHandlerException
      */
-    public function detectFilesInField($tableName, $fieldName, $record): array
-    {
+    public function detectFilesInField(
+        string $tableName,
+        string $fieldName,
+        array $record,
+    ): array {
         if (!isset($GLOBALS['TCA'][$tableName]) || !isset($GLOBALS['TCA'][$tableName]['columns'][$fieldName]) || empty($record[$fieldName])) {
             return [];
         }
@@ -71,6 +83,7 @@ class FileAttachmentResolver implements SingletonInterface
                 // todo no use case existent currently
                 break;
             case 'inline':
+            case 'file':
                 $fileUids = $this->detectFilesInInlineField($tableName, $fieldName, $record, $fieldConfiguration);
                 break;
             case 'flex':
@@ -80,8 +93,7 @@ class FileAttachmentResolver implements SingletonInterface
                 break;
         }
 
-        $fileUids = $this->applyPostDetectFilesInFieldHook($fileUids, $tableName, $fieldName, $record);
-        return $fileUids;
+        return $this->applyPostDetectFilesInFieldHook($fileUids, $tableName, $fieldName, $record);
     }
 
     /**
@@ -89,18 +101,23 @@ class FileAttachmentResolver implements SingletonInterface
      *
      * $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['solrfal']['FileAttachmentResolverAspect']
      *
-     * @param $fileUids
+     * @param int[] $fileUids
      * @param string $tableName
      * @param string $fieldName
-     * @param array $record
+     * @param array<string, int|string|bool|null> $record
      *
-     * @return int[]
+     * @return int[] uids of files
+     *
      * @throws InvalidHookException
      */
-    protected function applyPostDetectFilesInFieldHook($fileUids, $tableName, $fieldName, $record): array
-    {
+    protected function applyPostDetectFilesInFieldHook(
+        array $fileUids,
+        string $tableName,
+        string $fieldName,
+        array $record,
+    ): array {
         $fileAttachmentResolverAspects = $this->getFileAttachmentResolverAspects();
-        if (count($fileAttachmentResolverAspects) == 0) {
+        if (count($fileAttachmentResolverAspects) === 0) {
             return $fileUids;
         }
 
@@ -109,10 +126,8 @@ class FileAttachmentResolver implements SingletonInterface
             $fileUids = $fileAttachmentResolverAspect->postDetectFilesInField($fileUids, $tableName, $fieldName, $record, $this);
         }
 
-        // check files
-        $fileUids = $this->checkFiles($fileUids);
-
-        return $fileUids;
+        // check files before return them
+        return $this->checkFiles($fileUids);
     }
 
     /**
@@ -124,13 +139,8 @@ class FileAttachmentResolver implements SingletonInterface
      */
     protected function getFileAttachmentResolverAspects(): array
     {
-        $hasFileAttachmentResolverProcessor = !empty($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['solrfal']) && is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['solrfal']['FileAttachmentResolverAspect']);
-        if (!$hasFileAttachmentResolverProcessor) {
-            return [];
-        }
-
         $result = [];
-        $fileAttachmentResolverAspectReferences = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['solrfal']['FileAttachmentResolverAspect'];
+        $fileAttachmentResolverAspectReferences = (array)($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['solrfal']['FileAttachmentResolverAspect'] ?? []);
 
         foreach ($fileAttachmentResolverAspectReferences as $fileAttachmentResolverAspectReference) {
             $fileAttachmentResolverAspect = GeneralUtility::makeInstance($fileAttachmentResolverAspectReference);
@@ -146,30 +156,35 @@ class FileAttachmentResolver implements SingletonInterface
     /**
      * Extracts from text fields (text/input)
      *
-     * @param string $fieldName
-     * @param array $record
+     * @param string $fieldName The field name to extract file references from.
+     * @param array<string, int|string|bool|null> $record The record to extract the file references from
+     *
      * @return int[] uids of valid files
+     *
+     * @throws UnknownLinkHandlerException
      */
     protected function detectFilesInTextField(string $fieldName, array $record): array
     {
-        $fileUids = $this->getFileUidsFromReferencedFilesWithT3Syntax($record[$fieldName]);
+        $fileUids = $this->getFileUidsFromReferencedFilesWithT3Syntax((string)$record[$fieldName]);
         return $this->checkFiles($fileUids);
     }
 
     /**
-     * Retrieves referenced files uid's with the new reference syntax t3://file...
+     * Retrieves referenced files uids with the new reference syntax t3://file...
      *
-     * @param string $value
-     * @return array
+     * @return int[] uids of valid files
+     *
+     * @throws UnknownLinkHandlerException
      */
-    protected function getFileUidsFromReferencedFilesWithT3Syntax($value): array
-    {
+    protected function getFileUidsFromReferencedFilesWithT3Syntax(
+        string $value,
+    ): array {
         $fileUids = [];
 
-        /** @var $fileLinkExtractor FileLinkExtractionService */
+        /** @var FileLinkExtractionService $fileLinkExtractor */
         $fileLinkExtractor = GeneralUtility::makeInstance(FileLinkExtractionService::class);
 
-        /** @var $linkService LinkService */
+        /** @var LinkService $linkService */
         $linkService = GeneralUtility::makeInstance(LinkService::class);
         $fileLinks =  $fileLinkExtractor->extract($value);
         foreach ($fileLinks as $fileLink) {
@@ -178,7 +193,7 @@ class FileAttachmentResolver implements SingletonInterface
             if (!isset($link['file'])) {
                 continue;
             }
-            /** @var $file File */
+            /** @var File $file */
             $file = $link['file'];
             $fileUids[] = $file->getUid();
         }
@@ -189,20 +204,31 @@ class FileAttachmentResolver implements SingletonInterface
     /**
      * Extracts from Group field
      *
-     * @param string $tableName
-     * @param string $fieldName
-     * @param array $record
-     * @param array $fieldConfiguration
+     * @param string $tableName The table name to extract file references from.
+     * @param string $fieldName The field name to extract file references from.
+     * @param array{uid: int, pid: int}|array<string, int|string|bool|null> $record
+     * @param array<string, mixed> $fieldConfiguration
      *
-     * @return int[]
+     * @return int[] uids of valid files
+     *
+     * @throws ResourceDoesNotExistException
      */
-    protected function detectFilesInGroupField($tableName, $fieldName, array $record, array $fieldConfiguration): array
-    {
-        $values = GeneralUtility::trimExplode(',', $record[$fieldName]);
+    protected function detectFilesInGroupField(
+        string $tableName,
+        string $fieldName,
+        array $record,
+        array $fieldConfiguration,
+    ): array {
+        $values = GeneralUtility::trimExplode(',', (string)$record[$fieldName]);
         if ($values === []) {
             return [];
         }
-        $internalType = $fieldConfiguration['internal_type'];
+        $internalType = $fieldConfiguration['internal_type'] ?? (
+            // See: https://forge.typo3.org/issues/95384 or https://docs.typo3.org/c/typo3/cms-core/main/en-us/Changelog/11.5/Important-95384-TCAInternal_typedbOptionalForTypegroup.html
+            // * > Since db is the most common use case, TYPO3 now uses this as default. Extension authors can therefore remove the internal_type=db option from TCA type group fields.
+            // * https://docs.typo3.org/m/typo3/reference-tca/11.5/en-us/ColumnsConfig/Type/Group/Properties/InternalType.html#columns-group-properties-internal-type
+            ($fieldConfiguration['type'] ?? '') === 'group' ? 'db' : ''
+        );
         $fileUids = [];
         switch ($internalType) {
             case 'db':
@@ -214,7 +240,7 @@ class FileAttachmentResolver implements SingletonInterface
                         if ($fieldConfiguration['MM'] === 'sys_file_reference') {
                             $repository = GeneralUtility::makeInstance(FileRepository::class);
                             /** @var FileReference[] $fileReferences */
-                            $fileReferences = $repository->findByRelation($tableName, $fieldName, $record['uid']);
+                            $fileReferences = $repository->findByRelation($tableName, $fieldName, (int)$record['uid']);
                             foreach ($fileReferences as $fileReference) {
                                 if (!$this->isValidFileReference($fileReference)) {
                                     continue;
@@ -229,7 +255,7 @@ class FileAttachmentResolver implements SingletonInterface
                             if ((empty($table) && $fieldConfiguration['allowed'] == 'sys_file') || $table == 'sys_file') {
                                 $fileUids[] = (int)$uid;
                             } elseif ((empty($table) && $fieldConfiguration['allowed'] == 'sys_file_collection') || $table == 'sys_file_collection') {
-                                $this->addFileUidsFromCollectionToArray($uid, $fileUids);
+                                $this->addFileUidsFromCollectionToArray((int)$uid, $fileUids);
                             }
                         }
                     }
@@ -254,7 +280,7 @@ class FileAttachmentResolver implements SingletonInterface
                         foreach ($folderObject->getFiles() as $fileObject) {
                             $fileUids[] = $fileObject->getUid();
                         }
-                    } /* @noinspection PhpRedundantCatchClauseInspection */ catch (FolderDoesNotExistException $e) {
+                    } /* @noinspection PhpRedundantCatchClauseInspection */ catch (FolderDoesNotExistException) {
                         continue;
                     }
                 }
@@ -269,18 +295,30 @@ class FileAttachmentResolver implements SingletonInterface
      * $collectionUid to the $fileUidArray.
      *
      * @param int $collectionUid The UID of the collection
-     * @param array $fileUidArray The array to which the file UIDs will be added.
+     * @param int[] $fileUidArray The array to which the file UIDs will be added.
+     *
+     * @throws ResourceDoesNotExistException
      */
-    protected function addFileUidsFromCollectionToArray($collectionUid, array &$fileUidArray)
-    {
+    protected function addFileUidsFromCollectionToArray(
+        int $collectionUid,
+        array &$fileUidArray,
+    ): void {
         $collectionRepository = GeneralUtility::makeInstance(FileCollectionRepository::class);
         $fileCollection = $collectionRepository->findByUid($collectionUid);
 
         if ($fileCollection instanceof AbstractFileCollection) {
             $fileCollection->loadContents();
-            /** @var File $file */
+            /** @var FileReference|ProcessedFile|AbstractFile $file */
             foreach ($fileCollection->getItems() as $file) {
-                $fileUidArray[] = $file->getUid();
+                if (
+                    $file instanceof FileReference
+                    || $file instanceof ProcessedFile
+                    || method_exists($file, 'getOriginalFile')
+                ) {
+                    $fileUidArray[] = $file->getOriginalFile()->getUid();
+                } else {
+                    $fileUidArray[] = $file->getUid();
+                }
             }
         }
     }
@@ -288,18 +326,23 @@ class FileAttachmentResolver implements SingletonInterface
     /**
      * Extracts from inline fields
      *
-     * @param string $tableName
-     * @param string $fieldName
-     * @param array $record
-     * @param array $fieldConfiguration
-     * @return int[]
+     * @param string $tableName The table name to extract file references from.
+     * @param string $fieldName The field name to extract file references from.
+     * @param array<string, int|string|bool|null> $record
+     * @param array<string, mixed> $fieldConfiguration
+     *
+     * @return int[] uids of valid files
      */
-    protected function detectFilesInInlineField($tableName, $fieldName, array $record, array $fieldConfiguration): array
-    {
+    protected function detectFilesInInlineField(
+        string $tableName,
+        string $fieldName,
+        array $record,
+        array $fieldConfiguration,
+    ): array {
         $fileUids = [];
 
         if ($fieldConfiguration['foreign_table'] === 'sys_file_reference') {
-            /* @var FileCollector $fileCollector */
+            /** @var FileCollector $fileCollector */
             $fileCollector = GeneralUtility::makeInstance(FileCollector::class);
             $fileCollector->addFilesFromRelation($tableName, $fieldName, $record);
             $fileReferences = $fileCollector->getFiles();
@@ -320,12 +363,8 @@ class FileAttachmentResolver implements SingletonInterface
     /**
      * Get updated and uncached file reference
      *
-     * We do this since the ResourceFactory caches the
-     * file reference objects and we cannot be sure that this
-     * object is up-to-date
-     *
-     * @param FileReference $fileReference
-     * @return FileReference $fileReference
+     * We do this since the ResourceFactory caches the file reference objects,
+     * and we cannot be sure that this object is up-to-date
      */
     protected function getUpdatedFileReference(FileReference $fileReference): FileReference
     {
@@ -333,20 +372,16 @@ class FileAttachmentResolver implements SingletonInterface
             $fileReferenceData = BackendUtility::getRecord('sys_file_reference', $fileReference->getUid());
             $fileReference = $this->getResourceFactory()
                 ->createFileReferenceObject($fileReferenceData);
-        } catch (Exception $e) {
-            /* @var Logger $logger */
-            $logger = GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__);
-            $logger->error($e->getMessage());
+        } catch (Throwable $e) {
+            $this->logger->error(
+                'Code: ' . $e->getCode() . PHP_EOL . 'message: ' . $e->getMessage()
+            );
         }
-
         return $fileReference;
     }
 
     /**
      * Checks if file reference is valid and may be added to the index queue
-     *
-     * @param FileReference $fileReference
-     * @return bool
      */
     protected function isValidFileReference(FileReference $fileReference): bool
     {
@@ -356,8 +391,8 @@ class FileAttachmentResolver implements SingletonInterface
     /**
      * Checks if files are valid and removes invalid files that may not be added to the index queue
      *
-     * @param array $fileUids
-     * @return array
+     * @param int[] $fileUids
+     * @return int[] uids of valid files
      */
     protected function checkFiles(array $fileUids): array
     {
@@ -365,7 +400,7 @@ class FileAttachmentResolver implements SingletonInterface
 
         foreach ($fileUids as $fileUid) {
             try {
-                $file = $this->getResourceFactory()->getFileObject((int)$fileUid);
+                $file = $this->getResourceFactory()->getFileObject($fileUid);
                 if (
                     !$file->isMissing()
                     && !$file->isDeleted()
@@ -373,22 +408,18 @@ class FileAttachmentResolver implements SingletonInterface
                 ) {
                     $checkedFileUids[] = $file->getUid();
                 }
-            } catch (Exception $e) {
-                /* @var Logger $logger */
-                $logger = GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__);
-                $logger->error('File not found: ' . $fileUid);
+            } catch (Throwable $e) {
+                $this->logger->error(
+                    'File not found: ' . $fileUid . ' due of ERROR code: ' . $e->getCode() . PHP_EOL . 'message: ' . $e->getMessage()
+                );
             }
         }
 
         return $checkedFileUids;
     }
 
-    /**
-     * @return ResourceFactory
-     */
     protected function getResourceFactory(): ResourceFactory
     {
-        /* @noinspection PhpIncompatibleReturnTypeInspection */
         return GeneralUtility::makeInstance(ResourceFactory::class);
     }
 }

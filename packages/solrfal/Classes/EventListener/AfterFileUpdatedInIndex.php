@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace ApacheSolrForTypo3\Solrfal\EventListener;
 
 use ApacheSolrForTypo3\Solrfal\Queue\ConsistencyAspect;
-use Doctrine\DBAL\Driver\Exception as DBALDriverException;
 use Throwable;
 use TYPO3\CMS\Core\Resource\Event\AfterFileUpdatedInIndexEvent;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -26,8 +25,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class AfterFileUpdatedInIndex
 {
     /**
-     * @param AfterFileUpdatedInIndexEvent $event
-     * @throws DBALDriverException
      * @throws Throwable
      */
     public function __invoke(AfterFileUpdatedInIndexEvent $event): void

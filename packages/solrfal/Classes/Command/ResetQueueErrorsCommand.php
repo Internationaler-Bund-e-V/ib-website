@@ -18,11 +18,11 @@ declare(strict_types=1);
 namespace ApacheSolrForTypo3\Solrfal\Command;
 
 use ApacheSolrForTypo3\Solrfal\Queue\ItemRepository;
-use Exception;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Throwable;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -34,7 +34,7 @@ class ResetQueueErrorsCommand extends Command
      * Configure the command by defining the name, options and arguments
      * @noinspection PhpUnused
      */
-    public function configure()
+    public function configure(): void
     {
         $this->setDescription('EXT:solrfal: Resets the errors of the solr file index queue');
     }
@@ -42,25 +42,25 @@ class ResetQueueErrorsCommand extends Command
     /**
      * @inheritDoc
      * @noinspection PhpUnused
-     * @noinspection PhpMissingReturnTypeInspection
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = $this->getSymfonyStyle($input, $output);
         $io->title($this->getDescription());
         try {
             $itemCountWithErrors = $this->getItemRepository()->flushAllErrors();
             $io->success('All errors(' . $itemCountWithErrors . ') in the queue have been reset.');
-        } catch (Exception $e) {
-            $io->error('Error resetting all queue errors');
+        } catch (Throwable $e) {
+            $io->error(
+                'Error resetting all queue errors:' . PHP_EOL .
+                '  Code: ' . $e->getCode() . PHP_EOL .
+                '  Message: ' . $e->getMessage()
+            );
             return 1;
         }
         return 0;
     }
 
-    /**
-     * @return ItemRepository
-     */
     protected function getItemRepository(): ItemRepository
     {
         return GeneralUtility::makeInstance(ItemRepository::class);

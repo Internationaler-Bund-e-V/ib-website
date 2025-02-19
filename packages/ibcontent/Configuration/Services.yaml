@@ -18,3 +18,21 @@ services:
             - name: "console.command"
               command: "ibcontent:cleanflexformdatacommand"
               description: "V11 - Clean up flexform data"
+
+    Rms\Ibcontent\Command\ConvertProcessedImagePathsCommand:
+        tags:
+            - name: "console.command"
+              command: "ibcontent:convertprocessedimagepathscommand"
+              description: "V12 - Convert Processed Image Paths to real paths"
+
+    Rms\Ibcontent\EventListener\AfterFlexFormDataStructureParsedEventListener:
+        tags:
+            - name: event.listener
+              identifier: "ibcontent.parse_data_structure_listener"
+              event: TYPO3\CMS\Core\Configuration\Event\AfterFlexFormDataStructureParsedEvent
+
+    Rms\Ibcontent\Command\ConvertFlexformFileReferencesForTypo312Command:
+        tags:
+            - name: "console.command"
+              command: "ibcontent:convertflexformfilereferencesfortypo312command"
+              description: "v12 - convert flexform image file references"

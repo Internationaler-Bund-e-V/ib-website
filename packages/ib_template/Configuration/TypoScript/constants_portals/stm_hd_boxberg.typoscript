@@ -1,0 +1,104 @@
+# -----------------------------------------------------------------------------
+# PORTAL stm-hd-boxberg.de
+# -----------------------------------------------------------------------------
+[site("identifier") == "stadtteilmanagement_boxberg"]
+    host = hd-boxberg.de
+
+    portalSettings {
+        pageTitle = Stadtteilmanagement Boxberg
+        firstMenuTitle =
+        bodyClassName = stm_boxberg
+        root_id = 7284
+        misc.sitemapStartId = 7284
+        mainnav_start_id = 7296
+        misc.searchResultId = 7293
+        showNavigationSearch = 0
+        showSearchButton = 0
+        misc.showOnlyTYPO3SearchResults = 1
+        readspeaker.show = 1
+        portal_logo.file = Logo-Boxberg_STM_500x167.jpg
+        portal_logo.format = wide
+        #portal_logo.file_favicon = 
+        #footer_logo = Logo-Boxberg_STM_500x167.jpg
+        footer_hide_footer = 0
+        footer.hide_central_links = 1
+        footer.hide_further_links = 1
+        footer.central_links_num_columns = 12
+        footer.use_three_columns = 1
+        
+        footer.show_textcontent_left = 1
+        footer.show_textcontent_middle = 1
+        footer.show_textcontent_right = 1
+
+        footer.tt_content_uid_left = 21143
+        footer.tt_content_uid_middle = 21142
+        footer.tt_content_uid_right = 21141
+
+
+        #data privacy site ID
+        dataPrivacySiteID = 7288
+
+        #defaultGetVars.L = 1
+        readspeaker.show = 1
+        showLanguageMenu = 1
+
+        //generate news sitemap     
+        NewsSitemap.generate = 1
+        NewsSitemap.NewsFolderPid = 7300
+        NewsSitemap.NewsDetailPid = 7303
+
+        analytics {
+            #account_id =
+            #enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 79
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = 1yFYJbu7
+        }
+
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db            
+        }
+
+        main_bubble {
+            hide = 1			
+        }
+
+        social.ib_english_page_link =
+
+        social.youtube =
+        social.twitter =
+        social.xing =
+        social.linkedin =
+        social.kununu =
+
+        social.instagram = https://www.instagram.com/stadtteilmanagementboxberg
+        social.instagram.titletag = Instagram
+        social.facebook = https://www.facebook.com/Stadtteilbuero.Boxberg
+        social.facebook.titletag = Facebook
+    }
+
+    social.youtube =
+    social.twitter =
+    social.xing =
+    social.linkedin =
+    social.kununu =
+
+    social.instagram = https://www.instagram.com/stadtteilmanagementboxberg
+    social.instagram.titletag = Instagram
+    social.facebook = https://www.facebook.com/Stadtteilbuero.Boxberg
+    social.facebook.titletag = Facebook
+
+    gallery.folder.pid = 7302
+
+    const_navigation {
+        footernav_central_folder_id = 
+        footernav_misc_folder_id = 
+        footernav_meta_folder_id = 7285
+    }
+[end]
+
+[mypidinrootline(7284) || 7284 in tree.rootLineIds]
+    module.tx_ibformbuilder_ibforms.persistence.storagePid = 7301
+[end]

@@ -24,7 +24,7 @@ class ContactFormController extends ActionController
     public function contactFormAction(): ResponseInterface
     {
         $this->view->assignMultiple(array(
-            'uid' => $this->configurationManager->getContentObject()->data['uid'],
+            'uid' => $this->request->getAttribute('currentContentObject')->data['uid'],
             'customSettings' => $this->customSettings,
         ));
 
@@ -34,13 +34,16 @@ class ContactFormController extends ActionController
     public function submitContactFormAction(): ResponseInterface
     {
         // new implementation MA#2064 friendlyRecaptcha
-        $mailMsg = htmlentities((string)GeneralUtility::_GP('msg'));
-        $mailFrom = htmlentities((string)GeneralUtility::_GP('eMail'));
-        $mailSalutation = htmlentities((string)GeneralUtility::_GP('salutation'));
-        $mailPhone = htmlentities((string)GeneralUtility::_GP('phone'));
-        $mailFirstName = htmlentities((string)GeneralUtility::_GP('firstName'));
-        $mailLastName = htmlentities((string)GeneralUtility::_GP('lastName'));
-        $mailRecaptcha = htmlentities((string)GeneralUtility::_GP('frc-captcha-solution'));
+        $parsedBody = is_array($this->request->getParsedBody()) ? $this->request->getParsedBody() : [];
+        $queryParams = is_array($this->request->getQueryParams()) ? $this->request->getQueryParams() : [];
+
+        $mailMsg = htmlentities((string) ($parsedBody['msg'] ?? $queryParams['msg'] ?? null));
+        $mailFrom = htmlentities((string) ($parsedBody['eMail'] ?? $queryParams['eMail'] ?? null));
+        $mailSalutation = htmlentities((string) ($parsedBody['salutation'] ?? $queryParams['salutation'] ?? null));
+        $mailPhone = htmlentities((string) ($parsedBody['phone'] ?? $queryParams['phone'] ?? null));
+        $mailFirstName = htmlentities((string) ($parsedBody['firstName'] ?? $queryParams['firstName'] ?? null));
+        $mailLastName = htmlentities((string) ($parsedBody['lastName'] ?? $queryParams['lastName'] ?? null));
+        $mailRecaptcha = htmlentities((string) ($parsedBody['frc-captcha-solution'] ?? $queryParams['frc-captcha-solution'] ?? null));
 
         if (GeneralUtility::validEmail($mailFrom) && $this->getRecaptchaResponse($mailRecaptcha)) {
             /** @var MailMessage $mail */
@@ -58,7 +61,7 @@ class ContactFormController extends ActionController
             $mail->setReplyTo(array($mailFrom));
             //$mail->setTo($this->getReceiver());
             //MA#772
-            $mailAddresses = explode(",", (string)$this->settings['emailreceiver']);
+            $mailAddresses = explode(",", (string) $this->settings['emailreceiver']);
             $mail->setTo($mailAddresses);
 
             $content =
@@ -72,7 +75,7 @@ class ContactFormController extends ActionController
                 'Diese Email wurde automatisch generiert. Bitte antworten Sie nicht auf den Absender!' .
                 '</html>';
 
-            $mail->setBody()->html($content);
+            $mail->html($content);
             $mail->send();
         }
 
@@ -109,15 +112,15 @@ class ContactFormController extends ActionController
 
         $opts = array(
             'http' =>
-            array(
-                'method' => 'POST',
-                'header' => 'Content-type: application/x-www-form-urlencoded',
-                'content' => $postdata,
-            ),
+                array(
+                    'method' => 'POST',
+                    'header' => 'Content-type: application/x-www-form-urlencoded',
+                    'content' => $postdata,
+                ),
         );
 
         $context = stream_context_create($opts);
-        $result = json_decode((string)file_get_contents($requestURL, false, $context), true);
+        $result = json_decode((string) file_get_contents($requestURL, false, $context), true);
 
         return $result['success'];
     }

@@ -22,7 +22,8 @@ class ContextNames extends AbstractCommaSeparatedList
     /**
      * Configurations constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->option = 'context-names';
         $this->defaultValue = '*';
         $this->label = 'Context names to be fetched';

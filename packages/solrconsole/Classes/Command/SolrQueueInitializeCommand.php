@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace ApacheSolrForTypo3\Solrconsole\Command;
 
 use ApacheSolrForTypo3\Solr\Domain\Index\Queue\QueueInitializationService;
-use ApacheSolrForTypo3\Solr\IndexQueue\Queue;
 use ApacheSolrForTypo3\Solrconsole\Command\OptionHelper\Configurations;
 use ApacheSolrForTypo3\Solrconsole\Command\OptionHelper\Sites;
 use Symfony\Component\Console\Input\InputInterface;
@@ -35,17 +34,12 @@ class SolrQueueInitializeCommand extends AbstractSolrCommand
     /**
      * @var QueueInitializationService
      */
-    protected $queueInitializationService;
+    protected QueueInitializationService $queueInitializationService;
 
     /**
      * @var Sites
      */
-    protected $sitesHelper;
-
-    /**
-     * @var Configurations
-     */
-    protected $configurationsHelper;
+    protected Sites $sitesHelper;
 
     /**
      * @return Sites
@@ -59,7 +53,7 @@ class SolrQueueInitializeCommand extends AbstractSolrCommand
     /**
      * @param Sites $sitesHelper
      */
-    public function setSitesHelper(Sites $sitesHelper)
+    public function setSitesHelper(Sites $sitesHelper): void
     {
         $this->sitesHelper = $sitesHelper;
     }
@@ -80,9 +74,9 @@ class SolrQueueInitializeCommand extends AbstractSolrCommand
      * @param InputInterface $input
      * @param OutputInterface $output
      *
-     * @return integer
+     * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $io->title($this->getDescription());
@@ -93,10 +87,10 @@ class SolrQueueInitializeCommand extends AbstractSolrCommand
         $configurations = $configurationHelper->run($io, $input);
 
         $confirmed = $io->confirm('Is this correct?', true);
-        if(!$confirmed) {
+        if (!$confirmed) {
             $io->write('Skipped');
             $io->newLine(1);
-            return 1;
+            return self::FAILURE;
         }
 
         $initializationResults = $this->doInitialization($sites, $configurations);
@@ -105,7 +99,7 @@ class SolrQueueInitializeCommand extends AbstractSolrCommand
         $io->write('<fg=green>Done</>');
         $io->newLine(1);
 
-        return 0;
+        return self::SUCCESS;
     }
 
     /**
@@ -128,7 +122,7 @@ class SolrQueueInitializeCommand extends AbstractSolrCommand
      * @param SymfonyStyle $io
      * @param $initializationResults
      */
-    protected function renderInitializationResults($io, $initializationResults)
+    protected function renderInitializationResults($io, $initializationResults): void
     {
         foreach ($initializationResults as $siteKey => $initializationResult) {
             $io->writeln('Initialized the following configurations for site ' . $siteKey . ': ');
@@ -146,10 +140,8 @@ class SolrQueueInitializeCommand extends AbstractSolrCommand
      */
     public function getQueueInitializationService(): QueueInitializationService
     {
-        if (is_null($this->queueInitializationService)) {
-            /** @var $queue Queue */
-            $queue = GeneralUtility::makeInstance(Queue::class);
-            $this->queueInitializationService = GeneralUtility::makeInstance(QueueInitializationService::class, $queue);
+        if (!isset($this->queueInitializationService)) {
+            $this->queueInitializationService = GeneralUtility::makeInstance(QueueInitializationService::class);
         }
         return $this->queueInitializationService;
     }

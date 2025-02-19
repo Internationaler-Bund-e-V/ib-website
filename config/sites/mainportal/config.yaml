@@ -1,7 +1,7 @@
 base: 'https://www.internationaler-bund.de/'
 baseVariants:
   -
-    base: 'https://ib.ddev.site/'
+    base: 'https://ib-typo312.ddev.site/'
     condition: 'getenv("IS_DDEV_PROJECT") == "true"'
   -
     base: 'https://ib-staging.rmsdev.de/'
@@ -103,6 +103,8 @@ routes:
     route: /angebot
     type: uri
     source: 't3://page?uid=32'
+#solr_host_read: ib-typo312.ddev.site
+#solr_port_read: '8984'
 websiteTitle: ''
 imports:
   -

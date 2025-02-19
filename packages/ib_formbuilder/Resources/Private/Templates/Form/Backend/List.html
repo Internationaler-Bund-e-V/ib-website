@@ -1,0 +1,100 @@
+<f:layout name="Module" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="Content">
+    <f:render partial="Backend/Menu" />
+    <h1>Übersicht aller Formulare für den aktiven Seitenbaum</h1>
+
+
+    <f:flashMessages />
+
+    <div class="tx_ibformbuilder-list-container">
+        <table class="tx_ibformbuilder tx_ibformbuilder-list-table">
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    <f:translate key="tx_ibformbuilder_domain_model_form.name" />
+                </th>
+                <!--<th><f:translate key="tx_ibformbuilder_domain_model_form.formdata_json" /></th>-->
+                <!--<th><f:translate key="tx_ibformbuilder_domain_model_form.receiver" /></th>-->
+                <th></th>
+            </tr>
+
+            <f:for each="{forms}" as="form">
+                <tr>
+                    <td>
+                        {form.uid}
+                    </td>
+                    <td>
+                        <!--<f:link.action action="show" arguments="{form : form}"> {form.name}</f:link.action>-->
+                        {form.name}
+                    </td>
+                    <!--<td><f:link.action action="show" arguments="{form : form}"> {form.formdataJson}</f:link.action></td>-->
+                    <!--<td><f:link.action action="show" arguments="{form : form}"> {form.receiver}</f:link.action></td>-->
+                    <td>
+                        <f:link.action action="edit" arguments="{form : form}">bearbeiten</f:link.action>
+                        &nbsp;|&nbsp;
+                        <f:link.action action="delete" arguments="{form : form}"
+                            onclick="return confirm('Wirklich löschen?')">löschen
+                        </f:link.action>
+                        &nbsp;|&nbsp;
+                        <f:link.action action="export" arguments="{form : form}">eMail Daten exportieren</f:link.action>
+                    </td>
+                </tr>
+            </f:for>
+        </table>
+
+        <f:link.action action="new" class="backend-button">Neues Formular anlegen</f:link.action>
+    </div>
+
+
+    <h1>Übersicht aller Emails</h1>
+    <div class="tx_ibformbuilder-list-container">
+        <table class="tx_ibformbuilder tx_ibformbuilder-list-table">
+            <tr>
+                <th>Formularname</th>
+                <th>Erstellungsdatum</th>
+                <th>Id Formular</th>
+                <th>Fehler beim Versand</th>
+                <th></th>
+            </tr>
+            <f:for each="{emails}" as="emaildata">
+                <tr>
+                    <td>{emaildata.formName}</td>
+                    <td>
+                        <f:format.date format="d.m.Y - H:i">{emaildata.tstamp}</f:format.date>
+                    </td>
+                    <td>
+                        {emaildata.relatedFormId}
+                    </td>
+                    <td>
+                        {emaildata.errorOnSend}
+                    </td>
+                    <td>
+                        <f:link.action action="showEmailData" arguments="{emaildata : emaildata}">
+                            anzeigen
+                        </f:link.action>
+                        &nbsp;|&nbsp;
+                        <f:link.action action="deleteEmailData" arguments="{emaildata : emaildata}"
+                            onclick="return confirm('Wirklich löschen?')">löschen
+                        </f:link.action>
+                    </td>
+                </tr>
+            </f:for>
+        </table>
+
+        <!-- <f:link.action action="exportEmailDataAsCSV" arguments="{pid : storagePid}">Als CSV Exportieren</f:link.action> -->
+    </div>
+</f:section>

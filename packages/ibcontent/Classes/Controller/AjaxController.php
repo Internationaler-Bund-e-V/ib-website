@@ -43,7 +43,10 @@ class AjaxController extends ActionController
     {
         $errors = [];
         $data = $_POST;
-        $mailRecaptcha = GeneralUtility::_GP('frc-captcha-solution');
+        $parsedBody = is_array($this->request->getParsedBody()) ? $this->request->getParsedBody() : [];
+        $queryParams = is_array($this->request->getQueryParams()) ? $this->request->getQueryParams() : [];
+
+        $mailRecaptcha = $parsedBody['frc-captcha-solution'] ?? $queryParams['frc-captcha-solution'] ?? null;
         //DebuggerUtility::var_dump($data);die();
         // validate user input
         if (!in_array($data['salutation'], ['Herr', 'Frau', 'Keine Angabe', 'Neutrale Anrede'])) {
@@ -98,13 +101,13 @@ class AjaxController extends ActionController
             $mail->setReplyTo(array($data['email']));
             $mail->setTo($receiver);
             //$mail->setBody('Here is the message itself');
-            $mail->setBody()->html($message);
+            $mail->html($message);
             //$mail->addPart( $message, 'text/html' );
             $mail->send();
         }
 
         // write response
-        return $this->jsonResponse((string)json_encode(
+        return $this->jsonResponse((string) json_encode(
             [
                 'errors' => $errors,
                 //'post'            => $data,
@@ -135,15 +138,15 @@ class AjaxController extends ActionController
 
         $opts = array(
             'http' =>
-            array(
-                'method' => 'POST',
-                'header' => 'Content-type: application/x-www-form-urlencoded',
-                'content' => $postdata,
-            ),
+                array(
+                    'method' => 'POST',
+                    'header' => 'Content-type: application/x-www-form-urlencoded',
+                    'content' => $postdata,
+                ),
         );
 
         $context = stream_context_create($opts);
-        $result = json_decode((string)file_get_contents($requestURL, false, $context), true);
+        $result = json_decode((string) file_get_contents($requestURL, false, $context), true);
 
         return $result['success'];
     }

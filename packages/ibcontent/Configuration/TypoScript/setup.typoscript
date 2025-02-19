@@ -5,8 +5,7 @@ plugin.tx_ibcontent {
         partialRootPaths >
         partialRootPaths {
             10 = {$plugin.tx_ibcontent.view.partialRootPath}
-            #20 = fileadmin/template/html/partial/
-            20 = typo3conf/ext/ib_template/Resources/Private/Template/html/partial/
+            20 = EXT:ib_template/Resources/Private/Template/html/partial/
         }
         layoutRootPaths = {$plugin.tx_ibcontent.view.layoutRootPath}
     }

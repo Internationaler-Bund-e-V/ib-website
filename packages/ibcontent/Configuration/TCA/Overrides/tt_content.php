@@ -284,6 +284,25 @@ $pluginSignature = strtolower($extensionName) . '_' . $pluginName;
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
 ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . 'ibcontent' . '/Configuration/FlexForms/content_fundraising.xml');
 
+// Remove obsolete soft reference key 'images', the references from RTE content to the original
+// images are handled with the key 'rtehtmlarea_images'
+// Set up soft reference index parsing for RTE images in pi_flexform
+// see vendor/netresearch/rte-ckeditor-image/Configuration/TCA/Overrides/tt_content.php
+// mk@rms, 2024-11-06
+/*
+$cleanSoftReferences = explode(
+    ',',
+    (string) $GLOBALS['TCA']['tt_content']['columns']['pi_flexform']['config']['softref']
+);
+
+$cleanSoftReferences   = array_diff($cleanSoftReferences, ['images']);
+$cleanSoftReferences[] = 'rtehtmlarea_images';
+
+$GLOBALS['TCA']['tt_content']['columns']['pi_flexform']['config']['softref'] = implode(
+    ',',
+    $cleanSoftReferences
+);
+*/
 $pluginName = 'raisenow';
 $pluginSignature = strtolower($extensionName) . '_' . $pluginName;
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';

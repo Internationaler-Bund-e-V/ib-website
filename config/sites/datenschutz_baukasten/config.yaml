@@ -1,5 +1,11 @@
 base: 'https://datenschutzbaukasten/'
 disableStaticFileCache: false
+friendlycaptcha_js_path: 'EXT:friendlycaptcha_official/Resources/Public/JavaScript/lib/widget-0.9.12.min.js'
+friendlycaptcha_puzzle_url: 'https://eu-api.friendlycaptcha.eu/api/v1/puzzle'
+friendlycaptcha_secret_key: ''
+friendlycaptcha_site_key: ''
+friendlycaptcha_skip_dev_validation: false
+friendlycaptcha_verify_url: 'https://eu-api.friendlycaptcha.eu/api/v1/siteverify'
 languages:
   -
     title: Deutsch
@@ -175,6 +181,22 @@ languages:
     flag: ua
     solr_core_read: ''
     languageId: 11
+  -
+    title: French
+    enabled: true
+    base: /fr/
+    typo3Language: fr
+    locale: fr_FR.UTF-8
+    iso-639-1: fr
+    websiteTitle: ''
+    navigationTitle: FR
+    hreflang: fr-FR
+    direction: ltr
+    fallbackType: strict
+    fallbacks: ''
+    flag: fr
+    solr_core_read: core_fr
+    languageId: 9
 rootPageId: 4522
 solr_enabled_read: false
 solr_host_read: localhost

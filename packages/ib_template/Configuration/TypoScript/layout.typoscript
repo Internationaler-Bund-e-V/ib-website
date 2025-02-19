@@ -3,7 +3,7 @@
 # -----------------------------------------------------------------------------
 page = PAGE
 page.typeNum = 0
-page.shortcutIcon = {path: EXT:ib_template/Resources/Public/Images/logos_portals/}{$portalSettings.portal_logo.file_favicon}
+page.shortcutIcon = {$template_path.img}/logos_portals/{$portalSettings.portal_logo.file_favicon}
 page {
     # Neuen title Tag in headerData setzen
     headerData {
@@ -25,7 +25,7 @@ page {
 # @author mkettel
 # -----------------------------------------------------------------------------
 // [globalVar = TSFE:id={$portalSettings.tt_news.single_pid}]
-[getTSFE().id >= {$portalSettings.tt_news.single_pid}]
+[getTSFE()?.id >= {$portalSettings.tt_news.single_pid}]
     page {
         headerData {
             #10 >
@@ -51,7 +51,7 @@ page.meta {
     description.field = description
 
     # set to MOINDEX if robots_noindex_nofollow flag is set
-    # @see htdocs/EXT:ib_page_extension
+    # @see EXT:ib_page_extension
     # @see https://mantis.rm-solutions.de/mantis/view.php?id=317
     robots = INDEX,FOLLOW
     #robots.override = NOINDEX,NOFOLLOW
@@ -59,7 +59,7 @@ page.meta {
     #robots.override.if.isTrue.field = no_search
 }
 
-page.10 = FLUIDTEMPLATE 
+page.10 = FLUIDTEMPLATE
 page.10 {
     partialRootPath = {$template_path.html}/partial/
     layoutRootPath = {$template_path.html}/layout/
@@ -68,7 +68,7 @@ page.10 {
         menuStyle.value = {$lang.menuStyle}
 
         imgPath = TEXT
-        imgPath.value = {path: EXT:ib_template/Resources/Public/Images/}
+        imgPath.value = {$template_path.img}
     }
     dataProcessing {
         10 = TYPO3\CMS\Frontend\DataProcessing\LanguageMenuProcessor
@@ -78,66 +78,17 @@ page.10 {
     }
 }
 
-#
-# deaktiviere das Laden von einer in Solr integrierten jQuery Version (jQuery v3.1.1)
-# https://mantis.rm-solutions.de/mantis/view.php?id=2338
-# mk@rms, 2022-08-12
-#
-#page.includeJSFooterlibs.solr-jquery >
-#page.includeJS {
-#    jquery = EXT:ib_template/Resources/Public/js/min/jquery.min.js
-#}
-
-#page.jsFooterInline {
-#    10 = TEXT
-#    10.value (
-#        $(document).foundation();
-#        $(window).load(function() {
-#            $().jetmenu({
-#                indicator: false
-#            });
-#         });
-
-#         $(document).ready(function() {            
-
-#             $('.twoColLayout .ib-news-slider').slick({
-#                 prevArrow : $('#newsPrevButton'),
-#                 nextArrow : $('#newsNextButton'),
-#                 slidesToShow : 2,
-#                 dots: true,
-#                 responsive : [
-#                 {
-#                     breakpoint : 900,
-#                     settings : {
-#                         slidesToShow : 2,
-#                         slidesToScroll : 2
-#                     }
-#                 }, {
-#                     breakpoint : 480,
-#                     settings : {
-#                         slidesToShow : 1,
-#                         slidesToScroll : 1
-#                     }
-#                 }]
-#             });
-#         });
-#     )
-# }
-
-
 # -----------------------------------------------------------------------------
 # include CSS & JS
 # -----------------------------------------------------------------------------
-page.includeCSS {
-    # Pattern typo3_encore:entryName
-    app = typo3_encore:app
-    # If you want to ensure that this file is loaded first uncomment the next line
-    # app.forceOnTop = 1
+page.includeJSFooterlibs {
+    ib_template = typo3_encore:ib_template
+    ib_template.forceOnTop = 1
 }
 
-page.includeJSFooter {
-    # Pattern typo3_encore:entryName
-    app = typo3_encore:app
+page.includeCSS {
+    ib_template = typo3_encore:ib_template
+    ib_template.forceOnTop = 1
 }
 
 # -----------------------------------------------------------------------------
@@ -145,7 +96,7 @@ page.includeJSFooter {
 # frontpage layout
 # -----------------------------------------------------------------------------
 //[globalVar = TSFE:page|backend_layout = 1]
-[page["backend_layout"] == 1]
+#[!page["backend_layout"] == 0 || page["backend_layout"] == 1]
     page.10 {
         file = {$template_path.html}/layout/mainLayout.html
         variables {
@@ -169,7 +120,7 @@ page.includeJSFooter {
     page.bodyTagCObject{
         dataWrap = <body data-dataprivacyurl="|" data-cblanguage="{$portalSettings.cookiebot.language}" class="startPage {$portalSettings.bodyClassName} {field:page_theme}">
     }
-[END]
+#[END]
 //[globalVar = TSFE:page|backend_layout = 2]
 [page["backend_layout"] == 2]
     page.10 {
@@ -278,21 +229,25 @@ lib.contentElement{
 # -----------------------------------------------------------------------------
 # logo in header incl. link
 # -----------------------------------------------------------------------------
-lib.linkedLogo = COA
+lib.linkedLogo = IMAGE
 lib.linkedLogo {
-    10 = TEXT
-    10.stdWrap.typolink{
-        parameter = {$portalSettings.mainnav_start_id}
-        returnLast = url
+    file = EXT:ib_template/Resources/Public/img/logos_portals/{$portalSettings.portal_logo.file}
+    altText = Portal Logo
+    titleText = Startseite
+    params = class="responsive"
+    stdWrap.typolink {
+         parameter = {$portalSettings.mainnav_start_id}
+        ATagParams = class="responsive"
+        title = Startseite
     }
-    #10.wrap = <a href="|"><img src="{f:uri.resource(path: EXT:ib_template/Resources/Public/Images/logos_portals/}{$portalSettings.portal_logo.file}" class="responsive" alt="Portal Logo"></a>
-    10.wrap = |
 }
+
+
 
 [{$portalSettings.analytics.matomo_enabled} == 1]
     # script part: add code in the <head> section
     # to make it work on productdb pages,
-    # add into typo3/public/EXT:ibcontent/Classes/Controller/MyContentController.php
+    # add into EXT:ibcontent/Classes/Controller/MyContentController.php
     page.headerData.9990 = TEXT
     page.headerData.9990.value (
     <link rel="dns-prefetch" href="https://matomo.ib.de">
@@ -363,7 +318,7 @@ lib.linkedLogo {
 [{$portalSettings.analytics.matomo_tagmanager_enabled} == 1]
     # script part: add code in the <head> section
     # to make it work on productdb pages,
-    # add into typo3/public/EXT:ibcontent/Classes/Controller/MyContentController.php
+    # add into EXT:ibcontent/Classes/Controller/MyContentController.php
     page.headerData.9990 = TEXT
     page.headerData.9990.value (
     <link rel="dns-prefetch" href="https://matomo.ib.de">
@@ -397,7 +352,7 @@ lib.linkedLogo {
 # -----------------------------------------------------------------------------
 [{$portalSettings.cookiebot.enabled} == 1]
     # script part: add code in the <head> section
-    # add for product pages into typo3/public/EXT:ibcontent/Classes/Controller/MyContentController.php
+    # add for product pages into EXT:ibcontent/Classes/Controller/MyContentController.php
     page.headerData.9999 = TEXT
     page.headerData.9999.value (
     <script id='Cookiebot' data-culture="{$portalSettings.cookiebot.language}" src='https://consent.cookiebot.eu/uc.js' data-cbid='{$portalSettings.cookiebot.cbid}' data-blockingmode='auto' type='text/javascript'></script>

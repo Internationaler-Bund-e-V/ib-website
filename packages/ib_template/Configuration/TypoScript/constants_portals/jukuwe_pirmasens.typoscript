@@ -1,0 +1,111 @@
+# -----------------------------------------------------------------------------
+# PORTAL Jukuwe-Pirmasens
+# -----------------------------------------------------------------------------
+
+[site("identifier") == "jukuwe_pirmasens"]
+
+    host = jukuwe-pirmasens.de
+    portalSettings {
+        pageTitle = Jukuwe-Pirmasens
+
+        #oberster Knoten / Home-Seite
+        root_id = 5104
+
+        #data privacy site ID
+        dataPrivacySiteID = 5112
+
+        readspeaker.show = 1
+
+        #Navigation / Mainnavigation
+        mainnav_start_id = 5117
+
+        #Start-ID für Sitemap / zB. Mainnavigation
+        misc.sitemapStartId = 5117
+
+        #Präfix Titel
+        firstMenuTitle = Jukuwe-Pirmasens
+
+        #News Details - Seite
+        tt_news.single_pid = 5132
+
+        #Konfiguration Suchmaske / Standorte+Angebote ausblenden = 1
+        misc.showOnlyTYPO3SearchResults = 0
+
+        #Suche - Ergebnisseite
+        misc.searchResultId = 5116
+
+        #Seiten ID für Karte+Listendarstellung der Standorte
+        misc.mapViewPid = 0
+        misc.gridViewPid = 0
+    
+        #Individuelles Image für Standortkarte in Navigation, kann optional gesetzt werden
+        #misc.mapViewImg = fileadmin/user_upload/navigation/xxx.jpg
+
+        #Google Analytics ID
+        analytics {
+            #account_id =
+            #enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 52
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = tPG0yuwG
+        }
+
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+
+        #Text und Verlinkung des Bubbles im Header
+        main_bubble {
+            id = 5849
+            text = Kontakt
+            hide = 0
+        }
+
+        portal_logo {
+            file = logo_juKuWe.png
+            file_favicon = favicon_juKuWe.ico
+            format = wide
+        }
+
+        #Möglichkeit, optional Social Media Iconbar zu überschreiben
+        social.facebook = https://de-de.facebook.com/jukuwepirmasens/
+        social.facebook.titletag = Offizielle Facebook-Seite der JuKuWe-Pirmasens
+        social.youtube = https://www.youtube.com/channel/UCDAD7dpSn40VLmwRoAzQnhw
+        social.youtube.titletag = Offizieller YouTube-Kanal der JuKuWe-Pirmasens
+        social.instagram = https://www.instagram.com/jukuwe_pirmasens/?ry
+        social.instagram.titletag = Offizielle Instagram-Seite der JuKuWe-Pirmasens
+        social.twitter =
+        social.linkedin =
+        social.xing = 
+        social.kununu = 
+    }
+
+    #Möglichkeit, optional Social Media Footer Links zu überschreiben
+    #social.headline = Social Media Kanäle der IB Süd
+    social.facebook = https://de-de.facebook.com/jukuwepirmasens/
+    social.facebook.titletag = Offizielle Facebook-Seite der JuKuWe-Pirmasens
+    social.youtube = https://www.youtube.com/channel/UCDAD7dpSn40VLmwRoAzQnhw
+    social.youtube.titletag = Offizieller YouTube-Kanal der JuKuWe-Pirmasens
+    social.instagram = https://www.instagram.com/jukuwe_pirmasens/?ry
+    social.instagram.titletag = Offizielle Instagram-Seite der JuKuWe-Pirmasens
+    social.twitter =
+    social.linkedin =
+    social.xing =
+    social.kununu = 
+    
+
+    gallery.folder.pid = 5131
+
+    const_navigation {
+        #Ordner ID zentraler Footer, zentrale Websites
+        footernav_central_folder_id = 5107
+
+        #Ordner ID weiterführende Links
+        footernav_misc_folder_id = 5105
+
+        #Meta Ordner ID (Impress, AGB, etc)
+        footernav_meta_folder_id = 5109
+    }
+[end]

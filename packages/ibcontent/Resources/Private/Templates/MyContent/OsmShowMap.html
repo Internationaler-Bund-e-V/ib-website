@@ -1,4 +1,6 @@
-{namespace v=FluidTYPO3\Vhs\ViewHelpers} {namespace j=Rms\Ibcontent\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace j=Rms\Ibcontent\ViewHelpers}
+{namespace encore = Ssch\Typo3Encore\ViewHelpers}
 <f:layout name="Default" />
 
 <f:section name="main">
@@ -35,7 +37,9 @@
     data-useprefiltercategory="{settings.usePreFilterCategory}"
     data-prefiltercategoryids="{settings.preFilterCategoryIDs}" data-customlatitude="{settings.customCenterLatitude}"
     data-tagfilterheadlline="{settings.tagFilterHeadline}" data-customzoomlevel="{settings.customZoomLevel}"
-    data-showcategoryfilter="{settings.showCategoryFilter}" style="max-width:100%;">
+    data-showcategoryfilter="{settings.showCategoryFilter}" style="max-width:100%;"
+    data-proxyurl="{f:uri.resource(path:'dist/osmProxy.php', extensionName: 'ibcontent', absolute:'true')}"
+    data-publicpath="{f:uri.resource(path:'', extensionName: 'ibcontent', absolute:'true')}">
     <f:if condition="{settings.mapLayout} == 'Standard'">
       <div id="osmMapApp" class="columns"></div>
     </f:if>
@@ -54,15 +58,6 @@
 
   </div>
 
-  <!-- include db.js as footer asset -->
-  <!--
-  <f:asset.script identifier="osmMapVue" src="EXT:ibcontent/osmmap-vue/dist/js/osmMap.min.js" type="text/plain"
-    data="{cookieconsent: 'marketing'}" />
--->
-  <f:asset.script identifier="select2" src="EXT:ibcontent/Resources/Public/js/select2.full.js"
-    data="{cookieconsent: 'necessary'}" />
-  <f:asset.script identifier="osmMapVue" src="EXT:ibcontent/osmmap-vue/dist/js/osmMapApp.js" type="module"
-    data="{cookieconsent: 'marketing'}" />
-  <f:asset.css identifier="osmMapVueCss" href="EXT:ibcontent/osmmap-vue/dist/assets/index.css" />
-
+    <encore:renderWebpackLinkTags entryName="osmmap" />
+    <encore:renderWebpackScriptTags entryName="osmmap" />
 </f:section>

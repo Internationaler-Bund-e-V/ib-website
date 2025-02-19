@@ -1,8 +1,11 @@
+.. include:: /Includes.rst.txt
+
+====================
 TypoScript Reference
---------------------
+====================
 
 pageContext
-~~~~~~~~~~~
+===========
 
 :Type: Boolean
 :TS Path: plugin.tx_solr.index.enableFileIndexing.pageContext
@@ -10,7 +13,7 @@ pageContext
 :Function: enables indexing for files attached to Content-Element-Records while indexing the frontend pages
 
 contentElementTypes
-```````````````````
+-------------------
 
 :Type: Array (key: CType from tt_content, value: fields in which file attachments should be extracted);
 :TS Path: plugin.tx_solr.index.enableFileIndexing.pageContext.contentElementTypes
@@ -20,7 +23,7 @@ contentElementTypes
         If you have added a custom content element, you may want to configure fields here.
 
 fileExtensions
-``````````````
+--------------
 
 :Type: String, comma separated values (file extensions without .) or \*
 :TS Path: plugin.tx_solr.index.enableFileIndexing.pageContext.fileExtensions
@@ -28,7 +31,7 @@ fileExtensions
 :Function: allows to restrict the files being indexed by the file extension
 
 enableFields
-````````````
+------------
 
 :Type: array (of column names in pages)
 :TS Path: plugin.tx_solr.index.enableFileIndexing.pageContext.enableFields
@@ -36,7 +39,7 @@ enableFields
 :Function: Use the enableFields from the Page it is referenced at for file
 
 contentEnableFields
-```````````````````
+-------------------
 
 :Type: array (of column names in pages)
 :TS Path: plugin.tx_solr.index.enableFileIndexing.pageContext.contentEnableFields
@@ -44,7 +47,7 @@ contentEnableFields
 :Function: Use the enableFields from the page content elements referencing the file
 
 storageContext
-~~~~~~~~~~~~~~
+==============
 
 :Type: boolean (1/0);
 :TS Path: plugin.tx_solr.index.enableFileIndexing.storageContext
@@ -52,7 +55,7 @@ storageContext
 :Function: enables indexing of all files in a storage
 
 [StorageUid]
-````````````
+------------
 
 :Type: array
 :TS Path: plugin.tx_solr.index.enableFileIndexing.storageContext.[StorageUid]
@@ -60,7 +63,7 @@ storageContext
 :Function: Enables a detailed indexing configuration per Storage, see properties for details
 
 languages
-`````````
+---------
 
 :Type: string, comma separated values (integers list of sys_language uids)
 :TS Path: plugin.tx_solr.index.enableFileIndexing.storageContext.[StorageUid].languages
@@ -68,7 +71,7 @@ languages
 :Function: define for which languages this storge should be indexed
 
 fileExtensions
-``````````````
+--------------
 
 :Type: string, comma separated values (file extensions without .) or \*
 :TS Path: plugin.tx_solr.index.enableFileIndexing.storageContext.[StorageUid].fileExtensions
@@ -76,7 +79,7 @@ fileExtensions
 :Function: allows to restrict the files being indexed by the file extension
 
 enableFields
-````````````
+------------
 
 :Type: array (of column names in sys_file_metadata)
 :TS Path: plugin.tx_solr.index.enableFileIndexing.storageContext.[StorageUid].enableFields
@@ -84,7 +87,7 @@ enableFields
 :Function: FAL generally does not have enable fields, but metadata ships fields which can be used for that purpose. With this configuration you define "enableFields" just for indexation.
 
 folders
-```````
+-------
 
 :Type: string, comma separated values
 :TS Path: plugin.tx_solr.index.enableFileIndexing.storageContext.[StorageUid].folders
@@ -94,7 +97,7 @@ folders
 
 
 excludeFolders
-``````````````
+--------------
 
 :Type: string, comma separated values
 :TS Path: plugin.tx_solr.index.enableFileIndexing.storageContext.[StorageUid].excludeFolders
@@ -103,7 +106,7 @@ excludeFolders
 :Since: 3.1
 
 recordContext
-~~~~~~~~~~~~~
+=============
 
 :Type: boolean
 :TS Path: plugin.tx_solr.index.enableFileIndexing.recordContext
@@ -114,7 +117,7 @@ recordContext
 
 
 attachments
-~~~~~~~~~~~
+-----------
 
 :Type: boolean
 :TS Path: plugin.tx_solr.index.queue.[indexingConfiguration].attachments
@@ -131,13 +134,13 @@ fields
 :Function: define in which columns of an record files should be detected
 
 plugin.tx_solr.index.queue._FILES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=================================
 
 Configuration array to configure the index.queue processing for files. The configuration will be merged.
 This means that every context specific configuration inherits the default configuration. In addition, if there is a special configuration within context (like per table or storage) these will inherit the base configuration of the context. Each configuration is to be defined like plugin.tx_solr.index.queue.[indexingConfiguration].fields
 
 default
-~~~~~~~
+-------
 
 :Type: array
 :TS Path: plugin.tx_solr.index.queue._FILES.default
@@ -161,7 +164,7 @@ default
     }
 
 pageContext
-~~~~~~~~~~~
+-----------
 
 :Type: array
 :TS Path: plugin.tx_solr.index.queue._FILES.pageContext
@@ -169,7 +172,7 @@ pageContext
 
 
 storageContext
-~~~~~~~~~~~~~~
+--------------
 
 :Type: array
 :TS Path: plugin.tx_solr.index.queue._FILES.storageContext
@@ -193,7 +196,7 @@ default
 
 
 recordContext
-~~~~~~~~~~~~~
+-------------
 
 :Type: array
 :TS Path: plugin.tx_solr.index.queue._FILES.recordContext

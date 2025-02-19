@@ -9,6 +9,7 @@ additional_hostnames:
   - "ib-bvbbi"
   - "ib-berlin"
   - "ib-freiwilligendienste"
+  - "ib-training"
   - "ib-kitas"
   - "ib-suedwest"
   - "srb"
@@ -270,8 +271,10 @@ disable_settings_management: false
 # and you can't erase existing hooks or all environment variables.
 # However, with "override_config: true" in a particular config.*.yaml file,
 # 'use_dns_when_possible: false' can override the existing values, and
-# hooks:
-#   post-start: []
+hooks:
+  post-start:
+    - composer: install
+    - exec: cd packages/ib_template/Resources/Public && yarn install && yarn run watch &
 # or
 # web_environment: []
 # or

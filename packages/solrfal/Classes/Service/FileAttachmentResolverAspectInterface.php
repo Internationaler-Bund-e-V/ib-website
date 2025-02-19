@@ -22,18 +22,18 @@ interface FileAttachmentResolverAspectInterface
     /**
      * This method should be implemented by to hooks to modify the fileUids.
      *
-     * @param array $fileUids
-     * @param string $tableName
-     * @param string $fieldName
-     * @param array $record
-     * @param FileAttachmentResolver $fileAttachmentResolver
-     * @return array
+     * @param int[] $fileUids the list of file UIDs
+     * @param string $tableName The table name to extract file references from.
+     * @param string $fieldName The field name to extract file references from.
+     * @param array<string, int|string|bool|null> $record
+     *
+     * @return int[] the list of valid file UIDs
      */
     public function postDetectFilesInField(
         array $fileUids,
         string $tableName,
         string $fieldName,
         array $record,
-        FileAttachmentResolver $fileAttachmentResolver
+        FileAttachmentResolver $fileAttachmentResolver,
     ): array;
 }

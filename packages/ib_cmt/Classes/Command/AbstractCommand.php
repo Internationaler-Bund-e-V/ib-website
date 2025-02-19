@@ -16,9 +16,9 @@ abstract class AbstractCommand extends Command
      *
      * @param string $description
      *
-     * @return Command
+     * @return static
      */
-    public function setDescription($description)
+    public function setDescription(string $description): static
     {
         return parent::setDescription('IbCmt task: ' . $description);
     }

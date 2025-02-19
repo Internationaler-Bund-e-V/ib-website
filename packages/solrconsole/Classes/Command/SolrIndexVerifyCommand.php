@@ -39,7 +39,6 @@ class SolrIndexVerifyCommand extends AbstractSolrCommand
      */
     protected ?Sites $sitesHelper = null;
 
-
     /**
      * @var array
      */
@@ -84,10 +83,10 @@ class SolrIndexVerifyCommand extends AbstractSolrCommand
      * @param SymfonyStyle $io
      * @param InputInterface $input
      * @param OutputInterface $output
-     * @return bool|mixed
+     * @return bool
      * @throws DBALDriverException
      */
-    protected function loadOptions(SymfonyStyle $io, InputInterface $input, OutputInterface $output)
+    protected function loadOptions(SymfonyStyle $io, InputInterface $input, OutputInterface $output): bool
     {
         $this->sites = $this->getSitesHelper()->run($io, $input, $output);
 
@@ -118,7 +117,7 @@ class SolrIndexVerifyCommand extends AbstractSolrCommand
      * @throws DBALDriverException
      * @noinspection PhpMissingReturnTypeInspection
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $io->title($this->getDescription());
@@ -126,7 +125,7 @@ class SolrIndexVerifyCommand extends AbstractSolrCommand
         if (!$confirmed) {
             $io->write('Skipped');
             $io->newLine();
-            return 1;
+            return self::FAILURE;
         }
 
         foreach ($this->sites as $site) {
@@ -135,12 +134,12 @@ class SolrIndexVerifyCommand extends AbstractSolrCommand
 
             $result = $this->getVerificationService()->verifySite($site, $this->languages, $this->configurations, $this->fix);
 
-            foreach($result->getGlobalErrors() as $globalError) {
+            foreach ($result->getGlobalErrors() as $globalError) {
                 $io->writeln('<fg=yellow>Error' . $globalError . '</>');
             }
 
             $rows = [];
-            foreach($result->getConfigurationVerificationResults() as $configurationVerificationResult) {
+            foreach ($result->getConfigurationVerificationResults() as $configurationVerificationResult) {
                 $indexQueueErrors = $configurationVerificationResult->getIndexQueueErrors();
                 $missingInTYPO3Count = count($configurationVerificationResult->getMissingInTYPO3());
                 $missingInSolrCount = count($configurationVerificationResult->getMissingInSolr());
@@ -151,18 +150,18 @@ class SolrIndexVerifyCommand extends AbstractSolrCommand
                     count($configurationVerificationResult->getSolrUids()),
                     count($configurationVerificationResult->getTypo3Uids()),
                     $missingInTYPO3Count === 0 && $missingInSolrCount === 0 ? '<fg=green>OK</>' : '<fg=red>differing</>',
-                    "<fg=" . ($missingInSolrCount > 0 ? 'yellow' : 'green') . ">$missingInSolrCount</>",
-                    "<fg=" . ($missingInTYPO3Count > 0 ? 'red' : 'green') . ">$missingInTYPO3Count</>",
-                    "<fg=" . ($indexQueueErrors > 0 ? 'red' : 'green') . ">$indexQueueErrors</>"
+                    '<fg=' . ($missingInSolrCount > 0 ? 'yellow' : 'green') . ">$missingInSolrCount</>",
+                    '<fg=' . ($missingInTYPO3Count > 0 ? 'red' : 'green') . ">$missingInTYPO3Count</>",
+                    '<fg=' . ($indexQueueErrors > 0 ? 'red' : 'green') . ">$indexQueueErrors</>",
                 ];
 
                 $configurationErrors = $configurationVerificationResult->getErrors();
 
                 if (count($configurationErrors) > 0) {
-                    $label = 'Error for configuration ' . $configurationVerificationResult->getConfigurationName() .':';
+                    $label = 'Error for configuration ' . $configurationVerificationResult->getConfigurationName() . ':';
                     $io->writeln('<fg=yellow>' . $label . '</>');
 
-                    foreach($configurationErrors as $configurationError) {
+                    foreach ($configurationErrors as $configurationError) {
                         $io->writeln('<fg=yellow>' . $configurationError . '</>');
                     }
                 }
@@ -172,12 +171,11 @@ class SolrIndexVerifyCommand extends AbstractSolrCommand
             $io->table($headers, $rows);
         }
 
-
         if (!$this->fix) {
             $io->writeln('Add <fg=cyan>--fix</> option to remove invalid records from the index and add the missing records to the index queue.');
         }
 
-        return 0;
+        return self::SUCCESS;
     }
 
     /**
@@ -192,7 +190,7 @@ class SolrIndexVerifyCommand extends AbstractSolrCommand
     /**
      * @param Sites $sitesHelper
      */
-    public function setSitesHelper(Sites $sitesHelper)
+    public function setSitesHelper(Sites $sitesHelper): void
     {
         $this->sitesHelper = $sitesHelper;
     }
@@ -205,5 +203,4 @@ class SolrIndexVerifyCommand extends AbstractSolrCommand
         $this->verificationService = $this->verificationService ?? GeneralUtility::makeInstance(VerificationService::class);
         return $this->verificationService;
     }
-
 }

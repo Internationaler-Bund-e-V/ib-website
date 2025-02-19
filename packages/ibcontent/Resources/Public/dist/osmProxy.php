@@ -7,9 +7,8 @@ declare(strict_types=1);
  */
 $validDomains = array(
     "https://redaktion.internationaler-bund.de/",
-    "https://redaktionstool.ddev.site/",
-    "https://redaktion-relaunch.ddev.site/",
     "https://ib:ib@ib-redaktion-staging.rmsdev.de/",
+    "https://ib-redaktionstool.ddev.site/",
 );
 
 $request = "";

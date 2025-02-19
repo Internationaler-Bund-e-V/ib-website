@@ -86,12 +86,12 @@
             <f:if condition="{slide}">
               <div>
                 <f:if condition="{slide.ItemWrap.slideImage}">
-                  <v:condition.string.isNumeric value="{slide.ItemWrap.slideImage}">
+                  <f:if condition="{slide.ItemWrap.slideImage}">
                     <f:then>
                         <f:image src="{slide.ItemWrap.slideImage}" class="responsive"
                         alt="{altAttributeValue}" />
                     </f:then>
-                  </v:condition.string.isNumeric>
+                  </f:if>
                 </f:if>
               </div>
             </f:if>
@@ -125,12 +125,12 @@
 <!-- image bubble -->
 <f:section name="imageBubble">
   <div class="ib-bubbleslider-item">
-    <v:condition.string.isNumeric value="{slide.ItemWrap.bubbleImage}">
+    <f:if condition="{slide.ItemWrap.bubbleImage}">
       <f:then>
         <f:image class="ib-bubbleslider-item-image" alt="{altAttributeValue}" src="{slide.ItemWrap.bubbleImage}" />
         <figcaption>{slide.ItemWrap.headline}</figcaption>
       </f:then>
-    </v:condition.string.isNumeric>
+    </f:if>
   </div>
 </f:section>
 <!-- image bubble link -->
@@ -139,21 +139,21 @@
     <f:if condition="{target} == '_self'">
       <f:then>
         <f:link.typolink parameter="{link}">
-          <v:condition.string.isNumeric value="{slide.ItemWrap.bubbleImage}">
+          <f:if condition="{slide.ItemWrap.bubbleImage}">
             <f:then>
               <f:image class="ib-bubbleslider-item-image" src="{slide.ItemWrap.bubbleImage}" alt="{altAttributeValue}" />
             </f:then>
-          </v:condition.string.isNumeric>
+          </f:if>
           <figcaption>{slide.ItemWrap.headline}</figcaption>
         </f:link.typolink>
       </f:then>
       <f:else>
         <a href="{link}" target="{target}">
-          <v:condition.string.isNumeric value="{slide.ItemWrap.bubbleImage}">
+          <f:if condition="{slide.ItemWrap.bubbleImage}">
             <f:then>
               <f:image class="ib-bubbleslider-item-image" src="{slide.ItemWrap.bubbleImage}" alt="{altAttributeValue}" />
             </f:then>
-          </v:condition.string.isNumeric>
+          </f:if>
           <figcaption>{slide.ItemWrap.headline}</figcaption>
         </a>
       </f:else>

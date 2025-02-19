@@ -1,0 +1,15 @@
+{
+    "extends": "@tsconfig/recommended/tsconfig.json",
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true,
+        "typeRoots": [
+            "node_modules/@types",
+            "./packages/ib_template/Resources/Public/JavaScript/types/"
+        ]
+    },
+    "include": [ "node_modules/**/*", "packages/**/*" ],
+    "exclude": [ "**/*.spec.ts" ]
+}

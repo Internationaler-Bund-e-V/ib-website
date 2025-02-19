@@ -21,7 +21,8 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-abstract class AbstractCommaSeparatedList {
+abstract class AbstractCommaSeparatedList
+{
     /**
      * @var string
      */

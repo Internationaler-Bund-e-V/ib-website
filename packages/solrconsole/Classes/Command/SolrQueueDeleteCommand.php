@@ -23,8 +23,6 @@ use ApacheSolrForTypo3\Solrconsole\Command\OptionHelper\ItemTypes;
 use ApacheSolrForTypo3\Solrconsole\Command\OptionHelper\ItemUids;
 use ApacheSolrForTypo3\Solrconsole\Command\OptionHelper\Sites;
 use ApacheSolrForTypo3\Solrconsole\Command\OptionHelper\Uids;
-use Doctrine\DBAL\DBALException;
-use Doctrine\DBAL\Driver\Exception;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -39,42 +37,42 @@ class SolrQueueDeleteCommand extends AbstractSolrCommand
     /**
      * @var Sites
      */
-    protected $sitesHelper;
+    protected Sites $sitesHelper;
 
     /**
      * @var Configurations
      */
-    protected $configurationsHelper;
+    protected Configurations $configurationsHelper;
 
     /**
      * @var QueueItemRepository
      */
-    protected $queueItemRepository;
+    protected QueueItemRepository $queueItemRepository;
 
     /**
      * @var array
      */
-    private $sites;
+    private array $sites;
 
     /**
      * @var array
      */
-    private $configurations;
+    private array $configurations;
 
     /**
      * @var array
      */
-    private $types;
+    private array $types;
 
     /**
      * @var array
      */
-    private $itemUids;
+    private array $itemUids;
 
     /**
      * @var array
      */
-    private $uids;
+    private array $uids;
 
     /**
      * Configure the command by defining the name, options and arguments
@@ -95,30 +93,30 @@ class SolrQueueDeleteCommand extends AbstractSolrCommand
      * @param InputInterface $input
      * @param OutputInterface $output
      * @return bool
-     * @throws DBALException|\Doctrine\DBAL\Exception
+     * @throws \Doctrine\DBAL\Exception
      */
-    protected function loadOptions(SymfonyStyle $io, InputInterface $input, OutputInterface $output)
+    protected function loadOptions(SymfonyStyle $io, InputInterface $input, OutputInterface $output): bool
     {
         $this->sites = $this->getSitesHelper()->run($io, $input, $output);
 
-        /** @var $configurationHelper Configurations */
+        /** @var Configurations $configurationHelper */
         $configurationHelper = GeneralUtility::makeInstance(Configurations::class);
         $this->configurations = $configurationHelper->run($io, $input);
 
-        /** @var $typesHelper ItemTypes */
+        /** @var ItemTypes $typesHelper */
         $typesHelper = GeneralUtility::makeInstance(ItemTypes::class);
         $this->types = $typesHelper->run($io, $input);
 
-        /** @var $itemUidsHelper ItemUids */
+        /** @var ItemUids $itemUidsHelper */
         $itemUidsHelper = GeneralUtility::makeInstance(ItemUids::class);
         $this->itemUids = $itemUidsHelper->run($io, $input);
 
-        /** @var $uidsHelper Uids */
+        /** @var Uids $uidsHelper */
         $uidsHelper = GeneralUtility::makeInstance(Uids::class);
         $this->uids = $uidsHelper->run($io, $input);
 
         $count = $this->getQueueItemRepository()->countItems($this->sites, $this->configurations, $this->types, $this->itemUids, $this->uids);
-        $io->write("Items that will be deleted (Filters combined with AND): " . $count);
+        $io->write('Items that will be deleted (Filters combined with AND): ' . $count);
         $io->newLine(2);
 
         return $io->confirm('Is this correct?', true);
@@ -131,18 +129,18 @@ class SolrQueueDeleteCommand extends AbstractSolrCommand
      * @param OutputInterface $output
      * @throws \Exception
      *
-     * @return integer
+     * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $io->title($this->getDescription());
         $confirmed = $this->loadOptions($io, $input, $output);
 
-        if(!$confirmed) {
+        if (!$confirmed) {
             $io->write('Skipped');
             $io->newLine(1);
-            return 1;
+            return self::FAILURE;
         }
 
         $this->getQueueItemRepository()->deleteItems($this->sites, $this->configurations, $this->types, $this->itemUids, $this->uids);
@@ -150,7 +148,7 @@ class SolrQueueDeleteCommand extends AbstractSolrCommand
         $io->write('<fg=green>Done</>');
         $io->newLine(1);
 
-        return 0;
+        return self::SUCCESS;
     }
 
     /**
@@ -183,7 +181,7 @@ class SolrQueueDeleteCommand extends AbstractSolrCommand
     /**
      * @param Sites $sitesHelper
      */
-    public function setSitesHelper(Sites $sitesHelper)
+    public function setSitesHelper(Sites $sitesHelper): void
     {
         $this->sitesHelper = $sitesHelper;
     }

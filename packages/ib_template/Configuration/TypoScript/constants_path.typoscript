@@ -1,0 +1,8 @@
+# html template path
+template_path {
+    html = EXT:ib_template/Resources/Private/Template/html
+    img = EXT:ib_template/Resources/Public/img
+    js = EXT:ib_template/Resources/Public/js
+    bower = EXT:ib_template/Resources/Public/bower_components
+    css = EXT:ib_template/Resources/Public/css
+}

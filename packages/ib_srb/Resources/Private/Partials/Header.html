@@ -2,9 +2,13 @@
   <div class="grid-container SrbDefaultContent">
     <div id="SrbMobileMenu" data-responsive-toggle="SrbNavigation" data-hide-for="xlarge">
       <a href="/">
-        <f:image src="EXT:ib_srb/Resources/Public/img/logo.svg" alt="Schwarz Rot Bunt Logo" />
+        <f:image src="EXT:ib_srb/Resources/Public/img/logo.png" alt="Schwarz Rot Bunt Logo" class="srbLogo" />
       </a>
-      <button id="SrbMobileMenuToggle" class="menu-icon" type="button" data-toggle="SrbNavigation"></button>
+      <button id="SrbMobileMenuToggle" type="button" data-toggle="SrbNavigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
 
     <div class="SrbNavigation" id="SrbNavigation">
@@ -13,7 +17,7 @@
           data-responsive-menu="accordion xlarge-dropdown">
           <!-- Mobile/Desktop Home Link-->
           <a href="/" class="show-for-xlarge">
-            <f:image src="EXT:ib_srb/Resources/Public/img/logo.svg" alt="Schwarz Rot Bunt Logo" />
+            <f:image src="EXT:ib_srb/Resources/Public/img/logo.png" alt="Schwarz Rot Bunt Logo" class="srbLogo" />
           </a>
 
 
@@ -72,7 +76,18 @@
       <div id="SrbNavigationRight">
         <div class="hide-for-xlarge">
           <ul class="menu SrbNavigationMobileSearch">
-            <li><input type="search" placeholder="Suche..."></li>
+            <li>
+              <f:link.typolink parameter="{searchUID}">
+                <button class="btn btn-default tx-solr-submit primaryButton" type="submit">
+                  <span class=" glyphicon glyphicon-search"></span>
+                  <span>
+                    Suche
+                  </span>
+                </button>
+              </f:link.typolink>
+
+            </li>
+
           </ul>
         </div>
         <div class="show-for-xlarge">
@@ -80,7 +95,7 @@
             Jetzt spenden
           </f:link.typolink>
         </div>
-        <div>
+        <div class="show-for-xlarge">
           <f:link.typolink parameter="{searchUID}">
             <i class="SrbSearchIcon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1664 1792">
                 <path

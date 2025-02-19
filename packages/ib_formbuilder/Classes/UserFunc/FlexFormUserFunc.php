@@ -9,7 +9,6 @@ use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
  * Class FlexFormUserFunc
@@ -18,17 +17,11 @@ class FlexFormUserFunc
 {
     private array $extbaseFrameworkConfiguration;
 
-    private FormRepository $formRepository;
+    protected FormRepository $formRepository;
 
-    public function injectFormRepository(FormRepository $formRepository): void
+    public function __construct()
     {
-        $this->formRepository = $formRepository;
     }
-
-    //public function __construct(FormRepository $formRepository)
-    //{
-    //    $this->formRepository = $formRepository;
-    //}
 
     /**
      * @param array $fConfig
@@ -44,10 +37,8 @@ class FlexFormUserFunc
         $pidList = $this->getConfiguredPagesFromPlugin($fConfig);
         //debug($fConfig);
 
-        // Get repository
-        /** @var ObjectManager $objectManager */
-        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-        $this->formRepository = $objectManager->get(FormRepository::class);
+        // Laden der Abhängigkeit, z. B. eine Klasse, die du benötigst
+        $this->formRepository = GeneralUtility::makeInstance(FormRepository::class);
 
         //if record storage is not set via plugin data records, try to read module ts config
         if (empty($pidList)) {
@@ -56,7 +47,7 @@ class FlexFormUserFunc
                 ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT,
             );
 
-            $pidList = (string)$this->extbaseFrameworkConfiguration['module.']['tx_ibformbuilder_web_ibformbuilderibforms.']['persistence.']['storagePid'];
+            $pidList = (string) $this->extbaseFrameworkConfiguration['module.']['tx_ibformbuilder_web_ibformbuilderibforms.']['persistence.']['storagePid'];
         }
 
         // Get data from repository
@@ -101,7 +92,7 @@ class FlexFormUserFunc
                 return '';
             }
         }
-        $parentRow = (array)$config['flexParentDatabaseRow'];
+        $parentRow = (array) $config['flexParentDatabaseRow'];
         $pages = $parentRow['pages'];
         $pids = [];
         if (is_string($pages)) {

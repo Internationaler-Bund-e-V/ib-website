@@ -1,23 +1,25 @@
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:s="http://typo3.org/ns/ApacheSolrForTypo3/Solr/ViewHelpers">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+    xmlns:s="http://typo3.org/ns/ApacheSolrForTypo3/Solr/ViewHelpers">
 
 <f:section name="Form">
 
     <div class="tx-solr-search-form">
-        <s:searchForm id="tx-solr-search-form-pi-results" additionalFilters="{additionalFilters}" suggestHeader="{s:translate(key:'suggest_header',default:'Top Results')}">
+        <s:searchForm id="tx-solr-search-form-pi-results" additionalFilters="{additionalFilters}"
+            suggestHeader="{f:translate(key: 'suggest_header', default: 'Top Results', extensionName: 'solr')}">
             <div class="input-group">
                 <input type="hidden" name="L" value="{languageUid}" />
                 <input type="hidden" name="id" value="{pageUid}" />
 
                 <div class="medium-10 ib-search-input">
-                    <input type="text" class="tx-solr-q js-solr-q tx-solr-suggest tx-solr-suggest-focus form-control" name="{pluginNamespace}[q]"
-                        value="{q}" />
+                    <input type="text" class="tx-solr-q js-solr-q tx-solr-suggest tx-solr-suggest-focus form-control"
+                        name="{pluginNamespace}[q]" value="{q}" />
                 </div>
                 <div class="medium-2 ib-search-submit">
-                <span class="input-group-btn">
+                    <span class="input-group-btn">
                         <button class="btn btn-default tx-solr-submit ib-color-darkblue button" type="submit">
                             <span class=" glyphicon glyphicon-search"></span>
                             <span>
-                                <s:translate key="submit">Search</s:translate>
+                                <f:translate key="submit" extensionName="solr">Search</f:translate>
                             </span>
                         </button>
                     </span>

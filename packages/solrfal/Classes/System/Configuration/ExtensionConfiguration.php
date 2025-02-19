@@ -21,21 +21,19 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * This class encapsulates the access to the extension configuration.
- *
- * @author Timo Hund <timo.hund@dkd.de>
  */
 class ExtensionConfiguration
 {
     /**
      * Extension Configuration
-     *
-     * @var array
+     * @var array<string, mixed>
      */
     protected array $extensionConfiguration;
 
     /**
      * ExtensionConfiguration constructor.
-     * @param array $extensionConfiguration
+     *
+     * @param array<string, mixed> $extensionConfiguration
      */
     public function __construct(
         array $extensionConfiguration
@@ -46,13 +44,10 @@ class ExtensionConfiguration
     /**
      * This method is used to check if a record of this table should only use the detectors of the current site
      * and not of all sites in the system.
-     *
-     * @param string $tableNameToCheck
-     * @return bool
      */
     public function getIsSiteExclusiveRecordTable(string $tableNameToCheck): bool
     {
-        $siteExclusiveTablesList = trim($this->getConfigurationOrDefaultValue('siteExclusiveRecordTables', 'pages, pages_language_overlay, tt_content, sys_file_reference'));
+        $siteExclusiveTablesList = trim($this->getConfigurationOrDefaultValue('siteExclusiveRecordTables', 'pages, tt_content, sys_file_reference'));
         if (empty($siteExclusiveTablesList)) {
             return false;
         }
@@ -62,12 +57,7 @@ class ExtensionConfiguration
         return in_array($tableNameToCheck, $siteExclusiveTables);
     }
 
-    /**
-     * @param string $key
-     * @param mixed $defaultValue
-     * @return mixed
-     */
-    protected function getConfigurationOrDefaultValue(string $key, $defaultValue)
+    protected function getConfigurationOrDefaultValue(string $key, mixed $defaultValue): mixed
     {
         return $this->extensionConfiguration[$key] ?? $defaultValue;
     }

@@ -6,7 +6,6 @@ namespace Rms\Ibcontent\Controller;
 
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Http\Message\ResponseInterface;
-use Rms\Ibcontent\Domain\Repository\NewsRepository;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Http\ApplicationType;
 use TYPO3\CMS\Core\Http\ImmediateResponseException;
@@ -24,54 +23,51 @@ use TYPO3\CMS\Seo\Event\ModifyUrlForCanonicalTagEvent;
 
 class MyContentController extends ActionController
 {
-    /**
-     * @var TypoScriptFrontendController
-     */
-    protected $typoScriptFrontendController;
-
     private array $customSettings;
     private string $interfaceURL;
     //private readonly string $imgURL;
     //private string $baseURL;
     //private string $imageURL;
 
-    protected NewsRepository $newsRepository;
+    /**
+     * @var TypoScriptFrontendController|null
+     */
+    protected $typoScriptFrontendController;
+
+    public function __construct()
+    {
+        $this->typoScriptFrontendController = $GLOBALS['TSFE'] ?? null;
+    }
 
     protected function initializeAction(): void
     {
         $this->getSettings();
     }
 
-    public function injectNewsRepository(NewsRepository $newsRepository, TypoScriptFrontendController $typoScriptFrontendController = null): void
-    {
-        $this->newsRepository = $newsRepository;
-        $this->typoScriptFrontendController = $typoScriptFrontendController ?? $this->getTypoScriptFrontendController();
-    }
-
     public function startPageSliderAction(): ResponseInterface
     {
-        $this->view->assign('uid', $this->configurationManager->getContentObject()->data['uid']);
+        $this->view->assign('uid', $this->request->getAttribute('currentContentObject')->data['uid']);
 
         return $this->htmlResponse();
     }
 
     public function bubbleSliderAction(): ResponseInterface
     {
-        $this->view->assign('uid', $this->configurationManager->getContentObject()->data['uid']);
+        $this->view->assign('uid', $this->request->getAttribute('currentContentObject')->data['uid']);
 
         return $this->htmlResponse();
     }
 
     public function accordionAction(): ResponseInterface
     {
-        $this->view->assign('uid', $this->configurationManager->getContentObject()->data['uid']);
+        $this->view->assign('uid', $this->request->getAttribute('currentContentObject')->data['uid']);
 
         return $this->htmlResponse();
     }
 
     public function textExtendedAction(): ResponseInterface
     {
-        $this->view->assign('uid', $this->configurationManager->getContentObject()->data['uid']);
+        $this->view->assign('uid', $this->request->getAttribute('currentContentObject')->data['uid']);
 
         return $this->htmlResponse();
     }
@@ -101,7 +97,7 @@ class MyContentController extends ActionController
             ],
         );
 
-        $this->view->assign('uid', $this->configurationManager->getContentObject()->data['uid']);
+        $this->view->assign('uid', $this->request->getAttribute('currentContentObject')->data['uid']);
         $this->view->assign('jobs', $jobs);
 
         return $this->htmlResponse();
@@ -109,42 +105,42 @@ class MyContentController extends ActionController
 
     public function breadcrumpAction(): ResponseInterface
     {
-        $this->view->assign('uid', $this->configurationManager->getContentObject()->data['uid']);
+        $this->view->assign('uid', $this->request->getAttribute('currentContentObject')->data['uid']);
 
         return $this->htmlResponse();
     }
 
     public function sidebarMapAction(): ResponseInterface
     {
-        $this->view->assign('uid', $this->configurationManager->getContentObject()->data['uid']);
+        $this->view->assign('uid', $this->request->getAttribute('currentContentObject')->data['uid']);
 
         return $this->htmlResponse();
     }
 
     public function sidebarDownloadsAction(): ResponseInterface
     {
-        $this->view->assign('uid', $this->configurationManager->getContentObject()->data['uid']);
+        $this->view->assign('uid', $this->request->getAttribute('currentContentObject')->data['uid']);
 
         return $this->htmlResponse();
     }
 
     public function mediaElementAction(): ResponseInterface
     {
-        $this->view->assign('uid', $this->configurationManager->getContentObject()->data['uid']);
+        $this->view->assign('uid', $this->request->getAttribute('currentContentObject')->data['uid']);
 
         return $this->htmlResponse();
     }
 
     public function contentSliderAction(): ResponseInterface
     {
-        $this->view->assign('uid', $this->configurationManager->getContentObject()->data['uid']);
+        $this->view->assign('uid', $this->request->getAttribute('currentContentObject')->data['uid']);
 
         return $this->htmlResponse();
     }
 
     public function tilesAction(): ResponseInterface
     {
-        $this->view->assign('uid', $this->configurationManager->getContentObject()->data['uid']);
+        $this->view->assign('uid', $this->request->getAttribute('currentContentObject')->data['uid']);
 
         return $this->htmlResponse();
     }
@@ -166,7 +162,7 @@ class MyContentController extends ActionController
     {
         $this->view->assignMultiple(
             array(
-                'uid' => $this->configurationManager->getContentObject()->data['uid'],
+                'uid' => $this->request->getAttribute('currentContentObject')->data['uid'],
             ),
         );
 
@@ -180,7 +176,7 @@ class MyContentController extends ActionController
     {
         $this->view->assignMultiple(
             array(
-                'uid' => $this->configurationManager->getContentObject()->data['uid'],
+                'uid' => $this->request->getAttribute('currentContentObject')->data['uid'],
             )
         );
 
@@ -194,7 +190,7 @@ class MyContentController extends ActionController
     {
         $this->view->assignMultiple(
             array(
-                'uid' => $this->configurationManager->getContentObject()->data['uid'],
+                'uid' => $this->request->getAttribute('currentContentObject')->data['uid'],
             )
         );
 
@@ -211,7 +207,7 @@ class MyContentController extends ActionController
         $jobsByCity = $this->getURL($this->interfaceURL . "/requestJobs/portalid:" . $this->settings['dbportalID'] . "/cities:" . $cities);
         $this->view->assignMultiple(
             array(
-                'uid' => $this->configurationManager->getContentObject()->data['uid'],
+                'uid' => $this->request->getAttribute('currentContentObject')->data['uid'],
                 'jobsByCity' => json_decode((string) $jobsByCity, true),
                 'settings' => $this->settings,
             )
@@ -222,14 +218,14 @@ class MyContentController extends ActionController
 
     public function dbShowJobAction(): ResponseInterface
     {
-        $extVars = GeneralUtility::_GET('tx_ibcontent');
+        $extVars = $this->request->getQueryParams()['tx_ibcontent'] ?? null;
         $job = json_decode((string) $this->getUrl($this->interfaceURL . "/requestJob/id:" . intval($extVars['jid'])), true);
 
         $this->setTags('IB Freiwilligendienste | ' . $job['Job']['name'], $job['Job']['name'], 'job', intval($extVars['jid']));
 
         $this->view->assignMultiple(
             array(
-                'uid' => $this->configurationManager->getContentObject()->data['uid'],
+                'uid' => $this->request->getAttribute('currentContentObject')->data['uid'],
                 'job' => $job,
                 'customSettings' => $this->customSettings,
                 'settings' => $this->settings,
@@ -241,14 +237,14 @@ class MyContentController extends ActionController
 
     public function dbShowForeignjobAction(): ResponseInterface
     {
-        $extVars = GeneralUtility::_GET('tx_ibcontent');
+        $extVars = $this->request->getQueryParams()['tx_ibcontent'] ?? null;
         $job = json_decode((string) $this->getUrl($this->interfaceURL . "/requestForeignjob/id:" . intval($extVars['fjid'])), true);
 
         $this->setTags('IB Freiwilligendienste | ' . $job['Job']['name'], $job['Job']['name'], 'foreignJob', intval($extVars['fjid']));
 
         $this->view->assignMultiple(
             array(
-                'uid' => $this->configurationManager->getContentObject()->data['uid'],
+                'uid' => $this->request->getAttribute('currentContentObject')->data['uid'],
                 'job' => $job,
                 'customSettings' => $this->customSettings,
                 'settings' => $this->settings,
@@ -260,14 +256,14 @@ class MyContentController extends ActionController
 
     public function dbShowNewsAction(): ResponseInterface
     {
-        $extVars = GeneralUtility::_GET('tx_ibcontent');
+        $extVars = $this->request->getQueryParams()['tx_ibcontent'] ?? null;
         $newsarticle = json_decode(
             (string) $this->getUrl($this->interfaceURL . "/requestNewsarticle/id:" . intval($extVars['nid'])),
             true
         );
         $this->view->assignMultiple(
             array(
-                'uid' => $this->configurationManager->getContentObject()->data['uid'],
+                'uid' => $this->request->getAttribute('currentContentObject')->data['uid'],
                 'newsarticle' => $newsarticle,
                 'customSettings' => $this->customSettings,
                 'settings' => $this->settings,
@@ -312,7 +308,7 @@ class MyContentController extends ActionController
         $this->view->assignMultiple(
             array(
                 'letterArray' => $letterArray,
-                'uid' => $this->configurationManager->getContentObject()->data['uid'],
+                'uid' => $this->request->getAttribute('currentContentObject')->data['uid'],
                 'productsByCity' => json_decode((string) $productsByCity, true),
                 'settings' => $this->settings,
             )
@@ -323,7 +319,7 @@ class MyContentController extends ActionController
 
     public function dbShowProductAction(): ResponseInterface
     {
-        $extVars = GeneralUtility::_GET('tx_ibcontent');
+        $extVars = $this->request->getQueryParams()['tx_ibcontent'] ?? null;
 
         // check if there is a singleview id set in the flexforms configuration
         $aid = 0;
@@ -347,7 +343,7 @@ class MyContentController extends ActionController
             array(
                 'product_id' => intval($extVars['aid']),
                 'product' => $product,
-                'uid' => $this->configurationManager->getContentObject()->data['uid'],
+                'uid' => $this->request->getAttribute('currentContentObject')->data['uid'],
                 'show' => array(
                     'process' => 'Der Ablauf',
                     'prerequisites' => 'Die Voraussetzungen',
@@ -367,7 +363,7 @@ class MyContentController extends ActionController
 
     public function dbShowLocationAction(): ResponseInterface
     {
-        $extVars = GeneralUtility::_GET('tx_ibcontent');
+        $extVars = $this->request->getQueryParams()['tx_ibcontent'] ?? null;
 
         // check if there is a singleview id set in the flexforms configuration
         $lid = 0;
@@ -410,7 +406,7 @@ class MyContentController extends ActionController
         $this->view->assignMultiple(
             array(
                 'location_id' => intval($extVars['lid']),
-                'uid' => $this->configurationManager->getContentObject()->data['uid'],
+                'uid' => $this->request->getAttribute('currentContentObject')->data['uid'],
                 'location' => $location,
                 'customSettings' => $this->customSettings,
                 'settings' => $this->settings,
@@ -432,18 +428,6 @@ class MyContentController extends ActionController
         $this->interfaceURL = $this->customSettings['urlIBPdbInteface'];
         //$this->imageURL = $this->customSettings['urlIBPdbImages'];
     }
-
-    /*
-    private function getNews($newsIDS)
-    {
-        if (!empty($newsIDS)) {
-            $news = $this->newsRepository->getNewsByFolder($this->settings['newsProductLocationsFolder'], $newsIDS);
-            return $news;
-        } else {
-            return array();
-        }
-    }
-    */
 
     private function getURL(string $url): bool|string
     {
@@ -526,13 +510,5 @@ class MyContentController extends ActionController
         $metaTagManager = $metaTagManagerRegistry->getManagerForProperty('description');
         $metaTagManager->removeProperty('description');
         $metaTagManager->addProperty('description', $description);
-    }
-
-    /**
-     * @return TypoScriptFrontendController
-     */
-    protected function getTypoScriptFrontendController(): TypoScriptFrontendController
-    {
-        return $GLOBALS['TSFE'];
     }
 }

@@ -7,10 +7,9 @@ declare(strict_types=1);
  */
 $validDomains = array(
   "https://redaktion.internationaler-bund.de/",
-  "https://ibredaktion2016.local.mac/",
   "https://redaktionstool.ddev.site/",
+  "https://redaktion-relaunch.ddev.site/",
   "https://ib:ib@redaktion2016-staging.rmsdev.de/",
-  "https://ibredaktion.local.de/",
 );
 
 $locations = "";

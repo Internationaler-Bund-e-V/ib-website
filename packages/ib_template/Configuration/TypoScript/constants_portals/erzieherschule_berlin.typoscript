@@ -1,0 +1,64 @@
+# -----------------------------------------------------------------------------
+# PORTAL erzieherschule-berlin.rmsdev.de
+# -----------------------------------------------------------------------------
+[site("identifier") == "erzieherschule_berlin"]
+    host = erzieherschule-berlin.de
+    portalSettings {
+        pageTitle = erzieherschule-berlin
+        firstMenuTitle = 
+        root_id = 2595
+        misc.sitemapStartId = 2612
+        mainnav_start_id = 2612
+        misc.searchResultId = 
+        misc.showOnlyTYPO3SearchResults = 1
+
+        #data privacy site ID
+        dataPrivacySiteID = 2605
+
+        footer.hide_central_links = 1
+
+        analytics {
+            #account_id = 
+            #enable_tracking = 0
+              matomo_enabled = 0
+              matomo_siteid = 57
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = 6NZbTypF
+        }
+
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+
+        main_bubble {
+            hide = 1			
+        }
+        social.ib_english_page_link = 
+
+        social.youtube =
+        social.twitter =
+        social.xing =
+        social.linkedin =		
+        social.kununu =
+        social.facebook = 
+        social.instagram =
+        social.ib_english_page_link = 
+    }
+    
+    social.youtube =
+    social.twitter =
+    social.xing =
+    social.linkedin =		
+    social.kununu =
+    social.facebook = 
+    social.instagram =
+    social.ib_english_page_link = 
+
+    const_navigation {
+        footernav_central_folder_id = 2598
+        footernav_misc_folder_id = 2596
+        footernav_meta_folder_id = 2601
+    }
+    
+[end]

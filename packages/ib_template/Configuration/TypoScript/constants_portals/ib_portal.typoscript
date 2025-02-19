@@ -1,0 +1,9 @@
+# -----------------------------------------------------------------------------
+# HAUPTPORTAL IB www.internationaler-bund.de
+# -----------------------------------------------------------------------------
+
+# see EXT:ib_formbuilder/Classes/Condition
+[mypidinrootline(1) || 1 in tree.rootLineIds || 1 in tree.rootLineParentIds]
+    module.tx_ibformbuilder_ibforms.persistence.storagePid = 1913
+    plugin.tx_ibformbuilder_showform.persistence.storagePid = 1913
+[end]

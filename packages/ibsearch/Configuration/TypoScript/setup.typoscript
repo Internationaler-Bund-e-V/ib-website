@@ -4,7 +4,7 @@ plugin.tx_ibsearch {
         partialRootPath = {$plugin.tx_ibsearch.view.partialRootPath}
         layoutRootPath = {$plugin.tx_ibsearch.view.layoutRootPath}
     }
-    
+
     persistence {
         storagePid = {$plugin.tx_ibsearch.persistence.storagePid}
     }
@@ -47,14 +47,6 @@ plugin.tx_ibsearch {
     }
 }
 
-#
-# load searchs js and css files
-#
-
-page.includeCSS {
-    tx_ibsearchs_1 = EXT:ibsearch/Resources/Public/dist/search.min.css
-}
-
 #########################
 # solr config
 #########################
@@ -62,7 +54,7 @@ plugin.tx_solr.view {
     templateRootPaths {
         0 = EXT:solr/Resources/Private/Templates/
         #10 = fileadmin/template/html/ext/solr/Templates/
-        10 = typo3conf/ext/ib_template/Resources/Private/Template/html/ext/solr/Templates/
+        10 = EXT:ib_template/Resources/Private/Template/html/ext/solr/Templates/
     }
     partialRootPaths {
         0 = EXT:solr/Resources/Private/Partials/
@@ -108,12 +100,14 @@ plugin.tx_solr.search {
 }
 
 # Load js files
-page.includeJSFooterlibs {
-    solr-autocomplete = EXT:solr/Resources/Public/JavaScript/JQuery/jquery.autocomplete.min.js
-    solr-suggest = EXT:solr/Resources/Public/JavaScript/suggest_controller.js
-    solr-options = EXT:solr/Resources/Public/JavaScript/facet_options_controller.js
+page.includeJSFooter {
+    ibsearch = typo3_encore:ibsearch
+//    solr-autocomplete = EXT:solr/Resources/Public/JavaScript/JQuery/jquery.autocomplete.min.js
+    // solr-suggest = EXT:solr/Resources/Public/JavaScript/suggest_controller.js
+    // solr-options = EXT:solr/Resources/Public/JavaScript/facet_options_controller.js
 }
 
 page.includeCSS {
-    solr-suggest = EXT:solr/Resources/Public/StyleSheets/Frontend/suggest.css
+    ibsearch = typo3_encore:ibsearch
+    // solr-suggest = EXT:solr/Resources/Public/StyleSheets/Frontend/suggest.css
 }

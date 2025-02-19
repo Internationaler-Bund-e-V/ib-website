@@ -17,14 +17,17 @@ declare(strict_types=1);
 
 namespace ApacheSolrForTypo3\Solrfal\Detection;
 
-use ApacheSolrForTypo3\Solr\Access\Rootline;
 use ApacheSolrForTypo3\Solr\ConnectionManager;
-use ApacheSolrForTypo3\Solr\NoSolrConnectionFoundException;
 use ApacheSolrForTypo3\Solr\System\Solr\Service\SolrWriteService;
 use ApacheSolrForTypo3\Solrfal\Context\StorageContext;
+use Doctrine\DBAL\Exception as DBALException;
 use Exception;
+use Throwable;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
 use TYPO3\CMS\Core\Resource\Exception as ResourceException;
+use TYPO3\CMS\Core\Resource\Exception\FileDoesNotExistException;
+use TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException;
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\Filter\FileExtensionFilter;
 use TYPO3\CMS\Core\Resource\Folder;
@@ -37,65 +40,74 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class StorageContextDetector extends AbstractRecordDetector
 {
+    /**
+     * Folders with following data-format of array:
+     *   <storageUid> => <array of valid folders>
+     * @var array<int, array<Folder>>
+     */
+    protected array $folders = [];
 
     /**
-     * Folders
-     *
-     * @var array <storageUid> => <array of valid folders>
+     * Exclude folders with following data-format of array:
+     *   <storageUid> => <array of excluded folders>
+     * @var array<int, array<Folder>>
      */
-    protected $folders = [];
+    protected array $excludeFolders = [];
 
     /**
-     * Exclude folders
+     * @param string $indexingConfigurationName
+     * @param bool $indexQueueForConfigurationNameIsInitialized
+     * @inheritDoc
      *
-     * @var array <storageUid> => <array of excluded folders>
+     * @throws AspectNotFoundException
+     * @throws DBALException
+     * @throws FileDoesNotExistException
+     * @throws InsufficientFolderAccessPermissionsException
      */
-    protected $excludeFolders = [];
+    public function initializeQueue(
+        string $indexingConfigurationName,
+        ?bool $indexQueueForConfigurationNameIsInitialized = false,
+    ): bool {
+        $config = $this->siteConfiguration->getObjectByPathOrDefault('plugin.tx_solr.index.queue.');
+        $tableName = $this->siteConfiguration
+            ->getIndexQueueTypeOrFallbackToConfigurationName($indexingConfigurationName);
 
-    /**
-     * @param array $initializationStatus
-     *
-     * @throws Exception
-     */
-    public function initializeQueue(array $initializationStatus)
-    {
-        if (!empty($initializationStatus)) {
-            // only read them if indexing is enabled
-            if ($this->isIndexingEnabledForContext('storage')) {
-                foreach ($initializationStatus as $indexingConfigurationIndex => $initializationResult) {
-                    $config = $this->siteConfiguration->getObjectByPathOrDefault('plugin.tx_solr.index.queue.', []);
-                    if (
-                        isset($config[$indexingConfigurationIndex . '.']) &&
-                        is_array($config[$indexingConfigurationIndex . '.']) &&
-                        isset($config[$indexingConfigurationIndex . '.']['table']) &&
-                        $config[$indexingConfigurationIndex . '.']['table'] === 'sys_file_storage' &&
-                        isset($config[$indexingConfigurationIndex . '.']['storageUid'])
-                    ) {
-                        $fileStorageUid = (int)$config[$indexingConfigurationIndex . '.']['storageUid'];
-                        // remove relevant queue entries
-                        $this->getLogger()->info('Purging index-queue for storage ' . $fileStorageUid);
-                        $this->getItemRepository()->removeByFileStorage($this->site, $fileStorageUid, $indexingConfigurationIndex);
+        if ($tableName !== 'sys_file_storage') {
+            // indexing configuration is not storageContext related, skipping. This is no initialisation failure
+            return true;
+        }
 
-                        $storage = $this->getStorageRepository()->findByUid($fileStorageUid);
-                        if ($this->isIndexingEnabledForStorage($fileStorageUid) && $storage !== null) {
-                            $this->getLogger()->info('Indexing storage ' . $fileStorageUid . ' is enabled for site ' . $this->site->getSiteHash());
-                            $this->initializeQueueForStorage($storage, $indexingConfigurationIndex);
-                        }
-                    }
-                }
+        if (
+            $this->isIndexingEnabledForContext('storage')
+            && is_array($config[$indexingConfigurationName . '.'])
+            && isset($config[$indexingConfigurationName . '.']['storageUid'])
+        ) {
+            $fileStorageUid = (int)$config[$indexingConfigurationName . '.']['storageUid'];
+            // remove relevant queue entries
+            $this->logger->info('Purging index-queue for storage ' . $fileStorageUid);
+            $this->getItemRepository()->removeByFileStorage($this->site, $fileStorageUid, $indexingConfigurationName);
+
+            $storage = $this->getStorageRepository()->findByUid($fileStorageUid);
+            if ($this->isIndexingEnabledForStorage($fileStorageUid) && $storage !== null) {
+                $this->logger->info('Indexing storage ' . $fileStorageUid . ' is enabled for site ' . $this->site->getSiteHash());
+                return $this->initializeQueueForStorage($storage, $indexingConfigurationName) > 0;
             }
         }
+
+        return false;
     }
 
     /**
-     * @param ResourceStorage $storage
-     * @param string $indexingConfigurationIndex
-     * @throws Exception
+     * @throws AspectNotFoundException
+     * @throws InsufficientFolderAccessPermissionsException
+     * @throws FileDoesNotExistException
      */
-    protected function initializeQueueForStorage(ResourceStorage $storage, $indexingConfigurationIndex = '')
-    {
+    protected function initializeQueueForStorage(
+        ResourceStorage $storage,
+        string $indexingConfiguration = '',
+    ): int {
         $this->logger->debug('Starting indexing storage ' . $storage->getUid());
-        $contexts = $this->getLanguageContextsForStorage($storage, $indexingConfigurationIndex);
+        $contexts = $this->getLanguageContextsForStorage($storage, $indexingConfiguration);
         $fileExtensions = $this->getFileExtensionsToIndex($storage);
 
         $rootLevelFolder = $storage->getRootLevelFolder();
@@ -108,8 +120,12 @@ class StorageContextDetector extends AbstractRecordDetector
 
         $itemRepository = $this->getItemRepository();
         $files = $rootLevelFolder->getFiles(0, 0, Folder::FILTER_MODE_USE_OWN_FILTERS, true);
+        $itemsCount = 0;
         foreach ($files as $file) {
-            if (($file instanceof ProcessedFile) || !$this->isAllowedFilePath($file)) {
+            if (
+                $file instanceof ProcessedFile
+                || !$this->isAllowedFilePath($file)
+            ) {
                 continue;
             }
             $this->logger->debug('Found file ' . $file->getCombinedIdentifier() . ' to be added to index-queue');
@@ -120,41 +136,42 @@ class StorageContextDetector extends AbstractRecordDetector
                         $context
                     )
                 );
+                $itemsCount++;
             }
         }
+        return $itemsCount;
     }
 
-    /**
-     * @param int $storageUid
-     *
-     * @return bool
-     */
-    protected function isIndexingEnabledForStorage($storageUid): bool
+    protected function isIndexingEnabledForStorage(int $storageUid): bool
     {
-        $config = $this->siteConfiguration->getObjectByPathOrDefault('plugin.tx_solr.index.enableFileIndexing.storageContext.', []);
+        $config = $this->siteConfiguration->getObjectByPathOrDefault(
+            'plugin.tx_solr.index.enableFileIndexing.storageContext.',
+        );
         return array_key_exists($storageUid . '.', $config);
     }
 
     /**
      * Determines the indexing configurations for given storage
      *
-     * @param ResourceStorage $storage
-     *
-     * @return string[]
+     * @return string[] The indexing configuration names for given FAL storage
      */
     protected function getIndexingConfigurationsForStorage(ResourceStorage $storage): array
     {
         $indexingConfigurations = [];
 
         if ($this->isIndexingEnabledForStorage($storage->getUid())) {
-            $config = $this->siteConfiguration->getObjectByPathOrDefault('plugin.tx_solr.index.queue.', []);
+            $config = $this->siteConfiguration->getObjectByPathOrDefault(
+                'plugin.tx_solr.index.queue.',
+            );
             foreach ($config as $configurationName => $configuration) {
                 $configurationName = rtrim($configurationName, '.');
+                $queueConfigTableName = $this->siteConfiguration
+                    ->getIndexQueueTypeOrFallbackToConfigurationName($configurationName);
 
                 if (
                     (int)($config[$configurationName] ?? null) === 1
                     && isset($configuration['storageUid']) && (int)$configuration['storageUid'] === $storage->getUid()
-                    && ($configuration['table'] ?? null) === 'sys_file_storage'
+                    && $queueConfigTableName === 'sys_file_storage'
                 ) {
                     $indexingConfigurations[] = $configurationName;
                 }
@@ -165,15 +182,13 @@ class StorageContextDetector extends AbstractRecordDetector
     }
 
     /**
-     * @param ResourceStorage $storage
-     *
-     * @return array
+     * @param ResourceStorage $storage The FAL storage object to use
+     * @return string[] The list of configured file extensions allowed to index in current EXT:solrfal context and given FAL storage
      */
     protected function getFileExtensionsToIndex(ResourceStorage $storage): array
     {
         $configuration = $this->siteConfiguration->getObjectByPathOrDefault(
             'plugin.tx_solr.index.enableFileIndexing.storageContext.' . $storage->getUid() . '.',
-            []
         );
 
         $fileExtensions = [];
@@ -190,10 +205,6 @@ class StorageContextDetector extends AbstractRecordDetector
 
     /**
      * Check if the file extension is configured to be allowed for indexing
-     *
-     * @param File $file
-     *
-     * @return bool
      */
     protected function isAllowedFileExtension(File $file): bool
     {
@@ -204,9 +215,7 @@ class StorageContextDetector extends AbstractRecordDetector
     /**
      * Check if the file path is allowed
      *
-     * @param File $file
-     * @return bool
-     * @throws Exception
+     * @throws InsufficientFolderAccessPermissionsException
      */
     protected function isAllowedFilePath(File $file): bool
     {
@@ -238,9 +247,7 @@ class StorageContextDetector extends AbstractRecordDetector
     /**
      * Returns the valid folders for given storage
      *
-     * @param ResourceStorage $storage
      * @return Folder[]
-     * @throws Exception
      */
     protected function getValidFoldersForStorage(ResourceStorage $storage): array
     {
@@ -257,8 +264,8 @@ class StorageContextDetector extends AbstractRecordDetector
             foreach ($configuredFolders as $folder) {
                 try {
                     $this->folders[$storage->getUid()][] = $storage->getFolder($folder);
-                } catch (Exception $e) {
-                    $this->getLogger()->info('Invalid folder "' . $folder . '" configured for storage ' . $storage->getUid());
+                } catch (Throwable) {
+                    $this->logger->info('Invalid folder "' . $folder . '" configured for storage ' . $storage->getUid());
                 }
             }
         }
@@ -269,9 +276,11 @@ class StorageContextDetector extends AbstractRecordDetector
     /**
      * Returns the excluded folders for given storage
      *
-     * @param ResourceStorage $storage
      * @return Folder[]
+     *
+     *
      * @throws Exception
+     * @throws ResourceException\InsufficientFolderAccessPermissionsException
      */
     protected function getExcludeFoldersForStorage(ResourceStorage $storage): array
     {
@@ -284,8 +293,8 @@ class StorageContextDetector extends AbstractRecordDetector
                 foreach ($configuredExcludeFolders as $excludeFolder) {
                     try {
                         $this->excludeFolders[$storage->getUid()][] = $storage->getFolder($excludeFolder);
-                    } catch (ResourceException $e) {
-                        $this->getLogger()->info('Invalid exclude folder "' . $excludeFolder . '" configured for storage ' . $storage->getUid());
+                    } catch (ResourceException) {
+                        $this->logger->info('Invalid exclude folder "' . $excludeFolder . '" configured for storage ' . $storage->getUid());
                     }
                 }
             }
@@ -295,23 +304,23 @@ class StorageContextDetector extends AbstractRecordDetector
     }
 
     /**
-     * @param ResourceStorage $storage
-     * @param string $indexingConfiguration
      * @return StorageContext[]
      */
-    protected function getLanguageContextsForStorage(ResourceStorage $storage, $indexingConfiguration = ''): array
+    protected function getLanguageContextsForStorage(ResourceStorage $storage, string $indexingConfiguration = ''): array
     {
         $this->logger->debug('Creating contexts in which files need to be indexed for storage ' . $storage->getUid());
         $languages = $this->getLanguagesToIndexInStorage($storage);
 
         /** @var StorageContext[] $contexts * */
         $contexts = [];
-        $accessRootline = Rootline::getAccessRootlineByPageId($this->site->getRootPageId());
-        $this->logger->debug('Using access rootline of site root page (' . (string)$accessRootline . ') for storage ' . $storage->getUid());
+        $accessRootline = $this->getAccessRootlineByPageId($this->site->getRootPageId());
+        $this->logger->debug('Using access rootline of site root page (' . $accessRootline . ') for storage ' . $storage->getUid());
         foreach ($languages as $languageUid) {
             $contexts[$languageUid] = new StorageContext(
                 $this->site,
                 $accessRootline,
+                $storage->getUid(),
+                $this->site->getRootPageId(),
                 $indexingConfiguration,
                 $languageUid
             );
@@ -322,14 +331,12 @@ class StorageContextDetector extends AbstractRecordDetector
     }
 
     /**
-     * @param ResourceStorage $storage
      * @return int[]
      */
     protected function getLanguagesToIndexInStorage(ResourceStorage $storage): array
     {
         $configuration = $this->siteConfiguration->getObjectByPathOrDefault(
             'plugin.tx_solr.index.enableFileIndexing.storageContext.' . $storage->getUid() . '.',
-            []
         );
         $languages = [];
         if (isset($configuration['languages'])) {
@@ -344,12 +351,14 @@ class StorageContextDetector extends AbstractRecordDetector
     }
 
     /**
-     * @param string $table
-     * @param int $uid
-     * @throws Exception
+     * @throws AspectNotFoundException
+     * @throws FileDoesNotExistException
+     * @throws InsufficientFolderAccessPermissionsException
      */
-    public function recordCreated(string $table, int $uid)
-    {
+    public function recordCreated(
+        string $table,
+        int $uid,
+    ): void {
         if ($this->isIndexingEnabledForContext('storage')) {
             switch ($table) {
                 case 'sys_file_storage':
@@ -396,12 +405,15 @@ class StorageContextDetector extends AbstractRecordDetector
     }
 
     /**
-     * @param string $table
-     * @param int $uid
-     * @throws Exception
+     * @throws AspectNotFoundException
+     * @throws FileDoesNotExistException
+     * @throws DBALException
+     * @throws InsufficientFolderAccessPermissionsException
      */
-    public function recordUpdated(string $table, int $uid)
-    {
+    public function recordUpdated(
+        string $table,
+        int $uid,
+    ): void {
         if (!$this->isIndexingEnabledForContext('storage')) {
             return;
         }
@@ -455,30 +467,28 @@ class StorageContextDetector extends AbstractRecordDetector
     }
 
     /**
-     * @param string $table
-     * @param int $uid
-     * @throws NoSolrConnectionFoundException
-     * @noinspection PhpUnused
+     * @throws DBALException
      */
-    public function recordDeleted(string $table, int $uid)
-    {
+    public function recordDeleted(
+        string $table,
+        int $uid,
+    ): void {
         switch ($table) {
             case 'sys_file_storage':
                 // this really should not happen ever, even though admin may do that - do it, but ugly
                 $configuration = $this->siteConfiguration->getObjectByPathOrDefault(
                     'plugin.tx_solr.index.enableFileIndexing.storageContext.',
-                    []
                 );
                 if (array_key_exists($uid . '.', $configuration)) {
                     $this->logger->info('Indexed storage ' . $uid . ' has been removed. Clearing queue and solr index.');
 
                     $this->getItemRepository()->removeByFileStorage($this->site, $uid);
-                    /* @var ConnectionManager $connectionManager */
+                    /** @var ConnectionManager $connectionManager */
                     $connectionManager = GeneralUtility::makeInstance(ConnectionManager::class);
                     $connections = $connectionManager->getConnectionsBySite($this->site);
-                    /* @var SolrWriteService $solrService */
+                    /** @var SolrWriteService $solrService */
                     foreach ($connections as $solrService) {
-                        $solrService->deleteByQuery('fileStorage:' . (int)$uid);
+                        $solrService->deleteByQuery('fileStorage:' . $uid);
                     }
                 }
                 break;
@@ -494,13 +504,11 @@ class StorageContextDetector extends AbstractRecordDetector
     /**
      * Handles new sys_file entries
      *
-     * @param string $table
-     * @param int $uid
-     *
-     * @throws Exception
-     * @noinspection PhpUnused
+     * @throws AspectNotFoundException
+     * @throws FileDoesNotExistException
+     * @throws InsufficientFolderAccessPermissionsException
      */
-    public function fileIndexRecordCreated(string $table, int $uid)
+    public function fileIndexRecordCreated(string $table, int $uid): void
     {
         $this->recordCreated($table, $uid);
     }
@@ -508,13 +516,12 @@ class StorageContextDetector extends AbstractRecordDetector
     /**
      * Handles updates on sys_file entries
      *
-     * @param string $table
-     * @param int $uid
-     *
-     * @throws Exception
-     * @noinspection PhpUnused
+     * @throws AspectNotFoundException
+     * @throws DBALException
+     * @throws FileDoesNotExistException
+     * @throws InsufficientFolderAccessPermissionsException
      */
-    public function fileIndexRecordUpdated(string $table, int $uid)
+    public function fileIndexRecordUpdated(string $table, int $uid): void
     {
         $this->recordUpdated($table, $uid);
     }

@@ -17,7 +17,8 @@ class NewsFlexFormHook
     public function parseDataStructureByIdentifierPostProcess(array $dataStructure, array $identifier): array
     {
         if ($identifier['type'] === 'tca' && $identifier['tableName'] === 'tt_content' && $identifier['dataStructureKey'] === '*,news_pi1') {
-            $file = Environment::getPublicPath() . '/typo3conf/ext/ibcontent/Configuration/FlexForms/NewsCustomHeadline.xml';
+            $file = Environment::getPublicPath() . 'EXT:ibcontent/Configuration/FlexForms/NewsCustomHeadline.xml';
+            debug($file);
             $content = file_get_contents($file);
             if ($content) {
                 $dataStructure['sheets']['extraEntry'] = GeneralUtility::xml2array($content);

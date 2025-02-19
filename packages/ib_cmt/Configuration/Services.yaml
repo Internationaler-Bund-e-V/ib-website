@@ -12,6 +12,9 @@ services:
             - name: 'console.command'
               command: 'ibcmt:checkcontenttags'
               description: 'V10 - IB CMT check content tags command'
-
+    IB\IbCmt\Controller\ContentController:
+        public: true
+        arguments:
+            $contentRepository: '@IB\IbCmt\Domain\Repository\ContentRepository'
 
 

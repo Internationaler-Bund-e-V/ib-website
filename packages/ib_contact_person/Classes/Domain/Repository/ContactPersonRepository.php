@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Rms\IbContactPerson\Domain\Repository;
 
+use Rms\IbContactPerson\Domain\Model\ContactPerson;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
@@ -33,7 +34,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  ***************************************************************/
 
 /**
- * The repository for ContactPersons
+ * @extends Repository<ContactPerson>
  */
 class ContactPersonRepository extends Repository
 {

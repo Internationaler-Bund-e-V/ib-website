@@ -17,8 +17,6 @@ declare(strict_types=1);
 
 namespace ApacheSolrForTypo3\Solrfal\Indexing;
 
-use Exception;
+use ApacheSolrForTypo3\Solrfal\Exception;
 
-class NoSuitableExtractorFoundException extends Exception
-{
-}
+class NoSuitableExtractorFoundException extends Exception {}

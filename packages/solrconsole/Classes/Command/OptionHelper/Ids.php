@@ -22,7 +22,8 @@ class Ids extends AbstractCommaSeparatedList
     /**
      * Configurations constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->option = 'ids';
         $this->defaultValue = '*';
         $this->label = 'Document id\'s';

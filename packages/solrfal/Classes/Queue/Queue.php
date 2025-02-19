@@ -20,33 +20,25 @@ namespace ApacheSolrForTypo3\Solrfal\Queue;
 use ApacheSolrForTypo3\Solr\Domain\Index\Queue\Statistic\QueueStatistic;
 use ApacheSolrForTypo3\Solr\Domain\Site\Site;
 use ApacheSolrForTypo3\Solr\IndexQueue\Queue as SolrIndexQueue;
+use Doctrine\DBAL\Exception as DBALException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class Queue extends SolrIndexQueue
 {
-    /**
-     * @return ItemRepository
-     * @noinspection PhpIncompatibleReturnTypeInspection
-     */
     protected function getItemRepository(): ItemRepository
     {
         return GeneralUtility::makeInstance(ItemRepository::class);
     }
 
     /**
-     * Extracts the number of pending, indexed and erroneous items from the
-     * Index Queue.
+     * Extracts the number of pending, indexed and erroneous items from the Index Queue.
      *
-     * @param Site $site
-     * @param string $indexingConfigurationName
-     *
-     * @return QueueStatistic
-     * @noinspection PhpUnused
+     * @throws DBALException
      */
     public function getStatisticsBySite(Site $site, string $indexingConfigurationName = ''): QueueStatistic
     {
         $solrConfiguration = $site->getSolrConfiguration();
-        $table = $solrConfiguration->getIndexQueueTableNameOrFallbackToConfigurationName($indexingConfigurationName);
+        $table = $solrConfiguration->getIndexQueueTypeOrFallbackToConfigurationName($indexingConfigurationName);
 
         if ($table !== 'sys_file_storage') {
             return parent::getStatisticsBySite($site, $indexingConfigurationName);

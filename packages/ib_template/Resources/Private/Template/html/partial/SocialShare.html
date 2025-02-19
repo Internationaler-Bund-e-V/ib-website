@@ -51,10 +51,18 @@
                     <i class="ib-icon-instagram"></i>
                 </a>
             </f:if>
-            <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.twitter')}">
-                <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.twitter')}"
-                   title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.twitter.titletag')}">
-                    <i class="ib-icon-x-logo"></i>
+            <!-- bluesky -->
+            <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.bluesky')}">
+                <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.bluesky')}"
+                   title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.bluesky.titletag')}">
+                    <i class="ib-icon-bluesky-logo"></i>
+                </a>
+            </f:if>
+            <!-- mastodon -->
+            <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.mastodon')}">
+                <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.mastodon')}"
+                   title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.mastodon.titletag')}">
+                    <i class="ib-icon-mastodon-logo"></i>
                 </a>
             </f:if>
 
@@ -150,10 +158,18 @@
                             <i class="ib-icon-instagram"></i>
                         </a>
                     </f:if>
-                    <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.twitter')}">
-                        <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.twitter')}"
-                           title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.twitter.titletag')}">
-                            <i class="ib-icon-x-logo"></i>
+                   <!-- bluesky -->
+                    <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.bluesky')}">
+                        <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.bluesky')}"
+                        title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.bluesky.titletag')}">
+                            <i class="ib-icon-bluesky-logo"></i>
+                        </a>
+                    </f:if>
+                    <!-- mastodon -->
+                    <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.social.mastodon')}">
+                        <a target="_blank" href="{f:cObject(typoscriptObjectPath: 'portalSettings.social.mastodon')}"
+                        title="{f:cObject(typoscriptObjectPath: 'portalSettings.social.mastodon.titletag')}">
+                            <i class="ib-icon-mastodon-logo"></i>
                         </a>
                     </f:if>
 

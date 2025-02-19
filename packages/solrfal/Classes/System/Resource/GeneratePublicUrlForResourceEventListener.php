@@ -19,25 +19,21 @@ namespace ApacheSolrForTypo3\Solrfal\System\Resource;
 
 use ApacheSolrForTypo3\Solr\IndexQueue\PageIndexerRequest;
 use ApacheSolrForTypo3\Solrfal\Detection\PageContextDetectorFrontendIndexingAspect;
-use TYPO3\CMS\Core\Http\ServerRequest;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Resource\Event\GeneratePublicUrlForResourceEvent;
 
 /**
  * Listener for the GeneratePublicUrlForResourceEvent
  *
  * Listener is registering each file for that a public url is generated,
- * required for file detection in PageConext
+ * required for file detection in PageContext
  */
 class GeneratePublicUrlForResourceEventListener
 {
     /**
-     * Determines the publicUrl if currently indexing and in a
-     * non-public storage
-     *
-     * @param GeneratePublicUrlForResourceEvent $event
-     * @throws AspectNotFoundException
+     * Determines the publicUrl if currently indexing and in a non-public storage.
      */
-    public function __invoke(GeneratePublicUrlForResourceEvent &$event): void
+    public function __invoke(GeneratePublicUrlForResourceEvent $event): void
     {
         if ($this->getServerRequest() === null
             || !$this->getServerRequest()->hasHeader(PageIndexerRequest::SOLR_INDEX_HEADER)
@@ -50,10 +46,8 @@ class GeneratePublicUrlForResourceEventListener
 
     /**
      * Returns the ServerRequest
-     *
-     * @return ServerRequest|null
      */
-    protected function getServerRequest(): ?ServerRequest
+    protected function getServerRequest(): ?ServerRequestInterface
     {
         return $GLOBALS['TYPO3_REQUEST'] ?? null;
     }

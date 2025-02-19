@@ -22,7 +22,8 @@ class Configurations extends AbstractCommaSeparatedList
     /**
      * Configurations constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->option = 'configurations';
         $this->defaultValue = '*';
         $this->label = 'Configurations';

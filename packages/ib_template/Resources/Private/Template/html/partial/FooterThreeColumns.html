@@ -1,5 +1,5 @@
 <!-- Footer Three Columns-->
-<div id="ib-footer" class="footerThreeColumns">
+<footer id="ib-footer" class="footerThreeColumns">
   <div class="row ib-footer-container">
     <div class="columns medium-10 medium-offset-1">
       <!-- columns-->
@@ -62,11 +62,21 @@
                     </a>
                   </li>
                 </f:if>
-                <f:if condition="{f:cObject(typoscriptObjectPath: 'social.twitter')}">
+                <!-- bluesky -->
+                <f:if condition="{f:cObject(typoscriptObjectPath: 'social.bluesky')}">
                   <li>
-                    <a target="_blank" title="{f:cObject(typoscriptObjectPath: 'social.twitter.titletag')}"
-                      href="{f:cObject(typoscriptObjectPath: 'social.twitter')}">
-                      <i class="ib-icon-twitter-x-circle"></i>
+                    <a target="_blank" title="{f:cObject(typoscriptObjectPath: 'social.bluesky.titletag')}"
+                      href="{f:cObject(typoscriptObjectPath: 'social.bluesky')}">
+                      <i class="ib-icon-bluesky-circle"></i>
+                    </a>
+                  </li>
+                </f:if>
+                <!-- mastodon -->
+                <f:if condition="{f:cObject(typoscriptObjectPath: 'social.mastodon')}">
+                  <li>
+                    <a target="_blank" title="{f:cObject(typoscriptObjectPath: 'social.mastodon.titletag')}"
+                      href="{f:cObject(typoscriptObjectPath: 'social.mastodon')}">
+                      <i class="ib-icon-mastodon-circle"></i>
                     </a>
                   </li>
                 </f:if>
@@ -119,12 +129,12 @@
         </div>
         <div class="columns medium-4">
           <img class="ib-footer-logo"
-            src="/typo3conf/ext/ib_template/Resources/Public/img/logos_portals/{f:cObject(typoscriptObjectPath: 'portalSettings.footer.logo')}"
+            src="{f:uri.resource(path: 'EXT:ib_template/Resources/Public/img/logos_portals/')}{f:cObject(typoscriptObjectPath: 'portalSettings.footer.logo')}"
             alt="Portal Logo Footer">
         </div>
       </div>
 
     </div>
   </div>
-</div>
+</footer>
 <!-- Footer End-->

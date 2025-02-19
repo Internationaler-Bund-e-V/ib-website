@@ -1,5 +1,3 @@
-
-
 <f:switch expression="{data.sys_language_uid}">
 	<f:comment>EN</f:comment>
 	<f:case value="1">
@@ -27,7 +25,7 @@
 </f:switch>
 
 
-<div id="ib-header">
+<header id="ib-header">
 	<div class="ib-header-container container-fluid">
 		<div class="hide-for-large">
 			<f:if condition="{f:cObject(typoscriptObjectPath:'portalSettings.showNavigationSearch')}">
@@ -38,9 +36,9 @@
 			{f:cObject(typoscriptObjectPath:'portalSettings.portal_logo.format')}=='wide' ", then: 'header-ib-logo-wide')}">
 			<div id="ib-logo" class="show-for-large">
 				<f:variable name="src" value="EXT:ib_template/Resources/Public/Images/logos_portals/{f:cObject(typoscriptObjectPath: 'portalSettings.portal_logo.file')}" />
-				<a href="{f:uri.page(pageUid: portalSettings.id)}">
-					<img src="{f:uri.resource(path: src)}" class="responsive" alt="Portal Logo">
-				</a>
+                <f:link.page pageUid="{f:cObject(typoscriptObjectPath: 'portalSettings.root_id')}">
+					<img src="{f:uri.resource(path: src)}" class="responsive" alt="Portal Logo" style="width: auto; height: 70px">
+				</f:link.page>
 			</div>
 			<f:render partial="menu/mainMenuEntryPoint" arguments="{_all}" />
 			<div id="ib-menu-overlay"></div>
@@ -64,4 +62,4 @@
 			<!-- buddy end -->
 		</div>
 	</div>
-</div>
+</header>

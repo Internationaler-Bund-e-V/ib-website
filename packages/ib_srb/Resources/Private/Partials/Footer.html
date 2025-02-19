@@ -5,7 +5,7 @@
         <div class="cell small-12 medium-3">
           <div class="cell small-12">
             <a href="/">
-              <f:image src="EXT:ib_srb/Resources/Public/img/logo.svg" alt="Schwarz Rot Bunt Logo" />
+              <f:image src="EXT:ib_srb/Resources/Public/img/logo_footer.svg" alt="Schwarz Rot Bunt Logo" />
             </a>
           </div>
           <div class="cell small-12">
@@ -15,7 +15,7 @@
           </div>
         </div>
         <div class="cell small-12 medium-3">
-          <h3>Wir über uns</h3>
+          <h3 class="triangleContainer"><div class="triangle"></div> Wir über uns</h3>
           <ul>
             <f:for each="{footerColumnOne}" as="footerColumnOneItem">
               <li class="nav-item {f:if(condition: footerColumnOneItem.active, then: 'active')}">
@@ -28,7 +28,7 @@
           </ul>
         </div>
         <div class="cell small-12 medium-3">
-          <h3>Aktivitäten</h3>
+          <h3 class="triangleContainer"><div class="triangle"></div> Aktivitäten</h3>
           <ul>
             <f:for each="{footerColumnTwo}" as="footerColumnTwoItem">
               <li class="nav-item {f:if(condition: footerColumnTwoItem.active, then: 'active')}">
@@ -41,7 +41,7 @@
           </ul>
         </div>
         <div class="cell small-12 medium-3">
-          <h3>Multimedia</h3>
+          <h3 class="triangleContainer"><div class="triangle"></div> Multimedia</h3>
           <ul>
             <f:for each="{footerColumnThree}" as="footerColumnThreeItem">
               <li class="nav-item {f:if(condition: footerColumnThreeItem.active, then: 'active')}">

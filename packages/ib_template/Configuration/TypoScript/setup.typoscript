@@ -3,24 +3,19 @@
 #
 
 # main ts config
-#<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ib_template/Configuration/TypoScript/main_config.ts">
-@import 'EXT:ib_template/Configuration/TypoScript/main_config.ts'
+@import 'EXT:ib_template/Configuration/TypoScript/main_config.typoscript'
 
 # menu config
-#<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ib_template/Configuration/TypoScript/menu.ts">
-@import 'EXT:ib_template/Configuration/TypoScript/menu.ts'
+@import 'EXT:ib_template/Configuration/TypoScript/menu.typoscript'
 
 # layout config
-##<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ib_template/Configuration/TypoScript/layout.ts">
-@import 'EXT:ib_template/Configuration/TypoScript/layout.ts'
+@import 'EXT:ib_template/Configuration/TypoScript/layout.typoscript'
 
 # search config
-#<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ib_template/Configuration/TypoScript/search.ts">
-@import 'EXT:ib_template/Configuration/TypoScript/search.ts'
+@import 'EXT:ib_template/Configuration/TypoScript/search.typoscript'
 
 # solr config
-#<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ib_template/Configuration/TypoScript/setup_solr.t3s">
-@import 'EXT:ib_template/Configuration/TypoScript/setup_solr.t3s'
+@import 'EXT:ib_template/Configuration/TypoScript/setup_solr.typoscript'
 
 module.tx_ibcmt_web_ibcmtibcmt.persistence.storagePid = 4228
 
@@ -39,3 +34,13 @@ config.admPanel = 1
     config.concatenateJs = 0
     config.concatenateCss = 0
 [end]
+
+
+# make <f:format.html parseFuncTSPath="lib.parseFunc"> work with rte-ckeditor-image extension
+# otherwise the setting lib.parseFunc_RTE.tags.img.preUserFunc inside 
+# vendor/netresearch/rte-ckeditor-image/Configuration/TypoScript/ImageRendering/setup.typoscript
+# will not be applied
+#lib.parseFunc < lib.parseFunc_RTE
+lib.parseFunc.tags.img < lib.parseFunc_RTE.tags.img
+lib.parseFunc.tags.a < lib.parseFunc_RTE.tags.a
+lib.parseFunc.nonTypoTagStdWrap.encapsLines.encapsTagList < lib.parseFunc_RTE.nonTypoTagStdWrap.encapsLines.encapsTagList

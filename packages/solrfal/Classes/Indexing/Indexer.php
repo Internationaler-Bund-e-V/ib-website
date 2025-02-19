@@ -19,28 +19,28 @@ namespace ApacheSolrForTypo3\Solrfal\Indexing;
 
 use ApacheSolrForTypo3\Solr\ConnectionManager;
 use ApacheSolrForTypo3\Solr\Domain\Site\Site;
+use ApacheSolrForTypo3\Solr\Exception as ExtSolrException;
+use ApacheSolrForTypo3\Solr\FrontendEnvironment\Exception\Exception as ExtSolrFrontendEnvironmentException;
 use ApacheSolrForTypo3\Solr\NoSolrConnectionFoundException;
+use ApacheSolrForTypo3\Solr\System\Solr\ResponseAdapter;
 use ApacheSolrForTypo3\Solr\System\Solr\SolrConnection;
 use ApacheSolrForTypo3\Solrfal\Context\ContextInterface;
+use ApacheSolrForTypo3\Solrfal\Event\Indexing\AfterSingleFileDocumentOfItemGroupHasBeenIndexedEvent;
 use ApacheSolrForTypo3\Solrfal\Queue\Item;
 use ApacheSolrForTypo3\Solrfal\Queue\ItemGroup;
 use ApacheSolrForTypo3\Solrfal\Queue\ItemGroupRepository;
 use ApacheSolrForTypo3\Solrfal\Queue\ItemRepository;
-use Doctrine\DBAL\Driver\Exception as DBALDriverException;
 use Doctrine\DBAL\Exception as DBALException;
-use Exception;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Http\Client\ClientExceptionInterface;
+use Throwable;
 use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException;
 use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException;
 use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
 use TYPO3\CMS\Core\Exception\SiteNotFoundException;
 use TYPO3\CMS\Core\Resource\Exception\FileDoesNotExistException;
-use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
-use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException;
-use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException;
 
 /**
  * Class Indexer
@@ -48,20 +48,14 @@ use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException;
 class Indexer implements SingletonInterface
 {
     /**
-     * @param int $limit
-     * @param bool $evaluatePermissions
-     * @param Site|null $limitToSite
-     * @throws ClientExceptionInterface
-     * @throws DBALDriverException
-     * @throws DBALException
      * @throws FileDoesNotExistException
-     * @throws \Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
     public function processIndexQueue(
         int $limit = 50,
         bool $evaluatePermissions = true,
         Site $limitToSite = null
-    ) {
+    ): void {
         $limitToSiteId = is_null($limitToSite) ? 0 : $limitToSite->getRootPageId();
         $itemGroups = $this->getItemGroupRepository()->findAllIndexingOutStanding($limit, $limitToSiteId);
         foreach ($itemGroups as $itemGroup) {
@@ -73,36 +67,31 @@ class Indexer implements SingletonInterface
      * Tries to set whether the permissions to access or write into the file-storage should be checked or not.
      * If file does not exist in some Item, the whole ItemGroup is marked as failed.
      *
-     * @param ItemGroup $itemGroup
-     * @param bool $evaluatePermissions
-     * @throws ClientExceptionInterface
-     * @throws DBALDriverException
-     * @throws DBALException
      * @throws FileDoesNotExistException
-     * @throws \Doctrine\DBAL\DBALException
      */
-    protected function tryToSetEvaluatePermissionsForGroupThenAddGroupToIndexOrMarkGroupAsFailed(ItemGroup $itemGroup, bool $evaluatePermissions)
-    {
-        foreach ($itemGroup->getItems() as $item) {
+    protected function tryToSetEvaluatePermissionsForGroupThenAddGroupToIndexOrMarkGroupAsFailed(
+        ItemGroup $itemGroup,
+        bool $evaluatePermissions,
+    ): bool {
+        $items = $itemGroup->getItems();
+        if (count($items) === 0) {
+            return false;
+        }
+
+        foreach ($items as $item) {
             try {
                 $item->getFile()->getStorage()->setEvaluatePermissions($evaluatePermissions);
             } catch (FileDoesNotExistException $fileDoesNotExistException) {
                 $this->markItemsInGroupAsFailed($itemGroup, vsprintf('File can not be indexed. Code: %s Message: %s', [$fileDoesNotExistException->getCode(), $fileDoesNotExistException->getMessage()]));
-                return;
+                return false;
             }
         }
-        $this->addGroupToIndex($itemGroup);
+        return $this->addGroupToIndex($itemGroup);
     }
 
     /**
-     * @param Item $item
-     *
-     * @return bool
-     * @throws ClientExceptionInterface
-     * @throws DBALDriverException
-     * @throws DBALException
      * @throws FileDoesNotExistException
-     * @throws \Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
     public function addToIndex(Item $item): bool
     {
@@ -113,13 +102,7 @@ class Indexer implements SingletonInterface
     /**
      * Adds a group of queue items to the solr index and applies merging or not.
      *
-     * @param ItemGroup $group
-     * @return bool
-     * @throws ClientExceptionInterface
-     * @throws DBALDriverException
-     * @throws DBALException
      * @throws FileDoesNotExistException
-     * @throws \Doctrine\DBAL\DBALException
      */
     protected function addGroupToIndex(ItemGroup $group): bool
     {
@@ -130,11 +113,11 @@ class Indexer implements SingletonInterface
 
         try {
             $success = $this->addGroupDocumentsToIndex($group);
-        } catch (NoSolrConnectionFoundException $e) {
+        } catch (NoSolrConnectionFoundException) {
             $message = 'Invalid connection configuration for record';
             $this->markItemsInGroupAsFailed($group, $message);
             return false;
-        } catch (Exception $e) {
+        } catch (Throwable $e) {
             $this->markItemsInGroupAsFailed($group, $e->getMessage());
             return false;
         }
@@ -145,8 +128,6 @@ class Indexer implements SingletonInterface
     /**
      * Checks if the file of the rootItem of the group exists.
      *
-     * @param ItemGroup $group
-     * @return bool
      * @throws FileDoesNotExistException
      */
     protected function doesFileOfRootItemExist(ItemGroup $group): bool
@@ -157,20 +138,16 @@ class Indexer implements SingletonInterface
     /**
      * Adds the group documents to the solr index.
      *
-     * @param ItemGroup $group
-     * @return bool
      * @throws AspectNotFoundException
      * @throws ClientExceptionInterface
-     * @throws DBALDriverException
      * @throws DBALException
      * @throws ExtensionConfigurationExtensionNotConfiguredException
      * @throws ExtensionConfigurationPathDoesNotExistException
+     * @throws ExtSolrException
+     * @throws ExtSolrFrontendEnvironmentException
      * @throws FileDoesNotExistException
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
      * @throws NoSolrConnectionFoundException
      * @throws SiteNotFoundException
-     * @throws \Doctrine\DBAL\DBALException
      */
     protected function addGroupDocumentsToIndex(ItemGroup $group): bool
     {
@@ -181,10 +158,16 @@ class Indexer implements SingletonInterface
 
         foreach ($documents as $document) {
             unset($document->teaser);
-
             // todo document why teaser is unset
+
             $response = $solr->getWriteService()->addDocuments([$document]);
-            $this->emitIndexedFileToSolr($group->getRootItem()->getFile());
+
+            $this->getEventDispatcher()->dispatch(
+                new AfterSingleFileDocumentOfItemGroupHasBeenIndexedEvent(
+                    $document,
+                    $group,
+                )
+            );
 
             if ($response->getHttpStatus() == 200) {
                 $success = true;
@@ -201,31 +184,24 @@ class Indexer implements SingletonInterface
 
     /**
      * Marks all item's in a group as failed.
-     *
-     * @param ItemGroup $group
-     * @param string $message
-     * @throws DBALException
-     * @throws \Doctrine\DBAL\DBALException
      */
-    protected function markItemsInGroupAsFailed(ItemGroup $group, string $message)
+    protected function markItemsInGroupAsFailed(ItemGroup $group, string $message): int
     {
+        $markedAsFailedItemsCount = 0;
         foreach ($group->getItems() as $item) {
-            $this->getItemRepository()->markFailed($item, $message);
+            $markedAsFailedItemsCount += $this->getItemRepository()->markFailed($item, $message);
         }
+        return $markedAsFailedItemsCount;
     }
 
     /**
      * Removes a document from the solr index, which relates to the queue item
      *
-     * @param Item $item
-     * @throws ClientExceptionInterface
-     * @throws DBALDriverException
      * @throws DBALException
      * @throws FileDoesNotExistException
      * @throws NoSolrConnectionFoundException
-     * @throws \Doctrine\DBAL\DBALException
      */
-    public function removeFromIndex(Item $item)
+    public function removeFromIndex(Item $item): void
     {
         $merge = $this->getIsMergingEnabledFormItem($item);
         if ($merge) {
@@ -250,11 +226,7 @@ class Indexer implements SingletonInterface
         }
     }
 
-    /**
-     * @param Item $item
-     * @return mixed
-     */
-    protected function getIsMergingEnabledFormItem(Item $item)
+    protected function getIsMergingEnabledFormItem(Item $item): mixed
     {
         $configuration = $item->getContext()->getSite()->getSolrConfiguration();
         $merge = $configuration->getValueByPathOrDefaultValue('plugin.tx_solr.index.enableFileIndexing.mergeDuplicates', false);
@@ -263,33 +235,34 @@ class Indexer implements SingletonInterface
     }
 
     /**
-     * @param Item $item
-     * @throws DBALDriverException
      * @throws NoSolrConnectionFoundException
+     * @throws DBALException
      */
-    protected function removeFromIndexByItem(Item $item)
+    protected function removeFromIndexByItem(Item $item): ResponseAdapter
     {
         $solr = $this->getSolrConnectionByContext($item->getContext());
         // build query, need to differentiate for the case when deleting whole pages
         $query = ['type:' . DocumentFactory::SOLR_TYPE, 'uid:' . $item->getUid()];
 
         // delete document(s) from index, directly commit
-        $solr->getWriteService()->deleteByQuery(implode(' AND ', $query));
+        return $solr->getWriteService()->deleteByQuery(implode(' AND ', $query));
     }
 
     /**
-     * @param array $uidArray
-     * @param Site $site
-     * @param int $chunkSize
+     * Removes the file index queue entries from given list of entries UIDs and Site object.
      *
-     * @throws ClientExceptionInterface
-     * @throws DBALDriverException
+     * @param int[] $uidArray The list of UIDs from file index queue entries to remove
+     * @param Site $site The Site object to use for deletions
+     * @param int<1, max> $chunkSize The chunk size to use for partial iterations
+     *
      * @throws DBALException
      * @throws FileDoesNotExistException
-     * @throws \Doctrine\DBAL\DBALException
      */
-    public function removeByQueueEntriesAndSite(array $uidArray, Site $site, int $chunkSize = 1000)
-    {
+    public function removeByQueueEntriesAndSite(
+        array $uidArray,
+        Site $site,
+        int $chunkSize = 1000,
+    ): void {
         $chunks = array_chunk($uidArray, $chunkSize);
         $solrConnections = $this->getSolrConnectionsBySite($site);
 
@@ -311,27 +284,19 @@ class Indexer implements SingletonInterface
         }
     }
 
-    /**
-     * @return DocumentFactory
-     */
     protected function getDocumentFactory(): DocumentFactory
     {
         return GeneralUtility::makeInstance(DocumentFactory::class);
     }
 
-    /**
-     * @return ConnectionManager
-     */
     protected function getConnectionManager(): ConnectionManager
     {
         return GeneralUtility::makeInstance(ConnectionManager::class);
     }
 
     /**
-     * @param ContextInterface $context
-     * @return SolrConnection
-     * @throws DBALDriverException
      * @throws NoSolrConnectionFoundException
+     * @throws DBALException
      */
     protected function getSolrConnectionByContext(ContextInterface $context): SolrConnection
     {
@@ -340,7 +305,6 @@ class Indexer implements SingletonInterface
     }
 
     /**
-     * @param Site $site
      * @return SolrConnection[]
      */
     protected function getSolrConnectionsBySite(Site $site): array
@@ -349,50 +313,29 @@ class Indexer implements SingletonInterface
         return $connectionManager->getConnectionsBySite($site);
     }
 
-    /**
-     * @return ItemRepository
-     */
     protected function getItemRepository(): ItemRepository
     {
         return GeneralUtility::makeInstance(ItemRepository::class);
     }
 
-    /**
-     * @return ItemGroupRepository
-     */
     protected function getItemGroupRepository(): ItemGroupRepository
     {
         return GeneralUtility::makeInstance(ItemGroupRepository::class);
     }
 
     /**
-     * @param File $file
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
-     */
-    protected function emitIndexedFileToSolr(File $file)
-    {
-        /** @var Dispatcher $signalSlotDispatcher */
-        $signalSlotDispatcher = GeneralUtility::makeInstance(Dispatcher::class);
-        $signalSlotDispatcher->dispatch(__CLASS__, 'indexedFileToSolr', [$file]);
-    }
-
-    /**
      * When merging is active and the root document of a mergeGroup is removed,
      * the mergeGroup needs to be re-added to make sure a new root document is determined.
      *
-     * @param int $uid
-     * @param Site $site
-     * @throws ClientExceptionInterface
-     * @throws DBALDriverException
      * @throws DBALException
      * @throws FileDoesNotExistException
-     * @throws \Doctrine\DBAL\DBALException
      */
-    private function indexNewRootDocumentWhenRequired(int $uid, Site $site)
-    {
+    private function indexNewRootDocumentWhenRequired(
+        int $uid,
+        Site $site,
+    ): void {
         $item = $this->getItemRepository()->findByUid($uid);
-        if (is_null($item) || ! $this->getIsMergingEnabledFormItem($item)) {
+        if (is_null($item) || !$this->getIsMergingEnabledFormItem($item)) {
             return;
         }
 
@@ -413,5 +356,10 @@ class Indexer implements SingletonInterface
 
         // there are items left after removing, so we need to re-index the rest of the group
         $this->addGroupToIndex($group);
+    }
+
+    protected function getEventDispatcher(): EventDispatcherInterface
+    {
+        return GeneralUtility::makeInstance(EventDispatcherInterface::class);
     }
 }

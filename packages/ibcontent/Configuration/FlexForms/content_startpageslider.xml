@@ -50,18 +50,33 @@
                   <slideImage>
                     <TCEforms>
                       <label>Slide Image</label>
-                        <config>
-                            <type>group</type>
-                            <internal_type>db</internal_type>
-                            <appearance>
-                                <elementBrowserType>file</elementBrowserType>
-                                <elementBrowserAllowed>gif,jpg,jpeg,png</elementBrowserAllowed>
-                            </appearance>
-                            <allowed>sys_file</allowed>
-                            <size>1</size>
-                            <minitems>1</minitems>
-                            <maxitems>1</maxitems>
-                        </config>
+
+                      <!-- TYPO3 v11-->
+                      <!--
+                      <config>
+                        <type>group</type>
+                        <internal_type>db</internal_type>
+                        <appearance>
+                          <elementBrowserType>file</elementBrowserType>
+                          <elementBrowserAllowed>gif,jpg,jpeg,png</elementBrowserAllowed>
+                        </appearance>
+                        <allowed>sys_file</allowed>
+                        <size>1</size>
+                        <minitems>1</minitems>
+                        <maxitems>1</maxitems>
+                      </config>
+                      -->
+
+                      <!-- TYPO3 v12-->
+                      <config>
+                        <type>link</type>
+                        <allowedTypes>
+                          <numIndex index="0">file</numIndex>
+                          <!--<numIndex index="1">page</numIndex>-->
+                        </allowedTypes>
+                        <minitems>1</minitems>
+                        <maxitems>1</maxitems>
+                      </config>
                     </TCEforms>
                   </slideImage>
                   <slideImageAltText>
@@ -85,11 +100,11 @@
                           <numIndex index="0" type="array">
                             <numIndex index="0">blue</numIndex>
                             <numIndex index="1">blue</numIndex>
-                          </numIndex>                        
+                          </numIndex>
                           <numIndex index="3" type="array">
                             <numIndex index="0">orange</numIndex>
                             <numIndex index="1">orange</numIndex>
-                          </numIndex>                         
+                          </numIndex>
                           <numIndex index="6" type="array">
                             <numIndex index="0">no buddy</numIndex>
                             <numIndex index="1">inactive</numIndex>
@@ -112,11 +127,11 @@
                           <numIndex index="1" type="array">
                             <numIndex index="0">left</numIndex>
                             <numIndex index="1">left</numIndex>
-                          </numIndex>                          
+                          </numIndex>
                         </items>
                       </config>
                     </TCEforms>
-                  </bubblePosition>                  
+                  </bubblePosition>
                   <slideLink>
                     <TCEforms>
                       <label>Link to page</label>
@@ -145,14 +160,14 @@
                     </TCEforms>
                   </slideLink>
                   <openInNewTab>
-                   <TCEforms>
+                    <TCEforms>
                       <label>Open in new tab</label>
                       <config>
                         <type>check</type>
                         <default>0</default>
                       </config>
                     </TCEforms>
-                  </openInNewTab>                  
+                  </openInNewTab>
                   <textRowOne>
                     <TCEforms>
                       <label>Headline - Für Zeilenumbruch bitte das &lt;br /&gt; Tag verwenden</label>
@@ -163,7 +178,7 @@
                         <size>255</size>
                       </config>
                     </TCEforms>
-                  </textRowOne>                  
+                  </textRowOne>
                   <textRowTwo>
                     <TCEforms>
                       <label>Subline - Für Zeilenumbruch bitte das &lt;br /&gt; Tag verwenden</label>
@@ -174,7 +189,7 @@
                         <size>255</size>
                       </config>
                     </TCEforms>
-                  </textRowTwo>                  
+                  </textRowTwo>
                   <textRowThree>
                     <TCEforms>
                       <label>Text</label>
@@ -184,7 +199,7 @@
                         <size>255</size>
                       </config>
                     </TCEforms>
-                  </textRowThree>                
+                  </textRowThree>
                 </el>
               </ItemWrap>
             </el>

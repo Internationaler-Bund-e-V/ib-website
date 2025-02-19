@@ -20,6 +20,4 @@ use ApacheSolrForTypo3\Solrfal\Exception;
 /**
  * Invalid solrfal service hook exception
  */
-class InvalidHookException extends Exception
-{
-}
+class InvalidHookException extends Exception {}

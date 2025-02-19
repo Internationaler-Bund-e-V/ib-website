@@ -22,7 +22,8 @@ class Types extends AbstractCommaSeparatedList
     /**
      * Configurations constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->option = 'types';
         $this->defaultValue = '*';
         $this->label = 'Types to be fetched';

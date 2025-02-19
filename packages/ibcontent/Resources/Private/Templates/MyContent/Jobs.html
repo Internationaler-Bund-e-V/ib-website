@@ -12,7 +12,7 @@
 	<div class="row ib-content-module ib-jobsslider ib-background-{settings.bgColor}">
 		<div class="columns {f:if(condition: '{settings.layout}=="2col"',then: 'medium-offset-1 medium-11 large-offset-1-2col large-6-2col',else: 'medium-offset-1 medium-10')} end">
 				<h2 class="ib-headline">{settings.headline}</h2>
-		</div>	
+		</div>
 		<!-- <div class="columns {f:if(condition: '{settings.layout}=="2col"',then: 'small-12 large-8-2col',else: 'small-12')}"> -->
 		<div class="columns">
 			<div class="row">
@@ -22,14 +22,14 @@
 				<div class="columns {f:if(condition: '{settings.layout}=="2col"',then: 'small-10 large-6-2col',else: 'small-10')}">
 					<div class="ib-jobs-slider row expanded">
 						<f:for each="{jobs}" as="job">
-							<div class="ib-jobs-item">					
+							<div class="ib-jobs-item">
 								<p>
 									<h2 class="ib-color-darkblue">{job.headline}</h2>
 									<f:format.html>{job.text}</f:format.html>
-								</p>							
-								
+								</p>
+
 								<f:link.page pageUid="{job.link}" class="ib-link-more-before">mehr erfahren</f:link.page>
-								
+
 							</div>
 						</f:for>
 					</div>
@@ -47,9 +47,6 @@
 	<f:if condition="{settings.divider} == 'both'">
 		<f:render section="divider" />
 	</f:if>
-	
-	<!-- include jobs.js as footer asset -->
-	<f:asset.script identifier="jobsJs" src="EXT:ibcontent/Resources/Public/js/jobs.js" />
 </f:section>
 
 <f:section name="divider">

@@ -14,7 +14,7 @@ TYPO3:
                 templateRootPaths:
                   20: "EXT:ib_srb/Resources/Private/Templates/Form/Frontend/"
                 partialRootPaths:
-                  #array +1 see -> /typo3conf/ext/friendlycaptcha_official/Configuration/Yaml/FormSetup.yaml
+                  #array +1 see -> EXT:friendlycaptcha_official/Configuration/Yaml/FormSetup.yaml
                   1689150041922: "EXT:ib_srb/Resources/Private/FriendlyCaptcha/Partials" 
                 layoutRootPaths:
                   20: "EXT:ib_srb/Resources/Private/Layouts/Form/Frontend/"

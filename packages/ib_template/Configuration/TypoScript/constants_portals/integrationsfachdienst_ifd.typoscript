@@ -1,0 +1,50 @@
+# -----------------------------------------------------------------------------
+# PORTAL Integrationsfachdienst
+# -----------------------------------------------------------------------------
+[site("identifier") == "ib_ifd_de"]
+    host = ib-ifd.de
+    portalSettings {
+        pageTitle = Integrationsfachdienst IFD
+        firstMenuTitle = Integrationsfachdienst IFD
+        root_id = 1712
+        misc.sitemapStartId = 1712
+        mainnav_start_id = 1724
+        misc.searchResultId = 1722		
+        misc.showOnlyTYPO3SearchResults = 1
+        readspeaker.show = 1
+        #data privacy site ID
+        dataPrivacySiteID = 1717
+
+        analytics {
+            #account_id =
+            #enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 23
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = AMGsCb89
+        }
+    
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+
+        main_bubble {
+            hide = 1			
+        }
+
+        #threecolumn footer layout
+        footer.use_three_columns = 1
+        footer.show_textcontent_left = 1
+        footer.show_textcontent_middle = 1
+        footer.show_textcontent_right = 1
+        footer.tt_content_uid_left = 18597
+        footer.tt_content_uid_middle = 18596
+        footer.tt_content_uid_right = 18595
+    }
+    const_navigation {
+        footernav_central_folder_id = 3
+        footernav_misc_folder_id = 15
+        footernav_meta_folder_id = 1713
+    }
+[end]

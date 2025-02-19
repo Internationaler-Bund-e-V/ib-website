@@ -22,7 +22,8 @@ class Languages extends AbstractCommaSeparatedList
     /**
      * Configurations constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->option = 'languages';
         $this->defaultValue = '*';
         $this->label = 'Languages to be fetched';

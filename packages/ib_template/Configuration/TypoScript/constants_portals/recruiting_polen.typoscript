@@ -1,0 +1,74 @@
+# -----------------------------------------------------------------------------
+# PORTAL fib-recruiting-polen
+# -----------------------------------------------------------------------------
+[site("identifier") == "recruiting_polen"]
+    host = wychowawcy.ib-berlin.de
+    portalSettings {
+        pageTitle = wychowawcy.ib-berlin.de
+        firstMenuTitle = ib-recruiting-polen
+        root_id = 2627
+        misc.sitemapStartId = 2627
+        mainnav_start_id = 2644
+        misc.searchResultId = 
+        misc.showOnlyTYPO3SearchResults = 1
+        readspeaker.show = 1
+        showLanguageMenu = 0
+
+        #data privacy site ID
+        dataPrivacySiteID = 2637
+
+        //generate news sitemap     
+        NewsSitemap.generate = 1
+        NewsSitemap.NewsFolderPid = 2632
+        NewsSitemap.NewsDetailPid = 2639
+
+        analytics {
+            #account_id =
+            #enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 31
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = zL7GEjw5
+        }
+
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+
+        main_bubble {
+            hide = 1			
+        }
+        social.ib_english_page_link =
+        social.ib_german_page_link =
+
+        social.instagram = https://www.instagram.com/ib.berlin.brandenburg/
+        social.instagram.titletag = Hier geht es zur Instagram Seite
+        social.facebook = https://www.facebook.com/IB.Berlin.Brandenburg
+        social.facebook.titletag = Hier geht es zur Facebook-Seite
+    }
+
+    social.instagram = https://www.instagram.com/ib.berlin.brandenburg/
+    social.instagram.titletag = Hier geht es zur Instagram Seite
+    social.facebook = https://www.facebook.com/IB.Berlin.Brandenburg
+    social.facebook.titletag = Hier geht es zur Facebook-Seite
+    
+    const_navigation {
+        footernav_central_folder_id = 2630
+        footernav_misc_folder_id = 2628
+        footernav_meta_folder_id = 2633
+    }
+[end]
+
+//[globalVar = GP:L = 4]
+[siteLanguage("languageId") == 4]
+    portalSettings {
+
+        main_bubble {
+            hide = 0
+        }
+
+        social.ib_english_page_link =
+        social.ib_german_page_link = /de/
+    }
+[global]

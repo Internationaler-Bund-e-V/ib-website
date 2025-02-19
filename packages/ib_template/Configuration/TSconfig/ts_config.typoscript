@@ -220,6 +220,7 @@ TCEMAIN.permissions.groupid = 102
 TCEMAIN.permissions.groupid = 103
 [global]
 
+
 # sit sis
 [7369 in tree.rootLineIds]
 TCEMAIN.permissions.groupid = 105
@@ -245,8 +246,8 @@ TCEMAIN.permissions.groupid = 109
 TCEMAIN.permissions.groupid = 110
 [global]
 
-#<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ib_template/Configuration/TSconfig/ts_config_rte.ts">
-@import 'EXT:ib_template/Configuration/TSconfig/ts_config_rte.ts'
+####### add rte config
+@import 'EXT:ib_template/Configuration/TSconfig/ts_config_rte.typoscript'
 
 # configure the dropdown header_layout in the General tab of every content element
 # this removes the unused layout options and leaves only the Default and hidden option for selection

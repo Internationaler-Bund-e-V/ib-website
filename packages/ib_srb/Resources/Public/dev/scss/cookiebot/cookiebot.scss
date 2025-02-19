@@ -49,8 +49,8 @@ label[for=CybotCookiebotDialogBodyLevelButtonNecessary] {
 .customCBOverlay {
   text-align: center;
   width: 100%;
-  //background-image: url('/typo3conf/ext/ib_template/Resources/Public/img/IB_Cookiebanner_a_1.jpg');
-  background-image: url('/typo3conf/ext/ib_template/Resources/Public/img/opacityMap.png');
+  //background-image: url('../../img/IB_Cookiebanner_a_1.jpg');
+  background-image: url('../../img/opacityMap.png');
   background-size: contain;
   background-repeat: no-repeat;
   width: 100%;
@@ -60,22 +60,22 @@ label[for=CybotCookiebotDialogBodyLevelButtonNecessary] {
   z-index: 1;
 
   &.customCBOverlayYouTube {
-    background-image: url('/typo3conf/ext/ib_template/Resources/Public/img/cb_yt_overlay.jpg');
+    background-image: url('../../img/cb_yt_overlay.jpg');
     padding-top: 57%;
   }
 
   &.genericCBOverlay {
-    background-image: url('/typo3conf/ext/ib_template/Resources/Public/img/consent/generic.jpg');
+    background-image: url('../../img/consent/generic.jpg');
     padding-top: 33%;
   }
 
   &.youtubeCBOverlay {
-    background-image: url('/typo3conf/ext/ib_template/Resources/Public/img/consent/cb_yt_overlay.jpg');
+    background-image: url('../../img/consent/cb_yt_overlay.jpg');
     padding-top: 57%;
   }
 
   &.mapsCBOverlay {
-    background-image: url('/typo3conf/ext/ib_template/Resources/Public/img/consent/cb_maps_overlay.png');
+    background-image: url('../../img/consent/cb_maps_overlay.png');
     padding-top: 70%;
   }
 

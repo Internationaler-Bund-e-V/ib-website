@@ -19,41 +19,40 @@ namespace ApacheSolrForTypo3\Solrconsole\Domain\Verification;
 
 class ConfigurationVerificationResult
 {
-
     /**
      * @var int
      */
-    protected $languageUid = 0;
+    protected int $languageUid = 0;
 
     /**
      * @var string
      */
-    protected $configurationName = '';
+    protected string $configurationName = '';
 
     /**
      * @var string
      */
-    protected $tableName = '';
+    protected string $tableName = '';
+
+    /**
+     * @var int[]
+     */
+    protected array $typo3Uids = [];
 
     /**
      * @var array
      */
-    protected $typo3Uids = [];
-
-    /**
-     * @var array
-     */
-    protected $solrUids  = [];
+    protected array $solrUids  = [];
 
     /**
      * @var int
      */
-    protected $indexQueueErrors = 0;
+    protected int $indexQueueErrors = 0;
 
     /**
      * @var array
      */
-    protected $errors = [];
+    protected array $errors = [];
 
     /**
      * @return array
@@ -102,7 +101,7 @@ class ConfigurationVerificationResult
      *
      * @param array $solrUids
      */
-    public function setSolrUids(array $solrUids)
+    public function setSolrUids(array $solrUids): void
     {
         $this->solrUids = array_unique($solrUids);
     }
@@ -118,7 +117,7 @@ class ConfigurationVerificationResult
     /**
      * @param int $languageUid
      */
-    public function setLanguageUid(int $languageUid)
+    public function setLanguageUid(int $languageUid): void
     {
         $this->languageUid = $languageUid;
     }
@@ -134,7 +133,7 @@ class ConfigurationVerificationResult
     /**
      * @param string $configurationName
      */
-    public function setConfigurationName(string $configurationName)
+    public function setConfigurationName(string $configurationName): void
     {
         $this->configurationName = $configurationName;
     }
@@ -150,7 +149,7 @@ class ConfigurationVerificationResult
     /**
      * @param string $tableName
      */
-    public function setTableName(string $tableName)
+    public function setTableName(string $tableName): void
     {
         $this->tableName = $tableName;
     }
@@ -166,12 +165,12 @@ class ConfigurationVerificationResult
     /**
      * @param array $errors
      */
-    public function setErrors(array $errors)
+    public function setErrors(array $errors): void
     {
         $this->errors = $errors;
     }
 
-    public function addError($errorMessage)
+    public function addError($errorMessage): void
     {
         $this->errors[] = $errorMessage;
     }
@@ -187,7 +186,7 @@ class ConfigurationVerificationResult
     /**
      * @param int $indexQueueErrors
      */
-    public function setIndexQueueErrors(int $indexQueueErrors)
+    public function setIndexQueueErrors(int $indexQueueErrors): void
     {
         $this->indexQueueErrors = $indexQueueErrors;
     }

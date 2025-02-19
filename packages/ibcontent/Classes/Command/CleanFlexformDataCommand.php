@@ -59,9 +59,7 @@ class CleanFlexformDataCommand extends AbstractCommand
                 ->update('tt_content')
                 ->where(
                     $queryBuilder_ttcontent->expr()->eq('uid', $row['uid'])
-                )
-                ->set($targetColumn, $new)
-                ->execute();
+                )->set($targetColumn, $new)->executeStatement();
 
             print_r("\nreplace " . $row['uid'] . "\n");
         }
@@ -81,7 +79,7 @@ class CleanFlexformDataCommand extends AbstractCommand
      * @param OutputInterface $output
      * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         print_r("\n\n" . " START cleaning up \n\n");
 
