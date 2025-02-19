@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use IB\IbCmt\Controller\ContentController;
+use Ib\IbCmt\Controller\ContentController;
 
 return [
     'ib_cmt' => [

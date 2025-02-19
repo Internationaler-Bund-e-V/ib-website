@@ -4,8 +4,6 @@ import OsmFwdMapApp from './fwdMap.vue'
 import OsmListApp from './ListApp.vue';
 import OpenLayersMap from 'vue3-openlayers'
 
-let proxyURL = "/typo3conf/ext/ibcontent/Resources/Public/dist/osmProxy.php";
-
 let baseInterfaceURL = 'https://redaktion.internationaler-bund.de/'
 let imageBaseURL = 'https://redaktion.internationaler-bund.de/'
 
@@ -27,6 +25,7 @@ let startLatitude = 51.165691;
 
 // due to single instace openlayers "bug"
 const appContainer = document.getElementById('osmMapContainer');
+let proxyURL = appContainer.dataset.proxyurl;
 const typoSettings = {
     map: appContainer.dataset.map,
     borderColor: appContainer.dataset.bordercolor,
@@ -52,9 +51,8 @@ const typoSettings = {
     customLatitude: appContainer.dataset.customlatitude,
     customZoomLevel: appContainer.dataset.customzoomlevel,
     usePreFilterCategory: appContainer.dataset.useprefiltercategory,
-    preFilterCategoryIDs: appContainer.dataset.prefiltercategoryids
-
-
+    preFilterCategoryIDs: appContainer.dataset.prefiltercategoryids,
+    publicTypo3Path: appContainer.dataset.publicpath
 };
 
 

@@ -167,6 +167,8 @@ export default {
     const selectConditions = inject("ol-selectconditions");
     const selectCondition = selectConditions.pointerMove;
 
+    let centerIcon = TypoSettings.publicTypo3Path + "JavaScript/osmmap-vue/src/assets/map-pin-icon.png";
+
     // pin styles
     const radius = ref(5);
     const strokeColor = ref("white");
@@ -180,9 +182,7 @@ export default {
     /////////////////
 
     // border styles
-    const borderURL = ref(
-      "/typo3conf/ext/ibcontent/Resources/Public/dist/json/borderGermany.json"
-    );
+    const borderURL = ref(TypoSettings.publicTypo3Path + "Json/borderGermany.json");
     const format = inject("ol-format");
     const geoJson = new format.GeoJSON();
     //////////////////

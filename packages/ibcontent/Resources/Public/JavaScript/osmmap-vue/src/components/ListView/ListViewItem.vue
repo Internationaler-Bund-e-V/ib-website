@@ -76,6 +76,8 @@ export default {
     let imageBaseURL = inject("imageBaseURL");
     let TypoSettings = inject("TypoSettings");
 
+    let dummyLocationImage = TypoSettings.publicTypo3Path + "JavaScript/osmmap-vue/src/assets/locationFallback.jpg";
+
     var emDialog = document.getElementById("eMailDialog");
     var emdCloseButton = document.getElementById("emdCloseButton");
     var showEmailAddress = document.getElementById("showEmailAddress");

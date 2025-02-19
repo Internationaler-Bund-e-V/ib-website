@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace IB\IbCmt\Domain\Repository;
+namespace Ib\IbCmt\Domain\Repository;
 
 //use Doctrine\DBAL\Driver\DrizzlePDOMySql\Connection;
-use IB\IbCmt\Domain\Model\Content;
+use Ib\IbCmt\Domain\Model\Content;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;

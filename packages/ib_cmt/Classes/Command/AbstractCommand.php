@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace IB\IbCmt\Command;
+namespace Ib\bCmt\Command;
 
 use Symfony\Component\Console\Command\Command;
 

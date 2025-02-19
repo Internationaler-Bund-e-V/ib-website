@@ -1,7 +1,7 @@
 base: 'https://www.internationaler-bund.de/'
 baseVariants:
   -
-    base: 'https://ib-typo312.ddev.site/'
+    base: 'https://ib.ddev.site/'
     condition: 'getenv("IS_DDEV_PROJECT") == "true"'
   -
     base: 'https://ib-staging.rmsdev.de/'
