@@ -8,7 +8,6 @@
 </template>
 <script>
 import { ref, inject } from "vue";
-import pinIcon from "../assets/map-pin-icon.png";
 export default {
   name: "Navbar",
   components: {},
@@ -20,7 +19,7 @@ export default {
     let TypoSettings = inject("TypoSettings");
     let colorThemeClass = ref("");
 
-    let pinIcon = TypoSettings.publicTypo3Path + "osmmap-vue/dist/assets/map-pin-icon.png";
+    let pinIcon = TypoSettings.publicTypo3Path + "JavaScript/osmmap-vue/src/assets/map-pin-icon.png";
 
     if (TypoSettings.borderButtonColor == "#f18700") {
       colorThemeClass.value = "orange";

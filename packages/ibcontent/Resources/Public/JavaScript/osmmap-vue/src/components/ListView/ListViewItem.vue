@@ -59,7 +59,6 @@
 
 <script>
 import { ref, inject, onMounted, reactive } from "vue";
-import dummyLocationImage from "../../assets/locationFallback.jpg";
 import VLazyImage from "v-lazy-image";
 
 export default {
@@ -75,8 +74,9 @@ export default {
   setup() {
     let imageBaseURL = inject("imageBaseURL");
     let TypoSettings = inject("TypoSettings");
+    var publicT3Path = TypoSettings.publicTypo3Path;
 
-    let dummyLocationImage = TypoSettings.publicTypo3Path + "JavaScript/osmmap-vue/src/assets/locationFallback.jpg";
+    let dummyLocationImage = publicT3Path + "osmmap-vue/dist/assets/locationFallback.jpg";
 
     var emDialog = document.getElementById("eMailDialog");
     var emdCloseButton = document.getElementById("emdCloseButton");
