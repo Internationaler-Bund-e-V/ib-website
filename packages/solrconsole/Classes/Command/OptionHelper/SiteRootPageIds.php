@@ -26,22 +26,20 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * a site, but no site object is required. This is for example the case when the sites get initialized.
  *
  * Class RootPageIds
- * @package ApacheSolrForTypo3\Solrconsole\Command\OptionHelper
  */
 class SiteRootPageIds
 {
-
     /**
      * Retrieves an array of rootPageIds
      * @param InputInterface $input
      * @return array
      */
-    protected function getSiteRootPageIds(InputInterface  $input): array
+    protected function getSiteRootPageIds(InputInterface $input): array
     {
         $siteOptions = (string)$input->getOption('sites');
         $sites = [];
         $siteUids = GeneralUtility::trimExplode(',', $siteOptions);
-        foreach($siteUids as $siteUid) {
+        foreach ($siteUids as $siteUid) {
             $sites[] = (int)$siteUid;
         }
 
@@ -52,11 +50,11 @@ class SiteRootPageIds
      * @param SymfonyStyle $io
      * @param InputInterface $input
      */
-    private function renderSelectedSiteRootPageIds(SymfonyStyle $io, InputInterface $input)
+    private function renderSelectedSiteRootPageIds(SymfonyStyle $io, InputInterface $input): void
     {
         $siteOption = (string)$input->getOption('sites');
         $listString = $siteOption === '0' ? 'all' : $siteOption;
-        $io->writeln('Sites ('.$listString.'):');
+        $io->writeln('Sites (' . $listString . '):');
         $io->newLine(1);
     }
 
@@ -71,5 +69,4 @@ class SiteRootPageIds
         $this->renderSelectedSiteRootPageIds($io, $input);
         return $rootPageIds;
     }
-
 }

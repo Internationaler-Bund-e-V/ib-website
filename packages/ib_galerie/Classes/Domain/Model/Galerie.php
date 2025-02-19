@@ -31,8 +31,8 @@ class Galerie extends AbstractEntity
      * images
      *
      * @var ObjectStorage<FileReference>
-     * @Cascade remove
      */
+    #[Cascade(['value' => 'remove'])] // remove
     protected $images = null;
 
     protected string $code = '';

@@ -29,7 +29,7 @@ class ConvertFlexformReferencesForTypo310Command extends AbstractCommand
      * @param OutputInterface $output
      * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         /** @var ConnectionPool $pool */
         $pool = GeneralUtility::makeInstance(ConnectionPool::class);
@@ -44,40 +44,31 @@ class ConvertFlexformReferencesForTypo310Command extends AbstractCommand
             ->select('uid', 'pi_flexform', 'list_type', 'pid')
             ->from('tt_content')
             ->where(
-                $queryBuilder_ttcontent->expr()->orX(
-                    $queryBuilder_ttcontent->expr()->eq(
-                        'list_type',
-                        $queryBuilder_ttcontent->createNamedParameter('ibcontent_startpageslider')
-                    ),
-                    $queryBuilder_ttcontent->expr()->eq(
-                        'list_type',
-                        $queryBuilder_ttcontent->createNamedParameter('ibcontent_bubbleslider')
-                    ),
-                    $queryBuilder_ttcontent->expr()->eq(
-                        'list_type',
-                        $queryBuilder_ttcontent->createNamedParameter('ibcontent_accordion')
-                    ),
-                    $queryBuilder_ttcontent->expr()->eq(
-                        'list_type',
-                        $queryBuilder_ttcontent->createNamedParameter('ibcontent_mediaelement')
-                    ),
-                    $queryBuilder_ttcontent->expr()->eq(
-                        'list_type',
-                        $queryBuilder_ttcontent->createNamedParameter('ibcontent_tiles')
-                    ),
-                    $queryBuilder_ttcontent->expr()->eq(
-                        'list_type',
-                        $queryBuilder_ttcontent->createNamedParameter('ibcontent_textextended')
-                    ),
-                    $queryBuilder_ttcontent->expr()->eq(
-                        'list_type',
-                        $queryBuilder_ttcontent->createNamedParameter('ibcontent_contentslider')
-                    ),
-                    $queryBuilder_ttcontent->expr()->eq(
-                        'list_type',
-                        $queryBuilder_ttcontent->createNamedParameter('ibcontent_sidebardownloads')
-                    ),
-                )
+                $queryBuilder_ttcontent->expr()->or($queryBuilder_ttcontent->expr()->eq(
+                    'list_type',
+                    $queryBuilder_ttcontent->createNamedParameter('ibcontent_startpageslider')
+                ), $queryBuilder_ttcontent->expr()->eq(
+                    'list_type',
+                    $queryBuilder_ttcontent->createNamedParameter('ibcontent_bubbleslider')
+                ), $queryBuilder_ttcontent->expr()->eq(
+                    'list_type',
+                    $queryBuilder_ttcontent->createNamedParameter('ibcontent_accordion')
+                ), $queryBuilder_ttcontent->expr()->eq(
+                    'list_type',
+                    $queryBuilder_ttcontent->createNamedParameter('ibcontent_mediaelement')
+                ), $queryBuilder_ttcontent->expr()->eq(
+                    'list_type',
+                    $queryBuilder_ttcontent->createNamedParameter('ibcontent_tiles')
+                ), $queryBuilder_ttcontent->expr()->eq(
+                    'list_type',
+                    $queryBuilder_ttcontent->createNamedParameter('ibcontent_textextended')
+                ), $queryBuilder_ttcontent->expr()->eq(
+                    'list_type',
+                    $queryBuilder_ttcontent->createNamedParameter('ibcontent_contentslider')
+                ), $queryBuilder_ttcontent->expr()->eq(
+                    'list_type',
+                    $queryBuilder_ttcontent->createNamedParameter('ibcontent_sidebardownloads')
+                ))
             )
             //->where($queryBuilder_ttcontent->expr()->eq('uid', 7386))
             //->setMaxResults(100)
@@ -123,9 +114,7 @@ class ConvertFlexformReferencesForTypo310Command extends AbstractCommand
                         ->update('tt_content')
                         ->where(
                             $queryBuilder_ttcontent->expr()->eq('uid', $row['uid'])
-                        )
-                        ->set('pi_flexform', $xml_string)
-                        ->execute();
+                        )->set('pi_flexform', $xml_string)->executeStatement();
                 }
             }
         }

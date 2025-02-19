@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace ApacheSolrForTypo3\Solrfal\Queue;
 
+use Doctrine\DBAL\Exception as DBALException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -26,13 +27,12 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class ItemGroupRepository
 {
-
     /**
-     * @param int $limit
-     * @param int $limitToSiteId
      * @return ItemGroup[]
+     *
+     * @throws DBALException
      */
-    public function findAllIndexingOutStanding($limit, $limitToSiteId = 0): array
+    public function findAllIndexingOutStanding(int $limit, int $limitToSiteId = 0): array
     {
         $itemGroups = [];
 
@@ -46,8 +46,7 @@ class ItemGroupRepository
     }
 
     /**
-     * @param Item $item
-     * @return ItemGroup
+     * @throws DBALException
      */
     public function findByItem(Item $item): ItemGroup
     {
@@ -58,10 +57,9 @@ class ItemGroupRepository
     /**
      * Retrieves a ItemGroup by the mergeId.
      *
-     * @param string $mergeId
-     * @return ItemGroup
+     * @throws DBALException
      */
-    public function findByMergeId($mergeId): ItemGroup
+    public function findByMergeId(string $mergeId): ItemGroup
     {
         $itemsForMergeId = $this->getItemRepository()->findAllByMergeId($mergeId);
         $itemGroup = $this->getGroupWithItems($itemsForMergeId);
@@ -72,7 +70,6 @@ class ItemGroupRepository
 
     /**
      * @param Item[] $itemsForMergeId
-     * @return ItemGroup
      */
     private function getGroupWithItems(array $itemsForMergeId): ItemGroup
     {
@@ -83,12 +80,8 @@ class ItemGroupRepository
         return $group;
     }
 
-    /**
-     * @return ItemRepository
-     */
     protected function getItemRepository(): ItemRepository
     {
-        /* @noinspection PhpIncompatibleReturnTypeInspection */
         return GeneralUtility::makeInstance(ItemRepository::class);
     }
 }

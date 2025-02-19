@@ -5,9 +5,11 @@
 
 .. include:: ../Includes.txt
 
-============================================
-Apache Solr for TYPO3 - Console tools 10.0.0
-============================================
+.. _releases_10-0:
+
+==========================================
+Apache Solr for TYPO3 - Console tools 10.0
+==========================================
 
 We are happy to release EXT:solrconsole 10.0.0.
 The focus of this release was the compatibility with TYPO3 10 LTS and EXT:solr v11.1.x.
@@ -49,7 +51,6 @@ This change makes it possible to verify the pages properly. Previously following
 --------------------------------------
 
 This change allows running CI tests on solr-ddev-site or othe environments.
-
 
 
 Contributors
@@ -108,21 +109,3 @@ Also a big thanks to our partners that have joined the EB2021 program:
 * Webtech AG
 * wow! solution
 * XIMA MEDIA GmbH
-
-How to Get Involved
-===================
-
-There are many ways to get involved with Apache Solr for TYPO3:
-
-* Submit bug reports and feature requests on [GitHub](https://github.com/TYPO3-Solr/ext-solr)
-* Ask or help or answer questions in our [Slack channel](https://typo3.slack.com/messages/ext-solr/)
-* Provide patches through Pull Request or review and comment on existing [Pull Requests](https://github.com/TYPO3-Solr/ext-solr/pulls)
-* Go to [www.typo3-solr.com](http://www.typo3-solr.com) or call [dkd](http://www.dkd.de) to sponsor the ongoing development of Apache Solr for TYPO3
-
-Support us by becoming an EB partner:
-
-https://shop.dkd.de/Produkte/Apache-Solr-fuer-TYPO3/
-
-or call:
-
-+49 (0)69 - 2475218 0

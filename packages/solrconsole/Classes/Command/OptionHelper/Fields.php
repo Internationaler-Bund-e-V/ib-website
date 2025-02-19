@@ -22,7 +22,8 @@ class Fields extends AbstractCommaSeparatedList
     /**
      * Configurations constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->option = 'fields';
         $this->defaultValue = '*';
         $this->label = 'Fields to be fetched';

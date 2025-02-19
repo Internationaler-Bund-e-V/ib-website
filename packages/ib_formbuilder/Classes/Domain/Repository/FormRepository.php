@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Rms\IbFormbuilder\Domain\Repository;
 
+use Rms\IbFormbuilder\Domain\Model\Form;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
@@ -22,7 +23,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  ***/
 
 /**
- * The repository for Forms
+ * @extends Repository<Form>
  */
 class FormRepository extends Repository
 {
@@ -42,9 +43,9 @@ class FormRepository extends Repository
      * @see Classes/UserFunc/FlexFormUserFunc.php
      *
      * @param $pidList
-     * @return array|QueryResultInterface
+     * @return array<mixed,mixed>
      */
-    public function getFormsForFlexform(string $pidList)
+    public function getFormsForFlexform(string $pidList): array
     {
         $result = [];
         $result[] = [

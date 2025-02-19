@@ -24,7 +24,7 @@ use ApacheSolrForTypo3\Solrfal\Detection\PageContextDetector;
 use ApacheSolrForTypo3\Solrfal\Detection\RecordContextDetector;
 use ApacheSolrForTypo3\Solrfal\Detection\RecordDetectionInterface;
 use ApacheSolrForTypo3\Solrfal\Detection\StorageContextDetector;
-use Doctrine\DBAL\Driver\Exception as DBALDriverException;
+use Doctrine\DBAL\Exception as DBALException;
 use RuntimeException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -33,20 +33,19 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class ContextFactory implements ContextFactoryInterface
 {
-    /**
-     * @var SiteRepository
-     */
-    protected $siteRepository;
+    protected SiteRepository $siteRepository;
 
     /**
      * ContextFactory constructor.
-     * @param SiteRepository|null $siteRepository
      */
     public function __construct(SiteRepository $siteRepository = null)
     {
         $this->siteRepository = $siteRepository ?? GeneralUtility::makeInstance(SiteRepository::class);
     }
 
+    /**
+     * @var array<string, array{class: class-string<object>, detection: class-string<object>, factory: class-string<object>|null}>
+     */
     protected static array $typeMapping = [
         'page' => [
             'class'     => PageContext::class,
@@ -66,13 +65,8 @@ class ContextFactory implements ContextFactoryInterface
     ];
 
     /**
-     * Factory Method to create a Context based on an entry in
-     * tx_solr_indexqueue_file
-     *
-     * @param array
-     *
-     * @return ContextInterface
-     * @throws DBALDriverException
+     * @inheritDoc
+     * @throws DBALException
      */
     public function getByRecord(array $row): ContextInterface
     {
@@ -92,46 +86,69 @@ class ContextFactory implements ContextFactoryInterface
             }
 
             switch ($type) {
-                    case 'storage':
-                        $indexingConfiguration =  $row['context_record_indexing_configuration'];
-                        /* @var ?AbstractContext $object */
-                        $object = GeneralUtility::makeInstance($className, $site, $accessRootline, $indexingConfiguration, $language);
-                        break;
-                    case 'record':
-                        $table = $row['context_record_table'];
-                        $field = $row['context_record_field'];
-                        $uid = (int)($row['context_record_uid']);
-                        $indexingConfiguration =  $row['context_record_indexing_configuration'];
-                        /* @var ?AbstractContext $object */
-                        $object = GeneralUtility::makeInstance($className, $site, $accessRootline, $table, $field, $uid, $indexingConfiguration, $language);
-                        break;
-                    case 'page':
-                        $pageUid = (int)($row['context_record_page']);
-                        $table = $row['context_record_table'];
-                        $field = $row['context_record_field'];
-                        $uid = (int)($row['context_record_uid']);
-                        /* @var ?AbstractContext $object */
-                        $object = GeneralUtility::makeInstance($className, $site, $accessRootline, $pageUid, $table, $field, $uid, $language);
-                        break;
-                    default:
-                        throw new RuntimeException('You registered a custom Context without providing a Factory', 1382006090);
-                }
+                case 'storage':
+                    $indexingConfiguration =  $row['context_record_indexing_configuration'];
+                    /** @var StorageContext $object */
+                    $object = GeneralUtility::makeInstance(
+                        $className,
+                        $site,
+                        $accessRootline,
+                        0,
+                        0,
+                        $indexingConfiguration,
+                        $language,
+                    );
+                    break;
+                case 'record':
+                    $table = $row['context_record_table'];
+                    $field = $row['context_record_field'];
+                    $uid = (int)($row['context_record_uid']);
+                    $pid = (int)($row['context_record_pid']);
+                    $indexingConfiguration =  $row['context_record_indexing_configuration'];
+                    /** @var RecordContext $object */
+                    $object = GeneralUtility::makeInstance(
+                        $className,
+                        $site,
+                        $accessRootline,
+                        $table,
+                        $field,
+                        $uid,
+                        $pid,
+                        $indexingConfiguration,
+                        $language,
+                    );
+                    break;
+                case 'page':
+                    $table = $row['context_record_table'];
+                    $field = $row['context_record_field'];
+                    $uid = (int)($row['context_record_uid']);
+                    $pid = (int)($row['context_record_pid']);
+                    /** @var PageContext $object */
+                    $object = GeneralUtility::makeInstance(
+                        $className,
+                        $site,
+                        $accessRootline,
+                        $table,
+                        $field,
+                        $uid,
+                        $pid,
+                        $language,
+                    );
+                    break;
+                default:
+                    throw new RuntimeException('You registered a custom Context without providing a Factory', 1382006090);
+            }
             $object->setAdditionalDocumentFields($additionalFields);
             return $object;
         }
-        /* @var ContextFactoryInterface $factory */
+        /** @var ContextFactoryInterface $factory */
         $factory = GeneralUtility::makeInstance($customFactory);
         return $factory->getByRecord($row);
     }
 
     /**
      * Allows registering custom Context-Types for Indexing,
-     * or replacing the original implementations.
-     *
-     * @param string $typeName
-     * @param string $implementationClass
-     * @param string $detectionClass
-     * @param string|null $customFactory
+     * or replacing the original implementations
      *
      * @throws RuntimeException
      */
@@ -140,7 +157,7 @@ class ContextFactory implements ContextFactoryInterface
         string $implementationClass,
         string $detectionClass,
         ?string $customFactory = null
-    ) {
+    ): void {
         if (!is_subclass_of($implementationClass, ContextInterface::class)) {
             throw new RuntimeException('Custom Indexing contexts need to implement the ContextInterface', 1382006059);
         }
@@ -158,7 +175,6 @@ class ContextFactory implements ContextFactoryInterface
     }
 
     /**
-     * @param Site $site
      * @return RecordDetectionInterface[]
      */
     public static function getContextDetectors(Site $site): array
@@ -166,8 +182,11 @@ class ContextFactory implements ContextFactoryInterface
         $detectors = [];
         // Fetch site configuration once and use this for all detectors in loop
         $siteConfiguration = $site->getSolrConfiguration();
+        /** @var array{detection: class-string<object>} $configuration */
         foreach (self::$typeMapping as $configuration) {
-            $detectors[] = GeneralUtility::makeInstance($configuration['detection'], $site, $siteConfiguration);
+            /** @var RecordDetectionInterface $detectorInstance */
+            $detectorInstance = GeneralUtility::makeInstance($configuration['detection'], $site, $siteConfiguration);
+            $detectors[] = $detectorInstance;
         }
         return $detectors;
     }

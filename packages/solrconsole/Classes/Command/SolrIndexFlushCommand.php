@@ -18,8 +18,8 @@ declare(strict_types=1);
 namespace ApacheSolrForTypo3\Solrconsole\Command;
 
 use ApacheSolrForTypo3\Solr\ConnectionManager;
-use ApacheSolrForTypo3\Solr\NoSolrConnectionFoundException;
 use ApacheSolrForTypo3\Solr\Domain\Site\Site;
+use ApacheSolrForTypo3\Solr\NoSolrConnectionFoundException;
 use ApacheSolrForTypo3\Solr\System\Solr\SolrConnection;
 use ApacheSolrForTypo3\Solrconsole\Command\OptionHelper\Fields;
 use ApacheSolrForTypo3\Solrconsole\Command\OptionHelper\Languages;
@@ -40,22 +40,22 @@ class SolrIndexFlushCommand extends AbstractSolrCommand
     /**
      * @var Sites
      */
-    protected $sitesHelper;
+    protected Sites $sitesHelper;
 
     /**
      * @var ConnectionManager
      */
-    protected $connectionManager;
+    protected ConnectionManager $connectionManager;
 
     /**
      * @var array
      */
-    private $sites;
+    private array $sites;
 
     /**
      * @var array
      */
-    private $languages;
+    private array $languages;
 
     /**
      * Configure command
@@ -75,10 +75,10 @@ class SolrIndexFlushCommand extends AbstractSolrCommand
      * @param SymfonyStyle $io
      * @param InputInterface $input
      * @param OutputInterface $output
-     * @return bool|mixed
+     * @return bool
      * @throws DBALDriverException
      */
-    protected function loadOptions(SymfonyStyle $io, InputInterface $input, OutputInterface $output)
+    protected function loadOptions(SymfonyStyle $io, InputInterface $input, OutputInterface $output): bool
     {
         $this->sites = $this->getSitesHelper()->run($io, $input, $output);
 
@@ -103,7 +103,7 @@ class SolrIndexFlushCommand extends AbstractSolrCommand
      * @param Site $site
      * @noinspection PhpUnnecessaryCurlyVarSyntaxInspection
      */
-    protected function deleteSolrIndexDocuments(SymfonyStyle $io, Site $site)
+    protected function deleteSolrIndexDocuments(SymfonyStyle $io, Site $site): void
     {
         $availableLanguageIds = $site->getAvailableLanguageIds();
         if (empty($this->languages)) {
@@ -131,11 +131,11 @@ class SolrIndexFlushCommand extends AbstractSolrCommand
      * @param InputInterface $input
      * @param OutputInterface $output
      *
-     * @return integer
+     * @return int
      * @noinspection PhpMissingReturnTypeInspection
      * @noinspection PhpUnused
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $io->title($this->getDescription());
@@ -143,7 +143,7 @@ class SolrIndexFlushCommand extends AbstractSolrCommand
         if (!$confirmed) {
             $io->write('Skipped');
             $io->newLine();
-            return 1;
+            return self::FAILURE;
         }
         foreach ($this->sites as $site) {
             /* @var Site $site */
@@ -154,7 +154,7 @@ class SolrIndexFlushCommand extends AbstractSolrCommand
             $this->deleteSolrIndexDocuments($io, $site);
         }
 
-        return 0;
+        return self::SUCCESS;
     }
 
     /**
@@ -170,7 +170,7 @@ class SolrIndexFlushCommand extends AbstractSolrCommand
      * @param Sites $sitesHelper
      * @noinspection PhpUnused
      */
-    public function setSitesHelper(Sites $sitesHelper)
+    public function setSitesHelper(Sites $sitesHelper): void
     {
         $this->sitesHelper = $sitesHelper;
     }

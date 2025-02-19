@@ -33,10 +33,11 @@ function checkVideoState() {
 
 $(document).ready(function () {
 
+  var publicURL = $('#SrbMainContent').data('publicurl');
   //check if cookiebot is available , Youtube
   if (typeof Cookiebot != "undefined") {
     var cookiebotLanguage = $('body').data('cblanguage');
-    $.getJSON("/typo3conf/ext/ib_template/Resources/Public/lang/customCookiebot/" + cookiebotLanguage + ".json", function () { }).done(function (languagePackJSON) {
+    $.getJSON(publicURL + "/lang/customCookiebot/" + cookiebotLanguage + ".json", function () { }).done(function (languagePackJSON) {
       var data = document.querySelectorAll(".video-responsive iframe");
       for (var i = 0; i < data.length; i++) {
         var str = $(data[i]).data('src');
@@ -62,7 +63,7 @@ $(document).ready(function () {
   //check if cookiebot is available
   if (typeof Cookiebot != "undefined") {
     var cookiebotLanguage = $('body').data('cblanguage');
-    $.getJSON("/typo3conf/ext/ib_template/Resources/Public/lang/customCookiebot/" + cookiebotLanguage + ".json", function () { }).done(function (languagePackJSON) {
+    $.getJSON(publicURL + "lang/customCookiebot/" + cookiebotLanguage + ".json", function () { }).done(function (languagePackJSON) {
       var data = document.querySelectorAll(".cb-script-container iframe");
 
       for (var i = 0; i < data.length; i++) {
@@ -107,5 +108,5 @@ function CookiebotCallback_OnAccept() {
 
   removeRSfromCB();
   checkVideoState();
-  
+
 }

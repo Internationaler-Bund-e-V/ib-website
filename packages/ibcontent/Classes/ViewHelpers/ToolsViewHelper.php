@@ -25,7 +25,12 @@ class ToolsViewHelper extends AbstractViewHelper
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
     ) {
-        return self::extractFilename($arguments['filepath']);
+        $file_path = (string)$arguments['filepath'];
+        if (empty($file_path)) {
+            return '';
+        }
+
+        return self::extractFilename($file_path);
     }
 
     private static function extractFilename(string $filepath): string

@@ -19,20 +19,30 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  ***/
 
 /**
- * The repository for Galeries
+ * @extends Repository<Galerie>
  */
 class GalerieRepository extends Repository
 {
+    /**
+     * Find a Galerie by its code
+     *
+     * @param string $code
+     * @return Galerie|null
+     */
     public function findByCode(string $code): ?Galerie
     {
+        // Erstellen des Abfrage-Objekts
         $query = $this->createQuery();
+
+        // Matching der Abfrage (Vergleich des "code"-Feldes)
         $query->matching(
             $query->equals('code', $code)
         );
 
-        /** @var Galerie $glr */
-        $glr = $query->execute()->getFirst();
+        // Ausführen der Abfrage und das erste Ergebnis zurückgeben
+        /** @var Galerie|null $galerie */
+        $galerie = $query->execute()->getFirst();
 
-        return $glr;
+        return $galerie;
     }
 }

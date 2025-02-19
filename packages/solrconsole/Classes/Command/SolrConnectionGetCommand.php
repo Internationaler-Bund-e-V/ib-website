@@ -29,16 +29,8 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class SolrConnectionGetCommand extends AbstractSolrCommand
 {
-
-    /**
-     * @var SiteRepository
-     */
-    protected $siteRepository;
-
-    /**
-     * @var ConnectionManager
-     */
-    protected $connectionManager;
+    protected SiteRepository $siteRepository;
+    protected ConnectionManager $connectionManager;
 
     /**
      * Configure the command by defining the name, options and arguments
@@ -55,24 +47,24 @@ class SolrConnectionGetCommand extends AbstractSolrCommand
      * @param OutputInterface $output
      * @throws \Exception
      *
-     * @return integer
+     * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $io->title($this->getDescription());
         $sites = $this->getSiteRepository()->getAvailableSites();
 
-        foreach($sites as $site) {
+        foreach ($sites as $site) {
             $connections = $this->getConnectionManager()->getConnectionsBySite($site);
-            $io->writeln("Site: " . $site->getLabel());
-            $io->writeln("Connections ".count($connections).":");
+            $io->writeln('Site: ' . $site->getLabel());
+            $io->writeln('Connections ' . count($connections) . ':');
 
-            foreach($connections as $connection) {
-                $readConnectionString = $connection->getNode('read')->__toString();
-                $writeConnectionString = $connection->getNode('write')->__toString();
+            foreach ($connections as $connection) {
+                $readConnectionString = $connection->getEndpoint('read')->getCoreBaseUri();
+                $writeConnectionString = $connection->getEndpoint('write')->getCoreBaseUri();
 
-                $io->writeln("  * read connection: " . $readConnectionString . ' / write connection: ' . $writeConnectionString);
+                $io->writeln('  * read connection: ' . $readConnectionString . ' / write connection: ' . $writeConnectionString);
                 $io->newLine(1);
             }
 
@@ -82,7 +74,7 @@ class SolrConnectionGetCommand extends AbstractSolrCommand
         $io->write('<fg=green>Done</>');
         $io->newLine(1);
 
-        return 0;
+        return self::SUCCESS;
     }
 
     /**

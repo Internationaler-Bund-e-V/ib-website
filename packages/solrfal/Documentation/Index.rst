@@ -18,7 +18,9 @@ EXT:solrfal is an addon to EXT:solr (>= 3.0) which allows to index files using t
    :titlesonly:
    :glob:
 
-   HowToUse/index
-   ConceptsAndBackgroundInformation/index
-   TypoScriptReference/index
-   AvailableSignals/index
+   HowToUse/Index
+   ConceptsAndBackgroundInformation/Index
+   TypoScriptReference/Index
+   AvailableEvents/Index
+   HowToGetInvolved/Index
+   Releases/Index

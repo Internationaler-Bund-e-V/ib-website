@@ -1,0 +1,37 @@
+/*
+ * ------------------------------
+ * LIST
+ * ------------------------------
+ */
+div.tx_ibformbuilder-list-container {
+	padding: 10px;
+}
+
+table.tx_ibformbuilder-list-table {
+	background-color: #d8dbdd;
+	border: 1px solid gray;
+	margin-bottom: 20px;
+	width: 90%;
+
+	tr:nth-child(odd) {
+		background-color: #f0f2f5;
+	}
+
+	tr:first-child {
+		background-color: #636365;
+		color: #fff;
+	}
+
+	td, th {
+		padding: 4px;
+		padding-left: 8px;
+		padding-right: 8px;
+		font-size: 14px;
+
+		a {
+			color: #006697;
+		}
+
+	}
+}
+

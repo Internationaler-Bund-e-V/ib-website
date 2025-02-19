@@ -19,66 +19,90 @@ namespace ApacheSolrForTypo3\Solrfal\Detection;
 
 use ApacheSolrForTypo3\Solr\Access\Rootline;
 use ApacheSolrForTypo3\Solr\Access\RootlineElement;
+use ApacheSolrForTypo3\Solr\Access\RootlineElementFormatException;
+use ApacheSolrForTypo3\Solr\FrontendEnvironment\Exception\Exception as SolrFrontendEnvironmentException;
 use ApacheSolrForTypo3\Solrfal\Context\RecordContext;
+use ApacheSolrForTypo3\Solrfal\Exception\Service\InvalidHookException as InvalidServiceHookException;
 use ApacheSolrForTypo3\Solrfal\System\Language\OverlayService;
-use Exception;
+use ApacheSolrForTypo3\Solrfal\System\TCA\TCAService;
+use Doctrine\DBAL\Exception as DBALException;
 use PDO;
+use Throwable;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
+use TYPO3\CMS\Core\Exception\SiteNotFoundException;
+use TYPO3\CMS\Core\LinkHandling\Exception\UnknownLinkHandlerException;
 use TYPO3\CMS\Core\Resource\Exception\ResourceDoesNotExistException;
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * ClassRecordContextDetector
+ * Class RecordContextDetector
  */
 class RecordContextDetector extends AbstractRecordDetector
 {
-
     /**
-     * @param array $initializationStatus
-     * @throws Exception
+     * @inheritDoc
+     *
+     * @throws AspectNotFoundException
+     * @throws DBALException
+     * @throws InvalidServiceHookException
+     * @throws ResourceDoesNotExistException
+     * @throws RootlineElementFormatException
+     * @throws SiteNotFoundException
+     * @throws SolrFrontendEnvironmentException
+     * @throws UnknownLinkHandlerException
      */
-    public function initializeQueue(array $initializationStatus)
-    {
-        // only readd them if indexing is enabled
+    public function initializeQueue(
+        string $indexingConfigurationName,
+        ?bool $indexQueueForConfigurationNameIsInitialized = false
+    ): bool {
+        // only read them if indexing is enabled
         if (!$this->isIndexingEnabledForContext('record')) {
             // if it's disabled, remove everything
             $this->getItemRepository()->removeBySiteAndContext($this->site, 'record');
-            return;
+            return true;
         }
 
-        foreach ($initializationStatus as $indexingConfigurationKey => $successfulInitialized) {
-            $tableName = $indexingConfigurationKey;
-            $indexConfig = $this->siteConfiguration->getObjectByPathOrDefault(
-                'plugin.tx_solr.index.queue.' . $indexingConfigurationKey . '.',
-                []
-            );
-            if (!empty($indexConfig['table'])) {
-                $tableName = $indexConfig['table'];
-            }
-            // remove relevant queue entries
-            $this->getItemRepository()->removeByIndexingConfigurationInRecordContext($this->site, $indexingConfigurationKey);
-            if ($successfulInitialized && $this->isFileExtractionEnabledForIndexingConfiguration($indexingConfigurationKey)) {
-                $this->initializeQueueForConfiguration($indexingConfigurationKey, $tableName);
+        $tableName = $this->siteConfiguration
+            ->getIndexQueueTypeOrFallbackToConfigurationName($indexingConfigurationName);
+
+        // remove relevant queue entries
+        $this->getItemRepository()->removeByIndexingConfigurationInRecordContext($this->site, $indexingConfigurationName);
+        if ($indexQueueForConfigurationNameIsInitialized
+            && $this->isFileExtractionEnabledForIndexingConfiguration($indexingConfigurationName)
+        ) {
+            try {
+                $this->initializeQueueForConfiguration($indexingConfigurationName, $tableName);
+            } catch (Throwable $e) {
+                $this->logger->error('Initialisation of "' . $indexingConfigurationName . '" failed: ' . $e->getMessage());
+                return false;
             }
         }
+
+        return true;
     }
 
     /**
-     * @param string $indexingConfiguration
-     * @param string $tableName
-     *
+     * @throws AspectNotFoundException
+     * @throws DBALException
+     * @throws InvalidServiceHookException
+     * @throws ResourceDoesNotExistException
+     * @throws RootlineElementFormatException
+     * @throws SiteNotFoundException
+     * @throws SolrFrontendEnvironmentException
+     * @throws UnknownLinkHandlerException
      *
      * @todo Move queries in EXT:Solr QueueItemRepository or implement extended from it Repository in EXT:Solrfal, Testing is then simpler.
-     *
-     * @throws Exception
      */
-    protected function initializeQueueForConfiguration(string $indexingConfiguration, string $tableName)
-    {
-        /* @var QueryBuilder $queryBuilder */
+    protected function initializeQueueForConfiguration(
+        string $indexingConfiguration,
+        string $tableName,
+    ): int {
+        /** @var QueryBuilder $queryBuilder */
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_solr_indexqueue_item');
         $indexedRecords = $queryBuilder
             ->select('item_uid')
@@ -86,45 +110,54 @@ class RecordContextDetector extends AbstractRecordDetector
             ->where(
                 $queryBuilder->expr()->eq('indexing_configuration', $queryBuilder->createNamedParameter($indexingConfiguration)),
                 $queryBuilder->expr()->eq('root', $queryBuilder->createNamedParameter($this->site->getRootPageId(), PDO::PARAM_INT))
-            )->execute()->fetchAll(PDO::FETCH_COLUMN);
+            )
+            ->executeQuery()
+            ->fetchFirstColumn();
 
         if ($indexedRecords === []) {
-            return;
+            return 0;
         }
 
         $fields = $this->getFieldsToIndex($indexingConfiguration, $tableName);
 
-        /* @var QueryBuilder $queryBuilderForRecords */
+        /** @var QueryBuilder $queryBuilderForRecords */
         $queryBuilderForRecords = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($tableName);
         $records = $queryBuilderForRecords
             ->select('*')
             ->from($tableName)
             ->where(
                 $queryBuilder->expr()->in('uid', $indexedRecords)
-            )->execute()->fetchAll();
+            )->executeQuery()
+            ->fetchAllAssociative();
 
+        $extractedQueueItems = 0;
+        /** @var array{uid: int, pid: int} $record */
         foreach ($records as $record) {
-            $this->extractQueueItemsFromRecord($indexingConfiguration, $tableName, $record, $fields);
+            $extractedQueueItems += $this->extractQueueItemsFromRecord($indexingConfiguration, $tableName, $record, $fields);
         }
+        return $extractedQueueItems;
     }
 
     /**
      * Calculates the fields which should be searched for files to index
      *
-     * @param string $indexingConfiguration
-     * @param string $tableName
+     * @return string[] The list of fields with attachments.
      *
-     * @return array
+     * @throws DBALException
      */
-    protected function getFieldsToIndex($indexingConfiguration, $tableName): array
-    {
+    protected function getFieldsToIndex(
+        string $indexingConfiguration,
+        string $tableName,
+    ): array {
         $attachmentConfiguration = $this->siteConfiguration->getObjectByPathOrDefault(
             'plugin.tx_solr.index.queue.' . $indexingConfiguration . '.attachments.',
-            []
         );
-        $fieldsInTable = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable($tableName)->getSchemaManager()->listTableColumns($tableName);
+        $fieldsInTable = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getConnectionForTable($tableName)
+            ->createSchemaManager()
+            ->listTableColumns($tableName);
         $fields = array_keys($fieldsInTable);
-        if (is_array($attachmentConfiguration) && array_key_exists('fields', $attachmentConfiguration)) {
+        if (array_key_exists('fields', $attachmentConfiguration)) {
             $fieldConfig = trim($attachmentConfiguration['fields']);
             if ($fieldConfig !== '*') {
                 $requestedFields = GeneralUtility::trimExplode(',', $fieldConfig);
@@ -135,88 +168,133 @@ class RecordContextDetector extends AbstractRecordDetector
     }
 
     /**
-     * @param string $indexingConfiguration
-     * @param string $tableName
-     * @param array $record
-     * @param array $fieldsToExtract
-     * @throws Exception
+     * Extracts the file index queue items for given record in all languages.
+     *
+     * @param string $indexingConfiguration Indexing configuration name for requested solrfal-context record.
+     * @param string $tableName The table name of given record
+     * @param array{uid: int, pid: int}&array<string, string|int|bool> $record The given record to extract the file references from
+     * @param string[] $fieldsToExtract The list of field names to extract the file references from
+     * @param int[] $languagesToIndex The list of language UIDs to extract the file references from
+     *
+     * @return int Count of extracted file queue items
+     *
+     * @throws AspectNotFoundException
+     * @throws DBALException
+     * @throws InvalidServiceHookException
+     * @throws ResourceDoesNotExistException
+     * @throws RootlineElementFormatException
+     * @throws SiteNotFoundException
+     * @throws SolrFrontendEnvironmentException
+     * @throws UnknownLinkHandlerException
      */
-    protected function extractQueueItemsFromRecord($indexingConfiguration, $tableName, array $record, array $fieldsToExtract)
-    {
-        $accessRootline = Rootline::getAccessRootlineByPageId($this->site->getRootPageId());
-        $languagesToIndex = $this->site->getAvailableLanguageIds();
+    protected function extractQueueItemsFromRecord(
+        string $indexingConfiguration,
+        string $tableName,
+        array $record,
+        array $fieldsToExtract,
+        ?array $languagesToIndex = null,
+    ): int {
+        if ($languagesToIndex === null) {
+            $languagesToIndex = $this->site->getAvailableLanguageIds();
+        } else {
+            $availableLanguageIds = array_keys($this->site->getTypo3SiteObject()->getLanguages());
+            $languagesToIndex = array_filter(
+                $languagesToIndex,
+                static function (int $languageId) use ($availableLanguageIds): bool {
+                    return in_array($languageId, $availableLanguageIds);
+                }
+            );
+        }
 
-        /** @var $overlayService OverlayService */
-        $overlayService = GeneralUtility::makeInstance(OverlayService::class);
+        if (empty($languagesToIndex)) {
+            return 0;
+        }
 
-        $this->extractQueueItemsForSingleTranslation(0, $indexingConfiguration, $tableName, $record, $fieldsToExtract, $accessRootline);
-        foreach ($languagesToIndex as $language) {
-            if ($language == 0) {
+        $accessRootline = $this->getAccessRootlineByPageId($record['pid']);
+        $extractedQueueItemsCount = 0;
+        if (in_array(0, $languagesToIndex)) {
+            $extractedQueueItemsCount = $this->extractQueueItemsForSingleTranslation(
+                0,
+                $indexingConfiguration,
+                $tableName,
+                $record,
+                $fieldsToExtract,
+                $accessRootline,
+            );
+        }
+
+        foreach ($languagesToIndex as $languageUid) {
+            if ($languageUid == 0) {
                 continue;
             }
+            $coreContextForLanguage = $this->getCoreContextForLanguageByTableNameAndRecord(
+                $languageUid,
+                $tableName,
+                $record,
+            );
+            $translation = null;
+            if ($coreContextForLanguage !== null) {
+                /** @var OverlayService $overlayService */
+                $overlayService = GeneralUtility::makeInstance(
+                    OverlayService::class,
+                    $coreContextForLanguage
+                );
 
-            $translation = $overlayService->getRecordOverlay($tableName, $record, (int)$language, 'hideNonTranslated');
-            if ($translation) {
-                $this->extractQueueItemsForSingleTranslation($language, $indexingConfiguration, $tableName, $translation, $fieldsToExtract, $accessRootline);
+                $translation = $overlayService->getRecordOverlay(
+                    $tableName,
+                    $record,
+                    (int)$languageUid
+                );
+            }
+            if (!empty($translation)) {
+                $extractedQueueItemsCount += $this->extractQueueItemsForSingleTranslation(
+                    $languageUid,
+                    $indexingConfiguration,
+                    $tableName,
+                    $translation,
+                    $fieldsToExtract,
+                    $accessRootline,
+                );
             }
         }
+        return $extractedQueueItemsCount;
     }
 
-//    /**
-//     * Returns a site repository instance
-//     *
-//     * @return SiteRepository
-//     */
-//    protected function getSiteRepository(): SiteRepository
-//    {
-//        /* @noinspection PhpIncompatibleReturnTypeInspection */
-//        return GeneralUtility::makeInstance(SiteRepository::class);
-//    }
-
-    /**
-     * @param string $tableName
-     * @return bool
-     */
-    protected function isFileExtractionEnabledForTable($tableName): bool
+    protected function isFileExtractionEnabledForTable(string $tableName): bool
     {
         $enabled = $this->isFileExtractionEnabledForIndexingConfiguration($tableName);
         $queueConfig = $this->siteConfiguration->getObjectByPathOrDefault(
             'plugin.tx_solr.index.queue.',
-            []
         );
+
         if (!$enabled && !is_array($queueConfig[$tableName . '.'] ?? false)) {
-            foreach ($queueConfig as $configuration) {
-                if (is_array($configuration) && isset($configuration['table']) && $configuration['table'] == $tableName) {
-                    $enabled = $configuration['attachments'] == 1;
+            foreach ($queueConfig as $configurationName => $configuration) {
+                $queueConfigTableName = $this->siteConfiguration
+                    ->getIndexQueueTypeOrFallbackToConfigurationName($configurationName);
+                if ($queueConfigTableName == $tableName
+                    && ($queueConfig[$configurationName . '.']['attachments'] ?? false)
+                ) {
+                    $enabled = true;
                     break;
                 }
             }
         }
+
         return $enabled;
     }
 
-    /**
-     * @param string $configurationKey
-     * @return bool
-     */
-    protected function isFileExtractionEnabledForIndexingConfiguration($configurationKey): bool
+    protected function isFileExtractionEnabledForIndexingConfiguration(string $configurationKey): bool
     {
         $queueConfig = $this->siteConfiguration->getObjectByPathOrDefault(
             'plugin.tx_solr.index.queue.' . $configurationKey . '.',
-            []
         );
         return !empty($queueConfig['attachments']);
     }
 
     /**
      * Check if the file extension is configured to be allowed for indexing
-     *
-     * @param File $file
-     * @param string $indexingConfiguration
-     *
-     * @return bool
      */
-    protected function isAllowedFileExtension(File $file, $indexingConfiguration = ''): bool
+    protected function isAllowedFileExtension(File $file, string $indexingConfiguration = ''): bool
     {
         $config = [];
 
@@ -224,7 +302,6 @@ class RecordContextDetector extends AbstractRecordDetector
         if ($indexingConfiguration !== '') {
             $config = $this->siteConfiguration->getObjectByPathOrDefault(
                 'plugin.tx_solr.index.queue.' . $indexingConfiguration . '.attachments.',
-                []
             );
         }
 
@@ -232,11 +309,10 @@ class RecordContextDetector extends AbstractRecordDetector
         if (!isset($config['fileExtensions'])) {
             $config = $this->siteConfiguration->getObjectByPathOrDefault(
                 'plugin.tx_solr.index.enableFileIndexing.recordContext.',
-                []
             );
         }
 
-        $extensions = isset($config['fileExtensions']) ? $config['fileExtensions'] : '*';
+        $extensions = $config['fileExtensions'] ?? '*';
 
         // evaluate extension list
         $extensions = strtolower(trim($extensions));
@@ -252,21 +328,19 @@ class RecordContextDetector extends AbstractRecordDetector
     /**
      * Returns the fields to index for given table
      *
-     * @param string $tableName
-     * @return array
+     * @return string[] The EXT:solr queue configuration names with enabled `attachments`
      */
-    protected function getIndexingConfigurationsForTable($tableName): array
+    protected function getIndexingConfigurationsForTable(string $tableName): array
     {
         $indexingConfigurations = [];
         $queueConfig = $this->siteConfiguration->getObjectByPathOrDefault(
             'plugin.tx_solr.index.queue.',
-            []
         );
         foreach ($queueConfig as $configurationName => $configuration) {
-            if (
-                is_array($configuration)
-                && ($configurationName == $tableName || (isset($configuration['table']) && $configuration['table'] == $tableName))
-                && $configuration['attachments'] == 1
+            $queueConfigTableName = $this->siteConfiguration
+                ->getIndexQueueTypeOrFallbackToConfigurationName($configurationName);
+            if ($queueConfigTableName == $tableName
+                && ($configuration['attachments'] ?? false)
             ) {
                 $indexingConfigurations[] = rtrim($configurationName, '.');
             }
@@ -276,62 +350,81 @@ class RecordContextDetector extends AbstractRecordDetector
     }
 
     /**
-     * @param string $table
-     * @param int $uid
-     *
-     * @throws Exception
+     * @throws AspectNotFoundException
+     * @throws DBALException
+     * @throws InvalidServiceHookException
+     * @throws ResourceDoesNotExistException
+     * @throws RootlineElementFormatException
+     * @throws SiteNotFoundException
+     * @throws SolrFrontendEnvironmentException
+     * @throws UnknownLinkHandlerException
      */
-    public function recordCreated(string $table, int $uid)
-    {
+    public function recordCreated(
+        string $table,
+        int $uid,
+    ): void {
         if (!($this->isIndexingEnabledForContext('record') && $this->isFileExtractionEnabledForTable($table))) {
             return;
         }
 
-        // fix record uid if record is a translation
-        $originalRecordUid = $uid;
-        if (isset($GLOBALS['TCA'][$table]['ctrl']['languageField'])
-            && ($record = BackendUtility::getRecord($table, $uid))
-            && $record[$GLOBALS['TCA'][$table]['ctrl']['languageField']] > 0
+        // get record uid, considering translations
+        $tcaService = $this->getTcaService();
+        /** @var array{uid: int, pid: int}|null $record */
+        $record = BackendUtility::getRecord($table, $uid);
+        if ($record === null) {
+            return;
+        }
+        $originalRecordUid = $tcaService->getTranslationOriginalUidIfTranslated(
+            $table,
+            $record,
+            $uid
+        );
+
+        $limitToLanguages = null;
+        $languageField = $GLOBALS['TCA'][$table]['ctrl']['languageField'] ?? null;
+        if ($record['uid'] === $originalRecordUid
+            && $languageField !== null
+            && ($record[$languageField] ?? 0) > 0
         ) {
-            $originalRecordUid = (int)$record[$GLOBALS['TCA'][$table]['ctrl']['transOrigPointerField']];
+            $limitToLanguages = [(int)$record[$languageField]];
         }
 
-        // @todo: On EXT:Solr >= 8.0 compatibility:
-        //           Use original EXT:Solr QueueItemRepository method $this->getQueueItemRepository()->findItemsByItemTypeAndItemUid($table, $originalRecordUid) instead of fetching them here.
-        /* @var QueryBuilder $queryBuilderForRecords */
-        $queryBuilderForRecords = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_solr_indexqueue_item');
-        $recordInIndexQueue = $queryBuilderForRecords
-            ->select('indexing_configuration')
-            ->from('tx_solr_indexqueue_item')
-            ->andWhere(
-                $queryBuilderForRecords->expr()->eq('item_type', $queryBuilderForRecords->quote($table, PDO::PARAM_STR)),
-                $queryBuilderForRecords->expr()->eq('item_uid', $queryBuilderForRecords->quote($originalRecordUid, PDO::PARAM_INT)),
-                $queryBuilderForRecords->expr()->eq('root', $this->site->getRootPageId())
-            )->execute()->fetch();
-
-        if ($recordInIndexQueue) {
-            $indexingConfiguration = $recordInIndexQueue['indexing_configuration'];
-            $record = BackendUtility::getRecord($table, $originalRecordUid, '*', '', false);
-            $this->extractQueueItemsFromRecord(
-                $indexingConfiguration,
-                $table,
-                $record,
-                $this->getFieldsToIndex($indexingConfiguration, $table)
-            );
+        $itemsInQueue = $this->getSolrQueueItemRepository()->findItems([$this->site], [], [$table], [$originalRecordUid]);
+        if (!empty($itemsInQueue)) {
+            foreach ($itemsInQueue as $itemInQueue) {
+                $indexingConfiguration = $itemInQueue->getIndexingConfigurationName();
+                /** @var array{uid: int, pid: int} $record|null */
+                $record = BackendUtility::getRecord($table, $originalRecordUid, '*', '', false);
+                if ($record === null) {
+                    continue;
+                }
+                $this->extractQueueItemsFromRecord(
+                    $indexingConfiguration,
+                    $table,
+                    $record,
+                    $this->getFieldsToIndex($indexingConfiguration, $table),
+                    $limitToLanguages
+                );
+            }
         } else {
             $this->getItemRepository()->removeByTableAndUidInContext('record', $this->site, $table, $originalRecordUid);
         }
     }
 
     /**
-     * @param string $table
-     * @param int $uid
-     *
-     * @throws Exception
-     * @noinspection PhpUnused
+     * @throws AspectNotFoundException
+     * @throws DBALException
+     * @throws InvalidServiceHookException
+     * @throws ResourceDoesNotExistException
+     * @throws RootlineElementFormatException
+     * @throws SiteNotFoundException
+     * @throws SolrFrontendEnvironmentException
+     * @throws UnknownLinkHandlerException
      */
-    public function recordUpdated($table, $uid)
-    {
+    public function recordUpdated(
+        string $table,
+        int $uid,
+    ): void {
         // get referencing record if file reference was updated
         if ($table == 'sys_file_reference') {
             $fileReference = $this->getFileReferenceObject($uid);
@@ -342,42 +435,69 @@ class RecordContextDetector extends AbstractRecordDetector
     }
 
     /**
-     * @param string $table
-     * @param int $uid
-     *
-     * @noinspection PhpUnused
+     * @throws DBALException
      */
-    public function recordDeleted($table, $uid)
+    public function recordDeleted(string $table, int $uid): void
     {
         if ($table == 'sys_file_reference') {
             // get reference and try to delete files of referencing records
             // Note that processCmdmap_preProcess must be used to call recordDeleted, otherwise
             // the file reference will not be available
 
+            // resolve uid of original record, as original uid is used in queue
             $fileReference = $this->getFileReferenceObject($uid);
+            if ($fileReference->getProperty('sys_language_uid') > 0) {
+                $record = BackendUtility::getRecord(
+                    $fileReference->getReferenceProperty('tablenames'),
+                    $fileReference->getReferenceProperty('uid_foreign')
+                );
+
+                $contextRecordUid = $this->getTcaService()->getTranslationOriginalUidIfTranslated(
+                    $fileReference->getReferenceProperty('tablenames'),
+                    $record,
+                    $fileReference->getReferenceProperty('uid_foreign')
+                );
+            } else {
+                $contextRecordUid = $fileReference->getReferenceProperty('uid_foreign');
+            }
+
             $this->getItemRepository()->removeByTableAndUidInContext(
                 'record',
                 $this->site,
                 $fileReference->getReferenceProperty('tablenames'),
-                $fileReference->getReferenceProperty('uid_foreign'),
+                $contextRecordUid,
                 $fileReference->getReferenceProperty('uid_local')
             );
         } else {
-            $this->getItemRepository()->removeByTableAndUidInContext('record', $this->site, $table, $uid);
+            $tcaService = $this->getTcaService();
+            $record = BackendUtility::getRecord($table, $uid);
+            $originalRecordUid = $tcaService->getTranslationOriginalUidIfTranslated(
+                $table,
+                $record,
+                $uid
+            );
+            $languageUid = $tcaService->getRecordLanguageUid($table, $record);
+
+            $this->getItemRepository()->removeByTableAndUidInContext('record', $this->site, $table, $originalRecordUid, null, $languageUid);
         }
     }
 
     /**
      * Handles updates of sys_file entries
      *
-     * @param string $table
-     * @param int $uid
-     *
-     * @throws Exception
-     * @noinspection PhpUnused
+     * @throws AspectNotFoundException
+     * @throws DBALException
+     * @throws InvalidServiceHookException
+     * @throws ResourceDoesNotExistException
+     * @throws RootlineElementFormatException
+     * @throws SiteNotFoundException
+     * @throws SolrFrontendEnvironmentException
+     * @throws UnknownLinkHandlerException
      */
-    public function fileIndexRecordUpdated($table, $uid)
-    {
+    public function fileIndexRecordUpdated(
+        string $table,
+        int $uid
+    ): void {
         // skip if record context is not enabled
         if (!$this->isIndexingEnabledForContext('record')) {
             return;
@@ -394,25 +514,37 @@ class RecordContextDetector extends AbstractRecordDetector
     /**
      * Returns referenced records that have to be updated
      *
-     * @param int $fileUid
+     * @return array<string, array{table: string, uid: int}>
      *
-     * @return array
+     * @throws DBALException
      */
-    protected function getReferencedRecords($fileUid)
+    protected function getReferencedRecords(int $fileUid): array
     {
         $indexRecords = [];
         $referenceIndexRepository = $this->getReferenceIndexEntryRepository();
 
         // get and process references
-        // skip reference in sys_file_metadata, assuming that record context will not be used to indexed this table
-        // and pages and pages_language_overlay tables are considered in page context
-        $references = $referenceIndexRepository->findByReferenceRecord('sys_file', $fileUid, ['sys_file_metadata', 'pages', 'pages_language_overlay']);
+        // skip reference in sys_file_metadata, assuming that record context will not be used to index this table
+        // and pages table are considered in page context
+        $references = $referenceIndexRepository->findByReferenceRecord(
+            'sys_file',
+            $fileUid,
+            [
+                'sys_file_metadata',
+                'pages',
+            ],
+        );
         foreach ($references as $reference) {
-
             // try to get right reference to index record if reference refers to sys_file_reference
             if ($reference->getTableName() == 'sys_file_reference') {
                 // get record reference if this is only a reference to sys_file_reference
-                $reference = $referenceIndexRepository->findOneByReferenceIndexEntry($reference, ['sys_file_metadata', 'pages', 'pages_language_overlay']);
+                $reference = $referenceIndexRepository->findOneByReferenceIndexEntry(
+                    $reference,
+                    [
+                        'sys_file_metadata',
+                        'pages',
+                    ]
+                );
                 if (!$reference) {
                     continue;
                 }
@@ -433,26 +565,43 @@ class RecordContextDetector extends AbstractRecordDetector
     }
 
     /**
-     * @param int $language
-     * @param string $indexingConfiguration
-     * @param $tableName
-     * @param array $record
-     * @param array $fieldsToExtract
-     * @param Rootline $accessRootline
-     * @throws Exception
+     * Extracts the file index queue items for given single translation.
+     *
+     * @param int $languageUid Requested language UID
+     * @param string $indexingConfiguration Indexing configuration name for requested solrfal-context record.
+     * @param string $tableName The table name of given record
+     * @param array{uid: int, pid: int}&array<string, int|string|bool|null> $record The given record to extract the file references from
+     * @param string[] $fieldsToExtract The list of field names to extract the file references from
+     * @param Rootline $accessRootline The access rootline for given record
+     *
+     * @return int Count of extracted queue items for single translation
+     *
+     * @throws AspectNotFoundException
+     * @throws DBALException
+     * @throws InvalidServiceHookException
+     * @throws ResourceDoesNotExistException
+     * @throws RootlineElementFormatException
+     * @throws UnknownLinkHandlerException
      */
-    protected function extractQueueItemsForSingleTranslation($language, $indexingConfiguration, $tableName, array $record, array $fieldsToExtract, Rootline $accessRootline)
-    {
-        if (isset($GLOBALS['TCA'][$tableName]['ctrl']['enablecolumns']) && isset($GLOBALS['TCA'][$tableName]['ctrl']['enablecolumns']['fe_group'])) {
+    protected function extractQueueItemsForSingleTranslation(
+        int $languageUid,
+        string $indexingConfiguration,
+        string $tableName,
+        array $record,
+        array $fieldsToExtract,
+        Rootline $accessRootline,
+    ): int {
+        if (isset($GLOBALS['TCA'][$tableName]['ctrl']['enablecolumns']['fe_group'])) {
             $groupAccess = $record[$GLOBALS['TCA'][$tableName]['ctrl']['enablecolumns']['fe_group']];
         } else {
             $groupAccess = 0;
         }
         $currentRootline = clone $accessRootline;
-        /* @var RootlineElement $accessRootlineElement */
+        /** @var RootlineElement $accessRootlineElement */
         $accessRootlineElement = GeneralUtility::makeInstance(RootlineElement::class, 'r:' . $groupAccess);
         $currentRootline->push($accessRootlineElement);
 
+        $allExtractedFileUids = [];
         foreach ($fieldsToExtract as $fieldName) {
             $fileUids = $this->getFileAttachmentResolver()->detectFilesInField($tableName, $fieldName, $record);
             // todo: what to do if file exists multiple times in different fields
@@ -464,8 +613,9 @@ class RecordContextDetector extends AbstractRecordDetector
                 $tableName,
                 $fieldName,
                 $record['uid'],
+                $record['pid'],
                 $indexingConfiguration,
-                $language
+                $languageUid
             );
             foreach ($fileUids as $fileUid) {
                 try {
@@ -477,22 +627,24 @@ class RecordContextDetector extends AbstractRecordDetector
                         } else {
                             $this->getItemRepository()->update($indexQueueItem);
                         }
-                        $successfulUids[] = $fileUid;
+                        $successfulUids[] = $allExtractedFileUids[] = $fileUid;
                     }
-                } catch (ResourceDoesNotExistException $e) {
+                } catch (ResourceDoesNotExistException) {
                     continue;
                 }
             }
-            $this->getItemRepository()->removeOldEntriesFromFieldInRecordContext($this->site, $tableName, $record['uid'], $language, $fieldName, ...$successfulUids);
+            $this->getItemRepository()->removeOldEntriesFromFieldInRecordContext($this->site, $tableName, $record['uid'], $languageUid, $fieldName, ...$successfulUids);
         }
+        return count(array_unique($allExtractedFileUids));
     }
 
-    /**
-     * @return ResourceFactory
-     */
     protected function getResourceFactory(): ResourceFactory
     {
-        /* @noinspection PhpIncompatibleReturnTypeInspection */
         return GeneralUtility::makeInstance(ResourceFactory::class);
+    }
+
+    protected function getTcaService(): TCAService
+    {
+        return GeneralUtility::makeInstance(TCAService::class);
     }
 }

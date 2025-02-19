@@ -26,7 +26,7 @@
                     <f:translate key="solrfal.backend.file_indexing_module.errors.file_uid"/>
                 </th>
                 <th>
-                    <f:translate key="solrfal.backend.file_indexing_module.errors.context_record_page"/>
+                    <f:translate key="solrfal.backend.file_indexing_module.errors.context_record_pid"/>
                 </th>
                 <th>
                     <f:translate key="solrfal.backend.file_indexing_module.errors.error_message"/>
@@ -41,7 +41,7 @@
                     <td>{item.context_record_indexing_configuration}</td>
                     <td>{item.context_record_uid}</td>
                     <td>{item.file}</td>
-                    <td>{item.context_record_page}</td>
+                    <td>{item.context_record_pid}</td>
                     <td>{item.error_message -> f:format.crop(maxCharacters: 30)}</td>
                     <td>
                         <f:link.action action="showError" arguments="{indexQueueItemId: item.uid}">

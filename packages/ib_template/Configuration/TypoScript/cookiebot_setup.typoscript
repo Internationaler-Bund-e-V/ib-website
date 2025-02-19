@@ -1,0 +1,3 @@
+
+portalSettings.cookiebot.enabled = TEXT
+portalSettings.cookiebot.enabled.value =  {$portalSettings.cookiebot.enabled}

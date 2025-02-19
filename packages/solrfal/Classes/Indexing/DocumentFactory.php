@@ -18,62 +18,59 @@ declare(strict_types=1);
 namespace ApacheSolrForTypo3\Solrfal\Indexing;
 
 use ApacheSolrForTypo3\Solr\Domain\Variants\IdBuilder;
+use ApacheSolrForTypo3\Solr\Exception as ExtSolrException;
 use ApacheSolrForTypo3\Solr\FrontendEnvironment;
+use ApacheSolrForTypo3\Solr\FrontendEnvironment\Exception\Exception;
+use ApacheSolrForTypo3\Solr\FrontendEnvironment\Tsfe;
 use ApacheSolrForTypo3\Solr\HtmlContentExtractor;
 use ApacheSolrForTypo3\Solr\System\Configuration\TypoScriptConfiguration;
 use ApacheSolrForTypo3\Solr\System\Solr\Document\Document;
 use ApacheSolrForTypo3\Solr\Util;
+use ApacheSolrForTypo3\Solrfal\Context\PageContext;
 use ApacheSolrForTypo3\Solrfal\Context\RecordContext;
+use ApacheSolrForTypo3\Solrfal\Event\Indexing\AfterFileInfoHasBeenAddedToDocumentEvent;
+use ApacheSolrForTypo3\Solrfal\Event\Indexing\AfterFileMetaDataHasBeenRetrievedEvent;
 use ApacheSolrForTypo3\Solrfal\Queue\Item;
 use ApacheSolrForTypo3\Solrfal\Queue\ItemGroup;
 use ApacheSolrForTypo3\Solrfal\Service\FieldProcessingService;
 use ApacheSolrForTypo3\Solrfal\Service\FileUrlService;
 use ApacheSolrForTypo3\Solrfal\System\Environment\FrontendServerEnvironment;
 use ApacheSolrForTypo3\Solrfal\System\Language\OverlayService;
-use ApacheSolrForTypo3\Tika\Service\Extractor\TextExtractor;
-use ArrayObject;
-use Doctrine\DBAL\Driver\Exception as DBALDriverException;
+use Doctrine\DBAL\Exception as DBALException;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Http\Client\ClientExceptionInterface;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
+use Throwable;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException;
 use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException;
+use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
+use TYPO3\CMS\Core\Context\UserAspect;
 use TYPO3\CMS\Core\Exception\SiteNotFoundException;
-use TYPO3\CMS\Core\Log\Logger;
-use TYPO3\CMS\Core\Log\LogManager;
 use TYPO3\CMS\Core\Resource\Exception\FileDoesNotExistException;
-use TYPO3\CMS\Core\Resource\File;
+use TYPO3\CMS\Core\Resource\TextExtraction\TextExtractorInterface;
 use TYPO3\CMS\Core\Resource\TextExtraction\TextExtractorRegistry;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
-use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException;
-use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException;
+use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
  * Class DocumentFactory
- *
- * (c) 2013 Steffen Ritter <steffen.ritter@typo3.org>
  */
-class DocumentFactory
+class DocumentFactory implements LoggerAwareInterface
 {
-    const SOLR_TYPE = 'tx_solr_file';
+    use LoggerAwareTrait;
 
-    /**
-     * @var IdBuilder
-     */
-    protected $variantIdBuilder;
+    public const SOLR_TYPE = 'tx_solr_file';
 
-    /**
-     * @var FrontendServerEnvironment
-     */
-    protected $frontendHttpHost;
+    protected IdBuilder $variantIdBuilder;
+
+    protected FrontendServerEnvironment $frontendHttpHost;
 
     /**
      * DocumentFactory constructor.
-     * @param IdBuilder|null $variantIdBuilder
-     * @param FrontendServerEnvironment|null $frontendHttpHost
      */
     public function __construct(
         IdBuilder $variantIdBuilder = null,
@@ -84,23 +81,21 @@ class DocumentFactory
     }
 
     /**
-     * @param Item $item
-     * @return Document
      * @throws AspectNotFoundException
      * @throws ClientExceptionInterface
-     * @throws DBALDriverException
+     * @throws DBALException
+     * @throws Exception
      * @throws ExtensionConfigurationExtensionNotConfiguredException
      * @throws ExtensionConfigurationPathDoesNotExistException
+     * @throws ExtSolrException
      * @throws FileDoesNotExistException
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
      * @throws SiteNotFoundException
      */
     public function createDocumentForQueueItem(Item $item): Document
     {
         $this->initializeFrontendEnvironment($item);
 
-        /* @var Document $document */
+        /** @var Document $document */
         $document = GeneralUtility::makeInstance(Document::class);
 
         $this->addFileInformation($document, $item);
@@ -110,7 +105,7 @@ class DocumentFactory
         } catch (NoSuitableExtractorFoundException $e) {
             // no extractor found to extract text, we might want to index
             // the document without the text content but log an info message
-            $this->getLogger()->info($e->getMessage());
+            $this->logger->info($e->getMessage());
         }
         $this->addContextInformation($document, $item);
         $this->addFieldsFromTypoScriptConfiguration($document, $item);
@@ -129,34 +124,29 @@ class DocumentFactory
     }
 
     /**
-     * @param Item $item
      * @throws SiteNotFoundException
      */
-    protected function initializeFrontendEnvironment(Item $item)
+    protected function initializeFrontendEnvironment(Item $item): void
     {
         $this->frontendHttpHost->initializeByRootPageId($item->getContext()->getSite()->getRootPageId());
     }
 
-    /**
-     * @param void
-     */
-    public function restoreFrontendEnvironment()
+    public function restoreFrontendEnvironment(): void
     {
         $this->frontendHttpHost->restore();
     }
 
     /**
-     * @param ItemGroup $itemGroup
-     * @param bool $merge
      * @return Document[]
+     *
      * @throws AspectNotFoundException
      * @throws ClientExceptionInterface
-     * @throws DBALDriverException
+     * @throws DBALException
+     * @throws Exception
+     * @throws ExtSolrException
      * @throws ExtensionConfigurationExtensionNotConfiguredException
      * @throws ExtensionConfigurationPathDoesNotExistException
      * @throws FileDoesNotExistException
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
      * @throws SiteNotFoundException
      */
     public function createDocumentsForQueueItemGroup(ItemGroup $itemGroup, bool $merge = false): array
@@ -166,7 +156,9 @@ class DocumentFactory
             // merging is active we merge all items into one solr document
             $rootItemDocument = $this->createDocumentForQueueItem($itemGroup->getRootItem());
             $configuration = $itemGroup->getRootItem()->getContext()->getSite()->getSolrConfiguration();
-            $mapping = $configuration->getObjectByPathOrDefault('plugin.tx_solr.index.enableFileIndexing.mergeDuplicates.fieldMapping.', []);
+            $mapping = $configuration->getObjectByPathOrDefault(
+                'plugin.tx_solr.index.enableFileIndexing.mergeDuplicates.fieldMapping.',
+            );
             $mapping = $this->addDefaultMergeMapping($mapping);
 
             foreach ($itemGroup->getItems() as $mergedItem) {
@@ -203,10 +195,12 @@ class DocumentFactory
     /**
      * Makes sure to retrieve the field value as an array.
      *
-     * @param mixed $fieldValue
-     * @return array
+     * @param string|string[]|null $fieldValue
+     * @return string[]
+     *
+     * @todo: Check if $fieldValue can be null at all.
      */
-    protected function getFieldValueAsArray($fieldValue): array
+    protected function getFieldValueAsArray(null|string|array $fieldValue): array
     {
         if (empty($fieldValue)) {
             return [];
@@ -218,8 +212,8 @@ class DocumentFactory
     }
 
     /**
-     * @param array $mapping
-     * @return array
+     * @param array<string, string|int|bool|null>|array<string,mixed> $mapping
+     * @return array<string, string|int|bool|null>|array<string,mixed>
      */
     protected function addDefaultMergeMapping(array $mapping): array
     {
@@ -230,22 +224,12 @@ class DocumentFactory
     }
 
     /**
-     * @return Logger
-     */
-    protected function getLogger(): Logger
-    {
-        return GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__);
-    }
-
-    /**
-     * @param Document $document
-     * @param Item $item
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
      * @throws FileDoesNotExistException
      */
-    protected function addFileInformation(Document $document, Item $item)
-    {
+    protected function addFileInformation(
+        Document $document,
+        Item $item,
+    ): Document {
         $file = $item->getFile();
         $publicUrl = FileUrlService::getInstance()->getPublicUrl(
             $file,
@@ -269,50 +253,73 @@ class DocumentFactory
             ->setField('filePublicUrl', $publicUrl)
             ->setField('url', $publicUrl);
 
-        $this->emitAddedSolrFileInformation($file);
+        /** @var AfterFileInfoHasBeenAddedToDocumentEvent $event */
+        $event = $this->getEventDispatcher()->dispatch(
+            new AfterFileInfoHasBeenAddedToDocumentEvent(
+                $document,
+                $item,
+                $item->getContext()->getSite()->getTypo3SiteObject(),
+                $file,
+            )
+        );
+        return $event->getDocument();
     }
 
     /**
-     * @param Document $document
-     * @param Item $item
-     * @throws FileDoesNotExistException
-     * @throws NoSuitableExtractorFoundException
      * @throws ClientExceptionInterface
      * @throws ExtensionConfigurationExtensionNotConfiguredException
      * @throws ExtensionConfigurationPathDoesNotExistException
+     * @throws FileDoesNotExistException
+     * @throws NoSuitableExtractorFoundException
      */
-    protected function addFileTextContent(Document $document, Item $item)
-    {
+    protected function addFileTextContent(
+        Document $document,
+        Item $item,
+    ): void {
         $file = $item->getFile();
 
+        /** @var TextExtractorRegistry $extractorRegistry */
         $extractorRegistry = GeneralUtility::makeInstance(TextExtractorRegistry::class);
-        $extractor = $extractorRegistry->getTextExtractor($file);
+        $extractors = array_filter(
+            $extractorRegistry->getTextExtractorInstances(),
+            static fn(TextExtractorInterface $extractor): bool => $extractor->canExtractText($file)
+        );
 
-        if (ExtensionManagementUtility::isLoaded('tika')) {
-            $extractor = GeneralUtility::makeInstance(TextExtractor::class);
-        }
-
-        if (!is_object($extractor) || !method_exists($extractor, 'canExtractText')) {
-            $message = 'No extractor for text extraction found for file ' . $file->getName() . '. Extractor registered or tika installed and solrfal file pattern configured correctly?';
+        if ($extractors === []) {
+            $message = 'No extractors for text extraction found for file ' . $file->getName() . '.'
+                . ' None of the registered text extractors indicated that an extraction is possible (see TextExtractorInterface->canExtractText).';
             throw new NoSuitableExtractorFoundException($message);
         }
 
-        if ($extractor->canExtractText($file)) {
-            $fileTextContent = $extractor->extractText($file);
-            $fileTextContent = HtmlContentExtractor::cleanContent($fileTextContent);
+        foreach ($extractors as $extractor) {
+            try {
+                $fileTextContent = trim($extractor->extractText($file));
+                if ($fileTextContent === '') {
+                    continue;
+                }
 
-            $document->setField('content', $fileTextContent);
+                $fileTextContent = HtmlContentExtractor::cleanContent($fileTextContent);
+                $document->setField('content', $fileTextContent);
+                break;
+            } catch (Throwable $e) {
+                $this->logger->error(
+                    'Registered text extractor ' . get_class($extractor)
+                    . ' failed to extract contents of ' . $file->getIdentifier()
+                    . ': ' . $e->getMessage(),
+                    [$e->getCode(), $e->getFile(), $e->getMessage()]
+                );
+            }
         }
     }
 
     /**
-     * @param Document $document
-     * @param Item $item
-     * @throws DBALDriverException
+     * @throws DBALException
      * @throws FileDoesNotExistException
      */
-    protected function addContextInformation(Document $document, Item $item)
-    {
+    protected function addContextInformation(
+        Document $document,
+        Item $item,
+    ): void {
         $context = $item->getContext();
 
         // Add additional context fields first, so they can't override necessary fields
@@ -327,7 +334,7 @@ class DocumentFactory
         // system fields
         $document
             ->setField('uid', $item->getUid())
-            ->setField('pid', $context->getPageId());
+            ->setField('pid', $context->getPid());
 
         /* @noinspection PhpUndefinedFieldInspection */
         if (!is_string($document->access)) {
@@ -345,34 +352,49 @@ class DocumentFactory
                 'variantId',
                 $this->variantIdBuilder->buildFromTypeAndUid(
                     self::SOLR_TYPE,
-                    // purpose of "?? 0" is Unit canSetDefaultsOnAccessFieldNullOrFalse(),
+                    // purpose of "?? 0" and "?? []" is Unit canSetDefaultsOnAccessFieldNullOrFalse(),
                     // which requires to many Mocks, since Core is currently not fully type-hinted.
-                    $item->getFile()->getUid() ?? 0
+                    $item->getFile()->getUid() ?? 0,
+                    $item->getFile()->toArray() ?? [],
+                    $item->getContext()->getSite(),
+                    $document,
                 )
             );
     }
 
     /**
-     * @param Document $document
-     * @param Item $item
      * @throws AspectNotFoundException
-     * @throws DBALDriverException
+     * @throws DBALException
      * @throws FileDoesNotExistException
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
+     * @throws Exception
+     * @throws SiteNotFoundException
      */
-    protected function addFieldsFromTypoScriptConfiguration(Document $document, Item $item)
-    {
-        $translatedMetaData = $this->getTranslatedFileMetaData($item->getFile(), $item->getContext()->getLanguage());
-        $this->emitFileMetaDataRetrieved($item, $translatedMetaData);
+    protected function addFieldsFromTypoScriptConfiguration(
+        Document $document,
+        Item $item,
+    ): void {
+        /** @var AfterFileMetaDataHasBeenRetrievedEvent $afterFileMetaDataHasBeenRetrievedEvent */
+        $afterFileMetaDataHasBeenRetrievedEvent = $this->getEventDispatcher()->dispatch(
+            new AfterFileMetaDataHasBeenRetrievedEvent(
+                $this->getTranslatedFileMetaData(
+                    $item,
+                    $item->getContext()->getLanguage(),
+                ),
+                $document,
+                $item,
+            )
+        );
+        $translatedMetaData = $afterFileMetaDataHasBeenRetrievedEvent->getMetaData();
 
         $fileConfiguration = GeneralUtility::makeInstance(FrontendEnvironment::class)->getSolrConfigurationFromPageId(
             $item->getContext()->getSite()->getRootPageId(),
             $item->getContext()->getLanguage()
         );
 
-        /* @var TypoScriptConfiguration $fileConfiguration */
-        $fieldConfiguration = $fileConfiguration->getObjectByPathOrDefault('plugin.tx_solr.index.queue._FILES.default.', []);
+        /** @var TypoScriptConfiguration $fileConfiguration */
+        $fieldConfiguration = $fileConfiguration->getObjectByPathOrDefault(
+            'plugin.tx_solr.index.queue._FILES.default.',
+        );
         $contextConfiguration = $item->getContext()->getSpecificFieldConfigurationTypoScript();
 
         if (count($contextConfiguration) > 0) {
@@ -392,10 +414,16 @@ class DocumentFactory
         FieldProcessingService::addTypoScriptFieldsToDocument($item->getContext(), $document, $fieldConfiguration, $translatedMetaData);
 
         if ($item->getContext() instanceof RecordContext && is_array($fieldConfigurationInRecordContext)) {
-            /** @var RecordContext $recordContext */
+            /** @var RecordContext|PageContext $recordContext */
             $recordContext = $item->getContext();
+            /** @var array{uid: int, pid: int} $relatedRecord */
             $relatedRecord = BackendUtility::getRecord($recordContext->getTable(), $recordContext->getUid(), '*', '', false);
-            $relatedRecord = $this->getTranslatedRecord($recordContext->getTable(), $relatedRecord, $recordContext->getLanguage());
+            $relatedRecord = $this->getTranslatedRecordForItemAndTable(
+                $item,
+                $recordContext->getTable(),
+                $relatedRecord,
+                $recordContext->getLanguage(),
+            ) ?? [];
 
             FieldProcessingService::addTypoScriptFieldsToDocument(
                 $item->getContext(),
@@ -407,16 +435,23 @@ class DocumentFactory
     }
 
     /**
-     * @param File $file
-     * @param int $language
-     * @return array
+     * @return array<string, string|int|bool|null>|array<string,mixed> The file metadata record
+     *
      * @throws AspectNotFoundException
+     * @throws DBALException
+     * @throws FileDoesNotExistException
      */
-    protected function getTranslatedFileMetaData(File $file, int $language = 0): array
+    protected function getTranslatedFileMetaData(Item $item, int $language = 0): array
     {
-        $metaData = $file->getMetaData()->get();
-        if ($metaData['sys_language_uid'] !== $language) {
-            $metaData = $this->getTranslatedRecord('sys_file_metadata', $metaData, $language);
+        /** @var array{uid: int, pid: int, sys_language_uid: int} $metaData */
+        $metaData = $item->getFile()->getMetaData()->get();
+        if (($metaData['sys_language_uid'] ?? null) !== $language) {
+            $metaData = $this->getTranslatedRecordForItemAndTable(
+                $item,
+                'sys_file_metadata',
+                $metaData,
+                $language,
+            ) ?? $metaData;
         }
         return $metaData;
     }
@@ -424,14 +459,22 @@ class DocumentFactory
     /**
      * Retrieves a translated record with valid overlays according to the TCA configuration
      *
-     * @param string $table
-     * @param array $record
-     * @param int $requestedLanguage
-     * @return array
+     * @param Item $item The file index queue object
+     * @param string $table The table name of given record
+     * @param array{uid: int, pid: int} $record The record to fetch the translation for requested language
+     * @param int $requestedLanguage The language to fetch the translation for
+     *
+     * @return array<string, string|int|bool|null>|array<string,mixed>|null
+     *
      * @throws AspectNotFoundException
+     * @throws DBALException
      */
-    protected function getTranslatedRecord(string $table, array $record, int $requestedLanguage = 0): array
-    {
+    protected function getTranslatedRecordForItemAndTable(
+        Item $item,
+        string $table,
+        array $record,
+        int $requestedLanguage = 0,
+    ): ?array {
         $languageOfIncomingRecord = (int)$record[$GLOBALS['TCA'][$table]['ctrl']['languageField']];
         if (
             // default language requested and present
@@ -448,10 +491,14 @@ class DocumentFactory
                     $originalRecord = BackendUtility::getRecord($table, $originalRecordUid, '*', '', false);
                 }
             }
-            if (is_array($originalRecord)) {
+            $coreContext = $this->getCoreContextForItemAndLanguage($item, $requestedLanguage);
+            if (is_array($originalRecord) && $coreContext !== null) {
                 if ((int)$originalRecord[$GLOBALS['TCA'][$table]['ctrl']['languageField']] !== $requestedLanguage) {
-                    /** @var $overlayService OverlayService */
-                    $overlayService = GeneralUtility::makeInstance(OverlayService::class);
+                    /** @var OverlayService $overlayService */
+                    $overlayService = GeneralUtility::makeInstance(
+                        OverlayService::class,
+                        $coreContext
+                    );
                     $record = $overlayService->getRecordOverlay(
                         $table,
                         $record,
@@ -464,46 +511,60 @@ class DocumentFactory
     }
 
     /**
-     * @param Item $item
-     *
-     * @return string
+     * @throws DBALException
      * @throws FileDoesNotExistException
-     * @throws DBALDriverException
      */
     protected function calculateDocumentId(Item $item): string
     {
         return Util::getDocumentId(
             self::SOLR_TYPE,
-            $item->getContext()->getPageId(),
+            $item->getContext()->getSite()->getRootPageId(),
             $item->getFile()->getUid(),
             md5(implode(',', $item->getContext()->toArray()))
         );
     }
 
-    /**
-     * @param File $file
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
-     */
-    protected function emitAddedSolrFileInformation(File $file)
+    protected function getEventDispatcher(): EventDispatcherInterface
     {
-        /** @var Dispatcher $signalSlotDispatcher */
-        $signalSlotDispatcher = GeneralUtility::makeInstance(Dispatcher::class);
-        $signalSlotDispatcher->dispatch(__CLASS__, 'addedSolrFileInformation', [$file]);
+        return GeneralUtility::makeInstance(EventDispatcherInterface::class);
     }
 
-    /**
-     * @param Item $item
-     * @param array $metaData
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
-     */
-    protected function emitFileMetaDataRetrieved(Item $item, array &$metaData)
-    {
-        $arrayObject = new ArrayObject($metaData);
-        /** @var Dispatcher $signalSlotDispatcher */
-        $signalSlotDispatcher = GeneralUtility::makeInstance(Dispatcher::class);
-        $signalSlotDispatcher->dispatch(__CLASS__, 'fileMetaDataRetrieved', [$item, &$arrayObject]);
-        $metaData = $arrayObject->getArrayCopy();
+    protected function getCoreContextForItemAndLanguage(
+        Item $item,
+        int $languageUid,
+    ): ?Context {
+        try {
+            $tsfe = GeneralUtility::makeInstance(Tsfe::class)
+                ->getTsfeByPageIdAndLanguageId(
+                    $item->getContext()->getPidForCoreContext(),
+                    $languageUid,
+                );
+            $coreContext = $tsfe->getContext();
+
+            // set access restrictions from solrfal context
+            $coreContext->setAspect(
+                'frontend.user',
+                GeneralUtility::makeInstance(
+                    UserAspect::class,
+                    null,
+                    $item->getContext()->getAccessRestrictions()->getGroups()
+                )
+            );
+
+            return $coreContext;
+        } catch (Throwable $exception) {
+            $this->logger->error(
+                '{className} can not instantiate {TsfeFqcn} for PID:{PID} and {languageUid}, due of exception: {exceptionInfo} {exceptionTrace}',
+                [
+                    'className' => self::class,
+                    'TsfeFqcn' => TypoScriptFrontendController::class,
+                    'PID' => $item->getContext()->getSite()->getRootPageId(),
+                    'languageUid' => $languageUid,
+                    'exceptionInfo' => $exception->getCode() . 'in' . $exception->getFile() . 'line ' . $exception->getLine(),
+                    'exceptionTrace' => $exception->getTraceAsString(),
+                ]
+            );
+            return null;
+        }
     }
 }

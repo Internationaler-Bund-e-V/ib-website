@@ -18,48 +18,48 @@ declare(strict_types=1);
 namespace ApacheSolrForTypo3\Solrfal\Queue;
 
 use ApacheSolrForTypo3\Solr\Domain\Site\Site;
-use ApacheSolrForTypo3\Solr\IndexQueue\InitializationPostProcessor;
 use ApacheSolrForTypo3\Solrfal\Context\ContextFactory;
 use ApacheSolrForTypo3\Solrfal\Detection\RecordDetectionInterface;
-use TYPO3\CMS\Core\Log\Logger;
-use TYPO3\CMS\Core\Log\LogManager;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
 
 /**
  * Class InitializationAspect
  */
-class InitializationAspect implements InitializationPostProcessor
+class InitializationAspect implements LoggerAwareInterface
 {
+    use LoggerAwareTrait;
+
     /**
      * Post process Index Queue initialization
      *
      * @param Site $site The site to initialize
-     * @param array $indexingConfigurations Initialized indexing configurations
-     * @param array $initializationStatus Results of Index Queue initializations
+     * @param string $indexingConfigurationName The indexing configuration name, which be initialized
+     * @param bool $indexQueueForConfigurationNameIsInitialized The status of given EXT:solr index queue initialization
      */
-    public function postProcessIndexQueueInitialization(Site $site, array $indexingConfigurations, array $initializationStatus)
-    {
+    public function postProcessIndexQueueInitialization(
+        Site $site,
+        string $indexingConfigurationName,
+        ?bool $indexQueueForConfigurationNameIsInitialized = false,
+    ): bool {
         $detectors = $this->getContextDetectorsForSite($site);
-        $this->getLogger()->info('Queue initialization triggered for site ' . $site->getSiteHash());
+        $this->logger->info('Queue initialization triggered for site ' . $site->getSiteHash());
+        $atLeastOneContextFailed = false;
         foreach ($detectors as $contextDetector) {
-            $contextDetector->initializeQueue($initializationStatus);
+            $initialisationResult = $contextDetector->initializeQueue($indexingConfigurationName, $indexQueueForConfigurationNameIsInitialized);
+            if (!$initialisationResult) {
+                $this->logger->warning('Solr file index queue initialisation for "' . $indexingConfigurationName . '" failed');
+                $atLeastOneContextFailed = true;
+            }
         }
+        return !$atLeastOneContextFailed;
     }
 
     /**
-     * @param Site $site
      * @return RecordDetectionInterface[]
      */
     protected function getContextDetectorsForSite(Site $site): array
     {
         return ContextFactory::getContextDetectors($site);
-    }
-
-    /**
-     * @return Logger
-     */
-    protected function getLogger(): Logger
-    {
-        return GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__);
     }
 }

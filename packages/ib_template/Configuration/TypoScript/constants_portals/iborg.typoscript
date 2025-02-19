@@ -1,0 +1,94 @@
+# -----------------------------------------------------------------------------
+# PORTAL IB ORG (international)
+# -----------------------------------------------------------------------------
+[site("identifier") == "internationaler_bund_org"]
+    host = ib.international
+    portalSettings {
+        pageTitle = IB en
+        firstMenuTitle = IB en
+
+          //generate news sitemap
+        NewsSitemap.generate = 1
+        NewsSitemap.NewsFolderPid = 505
+        NewsSitemap.NewsDetailPid = 250
+
+        defaultGetVars.L = 1
+
+        readspeaker.show = 1
+        readspeaker.lang = en_uk
+        readspeaker.buttonText = Listen
+        readspeaker.title = Listen to this page using ReadSpeaker webReader
+
+        root_id = 249
+        misc.sitemapStartId = 249
+        mainnav_start_id = 252
+        misc.searchResultId = 251
+        tt_news.single_pid = 250
+        tt_news.list_view_pid = 1222
+        ib_content.dbNavigationId = 1
+        services_menu_start_id = 255
+        misc.showOnlyTYPO3SearchResults = 1
+        showNavigationSearch = 0
+        //activate socialbar (right) search
+        showSearchButton = 0
+
+        #data privacy site ID
+        dataPrivacySiteID = 644
+
+        analytics {
+            #account_id =
+            #enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 13
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = dAne7v2M
+        }
+
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+            language = EN
+        }
+
+        main_bubble {
+            id = 1299
+            hide = 0
+            text = References<br>&nbsp;
+            title_text = References
+        }
+
+        footer_logo = IB-EN-Markenzeichen-mit-Claim.svg
+
+        social.ib_english_page_link =
+        social.ib_german_page_link = https://internationaler-bund.de/
+        social.facebook = https://de-de.facebook.com/ib.international.cooperation/
+        social.linkedin = https://www.linkedin.com/company/internationalerbund
+        #social.linkedin =
+        #social.youtube =
+        social.twitter =
+        social.xing =
+        social.kununu =
+
+        social.facebook.titletag = Facebook
+        social.youtube.titletag = YouTube
+        social.linkedin.titletag = LinkedIn
+    }
+
+    #social.headline =
+    social.headline = Social Media Channels
+    social.facebook = https://de-de.facebook.com/ib.international.cooperation/
+    #social.linkedin =
+    #social.youtube =
+    social.twitter =
+    social.xing =
+    social.kununu =
+    social.facebook.titletag = Facebook
+    social.youtube.titletag = YouTube
+    social.linkedin.titletag = LinkedIn
+
+    const_navigation {
+        footernav_central_folder_id = 1169
+        footernav_misc_folder_id = 1185
+        footernav_meta_folder_id = 643
+    }
+[end]

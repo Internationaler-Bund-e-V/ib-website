@@ -2,7 +2,7 @@
 # PORTAL Sprachinstitut Boeblingen
 # -----------------------------------------------------------------------------
 
-[request.getNormalizedParams().getHttpHost() == 'ib-sprachinstitut-boeblingen.de' || request.getNormalizedParams().getHttpHost() == 'ib-sprachinstitut-boeblingen.rmsdev.de']
+[site("identifier") == "ib_sprachinstitut_boeblingen"] 
     host = ib-sprachinstitut-boeblingen
     portalSettings {
         pageTitle = IB Sprachinstitut Boeblingen

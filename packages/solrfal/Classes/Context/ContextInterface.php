@@ -26,39 +26,34 @@ use TYPO3\CMS\Core\Resource\File;
  */
 interface ContextInterface
 {
-    /**
-     * @return string
-     */
     public function getContextIdentifier(): string;
 
-    /**
-     * Returns the Site
-     *
-     * @return Site
-     */
     public function getSite(): Site;
 
-    /**
-     * @return int
-     */
     public function getLanguage(): int;
 
-    /**
-     * @return Rootline
-     */
     public function getAccessRestrictions(): Rootline;
 
     /**
-     * Returns the pageId of this context
-     *
-     * @return int
+     * Returns the uid of context's record
      */
-    public function getPageId(): int;
+    public function getUid(): int;
+
+    /**
+     * Returns the pid of context's record.
+     */
+    public function getPid(): int;
+
+    /**
+     * Returns
+     * Used to simulate the TSFE/LanguageAspect to use for translations-resolvers.
+     */
+    public function getPidForCoreContext(): int;
 
     /**
      * Returns an array of context specific field to add to the solr document
      *
-     * @return array
+     * @return array<string, string|int|bool>
      */
     public function getAdditionalStaticDocumentFields(): array;
 
@@ -66,20 +61,24 @@ interface ContextInterface
      * Returns an array of context specific field to add to the solr document,
      * dynamically calculated from the FILE
      *
-     * @param File $file
-     * @return array
+     * @return array<string, int|string>
      */
     public function getAdditionalDynamicDocumentFields(File $file): array;
 
     /**
-     * @return array
+     * Resolves the field-processing TypoScript configuration which is specific
+     * to the current context.
+     * Will be merged in the default field-processing configuration and takes
+     * precedence over the default configuration.
+     *
+     * @return array<string, mixed>
      */
     public function getSpecificFieldConfigurationTypoScript(): array;
 
     /**
      * Returns the array representation for database storage
      *
-     * @return array
+     * @return array<string, int|string|bool>
      */
     public function toArray(): array;
 }

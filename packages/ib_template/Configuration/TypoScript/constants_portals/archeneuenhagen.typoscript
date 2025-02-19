@@ -1,0 +1,56 @@
+# -----------------------------------------------------------------------------
+# PORTAL ARCHE NEUENHAGEN
+# -----------------------------------------------------------------------------
+[site("identifier") == "arche_neuenhagen_de"] 
+    host = arche-neuenhagen.de
+    portalSettings {
+        pageTitle = ARCHE-Neuenhagen
+        root_id = 1739
+        misc.sitemapStartId = 1739
+        mainnav_start_id = 1751
+        misc.searchResultId = 1749
+        tt_news.single_pid = 1746
+        misc.showOnlyTYPO3SearchResults = 1
+        readspeaker.show = 1
+
+        #data privacy site ID
+        dataPrivacySiteID = 1744
+
+        analytics {
+            #account_id = 0
+            #enable_tracking = 1
+            matomo_enabled = 0
+            matomo_siteid = 24
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = OFJkCHJn
+        }
+
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+    
+        main_bubble {
+            hide = 1			
+        }
+        social.ib_english_page_link = 
+        social.instagram = https://www.instagram.com/ib.berlin.brandenburg/
+        social.instagram.titletag = Hier geht es zur Instagram Seite
+        social.facebook = https://www.facebook.com/IB.Berlin.Brandenburg
+        social.facebook.titletag = Hier geht es zur Facebook-Seite
+    }
+
+    social.instagram = https://www.instagram.com/ib.berlin.brandenburg/
+    social.instagram.titletag = Hier geht es zur Instagram Seite
+    social.facebook = https://www.facebook.com/IB.Berlin.Brandenburg
+    social.facebook.titletag = Hier geht es zur Facebook-Seite
+
+    gallery.folder.pid = 6403
+
+    const_navigation {
+        footernav_central_folder_id = 6181
+        footernav_misc_folder_id = 6183
+        footernav_meta_folder_id = 1740
+    }
+
+[end]

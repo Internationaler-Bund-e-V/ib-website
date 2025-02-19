@@ -17,9 +17,8 @@ declare(strict_types=1);
 
 namespace ApacheSolrForTypo3\Solrconsole\Command;
 
-use ApacheSolrForTypo3\Solrfal\Queue\ItemRepository;
 use ApacheSolrForTypo3\Solrconsole\Command\OptionHelper\Sites;
-use Doctrine\DBAL\Driver\Exception as DBALDriverException;
+use ApacheSolrForTypo3\Solrfal\Queue\ItemRepository;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -31,17 +30,17 @@ class SolrfalQueueResetErrorsCommand extends AbstractSolrfalCommand
     /**
      * @var ItemRepository
      */
-    protected $queueItemRepository;
+    protected ItemRepository $queueItemRepository;
 
     /**
      * @var array
      */
-    private $sites;
+    private array $sites;
 
     /**
      * @var Sites
      */
-    protected $sitesHelper;
+    protected Sites $sitesHelper;
 
     /**
      * Configure the command by defining the name, options and arguments
@@ -64,7 +63,7 @@ class SolrfalQueueResetErrorsCommand extends AbstractSolrfalCommand
     /**
      * @param Sites $sitesHelper
      */
-    public function setSitesHelper(Sites $sitesHelper)
+    public function setSitesHelper(Sites $sitesHelper): void
     {
         $this->sitesHelper = $sitesHelper;
     }
@@ -75,7 +74,7 @@ class SolrfalQueueResetErrorsCommand extends AbstractSolrfalCommand
      * @param OutputInterface $output
      * @return bool
      */
-    protected function loadOptions(SymfonyStyle $io, InputInterface $input, OutputInterface $output)
+    protected function loadOptions(SymfonyStyle $io, InputInterface $input, OutputInterface $output): bool
     {
         $this->sites = $this->getSitesHelper()->run($io, $input, $output);
 
@@ -90,31 +89,31 @@ class SolrfalQueueResetErrorsCommand extends AbstractSolrfalCommand
      * @param OutputInterface $output
      * @throws \Exception
      *
-     * @return integer
+     * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $io->title($this->getDescription());
         $confirmed = $this->loadOptions($io, $input, $output);
 
-        if(!$confirmed) {
+        if (!$confirmed) {
             $io->write('Skipped');
             $io->newLine(1);
-            return 1;
+            return self::FAILURE;
         }
 
         $io = new SymfonyStyle($input, $output);
         $io->title($this->getDescription());
 
-        foreach($this->sites as $site) {
+        foreach ($this->sites as $site) {
             $result = $this->getQueueItemRepository()->flushErrorsBySite($site);
-            $io->writeln('Resetting errored items for site ' . $site->getDomain() .': '. $result. ' items have been reset');
+            $io->writeln('Resetting errored items for site ' . $site->getDomain() . ': ' . $result . ' items have been reset');
         }
 
         $io->write('<fg=green>Done</>');
         $io->newLine(1);
-        return 0;
+        return self::SUCCESS;
     }
 
     /**

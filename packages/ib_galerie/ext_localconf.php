@@ -5,6 +5,9 @@ declare(strict_types=1);
 use Rms\IbGalerie\Form\CodeRenderer;
 use Rms\IbGalerie\Hooks\TCEmainHook;
 use TYPO3\CMS\Core\Cache\Frontend\VariableFrontend;
+use TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider;
+use TYPO3\CMS\Core\Imaging\IconRegistry;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 defined('TYPO3') || die('Access denied.');
 
@@ -37,3 +40,13 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1626702320] = [
     'priority' => 40,
     'class' => CodeRenderer::class,
 ];
+
+// IconRegistry holen
+$iconRegistry = GeneralUtility::makeInstance(IconRegistry::class);
+
+// Icon registrieren
+$iconRegistry->registerIcon(
+    'module-ib-galerie', // Der gleiche Identifier wie beim Modul
+    BitmapIconProvider::class,
+    ['source' => 'EXT:ib_galerie/Resources/Public/Icons/Extension.png']
+);

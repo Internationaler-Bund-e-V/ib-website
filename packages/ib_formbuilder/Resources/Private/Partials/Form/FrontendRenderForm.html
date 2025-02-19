@@ -8,7 +8,6 @@
 </f:comment>
 
 {namespace v=FluidTYPO3\Vhs\ViewHelpers}
-{namespace encore = Ssch\Typo3Encore\ViewHelpers}
 
 <f:variable name="assetBasePath" value="{f:uri.resource(path:'', extensionName: 'ib_formbuilder')}" />
 
@@ -88,6 +87,9 @@
 		# ------------------------------------------------
 		-->
 	</f:comment>
-    <encore:renderWebpackLinkTags entryName="frontend" />
-    <!-- <f:asset.script identifier="ibFormRenderer" src="EXT:ib_formbuilder/Resources/Public/build/frontend.js" /> -->
+
+	<f:asset.script identifier="ibFormRenderer"
+		src="EXT:ib_formbuilder/Resources/Public/libs/formBuilder/form-render.min.js" />
+	<f:asset.script identifier="ibFormRendererFE"
+		src="EXT:ib_formbuilder/Resources/Public/JavaScript/frontend.min.js" />
 </div>

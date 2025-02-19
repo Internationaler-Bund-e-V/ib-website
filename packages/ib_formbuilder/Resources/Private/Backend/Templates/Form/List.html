@@ -1,4 +1,4 @@
-<f:layout name="Default"/>
+<f:layout name="Module" />
 
 This Template is responsible for creating a table of domain objects.
 
@@ -11,11 +11,12 @@ List.html: keep
 
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
-<f:section name="content">
+<f:section name="Content">
+    
     <h1>Übersicht aller Formulare für den aktiven Seitenbaum</h1>
 
 
-    <f:flashMessages/>
+    <f:flashMessages />
 
     <div class="tx_ibformbuilder-list-container">
         <table class="tx_ibformbuilder tx_ibformbuilder-list-table">
@@ -24,7 +25,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
                     Id
                 </th>
                 <th>
-                    <f:translate key="tx_ibformbuilder_domain_model_form.name"/>
+                    <f:translate key="tx_ibformbuilder_domain_model_form.name" />
                 </th>
                 <!--<th><f:translate key="tx_ibformbuilder_domain_model_form.formdata_json" /></th>-->
                 <!--<th><f:translate key="tx_ibformbuilder_domain_model_form.receiver" /></th>-->
@@ -46,7 +47,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
                         <f:link.action action="edit" arguments="{form : form}">bearbeiten</f:link.action>
                         &nbsp;|&nbsp;
                         <f:link.action action="delete" arguments="{form : form}"
-                                       onclick="return confirm('Wirklich löschen?')">löschen
+                            onclick="return confirm('Wirklich löschen?')">löschen
                         </f:link.action>
                         &nbsp;|&nbsp;
                         <f:link.action action="export" arguments="{form : form}">eMail Daten exportieren</f:link.action>
@@ -87,7 +88,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
                         </f:link.action>
                         &nbsp;|&nbsp;
                         <f:link.action action="deleteEmailData" arguments="{emaildata : emaildata}"
-                                       onclick="return confirm('Wirklich löschen?')">löschen
+                            onclick="return confirm('Wirklich löschen?')">löschen
                         </f:link.action>
                     </td>
                 </tr>

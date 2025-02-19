@@ -1,10 +1,10 @@
 <f:layout name="Default" />
 
 <f:section name="main">
-    <f:for each="{settings.array}" as="element">      
+    <f:for each="{settings.array}" as="element">
         <f:if condition="{element}">
             <f:render section="element" arguments="{settings: element.ItemWrap}" />
-        </f:if>  
+        </f:if>
     </f:for>
 </f:section>
 

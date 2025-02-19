@@ -54,7 +54,7 @@ plugin.tx_solr.view {
     templateRootPaths {
         0 = EXT:solr/Resources/Private/Templates/
         #10 = fileadmin/template/html/ext/solr/Templates/
-        10 = typo3conf/ext/ib_template/Resources/Private/Template/html/ext/solr/Templates/
+        10 = EXT:ib_template/Resources/Private/Template/html/ext/solr/Templates/
     }
     partialRootPaths {
         0 = EXT:solr/Resources/Private/Partials/

@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Rms\IbFormbuilder\Domain\Repository;
 
+use Rms\IbFormbuilder\Domain\Model\Content;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Service\FlexFormService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
- * The repository for tt_content
+ * @extends Repository<Content>
  */
 class ContentRepository extends Repository
 {

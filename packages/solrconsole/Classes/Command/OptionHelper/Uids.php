@@ -22,7 +22,8 @@ class Uids extends AbstractCommaSeparatedList
     /**
      * Configurations constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->option = 'uids';
         $this->defaultValue = '*';
         $this->label = 'Queue Item uids';

@@ -2,7 +2,7 @@
 	<meta>
 		<langDisable>1</langDisable>
 	</meta>
-	
+
   <sheets>
 	<sDEF>
 	  <ROOT>
@@ -87,6 +87,7 @@
 			                <image>
 			                    <TCEforms>
 			                        <label>Image *</label>
+									<!--
                                     <config>
                                         <type>group</type>
                                         <internal_type>db</internal_type>
@@ -99,6 +100,16 @@
                                         <minitems>1</minitems>
                                         <maxitems>1</maxitems>
                                     </config>
+									-->
+									<config>
+										<type>link</type>
+										<allowedTypes>
+											<numIndex index="0">file</numIndex>
+											<!--<numIndex index="1">page</numIndex>-->
+										</allowedTypes>
+										<minitems>1</minitems>
+										<maxitems>1</maxitems>
+									</config>
 			                    </TCEforms>
 			                </image>
 			                <imageAlt>
@@ -118,7 +129,7 @@
 								        <cols>3</cols>
 								        <rows>3</rows>
 										<enableRichtext>1</enableRichtext>
-								    </config>								    
+								    </config>
 								</TCEforms>
 							</caption>
 			            </el>
@@ -159,7 +170,7 @@
 								        <cols>3</cols>
 								        <rows>3</rows>
 										<enableRichtext>1</enableRichtext>
-								    </config>								    
+								    </config>
 								</TCEforms>
 							</leitsatz>
 			            </el>

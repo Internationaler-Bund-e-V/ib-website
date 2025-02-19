@@ -40,57 +40,52 @@ class SolrfalQueueGetCommand extends AbstractSolrfalCommand
     /**
      * @var Sites
      */
-    protected $sitesHelper;
-
-    /**
-     * @var Configurations
-     */
-    protected $configurationsHelper;
+    protected Sites $sitesHelper;
 
     /**
      * @var ItemRepository
      */
-    protected $itemRepository;
+    protected ItemRepository $itemRepository;
 
     /**
      * @var array
      */
-    private $sites;
+    private array$sites;
 
     /**
      * @var array
      */
-    private $configurations;
+    private array$configurations;
 
     /**
      * @var array
      */
-    private $contextNames;
+    private array$contextNames;
 
     /**
      * @var array
      */
-    private $itemUids;
+    private array$itemUids;
 
     /**
      * @var array
      */
-    private $uids;
+    private array$uids;
 
     /**
      * @var array
      */
-    private $languageUids;
+    private array $languageUids;
 
     /**
      * @var int
      */
-    private $page;
+    private int $page;
 
     /**
      * @var int
      */
-    private $perPage;
+    private int $perPage;
 
     /**
      * Configure the command by defining the name, options and arguments
@@ -116,27 +111,27 @@ class SolrfalQueueGetCommand extends AbstractSolrfalCommand
      * @return bool
      * @throws DBALDriverException
      */
-    protected function loadOptions(SymfonyStyle $io, InputInterface $input, OutputInterface $output)
+    protected function loadOptions(SymfonyStyle $io, InputInterface $input, OutputInterface $output): bool
     {
         $this->sites = $this->getSitesHelper()->run($io, $input, $output);
 
-        /** @var $configurationHelper Configurations */
+        /** @var Configurations $configurationHelper */
         $configurationHelper = GeneralUtility::makeInstance(Configurations::class);
         $this->configurations = $configurationHelper->run($io, $input);
 
-        /** @var $contextNames ContextNames */
+        /** @var ContextNames $contextNamesHelper */
         $contextNamesHelper = GeneralUtility::makeInstance(ContextNames::class);
         $this->contextNames = $contextNamesHelper->run($io, $input);
 
-        /** @var $itemUidsHelper ItemUids */
+        /** @var ItemUids $itemUidsHelper */
         $itemUidsHelper = GeneralUtility::makeInstance(ItemUids::class);
         $this->itemUids = $itemUidsHelper->run($io, $input);
 
-        /** @var $uidsHelper Uids */
+        /** @var Uids $uidsHelper */
         $uidsHelper = GeneralUtility::makeInstance(Uids::class);
         $this->uids = $uidsHelper->run($io, $input);
 
-        /** @var $languagesUidHelper Languages */
+        /** @var Languages $languagesUidHelper */
         $languagesUidHelper = GeneralUtility::makeInstance(Languages::class);
         $this->languageUids = $languagesUidHelper->run($io, $input);
 
@@ -158,18 +153,18 @@ class SolrfalQueueGetCommand extends AbstractSolrfalCommand
      * @param OutputInterface $output
      * @throws \Exception
      *
-     * @return integer
+     * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $io->title($this->getDescription());
         $confirmed = $this->loadOptions($io, $input, $output);
 
-        if(!$confirmed) {
+        if (!$confirmed) {
             $io->write('Skipped');
             $io->newLine(1);
-            return;
+            return self::FAILURE;
         }
 
         $start = ($this->page - 1) * $this->perPage;
@@ -185,7 +180,7 @@ class SolrfalQueueGetCommand extends AbstractSolrfalCommand
         $io->write('<fg=green>Done</>');
         $io->newLine(1);
 
-        return 0;
+        return self::SUCCESS;
     }
 
     /**
@@ -218,7 +213,7 @@ class SolrfalQueueGetCommand extends AbstractSolrfalCommand
     /**
      * @param Sites $sitesHelper
      */
-    public function setSitesHelper(Sites $sitesHelper)
+    public function setSitesHelper(Sites $sitesHelper): void
     {
         $this->sitesHelper = $sitesHelper;
     }
@@ -227,7 +222,7 @@ class SolrfalQueueGetCommand extends AbstractSolrfalCommand
      * @param Item $item
      * @return string
      */
-    protected function getStateMessage($item):string
+    protected function getStateMessage($item): string
     {
         $state = $item->getState();
         $stateMessage = '';
@@ -245,18 +240,18 @@ class SolrfalQueueGetCommand extends AbstractSolrfalCommand
      * @param $io
      * @param Item $item
      */
-    protected function renderQueueItem($io, Item $item)
+    protected function renderQueueItem($io, Item $item): void
     {
         /** @var $item Item */
-        $io->writeln("Queue Item uid: " . $item->getUid());
-        $io->writeln("Public url: " . $item->getFile()->getPublicUrl());
-        $io->writeln("Context :" . $item->getContext()->getContextIdentifier());
-        $io->writeln("Last changed: " . date("d.m.Y - H:i:s", $item->getLastUpdate()));
-        $io->writeln("Last indexed: " . date("d.m.Y - H:i:s", $item->getLastIndexed()));
-        $io->writeln("Siteroot: " . $item->getContext()->getSite()->getRootPageId());
-        $io->writeln("Domain: " . $item->getContext()->getSite()->getDomain());
+        $io->writeln('Queue Item uid: ' . $item->getUid());
+        $io->writeln('Public url: ' . $item->getFile()->getPublicUrl());
+        $io->writeln('Context :' . $item->getContext()->getContextIdentifier());
+        $io->writeln('Last changed: ' . date('d.m.Y - H:i:s', $item->getLastUpdate()));
+        $io->writeln('Last indexed: ' . date('d.m.Y - H:i:s', $item->getLastIndexed()));
+        $io->writeln('Siteroot: ' . $item->getContext()->getSite()->getRootPageId());
+        $io->writeln('Domain: ' . $item->getContext()->getSite()->getDomain());
 
         $stateMessage = $this->getStateMessage($item);
-        $io->writeln("State: " . $stateMessage);
+        $io->writeln('State: ' . $stateMessage);
     }
 }

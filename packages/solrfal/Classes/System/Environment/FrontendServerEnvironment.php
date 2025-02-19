@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 /**
  * This file is part of the TYPO3 CMS project.
  *
@@ -27,25 +28,28 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class FrontendServerEnvironment implements SingletonInterface
 {
-
     /**
-     * @var array
+     * Contains copy/backup of $_SERVER variable.
+     *
+     * @var array<string, mixed>
      */
-    protected $originalServerVariables = [];
+    protected array $originalServerVariables = [];
 
     /**
      * @param int $rootPageId
-     * @param null $scriptFileName
+     * @param string|null $scriptFileName
      * @param string $phpSelf
      * @param string $scriptName
+     *
      * @return bool
+     *
      * @throws SiteNotFoundException
      */
     public function initializeByRootPageId(
         int $rootPageId,
-        $scriptFileName = null,
-        $phpSelf = '/index.php',
-        $scriptName = '/index.php'
+        ?string $scriptFileName = null,
+        string $phpSelf = '/index.php',
+        string $scriptName = '/index.php'
     ): bool {
         $scriptFileName = $scriptFileName ?? Environment::getPublicPath();
         static $hosts = [];
@@ -76,7 +80,7 @@ class FrontendServerEnvironment implements SingletonInterface
         return false;
     }
 
-    public function restore()
+    public function restore(): void
     {
         $_SERVER = $this->originalServerVariables;
     }
@@ -84,15 +88,17 @@ class FrontendServerEnvironment implements SingletonInterface
     /**
      * Returns host component from configured base in site configuration.
      *
-     * @param int $pageId
-     * @param array|null $rootLine
+     * @param int $pageId PID to use
+     * @param array<string, mixed>|null $rootLine
      * @param string|null $mountPointParameter
+     *
      * @return string
+     *
      * @throws SiteNotFoundException
      */
     protected function getHostByPageId(int $pageId, array $rootLine = null, string $mountPointParameter = null): string
     {
-        /* @var SiteFinder $siteFinder */
+        /** @var SiteFinder $siteFinder */
         $siteFinder = GeneralUtility::makeInstance(SiteFinder::class);
         $site = $siteFinder->getSiteByPageId($pageId, $rootLine, $mountPointParameter);
         return $site->getBase()->getHost();

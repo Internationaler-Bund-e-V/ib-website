@@ -18,10 +18,9 @@ declare(strict_types=1);
 namespace ApacheSolrForTypo3\Solrconsole\Command;
 
 use ApacheSolrForTypo3\Solr\Domain\Index\IndexService;
-use ApacheSolrForTypo3\Solr\IndexQueue\Queue;
 use ApacheSolrForTypo3\Solr\Domain\Site\Site;
+use ApacheSolrForTypo3\Solr\IndexQueue\Queue;
 use ApacheSolrForTypo3\Solrconsole\Command\OptionHelper\Sites;
-use Doctrine\DBAL\Driver\Exception as DBALDriverException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -36,22 +35,22 @@ class SolrQueueIndexCommand extends AbstractSolrCommand
     /**
      * @var Sites
      */
-    protected $sitesHelper;
+    protected Sites $sitesHelper;
 
     /**
      * @var Queue
      */
-    protected $indexQueue;
+    protected Queue $indexQueue;
 
     /**
-     * @var array
+     * @var Site[]
      */
-    private $sites;
+    private array $sites;
 
     /**
      * @var int
      */
-    private $amount;
+    private int $amount;
 
     /**
      * Configure the command by defining the name, options and arguments
@@ -70,7 +69,7 @@ class SolrQueueIndexCommand extends AbstractSolrCommand
      * @param OutputInterface $output
      * @return bool
      */
-    protected function loadOptions(SymfonyStyle $io, InputInterface $input, OutputInterface $output)
+    protected function loadOptions(SymfonyStyle $io, InputInterface $input, OutputInterface $output): bool
     {
         $this->sites = $this->getSitesHelper()->run($io, $input, $output);
 
@@ -86,30 +85,29 @@ class SolrQueueIndexCommand extends AbstractSolrCommand
      * @param InputInterface $input
      * @param OutputInterface $output
      *
-     * @return integer
+     * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $io->title($this->getDescription());
 
         $confirmed = $this->loadOptions($io, $input, $output);
-        if(!$confirmed) {
+        if (!$confirmed) {
             $io->write('Skipped');
             $io->newLine(1);
-            return 1;
+            return self::FAILURE;
         }
 
-        foreach($this->sites as $site) {
-            /** @var $site Site */
-            /** @var $indexService \ApacheSolrForTypo3\Solr\Domain\Index\IndexService */
+        foreach ($this->sites as $site) {
+            /** @var IndexService $indexService */
             $indexService = GeneralUtility::makeInstance(IndexService::class, $site);
             $indexWithoutErrors = $indexService->indexItems($this->amount);
-            $state = $indexWithoutErrors ?  '<fg=green>Ok</>' :  '<fg=red>Errored</>';
-            $io->writeln('Indexed ' . $this->amount . ' items for site ' . $site->getDomain(). ': ' . $state);
+            $state = $indexWithoutErrors ? '<fg=green>Ok</>' : '<fg=red>Errored</>';
+            $io->writeln('Indexed ' . $this->amount . ' items for site ' . $site->getDomain() . ': ' . $state);
         }
 
-        return 0;
+        return self::SUCCESS;
     }
 
     /**
@@ -124,7 +122,7 @@ class SolrQueueIndexCommand extends AbstractSolrCommand
     /**
      * @param Sites $sitesHelper
      */
-    public function setSitesHelper(Sites $sitesHelper)
+    public function setSitesHelper(Sites $sitesHelper): void
     {
         $this->sitesHelper = $sitesHelper;
     }
@@ -141,7 +139,7 @@ class SolrQueueIndexCommand extends AbstractSolrCommand
     /**
      * @param Queue $indexQueue
      */
-    public function setIndexQueue(Queue $indexQueue)
+    public function setIndexQueue(Queue $indexQueue): void
     {
         $this->indexQueue = $indexQueue;
     }

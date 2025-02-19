@@ -1,0 +1,66 @@
+# -----------------------------------------------------------------------------
+# PORTAL IB CAMPUS
+# -----------------------------------------------------------------------------
+[site("identifier") == "ib-campus.de"]
+    host = ib-campus.de
+    portalSettings {
+        pageTitle = IB Campus Mannheim
+        firstMenuTitle = IB Campus Mannheim
+
+        #defaultGetVars.L = 0
+
+        root_id = 1316
+        mainnav_start_id = 1328
+        services_menu_start_id =
+
+        misc.sitemapStartId = 1316
+        misc.searchResultId = 1326
+        misc.showOnlyTYPO3SearchResults = 1
+
+        tt_news.single_pid = 1323
+        tt_news.list_view_pid =
+
+        ib_content.dbNavigationId = 1
+
+        analytics {
+            account_id =
+            enable_tracking = 1
+        }
+
+        main_bubble {
+            id =
+            hide = 1
+        }
+
+        social.ib_english_page_link =
+        social.ib_german_page_link =
+        social.facebook =
+        #social.linkedin =
+        #social.youtube =
+        social.twitter =
+        social.xing =
+        social.kununu =
+
+        social.facebook.titletag = Facebook
+        social.youtube.titletag = YouTube
+        social.linkedin.titletag = LinkedIn
+    }
+
+    #social.headline =
+    social.headline =
+    social.facebook =
+    #social.linkedin =
+    #social.youtube =
+    social.twitter =
+    social.xing =
+    social.kununu =
+    social.facebook.titletag = Facebook
+    social.youtube.titletag = YouTube
+    social.linkedin.titletag = LinkedIn
+
+    const_navigation {
+        footernav_central_folder_id = 3
+        footernav_misc_folder_id = 15
+        footernav_meta_folder_id = 1317
+    }
+[end]

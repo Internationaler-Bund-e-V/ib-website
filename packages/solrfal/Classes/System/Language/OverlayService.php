@@ -17,64 +17,64 @@ declare(strict_types=1);
 
 namespace ApacheSolrForTypo3\Solrfal\System\Language;
 
-use stdClass;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
 use TYPO3\CMS\Core\Context\Context;
-use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * This class encapsulates the access to the extension configuration.
- *
- * @author Timo Hund <timo.hund@dkd.de>
+ * This class is responsible for fetching the overlay/translation records for desired language.
  */
-class OverlayService
+class OverlayService implements LoggerAwareInterface
 {
-    /**
-     * @var PageRepository
-     */
-    protected $pageRepository;
+    use LoggerAwareTrait;
+
+    public function __construct(
+        private readonly Context $coreContext
+    ) {}
 
     /**
-     * @return PageRepository
+     * @var PageRepository[]
      */
-    protected function getInitializedPageRepository(): PageRepository
-    {
-        if ($this->pageRepository !== null) {
-            return $this->pageRepository;
-        }
-
-        /* @var PageRepository $page */ // @todo: Check proper instantiation
-        $this->pageRepository = GeneralUtility::makeInstance(PageRepository::class);
-        return $this->pageRepository;
-    }
+    protected array $pageRepositories = [];
 
     /**
      * Returns an overlaid version of a record.
      *
-     * @param string $tableName
-     * @param array $record
+     * @param string $tableName The table name to extract file references from.
+     * @param array{uid: int, pid: int} $record
      * @param int $languageUid
-     * @param string $overlayMode
-     * @return mixed
-     * @throws AspectNotFoundException
-     * @todo: TYPO3 11.5
+     *
+     * @return array{uid: int, pid: int}|null The translation if found
      */
-    public function getRecordOverlay(string $tableName, array $record, int $languageUid, string $overlayMode = '')
-    {
-        /**
-         * @todo This is required for the frontend restriction container,
-         * when used in the backend for TYPO3 9 the overlaying should be done with an own method
-         *
-         * @todo: Since EXT:solr 11.5 the $GLOBALS['TSFE'] MUST NOT be used anymore
-         */
-        if (!isset($GLOBALS['TSFE'])) {
-            $GLOBALS['TSFE'] = new stdClass();
-        }
-        if (null === GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('frontend.user', 'groupIds')) {
-            $GLOBALS['TSFE']->gr_list = '';
+    public function getRecordOverlay(
+        string $tableName,
+        array $record,
+        int $languageUid,
+    ): ?array {
+        /** @var array{uid: int, pid: int}|null $overlay */
+        $overlay = $this->getInitializedPageRepository((int)($record['pid'] ?? 0), $languageUid)
+            ->getLanguageOverlay(
+                $tableName,
+                $record
+            );
+
+        return $overlay;
+    }
+
+    protected function getInitializedPageRepository(
+        int $pageUid,
+        int $languageUid,
+    ): ?PageRepository {
+        $pageRepositoryIdentifier = 'pageUid:' . $pageUid . '|' . $languageUid;
+        if (array_key_exists($pageRepositoryIdentifier, $this->pageRepositories)) {
+            return $this->pageRepositories[$pageRepositoryIdentifier];
         }
 
-        return $this->getInitializedPageRepository()->getRecordOverlay($tableName, $record, (int)$languageUid, $overlayMode);
+        return $this->pageRepositories[$pageRepositoryIdentifier] = GeneralUtility::makeInstance(
+            PageRepository::class,
+            $this->coreContext
+        );
     }
 }

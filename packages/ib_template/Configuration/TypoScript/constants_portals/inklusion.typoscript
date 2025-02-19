@@ -1,0 +1,63 @@
+# -----------------------------------------------------------------------------
+# PORTAL IB INKLUSION
+# -----------------------------------------------------------------------------
+[site("identifier") == "inklusion_ib_de"]
+    host = inklusion.ib.de
+    portalSettings {
+        pageTitle = IB Inklusion
+        firstMenuTitle = IB Inklusion
+        root_id = 137
+        misc.sitemapStartId = 137
+        mainnav_start_id = 140
+        misc.searchResultId = 139
+        tt_news.pid_list = 953
+        tt_news.single_pid = 138
+        ib_content.dbNavigationId = 1
+        misc.showOnlyTYPO3SearchResults = 1
+
+        readspeaker.show = 1
+
+        //data privacy site ID
+           dataPrivacySiteID = 2436
+
+        //generate news sitemap     
+        NewsSitemap.generate = 1
+        NewsSitemap.NewsFolderPid = 953
+        NewsSitemap.NewsDetailPid = 138
+
+        analytics {
+            #account_id =
+            #enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 5
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = BCx5lE8v
+        }
+
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+
+        main_bubble {
+            id = 835
+            text = Kontakt<br>+<br>Support
+            title_text = Kontakt und Support
+            link_target = _self
+        }
+        #threecolumn footer layout
+        footer.use_three_columns = 1
+        footer.show_textcontent_left = 1
+        footer.show_textcontent_middle = 1
+        footer.show_textcontent_right = 1
+        footer.tt_content_uid_left = 18567
+        footer.tt_content_uid_middle = 18566
+        footer.tt_content_uid_right = 18565
+    }
+
+    const_navigation {
+        footernav_central_folder_id = 3
+        footernav_misc_folder_id = 15
+        footernav_meta_folder_id = 833
+    }
+[end]

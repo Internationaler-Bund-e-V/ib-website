@@ -19,12 +19,10 @@
               id="{v:format.eliminate(content:collapsible.ItemWrap.title, whitespace:1)}">
               <h2 class="ib-headline">{collapsible.ItemWrap.title}</h2>
               <f:if condition="{collapsible.ItemWrap.accordionImage}">
-                <v:condition.string.isNumeric value="{collapsible.ItemWrap.accordionImage}">
-                  <f:then>
+                <f:then>
                     <f:image src="{collapsible.ItemWrap.accordionImage}" alt="{collapsible.ItemWrap.title}"
                       class="responsive show-for-medium" title="{collapsible.ItemWrap.title}" />
-                  </f:then>
-                </v:condition.string.isNumeric>
+                </f:then>
               </f:if>
             </div>
             <div class="row ib-collapsible-content" id="ib-collapsible-content-{uid}{iterator.cycle}">
@@ -65,7 +63,7 @@
       </f:if>
     </f:for>
   </div>
-  <!-- js see typo3conf/ext/ib_template/Resources/Public/js/src/foundation-accordion.js -->
+  <!-- js see EXT:ib_template/Resources/Public/js/src/foundation-accordion.js -->
   <!-- include bubbleSlider.js as footer asset -->
 
 </f:section>

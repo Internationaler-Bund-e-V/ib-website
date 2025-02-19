@@ -1,0 +1,127 @@
+# -----------------------------------------------------------------------------
+# PORTAL IB Mitte
+# -----------------------------------------------------------------------------
+[site("identifier") == "ib_mitte_de"]
+    host = mitte.ib.de
+    portalSettings {
+        pageTitle = IB Mitte
+
+        #oberster Knoten / Home-Seite
+        root_id = 1026
+
+        #Navigation / Mainnavigation
+        mainnav_start_id = 1038
+
+        #data privacy site ID
+        dataPrivacySiteID = 1031
+
+        #Start-ID für Sitemap / zB. Mainnavigation
+        misc.sitemapStartId = 1038
+
+        #Präfix Titel
+        firstMenuTitle = IB Mitte
+
+        #News Details - Seite
+        tt_news.single_pid = 1033
+
+        #Konfiguration Suchmaske / Standorte+Angebote ausblenden = 1
+        misc.showOnlyTYPO3SearchResults = 0
+
+        #Suche - Ergebnisseite
+        misc.searchResultId = 1036
+
+        #Seiten ID für Karte+Listendarstellung der Standorte
+        misc.mapViewPid = 1043
+        misc.gridViewPid = 1044
+
+        #ID Standort(detail)seite
+        misc.locationSingleViewId = 1034
+        ib_content.dbCategoryLocationPage = 1034
+
+        #ID Angebots(detail)seite
+        misc.productSingleViewId = 1035
+
+        #ID der Navigation aus IB-Redaktionssystem
+        ib_content.dbNavigationId = 9
+
+        #Individuelles Image für Standortkarte in Navigation, kann optional gesetzt werden
+        #misc.mapViewImg = fileadmin/user_upload/navigation/xxx.jpg
+
+        readspeaker.show = 1
+
+        services_menu_start_id = 1237
+
+         //generate news sitemap     
+        NewsSitemap.generate = 0
+        NewsSitemap.NewsFolderPid =
+        NewsSitemap.NewsDetailPid = 
+        //generate location sitemap
+        LocationSitemap.generate = 1
+        LocationSitemap.NavigationID = 9
+        LocationSitemap.DetailPid = 1034
+
+        #Google Analytics ID
+        analytics {
+            #account_id = UA-42876528-21
+            #enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 7
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = tGk58VYu
+        }
+
+
+        cookiebot {
+          enabled = 1
+          cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+
+
+        #Text und Verlinkung des Bubbles im Header
+        main_bubble {
+            text = Kontakt
+
+
+            id = 1029
+            title_text = Kontaktieren Sie uns hier bei Fragen, Wünschen und Anregungen
+        }
+
+        #Möglichkeit, optional Social Media Iconbar zu überschreiben
+        #social.facebook = https://facebook.com/xxx
+        #social.facebook.titletag = Offizielle Facebook-Seite der IB Süd
+        #social.youtube = https://www.youtube.com/user/xxx
+        #social.youtube.titletag = Offizieller YouTube-Kanal der IB Süd
+
+        #threecolumn footer layout
+        footer.use_three_columns = 1
+        footer.show_textcontent_left = 1
+        footer.show_textcontent_middle = 1
+        footer.show_textcontent_right = 1
+        footer.tt_content_uid_left = 18570
+        footer.tt_content_uid_middle = 18569
+        footer.tt_content_uid_right = 18568
+    }
+
+    #Möglichkeit, optional Social Media Footer Links zu überschreiben
+    #social.headline = Social Media Kanäle der IB Süd
+    #social.facebook = https://facebook.com/ib.suedwest
+    #social.facebook.titletag = Offizielle Facebook-Seite der IB Süd
+    #social.youtube = https://www.youtube.com/user/Behindertenhilfe
+    #social.youtube.titletag = Offizieller YouTube-Kanal der IB Süd
+
+    # ibjobs redirects
+    plugin.tx_ibjobs_iblogajobs.settings.useCustomRedirect = 1
+    plugin.tx_ibjobs_iblogajobs.settings.customRedirectPageID = 4044
+
+
+    const_navigation {
+        #Ordner ID zentraler Footer, zentrale Websites
+        footernav_central_folder_id = 3
+
+        #Ordner ID weiterführende Links
+        footernav_misc_folder_id = 15
+
+        #Meta Ordner ID (Impress, AGB, etc)
+        footernav_meta_folder_id = 1027
+    }
+[end]

@@ -1,0 +1,75 @@
+# -----------------------------------------------------------------------------
+# PORTAL https://www.jugendtreff-kirchheim.de/
+# -----------------------------------------------------------------------------
+[site("identifier") == "jugendtreff_kirchheim"]
+    host = jugendtreff-kirchheim.de
+    portalSettings {
+        pageTitle = Jugendtreff Kirchheim
+        firstMenuTitle =
+        root_id = 4501
+        misc.sitemapStartId = 4501
+        mainnav_start_id = 4515
+        misc.searchResultId = 4514
+        misc.showOnlyTYPO3SearchResults = 1
+        readspeaker.show = 1
+
+        #data privacy site ID
+        dataPrivacySiteID = 4510
+
+        //generate news sitemap     
+        NewsSitemap.generate = 1
+        NewsSitemap.NewsFolderPid = 4520
+        NewsSitemap.NewsDetailPid = 4511
+
+        analytics {
+            #account_id =
+            #enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 45
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = LKZsD8aA
+        }
+
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+
+        main_bubble {
+            text = Kontakt<br><br>
+            id = 4508
+            title_text = Kontaktieren Sie uns hier bei Fragen, Wünschen und Anregungen
+        }
+
+        footer_hide_social_links = 0
+        footer.hide_central_links = 1
+        footer.hide_further_links = 1
+
+        social.ib_english_page_link =
+        social.facebook = https://www.facebook.com/IB-Jugendtreff-Kirchheim-2125850977542690
+        social.facebook.titletag = Offizielle Facebook-Seite des Jugendtreff Kirchheim
+        social.youtube =
+        social.instagram = https://www.instagram.com/ib.jugendtreffkirchheim/?hl=de
+        social.linkedin =
+        social.twitter =
+        social.xing =
+        social.kununu =
+    }
+
+    social.facebook = https://www.facebook.com/IB-Jugendtreff-Kirchheim-2125850977542690
+    social.facebook.titletag = Offizielle Facebook-Seite des Jugendtreff Kirchheim
+    social.youtube =
+    social.instagram = https://www.instagram.com/ib.jugendtreffkirchheim/?hl=de
+    social.linkedin =
+    social.twitter =
+    social.xing =
+    social.kununu =
+
+    gallery.folder.pid = 4521
+
+    const_navigation {
+        footernav_central_folder_id = 4504
+        footernav_misc_folder_id = 4502
+        footernav_meta_folder_id = 4506
+    }
+[end]

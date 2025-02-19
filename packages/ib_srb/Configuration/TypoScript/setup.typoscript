@@ -86,7 +86,7 @@ page.10 {
 
 #include IB Main Template Files
 page.includeJS {
-    jquery = typo3conf/ext/ib_template/Resources/Public/js/min/jquery.min.js
+    jquery = EXT:ib_template/Resources/Public/js/min/jquery.min.js
 }
 
 page.includeJSFooter {

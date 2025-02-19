@@ -1,0 +1,43 @@
+# -----------------------------------------------------------------------------
+# PORTAL KGS Stella
+# -----------------------------------------------------------------------------
+[site("identifier") == "ib_stella_de"]
+    host = ib-stella.de
+    portalSettings {
+        pageTitle = KGS Stella
+        root_id = 1685
+        misc.sitemapStartId = 1685
+        mainnav_start_id = 1697
+        misc.searchResultId = 1695
+        tt_news.single_pid = 1692
+        misc.showOnlyTYPO3SearchResults = 1
+        readspeaker.show = 1
+
+        #data privacy site ID
+        dataPrivacySiteID = 1690
+
+        analytics {
+            account_id = 
+            enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 22
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = fd6VkJoF
+        }
+    
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+    
+        main_bubble {
+            hide = 1			
+        }
+        social.ib_english_page_link = 
+    }
+    const_navigation {
+        footernav_central_folder_id = 2489
+        footernav_misc_folder_id = 2491
+        footernav_meta_folder_id = 1686
+    }
+[end]

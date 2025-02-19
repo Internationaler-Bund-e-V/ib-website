@@ -1,0 +1,75 @@
+# -----------------------------------------------------------------------------
+# PORTAL https://ib-juze-wiesloch.rmsdev.de/
+# -----------------------------------------------------------------------------
+[site("identifier") == "juze_wiesloch"]
+    host = ib-jugendzentren-wiesloch.de
+    portalSettings {
+        pageTitle = JuZe Wiesloch
+        firstMenuTitle =
+        root_id = 4588
+        misc.sitemapStartId = 4588
+        mainnav_start_id = 4604
+        misc.searchResultId = 4602
+        misc.showOnlyTYPO3SearchResults = 1
+        readspeaker.show = 1
+
+        #data privacy site ID
+        dataPrivacySiteID = 4598
+
+        //generate news sitemap     
+        NewsSitemap.generate = 1
+        NewsSitemap.NewsFolderPid = 4609
+        NewsSitemap.NewsDetailPid = 4599
+
+        analytics {
+            #account_id =
+            #enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 46
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = FXSYjwgl
+        }
+        
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+
+        main_bubble {
+            text = Kontakt<br><br>
+            id = 4596
+            title_text = Kontaktieren Sie uns hier bei Fragen, Wünschen und Anregungen
+        }
+
+        footer_hide_social_links = 0
+        footer.hide_central_links = 1
+        footer.hide_further_links = 1
+
+        social.ib_english_page_link =
+        social.facebook = https://www.facebook.com/JuZWiesloch
+        social.facebook.titletag = 
+        social.youtube =
+        social.instagram =https://www.instagram.com/ib_jugendzentrum_wiesloch/?hl=de
+        social.linkedin =
+        social.twitter =
+        social.xing =
+        social.kununu =
+    }
+
+    social.facebook = https://www.facebook.com/JuZWiesloch
+    social.facebook.titletag = 
+    social.youtube =
+    social.instagram =https://www.instagram.com/ib_jugendzentrum_wiesloch/?hl=de
+    social.linkedin =
+    social.twitter =
+    social.xing =
+    social.kununu =
+
+    gallery.folder.pid = 4610
+
+    const_navigation {
+        footernav_central_folder_id = 4591
+        footernav_misc_folder_id = 4589
+        footernav_meta_folder_id = 4593
+    }
+[end]

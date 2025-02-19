@@ -12,7 +12,7 @@
 	<div class="row ib-content-module ib-mediaelement ib-background-{settings.bgColor}">
 		<div class="columns {f:if(condition: '{settings.layout}=="2col"',then: 'small-12 medium-offset-1 medium-10 large-6-2col large-offset-1-2col',else: 'medium-offset-1 medium-10 small-12')} end">
 			<f:if condition="{settings.headline}"><h2 class="ib-headline">{settings.headline}</h2></f:if>
-			
+
 			<!-- variante 1: bild mit optionaler caption -->
 			<f:if condition="{settings.type} == 'image'">
 				<f:render section="image" arguments="{_all}" />
@@ -49,15 +49,14 @@
 </f:section>
 
 <f:section name="video">
-
 	<figure>
 	  <video poster="{settings.videoPoster}" width="100%" height="720" controls="controls" >
-	    <source src="{rms:getSysFilePath(uid:settings.videoMP4)}" type="video/mp4">
+	    <source src="{rms:t3FilePath(src: settings.videoMP4)}" type="video/mp4">
 	    <f:if condition="{video.videoWEBM}">
-	    	<source src="{rms:getSysFilePath(uid:settings.videoWEBM)} type="video/webm">
+	    	<source src="{rms:t3FilePath(src: settings.videoWEBM)} type="video/webm">
 	    </f:if>
 	    <f:if condition="{video.videoOGG}">
-	    	<source src="{rms:getSysFilePath(uid:settings.videoOGG)}" type="video/ogg">
+	    	<source src="{rms:t3FilePath(src: settings.videoOGG)}" type="video/ogg">
 	    </f:if>
 	  </video>
 	  <f:if condition="{settings.caption}"><figcaption><f:format.html>{settings.caption}</f:format.html></figcaption></f:if>
@@ -77,7 +76,7 @@
           <f:else>
             <div class="video-responsive">
               <iframe width="100%" height="400" frameborder="0"
-                src="//www.youtube-nocookie.com/embed/{settings.youtube}?autoplay=0&showinfo=0&controls=1&frameborder='0'" 
+                src="//www.youtube-nocookie.com/embed/{settings.youtube}?autoplay=0&showinfo=0&controls=1&frameborder='0'"
                 allowfullscreen></iframe>
             </div>
           </f:else>

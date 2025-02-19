@@ -19,6 +19,7 @@ namespace ApacheSolrForTypo3\Solrfal\Domain\Repository;
 
 use ApacheSolrForTypo3\Solr\System\Records\AbstractRepository;
 use ApacheSolrForTypo3\Solrfal\Domain\Model\ReferenceIndexEntry;
+use Doctrine\DBAL\Exception as DBALException;
 use PDO;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -27,54 +28,46 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Reference index entry repository
- *
- * @author Markus Friedrich <markus.friedrich@dkd.de>
  */
 class ReferenceIndexEntryRepository extends AbstractRepository
 {
-
-    /**
-     * @var string
-     */
     protected string $table = 'sys_refindex';
 
     /**
      * Database connection
-     *
-     * @var Connection
      */
-    protected $databaseConnection;
+    protected Connection $databaseConnection;
 
     /**
      * Class constructor
      */
-    public function __construct()
+    public function __construct(?Connection $databaseConnection = null)
     {
-        $this->databaseConnection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable($this->table);
+        $this->databaseConnection = $databaseConnection ?? GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getConnectionForTable($this->table);
     }
 
     /**
      * Returns reference index entry
      *
-     * @param array $referenceData
-     *
-     * @return ReferenceIndexEntry
+     * @param array<string, string|int|bool|null>|list<array<string,mixed>> $referenceData The sys_file_reference record to use for instantiation of ReferenceIndexEntry
      */
     protected function getReferenceIndexEntry(array $referenceData): ReferenceIndexEntry
     {
-        /* @noinspection PhpIncompatibleReturnTypeInspection */
         return GeneralUtility::makeInstance(ReferenceIndexEntry::class, $referenceData);
     }
 
     /**
      * Find by reference record
      *
-     * @param string $referenceTable
-     * @param int $referenceUid
-     * @param array $excludeTables
-     * @param array $limitToTables
+     * @param string $referenceTable The table name of reference
+     * @param int $referenceUid The UID of sys_file_reference
+     * @param string[] $excludeTables The list of table names to exclude
+     * @param string[] $limitToTables The list of table names to search for
      *
      * @return ReferenceIndexEntry[]
+     *
+     * @throws DBALException
      */
     public function findByReferenceRecord(
         string $referenceTable,
@@ -82,13 +75,15 @@ class ReferenceIndexEntryRepository extends AbstractRepository
         array $excludeTables = [],
         array $limitToTables = []
     ): array {
-        $queryBuilder = $queryBuilder = $this->gedQueryBuilderWithExcludedTablesRestrictions(...$excludeTables);
+        $queryBuilder = $this->gedQueryBuilderWithExcludedTablesRestrictions(...$excludeTables);
         if (!empty($limitToTables)) {
             $queryBuilder->andWhere($queryBuilder->expr()->in('tablename', array_map([$this, 'quoteString'], $limitToTables)));
         }
 
         $this->restrictByRefTableAndRefUid($referenceTable, $referenceUid, $queryBuilder);
-        $referencesData = $queryBuilder->execute()->fetchAll();
+        $referencesData = $queryBuilder
+            ->executeQuery()
+            ->fetchAllAssociative();
 
         $referenceIndexEntries = [];
         foreach ($referencesData as $referenceData) {
@@ -101,16 +96,21 @@ class ReferenceIndexEntryRepository extends AbstractRepository
     /**
      * Find reference by reference index entry
      *
-     * @param ReferenceIndexEntry $referenceIndexEntry
-     * @param array $excludeTables
+     * @param ReferenceIndexEntry $referenceIndexEntry The ReferenceIndexEntry object to use
+     * @param string[] $excludeTables The list of tables to exclude from search
      *
      * @return ReferenceIndexEntry|null
+     * @throws DBALException
      */
-    public function findOneByReferenceIndexEntry(ReferenceIndexEntry $referenceIndexEntry, array $excludeTables = []): ?ReferenceIndexEntry
-    {
+    public function findOneByReferenceIndexEntry(
+        ReferenceIndexEntry $referenceIndexEntry,
+        array $excludeTables = []
+    ): ?ReferenceIndexEntry {
         $queryBuilder = $this->gedQueryBuilderWithExcludedTablesRestrictions(...$excludeTables);
         $this->restrictByRefTableAndRefUid($referenceIndexEntry->getTableName(), $referenceIndexEntry->getRecordUid(), $queryBuilder);
-        $referenceData = $queryBuilder->execute()->fetch();
+        $referenceData = $queryBuilder
+            ->executeQuery()
+            ->fetchAssociative();
 
         if (!empty($referenceData)) {
             return $this->getReferenceIndexEntry($referenceData);
@@ -121,9 +121,6 @@ class ReferenceIndexEntryRepository extends AbstractRepository
 
     /**
      * Instantiates QueryBuilder with excluded table names restrictions
-     *
-     * @param string ...$excludeTables
-     * @return QueryBuilder
      */
     protected function gedQueryBuilderWithExcludedTablesRestrictions(string ...$excludeTables): QueryBuilder
     {
@@ -137,13 +134,12 @@ class ReferenceIndexEntryRepository extends AbstractRepository
 
     /**
      * Adds restriction for given ref_table and ref_uid
-     *
-     * @param string $ref_table
-     * @param int $ref_uid
-     * @param QueryBuilder $queryBuilder
      */
-    protected function restrictByRefTableAndRefUid(string $ref_table, int $ref_uid, QueryBuilder $queryBuilder)
-    {
+    protected function restrictByRefTableAndRefUid(
+        string $ref_table,
+        int $ref_uid,
+        QueryBuilder $queryBuilder,
+    ): void {
         $queryBuilder->andWhere(
             $queryBuilder->expr()->eq('ref_table', $queryBuilder->createNamedParameter($ref_table)),
             $queryBuilder->expr()->eq('ref_uid', $queryBuilder->createNamedParameter($ref_uid, PDO::PARAM_INT))
@@ -153,9 +149,6 @@ class ReferenceIndexEntryRepository extends AbstractRepository
     /**
      * Quotes $stringValue as \PDO::PARAM_STR
      * Usable fir IN() expressions
-     *
-     * @param string $stringValue
-     * @return string
      */
     protected function quoteString(string $stringValue): string
     {

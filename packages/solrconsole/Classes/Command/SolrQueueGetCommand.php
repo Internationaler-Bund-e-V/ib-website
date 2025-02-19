@@ -24,7 +24,6 @@ use ApacheSolrForTypo3\Solrconsole\Command\OptionHelper\ItemTypes;
 use ApacheSolrForTypo3\Solrconsole\Command\OptionHelper\ItemUids;
 use ApacheSolrForTypo3\Solrconsole\Command\OptionHelper\Sites;
 use ApacheSolrForTypo3\Solrconsole\Command\OptionHelper\Uids;
-use Doctrine\DBAL\Driver\Exception as DBALDriverException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -39,52 +38,52 @@ class SolrQueueGetCommand extends AbstractSolrCommand
     /**
      * @var Sites
      */
-    protected $sitesHelper;
+    protected Sites $sitesHelper;
 
     /**
      * @var Configurations
      */
-    protected $configurationsHelper;
+    protected Configurations $configurationsHelper;
 
     /**
      * @var QueueItemRepository
      */
-    protected $queueItemRepository;
+    protected QueueItemRepository $queueItemRepository;
 
     /**
      * @var array
      */
-    private $sites;
+    private array $sites;
 
     /**
      * @var array
      */
-    private $configurations;
+    private array $configurations;
 
     /**
      * @var array
      */
-    private $types;
+    private array $types;
 
     /**
      * @var array
      */
-    private $itemUids;
+    private array $itemUids;
 
     /**
      * @var array
      */
-    private $uids;
+    private array $uids;
 
     /**
      * @var int
      */
-    private $page;
+    private int $page;
 
     /**
      * @var int
      */
-    private $perPage;
+    private int $perPage;
 
     /**
      * Configure the command by defining the name, options and arguments
@@ -108,23 +107,23 @@ class SolrQueueGetCommand extends AbstractSolrCommand
      * @param OutputInterface $output
      * @return bool
      */
-    protected function loadOptions(SymfonyStyle $io, InputInterface $input, OutputInterface $output)
+    protected function loadOptions(SymfonyStyle $io, InputInterface $input, OutputInterface $output): bool
     {
         $this->sites = $this->getSitesHelper()->run($io, $input, $output);
 
-        /** @var $configurationHelper Configurations */
+        /** @var Configurations $configurationHelper */
         $configurationHelper = GeneralUtility::makeInstance(Configurations::class);
         $this->configurations = $configurationHelper->run($io, $input);
 
-        /** @var $typesHelper ItemTypes */
+        /** @var ItemTypes $typesHelper */
         $typesHelper = GeneralUtility::makeInstance(ItemTypes::class);
         $this->types = $typesHelper->run($io, $input);
 
-        /** @var $itemUidsHelper ItemUids */
+        /** @var ItemUids $itemUidsHelper */
         $itemUidsHelper = GeneralUtility::makeInstance(ItemUids::class);
         $this->itemUids = $itemUidsHelper->run($io, $input);
 
-        /** @var $uidsHelper Uids */
+        /** @var Uids $uidsHelper */
         $uidsHelper = GeneralUtility::makeInstance(Uids::class);
         $this->uids = $uidsHelper->run($io, $input);
 
@@ -146,18 +145,18 @@ class SolrQueueGetCommand extends AbstractSolrCommand
      * @param OutputInterface $output
      * @throws \Exception
      *
-     * @return integer
+     * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $io->title($this->getDescription());
         $confirmed = $this->loadOptions($io, $input, $output);
 
-        if(!$confirmed) {
+        if (!$confirmed) {
             $io->write('Skipped');
             $io->newLine(1);
-            return 1;
+            return self::FAILURE;
         }
 
         $start = ($this->page - 1) * $this->perPage;
@@ -173,7 +172,7 @@ class SolrQueueGetCommand extends AbstractSolrCommand
         $io->write('<fg=green>Done</>');
         $io->newLine(1);
 
-        return 0;
+        return self::SUCCESS;
     }
 
     /**
@@ -206,7 +205,7 @@ class SolrQueueGetCommand extends AbstractSolrCommand
     /**
      * @param Sites $sitesHelper
      */
-    public function setSitesHelper(Sites $sitesHelper)
+    public function setSitesHelper(Sites $sitesHelper): void
     {
         $this->sitesHelper = $sitesHelper;
     }
@@ -215,7 +214,7 @@ class SolrQueueGetCommand extends AbstractSolrCommand
      * @param Item $item
      * @return string
      */
-    protected function getStateMessage($item):string
+    protected function getStateMessage($item): string
     {
         $state = $item->getState();
         $stateMessage = '';
@@ -233,20 +232,20 @@ class SolrQueueGetCommand extends AbstractSolrCommand
      * @param $io
      * @param $item
      */
-    protected function renderQueueItem($io, $item)
+    protected function renderQueueItem($io, $item): void
     {
         /** @var $item Item */
-        $io->writeln("Queue Item uid: " . $item->getIndexQueueUid());
-        $io->writeln("Item type: " . $item->getType());
-        $io->writeln("Item uid: " . $item->getRecordUid());
-        $io->writeln("Index Configuration: " . $item->getIndexingConfigurationName());
-        $io->writeln("Last changed: " . date("d.m.Y - H:i:s", $item->getChanged()));
-        $io->writeln("Last indexed: " . date("d.m.Y - H:i:s", $item->getIndexed()));
-        $io->writeln("Siteroot: " . $item->getSite()->getRootPageId());
-        $io->writeln("Domain: " . $item->getSite()->getDomain());
-        $io->writeln("Indexing properties: " . json_encode($item->getIndexingProperties()));
+        $io->writeln('Queue Item uid: ' . $item->getIndexQueueUid());
+        $io->writeln('Item type: ' . $item->getType());
+        $io->writeln('Item uid: ' . $item->getRecordUid());
+        $io->writeln('Index Configuration: ' . $item->getIndexingConfigurationName());
+        $io->writeln('Last changed: ' . date('d.m.Y - H:i:s', $item->getChanged()));
+        $io->writeln('Last indexed: ' . date('d.m.Y - H:i:s', $item->getIndexed()));
+        $io->writeln('Siteroot: ' . $item->getSite()->getRootPageId());
+        $io->writeln('Domain: ' . $item->getSite()->getDomain());
+        $io->writeln('Indexing properties: ' . json_encode($item->getIndexingProperties()));
 
         $stateMessage = $this->getStateMessage($item);
-        $io->writeln("State: " . $stateMessage);
+        $io->writeln('State: ' . $stateMessage);
     }
 }

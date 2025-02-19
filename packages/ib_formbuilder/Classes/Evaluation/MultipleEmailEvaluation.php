@@ -46,8 +46,8 @@ class MultipleEmailEvaluation
             $this->flashMessage(
                 'Fehlerhafte Empfängeradresse(n)',
                 'Speichern nicht möglich: Fehlerhafte Empfängeradresse (n): ' .
-                    implode(' | ', $faulty_addresses),
-                AbstractMessage::ERROR
+                implode(' | ', $faulty_addresses),
+                2, // AbstractMessage::ERROR // Verwenden Sie die `int`-Konstante aus AbstractMessage
             );
             $set = true; // do not save value
         }
@@ -96,9 +96,9 @@ class MultipleEmailEvaluation
     /**
      * @param string $messageTitle
      * @param string $messageText
-     * @param int $severity
+     * @param int $severity see \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR
      */
-    protected function flashMessage(string $messageTitle, string $messageText, int $severity = AbstractMessage::ERROR): void
+    protected function flashMessage(string $messageTitle, string $messageText, int $severity = 2): void
     {
         /** @var FlashMessage $message */
         $message = GeneralUtility::makeInstance(

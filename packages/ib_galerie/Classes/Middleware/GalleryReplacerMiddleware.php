@@ -10,7 +10,8 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Rms\IbGalerie\Domain\Repository\GalerieRepository;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
-use TYPO3\CMS\Core\Database\QueryGenerator;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+//use TYPO3\CMS\Core\Database\QueryGenerator;
 use TYPO3\CMS\Core\Http\NullResponse;
 use TYPO3\CMS\Core\Http\Stream;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -33,7 +34,7 @@ class GalleryReplacerMiddleware implements MiddlewareInterface
     private int $i = 0;
 
     /** @var GalerieRepository $galerieRepository */
-    private GalerieRepository $galerieRepository;
+    protected GalerieRepository $galerieRepository;
 
     /** @var StandaloneView $template */
     private StandaloneView $template;
@@ -41,11 +42,21 @@ class GalleryReplacerMiddleware implements MiddlewareInterface
     /** @var array $extbaseFrameworkConfiguration */
     private array $extbaseFrameworkConfiguration = [];
 
-    private FrontendInterface $cache;
+    /**
+     * @var FrontendInterface
+     */
+    protected FrontendInterface $cache;
 
-    public function __construct(FrontendInterface $cache)
+    /**
+     * Constructor, Dependency Injection of GalerieRepository
+     *
+     * @param GalerieRepository $galerieRepository
+     * @param FrontendInterface $cache
+     */
+    public function __construct(FrontendInterface $cache, GalerieRepository $galerieRepository)
     {
         $this->cache = $cache;
+        $this->galerieRepository = $galerieRepository;
     }
 
     protected function getCachedValue(mixed $match): mixed
@@ -53,22 +64,17 @@ class GalleryReplacerMiddleware implements MiddlewareInterface
         $cacheIdentifier = "ib_galerie_" . md5($match[0]);
 
         // If $entry is false, it hasn't been cached. Calculate the value and store it in the cache:
-        $value = $this->cache->get($cacheIdentifier);
-        if ($value === false) {
+        //$value = $this->cache->get($cacheIdentifier);
+        //$value = null;
+        //if ($value == false || $value == null) {
             $value = $this->galerieRepository->findByCode($match[0]);
             $tags = [];
             $lifetime = "";
-
             // Save value in cache
             $this->cache->set($cacheIdentifier, $value, $tags);
-        }
+        //}
 
         return $value;
-    }
-
-    public function injectGalleryRepository(GalerieRepository $galerieRepository): void
-    {
-        $this->galerieRepository = $galerieRepository;
     }
 
     /**
@@ -128,6 +134,7 @@ class GalleryReplacerMiddleware implements MiddlewareInterface
         if (isset($this->extbaseFrameworkConfiguration['module.']['tx_ibgalerie_web_ibgalerieibgaleriebe.']['persistence.']['storagePid'])) {
             $pid = (int) $this->extbaseFrameworkConfiguration['module.']['tx_ibgalerie_web_ibgalerieibgaleriebe.']['persistence.']['storagePid'];
         }
+
         //$querySettings = $objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\Typo3QuerySettings');
 
         /** @var Typo3QuerySettings $querySettings */
@@ -138,6 +145,7 @@ class GalleryReplacerMiddleware implements MiddlewareInterface
         //$this->galerieRepository = $objectManager->get('Rms\\IbGalerie\\Domain\\Repository\\GalerieRepository');
         $this->galerieRepository->setDefaultQuerySettings($querySettings);
         //replace code with gallery
+
 
         $content = preg_replace_callback(
             '/###IBG.*###/',
@@ -179,19 +187,46 @@ class GalleryReplacerMiddleware implements MiddlewareInterface
 
         return $response->withBody($body);
     }
-
-    /**
-     * get all folder/pids recursively from
-     * module.tx_ibgalerie_web_ibgalerieibgaleriebe.persistence.storagePid = xxxx
-     */
-    private function getTreePids(int $parent = 0): array
+    public function getTreePids(int $parent = 0, bool $as_array = true): array
     {
         $depth = 999999;
-        /** @var QueryGenerator $queryGenerator */
-        $queryGenerator = GeneralUtility::makeInstance(QueryGenerator::class);
-        $childPidsString = $queryGenerator->getTreeList($parent, $depth, 0, "1"); //Will be a string like 1,2,3
-        $childPids = explode(',', $childPidsString);
+
+        $childPids = $this->getRecursivePageIds($parent, $depth);
+
+        if ($as_array) {
+            $childPids = explode(',', $childPids);
+            $childPids[] = $parent;
+        }
+
+        if (!\is_array($childPids)) {
+            $childPids = [];
+        }
 
         return $childPids;
+    }
+
+    private function getRecursivePageIds(int $parentId, int $depth): string
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable('pages');
+
+        $result = $queryBuilder
+            ->select('uid')
+            ->from('pages')
+            ->where(
+                $queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter($parentId, \PDO::PARAM_INT))
+            )
+            ->executeQuery()
+            ->fetchFirstColumn();
+
+        $pageIds = implode(',', $result);
+
+        if ($depth > 0 && !empty($result)) {
+            foreach ($result as $childId) {
+                $pageIds .= ',' . $this->getRecursivePageIds((int) $childId, $depth - 1);
+            }
+        }
+
+        return $pageIds;
     }
 }

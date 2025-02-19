@@ -1,6 +1,6 @@
 # script part: add code in the <head> section
     # to make it work on productdb pages,
-    # add into typo3/public/typo3conf/ext/ibcontent/Classes/Controller/MyContentController.php
+    # add into EXT:ibcontent/Classes/Controller/MyContentController.php
     page.headerData.9990 = TEXT
     page.headerData.9990.value (
 	<link rel="dns-prefetch" href="https://matomo.ib.de">

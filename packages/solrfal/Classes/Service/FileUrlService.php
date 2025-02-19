@@ -30,9 +30,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class FileUrlService
 {
-    /**
-     * @return self
-     */
     public static function getInstance(): self
     {
         return GeneralUtility::makeInstance(self::class);
@@ -40,10 +37,6 @@ class FileUrlService
 
     /**
      * Returns the public url for given file
-     *
-     * @param File $file
-     * @param Typo3Site $site
-     * @return string
      */
     public function getPublicUrl(
         File $file,
@@ -85,8 +78,12 @@ class FileUrlService
     /**
      * Returns the required parameters for "dumpFile"
      *
-     * @param File $file
-     * @return array
+     * @return array{
+     *     eID: string,
+     *     t: string,
+     *     f: int,
+     *     token: string,
+     * }
      */
     protected function getDumpFileParameters(File $file): array
     {

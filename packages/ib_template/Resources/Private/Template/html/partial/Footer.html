@@ -94,7 +94,6 @@
                 </f:then>
               </f:if>
               <!-- textcontent RIGHT end-->
-            </div>
 
               <!-- social links start-->
               <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.footer.hide_social_links')}">
@@ -102,7 +101,7 @@
                 <f:else>
 
                   <f:if condition="{f:cObject(typoscriptObjectPath: 'social.headline')}">
-                    <div class="row columns small-12">
+                    <div class="columns medium-12 large-2">
                       <ul class="menu simple ib-footer-social">
                         <f:if condition="{f:cObject(typoscriptObjectPath: 'social.facebook')}">
                           <li>
@@ -120,11 +119,21 @@
                             </a>
                           </li>
                         </f:if>
-                        <f:if condition="{f:cObject(typoscriptObjectPath: 'social.twitter')}">
+                        <!-- bluesky -->
+                        <f:if condition="{f:cObject(typoscriptObjectPath: 'social.bluesky')}">
                           <li>
-                            <a target="_blank" title="{f:cObject(typoscriptObjectPath: 'social.twitter.titletag')}"
-                              href="{f:cObject(typoscriptObjectPath: 'social.twitter')}">
-                              <i class="ib-icon-twitter-x-circle"></i>
+                            <a target="_blank" title="{f:cObject(typoscriptObjectPath: 'social.bluesky.titletag')}"
+                              href="{f:cObject(typoscriptObjectPath: 'social.bluesky')}">
+                              <i class="ib-icon-bluesky-circle"></i>
+                            </a>
+                          </li>
+                        </f:if>
+                        <!-- mastodon -->
+                        <f:if condition="{f:cObject(typoscriptObjectPath: 'social.mastodon')}">
+                          <li>
+                            <a target="_blank" title="{f:cObject(typoscriptObjectPath: 'social.mastodon.titletag')}"
+                              href="{f:cObject(typoscriptObjectPath: 'social.mastodon')}">
+                              <i class="ib-icon-mastodon-circle"></i>
                             </a>
                           </li>
                         </f:if>
@@ -166,8 +175,9 @@
                   </f:if>
                 </f:else>
               </f:if>
-              <!-- social links end-->
+              <!-- solical links end-->
 
+            </div>
           </f:else>
         </f:if>
 
@@ -182,7 +192,6 @@
             <img class="ib-footer-logo" src="{f:uri.resource(path: src)}" alt="Portal Logo Footer">
           </div>
         </div>
-            </div>
       </div>
     </div>
 </footer>

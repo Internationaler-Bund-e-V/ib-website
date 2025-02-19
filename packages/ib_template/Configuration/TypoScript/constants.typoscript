@@ -4,16 +4,16 @@
 
 # general constants
 #<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ib_template/Configuration/TypoScript/constants_general.ts">
-@import 'EXT:ib_template/Configuration/TypoScript/constants_general.ts'
+@import 'EXT:ib_template/Configuration/TypoScript/constants_general.typoscript'
 
 # language config
 #<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ib_template/Configuration/TypoScript/constants_path.ts">
-@import 'EXT:ib_template/Configuration/TypoScript/constants_path.ts'
+@import 'EXT:ib_template/Configuration/TypoScript/constants_path.typoscript'
 
 # language config
 #<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ib_template/Configuration/TypoScript/constants_language.ts">
-@import 'EXT:ib_template/Configuration/TypoScript/constants_language.ts'
+@import 'EXT:ib_template/Configuration/TypoScript/constants_language.typoscript'
 
 #solr
 #<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ib_template/Configuration/TypoScript/constants_solr.t3s">
-@import 'EXT:ib_template/Configuration/TypoScript/constants_solr.t3s'
+@import 'EXT:ib_template/Configuration/TypoScript/constants_solr.typoscript'

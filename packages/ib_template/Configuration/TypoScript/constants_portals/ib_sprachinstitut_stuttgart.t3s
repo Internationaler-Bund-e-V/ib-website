@@ -2,7 +2,7 @@
 # PORTAL Sprachen Reutlingen
 # -----------------------------------------------------------------------------
 
-[request.getNormalizedParams().getHttpHost() == 'ib-sprachinstitut-stuttgart.de' || request.getNormalizedParams().getHttpHost() == 'ib-sprachinstitut-stuttgart.rmsdev.de']
+[site("identifier") == "ib_sprachinstitut_stuttgart"] 
     host = ib-sprachinstitut-stuttgart
     portalSettings {
         pageTitle = IB Sprachinstitut Stuttgart

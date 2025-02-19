@@ -1,0 +1,57 @@
+# -----------------------------------------------------------------------------
+# PORTAL IB Service
+# -----------------------------------------------------------------------------
+
+[site("identifier") == "service_ib_de"]    
+    host = service.ib.de
+    portalSettings {
+        pageTitle = IB-Service
+        firstMenuTitle = IB-Service
+        root_id = 1930
+        misc.sitemapStartId = 1942
+        mainnav_start_id = 1942
+        misc.searchResultId = 1940
+        #tt_news.single_pid = 1937
+        misc.showOnlyTYPO3SearchResults = 1
+        readspeaker.show = 1
+
+        #data privacy site ID
+        dataPrivacySiteID = 1935
+
+        analytics {
+            #account_id =
+            #enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 28
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = DXcWXWgx
+        }
+
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+
+        #Text und Verlinkung des Bubbles im Header
+        main_bubble {
+            text = Jobs<br>&<br>Karriere
+            id = 1944
+            title_text = Jobs
+        }
+
+        #threecolumn footer layout
+        footer.use_three_columns = 1
+        footer.show_textcontent_left = 1
+        footer.show_textcontent_middle = 1
+        footer.show_textcontent_right = 1
+        footer.tt_content_uid_left = 18606
+        footer.tt_content_uid_middle = 18605
+        footer.tt_content_uid_right = 18604
+    }
+    const_navigation {
+        footernav_central_folder_id = 3
+        footernav_misc_folder_id = 15
+        #Meta Ordner ID (Impress, AGB, etc)
+        footernav_meta_folder_id = 1931
+    }
+[end]

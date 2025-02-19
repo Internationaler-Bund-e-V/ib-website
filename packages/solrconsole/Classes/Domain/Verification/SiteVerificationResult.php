@@ -14,18 +14,18 @@ declare(strict_types=1);
  *
  * The TYPO3 project - inspiring people to share!
  */
+
 namespace ApacheSolrForTypo3\Solrconsole\Domain\Verification;
 
 class SiteVerificationResult
 {
-    protected $globalErrors = [];
-
-    protected $configurationVerificationResults = [];
+    protected array $globalErrors = [];
+    protected array $configurationVerificationResults = [];
 
     /**
      * @param string $errorMessage
      */
-    public function addGlobalError(string $errorMessage)
+    public function addGlobalError(string $errorMessage): void
     {
         $this->globalErrors[] = $errorMessage;
     }
@@ -41,7 +41,7 @@ class SiteVerificationResult
     /**
      * @param ConfigurationVerificationResult $configurationVerificationResult
      */
-    public function addConfigurationVerificationResult(ConfigurationVerificationResult $configurationVerificationResult)
+    public function addConfigurationVerificationResult(ConfigurationVerificationResult $configurationVerificationResult): void
     {
         $this->configurationVerificationResults[] = $configurationVerificationResult;
     }

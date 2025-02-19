@@ -1,0 +1,53 @@
+# -----------------------------------------------------------------------------
+# PORTAL IB KÜCHE
+# -----------------------------------------------------------------------------
+[site("identifier") == "ib_kueche_de"]
+    host = ib-kueche.de
+    portalSettings {
+        pageTitle = IB-Küchenbetrieb
+        firstMenuTitle = IB-Küchenbetrieb
+        root_id = 1820
+        misc.sitemapStartId = 1820
+        mainnav_start_id = 1832
+        misc.searchResultId = 1830
+        tt_news.single_pid = 1827
+        misc.showOnlyTYPO3SearchResults = 1
+        readspeaker.show = 1
+
+        #data privacy site ID
+        dataPrivacySiteID = 1825
+    
+        analytics {
+            #account_id =
+            #enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 27
+            matomo_tagmanager_enabled = 1
+            matomo_containerid = s7V22bP7
+        }
+    
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+
+        main_bubble {
+            hide = 1			
+        }
+        social.ib_english_page_link = 
+
+        #threecolumn footer layout
+        footer.use_three_columns = 1
+        footer.show_textcontent_left = 1
+        footer.show_textcontent_middle = 1
+        footer.show_textcontent_right = 1
+        footer.tt_content_uid_left = 18603
+        footer.tt_content_uid_middle = 18602
+        footer.tt_content_uid_right = 18601
+    }
+    const_navigation {
+        footernav_central_folder_id = 3
+        footernav_misc_folder_id = 15
+        footernav_meta_folder_id = 1821
+    }
+[end]

@@ -1,7 +1,7 @@
 <!-- header -->
 <f:render partial="header" arguments="{_all}" />
 <!-- content -->
-<main id="ib-container" class="container-fluid">
+<main id="ib-container" class="container-fluid {f:if(condition: "{f:cObject(typoscriptObjectPath:'portalSettings.cookiebot.enabled')}!='1' ", then: 'noCookieBot')}" data-ibtemplatefolder="{f:uri.resource(path:'',extensionName:'ib_template')}">
 
   <div id="ib-partial-startpageslider">
     <f:format.raw>{header_element}</f:format.raw>

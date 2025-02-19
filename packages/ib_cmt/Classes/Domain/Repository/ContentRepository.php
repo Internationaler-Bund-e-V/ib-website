@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace IB\IbCmt\Domain\Repository;
 
 //use Doctrine\DBAL\Driver\DrizzlePDOMySql\Connection;
+use IB\IbCmt\Domain\Model\Content;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
@@ -13,6 +14,9 @@ use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
+/**
+ * @extends Repository<Content>
+ */
 class ContentRepository extends Repository
 {
     // Order by BE sorting
@@ -44,17 +48,17 @@ class ContentRepository extends Repository
     /**
      * typo3content
      *
-     * @return QueryResultInterface|object[]
+     * @return QueryResultInterface<int, Content>
      */
     public function getTypo3Content()
     {
         $query = $this->createQuery();
-        $query->matching($query->logicalAnd(
-            [
-                $query->equals('contenttype', 0),
-                $query->equals('allowed', 0),
-            ]
-        ));
+        $constraint = $query->logicalAnd(
+            $query->equals('contenttype', 0),
+            $query->equals('allowed', 0)
+        );
+
+        $query->matching($constraint);
 
         return $query->execute();
     }
@@ -62,17 +66,17 @@ class ContentRepository extends Repository
     /**
      * redaktionstool
      *
-     * @return QueryResultInterface|object[]
+     * @return QueryResultInterface<int,Content>
      */
     public function getRtContent()
     {
         $query = $this->createQuery();
-        $query->matching($query->logicalAnd(
-            [
-                $query->equals('contenttype', 1),
-                $query->equals('allowed', 0),
-            ]
-        ));
+        $constraint = $query->logicalAnd(
+            $query->equals('contenttype', 1),
+            $query->equals('allowed', 0)
+        );
+
+        $query->matching($constraint);
 
         return $query->execute();
     }
@@ -80,17 +84,17 @@ class ContentRepository extends Repository
     /**
      * news content
      *
-     * @return QueryResultInterface|object[]
+     * @return QueryResultInterface<int, Content>
      */
     public function getNewsContent()
     {
         $query = $this->createQuery();
-        $query->matching($query->logicalAnd(
-            [
-                $query->equals('contenttype', 2),
-                $query->equals('allowed', 0),
-            ]
-        ));
+        $constraint = $query->logicalAnd(
+            $query->equals('contenttype', 2),
+            $query->equals('allowed', 0)
+        );
+
+        $query->matching($constraint);
 
         return $query->execute();
     }
@@ -114,6 +118,7 @@ class ContentRepository extends Repository
     public function findByContenttype(int $contenttype): array
     {
         $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
         $query->matching($query->equals('contenttype', $contenttype));
 
         return $query->execute()->toArray();

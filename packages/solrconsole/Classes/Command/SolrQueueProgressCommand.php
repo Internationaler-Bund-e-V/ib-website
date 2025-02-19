@@ -18,8 +18,8 @@ declare(strict_types=1);
 namespace ApacheSolrForTypo3\Solrconsole\Command;
 
 use ApacheSolrForTypo3\Solr\Domain\Index\Queue\Statistic\QueueStatistic;
-use ApacheSolrForTypo3\Solr\IndexQueue\Queue;
 use ApacheSolrForTypo3\Solr\Domain\Site\Site;
+use ApacheSolrForTypo3\Solr\IndexQueue\Queue;
 use ApacheSolrForTypo3\Solrconsole\Command\OptionHelper\Sites;
 use Doctrine\DBAL\Driver\Exception as DBALDriverException;
 use Doctrine\DBAL\Exception as DBALException;
@@ -61,13 +61,13 @@ class SolrQueueProgressCommand extends AbstractSolrCommand
      * @param InputInterface $input
      * @param OutputInterface $output
      *
-     * @return integer
+     * @return int
      * @throws DBALDriverException
      * @throws DBALException
      * @throws Throwable
      * @noinspection PhpMissingReturnTypeInspection
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         if ($output->isVerbose()) {
@@ -76,7 +76,7 @@ class SolrQueueProgressCommand extends AbstractSolrCommand
         }
 
         $sites = $this->getSitesHelper()->run($io, $input, $output);
-        foreach($sites as $i => $site) {
+        foreach ($sites as $i => $site) {
             /* @var Site $site*/
             $stats = $this->getStatisticsBySite($site);
 
@@ -101,15 +101,14 @@ class SolrQueueProgressCommand extends AbstractSolrCommand
                 OutputInterface::VERBOSITY_VERBOSE
             );
 
-            if (!$output->isVerbose())
-            {
+            if (!$output->isVerbose()) {
                 $io->writeln(
                     vsprintf(
                         'Site %s (%s) <fg=red>ERRORS:%s</>',
                         [
                             $site->getRootPageId(),
                             $site->getDomain(),
-                            $stats->getFailedCount()
+                            $stats->getFailedCount(),
                         ]
                     )
                 );
@@ -128,9 +127,8 @@ class SolrQueueProgressCommand extends AbstractSolrCommand
             }
         }
 
-        return 0;
+        return self::SUCCESS;
     }
-
 
     /**
      * @return Sites
@@ -173,7 +171,7 @@ class SolrQueueProgressCommand extends AbstractSolrCommand
     /**
      * @param Queue $indexQueue
      */
-    public function setIndexQueue(Queue $indexQueue)
+    public function setIndexQueue(Queue $indexQueue): void
     {
         $this->indexQueue = $indexQueue;
     }

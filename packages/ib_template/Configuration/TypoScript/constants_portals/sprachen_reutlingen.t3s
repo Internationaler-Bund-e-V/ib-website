@@ -2,7 +2,7 @@
 # PORTAL Sprachen Reutlingen
 # -----------------------------------------------------------------------------
 
-[request.getNormalizedParams().getHttpHost() == 'sprachen-reutlingen.de' || request.getNormalizedParams().getHttpHost() == 'sprachen-reutlingen.rmsdev.de']
+[site("identifier") == "sprachen_reutlingen"] 
     host = sprachen-reutlingen.rmsdev.de
     portalSettings {
         pageTitle = Sprachen Reutlingen

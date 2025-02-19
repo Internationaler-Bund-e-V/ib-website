@@ -18,8 +18,8 @@ declare(strict_types=1);
 namespace ApacheSolrForTypo3\Solrconsole\Command;
 
 use ApacheSolrForTypo3\Solr\ConnectionManager;
-use ApacheSolrForTypo3\Solr\NoSolrConnectionFoundException;
 use ApacheSolrForTypo3\Solr\Domain\Site\Site;
+use ApacheSolrForTypo3\Solr\NoSolrConnectionFoundException;
 use ApacheSolrForTypo3\Solr\System\Solr\SolrConnection;
 use ApacheSolrForTypo3\Solrconsole\Command\OptionHelper\Fields;
 use ApacheSolrForTypo3\Solrconsole\Command\OptionHelper\Ids;
@@ -42,38 +42,37 @@ class SolrIndexDeleteCommand extends AbstractSolrCommand
     /**
      * @var Sites
      */
-    protected $sitesHelper;
+    protected Sites $sitesHelper;
 
     /**
      * @var ConnectionManager
      */
-    protected $connectionManager;
+    protected ConnectionManager $connectionManager;
 
     /**
      * @var array
      */
-    private $sites;
+    private array$sites;
 
     /**
      * @var array
      */
-    private $uids;
+    private array$uids;
 
     /**
      * @var array
      */
-    private $ids;
+    private array $ids;
 
     /**
      * @var array
      */
-    private $types;
+    private array $types;
 
     /**
      * @var array
      */
-    private $languages;
-
+    private array $languages;
 
     /**
      * Configure command
@@ -86,11 +85,10 @@ class SolrIndexDeleteCommand extends AbstractSolrCommand
         $this->addOption('types', 't', InputOption::VALUE_OPTIONAL, 'Comma separated list of types (table of the record).', '*');
         $this->addOption('uids', 'u', InputOption::VALUE_OPTIONAL, 'Comma separated list of record uids.', '*');
         $this->addOption('ids', 'i', InputOption::VALUE_OPTIONAL, 'Comma separated list of solr document ids.', '*');
-        $this->addOption('languages', 'L', InputOption::VALUE_OPTIONAL, 'Comma separated list of language uids, if none is passed all available languages will be processed.', 0);
+        $this->addOption('languages', 'L', InputOption::VALUE_OPTIONAL, 'Comma separated list of language uids, if none is passed all available languages will be processed.', '*');
 
         $this->setDescription('Deletes documents from the solr index');
     }
-
 
     /**
      * @param SymfonyStyle $io
@@ -99,26 +97,26 @@ class SolrIndexDeleteCommand extends AbstractSolrCommand
      * @return bool
      * @throws DBALDriverException
      */
-    protected function loadOptions(SymfonyStyle $io, InputInterface $input, OutputInterface $output)
+    protected function loadOptions(SymfonyStyle $io, InputInterface $input, OutputInterface $output): bool
     {
         $this->sites = $this->getSitesHelper()->run($io, $input, $output);
 
-        /** @var $uidsHelper Uids */
+        /** @var Uids $uidsHelper */
         $uidsHelper = GeneralUtility::makeInstance(Uids::class);
         $uidsHelper->setLabel('Record uids to delete');
         $this->uids = $uidsHelper->run($io, $input);
 
-        /** @var $idsHelper Ids */
+        /** @var Ids $idsHelper */
         $idsHelper = GeneralUtility::makeInstance(Ids::class);
         $idsHelper->setLabel('Document ids to delete');
         $this->ids = $idsHelper->run($io, $input);
 
-        /** @var $typesHelper Types */
+        /** @var Types $typesHelper */
         $typesHelper = GeneralUtility::makeInstance(Types::class);
         $typesHelper->setLabel('Types to delete');
         $this->types = $typesHelper->run($io, $input);
 
-        /** @var $languagesHelper Fields */
+        /** @var Fields $languagesHelper */
         $languagesHelper = GeneralUtility::makeInstance(Languages::class);
         $languagesHelper->setLabel('Language uids to delete documents for');
         $this->languages = $languagesHelper->run($io, $input);
@@ -127,12 +125,11 @@ class SolrIndexDeleteCommand extends AbstractSolrCommand
         return $confirmed;
     }
 
-
     /**
      * @param string $domain
      * @return string
      */
-    protected function getDeleteRawQuery($domain)
+    protected function getDeleteRawQuery($domain): string
     {
         $params = '';
         $filterQuery = ['site:' . $domain];
@@ -167,17 +164,16 @@ class SolrIndexDeleteCommand extends AbstractSolrCommand
         return $params;
     }
 
-
     /**
      * @param SymfonyStyle $io
      * @param Site $site
      * @param $domain
      */
-    protected function deleteSolrIndexDocuments(SymfonyStyle $io, Site $site, $domain)
+    protected function deleteSolrIndexDocuments(SymfonyStyle $io, Site $site, $domain): void
     {
         $availableLanguageIds = $site->getAvailableLanguageIds();
         if (empty($this->languages)) {
-            $this->languages = array_merge([0], $availableLanguageIds);
+            $this->languages = array_unique(array_merge([0], $availableLanguageIds));
         }
         foreach ($this->languages as $language) {
             try {
@@ -195,16 +191,15 @@ class SolrIndexDeleteCommand extends AbstractSolrCommand
         }
     }
 
-
     /**
      * Executes the command to update the connection
      *
      * @param InputInterface $input
      * @param OutputInterface $output
      *
-     * @return integer
+     * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $io->title($this->getDescription());
@@ -212,7 +207,7 @@ class SolrIndexDeleteCommand extends AbstractSolrCommand
         if (!$confirmed) {
             $io->write('Skipped');
             $io->newLine(1);
-            return 1;
+            return self::FAILURE;
         }
         foreach ($this->sites as $site) {
             /* @var Site $site */
@@ -228,49 +223,47 @@ class SolrIndexDeleteCommand extends AbstractSolrCommand
             $this->deleteSolrIndexDocuments($io, $site, $domain);
         }
 
-        return 0;
+        return self::SUCCESS;
     }
-
 
     /**
      * @return Sites
      */
     public function getSitesHelper(): Sites
     {
-        $this->sitesHelper = $this->sitesHelper ?? GeneralUtility::makeInstance(Sites::class);
+        if (!isset($this->sitesHelper)) {
+            $this->sitesHelper = GeneralUtility::makeInstance(Sites::class);
+        }
+
         return $this->sitesHelper;
     }
-
 
     /**
      * @param Sites $sitesHelper
      */
-    public function setSitesHelper(Sites $sitesHelper)
+    public function setSitesHelper(Sites $sitesHelper): void
     {
         $this->sitesHelper = $sitesHelper;
     }
-
 
     /**
      * @return ConnectionManager
      */
     public function getConnectionManager(): ConnectionManager
     {
-        if (!$this->connectionManager instanceof ConnectionManager) {
+        if (!isset($this->connectionManager)) {
             $this->connectionManager = GeneralUtility::makeInstance(ConnectionManager::class);
         }
         return $this->connectionManager;
     }
 
-
     /**
      * @param ConnectionManager $connectionManager
      */
-    public function setConnectionManager(ConnectionManager $connectionManager)
+    public function setConnectionManager(ConnectionManager $connectionManager): void
     {
         $this->connectionManager = $connectionManager;
     }
-
 
     /**
      * @param int $rootPageUid

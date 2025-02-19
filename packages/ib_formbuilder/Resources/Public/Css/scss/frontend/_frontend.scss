@@ -1,0 +1,101 @@
+div.tx_ibformbuilder-show-frontend-form {
+
+  div.rendered-form {
+
+    div.fb-checkbox-group {
+
+      div.checkbox {
+
+        display: block;
+
+        label {
+          font-weight: 400;
+          max-width: 80%;
+        }
+
+        input {
+          float: left;
+          margin-top: 8px;
+        }
+      }
+    }
+
+    //form {
+    input.error {
+      border: 1px solid #ec5840;
+      background-color: rgba(236, 88, 64, .1);
+    }
+
+    label.error {
+      color: #ec5840;
+    }
+
+    div {
+      p {
+        margin-top: 30px;
+      }
+    }
+
+    //}
+
+    div.general_error_message {
+      color: #ec5840;
+    }
+
+    .captcha-container {
+      margin-top: 35px;
+      margin-bottom: 35px;
+
+      padding-top: 15px;
+      padding-bottom: 15px;
+
+      border-top: 1px solid lightgray;
+      border-bottom: 1px solid lightgray;
+
+      div.captcha_error {
+        margin-top: 10px;
+        color: #ec5840
+      }
+    }
+
+    #submit-button-default {
+      color: #fff;      
+      padding: 10px 15px;
+      border-radius: 1.3em/1em;
+      text-decoration: none !important;
+      display: inline-block;
+    }
+
+    button[type="submit"] {
+      color: #fff;
+    }
+
+    p[id^=control-] {
+      font-weight: 400;
+      font-size: 16px;
+      margin: 0;
+      margin-bottom: 10px;
+
+      strong {
+        font-weight: 400;
+      }
+    }
+
+    .radio {
+      label {
+        font-weight: 400;
+      }
+    }
+
+  }
+}
+
+//fr-captcha
+#formBuilderFC {
+  position: relative;
+  max-width: 312px;
+  border: 1px solid #f4f4f4;
+  padding-bottom: 12px;
+  background-color: #fff;
+  margin-bottom:20px;
+}

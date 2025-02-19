@@ -1,0 +1,12 @@
+# -----------------------------------------------------------------------------
+# PORTAL Sprachkurse Karlsruhe
+# -----------------------------------------------------------------------------
+[site("identifier") == "sprachkursekarlsruhe"]
+    host = sprachkurse-karlsruhe.ib.de
+    portalSettings {
+        pageTitle = Sprachkurse Karlsruhe
+
+        #oberster Knoten / Home-Seite
+        root_id = 3319
+    }
+[end]

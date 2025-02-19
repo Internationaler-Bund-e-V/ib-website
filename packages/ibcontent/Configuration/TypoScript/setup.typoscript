@@ -5,8 +5,7 @@ plugin.tx_ibcontent {
         partialRootPaths >
         partialRootPaths {
             10 = {$plugin.tx_ibcontent.view.partialRootPath}
-            #20 = fileadmin/template/html/partial/
-            20 = typo3conf/ext/ib_template/Resources/Private/Template/html/partial/
+            20 = EXT:ib_template/Resources/Private/Template/html/partial/
         }
         layoutRootPaths = {$plugin.tx_ibcontent.view.layoutRootPath}
     }
@@ -70,8 +69,4 @@ plugin.tx_be_secure_pw._LOCAL_LANG.de {
 plugin.be_secure_pw._LOCAL_LANG.de {
     messageTitle = XXXXX
     passwordReminderWindow_message = XXXXX
-}
-
-page.includeJSFooter {
-    ibcontent = typo3_encore:ibcontent
 }

@@ -1,4 +1,5 @@
 {namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace rms=Rms\Ibcontent\ViewHelpers}
 <f:layout name="Default" />
 
 <!-- use {settings.layout} for the height selection. -->
@@ -31,8 +32,9 @@
 
                 <div class="ib-startpage-slider-item">
                   <div class="ib-startpage-slider-item-wrapper">
-                    <v:condition.string.isNumeric value="{slide.ItemWrap.slideImage}">
+                    <f:if condition="{slide.ItemWrap.slideImage}">
                       <f:then>
+                        <f:variable name="imagePath" value="{rms:t3FilePath(src: slide.ItemWrap.slideImage)}" />
                         <f:variable name="convertToFormat" value="jpg" />
                         <f:if condition="{slide.ItemWrap.slideLink}">
                           <f:then>
@@ -42,17 +44,21 @@
                             </f:if>
                             <f:link.typolink parameter="{slide.ItemWrap.slideLink}"
                               target="{tabTarget}">
-                              <f:image src="{slide.ItemWrap.slideImage}" alt="{altAttributeValue}"
-                                alt="{altAttributeValue}"
-                                additionalAttributes="{srcset:'{f:uri.image(src:slide.ItemWrap.slideImage,maxWidth:800)} 800w,
-                              {f:uri.image(src:slide.ItemWrap.slideImage,maxWidth:1350)} 1350w', sizes:'(max-width: 800px) 800px,1350px'}" />
+                              <f:if condition="imagePath">
+                                <f:image src="{imagePath}" alt="{altAttributeValue}"
+                                  alt="{altAttributeValue}"
+                                  additionalAttributes="{srcset:'{f:uri.image(src:imagePath,maxWidth:800)} 800w,
+                                {f:uri.image(src:imagePath,maxWidth:1350)} 1350w', sizes:'(max-width: 800px) 800px,1350px'}" />
+                              </f:if>
                             </f:link.typolink>
                           </f:then>
                           <f:else>
-                            <f:image src="{slide.ItemWrap.slideImage}" alt="{altAttributeValue}"
-                              alt="{altAttributeValue}"
-                              additionalAttributes="{srcset:'{f:uri.image(src:slide.ItemWrap.slideImage,maxWidth:800)} 800w,
-                              {f:uri.image(src:slide.ItemWrap.slideImage,maxWidth:1350)} 1350w', sizes:'(max-width: 800px) 800px,1350px'}" />
+                            <f:if condition="imagePath">
+                              <f:image src="{imagePath}" alt="{altAttributeValue}"
+                                alt="{altAttributeValue}"
+                                additionalAttributes="{srcset:'{f:uri.image(src:imagePath,maxWidth:800)} 800w,
+                                {f:uri.image(src:imagePath,maxWidth:1350)} 1350w', sizes:'(max-width: 800px) 800px,1350px'}" />
+                            </f:if>
 
                           </f:else>
                         </f:if>
@@ -63,7 +69,7 @@
                           </f:else>
                         </f:if>
                       </f:then>
-                    </v:condition.string.isNumeric>
+                    </f:if>
                   </div>
                 </div>
               </f:for>
@@ -129,17 +135,17 @@
     <div class="ib-startpage-slider-bubble-text">
       <f:if condition="{slide.ItemWrap.textRowOne}">
         <div class="ib-claim-font ib-font-bold ib-font-size-40">
-          <f:format.html parseFuncTSPath="">{slide.ItemWrap.textRowOne}</f:format.html>
+          {slide.ItemWrap.textRowOne -> f:format.html(parseFuncTSPath: 'lib.parseFunc')}
         </div>
       </f:if>
       <f:if condition="{slide.ItemWrap.textRowTwo}">
         <div class="ib-subclaim-font ib-font-bold ib-font-size-20">
-          <f:format.html parseFuncTSPath="">{slide.ItemWrap.textRowTwo}</f:format.html>
+          {slide.ItemWrap.textRowTwo -> f:format.html(parseFuncTSPath: 'lib.parseFunc')}
         </div>
       </f:if>
       <f:if condition="{slide.ItemWrap.textRowThree}">
         <div class="ib-startpage-slider-link-text ib-font-size-16">
-          <f:format.html parseFuncTSPath="">{slide.ItemWrap.textRowThree}</f:format.html>
+          {slide.ItemWrap.textRowThree -> f:format.html(parseFuncTSPath: 'lib.parseFunc')}
         </div>
       </f:if>
     </div>

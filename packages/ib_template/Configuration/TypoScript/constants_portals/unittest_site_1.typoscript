@@ -1,0 +1,44 @@
+# -----------------------------------------------------------------------------
+# PORTAL IB PERSONALENTWICKLUNG
+# -----------------------------------------------------------------------------
+[site("identifier") == "ib_unittest_site_1"]
+    host = ib-unittest-site-1.rmsdev.de
+    portalSettings {
+        pageTitle = Test IB Portal
+        root_id = 5498
+        mainnav_start_id = 5511
+        firstMenuTitle = Test IB Portal
+        misc.showOnlyTYPO3SearchResults = 1
+        misc.searchResultId = 510
+        misc.sitemapStartId = 5511
+        readspeaker.show = 1
+
+        analytics {
+            #account_id =
+            enable_tracking = 0
+            matomo_enabled = 0
+            matomo_siteid = 0
+        }
+
+        cookiebot {
+            enabled = 1
+            cbid = ae8bb82d-c0c6-49ac-a6f4-9fe8473b27db
+        }
+
+        main_bubble {
+            id = 5515
+            text = Kontakt<br>+<br>Support
+            title_text = Kontaktieren Sie uns hier bei Fragen, Wünschen und Anregungen
+        }
+
+        #set additional headerData
+        #additionalHeaderData = 1
+        #additionalHeaderDataValue = <meta name="google-site-verification" content="GHgFkUo9hbOfHp90kvWWk7FpfMyf6DFD2pYcfNlZu8Y" />
+    }
+    
+    const_navigation {
+        footernav_central_folder_id = 5501
+        footernav_misc_folder_id = 5499
+        footernav_meta_folder_id = 5503
+    }    
+[end]

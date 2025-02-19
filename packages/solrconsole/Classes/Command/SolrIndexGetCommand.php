@@ -19,8 +19,8 @@ namespace ApacheSolrForTypo3\Solrconsole\Command;
 
 use ApacheSolrForTypo3\Solr\ConnectionManager;
 use ApacheSolrForTypo3\Solr\Domain\Search\Query\SearchQuery;
-use ApacheSolrForTypo3\Solr\NoSolrConnectionFoundException;
 use ApacheSolrForTypo3\Solr\Domain\Site\Site;
+use ApacheSolrForTypo3\Solr\NoSolrConnectionFoundException;
 use ApacheSolrForTypo3\Solr\System\Solr\Document\Document;
 use ApacheSolrForTypo3\Solr\System\Solr\SolrConnection;
 use ApacheSolrForTypo3\Solrconsole\Command\OptionHelper\Fields;
@@ -42,62 +42,60 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class SolrIndexGetCommand extends AbstractSolrCommand
 {
-
     /**
      * @var Sites
      */
-    protected $sitesHelper;
+    protected Sites $sitesHelper;
 
     /**
      * @var ConnectionManager
      */
-    protected $connectionManager;
+    protected ConnectionManager $connectionManager;
 
     /**
      * @var array
      */
-    private $sites;
+    private array $sites;
 
     /**
      * @var array
      */
-    private $uids;
+    private array $uids;
 
     /**
      * @var array
      */
-    private $ids;
+    private array $ids;
 
     /**
      * @var array
      */
-    private $types;
+    private array $types;
 
     /**
      * @var array
      */
-    private $fields;
+    private array $fields;
 
     /**
      * @var int
      */
-    private $language;
+    private int $language;
 
     /**
      * @var int
      */
-    private $page;
+    private int $page;
 
     /**
      * @var int
      */
-    private $perPage;
+    private int $perPage;
 
     /**
      * @var int
      */
-    private $start;
-
+    private int $start;
 
     /**
      * Configure command
@@ -119,7 +117,6 @@ class SolrIndexGetCommand extends AbstractSolrCommand
         $this->setDescription('Retreives documents from the solr index');
     }
 
-
     /**
      * @param SymfonyStyle $io
      * @param InputInterface $input
@@ -127,24 +124,24 @@ class SolrIndexGetCommand extends AbstractSolrCommand
      * @return bool
      * @throws DBALDriverException
      */
-    protected function loadOptions(SymfonyStyle $io, InputInterface $input, OutputInterface $output)
+    protected function loadOptions(SymfonyStyle $io, InputInterface $input, OutputInterface $output): bool
     {
         $this->sites = $this->getSitesHelper()->run($io, $input, $output);
 
-        /** @var $uidsHelper Uids */
+        /** @var Uids $uidsHelper */
         $uidsHelper = GeneralUtility::makeInstance(Uids::class);
         $uidsHelper->setLabel('Record uids');
         $this->uids = $uidsHelper->run($io, $input);
 
-        /** @var $idsHelper Ids */
+        /** @var Ids $idsHelper */
         $idsHelper = GeneralUtility::makeInstance(Ids::class);
         $this->ids = $idsHelper->run($io, $input);
 
-        /** @var $typesHelper Types */
+        /** @var Types $typesHelper */
         $typesHelper = GeneralUtility::makeInstance(Types::class);
         $this->types = $typesHelper->run($io, $input);
 
-        /** @var $fieldsHelper Fields */
+        /** @var Fields $fieldsHelper */
         $fieldsHelper = GeneralUtility::makeInstance(Fields::class);
         $this->fields = $fieldsHelper->run($io, $input);
 
@@ -152,13 +149,11 @@ class SolrIndexGetCommand extends AbstractSolrCommand
         $io->writeln('Language: ' . $this->language);
         $io->newLine(1);
 
-        $this->page = $input->getOption('page');
-        $this->page = (int)($this->page ?? 1);
+        $this->page = (int)($input->getOption('page') ?? 1);
         $io->writeln('Page: ' . $this->page);
         $io->newLine(1);
 
-        $this->perPage = $input->getOption('per-page');
-        $this->perPage = (int)($this->perPage ?? 10);
+        $this->perPage = (int)($input->getOption('per-page') ?? 10);
         $io->writeln('Item count per page: ' . $this->perPage);
 
         $this->start = ($this->page - 1) * $this->perPage;
@@ -167,12 +162,11 @@ class SolrIndexGetCommand extends AbstractSolrCommand
         return $confirmed;
     }
 
-
     /**
-     * @param $domain
+     * @param string $domain
      * @return array
      */
-    protected function getParamsForDomain($domain)
+    protected function getParamsForDomain(string $domain): array
     {
         $params = [];
         $filterQuery = ['site:' . $domain];
@@ -210,21 +204,20 @@ class SolrIndexGetCommand extends AbstractSolrCommand
         return $params;
     }
 
-
     /**
      * @param SymfonyStyle $io
      * @param Site $site
      * @param $domain
      * @throws \ApacheSolrForTypo3\Solr\NoSolrConnectionFoundException
      */
-    protected function getSolrIndexResults(SymfonyStyle $io, Site $site, $domain)
+    protected function getSolrIndexResults(SymfonyStyle $io, Site $site, string $domain): void
     {
         $solrConnection = $this->getSolrConnectionForRootPageUidAndLanguage($site->getRootPageId(), $this->language);
         $params = $this->getParamsForDomain($domain);
         $readService = $solrConnection->getReadService();
         $searchQuery = new SearchQuery();
         $searchQuery->setQuery('*')->setStart($this->start)->setRows($this->perPage);
-        foreach($params as $paramName => $paramValue) {
+        foreach ($params as $paramName => $paramValue) {
             $searchQuery->addParam($paramName, $paramValue);
         }
 
@@ -269,16 +262,15 @@ class SolrIndexGetCommand extends AbstractSolrCommand
         }
     }
 
-
     /**
      * Executes the command to update the connection
      *
      * @param InputInterface $input
      * @param OutputInterface $output
      *
-     * @return integer
+     * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $io->title($this->getDescription());
@@ -286,7 +278,7 @@ class SolrIndexGetCommand extends AbstractSolrCommand
         if (!$confirmed) {
             $io->write('Skipped');
             $io->newLine(1);
-            return 1;
+            return self::FAILURE;
         }
         foreach ($this->sites as $site) {
             /* @var Site $site */
@@ -303,13 +295,12 @@ class SolrIndexGetCommand extends AbstractSolrCommand
                 $this->getSolrIndexResults($io, $site, $domain);
             } catch (NoSolrConnectionFoundException $ex) {
                 $io->writeln("No solr connection found for site {$site->getRootPageId()}, language {$this->language}.");
-            } catch (\Exception $ex) {
+            } catch (\Throwable $ex) {
                 $io->writeln("Solr connection could not be initialized for site {$site->getRootPageId()}, language {$this->language}.");
             }
         }
-        return 0;
+        return self::SUCCESS;
     }
-
 
     /**
      * @return Sites
@@ -320,11 +311,10 @@ class SolrIndexGetCommand extends AbstractSolrCommand
         return $this->sitesHelper;
     }
 
-
     /**
      * @param Sites $sitesHelper
      */
-    public function setSitesHelper(Sites $sitesHelper)
+    public function setSitesHelper(Sites $sitesHelper): void
     {
         $this->sitesHelper = $sitesHelper;
     }
@@ -340,7 +330,6 @@ class SolrIndexGetCommand extends AbstractSolrCommand
         return $this->connectionManager;
     }
 
-
     /**
      * @param ConnectionManager $connectionManager
      */
@@ -348,7 +337,6 @@ class SolrIndexGetCommand extends AbstractSolrCommand
     {
         $this->connectionManager = $connectionManager;
     }
-
 
     /**
      * @param int $rootPageUid
@@ -360,5 +348,4 @@ class SolrIndexGetCommand extends AbstractSolrCommand
     {
         return $this->getConnectionManager()->getConnectionByPageId($rootPageUid, $language);
     }
-
 }

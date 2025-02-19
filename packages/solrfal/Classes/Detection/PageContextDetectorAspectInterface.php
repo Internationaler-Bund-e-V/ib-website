@@ -26,10 +26,14 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 interface PageContextDetectorAspectInterface
 {
     /**
-     * @param array $fileUids
+     * @param int[] $fileUids
      * @param TypoScriptFrontendController $page
      * @param Site $site
-     * @return array
+     * @return int[]
      */
-    public function addForcedFilesOnPage(array $fileUids, TypoScriptFrontendController $page, Site $site): array;
+    public function addForcedFilesOnPage(
+        array $fileUids,
+        TypoScriptFrontendController $page,
+        Site $site,
+    ): array;
 }

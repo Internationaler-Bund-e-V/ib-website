@@ -25,9 +25,6 @@ namespace ApacheSolrForTypo3\Solrfal\Queue;
  */
 class ItemGroup
 {
-    /**
-     * @var string
-     */
     protected string $groupId = '';
 
     /**
@@ -35,26 +32,18 @@ class ItemGroup
      */
     protected array $items = [];
 
-    /**
-     * @param Item $item
-     */
-    public function add(Item $item)
+    public function add(Item $item): void
     {
         $this->items[$item->getUid()] = $item;
     }
 
-    /**
-     * @param Item $item
-     */
-    public function remove(Item $item)
+    public function remove(Item $item): void
     {
         unset($this->items[$item->getUid()]);
     }
 
     /**
      * Returns the smallest item uid.
-     *
-     * @return int
      */
     public function getRootItemUid(): int
     {
@@ -63,8 +52,6 @@ class ItemGroup
 
     /**
      * Returns the item with the smallest uid.
-     *
-     * @return Item|null
      */
     public function getRootItem(): ?Item
     {
@@ -72,45 +59,27 @@ class ItemGroup
         return $this->items[$minUid] ?? null;
     }
 
-    /**
-     * @param Item $item
-     * @return bool
-     */
     public function getIsRootItem(Item $item): bool
     {
         return $this->getRootItemUid() === $item->getUid();
     }
 
-    /**
-     * @return bool
-     * @noinspection PhpUnused
-     */
     public function getHasOnlyRootItem(): bool
     {
         return count($this->items) === 1;
     }
 
-    /**
-     * @return bool
-     */
     public function getIsEmpty(): bool
     {
         return count($this->items) === 0;
     }
 
-    /**
-     * @return string
-     * @noinspection PhpUnused
-     */
     public function getGroupId(): string
     {
         return $this->groupId;
     }
 
-    /**
-     * @param string $groupId
-     */
-    public function setGroupId(string $groupId)
+    public function setGroupId(string $groupId): void
     {
         $this->groupId = $groupId;
     }

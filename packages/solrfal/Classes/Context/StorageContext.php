@@ -19,6 +19,7 @@ namespace ApacheSolrForTypo3\Solrfal\Context;
 
 use ApacheSolrForTypo3\Solr\FrontendEnvironment;
 use ApacheSolrForTypo3\Solr\System\Configuration\TypoScriptConfiguration;
+use Doctrine\DBAL\Exception as DBALException;
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -27,24 +28,25 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class StorageContext extends AbstractContext
 {
-
-    /**
-     * @return string
-     */
     public function getContextIdentifier(): string
     {
         return 'storage';
     }
 
+    /**
+     * @throws DBALException
+     */
     public function getAdditionalDynamicDocumentFields(File $file): array
     {
         $fields = [];
-        /* @var TypoScriptConfiguration $storageConfiguration */
+        /** @var TypoScriptConfiguration $storageConfiguration */
         $storageConfiguration = GeneralUtility::makeInstance(FrontendEnvironment::class)->getSolrConfigurationFromPageId(
             $this->getSite()->getRootPageId(),
             $this->getLanguage()
         );
-        $enableFields = $storageConfiguration->getObjectByPathOrDefault('plugin.tx_solr.index.enableFileIndexing.storageContext.' . $this->getIdentifierForItemSpecificFieldConfiguration() . '.enableFields.', []);
+        $enableFields = $storageConfiguration->getObjectByPathOrDefault(
+            'plugin.tx_solr.index.enableFileIndexing.storageContext.' . $this->getIdentifierForItemSpecificFieldConfiguration() . '.enableFields.'
+        );
         foreach ($enableFields as $identifier => $fieldName) {
             switch ($identifier) {
                 case 'endtime':
@@ -69,8 +71,6 @@ class StorageContext extends AbstractContext
      * Returns an identifier, which will be used for looking up special
      * configurations in TypoScript like storage uid in storageContext
      * or table name in recordContext
-     *
-     * @return string
      */
     protected function getIdentifierForItemSpecificFieldConfiguration(): string
     {

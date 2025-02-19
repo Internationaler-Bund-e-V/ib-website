@@ -1,5 +1,3 @@
-
-
 <f:switch expression="{data.sys_language_uid}">
 	<f:comment>EN</f:comment>
 	<f:case value="1">
@@ -42,7 +40,7 @@
 					<img src="{f:uri.resource(path: src)}" class="responsive" alt="Portal Logo" style="width: auto; height: 70px">
 				</f:link.page>
 			</div>
-			<f:render partial="Menu/mainMenuEntryPoint" arguments="{_all}" />
+			<f:render partial="menu/mainMenuEntryPoint" arguments="{_all}" />
 			<div id="ib-menu-overlay"></div>
 			<!-- buddy start -->
 			<f:if condition="{buddy_hide} == 0">

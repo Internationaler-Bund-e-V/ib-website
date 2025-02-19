@@ -5,6 +5,9 @@
 
 .. include:: Includes.txt
 
+=====================================
+Apache Solr for TYPO3 - Console tools
+=====================================
 
 .. _start:
 
@@ -14,7 +17,7 @@
 		solr
 
 	:Version:
-		11.0.0
+		12.0.1
 
 	:Language:
 		en
@@ -26,7 +29,7 @@
 		search, full text, index, solr, lucene, fast, query, results
 
 	:Copyright:
-		2009-2022
+		since 2009 by dkd & contributors
 
 	:Author:
 		Benni Mack, Jens Jacobsen, Timo Hund
@@ -44,18 +47,12 @@
 	The content of this document is related to TYPO3,
 	a GNU/GPL CMS/Framework available from `typo3.org <http://www.typo3.org/>`_.
 
-
-	**Table of Contents**
-
 .. toctree::
 	:maxdepth: 3
 	:titlesonly:
 	:glob:
 
 	Introduction/Index
-	Commands/Index
+	CommandsReference/Index
+	HowToGetInvolved/Index
 	Releases/Index
-
-
-
-

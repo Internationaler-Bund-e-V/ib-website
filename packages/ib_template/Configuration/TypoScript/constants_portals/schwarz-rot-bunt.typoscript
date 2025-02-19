@@ -1,0 +1,12 @@
+# -----------------------------------------------------------------------------
+# PORTAL schwarz-rot-bunt
+#
+#
+# SEE EXT:ib_srb -> constants.typoscript for portalSettings!!!!
+#
+#
+# -----------------------------------------------------------------------------
+[site("identifier") == "schwarz_rot_bunt"]
+    host = schwarz-rot-bunt.de
+    # SEE EXT:ib_srb -> constants.typoscript for portalSettings!!!!
+[end]

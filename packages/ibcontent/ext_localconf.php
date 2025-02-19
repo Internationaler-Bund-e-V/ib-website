@@ -324,19 +324,6 @@ $iconRegistry->registerIcon(
     ['source' => 'EXT:' . 'ibcontent' . '/Resources/Public/Icons/ibcontent.png']
 );
 
-/*
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-output'][]
-    = 'EXT:ibcontent/Classes/Utility/PagePropertiesHook.php:PagePropertiesHooks->contentPostProcOutputs';
-
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-all'][]
-    = 'EXT:ibcontent/Classes/Utility/PagePropertiesHook.php:PagePropertiesHooks->contentPostProcOutputs';
-    //= 'Rms\\Ibcontent\\Utility\\PagePropertiesHook->contentPostProcOutput';
-
-    //'Your\\Extension\\Namespace\\Hooks\\CleanSource->contentPostProcOutput';
-
- *
- */
-
 // include page tsconfig for backend wizards
 ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE: EXT:ibcontent/Configuration/TypoScript/pageTSconfig.ts">');
 

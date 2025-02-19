@@ -2,7 +2,7 @@
 	<meta>
 		<langDisable>1</langDisable>
 	</meta>
-	
+
   <sheets>
 	<sDEF>
 	  <ROOT>
@@ -33,14 +33,27 @@
 			<settings.mapImage>
 			    <TCEforms>
 			        <label>Map Image</label>
+
+					<!--
 			        <config>
 			            <type>group</type>
 			            <internal_type>file</internal_type>
-			            <allowed>jpg,jpeg,gif,png</allowed>			            
+			            <allowed>jpg,jpeg,gif,png</allowed>
 			            <size>1</size>
 			            <minitems>1</minitems>
 			            <maxitems>1</maxitems>
 			        </config>
+					-->
+
+					<config>
+						<type>link</type>
+						<allowedTypes>
+							<numIndex index="0">file</numIndex>
+							<!--<numIndex index="1">page</numIndex>-->
+						</allowedTypes>
+						<minitems>1</minitems>
+						<maxitems>1</maxitems>
+					</config>
 			    </TCEforms>
 			</settings.mapImage>
 			<settings.headline>
@@ -61,7 +74,7 @@
 				        <cols>3</cols>
 				        <rows>1</rows>
 						<enableRichtext>1</enableRichtext>
-				    </config>				    
+				    </config>
 				</TCEforms>
 			</settings.description>
 			<settings.link>
@@ -86,7 +99,7 @@
 							</urlParameters>
 						</module>
 					    </link>
-					  </wizards>                
+					  </wizards>
 					</config>
 				</TCEforms>
 			</settings.link>

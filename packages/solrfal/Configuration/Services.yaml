@@ -6,6 +6,7 @@ services:
 
   ApacheSolrForTypo3\Solrfal\:
     resource: '../Classes/*'
+    exclude: '../Classes/Domain/Model/*'
 
   solrfal.extension.configuration:
     public: true
@@ -32,6 +33,16 @@ services:
       - name: event.listener
         identifier: 'solrfal-afterfileupdateinindex'
         event: TYPO3\CMS\Core\Resource\Event\AfterFileUpdatedInIndexEvent
+  ApacheSolrForTypo3\Solrfal\EventListener\AfterIndexQueueHasBeenInitialized:
+    tags:
+      - name: event.listener
+        identifier: 'solrfal.initialization.after-index-queue-has-been-initialized'
+        event: ApacheSolrForTypo3\Solr\Event\IndexQueue\AfterIndexQueueHasBeenInitializedEvent
+  ApacheSolrForTypo3\Solrfal\EventListener\AfterIndexQueueItemHasBeenMarkedForReindexing:
+    tags:
+      - name: event.listener
+        identifier: 'solrfal.initialization.after-index-queue-item-has-been-marked-for-reindexing'
+        event: ApacheSolrForTypo3\Solr\Event\IndexQueue\AfterIndexQueueItemHasBeenMarkedForReindexingEvent
   ApacheSolrForTypo3\Solrfal\EventListener\AfterFileDeleted:
     tags:
       - name: event.listener
@@ -57,3 +68,39 @@ services:
       - name: event.listener
         identifier: 'solrfal.system.resource.generatepublicurlforresourceeventlistener'
         event: 'TYPO3\CMS\Core\Resource\Event\GeneratePublicUrlForResourceEvent'
+  ApacheSolrForTypo3\Solrfal\EventListener\IndexEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'solrfal.indexing.after-index-item'
+        method: 'resetSuccessfulFileUids'
+        event: 'ApacheSolrForTypo3\Solr\Event\Indexing\AfterItemHasBeenIndexedEvent'
+  ApacheSolrForTypo3\Solrfal\EventListener\BeforePageDocumentIsProcessedForIndexing:
+    tags:
+      - name: event.listener
+        identifier: 'solrfal.indexing.before-page-document-is-processed-for-indexing'
+        event: 'ApacheSolrForTypo3\Solr\Event\Indexing\BeforePageDocumentIsProcessedForIndexingEvent'
+
+  ApacheSolrForTypo3\Solrfal\EventListener\ItemRepositoryEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'solrfal.repository.before-item-removed'
+        method: 'removeSolrEntryForItem'
+        event: ApacheSolrForTypo3\Solrfal\Event\Repository\BeforeFileQueueItemHasBeenRemovedEvent
+      - name: event.listener
+        identifier: 'solrfal.repository.before-multiple-item-removed'
+        method: 'removeMultipleQueueItemsFromSolr'
+        event: ApacheSolrForTypo3\Solrfal\Event\Repository\BeforeMultipleFileQueueItemsHaveBeenRemovedEvent
+
+  ApacheSolrForTypo3\Solrfal\EventListener\ResourceEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'solrfal.resource.pre-generate-public-url'
+        method: 'registerGeneratedPublicUrl'
+        event: TYPO3\CMS\Core\Resource\Event\GeneratePublicUrlForResourceEvent
+
+  backend_controller:
+    namespace: ApacheSolrForTypo3\Solrfal\Controller\Backend\SolrModule\
+    resource: '../Classes/Controller/Backend/SolrModule/*'
+    public: true
+    autowire: true
+    tags: [ 'backend.controller' ]

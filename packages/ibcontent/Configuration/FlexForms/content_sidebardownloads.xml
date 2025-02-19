@@ -2,7 +2,7 @@
 	<meta>
 		<langDisable>1</langDisable>
 	</meta>
-	
+
   <sheets>
 	<sDEF>
 	  <ROOT>
@@ -77,6 +77,7 @@
 			                <file>
 			                    <TCEforms>
 			                        <label>File</label>
+									<!--
                                     <config>
                                         <type>group</type>
                                         <internal_type>db</internal_type>
@@ -89,6 +90,16 @@
                                         <minitems>1</minitems>
                                         <maxitems>1</maxitems>
                                     </config>
+									-->
+									<config>
+										<type>link</type>
+										<allowedTypes>
+											<numIndex index="0">file</numIndex>
+											<!--<numIndex index="1">page</numIndex>-->
+										</allowedTypes>
+										<minitems>1</minitems>
+										<maxitems>1</maxitems>
+									</config>
 			                    </TCEforms>
 			                </file>
 			            </el>

@@ -25,69 +25,34 @@ use ApacheSolrForTypo3\Solr\System\Configuration\TypoScriptConfiguration;
  */
 interface RecordDetectionInterface
 {
-    /**
-     * @param Site $site
-     * @param TypoScriptConfiguration|null $siteConfiguration
-     * @noinspection PhpUnused
-     */
     public function __construct(Site $site, TypoScriptConfiguration $siteConfiguration = null);
 
     /**
-     * @param array $initializationStatus
+     * Initializes the file index queue
      */
-    public function initializeQueue(array $initializationStatus);
+    public function initializeQueue(
+        string $indexingConfigurationName,
+        ?bool $indexQueueForConfigurationNameIsInitialized = false
+    ): bool;
 
-    /**
-     * @param string $table
-     * @param int $uid
-     *
-     * @noinspection PhpUnused
-     */
-    public function recordCreated(string $table, int $uid);
+    public function recordCreated(string $table, int $uid): void;
 
-    /**
-     * @param string $table
-     * @param int $uid
-     *
-     * @noinspection PhpUnused
-     */
-    public function recordUpdated(string $table, int $uid);
+    public function recordUpdated(string $table, int $uid): void;
 
-    /**
-     * @param string $table
-     * @param int $uid
-     *
-     * @noinspection PhpUnused
-     */
-    public function recordDeleted(string $table, int $uid);
+    public function recordDeleted(string $table, int $uid): void;
 
     /**
      * Handles new sys_file entries
-     *
-     * @param string $table
-     * @param int $uid
-     *
-     * @noinspection PhpUnused
      */
-    public function fileIndexRecordCreated(string $table, int $uid);
+    public function fileIndexRecordCreated(string $table, int $uid): void;
 
     /**
      * Handles updates on sys_file entries
-     *
-     * @param string $table
-     * @param int $uid
-     *
-     * @noinspection PhpUnused
      */
-    public function fileIndexRecordUpdated(string $table, int $uid);
+    public function fileIndexRecordUpdated(string $table, int $uid): void;
 
     /**
      * Handles deletions of sys_file entries
-     *
-     * @param string $table
-     * @param int $uid
-     *
-     * @noinspection PhpUnused
      */
-    public function fileIndexRecordDeleted(string $table, int $uid);
+    public function fileIndexRecordDeleted(string $table, int $uid): void;
 }

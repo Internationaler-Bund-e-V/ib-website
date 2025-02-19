@@ -12,6 +12,9 @@
     display: none;
   }
 }
+
+$srb-font-color-black : #2c2e35;
+
 /////////////
 
 
@@ -23,16 +26,20 @@
     top: 0;
     background-color: $srb-black !important;
     height: 110px;
-    background: url("/typo3conf/ext/ib_srb/Resources/Public/img/black-header-bg.jpg");
+    background: url("../../img/white_header_bg.png");
     background-size: 100% 100%;
     background-position: center center;
     background-repeat: no-repeat;
     opacity: 1 !important;
     color: $srb-font-color-white;
 
+    .srbLogo {
+      height: 95px;
+      width: auto;
+    }
+
     a {
-      color: $srb-font-color-white;
-      background: $srb-black;
+      color: $srb-font-color-black
     }
 
     #SrbNavigationContainer {
@@ -56,6 +63,10 @@
         }
       }
     }
+
+    .accordion-menu .is-accordion-submenu-parent:not(.has-submenu-toggle)>a:after {
+      border-color: $srb-font-color-black transparent transparent;
+    }
   }
 }
 
@@ -63,13 +74,35 @@
 @media screen and (max-width: 1339px) {
   #IbSrb {
     #header {
+      display: flex;
+      align-items: center;
+      .srbLogo {
+        width: auto;
+        max-width: 70%;
+        height: auto;
+        max-height: 95px;
+      }
+
       #SrbMobileMenu {
         position: relative;
-        top: 25px;
+        display: flex;
+        justify-content: space-between;
 
         #SrbMobileMenuToggle {
-          float: right;
-          top: 25px;
+          float: right;          
+          position: relative;
+          cursor: pointer;
+
+
+          span {
+            transition: 0.2s ease-in-out;
+            background-color: black;
+            width: 30px;
+            height: 5px;
+            position: relative;
+            display: block;
+            margin: 5px;
+          }
         }
       }
 
@@ -80,6 +113,8 @@
         left: 0;
         right: 0;
         top: 110px;
+        border: 1px solid $srb-font-color-black;
+        border-top: none;
 
         #SrbNavigationContainer {
           li {
@@ -101,7 +136,7 @@
           }
 
           li {
-            background: $srb-black;
+            background: $srb-font-color-white;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
           }
 
@@ -114,6 +149,7 @@
 
           .SrbNavigationMobileSearch {
             padding: 1rem;
+            background: $srb-font-color-white;
 
             li {
               width: 100%;
@@ -166,7 +202,7 @@
             margin-right: 15px;
 
             &::after {
-              border-color: $srb-font-color-white transparent transparent;
+
               right: -20px;
             }
 
@@ -180,9 +216,9 @@
           }
 
           .SrbSubMenu {
-            border: none;
+            border-top: none;
             padding: 1rem 1rem 0 1rem;
-            background: black;
+
             width: max-content;
             color: $srb-font-color-white;
 
@@ -233,7 +269,7 @@
           svg {
             height: 16px;
             width: 16px;
-            fill: $srb-font-color-white;
+            fill: $srb-font-color-black;
           }
 
           &:hover {

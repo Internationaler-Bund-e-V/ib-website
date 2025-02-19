@@ -2,26 +2,21 @@
   "name": "apache-solr-for-typo3/solrfal",
   "type": "typo3-cms-extension",
   "description": "Apache Solr for TYPO3 - File Indexing",
-  "homepage": "http://www.typo3-solr.com",
-  "license": "GPL-2.0+",
+  "homepage": "https://www.typo3-solr.com",
+  "license": "GPL-2.0-or-later",
   "authors": [
     {
-      "name": "dkd Internet Services GmbH",
-      "email": "solr-eb-support@dkd.de",
-      "homepage": "http://www.dkd.de"
-    },
-    {
-      "name": "Steffen Ritter",
-      "email": "info@rs-websystems.de",
-      "homepage": "http://www.rs-websystems.de/"
+      "name": "dkd Internet Service GmbH",
+      "email": "info@dkd.de",
+      "homepage": "https://www.dkd.de"
     }
   ],
   "require": {
-    "php": "^7.4 || ^8.0",
+    "php": "^8.1",
     "ext-json": "*",
     "ext-pdo": "*",
 
-    "typo3/cms-core": "^11.5.14",
+    "typo3/cms-core": "^12.4.2",
     "typo3/cms-backend": "*",
     "typo3/cms-extbase": "*",
     "typo3/cms-frontend": "*",
@@ -30,15 +25,16 @@
     "typo3/cms-scheduler": "*",
     "typo3/cms-tstemplate": "*",
     "typo3/cms-filemetadata": "*",
-    "apache-solr-for-typo3/solr": "^11.5.0 <11.7.0"
+    "apache-solr-for-typo3/solr": "^12.0.4 <13.0.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "^9.5",
-    "phpspec/prophecy-phpunit":"*",
-    "sclable/xml-lint": "*",
-    "friendsofphp/php-cs-fixer": "*",
-    "typo3/testing-framework": "^6.12",
-    "typo3/coding-standards": ">=0.5.0"
+    "apache-solr-for-typo3/tika": "12.0.x-dev",
+    "phpstan/phpstan": "^1.10",
+    "phpstan/phpstan-phpunit": "^1.3",
+    "phpunit/phpunit": "^10.1",
+    "typo3/cms-fluid-styled-content": ">= 12.4.2",
+    "typo3/coding-standards": "~0.7.1",
+    "typo3/testing-framework": "^8.0"
   },
   "replace": {
     "typo3-ter/solrfal": "self.version"
@@ -50,9 +46,9 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "ApacheSolrForTypo3\\Solr\\Tests\\": ".Build/Web/typo3conf/ext/solr/Tests/",
+      "ApacheSolrForTypo3\\Solr\\Tests\\": ".Build/vendor/apache-solr-for-typo3/solr/Tests/",
       "ApacheSolrForTypo3\\Solrfal\\Tests\\": "Tests/",
-      "TYPO3\\CMS\\Core\\Tests\\": ".Build/Web/typo3/sysext/core/Tests/"
+      "TYPO3\\CMS\\Core\\Tests\\": ".Build/vendor/typo3/cms-core/Tests/"
     }
   },
   "minimum-stability": "stable",
@@ -61,49 +57,83 @@
     "allow-plugins": true,
     "optimize-autoloader": true,
     "vendor-dir": ".Build/vendor",
-    "bin-dir": ".Build/bin"
+    "bin-dir": ".Build/bin",
+    "preferred-install": {
+      "apache-solr-for-typo3/solr": "source",
+      "apache-solr-for-typo3/tika": "source",
+      "typo3/cms-core": "source",
+      "*": "dist"
+    }
   },
   "scripts": {
     "post-autoload-dump": [
-      "mkdir -p .Build/Web/typo3conf/ext/",
-      "[ -L .Build/Web/typo3conf/ext/solrfal ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/solrfal"
+      "mkdir -p .Build/vendor/apache-solr-for-typo3",
+      "[ -L .Build/vendor/apache-solr-for-typo3/solrfal ] || ln -snvf ../../../. .Build/vendor/apache-solr-for-typo3/solrfal"
+    ],
+    "t3:docs:build": [
+      "rm -Rf Documentation-GENERATED-temp/",
+      ".Build/vendor/apache-solr-for-typo3/solr/Build/generate_documentation.sh"
+    ],
+    "t3:docs:build:prod": [
+      "BUILD_DOCS_FOR_PRODUCTION=1 $COMPOSER_BINARY t3:docs:build"
+    ],
+    "t3:docs:clean": [
+      "rm -Rf Documentation-GENERATED-temp/ $(readlink -f Documentation.HTML) Documentation.HTML"
     ],
     "tests:restore-git": "echo \"Retore composer.json to initial state:\" && git checkout composer.json",
     "tests:env": [
-      "if [ -z ${TYPO3_VERSION} ]; then >&2 echo \"Can not proceed, because env var TYPO3_VERSION is not set\"; exit 1; else echo \"Setup test environment for TYPO3 ${TYPO3_VERSION}\"; fi",
-      "if [ \"${TYPO3_VERSION#*dev}\" != \"dev\" ]; then $COMPOSER_BINARY config minimum-stability dev; fi"
+      "if [ -z ${TYPO3_VERSION+x} ]; then >&2 echo \"Can not proceed, because env var TYPO3_VERSION is not set\"; exit 1; else echo \"Setup test environment for TYPO3 ${TYPO3_VERSION}\"; fi",
+      "if echo $TYPO3_VERSION | grep -q \"dev\"; then $COMPOSER_BINARY config minimum-stability dev; fi"
+    ],
+    "tests:setup:global-require": [
+      "echo \"Install global composer dependencies.\"",
+      "@composer global require sclable/xml-lint --ignore-platform-reqs"
     ],
     "tests:setup": [
       "@tests:env",
-      "@composer req --prefer-source --update-with-all-dependencies typo3/cms-core:${TYPO3_VERSION} apache-solr-for-typo3/solr:$($COMPOSER_BINARY config extra.TYPO3-Solr.CI.matrix.ext-solr)",
+      "@composer req --update-with-all-dependencies apache-solr-for-typo3/solr:$($COMPOSER_BINARY config extra.TYPO3-Solr.CI.matrix.ext-solr) typo3/cms-core:${TYPO3_VERSION}",
+      "@composer dump-autoload",
+      "cp .Build/vendor/apache-solr-for-typo3/solr/.php-cs-fixer.php .",
       "@tests:restore-git"
     ],
     "tests:unit": [
-      "phpunit --colors --coverage-text -c Build/Test/UnitTests.xml --bootstrap=.Build/Web/typo3conf/ext/solr/Build/Test/UnitTestsBootstrap.php"
+      "phpunit --config Build/Test/UnitTests.xml --colors --coverage-text"
     ],
     "tests:integration": [
-      "phpunit --colors --coverage-text -c Build/Test/IntegrationTests.xml --bootstrap=.Build/Web/typo3conf/ext/solr/Build/Test/IntegrationTestsBootstrap.php"
+      "Composer\\Config::disableProcessTimeout",
+      "phpunit --config Build/Test/IntegrationTests.xml --colors --coverage-text"
+    ],
+    "tests:phpstan": [
+      "phpstan analyze -c Build/Test/phpstan.neon"
     ],
     "t3:standards:fix": [
       "php-cs-fixer fix"
+    ],
+    "t3:standards:check": [
+      "php-cs-fixer check --diff"
+    ],
+    "tests:lint-php": [
+      "if ! find . -name \\*.php ! -path \"./.Build/*\" 2>/dev/null | parallel --gnu php -d display_errors=stderr -l {} > /dev/null; then echo \"There are syntax errors, please check and fix them.\" && export EXIT_CODE=1; else echo \"No syntax errors! Great job!\"; fi"
+    ],
+    "tests:lint-xml": [
+      "echo \"Run XML Lint\"",
+      "if ! $COMPOSER_BINARY global exec xmllint -- Resources/Private/Language/ --pattern='*.xlf' --exclude=.Build/*; then echo \"Some XML files are not valid\" && echo \"Please fix the files listed above\" && export EXIT_CODE=4; else echo \"No syntax errors! Great job!\"; fi"
     ]
   },
   "extra": {
     "branch-alias": {
-      "dev-release-11.0.x": "11.0.x-dev"
+      "dev-release-12.0.x": "12.0.x-dev"
     },
     "typo3/cms": {
       "extension-key": "solrfal",
-      "cms-package-dir": "{$vendor-dir}/typo3/cms",
       "web-dir": ".Build/Web"
     },
     "TYPO3-Solr": {
       "CI": {
         "matrix": {
-          "ext-solr": "dev-release-11.5.x"
+          "ext-solr": "12.0.x-dev",
+          "ext-tika": "12.0.x-dev"
         }
-      },
-      "ext-solrfal": {
       }
     }
   }

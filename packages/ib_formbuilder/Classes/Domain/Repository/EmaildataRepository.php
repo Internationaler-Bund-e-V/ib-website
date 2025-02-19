@@ -21,7 +21,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  ***/
 
 /**
- * The repository for Forms
+ * @extends Repository<Emaildata>
  */
 class EmaildataRepository extends Repository
 {
@@ -32,6 +32,7 @@ class EmaildataRepository extends Repository
 
     /**
      * @throws IllegalObjectTypeException
+     * @param int<0, max> $pid
      */
     public function saveFormData(string $htmlContent, string $formName, int $pid, int $formId, bool $errorOnSend): void
     {

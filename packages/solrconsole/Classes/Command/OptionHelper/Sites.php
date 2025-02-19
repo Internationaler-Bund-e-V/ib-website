@@ -17,14 +17,13 @@ declare(strict_types=1);
 
 namespace ApacheSolrForTypo3\Solrconsole\Command\OptionHelper;
 
-use ApacheSolrForTypo3\Solr\Domain\Site\SiteRepository;
 use ApacheSolrForTypo3\Solr\Domain\Site\Site;
+use ApacheSolrForTypo3\Solr\Domain\Site\SiteRepository;
 use Doctrine\DBAL\Driver\Exception as DBALDriverException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\ConsoleOutputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Throwable;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class Sites
@@ -68,13 +67,13 @@ class Sites
         $siteOptions = (string)$input->getOption('sites');
         $siteRepository = $this->getSiteRepository();
 
-        if((int)$siteOptions === 0) {
+        if ((int)$siteOptions === 0) {
             return $siteRepository->getAvailableSites();
         }
 
         $sites = [];
         $siteUids = GeneralUtility::trimExplode(',', $siteOptions);
-        foreach($siteUids as $siteUid) {
+        foreach ($siteUids as $siteUid) {
             $solrConfiguredSite = $siteRepository->getSiteByRootPageId((int)$siteUid);
             if ($solrConfiguredSite === null) {
                 $errOutput = $output instanceof ConsoleOutputInterface ? $output->getErrorOutput() : $output;
@@ -97,13 +96,13 @@ class Sites
      * @param InputInterface $input
      * @param array $sites
      */
-    private function renderSelectedSites(SymfonyStyle $io, InputInterface $input, array $sites)
+    private function renderSelectedSites(SymfonyStyle $io, InputInterface $input, array $sites): void
     {
         $siteOption = (string)$input->getOption('sites');
         $listString = $siteOption === '0' ? 'all' : $siteOption;
 
         $io->writeln(
-            'Sites ('.$listString.'):',
+            'Sites (' . $listString . '):',
             OutputInterface::VERBOSITY_VERBOSE
         );
         foreach ($sites as $site) {
@@ -132,5 +131,4 @@ class Sites
         $this->renderSelectedSites($io, $input, $sites);
         return $sites;
     }
-
 }

@@ -1,4 +1,9 @@
 services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
   ApacheSolrForTypo3\Solrconsole\Command\SolrConnectionGetCommand:
     tags:
       - name: 'console.command'
@@ -63,35 +68,5 @@ services:
     tags:
       - name: 'console.command'
         command: 'solr:index:verify'
-        schedulable: false
-
-  ApacheSolrForTypo3\Solrconsole\Command\SolrfalQueueDeleteCommand:
-    tags:
-      - name: 'console.command'
-        command: 'solrfal:queue:delete'
-        schedulable: false
-
-  ApacheSolrForTypo3\Solrconsole\Command\SolrfalQueueGetCommand:
-    tags:
-      - name: 'console.command'
-        command: 'solrfal:queue:get'
-        schedulable: false
-
-  ApacheSolrForTypo3\Solrconsole\Command\SolrfalQueueIndexCommand:
-    tags:
-      - name: 'console.command'
-        command: 'solrfal:queue:index'
-        schedulable: false
-
-  ApacheSolrForTypo3\Solrconsole\Command\SolrfalQueueProgressCommand:
-    tags:
-      - name: 'console.command'
-        command: 'solrfal:queue:progress'
-        schedulable: false
-
-  ApacheSolrForTypo3\Solrconsole\Command\SolrfalQueueResetErrorsCommand:
-    tags:
-      - name: 'console.command'
-        command: 'solrfal:queue:reset-errors'
         schedulable: false
 

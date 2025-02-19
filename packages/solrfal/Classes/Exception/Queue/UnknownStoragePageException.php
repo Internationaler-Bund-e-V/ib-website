@@ -20,6 +20,4 @@ use ApacheSolrForTypo3\Solrfal\Exception;
 /**
  * Unknown storage page exception
  */
-class UnknownStoragePageException extends Exception
-{
-}
+class UnknownStoragePageException extends Exception {}

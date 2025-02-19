@@ -24,7 +24,7 @@ abstract class AbstractSolrfalCommand extends AbstractCommand
     /**
      * @inheritDoc
      */
-    public function isEnabled()
+    public function isEnabled(): bool
     {
         return ExtensionManagementUtility::isLoaded('solrfal');
     }
