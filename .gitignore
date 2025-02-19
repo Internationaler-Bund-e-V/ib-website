@@ -50,19 +50,7 @@ node_modules
 *.log
 #
 # Ignore build stuff
-/Build/.auth
-/Build/.cache
-/Build/phpunit/FunctionalTests-Job-*
-/Build/bower_components/*
-/Build/node_modules/*
-/Build/JavaScript
-/Build/ckeditorLocales
-!/Build/typings/no-def*
-/Build/testing-docker/local/.env
-/Build/testing-docker/local/macos_passwd
-/public/typo3/sysext/*/Resources/Private/TypeScript/*.js
-/public/typo3/sysext/*/Resources/Public/JavaScript/*.js.map
-/public/typo3/sysext/core/Tests/AcceptanceTests-Job-*
+/public/_assets
 build
 #
 # TypeScript stuff
@@ -70,7 +58,6 @@ build
 .tscache
 #
 # Ignore composer stuff
-/bin/*
 /vendor/*
 /public/index.php
 /public/typo3

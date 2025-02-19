@@ -1,0 +1,33 @@
+base: 'https://ib-training.de'
+disableStaticFileCache: false
+errorHandling:
+  -
+    errorCode: 404
+    errorHandler: ''
+    errorContentSource: ''
+friendlycaptcha_js_path: 'EXT:friendlycaptcha_official/Resources/Public/JavaScript/lib/widget-0.9.12.min.js'
+friendlycaptcha_puzzle_url: 'https://eu-api.friendlycaptcha.eu/api/v1/puzzle'
+friendlycaptcha_secret_key: ''
+friendlycaptcha_site_key: ''
+friendlycaptcha_skip_dev_validation: false
+friendlycaptcha_verify_url: 'https://eu-api.friendlycaptcha.eu/api/v1/siteverify'
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    locale: de_DE.UTF-8
+    hreflang: de-de
+    base: /
+    websiteTitle: ''
+    navigationTitle: DE
+    flag: de
+    solr_core_read: ''
+    languageId: 0
+rootPageId: 7952
+solr_enabled_read: true
+solr_host_read: ib-training.de
+solr_path_read: /
+solr_port_read: '443'
+solr_scheme_read: ''
+solr_use_write_connection: false
+websiteTitle: ''

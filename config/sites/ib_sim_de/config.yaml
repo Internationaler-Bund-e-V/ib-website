@@ -70,6 +70,24 @@ languages:
     solr_core_read: core_ru
     languageId: 10
 rootPageId: 7391
+routeEnhancers:
+  News:
+    type: Extbase
+    limitToPages:
+      - 7407
+    extension: News
+    plugin: Pi1
+    routes:
+      -
+        routePath: '/article/{news-title}'
+        _controller: 'News::detail'
+        _arguments:
+          news-title: news
+    aspects:
+      news-title:
+        type: PersistedAliasMapper
+        tableName: tx_news_domain_model_news
+        routeFieldName: path_segment
 websiteTitle: 'IB Sprachinstitut München'
 imports:
   -

@@ -38,6 +38,24 @@ languages:
     solr_core_read: core_en
     languageId: 1
 rootPageId: 7369
+routeEnhancers:
+  News:
+    type: Extbase
+    limitToPages:
+      - 7386
+    extension: News
+    plugin: Pi1
+    routes:
+      -
+        routePath: '/article/{news-title}'
+        _controller: 'News::detail'
+        _arguments:
+          news-title: news
+    aspects:
+      news-title:
+        type: PersistedAliasMapper
+        tableName: tx_news_domain_model_news
+        routeFieldName: path_segment
 websiteTitle: 'Sprachinstitut Tübingen SIT'
 imports:
   -

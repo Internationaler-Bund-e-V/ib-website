@@ -43,6 +43,7 @@ routeEnhancers:
     limitToPages:
       - 162
       - 6667
+      - 7784
     extension: News
     plugin: Pi1
     routes:

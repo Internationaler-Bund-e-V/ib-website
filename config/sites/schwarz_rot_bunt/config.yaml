@@ -1,8 +1,10 @@
 base: 'https://schwarz-rot-bunt.de/'
 baseVariants:
-  - base: 'https://srb.ddev.site/'
+  -
+    base: 'https://srb.ddev.site/'
     condition: 'getenv("IS_DDEV_PROJECT") == "true"'
-  - base: 'https://schwarz-rot-bunt.rmsdev.de/'
+  -
+    base: 'https://schwarz-rot-bunt.rmsdev.de/'
     condition: 'getenv("SITECONFIG_ENV") == "IBSTAGING"'
 disableStaticFileCache: false
 errorHandling:
@@ -14,6 +16,7 @@ friendlycaptcha_js_path: 'EXT:friendlycaptcha_official/Resources/Public/JavaScri
 friendlycaptcha_puzzle_url: 'https://eu-api.friendlycaptcha.eu/api/v1/puzzle'
 friendlycaptcha_secret_key: A19AL5TOUJO9UDFKPTDK9IJP3QJ7A0OVK0ICUEUJJ9B9VTA4OK1EO4UP44
 friendlycaptcha_site_key: FCMKN6E68M952O9F
+friendlycaptcha_skip_dev_validation: false
 friendlycaptcha_verify_url: 'https://eu-api.friendlycaptcha.eu/api/v1/siteverify'
 languages:
   -
@@ -57,6 +60,9 @@ routeEnhancers:
         type: PersistedAliasMapper
         tableName: tx_news_domain_model_news
         routeFieldName: path_segment
+#solr_host_read: ib-typo312.ddev.site
+#solr_path_read: ''
+#solr_port_read: '8984'
 websiteTitle: ''
 imports:
   -
