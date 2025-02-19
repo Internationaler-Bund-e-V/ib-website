@@ -1,4 +1,7 @@
 <?php
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__.'/../../');
+$dotenv->safeLoad();
+
 return [
     'BE' => [
         'adminOnly' => 0,
@@ -6,19 +9,19 @@ return [
         'installToolPassword' => '$P$CkHM14MZJCljtdSJ4ARgSd45dLGH1q.',
         'lockSSL' => true,
         'versionNumberInFilename' => '0',
-        'warning_email_addr' => 'admin@rm-solutions.de',
+        'warning_email_addr' => 'martin.jahn@ib.de',
         'warning_mode' => '2',
     ],
     'DB' => [
         'Connections' => [
             'Default' => [
                 'charset' => 'utf8',
-                'dbname' => 'ib_t3_12',
+                'dbname' => $_ENV['DB_NAME'],
                 'driver' => 'mysqli',
-                'host' => '127.0.0.1',
-                'password' => '0m__riTABajAkNFtB',
-                'port' => 3306,
-                'user' => 'ib_t3_12',
+                'host' => $_ENV['DB_HOST'],
+                'password' => $_ENV['DB_PASSWORD'],
+                'port' => $_ENV['DB_PORT'],
+                'user' => $_ENV['DB_USER'],
             ],
         ],
     ],

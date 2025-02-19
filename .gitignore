@@ -65,10 +65,6 @@ build
 #
 # Ignore common TYPO3 CMS files/directories
 /public/typo3temp/*
-/public/typo3conf/*
-!/public/typo3conf/*.php
-!/public/typo3conf/ext
-/public/typo3conf/ext/*
 /public/fileadmin/*
 /public/secure/*
 /public/uploads/*

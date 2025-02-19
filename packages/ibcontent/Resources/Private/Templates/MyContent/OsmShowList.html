@@ -1,4 +1,4 @@
-{namespace v=FluidTYPO3\Vhs\ViewHelpers} {namespace j=Ib\Ibcontent\ViewHelpers}
+{namespace encore = Ssch\Typo3Encore\ViewHelpers}
 <f:layout name="Default" />
 
 <f:section name="main">
@@ -21,8 +21,6 @@
 
     </div>
 
-    <f:asset.script identifier="osmMapVue" src="EXT:ibcontent/Resources/Public/build/osmmap/js/osmMapApp.js" type="module"
-        data="{cookieconsent: 'necessary'}" />
-    <f:asset.css identifier="osmMapVueCss" href="EXT:ibcontent/Resources/Public/build/osmmap/assets/index.css" />
-
+    <encore:renderWebpackLinkTags entryName="osmmap" />
+    <encore:renderWebpackScriptTags entryName="osmmap" />
 </f:section>
