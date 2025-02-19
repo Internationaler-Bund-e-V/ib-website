@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace IB\IbCmt\Controller;
+namespace Ib\IbCmt\Controller;
 
-use IB\IbCmt\Domain\Model\Content;
-use IB\IbCmt\Domain\Repository\ContentRepository;
+use Ib\IbCmt\Domain\Model\Content;
+use Ib\IbCmt\Domain\Repository\ContentRepository;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;

@@ -223,6 +223,7 @@ return [
         'debug' => false,
         'hidePagesIfNotTranslatedByDefault' => '0',
         'loginRateLimitIpExcludeList' => '91.107.229.241',
+        'additionalAbsRefPrefixDirectories' => 'build',
     ],
     'GFX' => [
         'gdlib_png' => false,

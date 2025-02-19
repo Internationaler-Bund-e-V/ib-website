@@ -231,7 +231,7 @@ lib.contentElement{
 # -----------------------------------------------------------------------------
 lib.linkedLogo = IMAGE
 lib.linkedLogo {
-    file = EXT:ib_template/Resources/Public/img/logos_portals/{$portalSettings.portal_logo.file}
+    file = EXT:ib_template/Resources/Public/Images/logos_portals/{$portalSettings.portal_logo.file}
     altText = Portal Logo
     titleText = Startseite
     params = class="responsive"

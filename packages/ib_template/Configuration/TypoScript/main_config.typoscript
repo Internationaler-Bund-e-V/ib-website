@@ -381,8 +381,8 @@ plugin.tx_ibcontent.settings.dbCategoryLocationPage = {$portalSettings.ib_conten
 
 plugin.tx_typo3encore {
     settings {
-        entrypointJsonPath = EXT:ib_template/Resources/Public/build/entrypoints.json
-        manifestJsonPath = EXT:ib_template/Resources/Public/build/manifest.json
+        entrypointJsonPath = build/entrypoints.json
+        manifestJsonPath = build/manifest.json
     }
 }
 

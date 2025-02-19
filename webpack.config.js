@@ -8,12 +8,12 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 
 Encore
     // directory where compiled assets will be stored
-    .setOutputPath('packages/ib_template/Resources/Public/build/')
+    .setOutputPath('public/build/')
     // public path used by the web server to access the output path
-//    .setPublicPath('/build')
-    .setPublicPath('/typo3conf/ext/ib_template/Resources/Public/build')
+   .setPublicPath('/build')
+    // .setPublicPath('/typo3conf/ext/ib_template/Resources/Public/build')
     // only needed for CDN's or sub-directory deploy
-    .setManifestKeyPrefix('build/')
+    // .setManifestKeyPrefix('build/')
 
     /*
      * ENTRY CONFIG
@@ -21,7 +21,7 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
-    // .addEntry('bv_bbe', './packages/bv_bbe/Resources/Public/JavaScript/app.js')
+    .addEntry('bv_bbe', './packages/bv_bbe/Resources/Public/JavaScript/app.js')
     // .addEntry('ib_srb', './packages/ib_srb/Resources/Public/JavaScript/app.js')
     .addEntry('ib_template', './packages/ib_template/Resources/Public/JavaScript/app.ts')
     .addEntry('ibcontent', './packages/ibcontent/Resources/Public/JavaScript/app.js')
@@ -33,7 +33,6 @@ Encore
 
     .addEntry('fwd', './packages/ibcontent/Resources/Public/JavaScript/fwd-vue/src/main.js')
     .addEntry('osmmap', './packages/ibcontent/Resources/Public/JavaScript/osmmap-vue/src/main.js')
-
 
     .addStyleEntry('ib_template_rte', './packages/ib_template/Resources/Public/Css/rte.scss')
     .addStyleEntry('ib_dataprivacy', './packages/ib_dataprivacy/Resources/Public/Css/app.scss')
@@ -55,7 +54,7 @@ Encore
      */
     .cleanupOutputBeforeBuild()
 
-    .enableBuildNotifications()
+    // .enableBuildNotifications()
 
     .enableSourceMaps(!Encore.isProduction())
 

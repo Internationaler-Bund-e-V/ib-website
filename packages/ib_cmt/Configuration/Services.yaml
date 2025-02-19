@@ -4,17 +4,17 @@ services:
         autoconfigure: true
         public: false
 
-    IB\IbCmt\:
+    Ib\IbCmt\:
         resource: '../Classes/*'
 
-    IB\IbCmt\Command\CheckContentTagsCommand:
+    Ib\IbCmt\Command\CheckContentTagsCommand:
         tags:
             - name: 'console.command'
               command: 'ibcmt:checkcontenttags'
               description: 'V10 - IB CMT check content tags command'
-    IB\IbCmt\Controller\ContentController:
+    Ib\IbCmt\Controller\ContentController:
         public: true
         arguments:
-            $contentRepository: '@IB\IbCmt\Domain\Repository\ContentRepository'
+            $contentRepository: '@Ib\IbCmt\Domain\Repository\ContentRepository'
 
 

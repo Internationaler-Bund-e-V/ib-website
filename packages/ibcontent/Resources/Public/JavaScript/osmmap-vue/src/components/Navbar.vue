@@ -20,6 +20,8 @@ export default {
     let TypoSettings = inject("TypoSettings");
     let colorThemeClass = ref("");
 
+    let pinIcon = TypoSettings.publicTypo3Path + "osmmap-vue/dist/assets/map-pin-icon.png";
+
     if (TypoSettings.borderButtonColor == "#f18700") {
       colorThemeClass.value = "orange";
     }

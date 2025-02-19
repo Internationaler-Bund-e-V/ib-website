@@ -12,7 +12,8 @@ class IBCookieBot {
     protected cookiebotLanguage:string = '';
 
     constructor() {
-        const jsonPath = '/typo3conf/ext/ib_template/Resources/Public/lang/customCookiebot/';
+        const EXT_ibTemplateAssets = document.getElementById('ib-container')?.dataset.ibtemplatefolder;
+        const jsonPath = EXT_ibTemplateAssets + 'lang/customCookiebot/';
         if (typeof window.Cookiebot != "undefined") {
 
             this.cookiebotLanguage = $('body').data('cblanguage');

@@ -10,12 +10,12 @@
     },
     "autoload": {
         "psr-4": {
-            "IB\\IbCmt\\": "Classes"
+            "Ib\IbCmt\\": "Classes"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "IB\\IbCmt\\Tests\\": "Tests"
+            "Ib\\IbCmt\\Tests\\": "Tests"
         }
     },
     "extra": {
