@@ -1,9 +1,0 @@
-
-# -------------------------------------------------
-# LOGIN ELEMENT -> due to marker template... in sysext felogin
-# -------------------------------------------------
-tt_content.login.wrap (
-    <div class="row ib-content-module ib-background-white">
-        <div class="columns medium-10 medium-offset-1 end">|</div>
-    </div>
-)

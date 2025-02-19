@@ -1,9 +1,0 @@
-##########################
-# Portal Configurations
-##########################
-
-## see -> MA2493 workaround according to DKD
-
-#Default Configuration
-plugin.tx_solr.portalConfiguration.allowed_Extensions = jpg,jpeg,pdf,png,gif,svg
-plugin.tx_solr.portalConfiguration.additionalPageIds =

@@ -11,7 +11,7 @@ config {
     tx_realurl_enable = 1
     simulateStaticDocuments = 0
     sendCacheHeaders = 1
-    
+
     compressJS = 0
     compressCss = 0
     disablePrefixComment = 1
@@ -21,7 +21,7 @@ config {
     locale_all = {$lang.locale_all}
     htmlTag.attributes.class = no-js
     htmlTag_langKey = {$lang.htmlTag_langKey}
-  
+
     #linkVars = L
     linkVars = L(0-4)
     uniqueLinkVars = 1
@@ -289,6 +289,9 @@ portalSettings.main_bubble_en.hide.value = {$portalSettings.main_bubble_en.hide}
 portalSettings.portal_logo.format = TEXT
 portalSettings.portal_logo.format.value = {$portalSettings.portal_logo.format}
 
+portalSettings.portal_logo.file = TEXT
+portalSettings.portal_logo.file.value = {$portalSettings.portal_logo.file}
+
 portalSettings.showLanguageMenu = TEXT
 portalSettings.showLanguageMenu.value = {$portalSettings.showLanguageMenu}
 
@@ -377,12 +380,12 @@ plugin.tx_ibcontent.settings.newsUploadFolder = {$portalSettings.ib_content.news
 plugin.tx_ibcontent.settings.dbCategoryLocationPage = {$portalSettings.ib_content.dbCategoryLocationPage}
 
 plugin.tx_ibjobs.settings {
-    productDbBaseUrl 	= {$portalSettings.ibjobs.ibjobsBaseUrl}	
+    productDbBaseUrl 	= {$portalSettings.ibjobs.ibjobsBaseUrl}
     #jobSingleViewPage	= {$portalSettings.ibjobs.jobSingleViewPage}
 }
 
 
-## gallery folder/pid 
+## gallery folder/pid
 module.tx_ibgalerie_web_ibgalerieibgaleriebe.persistence.storagePid = {$gallery.folder.pid}
 
 
@@ -400,10 +403,10 @@ google.recaptcha.sitekey.value = {$portalSettings.misc.google.recaptchaSiteKey}
 #plugin.tt_news {
      # call user function
      #imageMarkerFunc = Rms\ibNewsExt\teaserMarkerFunc->user_imageMarkerFunc
-     #includeLibs = EXT:ib_tt_news_ext/Resources/Public/UserFuncs/teaserMarkerFunc.php	
+     #includeLibs = EXT:ib_tt_news_ext/Resources/Public/UserFuncs/teaserMarkerFunc.php
  #}
  #set tt_news none cached for immediate update -> MA#792
- #plugin.tt_news = USER_INT 
+ #plugin.tt_news = USER_INT
 
  #allow custom RTE classes for tables
 lib.parseFunc_RTE.externalBlocks.table.stdWrap.HTMLparser.tags.table.fixAttrib.class.list >
@@ -411,4 +414,3 @@ lib.parseFunc_RTE.externalBlocks.table.stdWrap.HTMLparser.tags.table.fixAttrib.c
 
 lib.parseFunc.htmlSanitize = 1
 lib.parseFunc_RTE.htmlSanitize = 0
- 
