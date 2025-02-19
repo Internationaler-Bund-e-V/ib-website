@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\IbGalerie\Hooks;
+namespace Ib\IbGalerie\Hooks;
 
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 

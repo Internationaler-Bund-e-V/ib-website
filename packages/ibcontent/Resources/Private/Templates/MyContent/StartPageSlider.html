@@ -1,5 +1,5 @@
 {namespace v=FluidTYPO3\Vhs\ViewHelpers}
-{namespace rms=Rms\Ibcontent\ViewHelpers}
+{namespace ib=Ib\Ibcontent\ViewHelpers}
 <f:layout name="Default" />
 
 <!-- use {settings.layout} for the height selection. -->
@@ -34,7 +34,7 @@
                   <div class="ib-startpage-slider-item-wrapper">
                     <f:if condition="{slide.ItemWrap.slideImage}">
                       <f:then>
-                        <f:variable name="imagePath" value="{rms:t3FilePath(src: slide.ItemWrap.slideImage)}" />
+                        <f:variable name="imagePath" value="{ib:t3FilePath(src: slide.ItemWrap.slideImage)}" />
                         <f:variable name="convertToFormat" value="jpg" />
                         <f:if condition="{slide.ItemWrap.slideLink}">
                           <f:then>

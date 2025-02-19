@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\Ibjobs\Controller;
+namespace Ib\Ibjobs\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Http\ImmediateResponseException;

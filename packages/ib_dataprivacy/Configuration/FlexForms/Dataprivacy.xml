@@ -43,7 +43,7 @@
               <displayCond>FIELD:settings.view:=:1</displayCond>
               <config>
                 <type>select</type>
-                <itemsProcFunc>Rms\IbDataprivacy\Backend\ItemsProcFunc->user_getContentelements</itemsProcFunc>
+                <itemsProcFunc>Ib\IbDataprivacy\Backend\ItemsProcFunc->user_getContentelements</itemsProcFunc>
                 <renderType>selectMultipleSideBySide</renderType>
                 <foreign_table>tt_content</foreign_table>
                 <size>5</size>
@@ -57,7 +57,7 @@
               <displayCond>FIELD:settings.view:=:1</displayCond>
               <config>
                 <type>select</type>
-                <itemsProcFunc>Rms\IbDataprivacy\Backend\ItemsProcFunc->user_getContentelements</itemsProcFunc>
+                <itemsProcFunc>Ib\IbDataprivacy\Backend\ItemsProcFunc->user_getContentelements</itemsProcFunc>
                 <renderType>selectMultipleSideBySide</renderType>
                 <foreign_table>tt_content</foreign_table>
                 <size>5</size>
@@ -74,7 +74,7 @@
               <displayCond>FIELD:settings.view:=:2</displayCond>
               <config>
                 <type>select</type>
-                <itemsProcFunc>Rms\IbDataprivacy\Backend\ItemsProcFunc->user_getContentelements</itemsProcFunc>
+                <itemsProcFunc>Ib\IbDataprivacy\Backend\ItemsProcFunc->user_getContentelements</itemsProcFunc>
                 <renderType>selectMultipleSideBySide</renderType>
                 <foreign_table>tt_content</foreign_table>
                 <size>5</size>
@@ -89,7 +89,7 @@
               <displayCond>FIELD:settings.view:=:2</displayCond>
               <config>
                 <type>select</type>
-                <itemsProcFunc>Rms\IbDataprivacy\Backend\ItemsProcFunc->user_getContentelements</itemsProcFunc>
+                <itemsProcFunc>Ib\IbDataprivacy\Backend\ItemsProcFunc->user_getContentelements</itemsProcFunc>
                 <renderType>selectMultipleSideBySide</renderType>
                 <foreign_table>tt_content</foreign_table>
                 <size>5</size>
@@ -106,7 +106,7 @@
               <displayCond>FIELD:settings.view:=:3</displayCond>
               <config>
                 <type>select</type>
-                <itemsProcFunc>Rms\IbDataprivacy\Backend\ItemsProcFunc->user_getContentelements</itemsProcFunc>
+                <itemsProcFunc>Ib\IbDataprivacy\Backend\ItemsProcFunc->user_getContentelements</itemsProcFunc>
                 <renderType>selectMultipleSideBySide</renderType>
                 <foreign_table>tt_content</foreign_table>
                 <size>5</size>
@@ -121,7 +121,7 @@
               <displayCond>FIELD:settings.view:=:3</displayCond>
               <config>
                 <type>select</type>
-                <itemsProcFunc>Rms\IbDataprivacy\Backend\ItemsProcFunc->user_getContentelements</itemsProcFunc>
+                <itemsProcFunc>Ib\IbDataprivacy\Backend\ItemsProcFunc->user_getContentelements</itemsProcFunc>
                 <renderType>selectMultipleSideBySide</renderType>
                 <foreign_table>tt_content</foreign_table>
                 <size>5</size>
@@ -138,7 +138,7 @@
               <displayCond>FIELD:settings.view:=:4</displayCond>
               <config>
                 <type>select</type>
-                <itemsProcFunc>Rms\IbDataprivacy\Backend\ItemsProcFunc->user_getContentelements</itemsProcFunc>
+                <itemsProcFunc>Ib\IbDataprivacy\Backend\ItemsProcFunc->user_getContentelements</itemsProcFunc>
                 <renderType>selectMultipleSideBySide</renderType>
                 <foreign_table>tt_content</foreign_table>
                 <size>5</size>

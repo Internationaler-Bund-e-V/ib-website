@@ -1,5 +1,5 @@
 {
-    "name": "rms/ib-dataprivacy",
+    "name": "ib/ib-dataprivacy",
     "type": "typo3-cms-extension",
     "description": "IB - Dataprivacy",
     "minimum-stability": "dev",
@@ -10,12 +10,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Rms\\IbDataprivacy\\": "Classes"
+            "Ib\\IbDataprivacy\\": "Classes"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Rms\\IbDataprivacy\\Tests\\": "Tests"
+            "Ib\\IbDataprivacy\\Tests\\": "Tests"
         }
     },
     "extra": {

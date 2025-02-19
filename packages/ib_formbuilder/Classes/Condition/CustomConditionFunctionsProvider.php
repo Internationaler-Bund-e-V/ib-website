@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\IbFormbuilder\Condition;
+namespace Ib\IbFormbuilder\Condition;
 
 use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;

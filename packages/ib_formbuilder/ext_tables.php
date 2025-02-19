@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Rms\IbFormbuilder\Controller\FormController;
+use Ib\IbFormbuilder\Controller\FormController;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 

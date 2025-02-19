@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Rms\IbFormbuilder\Domain\Repository;
+namespace Ib\IbFormbuilder\Domain\Repository;
 
-use Rms\IbFormbuilder\Domain\Model\Emaildata;
+use Ib\IbFormbuilder\Domain\Model\Emaildata;
 use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;

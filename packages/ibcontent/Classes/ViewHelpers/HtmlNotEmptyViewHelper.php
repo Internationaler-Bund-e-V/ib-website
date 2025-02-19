@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\Ibcontent\ViewHelpers;
+namespace Ib\Ibcontent\ViewHelpers;
 
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
@@ -12,11 +12,11 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
  * saves if the editor is not mindful
  *
  * @author mkettel, 2018-02-26
- * @usage import {namespace rms=Rms\Ibcontent\ViewHelpers
- * @uage inline use in <f:if> condition <f:if condition="{rms:htmlNotEmpty(html:item.ItemWrap.linkButtonLabel)}">
+ * @usage import {namespace ib=Ib\Ibcontent\ViewHelpers
+ * @uage inline use in <f:if> condition <f:if condition="{ib:htmlNotEmpty(html:item.ItemWrap.linkButtonLabel)}">
  *
  * Class HtmlNotEmptyViewHelper
- * @package Rms\Ibcontent\ViewHelpers
+ * @package Ib\Ibcontent\ViewHelpers
  */
 class HtmlNotEmptyViewHelper extends AbstractViewHelper
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Rms\IbFormbuilder\Domain\Repository;
+namespace Ib\IbFormbuilder\Domain\Repository;
 
-use Rms\IbFormbuilder\Domain\Model\Content;
+use Ib\IbFormbuilder\Domain\Model\Content;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Service\FlexFormService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;

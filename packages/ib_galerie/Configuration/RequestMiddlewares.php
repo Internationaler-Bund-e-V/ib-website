@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Rms\IbGalerie\Middleware\GalleryReplacerMiddleware;
+use Ib\IbGalerie\Middleware\GalleryReplacerMiddleware;
 
 return [
     // 'backend => []

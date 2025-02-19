@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Rms\Ibsearch\Command;
+namespace Ib\Ibsearch\Command;
 
 use ApacheSolrForTypo3\Solr\ConnectionManager;
 use ApacheSolrForTypo3\Solr\Domain\Site\Site;
 use ApacheSolrForTypo3\Solr\Domain\Site\SiteRepository;
 use ApacheSolrForTypo3\Solr\NoSolrConnectionFoundException;
 use ApacheSolrForTypo3\Solr\System\Solr\Document\Document;
-use Rms\Ibsearch\Solr\CustomTikaService;
+use Ib\Ibsearch\Solr\CustomTikaService;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;

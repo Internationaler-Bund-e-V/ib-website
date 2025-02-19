@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\Ibcontent\Utility;
+namespace Ib\Ibcontent\Utility;
 
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Service\FlexFormService;
@@ -238,7 +238,7 @@ class ContentElementLabelRenderer implements SingletonInterface
 
         return $title;
     }
-    
+
     /**
      * Accordion
      *

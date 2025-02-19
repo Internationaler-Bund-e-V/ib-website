@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\Ibsearch\Command;
+namespace Ib\Ibsearch\Command;
 
 use Symfony\Component\Console\Command\Command;
 

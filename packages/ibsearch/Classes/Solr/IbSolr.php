@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Rms\Ibsearch\Solr;
+namespace Ib\Ibsearch\Solr;
 
 use GuzzleHttp\Utils;
 
-class RmsSolr
+class IbSolr
 {
     /**
      * see https://www.php.net/manual/de/function.fgets.php

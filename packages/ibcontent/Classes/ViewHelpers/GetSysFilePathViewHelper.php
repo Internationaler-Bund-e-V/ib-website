@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\Ibcontent\ViewHelpers;
+namespace Ib\Ibcontent\ViewHelpers;
 
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
@@ -12,11 +12,11 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
  *
  * @author mkettel, 2021-08-03
  *
- * usage import {namespace rms=Rms\Ibcontent\ViewHelpers}
- * uage inline use {rms:getSysFilePath(uid: 6)}
+ * usage import {namespace ib=Ib\Ibcontent\ViewHelpers}
+ * uage inline use {ib:getSysFilePath(uid: 6)}
  *
  * Class HtmlNotEmptyViewHelper
- * @package Rms\Ibcontent\ViewHelpers
+ * @package Ib\Ibcontent\ViewHelpers
  */
 class GetSysFilePathViewHelper extends AbstractViewHelper
 {

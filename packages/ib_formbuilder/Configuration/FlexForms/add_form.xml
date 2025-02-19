@@ -19,7 +19,7 @@
                                  -->
                                 <type>select</type>
                                 <renderType>selectSingle</renderType>
-                                <itemsProcFunc>Rms\IbFormbuilder\UserFunc\FlexFormUserFunc->getForms</itemsProcFunc>
+                                <itemsProcFunc>Iv\IbFormbuilder\UserFunc\FlexFormUserFunc->getForms</itemsProcFunc>
                             </config>
                         </TCEforms>
                     </settings.form>
@@ -50,7 +50,7 @@
                                 <type>input</type>
                                 <size>250</size>
                                 <!--<eval>trim</eval>-->
-                                <eval>required,Rms\IbFormbuilder\Evaluation\MultipleEmailEvaluation</eval>
+                                <eval>required,Iv\IbFormbuilder\Evaluation\MultipleEmailEvaluation</eval>
                             </config>
                         </TCEforms>
                     </settings.receiver>

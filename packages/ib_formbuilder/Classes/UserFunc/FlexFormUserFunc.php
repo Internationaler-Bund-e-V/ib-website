@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Rms\IbFormbuilder\UserFunc;
+namespace Ib\IbFormbuilder\UserFunc;
 
-use Rms\IbFormbuilder\Domain\Repository\FormRepository;
+use Ib\IbFormbuilder\Domain\Repository\FormRepository;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;

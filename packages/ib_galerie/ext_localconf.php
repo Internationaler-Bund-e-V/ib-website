@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Rms\IbGalerie\Form\CodeRenderer;
-use Rms\IbGalerie\Hooks\TCEmainHook;
+use Ib\IbGalerie\Form\CodeRenderer;
+use Ib\IbGalerie\Hooks\TCEmainHook;
 use TYPO3\CMS\Core\Cache\Frontend\VariableFrontend;
 use TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider;
 use TYPO3\CMS\Core\Imaging\IconRegistry;
@@ -24,7 +24,7 @@ if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][
 
 //register rendering hook for gallery replacement
 #$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-output'][]
-#    = \Rms\IbGalerie\Hooks\GalleryReplacerHook::class . '->contentPostProcOutput'; //= 'EXT:ib_galerie/Classes/Hooks/GalleryReplacerHook.php:GalleryReplacerHook->contentPostProcOutput';
+#    = \Ib\IbGalerie\Hooks\GalleryReplacerHook::class . '->contentPostProcOutput'; //= 'EXT:ib_galerie/Classes/Hooks/GalleryReplacerHook.php:GalleryReplacerHook->contentPostProcOutput';
 /*
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-all'][]
 = 'EXT:ib_galerie/Classes/Hooks/GalleryReplacerHook.php:GalleryReplacerHook->cacheCall';

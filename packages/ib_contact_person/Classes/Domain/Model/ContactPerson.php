@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\IbContactPerson\Domain\Model;
+namespace Ib\IbContactPerson\Domain\Model;
 
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;

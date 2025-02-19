@@ -1,5 +1,5 @@
 {
-    "name": "rms/bv_bbe",
+    "name": "ib/bv_bbe",
     "type": "typo3-cms-extension",
     "description": "BVBBE",
     "minimum-stability": "dev",

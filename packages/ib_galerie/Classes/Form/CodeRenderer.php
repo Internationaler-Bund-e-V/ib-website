@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\IbGalerie\Form;
+namespace Ib\IbGalerie\Form;
 
 use TYPO3\CMS\Backend\Form\Element\AbstractFormElement;
 

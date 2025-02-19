@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Rms\Ibcontent\Domain\Repository;
+namespace Ib\Ibcontent\Domain\Repository;
 
-use Rms\Ibcontent\Domain\Model\News;
+use Ib\Ibcontent\Domain\Model\News;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 

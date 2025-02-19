@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\IbGalerie\Controller;
+namespace Ib\IbGalerie\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
@@ -40,7 +40,7 @@ class GalerieController extends ActionController
     public function listAction(): ResponseInterface
     {
         $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
-        
+
         return $moduleTemplate->renderResponse('List');
     }
 }

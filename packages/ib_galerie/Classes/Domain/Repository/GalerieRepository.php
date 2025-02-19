@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Rms\IbGalerie\Domain\Repository;
+namespace Ib\IbGalerie\Domain\Repository;
 
-use Rms\IbGalerie\Domain\Model\Galerie;
+use Ib\IbGalerie\Domain\Model\Galerie;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /***

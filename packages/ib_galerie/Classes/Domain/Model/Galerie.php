@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\IbGalerie\Domain\Model;
+namespace Ib\IbGalerie\Domain\Model;
 
 use TYPO3\CMS\Extbase\Annotation\ORM\Cascade;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;

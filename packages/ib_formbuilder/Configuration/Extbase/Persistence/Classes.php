@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Rms\IbFormbuilder\Domain\Model\Content;
+use Ib\IbFormbuilder\Domain\Model\Content;
 
 return [
     Content::class => [

@@ -1,5 +1,5 @@
 {
-    "name": "rms/ib-page-extension",
+    "name": "ib/ib-page-extension",
     "type": "typo3-cms-extension",
     "description": "IB - Page Extension",
     "minimum-stability": "dev",

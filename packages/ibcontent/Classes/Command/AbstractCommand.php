@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Rms\Ibcontent\Command;
+namespace Ib\Ibcontent\Command;
 
 use Symfony\Component\Console\Command\Command;
 
