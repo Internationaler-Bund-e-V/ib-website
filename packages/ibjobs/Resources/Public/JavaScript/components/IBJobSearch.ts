@@ -96,7 +96,7 @@ class IBJobSearch
                     multipleTerms[i] = multipleTerms[i].replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
                     tmpRegex += "(?=.*" + multipleTerms[i] + ")";
                 }
-                this.jobs.forEach((key:string, val:Array<string>) => {
+                this.jobs.forEach((val: Array<string>, key: string) => {
                     let regex = new RegExp(tmpRegex, "i");
                     if (val[15].search(regex) != -1) {
                         this.results.push(this.jobs[key]);
