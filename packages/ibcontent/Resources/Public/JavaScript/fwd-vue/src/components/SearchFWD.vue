@@ -102,21 +102,18 @@ export default {
     let resultFetched = ref(false);
     let loading = ref(false);
     let resultCount = ref(Number(0));
-    let baseURL = inject("baseURL");
-    //let baseURL = "https://redaktionstool.ddev.site/";
-    //let proxyURL = "/typo3conf/ext/ibcontent/Resources/Public/dist/proxy.php";
     let proxyURL = inject('proxyURL');
     let serviceNames = {
       fsj: "FSJ - Freiwilliges Soziales Jahr",
       föj: "FÖJ - Freiwilliges Ökologisches Jahr",
       bfd: "BFD - Bundesfreiwilligendienst",
     };
-    
+
     const getCategories = async () => {
-      fetch(proxyURL + "?jobtags=true&baseurl=" + baseURL)
+      fetch(proxyURL + "?jobtags=true)
         .then((response) => response.json())
         .then((data) => (categories.value = data));
-      fetch(proxyURL + "?jobservices=true&baseurl=" + baseURL)
+      fetch(proxyURL + "?jobservices=true)
         .then((response) => response.json())
         .then((data) => (services.value = data));
     };

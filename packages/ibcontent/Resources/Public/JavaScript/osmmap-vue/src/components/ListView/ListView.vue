@@ -109,7 +109,6 @@ export default {
     let tmpLocations = inject("tmpLocations");
     let searchBarClassName = ref("");
     let proxyURL = inject("proxyURL");
-    let baseInterfaceURL = inject("baseInterfaceURL");
     let geoData = ref([]);
     let selectedDistance = inject("selectedDistance");
     let selectedCategories = inject("selectedCategories");
@@ -150,7 +149,7 @@ export default {
     }
 
     //see https://nominatim.openstreetmap.org, https://nominatim.org/release-docs/latest/api/Search/
-    const searchAPI = proxyURL + "?baseurl=" + baseInterfaceURL + "&geocode=";
+    const searchAPI = proxyURL + '?geocode=';
 
     const getLocations = async (navid) => {
       //resetLocations();
@@ -162,17 +161,15 @@ export default {
       if (selectedDistance.value !== 0 && Pin.value.isSet) {
         requestURL.value =
           proxyURL +
-          "?baseurl=" +
-          baseInterfaceURL +
-          "&navid=" +
+          '?navid=' +
           navid +
-          "&radius=" +
+          '&radius=' +
           selectedDistance.value +
-          "&lat=" +
+          '&lat=' +
           Pin.value.latitude +
-          "&long=" +
+          '&long=' +
           Pin.value.longitude +
-          "&categories=" +
+          '&categories=' +
           (selectedCategories.value == null ? "" : selectedCategories.value.toString());
       } else {
         //selectedDistance.value = 0;

@@ -2,13 +2,19 @@
 {namespace encore = Ssch\Typo3Encore\ViewHelpers}
 <f:layout name="Default" />
 <f:section name="main">
-  <div id="ib-jobs-data" data-baseurl="{settings.productDbBaseUrl}" data-intern="{settings.intern}"
-    data-clients="{settings.clients}" data-srclients="{settings.srclients}" data-locations="{settings.locations}" data-categories="{settings.categories}"
-    data-titles="{settings.titles}" data-target="{f:uri.page(pageUid:settings.targetpage)}"
-    data-prefilter="{settings.prefilter}" data-proxyurl="{f:uri.resource(path:'/php/proxy.php', extensionName: 'ibjobs', absolute:'true')}">
+  <div id="ib-jobs-data"
+    data-intern="{settings.intern}"
+    data-clients="{settings.clients}"
+    data-srclients="{settings.srclients}"
+    data-locations="{settings.locations}"
+    data-categories="{settings.categories}"
+    data-titles="{settings.titles}"
+    data-target="{f:uri.page(pageUid:settings.targetpage)}"
+    data-prefilter="{settings.prefilter}"
+  >
   </div>
   <div class="ib-jobs-loader">
-    <img src="{f:uri.resource(path:'/img/ajax-loader.gif', extensionName: 'ib_template', absolute:'true')}">
+    <img src="{f:uri.resource(path:'/Images/ajax-loader.gif', extensionName: 'ib_template', absolute:'true')}">
   </div>
   <div id="ibjobsloga-container-{uid}" class="row ib-content-module ib-background-white ib-jobs-container">
     <div class="columns medium-10 medium-offset-1 end">

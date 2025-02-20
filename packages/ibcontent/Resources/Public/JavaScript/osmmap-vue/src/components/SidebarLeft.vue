@@ -129,7 +129,6 @@ export default {
     let TypoSettings = inject("TypoSettings");
     let resultInfo = ref(false);
     let appState = ref("");
-    let baseInterfaceURL = inject("baseInterfaceURL");
     let requestURL = ref("");
     let proxyURL = inject("proxyURL");
     let toggle = ref(true);
@@ -152,7 +151,7 @@ export default {
     }
 
     //see https://nominatim.openstreetmap.org, https://nominatim.org/release-docs/latest/api/Search/
-    const searchAPI = proxyURL + "?baseurl=" + baseInterfaceURL + "&geocode=";
+    const searchAPI = proxyURL + '?geocode=';
 
     //"https://nominatim.openstreetmap.org/search?countrycodes=de&format=geojson&q=";
     //see https://photon.komoot.io/
@@ -166,18 +165,16 @@ export default {
       if (selectedDistance.value !== 0 && Pin.value.isSet) {
         requestURL.value =
           proxyURL +
-          "?baseurl=" +
-          baseInterfaceURL +
-          "&navid=" +
+          '?navid=' +
           navid +
-          "&radius=" +
+          '&radius=' +
           selectedDistance.value +
-          "&lat=" +
+          '&lat=' +
           Pin.value.latitude +
-          "&long=" +
+          'long=' +
           Pin.value.longitude +
-          "&categories=" +
-          (selectedCategories.value == null ? "" : selectedCategories.value.toString());
+          '&categories=' +
+          (selectedCategories.value == null ? '' : selectedCategories.value.toString());
       } else {
         //selectedDistance.value = 0;
         requestURL.value =
