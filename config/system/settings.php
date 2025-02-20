@@ -1,7 +1,4 @@
 <?php
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__.'/../../');
-$dotenv->safeLoad();
-
 return [
     'BE' => [
         'adminOnly' => 0,
@@ -16,12 +13,12 @@ return [
         'Connections' => [
             'Default' => [
                 'charset' => 'utf8',
-                'dbname' => $_ENV['DB_NAME'],
+                'dbname' => $_ENV['TYPO3_DB_NAME'],
                 'driver' => 'mysqli',
-                'host' => $_ENV['DB_HOST'],
-                'password' => $_ENV['DB_PASSWORD'],
-                'port' => $_ENV['DB_PORT'],
-                'user' => $_ENV['DB_USER'],
+                'host' => $_ENV['TYPO3_DB_HOST'],
+                'password' => $_ENV['TYPO3_DB_PASSWORD'],
+                'port' => $_ENV['TYPO3_DB_PORT'],
+                'user' => $_ENV['TYPO3_DB_USER'],
             ],
         ],
     ],
@@ -265,10 +262,10 @@ return [
         'defaultMailFromName' => 'IB TYPO3',
         'transport' => 'smtp',
         'transport_sendmail_command' => '/usr/sbin/sendmail -t -i',
-        'transport_smtp_encrypt' => true,
-        'transport_smtp_password' => 'KF_f34f0kj4rt_frtgRxx',
-        'transport_smtp_server' => 'webmail.rm-solutions.de:465',
-        'transport_smtp_username' => 'noreply@rm-solutions.de',
+        'transport_smtp_encrypt' => $_ENV['TYPO3_SMTP_ENCRYPT'] ?: true,
+        'transport_smtp_password' => $_ENV['TYPO3_SMTP_PASSWORD'],
+        'transport_smtp_server' => $_ENV['TYPO3_SMTP_HOST'],
+        'transport_smtp_username' => $_ENV['TYPO3_SMTP_USER'],
     ],
     'SYS' => [
         'UTF8filesystem' => true,
@@ -322,7 +319,7 @@ return [
         'fileCreateMask' => '2775',
         'folderCreateMask' => '2775',
         'mediafile_ext' => 'gif,jpg,jpeg,bmp,png,pdf,svg,ai,mp3,wav,mp4,ogg,flac,opus,webm,youtube',
-        'sitename' => '[V12] Internationaler Bund',
+        'sitename' => $_ENV['TYPO3_SITENAME'] ? : '[V12] Internationaler Bund',
         'systemLocale' => 'de_DE',
     ],
 ];
