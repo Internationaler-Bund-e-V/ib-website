@@ -1,7 +1,8 @@
+{namespace encore = Ssch\Typo3Encore\ViewHelpers}
+
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 
-
-<f:asset.css identifier="module-ib-cmt" href="EXT:ib_cmt/Resources/Public/dist/css/app.min.css" />
+<encore:renderWebpackLinkTags entryName="ib_cmt" />
 
 <div class="typo3-fullDoc" id="ibCmtModules">
     <!-- Header für das Backend-Modul -->
