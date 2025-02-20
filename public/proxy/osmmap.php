@@ -6,33 +6,33 @@ $classLoader = require dirname(__DIR__).'/../vendor/autoload.php';
 
 $baseurl = rtrim($_ENV['REDAKTIONSTOOL_URL'], '/\\');
 
-$request = "";
+$request = '';
 if (isset($_REQUEST['navid'])) {
     $navID = intval($_REQUEST['navid']);
 
     if (isset($_REQUEST['categories'])) {
         $categoryIDs = $_REQUEST['categories'];
-        $request = "interfaces/getLocationsForMapsByNavigation/nav_id:" . $navID . "/categories:" . $categoryIDs;
+        $request = 'interfaces/getLocationsForMapsByNavigation/nav_id:' . $navID . '/categories:' . $categoryIDs;
     } else {
-        $request = "interfaces/getLocationsForMapsByNavigation/nav_id:" . $navID;
+        $request = 'interfaces/getLocationsForMapsByNavigation/nav_id:' . $navID;
     }
 }
 if (isset($_REQUEST['locationid'])) {
     $locationID = $_REQUEST['locationid'];
-    $request = "interfaces/requestLocation/id:" . $locationID;
+    $request = 'interfaces/requestLocation/id:' . $locationID;
 }
 if (isset($_REQUEST['jobtags'])) {
-    $request = "interfaces/requestJobTags";
+    $request = 'interfaces/requestJobTags';
 }
 if (isset($_REQUEST['jobservices'])) {
-    $request = "interfaces/requestJobServices";
+    $request = 'interfaces/requestJobServices';
 }
 if (isset($_REQUEST['fwd'])) {
-    $request = "interfaces/requestJobServices";
+    $request = 'interfaces/requestJobServices';
 }
 if (isset($_REQUEST['geocode'])) {
     $searchterm = $_REQUEST['geocode'];
-    $request = "interfaces/getGeocodes/searchterm:" . $searchterm;
+    $request = 'interfaces/getGeocodes/searchterm:' . $searchterm;
 }
 
 if (isset($_REQUEST['radius'])) {
@@ -48,7 +48,7 @@ if (isset($_REQUEST['radius'])) {
     }
 }
 
-$url = $baseurl . $request;
+$url = $baseurl . '/' . $request;
 
 //die($url);
 $session = curl_init(str_replace(' ', '%20', $url));
