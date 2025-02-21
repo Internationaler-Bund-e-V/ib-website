@@ -28,10 +28,10 @@ import IBStartpageNewsSlider from './components/IBStartpageNewsSlider';
 import IBStartPageSlider from './components/IBStartPageSlider';
 import IBTabsBar from './components/IBTabsBar';
 import IBVideoSlider from './components/IBVideoSlider';
+import IBAccordion from './components/IBAccordion';
 
 import './components/matomoEvents';
 
-import './components/foundation-accordion.js';
 
 if (Foundation) {
   // if `Foundation` is left as an unused variable webpack will exclude it from the build output;
@@ -65,6 +65,7 @@ $(function() {
     new IBNewsCategoryFilter();
     new IBSliderLoader();
     new IBTabsBar();
+    new IBAccordion();
 
     if (document.querySelectorAll('.ibOEmail')) {
         new IBEmailProtection(document.querySelectorAll('.ibOEmail'));

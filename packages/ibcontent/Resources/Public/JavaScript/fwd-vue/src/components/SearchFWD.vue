@@ -110,10 +110,10 @@ export default {
     };
 
     const getCategories = async () => {
-      fetch(proxyURL + "?jobtags=true)
+      fetch(proxyURL + '?jobtags=true')
         .then((response) => response.json())
         .then((data) => (categories.value = data));
-      fetch(proxyURL + "?jobservices=true)
+      fetch(proxyURL + '?jobservices=true')
         .then((response) => response.json())
         .then((data) => (services.value = data));
     };

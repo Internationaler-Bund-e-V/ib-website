@@ -14,5 +14,7 @@ ddev yarn run watch
 ```
 Bauen der Pakete für das Deployment
 ```bash
-ddev yarn run build
+ddev yarn build
 ```
+
+#ddev #development 

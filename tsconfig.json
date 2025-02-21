@@ -7,10 +7,9 @@
         "sourceMap": true,
         "typeRoots": [
             "node_modules/@types",
-            "./packages/ib_template/Resources/Public/JavaScript/types/",
 			"types"
         ]
     },
-    "include": [ "node_modules/**/*", "packages/**/*" ],
-    "exclude": [ "**/*.spec.ts" ]
+    "include": [ "node_modules/**/*" ],
+    "exclude": [ "**/*.spec.ts", "Configuration/**/*" ]
 }

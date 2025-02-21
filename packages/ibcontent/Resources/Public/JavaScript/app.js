@@ -2,8 +2,8 @@
 
 import $ from 'jquery';
 
-require('./js/db.js');
-require('./js/webReader.js');
+require('./components/db.js');
+require('./components/webReader.js');
 
 
 $(() => {
