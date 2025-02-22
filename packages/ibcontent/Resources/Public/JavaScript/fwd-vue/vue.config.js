@@ -5,7 +5,7 @@ module.exports = {
     proxy: 'https://ib.ddev.site',
 
   },
-  publicPath: '/typo3conf/ext/ibcontent/Resources/Public/build',
+  publicPath: '/packages/ibcontent/Resources/Public/build',
   configureWebpack: config => {
     config.optimization.splitChunks = false
     if (process.env.NODE_ENV === "production") {

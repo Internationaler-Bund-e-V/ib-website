@@ -3,9 +3,9 @@
 *
 *
 * replacement of functions in
-* htdocs/typo3conf/ext/ibcontent/Resources/Public/js/db.js
+* packages/ibcontent/Resources/Public/js/db.js
 *
-* @see /typo3conf/ext/ibcontent/Resources/Private/Templates/MyContent/Accordion.html
+* @see packages/ibcontent/Resources/Private/Templates/MyContent/Accordion.html
 *
 */
 import $ from 'jquery';

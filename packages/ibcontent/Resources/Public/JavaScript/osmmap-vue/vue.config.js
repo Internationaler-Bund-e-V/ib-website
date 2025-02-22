@@ -4,7 +4,7 @@ module.exports = {
     //proxy: 'https://ib.ddev.site',
 
   },
-  publicPath: '/typo3conf/ext/ibcontent/build/osmmap',
+  publicPath: '/packages/ibcontent/build/osmmap',
   configureWebpack: config => {
     config.optimization.splitChunks = false
     if (process.env.NODE_ENV === "production") {

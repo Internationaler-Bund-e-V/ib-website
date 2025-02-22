@@ -181,7 +181,7 @@ $(document).ready(function () {
 
 	/*
 	 * dbAccordion
-	 * @see moved to /typo3conf/ext/ib_template/Resources/Public/js/src/foundation-accordion.js
+	 * @see moved to packages/ib_template/Resources/Public/js/src/foundation-accordion.js
 	 */
 
 	/*

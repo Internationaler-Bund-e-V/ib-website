@@ -22,7 +22,7 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('bv_bbe', './packages/bv_bbe/Resources/Public/JavaScript/app.js')
-    // .addEntry('ib_srb', './packages/ib_srb/Resources/Public/JavaScript/app.js')
+    .addEntry('ib_srb', './packages/ib_srb/Resources/Public/JavaScript/app.ts')
     .addEntry('ib_template', './packages/ib_template/Resources/Public/JavaScript/app.ts')
     .addEntry('ibcontent', './packages/ibcontent/Resources/Public/JavaScript/app.js')
     .addEntry('ibjobs', './packages/ibjobs/Resources/Public/JavaScript/app.js')
@@ -105,6 +105,6 @@ Encore
     .addAliases({
         'ol/control/Control': 'ol/control/Control.js',
         'ol/MapBrowserEvent': 'ol/MapBrowserEvent.js'
-    })
-;
+    });
+
 module.exports = Encore.getWebpackConfig();

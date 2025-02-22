@@ -14,7 +14,7 @@ export default defineConfig({
             "@": path.resolve(__dirname, "./src"),
         },
     },
-    base: '/typo3conf/ext/ibcontent/Resources/Public/build/fwd/',
+    base: '/packages/ibcontent/Resources/Public/build/fwd/',
     build: {
         outDir: '../../build/fwd/',
         rollupOptions: {
