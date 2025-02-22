@@ -1,0 +1,44 @@
+    // faLib=EXT:ib_srb/Resources/Public/dist/css/faAll.min.css
+    // srbLib=EXT:ib_srb/Resources/Public/dist/css/libs.min.css
+    // srbApp=EXT:ib_srb/Resources/Public/dist/css/app.min.css
+    // lightbox=EXT:ib_srb/Resources/Public/dist/css/lightbox.min.css
+
+@import 'foundation';
+
+/** shariff **/
+@import 'shariff/dist/shariff.complete.css';
+
+// @import 'select2/dist/css/select2.min.css';
+// @import 'motion-ui/dist/motion-ui.css';
+// @import 'slick-carousel/slick/slick.css';
+@import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '@fortawesome/fontawesome-free/scss/solid.scss';
+
+@import 'fonts';
+@import 'variables';
+@import 'basic';
+@import 'header';
+@import 'footer';
+@import 'content';
+@import 'news';
+@import 'emailDialog';
+@import 'accordion';
+@import 'mask/mask';
+@import 'mask/srb_panel';
+@import 'mask/srb_slider';
+@import 'mask/srb_banner';
+@import 'mask/srb_tiles';
+@import 'mask/srb_gallery';
+@import 'news/newsListSlider';
+@import 'news/newsDetail';
+@import 'news/newsListList';
+@import 'news/newsListDate';
+@import 'shariff/shariff';
+@import 'shariff/shariffCustom';
+@import 'form/customForm';
+@import 'solr/solr';
+@import 'cookiebot/cookiebot';
+@import 'typo3_contentelemente';
+
+@include foundation-everything;
+
