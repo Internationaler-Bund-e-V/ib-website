@@ -1,43 +1,35 @@
-IbMainTemplatePath{
-      #js = fileadmin/template/js
-    js = EXT:ib_template/Resources/Public/js
-
-      #css = fileadmin/template/css
-    css = EXT:ib_template/Resources/Public/css
-}
-
 portalSettings{
     # cat=Template Variables:; type=int; label=Partner Folder ID
-    partnerFolderID =  
+    partnerFolderID =
     # cat=Template Variables:; type=int; label=Link Folder ID
-    linkFolderID =  
+    linkFolderID =
     footerColumnOne = 6000
     footerColumnTwo = 5562
     footerColumnThree = 5563
     footerColumnFour = 6001
     metaMenu = 5534
     mainMenu = 5527
-    searchUID = 
+    searchUID =
     cookiebot.language = DE
     cookiebot.cbid = e7025d30-37e6-4652-960b-7c5a07e9d3fa
 }
 
 #recpatcha
-plugin.tx_recaptcha.public_key = 
-plugin.tx_recaptcha.private_key = 
+plugin.tx_recaptcha.public_key =
+plugin.tx_recaptcha.private_key =
 
 # development settings
 [applicationContext == "Development"]
     portalSettings {
-        footerColumnOne = 5869
+        footerColumnOne = 6000
         footerColumnTwo = 5562
         footerColumnThree = 5563
-        footerColumnFour = 5870
+        footerColumnFour = 6001
         metaMenu = 5534
         mainMenu = 5527
-        spendenUID = 
-        searchUID = 
-        recaptchaSiteKey = 
+        spendenUID =
+        searchUID =
+        recaptchaSiteKey =
         cookiebot.language = DE
         cookiebot.cbid = e7025d30-37e6-4652-960b-7c5a07e9d3fa
     }
