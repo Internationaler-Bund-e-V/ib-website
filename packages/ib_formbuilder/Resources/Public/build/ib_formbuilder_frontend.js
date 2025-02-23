@@ -1,0 +1,1 @@
+../../../../../public/build/ib_formbuilder_frontend.js
