@@ -7,7 +7,7 @@
         <!-- textcontent LEFT start-->
         <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.footer.show_textcontent_left')}">
           <f:then>
-            <div class="columns medium-6 large-4 ib-footer-textcontent">
+            <div class="columns small-12 medium-6 large-4 ib-footer-textcontent">
               <f:format.html parseFuncTSPath="lib.parseFunc">{f:cObject(typoscriptObjectPath:
                 'portalSettings.footer.textcontent_left')}</f:format.html>
             </div>
@@ -18,7 +18,7 @@
         <!-- textcontent MIDDLE start-->
         <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.footer.show_textcontent_middle')}">
           <f:then>
-            <div class="columns medium-6 large-4 ib-footer-textcontent">
+            <div class="columns small-12 medium-6 large-4 ib-footer-textcontent">
               <f:format.html parseFuncTSPath="lib.parseFunc">{f:cObject(typoscriptObjectPath:
                 'portalSettings.footer.textcontent_middle')}</f:format.html>
             </div>
@@ -29,7 +29,7 @@
         <!-- textcontent RIGHT start-->
         <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.footer.show_textcontent_right')}">
           <f:then>
-            <div class="columns medium-6 large-4 ib-footer-textcontent">
+            <div class="columns small-12 medium-6 large-4 ib-footer-textcontent">
               <f:format.html parseFuncTSPath="lib.parseFunc">{f:cObject(typoscriptObjectPath:
                 'portalSettings.footer.textcontent_right')}</f:format.html>
             </div>
@@ -122,12 +122,12 @@
 
       <!-- meta -->
       <div class="row ib-footer-meta">
-        <div class="columns medium-8">
+        <div class="columns small-12 medium-8">
           <ul class="no-bullet">
             <f:cObject typoscriptObjectPath="lib.footerMeta" />
           </ul>
         </div>
-        <div class="columns medium-4">
+        <div class="columns small-12 edium-4">
           <img class="ib-footer-logo"
             src="{f:uri.resource(path: 'EXT:ib_template/Resources/Public/Images/logos_portals/')}{f:cObject(typoscriptObjectPath: 'portalSettings.footer.logo')}"
             alt="Portal Logo Footer">
