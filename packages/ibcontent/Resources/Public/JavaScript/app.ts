@@ -8,7 +8,7 @@ import IBBubbleSlider from './components/IBBubbleSlider';
 import IBJobsSlider from './components/IBJobsSlider';
 import IBStartPageSlider from './components/IBStartPageSlider';
 
-//require('./components/db.js');
+import './components/db.js';
 
 $(() => {
     document.querySelectorAll('.ib-dbproductlist').forEach((element: Element) => {

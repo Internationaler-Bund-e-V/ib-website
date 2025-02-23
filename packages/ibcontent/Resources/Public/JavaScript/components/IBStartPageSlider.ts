@@ -4,7 +4,6 @@ import 'slick-carousel';
 class IBStartPageSlider {
     protected element: HTMLElement | null;
     protected sliderElement: HTMLElement | null;
-    protected sliderContainer: HTMLElement | null;
 
     constructor(element: Element|HTMLElement, options = {}) {
         this.element = element as HTMLElement;
