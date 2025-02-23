@@ -7,11 +7,11 @@ return [
 
     'imports' => [
         // load external libraries
-        'formbuilder' => 'EXT:ib_formbuilder/Resources/Public/libs/formBuilder/form-builder.min.js',
-        'formrenderer' => 'EXT:ib_formbuilder/Resources/Public/libs/formBuilder/form-render.min.js',
+        'formbuilder' => 'EXT:ib_formbuilder/Resources/Public/assets/js/libs/formBuilder/form-builder.min.js',
+        'formrenderer' => 'EXT:ib_formbuilder/Resources/Public/assets/js/libs/formBuilder/form-render.min.js',
 
         // load custom modules
-        '@rms/mfbb' => 'EXT:ib_formbuilder/Resources/Public/JavaScript/Es6ModuleBackend/MyFormBuilderBackend.js',
-        '@rms/myinit' => 'EXT:ib_formbuilder/Resources/Public/JavaScript/Es6ModuleBackend/InitBackendFormBuilderScripts.js',
+        '@rms/mfbb' => 'EXT:ib_formbuilder/Resources/Public/assets/js/Es6ModuleBackend/MyFormBuilderBackend.js',
+        '@rms/myinit' => 'EXT:ib_formbuilder/Resources/Public/assets/js/Es6ModuleBackend/InitBackendFormBuilderScripts.js',
     ],
 ];
