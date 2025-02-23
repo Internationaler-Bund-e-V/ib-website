@@ -23,11 +23,11 @@
     </div>
     <div class="ibBubbleSliderContainer useLoadingIndicator loading">
       <div class="row columns small-12">
-        <div id="prevButton" class="columns small-1 ib-color-blue ib-font-size-60 ib-bubble-slider-control">
+        <div id="prevButton" class="columns small-1 ib-color-blue ib-font-size-60 ib-bubble-slider-control ib-bubble-slider-control-prev">
           <i class="ib-icon-arrow-left"></i>
         </div>
         <div class="columns small-10">
-          <div class="ib-bubble-slider" data-loaderid="loader_{uid}">
+          <div class="ib-bubble-slider slides" data-loaderid="loader_{uid}">
 
             <f:for each="{settings.sliderContainer}" as="slide">
               <f:variable name="altAttributeValue">{slide.ItemWrap.slideImageAltText}</f:variable>
@@ -76,7 +76,7 @@
             </f:for>
           </div>
         </div>
-        <div id="nextButton" class="columns small-1 ib-color-blue ib-font-size-60 ib-bubble-slider-control">
+        <div id="nextButton" class="columns small-1 ib-color-blue ib-font-size-60 ib-bubble-slider-control ib-bubble-slider-control-next">
           <i class="ib-icon-arrow-right float-right "></i>
         </div>
       </div>
@@ -108,8 +108,6 @@
   <f:if condition="{settings.divider} == 'both'">
     <f:render section="divider" />
   </f:if>
-  <!-- include bubbleSlider.js as footer asset -->
-  <f:asset.script identifier="bubbleSliderJs" src="EXT:ibcontent/Resources/Public/js/bubbleSlider.js" />
 </f:section>
 
 

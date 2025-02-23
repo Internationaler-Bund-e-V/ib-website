@@ -12,15 +12,14 @@ export default async function useFetchLocations(navid, Tags, Categories) {
     async function fetchLocations() {
         status.value = Status.RUNNING;
 
-        const proxyURL = inject("proxyURL");
-        const baseInterfaceURL = inject("baseInterfaceURL");
+        const proxyURL = inject('proxyURL');
 
 
         try {
-            const res = await fetch(proxyURL + "?baseurl=" + baseInterfaceURL + "&navid=" + navid, {
-                method: "GET",
+            const res = await fetch(proxyURL + '?navid=' + navid, {
+                method: 'GET',
                 headers: {
-                    Accept: "application/json",
+                    Accept: 'application/json',
                 },
             });
             if (!res.ok) {

@@ -10,7 +10,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Ib\IbCmt\\": "Classes"
+            "Ib\\IbCmt\\": "Classes"
         }
     },
     "autoload-dev": {

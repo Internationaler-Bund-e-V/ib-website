@@ -14,7 +14,7 @@ export default defineConfig({
             "@": path.resolve(__dirname, "./src"),
         },
     },
-    base: '/typo3conf/ext/ibcontent/Resources/Public/build/osmmap/',
+    base: '/packages/ibcontent/Resources/Public/build/osmmap/',
     build: {
         outDir: '../../build/osmmap/',
         rollupOptions: {

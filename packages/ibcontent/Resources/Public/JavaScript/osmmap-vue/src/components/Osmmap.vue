@@ -166,7 +166,7 @@ export default {
     const selectConditions = inject("ol-selectconditions");
     const selectCondition = selectConditions.pointerMove;
 
-    let centerIcon = TypoSettings.publicTypo3Path + "osmmap-vue/dist/assets/map-pin-icon.png";
+    let centerIcon = TypoSettings.publicTypo3Path + 'JavaScript/osmmap-vue/src/assets/map-pin-icon.png';
 
     // pin styles
     const radius = ref(5);

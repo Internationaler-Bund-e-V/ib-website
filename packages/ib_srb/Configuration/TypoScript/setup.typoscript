@@ -13,7 +13,7 @@ config.htmlTag.attributes.class = no-js
 # Default PAGE object:
 page = PAGE
 page.bodyTag = <body id="IbSrb" data-cblanguage="DE">
-page.shortcutIcon = EXT:ib_srb/Resources/Public/img/favicon.png
+page.shortcutIcon = EXT:ib_srb/Resources/Public/Images/favicon.png
 page.headerData {
     10 = TEXT
     10.value = <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -27,11 +27,11 @@ page.10 {
         key.data = pagelayout
 
         default = TEXT
-        default.value = EXT:ib_srb/Resources/Private/Layouts/Default.html        
-    }  
+        default.value = EXT:ib_srb/Resources/Private/Layouts/Default.html
+    }
 
-    templateRootPaths.1     = EXT:ib_srb/Resources/Private/Templates/  
-    templateRootPaths.2     = EXT:ib_dataprivacy/Resources/Private/Templates/ 
+    templateRootPaths.1     = EXT:ib_srb/Resources/Private/Templates/
+    templateRootPaths.2     = EXT:ib_dataprivacy/Resources/Private/Templates/
     partialRootPaths.1      = EXT:ib_srb/Resources/Private/Partials/
     layoutRootPaths.1       = EXT:ib_srb/Resources/Private/Layouts/
 
@@ -48,67 +48,61 @@ page.10 {
    dataProcessing {
        10 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
           10 {
-              special = directory          
+              special = directory
             special.value = {$portalSettings.footerColumnOne}
-            levels = 1          
-            as = footerColumnOne              
+            levels = 1
+            as = footerColumnOne
         }
         11 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
         11 {
-              special = directory          
+              special = directory
               special.value = {$portalSettings.footerColumnTwo}
-              levels = 1          
-              as = footerColumnTwo              
-        }    
+              levels = 1
+              as = footerColumnTwo
+        }
           12 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
           12 {
-              special = directory          
+              special = directory
               special.value = {$portalSettings.footerColumnThree}
-              levels = 1          
-              as = footerColumnThree              
-          }          
+              levels = 1
+              as = footerColumnThree
+          }
           20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
           20 {
             special = directory
             special.value = {$portalSettings.mainMenu}
-            levels = 2          
-            as = mainMenu              
+            levels = 2
+            as = mainMenu
         }
           30 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
           30 {
             special = directory
             special.value = {$portalSettings.metaMenu}
-            levels = 1          
-            as = metaMenu              
+            levels = 1
+            as = metaMenu
         }
-    }  
-}
-
-#include IB Main Template Files
-page.includeJS {
-    jquery = EXT:ib_template/Resources/Public/js/min/jquery.min.js
-}
-
-page.includeJSFooter {
-    #libs = {$IbMainTemplatePath.js}/min/libs.min.js
-    #frontend = {$IbMainTemplatePath.js}/min/frontend.min.js
+    }
 }
 
 #set dataprivacy site
 portalSettings.dataPrivacySiteID = TEXT
 portalSettings.dataPrivacySiteID.value = {$portalSettings.dataPrivacySiteID}
 
-#include Schwarz Rot Bunt Extension Template Files
-page.includeCSS {
-    faLib = EXT:ib_srb/Resources/Public/dist/css/faAll.min.css	
-    srbLib = EXT:ib_srb/Resources/Public/dist/css/libs.min.css	
-    srbApp = EXT:ib_srb/Resources/Public/dist/css/app.min.css	
-    lightbox = EXT:ib_srb/Resources/Public/dist/css/lightbox.min.css	  
+plugin.tx_typo3encore {
+    settings {
+        entrypointJsonPath = build/entrypoints.json
+        manifestJsonPath = build/manifest.json
+    }
 }
 
-page.includeJS {
-    srbLib = EXT:ib_srb/Resources/Public/dist/js/libs.min.js
-    srbApp = EXT:ib_srb/Resources/Public/dist/js/app.min.js	
+
+#include Schwarz Rot Bunt Extension Template Files
+page.includeCSS {
+    ib_srb = typo3_encore:ib_srb
+}
+
+page.includeJSFooter {
+    ib_srb = typo3_encore:ib_srb
 }
 
 #########################

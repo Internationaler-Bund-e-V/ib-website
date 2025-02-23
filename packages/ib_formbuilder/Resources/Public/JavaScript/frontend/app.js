@@ -1,7 +1,10 @@
-import $ from 'jquery';
-import 'formBuilder';
-
 import '../../Css/frontend/app.scss'
+
+import $ from 'jquery';
+global.jQuery = global.$ = $;
+
+import 'formBuilder/dist/form-render.min.js';
+
 /**
  * the variables for this script are defined inside the <v:asset.script>
  * section inside Partials/Form/FrontendRenderForm.html
@@ -11,7 +14,7 @@ import '../../Css/frontend/app.scss'
 // SITESCRIPTS
 // ------------------------------------
 var myFormRenderer;
-$(function () {
+$(() => {
 
     if (typeof myFormData !== 'undefined') {
         // ---------------------
@@ -21,8 +24,7 @@ $(function () {
         var fbRenderer = $('#fb-render');
 
         // read data-assetbasepath value from #fb-render element
-        var assetBasePath = jQuery(fbRenderer).data('assetbasepath');
-console.log(myFormData);
+        var assetBasePath = $(fbRenderer).data('assetbasepath');
         $(fbRenderer).formRender({
             formData: myFormData,
             dataType: 'json',
@@ -38,16 +40,16 @@ console.log(myFormData);
             }
         });
 
-        myFormRenderer = jQuery(fbRenderer).myFormBuilderRenderer({
+        myFormRenderer = $(fbRenderer).myFormBuilderRenderer({
             ajaxSubmitUrl: formSubmitUri
         });
 
         // ---------------------
         // insert captcha element before the submit button
         // ---------------------
-        if (jQuery('div.tx_ibformbuilder-show-frontend-form form button[type=submit]').length) {
+        if ($('div.tx_ibformbuilder-show-frontend-form form button[type=submit]').length) {
 
-            var formLang = jQuery('body').data('cblanguage');
+            var formLang = $('body').data('cblanguage');
             var recaptchaCode =
                 '<!-- friendly captcha start -->\
                     <div class="row columns" id="ib-recaptcha-container">\
@@ -57,7 +59,7 @@ console.log(myFormData);
                         <span class="form-error">' + contactform_recaptcha_error + '</span>\
                     </div>\
                 <!-- friendly captcha end -->\n';
-            jQuery(recaptchaCode)
+            $(recaptchaCode)
                 .insertBefore('div.tx_ibformbuilder-show-frontend-form form button[type=submit]');
             var element = document.querySelector("#formBuilderFC");
             var myCustomWidget = new friendlyChallenge.WidgetInstance(element, {})
@@ -129,7 +131,7 @@ function fcCallback(solution) {
         var hideItems = [];
 
         var split_1 = valueArray.split(";");
-        jQuery(split_1).each(function (key, value) {
+        $(split_1).each(function (key, value) {
             var split_2 = value.split('#');
             if (split_2[0] === activeValue) {
                 showItems.push('div.field-' + split_2[1]);
@@ -147,8 +149,8 @@ function fcCallback(solution) {
      * perform general setup tasks (assing classes, ...)
      */
     $.fn.generalSetup = function () {
-        var formContainer = jQuery('form#tx_ibformbuilder_contactform');
-        jQuery(formContainer).find("button[type=submit]").addClass('button');
+        var formContainer = $('form#tx_ibformbuilder_contactform');
+        $(formContainer).find("button[type=submit]").addClass('button');
     };
 
     /**
@@ -161,41 +163,41 @@ function fcCallback(solution) {
     $.fn.manageRadioButtons = function () {
 
         var that = this;
-        var radios = jQuery(this).find('div.radio-group div.radio input');
+        var radios = $(this).find('div.radio-group div.radio input');
 
-        jQuery(radios).each(function (key, value) {
+        $(radios).each(function (key, value) {
 
             // remove preselections
-            jQuery(value).removeAttr('checked');
+            $(value).removeAttr('checked');
 
             // check if radio is managed by dependecies
             // if so, hide it initially
-            var localValue = jQuery(value).data('local-value');
+            var localValue = $(value).data('local-value');
             if (undefined !== localValue) {
                 var parsed = that.parseLocalValue(localValue, '');
-                jQuery(parsed['hide']).each(function (key, value) {
-                    jQuery(value).hide();
+                $(parsed['hide']).each(function (key, value) {
+                    $(value).hide();
                 });
             }
         });
 
         // check for each radio if it is a trigger for managing
         // dependencies and add event handling if so
-        jQuery(radios).click(function (e) {
+        $(radios).click(function (e) {
             var target = e.currentTarget;
-            var myData = jQuery(target).data('local-value');
+            var myData = $(target).data('local-value');
 
             if (undefined !== myData) {
-                var activeValue = jQuery(target).val();
+                var activeValue = $(target).val();
                 var parsed = that.parseLocalValue(myData, activeValue);
 
-                jQuery(parsed['hide']).each(function (key, value) {
-                    jQuery(value).find('input').prop('checked', false);
-                    jQuery(value).hide();
+                $(parsed['hide']).each(function (key, value) {
+                    $(value).find('input').prop('checked', false);
+                    $(value).hide();
                 });
 
-                jQuery(parsed['show']).each(function (key, value) {
-                    jQuery(value).show();
+                $(parsed['show']).each(function (key, value) {
+                    $(value).show();
                 });
             }
         });
@@ -203,12 +205,12 @@ function fcCallback(solution) {
 
     $.fn.showCaptchaError = function (show) {
 
-        var contactForm = jQuery("#tx_ibformbuilder_contactform");
+        var contactForm = $("#tx_ibformbuilder_contactform");
 
         if (!show) {
-            jQuery(contactForm).find('div.captcha_error').hide();
+            $(contactForm).find('div.captcha_error').hide();
         } else {
-            jQuery(contactForm).find('div.captcha_error').show();
+            $(contactForm).find('div.captcha_error').show();
         }
     };
 
@@ -219,11 +221,11 @@ function fcCallback(solution) {
      */
     $.fn.handleFormSubmit = function () {
         var that = this;
-        var loader = jQuery('div.loader-container');
-        var general_error_message = jQuery('div.general_error_message');
+        var loader = $('div.loader-container');
+        var general_error_message = $('div.general_error_message');
 
-        var submitButton = jQuery("form#tx_ibformbuilder_contactform button[type=submit]");
-        jQuery(submitButton).click(function (e) {
+        var submitButton = $("form#tx_ibformbuilder_contactform button[type=submit]");
+        $(submitButton).click(function (e) {
 
             e.preventDefault();
 
@@ -234,23 +236,23 @@ function fcCallback(solution) {
             // otherwise the variables can't be acessed via $this->request->getArguments())
             // in the extbase controller
             // ------------------------------------------------------------------------------
-            var contactForm = jQuery("#tx_ibformbuilder_contactform");
+            var contactForm = $("#tx_ibformbuilder_contactform");
 
             // ------------------------------------------
             // change checkbox names form [] to [1], [2], ...
             // ------------------------------------------
-            jQuery(contactForm).find('div.checkbox-group').each(function (key, value) {
-                jQuery(value).find('input[type=checkbox]').each(function (key2, value2) {
-                    var elementId = jQuery(value2).attr('id');
-                    var elementName = jQuery(value2).attr('name');
-                    jQuery('#' + elementId).attr('name', elementId);
+            $(contactForm).find('div.checkbox-group').each(function (key, value) {
+                $(value).find('input[type=checkbox]').each(function (key2, value2) {
+                    var elementId = $(value2).attr('id');
+                    var elementName = $(value2).attr('name');
+                    $('#' + elementId).attr('name', elementId);
                 })
             });
 
             // ------------------------------------------
             // serialize array and prepare it for senind to server
             // ------------------------------------------
-            var serializedArrayFormData = jQuery(contactForm).serializeArray();
+            var serializedArrayFormData = $(contactForm).serializeArray();
             for (var i = 0; i < serializedArrayFormData.length; i++) {
                 serializedArrayFormData[i]['name'] = "tx_ibformbuilder_showform[formdata][" + serializedArrayFormData[i].name + "]";
             }
@@ -260,9 +262,9 @@ function fcCallback(solution) {
             // ----------------------------------
             if (fcSolved) {
 
-                jQuery(submitButton).hide();
-                jQuery(loader).show();
-                jQuery(general_error_message).hide();
+                $(submitButton).hide();
+                $(loader).show();
+                $(general_error_message).hide();
 
                 // create serialized string of the parameters and send it via ajax to the extbase controller
                 var serializedyFormData = jQuery.param(serializedArrayFormData);
@@ -274,15 +276,15 @@ function fcCallback(solution) {
                     success: function (response) {
 
                         that.showCaptchaError(false);
-                        jQuery(contactForm)
+                        $(contactForm)
                             .find(".error")
                             .removeClass('error');
 
                         // SUCCESS
                         if (response['success'] === true) {
 
-                            jQuery('div.tx_ibformbuilder-show-frontend-form').hide();
-                            jQuery('div.tx_ibformbuilder-show-frontend-form-success').show();
+                            $('div.tx_ibformbuilder-show-frontend-form').hide();
+                            $('div.tx_ibformbuilder-show-frontend-form-success').show();
 
                             //if custom form success callback implemented (snippets tmpl), call
                             if (typeof formBuilderSuccessCallback === "function") {
@@ -294,17 +296,17 @@ function fcCallback(solution) {
                             // show a hint to visitors
                             // mk@rms, 2022-05-18
                             if (response['mail_send_success'] === false) {
-                                jQuery('#tx_formbuilder_mailsend_error').show();
+                                $('#tx_formbuilder_mailsend_error').show();
                             }
                         }
                         // ERROR
                         else {
 
-                            jQuery(general_error_message).show();
+                            $(general_error_message).show();
                             //console.log('error', response.errors);
                             jQuery.each(response.errors, function (index, value) {
 
-                                jQuery(contactForm)
+                                $(contactForm)
                                     .find("#" + index + ',label[for="' + index + '"]')
                                     .addClass('error');
 
@@ -314,8 +316,8 @@ function fcCallback(solution) {
                             });
                         }
 
-                        jQuery(submitButton).show();
-                        jQuery(loader).hide();
+                        $(submitButton).show();
+                        $(loader).hide();
                     },
                     error: function (error) {
                     }

@@ -1,4 +1,4 @@
-{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace encore = Ssch\Typo3Encore\ViewHelpers}
 
 <f:layout name="Default"/>
 
@@ -18,4 +18,5 @@
 </f:comment>
 <f:render partial="Form/FrontendRenderFormSuccess" arguments="{_all}"/>
 
-{v:asset.style(path: 'EXT:ib_formbuilder/Resources/Public/Css/frontend.min.css')}
+<encore:renderWebpackLinkTags entryName="ib_formbuilder_frontend" />
+<encore:renderWebpackScriptTags entryName="ib_formbuilder_frontend" />

@@ -109,7 +109,6 @@ export default {
     let tmpLocations = inject("tmpLocations");
     let searchBarClassName = ref("");
     let proxyURL = inject("proxyURL");
-    let baseInterfaceURL = inject("baseInterfaceURL");
     let geoData = ref([]);
     let selectedDistance = inject("selectedDistance");
     let selectedCategories = inject("selectedCategories");
@@ -150,7 +149,7 @@ export default {
     }
 
     //see https://nominatim.openstreetmap.org, https://nominatim.org/release-docs/latest/api/Search/
-    const searchAPI = proxyURL + "?baseurl=" + baseInterfaceURL + "&geocode=";
+    const searchAPI = proxyURL + '?geocode=';
 
     const getLocations = async (navid) => {
       //resetLocations();
@@ -162,28 +161,24 @@ export default {
       if (selectedDistance.value !== 0 && Pin.value.isSet) {
         requestURL.value =
           proxyURL +
-          "?baseurl=" +
-          baseInterfaceURL +
-          "&navid=" +
+          '?navid=' +
           navid +
-          "&radius=" +
+          '&radius=' +
           selectedDistance.value +
-          "&lat=" +
+          '&lat=' +
           Pin.value.latitude +
-          "&long=" +
+          '&long=' +
           Pin.value.longitude +
-          "&categories=" +
+          '&categories=' +
           (selectedCategories.value == null ? "" : selectedCategories.value.toString());
       } else {
         //selectedDistance.value = 0;
         requestURL.value =
           proxyURL +
-          "?baseurl=" +
-          baseInterfaceURL +
-          "&navid=" +
+          '?navid=' +
           navid +
-          "&categories=" +
-          (selectedCategories.value == null ? "" : selectedCategories.value.toString());
+          '&categories=' +
+          (selectedCategories.value == null ? '' : selectedCategories.value.toString());
       }
 
       fetch(requestURL.value)
@@ -200,7 +195,7 @@ export default {
 
     const searchLocation = async () => {
       tmpLocations.value = [];
-      searchTextTerm.value = "";
+      searchTextTerm.value = '';
       getGeoData(searchLocationTerm);
     };
 
@@ -270,8 +265,8 @@ export default {
       showDistance.value = false;
       Loading.value = true;
       geoLocations.value = [];
-      searchLocationTerm.value = "";
-      searchTextTerm.value = "";
+      searchLocationTerm.value = '';
+      searchTextTerm.value = '';
       selectedDistance.value = 50;
       Pin.value.resetCenter();
       if (usePreFilterCategories == 1) {
@@ -280,7 +275,7 @@ export default {
         selectedCategories.value = [];
       }
 
-      selectedTag.value = "Alle";
+      selectedTag.value = 'Alle';
       getLocations(Navigation.value);
     };
 
@@ -292,7 +287,7 @@ export default {
             return (
               location.Location.tags
                 .toLowerCase()
-                .indexOf("-" + selectedTag.value + "-") != -1
+                .indexOf('-' + selectedTag.value + '-') != -1
             );
           });
         } else {
@@ -326,21 +321,21 @@ export default {
         var tempGeoLocation = geoLocations.value[selectedGeoLocationIndex.value];
 
         if (
-          tempGeoLocation.properties.type == "postal_code" ||
-          tempGeoLocation.properties.type == "postcode" ||
-          tempGeoLocation.properties.type == "administrative" ||
-          tempGeoLocation.properties.type == "land_area" ||
-          tempGeoLocation.properties.type == "unesco world heritage" ||
-          tempGeoLocation.properties.type == "stop" ||
-          tempGeoLocation.properties.type == "halt" ||
-          tempGeoLocation.properties.type == "bus_stop" ||
-          tempGeoLocation.properties.type == "village"
+          tempGeoLocation.properties.type == 'postal_code' ||
+          tempGeoLocation.properties.type == 'postcode' ||
+          tempGeoLocation.properties.type == 'administrative' ||
+          tempGeoLocation.properties.type == 'land_area' ||
+          tempGeoLocation.properties.type == 'unesco world heritage' ||
+          tempGeoLocation.properties.type == 'stop' ||
+          tempGeoLocation.properties.type == 'halt' ||
+          tempGeoLocation.properties.type == 'bus_stop' ||
+          tempGeoLocation.properties.type == 'village'
         ) {
           //check state and adjust distance
           newGeoSearch.value = true;
           if (
-            tempGeoLocation.properties.addresstype == "state" ||
-            tempGeoLocation.properties.addresstype == "land_area"
+            tempGeoLocation.properties.addresstype == 'state' ||
+            tempGeoLocation.properties.addresstype == 'land_area'
           ) {
             selectedDistance.value = 150;
           } else {
@@ -637,10 +632,3 @@ export default {
   }
 }
 </style>
-<!--
-<style lang="scss">
-.ib-osmmap {
-  border: none !important;
-}
-</style>
--->

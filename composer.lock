@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f0083d95244739979afb873dce165a06",
+    "content-hash": "c609d9a368949bd528830bda8806e375",
     "packages": [
         {
             "name": "apache-solr-for-typo3/solr",
@@ -2560,7 +2560,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_cmt",
-                "reference": "6df17d72f1b0dd3ea18d8d436b03199063710dfc"
+                "reference": "ff81241627ada065a69832edab1fde0e566e7fa1"
             },
             "require": {
                 "typo3/cms-core": "^12.4"
@@ -2573,12 +2573,12 @@
             },
             "autoload": {
                 "psr-4": {
-                    "IB\\IbCmt\\": "Classes"
+                    "Ib\\IbCmt\\": "Classes"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "IB\\IbCmt\\Tests\\": "Tests"
+                    "Ib\\IbCmt\\Tests\\": "Tests"
                 }
             },
             "description": "IB - CMT",
@@ -9958,6 +9958,77 @@
             "time": "2025-02-19T16:45:27+00:00"
         },
         {
+            "name": "helhum/dotenv-connector",
+            "version": "v3.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/helhum/dotenv-connector.git",
+                "reference": "be118357a96e8c4e8a7a6a5cda2239e924af3d53"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/helhum/dotenv-connector/zipball/be118357a96e8c4e8a7a6a5cda2239e924af3d53",
+                "reference": "be118357a96e8c4e8a7a6a5cda2239e924af3d53",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0 || ^2.0",
+                "php": ">=7.2",
+                "symfony/dotenv": "^5.1 || ^6.4 || ^7.0"
+            },
+            "require-dev": {
+                "composer/composer": "^1.0 || ^2.0",
+                "composer/semver": "^1.0 || ^2.0 || ^3.0",
+                "mikey179/vfsstream": "^1.6.0",
+                "phpunit/phpunit": "^5"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Helhum\\DotEnvConnector\\Plugin",
+                "branch-alias": {
+                    "dev-latest": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Helhum\\DotEnvConnector\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Helmut Hummel",
+                    "email": "info@helhum.io"
+                }
+            ],
+            "description": "Makes it possible to set environment variables for composer projects.",
+            "homepage": "https://github.com/helhum/dotenv-connector",
+            "keywords": [
+                "12factor",
+                "composer",
+                "dotenv",
+                "env"
+            ],
+            "support": {
+                "issues": "https://github.com/helhum/dotenv-connector/issues",
+                "source": "https://github.com/helhum/dotenv-connector/tree/v3.1.2"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/helhum/19.99",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/helhum",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-01-12T21:06:43+00:00"
+        },
+        {
             "name": "league/flysystem",
             "version": "3.29.1",
             "source": {
@@ -10660,6 +10731,80 @@
                 }
             ],
             "time": "2025-02-17T11:18:47+00:00"
+        },
+        {
+            "name": "symfony/dotenv",
+            "version": "v6.4.16",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/dotenv.git",
+                "reference": "1ac5e7e7e862d4d574258daf08bd569ba926e4a5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/dotenv/zipball/1ac5e7e7e862d4d574258daf08bd569ba926e4a5",
+                "reference": "1ac5e7e7e862d4d574258daf08bd569ba926e4a5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "conflict": {
+                "symfony/console": "<5.4",
+                "symfony/process": "<5.4"
+            },
+            "require-dev": {
+                "symfony/console": "^5.4|^6.0|^7.0",
+                "symfony/process": "^5.4|^6.0|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Dotenv\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Registers environment variables from a .env file",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "dotenv",
+                "env",
+                "environment"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/dotenv/tree/v6.4.16"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-11-27T11:08:19+00:00"
         },
         {
             "name": "symfony/polyfill-php80",

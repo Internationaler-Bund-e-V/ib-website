@@ -66,7 +66,8 @@
         "ssch/typo3-rector": "^2.5",
         "cakephp/cakephp-codesniffer": "^5.0",
         "phpstan/phpstan": "^1.10",
-        "deployer/deployer": "^7.5"
+        "deployer/deployer": "^7.5",
+        "helhum/dotenv-connector": "^3.1"
 	},
     "extra": {
         "typo3/cms": {
@@ -76,17 +77,6 @@
     },
     "autoload": {
         "psr-4": {
-            "Ib\\Ibcontent\\": "packages/ibcontent/Classes/",
-            "Ib\\Ibjobs\\": "packages/ibjobs/Classes/",
-            "Ib\\Ibsearch\\": "packages/ibsearch/Classes/",
-            "Ib\\IbFormbuilder\\": "packages/ib_formbuilder/Classes/",
-            "Ib\\IbGalerie\\": "packages/ib_galerie/Classes/",
-            "Ib\\IbContactPerson\\": "packages/ib_contact_person/Classes/",
-            "Ib\\IbDataprivacy\\": "packages/ib_dataprivacy/Classes/",
-            "Ib\\IbCmt\\": "packages/ib_cmt/Classes/",
-            "ApacheSolrForTypo3\\Solrfal\\": "packages/solrfal/Classes/",
-            "ApacheSolrForTypo3\\Tika\\": "public/typo3conf/ext/tika/Classes/",
-            "SFC\\Staticfilecache\\": "public/typo3conf/ext/staticfilecache/Classes/"
         }
     },
     "config": {
@@ -96,7 +86,8 @@
         "allow-plugins": {
             "typo3/class-alias-loader": true,
             "typo3/cms-composer-installers": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "helhum/dotenv-connector": true
         }
     },
     "repositories": [

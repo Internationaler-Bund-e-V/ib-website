@@ -10,6 +10,6 @@
             "JavaScript/types"
         ]
     },
-    "include": [ "JavaScript/**/*", "JavaScript/config", "JavaScript/types", "JavaScript/app.ts"],
+    "include": [ "JavaScript/**/*" ],
     "exclude": [ "**/*.spec.ts" ]
 }

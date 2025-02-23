@@ -23,15 +23,13 @@ export default {
   name: "ServiceFilter",
   components: {},
   setup() {
-    const baseInterfaceURL = inject("baseInterfaceURL");
     const proxyURL = inject("proxyURL");
 
     const services = ref([]);
     const selectedServices = ref([]);
 
     const getServices = async () => {
-      //https://redaktionstool.ddev.site/interfaces/requestJobServices
-      fetch(proxyURL + "?baseurl=" + baseInterfaceURL + "&jobservices=true")
+      fetch(proxyURL + '?jobservices=true')
         .then((response) => response.json())
         .then((data) => (services.value = data));
     };

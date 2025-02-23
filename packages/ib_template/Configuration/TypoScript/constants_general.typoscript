@@ -34,8 +34,8 @@ portalSettings {
 
     //generate news sitemap
     NewsSitemap.generate = 0
-    NewsSitemap.NewsFolderPid = 
-    NewsSitemap.NewsDetailPid = 
+    NewsSitemap.NewsFolderPid =
+    NewsSitemap.NewsDetailPid =
     //generate location sitemap
     LocationSitemap.generate = 0
     LocationSitemap.NavigationID = 0
@@ -51,18 +51,18 @@ portalSettings {
     mainnav_start_id = 28
 
     analytics {
-        account_id = 
+        account_id =
         enable_tracking = 0
         matomo_enabled = 0
         matomo_siteid = 0
         matomo_tagmanager_enabled = 0
         matomo_containerid = 0
-        
+
         google_tagmanager_enabled = 0
-        google_containerid = 
+        google_containerid =
 
         facebook_pixel_enabled = 0
-        facebook_pixel_id = 
+        facebook_pixel_id =
     }
 
     main_bubble {
@@ -74,16 +74,16 @@ portalSettings {
     }
 
     main_bubble_en {
-        id = 
-        text = 
-        title_text = 
+        id =
+        text =
+        title_text =
         link_target = _self
         hide = 1
     }
 
     tabs_bar {
         show = 0
-        folder_id = 
+        folder_id =
         orientation = right
     }
 
@@ -105,7 +105,7 @@ portalSettings {
         language = DE
     }
     //add additional partial/snippet for portal (e.g. events, html, etc.) path to partial/snippet
-    additional_partial = 
+    additional_partial =
 
     footernav_central_folder_id = 3
     footernav_misc_folder_id = 15
@@ -123,8 +123,8 @@ portalSettings {
     footer.hide_central_links = 0
     footer.hide_further_links = 0
     footer.central_links_num_columns = 6
-    footer_central_links_headline = 
-    footer_further_links_headline = 
+    footer_central_links_headline =
+    footer_further_links_headline =
     footer_logo = ib_markenzeichen_logo.svg
     // instead of the "central_links" and /or "further_links", we cand show textcontent from tt_content.bodytext
     // set footer.hide_further_links = 0 and hide_central_links = 0 to prevent too many columns in the footer
@@ -146,9 +146,9 @@ portalSettings {
     #footer.hide_central_links = 1
     #footer.hide_further_links = 1
     #footer.central_links_num_columns = 2
-    footer.tt_content_uid_left = 
-    footer.tt_content_uid_middle = 
-    footer.tt_content_uid_right = 
+    footer.tt_content_uid_left =
+    footer.tt_content_uid_middle =
+    footer.tt_content_uid_right =
 
     services_menu_start_id = 32
     tt_news.pid_list = 10
@@ -188,7 +188,7 @@ portalSettings {
     #fixed social bar
     social.facebook = https://www.facebook.com/InternationalerBund
     #social.twitter = https://twitter.com/IntBund
-    social.bluesky = 
+    social.bluesky =
     social.mastodon =
     social.linkedin = https://de.linkedin.com/company/internationalerbund
     social.instagram = https://www.instagram.com/internationalerbund/
@@ -207,7 +207,7 @@ portalSettings {
     social.youtube.titletag = Offizieller YouTube-Kanal des Internationalen Bund
 
     social.ib_english_page_link = https://ib.international/
-    social.ib_german_page_link = 
+    social.ib_german_page_link =
 
     # cookie policy
     cookiepolicy.show = 0
@@ -221,7 +221,7 @@ portalSettings {
 social.headline = Social Media Kanäle des IB
 social.facebook = https://www.facebook.com/InternationalerBund
 #social.twitter = https://twitter.com/IntBund
-social.bluesky = 
+social.bluesky =
 social.mastodon =
 social.instagram = https://www.instagram.com/internationalerbund/
 social.linkedin = https://de.linkedin.com/company/internationalerbund
@@ -252,16 +252,16 @@ gallery.folder.pid = 1351
 # LOCAL AND DEV "PORTALS"
 # --------------------------------------------------------------------------------------------
 
-[site("identifier") == "mainportal"] 
+[site("identifier") == "mainportal"]
     host = www.internationaler-bund.de
     portalSettings.readspeaker.show = 1
     portalSettings.cookiepolicy.show = 0
     portalSettings.analytics.enable_tracking = 0
     portalSettings.allowFWDJobTemplate = 1
-    
-    
+
+
     portalSettings.showLanguageMenu = 1
-    portalSettings.social.ib_english_page_link = 
+    portalSettings.social.ib_english_page_link =
 
     # ibjobs redirects
     plugin.tx_ibjobs_iblogajobs.settings.useCustomRedirect = 1
@@ -283,7 +283,7 @@ gallery.folder.pid = 1351
         LocationSitemap.DetailPid = 40
         social.bluesky = https://bsky.app/profile/intbund.bsky.social
         social.mastodon = https://mastodon.social/@IntBund
-               
+
     }
     social.bluesky = https://bsky.app/profile/intbund.bsky.social
     social.mastodon = https://mastodon.social/@IntBund
@@ -298,15 +298,15 @@ gallery.folder.pid = 1351
 
 #typo3 in developer mode -> setenv apache
 [applicationContext == "Development"]
-    portalSettings.analytics.enable_tracking = 0  
-    portalSettings.ibjobs.ibjobsBaseUrl = https://redaktion-relaunch.ddev.site/
+    portalSettings.analytics.enable_tracking = 0
+    portalSettings.ibjobs.ibjobsBaseUrl = https://ib:ib@redaktion-staging.rmsdev.de/
     portalSettings.tabs_bar {
         show = 0
         folder_id = 2801
         orientation = right
     }
-    
-    portalSettings.misc.productDbBaseUrl = https://redaktion-relaunch.ddev.site
+
+    portalSettings.misc.productDbBaseUrl = https://ibcms:redaktion@ib-redaktion-staging.rmsdev.de/
     portalSettings.readspeaker.show = 1
     portalSettings.analytics.enable_tracking = 0
     portalSettings.cookiepolicy.show = 0

@@ -64,7 +64,6 @@ class IndexMyContentsCommand extends AbstractCommand
 
         $portals = file_get_contents(GeneralUtility::getFileAbsFileName('EXT:ibsearch/Configuration/Custom/portals.json'));
         $this->portals = json_decode((string) $portals, true);
-        //GeneralUtility::requireOnce(PATH_site . 'typo3conf/realurl_conf.php');
 
         $output->writeln("clearing index ...");
         $this->clearIndex('Standort', 1, 0);

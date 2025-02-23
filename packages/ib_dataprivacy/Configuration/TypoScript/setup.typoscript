@@ -1,11 +1,11 @@
 page.includeCSS {
-    tx_dataprivacy_1 = EXT:ib_dataprivacy/Resources/Public/dist/ibdataprivacy.css    
+    ib_dataprivacy = typo3_encore:ib_dataprivacy
 }
 
 plugin.tx_ibdataprivacy.settings.imprint.headline = 13237
 plugin.tx_ibdataprivacy.settings.imprint.gendermainStreamingCID = 13238
 
-plugin.tx_ibdataprivacy.settings.dataprivacy.headlineIntro = 13234  
+plugin.tx_ibdataprivacy.settings.dataprivacy.headlineIntro = 13234
 plugin.tx_ibdataprivacy.settings.dataprivacy.datenschutzStellenangeboteCID = 13235
 plugin.tx_ibdataprivacy.settings.dataprivacy.datenschutzFreiwilligendiensteCID = 13236
 
@@ -15,7 +15,7 @@ plugin.tx_ibdataprivacy.settings.thirdParty.verarbeitungPersonenbezogenerDaten =
 
 [applicationContext == "Development"]
     #plugin.tx_ibdataprivacy.settings.imprint.headline = 9124
-    #plugin.tx_ibdataprivacy.settings.imprint.gendermainStreamingCID = 9109  
+    #plugin.tx_ibdataprivacy.settings.imprint.gendermainStreamingCID = 9109
 
     #plugin.tx_ibdataprivacy.settings.dataprivacy.headlineIntro = 9092
     #plugin.tx_ibdataprivacy.settings.dataprivacy.datenschutzStellenangeboteCID = 9118

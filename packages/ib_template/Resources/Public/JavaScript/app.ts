@@ -25,13 +25,12 @@ import IBNewsCategoryFilter from './components/IBNewsCategoryFilter';
 import IBNewsSlider from './components/IBNewsSlider';
 import IBSliderLoader from './components/IBSliderLoader';
 import IBStartpageNewsSlider from './components/IBStartpageNewsSlider';
-import IBStartPageSlider from './components/IBStartPageSlider';
 import IBTabsBar from './components/IBTabsBar';
 import IBVideoSlider from './components/IBVideoSlider';
+import IBAccordion from './components/IBAccordion';
 
 import './components/matomoEvents';
 
-import './components/foundation-accordion.js';
 
 if (Foundation) {
   // if `Foundation` is left as an unused variable webpack will exclude it from the build output;
@@ -65,6 +64,7 @@ $(function() {
     new IBNewsCategoryFilter();
     new IBSliderLoader();
     new IBTabsBar();
+    new IBAccordion();
 
     if (document.querySelectorAll('.ibOEmail')) {
         new IBEmailProtection(document.querySelectorAll('.ibOEmail'));
@@ -76,10 +76,6 @@ $(function() {
 
     if (document.querySelector('.jetmenu')) {
         new IBMenu(document.querySelector('.jetmenu') as HTMLElement, { indicator: false });
-    }
-
-    if (document.querySelector('.ib-startpage-slider')) {
-        new IBStartPageSlider(document.querySelector('.ib-startpage-slider') as HTMLElement);
     }
 
     if (document.querySelector('.startPage .ib-news-slider')) {

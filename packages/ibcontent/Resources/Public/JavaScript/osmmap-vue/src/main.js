@@ -4,18 +4,11 @@ import OsmFwdMapApp from './fwdMap.vue'
 import OsmListApp from './ListApp.vue';
 import OpenLayersMap from 'vue3-openlayers'
 
-let baseInterfaceURL = 'https://redaktion.internationaler-bund.de/'
 let imageBaseURL = 'https://redaktion.internationaler-bund.de/'
 
 if (location.href.indexOf('.rmsdev.de') > 0) {
-    baseInterfaceURL = 'https://ib:ib@ib-redaktion-staging.rmsdev.de/';
     imageBaseURL = 'https://ib:ib@ib-redaktion-staging.rmsdev.de/';
 }
-
-// if (location.href.indexOf('.ddev.site') > 0) {
-//     baseInterfaceURL = 'https://ib-redaktionstool.ddev.site/'
-//     imageBaseURL = 'https://ib-redaktionstool.ddev.site/'
-// }
 
 let startZoomLevel = 6;
 let startLongitude = 10.451526;
@@ -93,7 +86,6 @@ if (typoSettings.borderButtonColor == '#009ddf') {
 
 osmMapApp.provide('Loading', ref(true));
 osmMapApp.provide('tmpLocations', ref([]));
-osmMapApp.provide('baseInterfaceURL', baseInterfaceURL);
 osmMapApp.provide('imageBaseURL', imageBaseURL);
 osmMapApp.provide('proxyURL', proxyURL);
 osmMapApp.provide('TypoSettings', typoSettings);
@@ -135,7 +127,6 @@ if (appContainer.dataset.appid == 'FWD') {
   osmFwdMapApp.provide('Navigation', ref(5));
   osmFwdMapApp.provide('Loading', ref(true));
   osmFwdMapApp.provide('tmpLocations', ref([]));
-  osmFwdMapApp.provide('baseInterfaceURL', baseInterfaceURL)
   osmFwdMapApp.provide('proxyURL', proxyURL)
   osmFwdMapApp.mount('#osmFwdMapApp')
 }
@@ -145,7 +136,6 @@ if (appContainer.dataset.appid == 'FWD') {
  * list app
  */
 const osmListApp = createApp(OsmListApp);
-osmListApp.provide('baseInterfaceURL', baseInterfaceURL)
 osmListApp.provide('imageBaseURL', imageBaseURL)
 osmListApp.provide('proxyURL', proxyURL)
 osmListApp.provide('Locations', ref([]));

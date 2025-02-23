@@ -10,7 +10,7 @@ Encore
     // directory where compiled assets will be stored
     .setOutputPath('public/build/')
     // public path used by the web server to access the output path
-   .setPublicPath('/build')
+    .setPublicPath('/build')
     // .setPublicPath('/typo3conf/ext/ib_template/Resources/Public/build')
     // only needed for CDN's or sub-directory deploy
     // .setManifestKeyPrefix('build/')
@@ -22,14 +22,14 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('bv_bbe', './packages/bv_bbe/Resources/Public/JavaScript/app.js')
-    // .addEntry('ib_srb', './packages/ib_srb/Resources/Public/JavaScript/app.js')
+    .addEntry('ib_srb', './packages/ib_srb/Resources/Public/JavaScript/app.ts')
     .addEntry('ib_template', './packages/ib_template/Resources/Public/JavaScript/app.ts')
-    .addEntry('ibcontent', './packages/ibcontent/Resources/Public/JavaScript/app.js')
+    .addEntry('ibcontent', './packages/ibcontent/Resources/Public/JavaScript/app.ts')
     .addEntry('ibjobs', './packages/ibjobs/Resources/Public/JavaScript/app.js')
     .addEntry('ibsearch', './packages/ibsearch/Resources/Public/JavaScript/app.ts')
     .addEntry('ib_galerie', './packages/ib_galerie/Resources/Public/JavaScript/app.ts')
     .addEntry('ib_formbuilder_frontend', './packages/ib_formbuilder/Resources/Public/JavaScript/frontend/app.js')
-    .addEntry('ib_formbuilder_backend', './packages/ib_formbuilder/Resources/Public/JavaScript/backend/app.js')
+    .addEntry('ib_formbuilder_backend', './packages/ib_formbuilder/Resources/Public/JavaScript/backend/app.ts')
 
     .addEntry('fwd', './packages/ibcontent/Resources/Public/JavaScript/fwd-vue/src/main.js')
     .addEntry('osmmap', './packages/ibcontent/Resources/Public/JavaScript/osmmap-vue/src/main.js')
@@ -63,6 +63,7 @@ Encore
 
     .configureBabel((config) => {
         config.plugins.push('@babel/plugin-transform-class-properties');
+        config,sourceType = 'unambiguous';
     })
 
     // enables @babel/preset-env polyfills
@@ -99,11 +100,11 @@ Encore
     .enableIntegrityHashes(Encore.isProduction())
 
     // uncomment if you're having problems with a jQuery plugin
-    // .autoProvidejQuery()
+    .autoProvidejQuery()
 
     .addAliases({
         'ol/control/Control': 'ol/control/Control.js',
         'ol/MapBrowserEvent': 'ol/MapBrowserEvent.js'
-    })
-;
+    });
+
 module.exports = Encore.getWebpackConfig();

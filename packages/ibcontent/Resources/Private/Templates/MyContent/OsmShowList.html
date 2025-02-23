@@ -1,4 +1,4 @@
-{namespace v=FluidTYPO3\Vhs\ViewHelpers} {namespace j=Ib\Ibcontent\ViewHelpers}
+{namespace encore = Ssch\Typo3Encore\ViewHelpers}
 <f:layout name="Default" />
 
 <f:section name="main">
@@ -13,7 +13,7 @@
         data-prefiltercategoryids="{settings.preFilterCategoryIDs}"
         data-searchbarbackgroundcolor="{settings.searchBarBackgroundColor}" data-emaillabel="{f:translate(key:
             'LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:email_label')}" style="max-width:100%;"
-        data-proxyurl="{f:uri.resource(path:'Proxy/osmmap.php', extensionName: 'ibcontent', absolute:'true')}"
+        data-proxyurl="/proxy/osmmap.php"
         data-publicpath="{f:uri.resource(path:'', extensionName: 'ibcontent', absolute:'true')}">
 
         <div id="osmListApp" class="columns"></div>
@@ -21,8 +21,6 @@
 
     </div>
 
-    <f:asset.script identifier="osmMapVue" src="EXT:ibcontent/Resources/Public/build/osmmap/js/osmMapApp.js" type="module"
-        data="{cookieconsent: 'necessary'}" />
-    <f:asset.css identifier="osmMapVueCss" href="EXT:ibcontent/Resources/Public/build/osmmap/assets/index.css" />
-
+    <encore:renderWebpackLinkTags entryName="osmmap" />
+    <encore:renderWebpackScriptTags entryName="osmmap" />
 </f:section>

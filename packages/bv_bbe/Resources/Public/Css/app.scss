@@ -1,0 +1,12 @@
+@import 'themeVendor/vendor';
+
+@import 'variables';
+@import 'bootstrapSettings';
+@import '~bootstrap';
+@import 'Mask/mask.scss';
+@import 'Theme/mainOverwrite.scss';
+@import 'header';
+@import 'footer';
+@import 'misc';
+@import 'emailDialog';
+@import 'solrSearch';

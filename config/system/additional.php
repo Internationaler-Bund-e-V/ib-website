@@ -39,20 +39,6 @@ if (getenv('IS_DDEV_PROJECT') == 'true') {
                 'devIPmask' => '*',
                 'displayErrors' => 1,
             ],
-            'EXTENSIONS' => [
-                'ib_cmt' => [
-                    'pathRTJSON' => 'https://ib-redaktionstool.ddev.site/JSON/cmtExport.json',
-                ],
-                'ibcontent' => [
-                    'urlIBPdb' => 'https://ib-redaktionstool.ddev.site',
-                    'urlIBPdbImages' => 'https://ib-redaktionstool.ddev.site',
-                    'urlIBPdbInteface' => 'https://ib-redaktionstool.ddev.site/api',
-                ],
-                'ibsearch' => [
-                    'baseUrlPath' => 'https://ib-redaktionstool.ddev.site/upload/',
-                    'baseUrlSolrInterface' => 'https://ib-redaktionstool.ddev.site/solrsearches/',
-                ],
-            ],
         ]
     );
 }

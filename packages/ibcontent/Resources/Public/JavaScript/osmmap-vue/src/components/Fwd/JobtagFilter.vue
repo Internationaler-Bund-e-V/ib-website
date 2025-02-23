@@ -21,7 +21,6 @@ export default {
   name: "JobtagFilter",
   components: {},
   setup() {
-    const baseInterfaceURL = inject("baseInterfaceURL");
     const proxyURL = inject("proxyURL");
 
     const jobtags = ref([]);
@@ -29,7 +28,7 @@ export default {
 
     const getJobtags = async () => {
       //redaktionstool.ddev.site/interfaces/requestJobTags
-      fetch(proxyURL + "?baseurl=" + baseInterfaceURL + "&jobtags=true")
+      fetch(proxyURL + "?jobtags=true")
         .then((response) => response.json())
         .then((data) => (jobtags.value = data));
     };

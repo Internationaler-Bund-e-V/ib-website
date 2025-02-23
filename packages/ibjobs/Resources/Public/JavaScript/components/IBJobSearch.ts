@@ -33,13 +33,13 @@ class IBJobSearch
         let titles = dataset.titles;
         let prefilter = dataset.prefilter;
         let rmBaseUrl = dataset.baseurl;
-        let baseUrl = "/typo3conf/ext/ibjobs/Resources/Public/php/proxy.php?";
+        let baseUrl = '/proxy/ibjobs.php';
         let requestURL = "";
 
         if (prefilter == '1') {
-            requestURL = baseUrl + "clients=" + clients + "&sr_clients=" + srclients + "&intern=" + intern + "&locations=" + locations + "&categories=" + categories + "&titles=" + titles + "&baseurl=" + rmBaseUrl;
+            requestURL = baseUrl + "?clients=" + clients + "&sr_clients=" + srclients + "&intern=" + intern + "&locations=" + locations + "&categories=" + categories + "&titles=" + titles + "&baseurl=" + rmBaseUrl;
         } else {
-            requestURL = baseUrl + "clients=" + clients + "&sr_clients=" + srclients + "&intern=" + intern + "&baseurl=" + rmBaseUrl;
+            requestURL = baseUrl + "?clients=" + clients + "&sr_clients=" + srclients + "&intern=" + intern + "&baseurl=" + rmBaseUrl;
         }
 
         console.log(requestURL);
@@ -96,7 +96,7 @@ class IBJobSearch
                     multipleTerms[i] = multipleTerms[i].replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
                     tmpRegex += "(?=.*" + multipleTerms[i] + ")";
                 }
-                this.jobs.forEach((key:string, val:Array<string>) => {
+                this.jobs.forEach((val: Array<string>, key: string) => {
                     let regex = new RegExp(tmpRegex, "i");
                     if (val[15].search(regex) != -1) {
                         this.results.push(this.jobs[key]);
@@ -147,7 +147,7 @@ class IBJobSearch
             this.jobTemplate = '<div class="' + this.alternateClass + ' animateJob row">' + '<div class="ib-jobs-description columns small-12 medium-8">' + '<span class="hide-for-small-only">' + job[6] + " | " + job[2] + '</span>' + '<a href="' + this.targetPage + "/" + job[7] + '" target="_blank"">' + job[0] + '</a>' + trfTemplate + '<span class="hide-for-small-only ib-font-size-12">Chiffre: ' + job[3] + '</span>' + '</div>' + '<div class="ib-jobs-location columns small-12 medium-4">' + '<span>' + job[1] + '</span>' + '<span class="hide-for-small-only"><span class="RS_MESSAGE"><!-- Bundesland --></span>' + job[4] + '</span>' + '<span class="ib-font-size-12">Veröffentlicht am: ' + job[5] + '</span>' + '</div>' + '</div>';
         }
 
-        this.jobContainer!.append(this.jobTemplate);
+       $(this.jobContainer!).append(this.jobTemplate);
 
         if (this.alternateClass == "odd") {
             this.alternateClass = "even";
