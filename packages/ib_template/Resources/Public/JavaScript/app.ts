@@ -28,6 +28,7 @@ import IBStartpageNewsSlider from './components/IBStartpageNewsSlider';
 import IBTabsBar from './components/IBTabsBar';
 import IBVideoSlider from './components/IBVideoSlider';
 import IBAccordion from './components/IBAccordion';
+import IBSocialContentStickyNav from './components/IBSocialContentStickyNav';
 
 import './components/matomoEvents';
 
@@ -65,6 +66,7 @@ $(function() {
     new IBSliderLoader();
     new IBTabsBar();
     new IBAccordion();
+    new IBSocialContentStickyNav();
 
     if (document.querySelectorAll('.ibOEmail')) {
         new IBEmailProtection(document.querySelectorAll('.ibOEmail'));
