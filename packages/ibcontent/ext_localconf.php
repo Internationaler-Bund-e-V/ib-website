@@ -325,7 +325,7 @@ $iconRegistry->registerIcon(
 );
 
 // include page tsconfig for backend wizards
-ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE: EXT:ibcontent/Configuration/TypoScript/pageTSconfig.ts">');
+ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE: EXT:ibcontent/Configuration/TypoScript/pageTSconfig.typoscript">');
 
 // include backend previews
 /*

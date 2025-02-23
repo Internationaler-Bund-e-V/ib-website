@@ -24,7 +24,7 @@ Encore
     .addEntry('bv_bbe', './packages/bv_bbe/Resources/Public/JavaScript/app.js')
     .addEntry('ib_srb', './packages/ib_srb/Resources/Public/JavaScript/app.ts')
     .addEntry('ib_template', './packages/ib_template/Resources/Public/JavaScript/app.ts')
-    .addEntry('ibcontent', './packages/ibcontent/Resources/Public/JavaScript/app.js')
+    .addEntry('ibcontent', './packages/ibcontent/Resources/Public/JavaScript/app.ts')
     .addEntry('ibjobs', './packages/ibjobs/Resources/Public/JavaScript/app.js')
     .addEntry('ibsearch', './packages/ibsearch/Resources/Public/JavaScript/app.ts')
     .addEntry('ib_galerie', './packages/ib_galerie/Resources/Public/JavaScript/app.ts')

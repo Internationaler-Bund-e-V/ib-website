@@ -2,8 +2,16 @@ import $ from 'jquery';
 import 'slick-carousel';
 
 class IBStartPageSlider {
-    constructor(element:Element|HTMLElement|JQuery<HTMLElement>) {
-        $(element).slick({
+    protected element: HTMLElement | null;
+    protected sliderElement: HTMLElement | null;
+    protected sliderContainer: HTMLElement | null;
+
+    constructor(element: Element|HTMLElement, options = {}) {
+        this.element = element as HTMLElement;
+        this.element.style.display = 'block';
+        this.sliderElement = this.element.querySelector('.slides') as HTMLElement;
+
+        let preset: JQuerySlickOptions = {
             prevArrow: $('#startpagesliderPrevButton'),
             nextArrow: $('#startpagesliderNextButton'),
             lazyLoad: 'progressive',
@@ -24,16 +32,10 @@ class IBStartPageSlider {
                     slidesToScroll: 1
                 }
             }]
-        });
+        };
+        $.extend(true, preset, options);
 
-        $('#ib-partial-startpageslider div.slick-arrow').on('click', () => {
-            $('.ib-startpage-slider').slick('slickPause');
-        });
-
-        //check slide count
-        if ($('#ib-partial-startpageslider .slick-slide:not(.slick-cloned)').length <= 1) {
-            $('#ib-slider-controls-toggle').css('display', 'none');
-        }
+        $(this.sliderElement).slick(preset);
 
         $('#ib-slider-controls-toggle').on('click', (event) => {
 

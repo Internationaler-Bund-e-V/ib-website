@@ -25,7 +25,6 @@ import IBNewsCategoryFilter from './components/IBNewsCategoryFilter';
 import IBNewsSlider from './components/IBNewsSlider';
 import IBSliderLoader from './components/IBSliderLoader';
 import IBStartpageNewsSlider from './components/IBStartpageNewsSlider';
-import IBStartPageSlider from './components/IBStartPageSlider';
 import IBTabsBar from './components/IBTabsBar';
 import IBVideoSlider from './components/IBVideoSlider';
 import IBAccordion from './components/IBAccordion';
@@ -77,10 +76,6 @@ $(function() {
 
     if (document.querySelector('.jetmenu')) {
         new IBMenu(document.querySelector('.jetmenu') as HTMLElement, { indicator: false });
-    }
-
-    if (document.querySelector('.ib-startpage-slider')) {
-        new IBStartPageSlider(document.querySelector('.ib-startpage-slider') as HTMLElement);
     }
 
     if (document.querySelector('.startPage .ib-news-slider')) {

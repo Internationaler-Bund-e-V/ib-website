@@ -6,20 +6,20 @@
 <!-- possible options are: startpage and subpage -->
 
 <f:section name="main">
-  <div class="ib-slider-container {settings.layout} ">
+  <div class="ib-slider-container ib-startpageslider {settings.layout} ">
     <div id="startpagesliderPrevButton" class="columns small-1 ib-font-size-60 ib-prev-next-button">
       <i class="ib-icon-arrow-left"></i>
     </div>
     <div id="startpagesliderNextButton" class="columns small-1 ib-font-size-60 ib-prev-next-button">
       <i class="ib-icon-arrow-right float-right "></i>
     </div>
-    <div class="row-fluid ib-startpageslider" id="ib-slider-container">
+    <div class="row-fluid" id="ib-slider-container">
       <div class="row expanded">
         <div class="ib-startpage-slider-container">
 
           <div class="ib-slider-controls"><i class="fa fa-pause-circle" aria-hidden="true" id="ib-slider-controls-toggle"></i></div>
 
-          <div class="ib-startpage-slider row expanded" data-loaderid="loader_{uid}">
+          <div class="ib-startpage-slider slides row expanded" data-loaderid="loader_{uid}">
             <v:condition.type.isArray value="{settings.sliderContainer}">
               <f:for each="{settings.sliderContainer}" as="slide">
                 <f:variable name="altAttributeValue">{slide.ItemWrap.slideImageAltText}</f:variable>

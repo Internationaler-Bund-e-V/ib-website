@@ -1,117 +1,4 @@
-$(document).ready(function () {
-	/*
-	 * ---------------------------------------
-	 * Produktsuche / Jobsuche
-	 * ---------------------------------------
-	 * @see DbShowJoblist.html
-	 */
-	$('.citySearchInputJobs').on('input focus', function () {
-		searchTitleJobs();
-	});
-
-	// eventhandler for the jobtags dropown in
-	// MyContent/DbShowJoblist.html
-	$('#jobtags').on('change', function () {
-		$('.citySearchInputJobs').val('');
-		setCategoriesJobs();
-	});
-
-	function searchTitleJobs() {
-		setCategoriesJobs();
-		var searchTag = $('.citySearchInputJobs').val().toLowerCase();
-		var categories = $('#jobtags');
-		var jobID = "-" + categories.val() + "-";
-		if (searchTag.length > 0) {
-			$('.job.enabled').each(function () {
-				var title = $(this).find('a');
-				var job = $(this);
-				if (!(title.attr('title').toLowerCase().indexOf(searchTag) >= 0)) {
-					job.hide().removeClass('enabled');
-				} else {
-					job.show().addClass('enabled');
-				}
-			});
-
-			$('.citytitle.enabled').each(function () {
-				var city = $(this);
-				if (($(this).find(".productlist li.enabled")).length == 0) {
-					$(this).hide().removeClass('enabled');
-				}
-				if ((city.data('citysearch').toLowerCase().indexOf(searchTag) >= 0)) {
-					if (jobID != "-0-") {
-						$(this).find(".productlist li.job").each(function () {
-							var job = $(this);
-							if (!(job.data('jobtags').toLowerCase().indexOf(jobID) >= 0)) {
-								job.hide().removeClass('enabled');
-							} else {
-								job.show().addClass('enabled');
-							}
-						});
-					}
-					else {
-						$(this).find(".productlist li.job").each(function () {
-							$(this).show().addClass('enabled');
-						});
-					}
-					$(this).show().addClass('enabled');
-				}
-			});
-		}
-	}
-
-	function setCategoriesJobs() {
-		$('#db-job-container').hide();
-		var categories = $('#jobtags');
-		var jobID = "-" + categories.val() + "-";
-		if (jobID == "-0-") {
-			$('.job').show().addClass('enabled');
-			$('.db-citycontainer').show();
-		} else {
-			$('.job').each(function () {
-				var job = $(this);
-				if (!(job.data('jobtags').toLowerCase().indexOf(jobID) >= 0)) {
-					job.hide().removeClass('enabled');
-				} else {
-					job.show().addClass('enabled');
-				}
-			});
-		}
-
-		$('.db-citycontainer').each(function () {
-			if (($(this).find(".productlist li.enabled")).length == 0) {
-				$(this).hide().removeClass('enabled');
-			} else {
-				$(this).show().addClass('enabled');
-			}
-		});
-		$('.citytitle.enabled').promise().done(function () {
-			$('#db-job-container').show();
-		});
-	}
-
-
-	/*
-	 * ---------------------------------------
-	 * Produktsuche
-	 * ---------------------------------------
-	 * @see DbShowCategory.html
-	 */
-	$('.citySearchInput').on('input focus', function () {
-		searchTitle();
-	});
-
-	function searchTitle() {
-		var searchTag = $('.citySearchInput').val().toLowerCase();
-		$('.citytitle.enabled').each(function () {
-			var city = $(this);
-			if (!(city.data('citysearch').toLowerCase().indexOf(searchTag) >= 0)) {
-				city.hide('fast');
-			} else {
-				city.show('fast');
-			}
-		});
-	}
-
+$(() => {
 	/* ---------------------------------------
 	 *  Partials
 	 * ---------------------------------------
@@ -179,10 +66,12 @@ $(document).ready(function () {
 		}, 'fast');
 	});
 
-	/*
-	 * dbAccordion
-	 * @see moved to packages/ib_template/Resources/Public/js/src/foundation-accordion.js
-	 */
+    $('#ib-partial-startpageslider div.slick-arrow').on('click', () => {
+        $('.ib-startpage-slider').slick('slickPause');
+    });
+    if ($('#ib-partial-startpageslider .slick-slide:not(.slick-cloned)').length <= 1) {
+        $('#ib-slider-controls-toggle').css('display', 'none');
+    }
 
 	/*
 	 * dbPartner
@@ -193,52 +82,7 @@ $(document).ready(function () {
 		$("#ib-partner-collapsible-" + collapsibleID + " i").toggleClass('ib-icon-arrow-right ib-icon-arrow-down');
 	});
 
-	/*
-	 * Header Slider
-	 */
-	$('.ib-startpage-slider').not('.slick-initialized').slick({
-		prevArrow: $('#startpagesliderPrevButton'),
-		nextArrow: $('#startpagesliderNextButton'),
-		slidesToShow: 1,
-		dots: true,
-		autoplay: true,
-		autoplaySpeed: 6000,
-		responsive: [{
-			breakpoint: 900,
-			settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1
-			}
-		}, {
-			breakpoint: 480,
-			settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1
-			}
-		}]
-	});
-
-
-	//check slide count
-	if ($('#ib-slider-container .slick-slide:not(.slick-cloned)').length <= 1) {
-		$('#ib-slider-controls-toggle').css('display', 'none');
-	}
-
-
-	$('#ib-slider-controls-toggle').click(function (e) {
-
-		if ($(this).hasClass('fa-play-circle')) {
-			$('.ib-startpage-slider').slick('slickPlay')
-			$(this).removeClass('fa-play-circle');
-		} else {
-			$('.ib-startpage-slider').slick('slickPause')
-			$(this).addClass('fa-play-circle');
-		}
-	});
-
-
-
-	/**
+    /**
 	 * sponsor scroll
 	 */
 	$('.ib-sidebar-sponsor-imagelink').on('click', function () {

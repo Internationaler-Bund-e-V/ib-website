@@ -70,3 +70,9 @@ plugin.be_secure_pw._LOCAL_LANG.de {
     messageTitle = XXXXX
     passwordReminderWindow_message = XXXXX
 }
+page.includeCSS {
+    ibcontent = typo3_encore:ibcontent
+}
+page.includeJSFooter {
+    ibcontent = typo3_encore:ibcontent
+}
