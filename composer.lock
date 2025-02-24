@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c609d9a368949bd528830bda8806e375",
+    "content-hash": "edd820a82a52fae4a9c2f4d73ea29a63",
     "packages": [
         {
             "name": "apache-solr-for-typo3/solr",
@@ -282,7 +282,7 @@
         },
         {
             "name": "apache-solr-for-typo3/solrfal",
-            "version": "dev-modernize-bv_bbe",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./packages/solrfal",
@@ -2533,7 +2533,7 @@
         },
         {
             "name": "ib/bv_bbe",
-            "version": "dev-modernize-bv_bbe",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./packages/bv_bbe",
@@ -2556,7 +2556,7 @@
         },
         {
             "name": "ib/ib-cmt",
-            "version": "dev-modernize-bv_bbe",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_cmt",
@@ -2589,7 +2589,7 @@
         },
         {
             "name": "ib/ib-contact-person",
-            "version": "dev-modernize-bv_bbe",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_contact_person",
@@ -2622,7 +2622,7 @@
         },
         {
             "name": "ib/ib-content",
-            "version": "dev-modernize-bv_bbe",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./packages/ibcontent",
@@ -2655,7 +2655,7 @@
         },
         {
             "name": "ib/ib-dataprivacy",
-            "version": "dev-modernize-bv_bbe",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_dataprivacy",
@@ -2688,7 +2688,7 @@
         },
         {
             "name": "ib/ib-formbuilder",
-            "version": "dev-modernize-bv_bbe",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_formbuilder",
@@ -2721,7 +2721,7 @@
         },
         {
             "name": "ib/ib-galerie",
-            "version": "dev-modernize-bv_bbe",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_galerie",
@@ -2754,7 +2754,7 @@
         },
         {
             "name": "ib/ib-jobs",
-            "version": "dev-modernize-bv_bbe",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./packages/ibjobs",
@@ -2787,7 +2787,7 @@
         },
         {
             "name": "ib/ib-page-extension",
-            "version": "dev-modernize-bv_bbe",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_page_extension",
@@ -2810,7 +2810,7 @@
         },
         {
             "name": "ib/ib-search",
-            "version": "dev-modernize-bv_bbe",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./packages/ibsearch",
@@ -2843,7 +2843,7 @@
         },
         {
             "name": "ib/ib-srb",
-            "version": "dev-modernize-bv_bbe",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_srb",
@@ -2866,7 +2866,7 @@
         },
         {
             "name": "ib/ib-template",
-            "version": "dev-modernize-bv_bbe",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_template",
@@ -2889,37 +2889,33 @@
         },
         {
             "name": "lochmueller/staticfilecache",
-            "version": "14.0.1",
+            "version": "15.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lochmueller/staticfilecache.git",
-                "reference": "071b1cd5c19999c817aca8a44e8880dce56bc1de"
+                "reference": "562cf80c77f6c61481b2f217eb32ebc843cb356e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lochmueller/staticfilecache/zipball/071b1cd5c19999c817aca8a44e8880dce56bc1de",
-                "reference": "071b1cd5c19999c817aca8a44e8880dce56bc1de",
+                "url": "https://api.github.com/repos/lochmueller/staticfilecache/zipball/562cf80c77f6c61481b2f217eb32ebc843cb356e",
+                "reference": "562cf80c77f6c61481b2f217eb32ebc843cb356e",
                 "shasum": ""
             },
             "require": {
                 "ext-pdo": "*",
                 "ext-zlib": "*",
                 "php": "^8.1",
-                "typo3/cms-backend": "^12.4||13.*.*@dev",
-                "typo3/cms-core": "^12.4||13.*.*@dev",
-                "typo3/cms-extensionmanager": "^12.4||13.*.*@dev"
-            },
-            "conflict": {
-                "tomasnorre/crawler": "<11.0.1"
+                "typo3/cms-backend": "^12.4||^13.4",
+                "typo3/cms-core": "^12.4||^13.4",
+                "typo3/cms-extensionmanager": "^12.4||^13.4"
             },
             "require-dev": {
                 "andersundsehr/phpstan-git-files": "^1.0",
                 "friendsofphp/php-cs-fixer": "^3.30",
-                "phpmetrics/phpmetrics": "^2.5",
                 "phpstan/extension-installer": "^1.3",
                 "phpstan/phpstan": "^1.10",
                 "saschaegerer/phpstan-typo3": "^1.8",
-                "ssch/typo3-rector": "^1.2",
+                "ssch/typo3-rector": "^2.2",
                 "typo3/testing-framework": "^8.0"
             },
             "suggest": {
@@ -2977,7 +2973,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-02-12T19:11:50+00:00"
+            "time": "2025-01-24T19:41:08+00:00"
         },
         {
             "name": "lolli42/finediff",
@@ -10966,30 +10962,30 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "apache-solr-for-typo3/solrconsole": 20,
-        "apache-solr-for-typo3/solrfal": 20,
-        "ib/bv_bbe": 20,
+        "netresearch/rte-ckeditor-image": 20,
         "ib/ib-cmt": 20,
-        "ib/ib-contact-person": 20,
-        "ib/ib-content": 20,
         "ib/ib-dataprivacy": 20,
+        "ib/ib-contact-person": 20,
         "ib/ib-formbuilder": 20,
         "ib/ib-galerie": 20,
-        "ib/ib-jobs": 20,
         "ib/ib-page-extension": 20,
-        "ib/ib-search": 20,
         "ib/ib-srb": 20,
         "ib/ib-template": 20,
-        "netresearch/rte-ckeditor-image": 20
+        "ib/ib-content": 20,
+        "ib/ib-jobs": 20,
+        "ib/ib-search": 20,
+        "ib/bv_bbe": 20,
+        "apache-solr-for-typo3/solrfal": 20,
+        "apache-solr-for-typo3/solrconsole": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.1"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "platform-overrides": {
         "php": "8.1"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }
