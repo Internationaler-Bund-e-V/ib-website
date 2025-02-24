@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cccef7a543e30ca8fecadd0d2be72c00",
+    "content-hash": "6218353091e1856da76e831c04024a5f",
     "packages": [
         {
             "name": "apache-solr-for-typo3/solr",
@@ -4234,25 +4234,25 @@
         },
         {
             "name": "ssch/typo3-encore",
-            "version": "v5.0.7",
+            "version": "v6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabbelasichon/typo3_encore.git",
-                "reference": "e5eae5c025990a3fcd54e7c9f9a234bb23b49134"
+                "reference": "96abdcd217107b24601d36d0229bb9585da81e3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabbelasichon/typo3_encore/zipball/e5eae5c025990a3fcd54e7c9f9a234bb23b49134",
-                "reference": "e5eae5c025990a3fcd54e7c9f9a234bb23b49134",
+                "url": "https://api.github.com/repos/sabbelasichon/typo3_encore/zipball/96abdcd217107b24601d36d0229bb9585da81e3b",
+                "reference": "96abdcd217107b24601d36d0229bb9585da81e3b",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
-                "php": ">=7.4",
-                "symfony/asset": "^5.0 || ^6",
-                "symfony/web-link": "^5.4 || ^6",
-                "typo3/cms-core": "^10.4.2 || ^11.5 || ^12.4",
-                "typo3/cms-tstemplate": "^10.4.2 || ^11.5 || ^12.4",
+                "php": ">=8.1",
+                "symfony/asset": "^6.0 || ^7.0",
+                "symfony/web-link": "^6.0 || ^7.0",
+                "typo3/cms-core": "^12.4 || ^13.4",
+                "typo3/cms-tstemplate": "^12.4 || ^13.4",
                 "webmozart/assert": "^1.10"
             },
             "replace": {
@@ -4267,23 +4267,22 @@
                 "phpstan/phpstan-phpunit": "^1.0",
                 "phpstan/phpstan-strict-rules": "^1.4.4",
                 "phpstan/phpstan-webmozart-assert": "^1.2.2",
-                "rector/rector": "^0.19.5",
+                "rector/rector": "^1.2.8",
                 "saschaegerer/phpstan-typo3": "^1.8.0",
-                "sbuerk/typo3-cmscomposerinstallers-testingframework-bridge": "^0.1.1",
                 "symplify/easy-coding-standard": "^12.1",
-                "typo3/cms-rte-ckeditor": "^10.4 || ^11.5 || ^12.4",
-                "typo3/minimal": "^10.4 || ^11.5 || ^12.4",
-                "typo3/testing-framework": "^7.0.2 || dev-main"
+                "typo3/cms-install": "^12.4 || ^13.4",
+                "typo3/cms-rte-ckeditor": "^12.4 || ^13.4",
+                "typo3/minimal": "^12.4 || ^13.4",
+                "typo3/testing-framework": "^8.0 || ^9.0"
             },
             "type": "typo3-cms-extension",
             "extra": {
                 "typo3/cms": {
-                    "app-dir": ".Build",
-                    "web-dir": ".Build",
+                    "web-dir": ".Build/Web",
                     "extension-key": "typo3_encore"
                 },
                 "branch-alias": {
-                    "dev-master": "4.x-dev"
+                    "dev-master": "6.x-dev"
                 }
             },
             "autoload": {
@@ -4299,19 +4298,17 @@
                 {
                     "name": "Sebastian Schreiber",
                     "email": "breakpoint@schreibersebastian.de",
-                    "homepage": "http://www.schreibersebastian.de",
                     "role": "Developer"
                 }
             ],
             "description": "Use Webpack Encore in TYPO3 Context",
-            "homepage": "http://www.schreibersebastian.de",
             "keywords": [
                 "encore",
                 "webpack"
             ],
             "support": {
                 "issues": "https://github.com/sabbelasichon/typo3_encore/issues",
-                "source": "https://github.com/sabbelasichon/typo3_encore/tree/v5.0.7"
+                "source": "https://github.com/sabbelasichon/typo3_encore/tree/v6.0.0"
             },
             "funding": [
                 {
@@ -4323,7 +4320,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-09-27T12:35:39+00:00"
+            "time": "2024-10-21T22:34:26+00:00"
         },
         {
             "name": "studiomitte/friendlycaptcha",
