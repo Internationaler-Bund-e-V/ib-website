@@ -137,8 +137,8 @@ plugin.tx_solr.view{
 }
 
 plugin.tx_solr.index.queue.pages.indexer.authorization {
-	username = ibcms
-	password = redaktion
+	username = getEnv('SOLR_INDEXER_BASIC_AUTH_USER')
+	password = getEnv('SOLR_INDEXER_BASIC_AUTH_PASSWORD')
 }
 
 # -----------------------------------------------------------------------------

@@ -40,7 +40,7 @@
                     config {
                         entity = Location
                         navigationID = {$portalSettings.LocationSitemap.NavigationID}
-                        redaktionURL = {$portalSettings.misc.productDbBaseUrl}
+                        redaktionURL = getEnv('REDAKTIONSTOOL_URL')
                         url {
                             pageId = {$portalSettings.LocationSitemap.DetailPid}
                         }
@@ -60,7 +60,7 @@
                     provider = Ib\Ibcontent\Seo\IbXmlSitemapDataProvider
                     config {
                         entity = FWD
-                        redaktionURL = {$portalSettings.misc.productDbBaseUrl}
+                        redaktionURL = getEnv('REDAKTIONSTOOL_URL')
                         url {
                             pageId = {$portalSettings.FwdSitemap.DetailPid}
                         }

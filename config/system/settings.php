@@ -6,7 +6,7 @@ return [
         'installToolPassword' => '$P$CkHM14MZJCljtdSJ4ARgSd45dLGH1q.',
         'lockSSL' => true,
         'versionNumberInFilename' => '0',
-        'warning_email_addr' => 'martin.jahn@ib.de',
+        'warning_email_addr' => $_ENV['WARNING_EMAIL_ADDR'],
         'warning_mode' => '2',
     ],
     'DB' => [
@@ -59,12 +59,12 @@ return [
             'termsTypo3' => 'youtube, iframe, script',
         ],
         'ib_formbuilder' => [
-            'reCaptchaCode' => 'A146308IS9U5BRQ2N4ALOODB7D7R6SBB2L893BQ7VES67RC0MUQCR5UH0K',
+            'reCaptchaCode' => $_ENV['RECAPTCHA_CODE'],
             'useTestKeys' => '0',
         ],
         'ibcontent' => [
             'emailFrom' => 'noreply@rm-solutions.de',
-            'reCaptchaCode' => 'A146308IS9U5BRQ2N4ALOODB7D7R6SBB2L893BQ7VES67RC0MUQCR5UH0K',
+            'reCaptchaCode' => $_ENV['RECAPTCHA_CODE'],
             'urlIBPdb' => 'https://redaktion.internationaler-bund.de',
             'urlIBPdbImages' => 'https://redaktion.internationaler-bund.de',
             'urlIBPdbInteface' => 'https://redaktion.internationaler-bund.de/api',
@@ -114,8 +114,8 @@ return [
             'api_server' => 'https://www.google.com/recaptcha/api.js',
             'enforceCaptcha' => '0',
             'lang' => '',
-            'private_key' => '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe',
-            'public_key' => '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
+            'private_key' => $_ENV['RECAPTCHA_PRIVATE_KEY'],
+            'public_key' => $_ENV['RECAPTCHA_PUBLIC_KEY'],
             'robotMode' => '0',
             'verify_server' => 'https://www.google.com/recaptcha/api/siteverify',
         ],
@@ -193,7 +193,7 @@ return [
             'solrPort' => '443',
             'solrScheme' => 'https',
             'solrUsername' => '',
-            'tikaPath' => '/var/www/ib.de/tools/tika-app-2.4.1.jar',
+            'tikaPath' => $ENV['TIKA_PATH'],
             'tikaServerHost' => '',
             'tikaServerPath' => '',
             'tikaServerPort' => '',
@@ -204,6 +204,7 @@ return [
         ],
     ],
     'FE' => [
+        'additionalAbsRefPrefixDirectories' => 'build',
         'cacheHash' => [
             'excludedParameters' => [
                 'L',
@@ -222,8 +223,7 @@ return [
         ],
         'debug' => false,
         'hidePagesIfNotTranslatedByDefault' => '0',
-        'loginRateLimitIpExcludeList' => '91.107.229.241',
-        'additionalAbsRefPrefixDirectories' => 'build',
+        'loginRateLimitIpExcludeList' => $ENV['LOGIN_RATE_LIMIT_IP_EXCLUDE_LIST'],
     ],
     'GFX' => [
         'gdlib_png' => false,
