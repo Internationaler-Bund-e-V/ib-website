@@ -31,9 +31,6 @@ if (isset($_REQUEST['locations'])) {
     $locations = $_REQUEST['locations'];
 }
 
-//$baseurl = 'https://redaktion.internationaler-bund.de/';
-//print_r($baseurl);
-
 $clients = urldecode((string) $clients);
 $srclients = urldecode((string) $srclients);
 $intern = urldecode((string) $intern);

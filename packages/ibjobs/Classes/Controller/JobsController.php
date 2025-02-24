@@ -21,7 +21,7 @@ class JobsController extends ActionController
         if ($this->settings['prefilter']) {
             $jobs = json_decode(
                 (string) $this->getUrl(
-                    $this->settings['productDbBaseUrl'] . "interfaces/requestIbjobs/clients:" . $this->settings['clients'] .
+                    $_ENV['REDAKTIONSTOOL_URL'] . "/interfaces/requestIbjobs/clients:" . $this->settings['clients'] .
                     "/sr_clients:" . $this->settings['sr_clients'] .
                     "/intern:" . $this->settings['intern'] .
                     "/locations:" . $this->settings['locations'] .
@@ -31,7 +31,7 @@ class JobsController extends ActionController
             );
         } else {
             $jobs = json_decode((string) $this->getUrl(
-                $this->settings['productDbBaseUrl'] . "interfaces/requestIbjobs/clients:" . $this->settings['clients'] . "/intern:" . $this->settings['intern'] . "/sr_clients:" . $this->settings['srclients']
+                $_ENV['REDAKTIONSTOOL_URL'] . "/interfaces/requestIbjobs/clients:" . $this->settings['clients'] . "/intern:" . $this->settings['intern'] . "/sr_clients:" . $this->settings['srclients']
             ));
         }
 

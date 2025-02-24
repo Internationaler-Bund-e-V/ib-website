@@ -161,8 +161,8 @@ portalSettings {
     ib_content.newsDetailsPage = 65
     ib_content.newsUploadFolder = uploads/pics/
 
-    misc.googleAps.apiKey = AIzaSyC7gFdnyfZCpKbX-Jowu5gBcfCNTRKfQ0s
-    misc.productDbBaseUrl = https://redaktion.internationaler-bund.de
+    misc.googleAps.apiKey = getEnv('GOOGLE_API_KEY')
+    misc.productDbBaseUrl = getEnv('REDAKTIONSTOOL_URL')
     misc.gridViewImg = fileadmin/user_upload/navigation/location_list.jpg
     misc.mapViewImg = fileadmin/user_upload/navigation/location_map.jpg
     misc.mapViewPid = 41
@@ -172,7 +172,7 @@ portalSettings {
     misc.searchResultId = 43
     misc.showOnlyTYPO3SearchResults = 0
     misc.sitemapStartId = 1
-    misc.google.recaptchaSiteKey = 6LesBQ4UAAAAACHcJQuvSaBmyxftnwUI-j0SRCFA
+    misc.google.recaptchaSiteKey = getEnv('RECAPTCHA_SITE_KEY')
 
     #readspeaker -> see MA_838
     readspeaker.show = 0
@@ -183,7 +183,7 @@ portalSettings {
 
     #ibjobs loga
     ibjobs.jobSingleViewPageUrl = /
-    ibjobs.ibjobsBaseUrl = https://redaktion.internationaler-bund.de/
+    ibjobs.ibjobsBaseUrl = getEnv('REDAKTIONSTOOL_URL')
 
     #fixed social bar
     social.facebook = https://www.facebook.com/InternationalerBund
@@ -299,14 +299,13 @@ gallery.folder.pid = 1351
 #typo3 in developer mode -> setenv apache
 [applicationContext == "Development"]
     portalSettings.analytics.enable_tracking = 0
-    portalSettings.ibjobs.ibjobsBaseUrl = https://ib:ib@redaktion-staging.rmsdev.de/
+#    portalSettings.ibjobs.ibjobsBaseUrl = https://ib:ib@redaktion-staging.rmsdev.de/
     portalSettings.tabs_bar {
         show = 0
         folder_id = 2801
         orientation = right
     }
 
-    portalSettings.misc.productDbBaseUrl = https://ibcms:redaktion@ib-redaktion-staging.rmsdev.de/
     portalSettings.readspeaker.show = 1
     portalSettings.analytics.enable_tracking = 0
     portalSettings.cookiepolicy.show = 0

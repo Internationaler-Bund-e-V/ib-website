@@ -32,14 +32,13 @@ class IBJobSearch
         let categories = dataset.categories;
         let titles = dataset.titles;
         let prefilter = dataset.prefilter;
-        let rmBaseUrl = dataset.baseurl;
         let baseUrl = '/proxy/ibjobs.php';
         let requestURL = "";
 
         if (prefilter == '1') {
-            requestURL = baseUrl + "?clients=" + clients + "&sr_clients=" + srclients + "&intern=" + intern + "&locations=" + locations + "&categories=" + categories + "&titles=" + titles + "&baseurl=" + rmBaseUrl;
+            requestURL = baseUrl + "?clients=" + clients + "&sr_clients=" + srclients + "&intern=" + intern + "&locations=" + locations + "&categories=" + categories + "&titles=" + titles;
         } else {
-            requestURL = baseUrl + "?clients=" + clients + "&sr_clients=" + srclients + "&intern=" + intern + "&baseurl=" + rmBaseUrl;
+            requestURL = baseUrl + "?clients=" + clients + "&sr_clients=" + srclients + "&intern=" + intern;
         }
 
         console.log(requestURL);
