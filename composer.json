@@ -55,7 +55,7 @@
         "georgringer/numbered-pagination": "^2.0",
         "beechit/fal-securedownload": "^5.0",
         "studiomitte/recordlist-thumbnail": "^1.0",
-        "studiomitte/friendlycaptcha": "^0.1",
+        "studiomitte/friendlycaptcha": "^2.0",
         "dirkpersky/typo3-rte-ckeditor-fontawesome": "^12.0",
         "georgringer/news": "^11.4",
         "apache-solr-for-typo3/solr": "^12.0",
