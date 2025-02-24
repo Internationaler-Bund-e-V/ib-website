@@ -67,7 +67,6 @@ export default {
 
   setup() {
     let Location = ref(inject("Location"));
-    let baseInterfaceURL = inject("baseInterfaceURL");
     let proxyURL = inject("proxyURL");
     let locationSelected = ref(false);
     let locationData = ref([]);
@@ -83,7 +82,7 @@ export default {
 
     const getLocation = async (locationID) => {
       //https://redaktionstool.ddev.site/interfaces/requestLocation/id:210676
-      fetch(proxyURL + "?baseurl=" + baseInterfaceURL + "&locationid=" + locationID)
+      fetch(proxyURL + '?&locationid=' + locationID)
         .then((response) => response.json())
         .then((data) => (locationData.value = data))
         .then(() => (locationSelected.value = true));

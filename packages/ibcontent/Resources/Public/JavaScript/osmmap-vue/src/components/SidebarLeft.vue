@@ -179,11 +179,9 @@ export default {
         //selectedDistance.value = 0;
         requestURL.value =
           proxyURL +
-          "?baseurl=" +
-          baseInterfaceURL +
-          "&navid=" +
+          '?&navid=' +
           navid +
-          "&categories=" +
+          '&categories=' +
           (selectedCategories.value == null ? "" : selectedCategories.value.toString());
       }
 

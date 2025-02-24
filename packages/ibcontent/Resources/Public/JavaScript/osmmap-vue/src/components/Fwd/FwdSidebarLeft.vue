@@ -64,7 +64,6 @@ export default {
     let tmpLocations = ref(inject("tmpLocations"));
     let Loading = inject("Loading");
     let locationsLoaded = ref(false);
-    let baseInterfaceURL = inject("baseInterfaceURL");
     let proxyURL = inject("proxyURL");
     let tab = ref("search");
     const searchLocationTerm = ref("");
@@ -72,7 +71,7 @@ export default {
     const getLocations = async () => {
       resetLocations();
       //https://redaktionstool.ddev.site/interfaces/getLocationsForMapsByNavigation/nav_id:5
-      fetch(proxyURL + "?baseurl=" + baseInterfaceURL + "&fwd=true")
+      fetch(proxyURL + '?fwd=true')
         .then((response) => response.json())
         .then((data) => (locations.value = data))
         .then((data) => (tmpLocations.value = data))

@@ -181,13 +181,13 @@ export default {
     /////////////////
 
     // border styles
-    const borderURL = ref(TypoSettings.publicTypo3Path + "dist/json/borderGermany.json");
-    const format = inject("ol-format");
+    const borderURL = ref(TypoSettings.publicTypo3Path + 'Json/borderGermany.json');
+    const format = inject('ol-format');
     const geoJson = new format.GeoJSON();
     //////////////////
 
     const center = ref(fromLonLat([Center.value.longitude, Center.value.latitude]));
-    const projection = ref("EPSG:3857");
+    const projection = ref('EPSG:3857');
     const zoom = ref(Center.value.zoomLevel);
     const rotation = ref(0);
 
