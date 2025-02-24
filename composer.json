@@ -57,7 +57,7 @@
         "studiomitte/recordlist-thumbnail": "^1.0",
         "studiomitte/friendlycaptcha": "^2.0",
         "dirkpersky/typo3-rte-ckeditor-fontawesome": "^12.0",
-        "georgringer/news": "^11.4",
+        "georgringer/news": "^12.2",
         "apache-solr-for-typo3/solr": "^12.0",
         "ssch/typo3-encore": "^6.0",
         "symfony/webpack-encore-bundle": "^2.2"
