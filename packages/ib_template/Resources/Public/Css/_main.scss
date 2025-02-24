@@ -297,3 +297,12 @@ h4 {
 
 /* Large only */
 @media screen and (min-width: 64em) and (max-width: 74.9375em) {}
+
+
+// Full width of the main section
+@media screen and (min-width: 1351px) and (max-width: 2560px) {
+	#ib-container {
+	// max-width: none;
+	max-width: 2560px;
+	}
+}
