@@ -7,9 +7,9 @@
         "sourceMap": true,
         "typeRoots": [
             "node_modules/@types",
-            "JavaScript/types"
+            "./JavaScript/types"
         ]
     },
-    "include": [ "JavaScript/**/*", "../../../ibcontent/Resources/Public/JavaScript/components/IBStartPageSlider.ts" ],
+    "include": [ "JavaScript/**/*" ],
     "exclude": [ "**/*.spec.ts" ]
 }
