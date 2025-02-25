@@ -18,23 +18,28 @@
     <div class="ib-content-module grid-x grid-margin-x">
 
       <div class="cell small-12 headline-section">
-        <f:if condition="{settings.headline_tag}">
-          <f:then>
-            <{settings.headline_tag} class="ib-headline">{settings.headline}</{settings.headline_tag}>
-          </f:then>
-          <f:else>
-            <h2 class="ib-headline">{settings.headline}</h2>
-          </f:else>
-        </f:if>
+   
+        <f:if condition="{settings.headline} != ''">
+          <f:if condition="{settings.headline_tag}">
+              <f:then>
+                  <{settings.headline_tag} class="ib-headline">{settings.headline}</{settings.headline_tag}>
+              </f:then>
+              <f:else>
+                  <h2 class="ib-headline">{settings.headline}</h2>
+              </f:else>
+          </f:if>
+      </f:if>
 
-        <f:if condition="{settings.headline_tag}">
-          <f:then>
-            <{settings.subheadline_tag}>{settings.subheadline}</{settings.subheadline_tag}>
-          </f:then>
-          <f:else>
-            <h2>{settings.subheadline}</h2>
-          </f:else>
+      <f:if condition="{settings.subheadline} != ''">
+        <f:if condition="{settings.subheadline_tag}">
+            <f:then>
+                <{settings.subheadline_tag}>{settings.subheadline}</{settings.subheadline_tag}>
+            </f:then>
+            <f:else>
+                <h2>{settings.subheadline}</h2>
+            </f:else>
         </f:if>
+    </f:if>
 
       </div>
       <f:switch expression="{settings.numCol}">
