@@ -1,5 +1,5 @@
-@function cachebuster() { 
-  @return random(99999999); 
+@function cachebuster() {
+  @return random(99999999);
 }
 
 
@@ -7,9 +7,9 @@
 @font-face {
   font-family: 'ib-font';
   src:  url('../Fonts/ib-font.eot?#{cachebuster()}');
-  src:  url('../Fonts/ib-font.eot?#{cachebuster()}#iefix') format('embedded-opentype'),   
+  src:  url('../Fonts/ib-font.eot?#{cachebuster()}#iefix') format('embedded-opentype'),
     url('../Fonts/ib-font.woff?#{cachebuster()}') format('woff');
-   
+
   font-weight: normal;
   font-style: normal;
 }
@@ -147,4 +147,19 @@ i[class^="ib-icon-"], i[class*=" ib-icon-"] {
 }
 .ib-icon-twitter-x-circle:before {
   content: "\e925";
+}
+.ib-icon-bluesky-logo:before {
+  content: "\e923";
+}
+.ib-icon-mastodon-logo:before {
+  content: "\e924";
+}
+.ib-icon-bluesky-circle:before {
+  content: "\e925";
+}
+.ib-icon-mastodon-circle:before {
+  content: "\e926";
+}
+.ib-icon-action-button:before {
+  content: "\e927";
 }
