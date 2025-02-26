@@ -16,6 +16,7 @@ import('deploy/inventory.yaml');
 set('repository', 'https://github.com/Internationaler-Bund-e-V/ib-website.git');
 
 add('shared_files', [
+    '.env',
     'public/.htaccess',
     'public/google009d0a891c474c5a.html',
     'public/google0226696366ebd26f.html',
@@ -25,8 +26,7 @@ add('shared_dirs', [
     'public/secure',
     'public/typo3temp',
     'public/uploads',
-    'var',
-    'vendor'
+    'var'
 ]);
 
 add('writable_dirs', array: [
@@ -60,6 +60,7 @@ set('exclude', [
     '/package.json',
     'packages/*/Resources/Public/Css',
     'packages/*/Resources/Public/JavaScript',
+    '/public/_assets',
     '/public/typo3conf',
     '/public/typo3temp',
     '/public/fileadmin',
