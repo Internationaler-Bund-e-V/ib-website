@@ -2,9 +2,13 @@
 namespace Deployer;
 
 require 'recipe/typo3.php';
+require 'contrib/yarn.php';
 require 'contrib/webpack_encore.php';
+require 'contrib/rsync.php';
 // require 'contrib/ms-teams.php';
 // set('teams_webhook', 'https://outlook.office.com/webhook/...');
+
+import('deploy/inventory.yaml');
 
 // Config
 set('repository', 'https://github.com/Internationaler-Bund-e-V/ib-website.git');
@@ -19,6 +23,8 @@ add('shared_dirs', [
     'public/secure',
     'public/typo3temp',
     'public/uploads',
+    'var',
+    'vendor'
 ]);
 
 add('writable_dirs', array: [
@@ -30,34 +36,75 @@ add('writable_dirs', array: [
     'var',
 ]);
 
-// Hosts
+set('rsync_dest', '{{release_path}}');
 
-host('prod')
-    ->set('hostname', 'ib.de')
-    ->set('label', 'prod')
-    ->set('remote_user', 'ib')
-    ->set('port', 4567)
-    ->set('forward_agent', true)
-    ->set('config_file', '~/ssh_config')
-    ->set('deploy_path', '/var/www/ib.de/typo3');
+set('exclude', [
+    '.git',
+    '/.ddev',
+    '/.editorconfig',
+    '/.env.example',
+    '/.env.local',
+    '/.env',
+    '/.github',
+    '/.gitignore',
+    '/.idea',
+    '/.vscode',
+    '/deploy.php',
+    '/docs',
+    '/dump.sql.gz',
+    '/node_modules',
+    '/package.json',
+    'packages/*/Resources/Public/Css',
+    'packages/*/Resources/Public/JavaScript',
+    'packages/*/Resources/Public/tsconfig.json',
+    '/public/typo3conf',
+    '/public/typo3temp',
+    '/public/fileadmin',
+    '/public/uploads',
+    '/public/secure',
+    '/public/index.php',
+    '/tsconfig.json',
+    '/types',
+    '/vendor',
+    '/var',
+    '/webpack.config.js',
+    '/yarn.lock',
+]);
 
-host('stage')
-    ->set('hostname', 'ib-staging.rmsdev.de')
-    ->set('remote_user', 'ib')
-    ->set('port', 4567)
-    ->set('forward_agent', true)
-    ->set('config_file', '~/ssh_config')
-    ->set('deploy_path', '/var/www/ib-staging.rmsdev.de/typo3');
+set('rsync', function () {
+    return [
+        'exclude' => array_unique(get('exclude', [])),
+        'exclude-file' => false,
+        'include' => [],
+        'include-file' => false,
+        'filter' => [],
+        'filter-file' => false,
+        'filter-perdir' => false,
+        'flags' => 'rz',
+        'options' => ['delete'],
+        'timeout' => 3600,
+    ];
+});
 
 // Hooks
-after('deploy:update_code', 'build');
 after('deploy:failed', 'deploy:unlock');
-
+before('deploy:release', 'build:local');
+after('rsync', 'build:remote');
 // before('deploy', 'teams:notify');
 // after('deploy:success', 'teams:notify:success');
 // after('deploy:failed', 'teams:notify:failure');
 
 // Tasks
-task('build', function() {
-    runLocally('yarn install && yarn run build');
+task('build:local', function () {
+    runLocally('yarn install');
+    runLocally('yarn build');
+});
+
+task('build:remote', function () {
+    run('composer install');
+});
+
+desc('Use rsync task to pull project files');
+task('deploy:update_code', function () {
+    invoke('rsync');
 });
