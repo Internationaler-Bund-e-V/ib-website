@@ -5,6 +5,8 @@ require 'recipe/typo3.php';
 require 'contrib/yarn.php';
 require 'contrib/webpack_encore.php';
 require 'contrib/rsync.php';
+require 'contrib/cachetool.php';
+
 // require 'contrib/ms-teams.php';
 // set('teams_webhook', 'https://outlook.office.com/webhook/...');
 
@@ -89,19 +91,16 @@ set('rsync', function () {
 // Hooks
 after('deploy:failed', 'deploy:unlock');
 before('deploy:release', 'build:local');
-after('rsync', 'build:remote');
 // before('deploy', 'teams:notify');
 // after('deploy:success', 'teams:notify:success');
 // after('deploy:failed', 'teams:notify:failure');
+// after('deploy:symlink', 'cachetool:clear:opcache');
+// after('deploy:symlink', 'cachetool:clear:apcu');
 
 // Tasks
 task('build:local', function () {
     runLocally('yarn install');
     runLocally('yarn build');
-});
-
-task('build:remote', function () {
-    run('composer install');
 });
 
 desc('Use rsync task to pull project files');
