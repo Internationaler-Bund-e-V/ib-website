@@ -6,6 +6,7 @@ require 'contrib/yarn.php';
 require 'contrib/webpack_encore.php';
 require 'contrib/rsync.php';
 require 'contrib/cachetool.php';
+require 'recipe/deploy/env.php';
 
 // require 'contrib/ms-teams.php';
 // set('teams_webhook', 'https://outlook.office.com/webhook/...');
@@ -17,24 +18,25 @@ set('repository', 'https://github.com/Internationaler-Bund-e-V/ib-website.git');
 
 add('shared_files', [
     '.env',
-    'public/.htaccess',
-    'public/google009d0a891c474c5a.html',
-    'public/google0226696366ebd26f.html',
+    '{{typo3_webroot}}/.htaccess',
+    '{{typo3_webroot}}/google009d0a891c474c5a.html',
+    '{{typo3_webroot}}/google0226696366ebd26f.html',
 ]);
+
 add('shared_dirs', [
-    'public/fileadmin',
-    'public/secure',
-    'public/typo3temp',
-    'public/uploads',
+    '{{typo3_webroot}}/fileadmin',
+    '{{typo3_webroot}}/secure',
+    '{{typo3_webroot}}/typo3temp',
+    '{{typo3_webroot}}/uploads',
     'var'
 ]);
 
 add('writable_dirs', array: [
-    'public/fileadmin',
-    'public/secure',
-    'public/typo3temp',
-    'public/typo3conf',
-    'public/uploads',
+    '{{typo3_webroot}}/fileadmin',
+    '{{typo3_webroot}}/secure',
+    '{{typo3_webroot}}/typo3temp',
+    '{{typo3_webroot}}/typo3conf',
+    '{{typo3_webroot}}/uploads',
     'var',
 ]);
 
@@ -93,6 +95,7 @@ set('rsync', function () {
 // Hooks
 after('deploy:failed', 'deploy:unlock');
 before('deploy:release', 'build:local');
+after('deploy:symlink', 'staticfilecache:flush');
 // before('deploy', 'teams:notify');
 // after('deploy:success', 'teams:notify:success');
 // after('deploy:failed', 'teams:notify:failure');
@@ -108,4 +111,8 @@ task('build:local', function () {
 desc('Use rsync task to pull project files');
 task('deploy:update_code', function () {
     invoke('rsync');
+});
+
+task('staticfilecache:flush', function () {
+    run('{{deploy_path}}/typo3/vendor/bin/typo3 staticfilecache:flushCache');
 });

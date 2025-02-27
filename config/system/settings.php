@@ -196,7 +196,7 @@ return [
             'solrPort' => '443',
             'solrScheme' => 'https',
             'solrUsername' => '',
-            'tikaPath' => $ENV['TIKA_PATH'],
+            'tikaPath' => $_ENV['TIKA_PATH'],
             'tikaServerHost' => '',
             'tikaServerPath' => '',
             'tikaServerPort' => '',
@@ -226,7 +226,7 @@ return [
         ],
         'debug' => false,
         'hidePagesIfNotTranslatedByDefault' => '0',
-        'loginRateLimitIpExcludeList' => $ENV['LOGIN_RATE_LIMIT_IP_EXCLUDE_LIST'],
+        'loginRateLimitIpExcludeList' => $_ENV['LOGIN_RATE_LIMIT_IP_EXCLUDE_LIST'],
     ],
     'GFX' => [
         'gdlib_png' => false,
