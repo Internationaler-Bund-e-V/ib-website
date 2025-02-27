@@ -15,7 +15,7 @@ languages:
     locale: de_DE
     iso-639-1: de
     navigationTitle: ''
-    hreflang: ''
+    hreflang: de-DE
     direction: ''
     flag: de
     solr_core_read: core_de
@@ -29,7 +29,7 @@ languages:
     locale: en_DE.UTF-8
     iso-639-1: en
     navigationTitle: ''
-    hreflang: en-DE
+    hreflang: en-US
     direction: ''
     fallbackType: strict
     fallbacks: '0'
