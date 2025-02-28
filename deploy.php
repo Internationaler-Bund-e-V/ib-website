@@ -96,7 +96,7 @@ set('rsync', function () {
 // Hooks
 after('deploy:failed', 'deploy:unlock');
 before('deploy:release', 'build:local');
-after('deploy:symlink', 'staticfilecache:flush');
+after('deploy:symlink', 'cache:flush');
 // before('deploy', 'teams:notify');
 // after('deploy:success', 'teams:notify:success');
 // after('deploy:failed', 'teams:notify:failure');
@@ -114,6 +114,8 @@ task('deploy:update_code', function () {
     invoke('rsync');
 });
 
-task('staticfilecache:flush', function () {
+task('cache:flush', function () {
     run('{{deploy_path}}/typo3/vendor/bin/typo3 staticfilecache:flushCache');
+    run('{{deploy_path}}/typo3/vendor/bin/typo3 cache:flush');
+    run('{{deploy_path}}/typo3/vendor/bin/typo3 cache:warmup');
 });
