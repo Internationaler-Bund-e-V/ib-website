@@ -1,3 +1,7 @@
 [submodule "deploy"]
 	path = deploy
 	url = git@github.com:Internationaler-Bund-e-V/ib-website-deploy.git
+
+[submodule "docs"]
+	path = docs
+	url = git@github.com:Internationaler-Bund-e-V/ib-website-documentation.git
