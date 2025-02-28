@@ -32,13 +32,15 @@ add('shared_dirs', [
 ]);
 
 add('writable_dirs', array: [
-    '{{typo3_webroot}}/fileadmin',
     '{{typo3_webroot}}/secure',
     '{{typo3_webroot}}/typo3temp',
     '{{typo3_webroot}}/typo3conf',
     '{{typo3_webroot}}/uploads',
     'var',
+    'config',
 ]);
+
+set('writable_recursive', true);
 
 set('rsync_dest', '{{release_path}}');
 
@@ -56,8 +58,7 @@ set('exclude', [
     '/deploy',
     '/deploy.php',
     '/docs',
-    '*.sql.gz',
-    '*.sql',
+    'dump.sql.gz',
     '/node_modules',
     '/package.json',
     'packages/*/Resources/Public/Css',
