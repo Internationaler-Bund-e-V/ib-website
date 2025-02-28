@@ -1,10 +1,10 @@
 # -----------------------------------------------------------------------------
-# PORTAL Standardkonfiguration
+# PORTAL Stadtteilbüro Boxberg
 # -----------------------------------------------------------------------------
-[site("identifier") == "ib_training_de"]
-    host = ib-training.de
+[site("identifier") == "ib_stadtteilbuero_boxberg"]
+    host = hd-boxberg.de
     portalSettings {
-        pageTitle = IB Training
+        pageTitle = IB Stadtteilbüro Boxberg
 
         #oberster Knoten / Home-Seite
         root_id = 7284
