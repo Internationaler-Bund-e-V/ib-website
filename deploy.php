@@ -96,7 +96,9 @@ set('rsync', function () {
 // Hooks
 after('deploy:failed', 'deploy:unlock');
 before('deploy:release', 'build:local');
+before('deploy:update_code', 'typo3:lockBackend');
 after('deploy:symlink', 'cache:flush');
+after('deploy:symlink', 'typo3:unlockBackend');
 // before('deploy', 'teams:notify');
 // after('deploy:success', 'teams:notify:success');
 // after('deploy:failed', 'teams:notify:failure');
@@ -118,4 +120,12 @@ task('cache:flush', function () {
     run('{{deploy_path}}/typo3/vendor/bin/typo3 staticfilecache:flushCache');
     run('{{deploy_path}}/typo3/vendor/bin/typo3 cache:flush');
     run('{{deploy_path}}/typo3/vendor/bin/typo3 cache:warmup');
+});
+
+task('typo3:lockBackend', function () {
+    run('{{deploy_path}}/typo3/vendor/bin/typo3 backend:lockforeditors');
+});
+
+task('typo3:unlockBackend', function () {
+    run('{{deploy_path}}/typo3/vendor/bin/typo3 backend:unlockforeditors');
 });
