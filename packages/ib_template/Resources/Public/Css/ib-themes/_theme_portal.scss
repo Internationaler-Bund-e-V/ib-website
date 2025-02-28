@@ -1,7 +1,12 @@
 
 // Navigation
-.ib-theme-portal{
-  
-  .jetmenu > li > .megamenu {background:$ib-gray !important;}
-  .row{position:relative;z-index:1}
-}   
+.ib-theme-portal {
+
+    .jetmenu > li > .megamenu {
+        background: $ib-gray !important;
+    }
+    .row {
+        position: relative;
+        z-index: 1
+    }
+}
