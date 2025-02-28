@@ -323,6 +323,6 @@ return [
         'folderCreateMask' => '2775',
         'mediafile_ext' => 'gif,jpg,jpeg,bmp,png,pdf,svg,ai,mp3,wav,mp4,ogg,flac,opus,webm,youtube',
         'sitename' => $_ENV['TYPO3_SITENAME'] ? : '[V12] Internationaler Bund',
-        'systemLocale' => 'de_DE',
+        'systemLocale' => 'de_DE.UTF-8',
     ],
 ];
