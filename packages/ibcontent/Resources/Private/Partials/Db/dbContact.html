@@ -140,7 +140,7 @@
                   <input type="submit" class="button ibCustomButton" value="Senden">
                 </div>
                 <div class="medium-12 columns ajax-loader" style="display: none;">
-                  <f:image src="EXT:ib_template/Resources/Public/img/ajax-loader.gif" alt="loading" />
+                  <f:image src="EXT:ib_template/Resources/Public/Images/ajax-loader.gif" alt="loading" />
                 </div>
               </div>
 
@@ -195,7 +195,7 @@
             success: function (data) {
               var json = $.parseJSON(data);
 
-              
+
               $(mainSelector + ' form label.captcha-label').removeClass('is-invalid-label');
               $(mainSelector + " form input[name='captcha']").removeClass('is-invalid-input');
               $(mainSelector + ' form div.salutation-block label').removeClass('is-invalid-label');
