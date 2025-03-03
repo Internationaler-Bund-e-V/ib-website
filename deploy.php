@@ -6,7 +6,6 @@ require 'contrib/yarn.php';
 require 'contrib/webpack_encore.php';
 require 'contrib/rsync.php';
 require 'contrib/cachetool.php';
-require 'recipe/deploy/env.php';
 
 // require 'contrib/ms-teams.php';
 // set('teams_webhook', 'https://outlook.office.com/webhook/...');
