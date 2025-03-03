@@ -1,7 +1,7 @@
 # -----------------------------------------------------------------------------
 # PORTAL Stadtteilbüro Boxberg
 # -----------------------------------------------------------------------------
-[site("identifier") == "ib_stadtteilbuero_boxberg"]
+[site("identifier") == "stadtteilmanagement_boxberg"]
     host = hd-boxberg.de
     portalSettings {
         pageTitle = IB Stadtteilbüro Boxberg
