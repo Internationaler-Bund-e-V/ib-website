@@ -1,7 +1,7 @@
 @use "sass:color";
 
 /*
-NAME: Jet Responsive Megamenu 
+NAME: Jet Responsive Megamenu
 AUTHOR PAGE: http://codecanyon.net/user/marcoarib
 ITEM PAGE: http://codecanyon.net/item/jet-responsive-megamenu/5719593
 */
@@ -192,6 +192,7 @@ ITEM PAGE: http://codecanyon.net/item/jet-responsive-megamenu/5719593
 .jetmenu .megamenu img {
 	width: 100%;
 	@include transition(border 0.3s ease);
+    min-height: 140px;
 }
 
 /* to fix right attribute on submenus (menu aligned to left (default)) */
@@ -337,6 +338,17 @@ ITEM PAGE: http://codecanyon.net/item/jet-responsive-megamenu/5719593
 	width: 100%;
 }
 
+.megamenu-list-item-image {
+    width: 100%;
+    height: 140px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.megamenu-list-item-text {
+    text-align: left;
+}
+
 /*add expand class to get rid of grid gutters*/
 .megamenu .row .col1.expanded,
 .megamenu .row .col2.expanded,
@@ -390,7 +402,7 @@ ITEM PAGE: http://codecanyon.net/item/jet-responsive-megamenu/5719593
 	right: 0;
 }
 
-/* ICONS (FONT AWESOME) 
+/* ICONS (FONT AWESOME)
 **********************************************************/
 .jetmenu > li > a > i {
 	line-height: 23px !important;
