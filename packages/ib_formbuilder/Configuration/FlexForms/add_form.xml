@@ -19,7 +19,7 @@
                                  -->
                                 <type>select</type>
                                 <renderType>selectSingle</renderType>
-                                <itemsProcFunc>Iv\IbFormbuilder\UserFunc\FlexFormUserFunc->getForms</itemsProcFunc>
+                                <itemsProcFunc>Ib\IbFormbuilder\UserFunc\FlexFormUserFunc->getForms</itemsProcFunc>
                             </config>
                         </TCEforms>
                     </settings.form>
