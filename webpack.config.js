@@ -29,7 +29,7 @@ Encore
     .addEntry('ibsearch', './packages/ibsearch/Resources/Public/JavaScript/app.ts')
     .addEntry('ib_galerie', './packages/ib_galerie/Resources/Public/JavaScript/app.ts')
     .addEntry('ib_formbuilder_frontend', './packages/ib_formbuilder/Resources/Public/JavaScript/frontend/app.js')
-    //.addEntry('ib_formbuilder_backend', './packages/ib_formbuilder/Resources/Public/JavaScript/backend/app.ts')
+    .addEntry('ib_formbuilder_backend', './packages/ib_formbuilder/Resources/Public/JavaScript/backend/app.ts')
 
     .addEntry('fwd', './packages/ibcontent/Resources/Public/JavaScript/fwd-vue/src/main.js')
     .addEntry('osmmap', './packages/ibcontent/Resources/Public/JavaScript/osmmap-vue/src/main.js')

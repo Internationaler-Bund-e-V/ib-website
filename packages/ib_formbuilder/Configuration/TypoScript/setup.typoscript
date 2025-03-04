@@ -83,3 +83,9 @@ tx_ibformbuilder_ajax {
         settings < plugin.tx_ibformbuilder_showform.settings
     }
 }
+module.tx_typo3encore {
+    settings {
+        entrypointJsonPath = build/entrypoints.json
+        manifestJsonPath = build/manifest.json
+    }
+}
