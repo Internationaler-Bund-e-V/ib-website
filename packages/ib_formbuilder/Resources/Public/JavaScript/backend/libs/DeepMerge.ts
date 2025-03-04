@@ -3,7 +3,7 @@
 * @param item
 * @returns {boolean}
 */
-export function isObject(item:any):boolean {
+const isObject = (item:any):boolean => {
     return (item && typeof item === 'object' && !Array.isArray(item));
 }
 
@@ -12,7 +12,7 @@ export function isObject(item:any):boolean {
 * @param target
 * @param ...sources
 */
-export function mergeDeep(target:any, ...sources:Array<object>) {
+const mergeDeep = (target:any, ...sources:Array<object>) => {
     if (!sources.length) return target;
     const source:any = sources.shift()!;
 
@@ -34,3 +34,4 @@ export function mergeDeep(target:any, ...sources:Array<object>) {
 // https://stackoverflow.com/questions/27936772/how-to-deep-merge-instead-of-shallow-merge
 // Answer by Salakar:
 // https://stackoverflow.com/users/2938161/salakar
+export default mergeDeep;
