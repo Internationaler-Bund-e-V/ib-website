@@ -46,7 +46,7 @@ export default {
 </script>
 <style lang="scss">
 .osmMapCategoriesFilter {
-  position: absolute; 
+  position: absolute;
   background: white;
   top: 10px;
   margin: 0 auto;
@@ -69,6 +69,12 @@ export default {
     margin: 0;
     padding: 0;
     font-size: 12px;
+    min-height: 0;
+  }
+
+  .select2-container .select2-search--inline {
+    margin-top: -20px;
+    float: none;
   }
 
   .select2-selection__choice {
@@ -81,6 +87,9 @@ export default {
       font-size: 20px;
       line-height: 1;
     }
+  }
+  .select2-container--default .select2-selection--multiple .select2-selection__choice__display {
+    margin-left: 1rem;
   }
 }
 </style>
