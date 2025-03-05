@@ -6,12 +6,12 @@
     li {
       a {
         &:hover {
-          color: #DB7C00 !important;
+          color: $ib-breadcrump-orange !important;
         }
       }
 
       &.current {
-        color: #DB7C00 !important;
+        color: $ib-breadcrump-orange !important;
         font-weight: bold;
         letter-spacing: .05rem;
       }
