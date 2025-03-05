@@ -13,10 +13,10 @@
         bodyClassName = portal_sit_sis
 
         readspeaker.show = 1
-        
+
         portal_logo.file = sit_logo.png
         portal_logo.format = wide
-        
+
         #data privacy site ID
         dataPrivacySiteID = 7375
 
@@ -30,7 +30,7 @@
         misc.sitemapStartId = 7382
 
         #Präfix Titel
-        firstMenuTitle = 
+        firstMenuTitle =
 
         #News Details - Seite
         tt_news.single_pid = 7386
@@ -41,17 +41,17 @@
         #Suche - Ergebnisseite
         misc.searchResultId = 7379
 
-        //generate news sitemap     
+        //generate news sitemap
         NewsSitemap.generate = 1
         NewsSitemap.NewsFolderPid = 7387
         NewsSitemap.NewsDetailPid = 7386
-                
+
         #Google Analytics ID
         analytics {
             #account_id =
             #enable_tracking = 0
             matomo_enabled = 0
-            matomo_siteid = 
+            matomo_siteid =
             matomo_tagmanager_enabled = 0
             matomo_containerid = Gw2sKpOz
         }
@@ -63,12 +63,18 @@
 
         #Text und Verlinkung des Bubbles im Header
         main_bubble {
-            hide = 0
+            hide = 1
             text = Kontakt
             id = 7371
             title_text = Kontaktieren Sie uns hier bei Fragen, Wünschen und Anregungen
         }
-        
+
+        main_markenzeichen {
+            show = 1
+            id = 1
+            title_text = IB Menschsein stärken
+        }
+
         main_bubble_en{
             hide = 0
             text = Contact
@@ -80,11 +86,11 @@
         social.youtube =
         social.twitter =
         social.xing =
-        social.linkedin =		
+        social.linkedin =
         social.kununu =
-        social.facebook = 
+        social.facebook =
         social.instagram =
-        
+
 
         #threecolumn footer layout
         footer.use_three_columns = 1
@@ -102,12 +108,12 @@
     social.youtube =
     social.twitter =
     social.xing =
-    social.linkedin =		
+    social.linkedin =
     social.kununu =
-    social.facebook = 
+    social.facebook =
     social.instagram =
-    
-   
+
+
 
     const_navigation {
         #Ordner ID zentraler Footer, zentrale Websites
@@ -120,7 +126,7 @@
         footernav_meta_folder_id = 7370
     }
 
-    
+
 
 
 [end]

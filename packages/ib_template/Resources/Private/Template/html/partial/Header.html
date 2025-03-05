@@ -23,6 +23,14 @@
 		</f:variable>
 	</f:defaultCase>
 </f:switch>
+<f:variable name="markenzeichen_show">
+    {f:cObject(typoscriptObjectPath: 'portalSettings.main_markenzeichen.show')}
+</f:variable>
+<f:variable name="markenzeichen_title_text">{data.markenzeichen_title_text}</f:variable>
+<f:variable name="markenzeichen_link_id">
+    <f:cObject typoscriptObjectPath="markenzeichen.linkID" />
+</f:variable>
+
 
 <a href="#ib-container">
 	<span class="hidden-text">
@@ -41,27 +49,39 @@
 			<div id="ib-logo" class="show-for-large">
 				<f:variable name="src" value="EXT:ib_template/Resources/Public/Images/logos_portals/{f:cObject(typoscriptObjectPath: 'portalSettings.portal_logo.file')}" />
                 <f:link.page pageUid="{f:cObject(typoscriptObjectPath: 'portalSettings.root_id')}">
-					<img src="{f:uri.resource(path: src)}" class="responsive" alt="Portal Logo" style="width: auto; height: 70px">
+					<img src="{f:uri.resource(path: src)}" class="responsive" alt="Portal Logo" style="width: auto; max-height: 70px">
 				</f:link.page>
 			</div>
 			<f:render partial="menu/mainMenuEntryPoint" arguments="{_all}" />
 			<div id="ib-menu-overlay"></div>
-			<!-- buddy start -->
+			<!-- markenzeichen start -->
 			<f:if condition="{buddy_hide} == 0">
-				<f:if condition="{buddy_text}">
-					<f:then>
-						<div id="ib-head-bubble">
-							<f:link.page pageUid="{buddy_link_id}" title="{buddy_title_text}">
-								<f:format.raw>{buddy_text}</f:format.raw>
-							</f:link.page>
-						</div>
-					</f:then>
-					<f:else>
-						<div id="ib-head-bubble">
-							<f:format.raw>{buddy_link}</f:format.raw>
-						</div>
-					</f:else>
-				</f:if>
+                <f:then>
+                    <f:if condition="{buddy_text}">
+                        <f:then>
+                            <div id="ib-head-bubble">
+                                <f:link.page pageUid="{buddy_link_id}" title="{buddy_title_text}">
+                                    <f:format.raw>{buddy_text}</f:format.raw>
+                                </f:link.page>
+                            </div>
+                        </f:then>
+                        <f:else>
+                            <div id="ib-head-bubble">
+                                <f:format.raw>{buddy_link}</f:format.raw>
+                            </div>
+                        </f:else>
+                    </f:if>
+                </f:then><f:else>
+                    <f:if condition="{markenzeichen_show}">
+                        <f:then>
+                            <div id="ib-markenzeichen">
+                                <f:link.page pageUid="{markenzeichen_link_id}" title="{markenzeichen_title_text}">
+                                    <img src="{f:uri.resource(path: 'EXT:ib_template/Resources/Public/Images/logos_portals/ib_markenzeichen_logo_blau.svg')}" style="max-height: 70px;" />
+                                </f:link.page>
+                            </div>
+                        </f:then>
+                    </f:if>
+                </f:else>
 			</f:if>
 			<!-- buddy end -->
 		</div>
