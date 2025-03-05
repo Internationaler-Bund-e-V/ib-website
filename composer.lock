@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb657b38e76452933933d0c57c21671d",
+    "content-hash": "7e0481ff0acdddac8d95f060e34e226f",
     "packages": [
         {
             "name": "apache-solr-for-typo3/solr",
@@ -1620,32 +1620,34 @@
         },
         {
             "name": "fluidtypo3/vhs",
-            "version": "7.1.0",
+            "version": "7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FluidTYPO3/vhs.git",
-                "reference": "7bc3f0a70ae4c4cf417b1e9fd50b251d1953ab17"
+                "reference": "bcebcbf8b3b80d49391b1968fc7f5766c057293e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FluidTYPO3/vhs/zipball/7bc3f0a70ae4c4cf417b1e9fd50b251d1953ab17",
-                "reference": "7bc3f0a70ae4c4cf417b1e9fd50b251d1953ab17",
+                "url": "https://api.github.com/repos/FluidTYPO3/vhs/zipball/bcebcbf8b3b80d49391b1968fc7f5766c057293e",
+                "reference": "bcebcbf8b3b80d49391b1968fc7f5766c057293e",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
                 "php": "^7.4.0 || ^8",
-                "typo3/cms-backend": "^10 || ^11 || ^12 || ^13 || dev-main",
-                "typo3/cms-core": "^10 || ^11 || ^12 || ^13 || dev-main",
-                "typo3/cms-extbase": "^10 || ^11 || ^12 || ^13 || dev-main",
-                "typo3/cms-fluid": "^10 || ^11 || ^12 || ^13 || dev-main",
-                "typo3/cms-frontend": "^10 || ^11 || ^12 || ^13 || dev-main"
+                "typo3/cms-backend": "^10 || ^11 || ^12 || dev-main",
+                "typo3/cms-core": "^10 || ^11 || ^12 || dev-main",
+                "typo3/cms-extbase": "^10 || ^11 || ^12 || dev-main",
+                "typo3/cms-fluid": "^10 || ^11 || ^12 || dev-main",
+                "typo3/cms-frontend": "^10 || ^11 || ^12 || dev-main"
             },
             "replace": {
                 "typo3-ter/vhs": "self.version"
             },
             "require-dev": {
+                "fluidtypo3/development": "^5",
                 "mikey179/vfsstream": "^1.6",
+                "php-coveralls/php-coveralls": "^2.5",
                 "phpstan/phpstan": "1.12.1",
                 "phpunit/phpunit": "^5.7 || ^9.5",
                 "squizlabs/php_codesniffer": "^3.7"
@@ -1682,11 +1684,11 @@
             ],
             "support": {
                 "chat": "https://typo3.slack.com/archives/C79562JES",
-                "docs": "https://docs.typo3.org/p/fluidtypo3/vhs/main/en-us/",
+                "docs": "https://viewhelpers.fluidtypo3.org/fluidtypo3/vhs/",
                 "issues": "https://github.com/FluidTYPO3/vhs/issues",
                 "source": "https://github.com/FluidTYPO3/vhs"
             },
-            "time": "2025-02-27T12:18:19+00:00"
+            "time": "2024-11-11T13:59:48+00:00"
         },
         {
             "name": "georgringer/news",
