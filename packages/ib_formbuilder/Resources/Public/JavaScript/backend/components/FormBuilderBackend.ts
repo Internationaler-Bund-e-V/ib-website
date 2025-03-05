@@ -1,5 +1,6 @@
-import mergeDeep from '../libs/DeepMerge.js';
+import mergeDeep from '../libs/DeepMerge';
 import 'formBuilder';
+import $ from 'jquery';
 
 class FormBuilderBackend {
     protected fbEditor:HTMLDivElement;
@@ -48,25 +49,25 @@ class FormBuilderBackend {
             typeUserEvents: {
 
                 button: {
-                    onadd: function (fld) {
+                    onadd: function (fld:Element|HTMLElement|JQuery<HTMLElement>) {
                         var $nameField = $('.fld-name', fld);
 
                         if ($nameField.val() == "submit-button-default") {
-                            S(fld).find('select[name=subtype]').prop('disabled', true);
-                            S(fld).find('input[name=name]').prop('disabled', true);
-                            S(fld).find('input[name=value]').prop('disabled', true);
+                            $(fld).find('select[name=subtype]').prop('disabled', true);
+                            $(fld).find('input[name=name]').prop('disabled', true);
+                            $(fld).find('input[name=value]').prop('disabled', true);
                         }
 
                     }
                 },
                 paragraph: {
-                    onadd: function (fld) {
+                    onadd: function (fld: any) {
                         var $nameField = $('.fld-name', fld);
-                        // S(fld).find('select[name=subtype]').prop('disabled', true);
+                        // $(fld).find('select[name=subtype]').prop('disabled', true);
                     }
                 },
                 'radio-group': {
-                    onadd: function (fld) {
+                    onadd: function (fld: any) {
                         //alert('EVENT EVENT EVENT');
                     }
                 }
@@ -81,7 +82,7 @@ class FormBuilderBackend {
     };
 
     protected formElement:HTMLFormElement|null;
-    protected dependencyContainer:Element|null = null;
+    protected dependencyContainer:HTMLElement|null = null;
 
     constructor(element:HTMLFormElement, options = {}) {
         this.formElement = element;
@@ -99,7 +100,7 @@ class FormBuilderBackend {
         fbOtions.formData = jsonData;
 
         this.fbEditor = document.getElementById(this.settings.ibFormBuilderDataHolder) as HTMLDivElement;
-        this.formBuilder = $(this.fbEditor).formBuilder(fbOtions);
+        this.formBuilder = ($(this.fbEditor) as any).formBuilder(fbOtions);
 
         // ------------------------------------
         // wait for the formbuilder setup to finish
@@ -127,13 +128,13 @@ class FormBuilderBackend {
         });
     }
 
-    dependencyRadioClickHandler(event) {
+    dependencyRadioClickHandler() {
 
     }
 
     openDependencyWindow(id:string) {
 
-        const currentTarget:HTMLElement = document.getElementById(id)!;
+        const currentTarget:HTMLInputElement = document.getElementById(id)! as HTMLInputElement;
         this.dependencyContainer = document.getElementById('tx_formbuilder_backend_manage_dependencies')! as HTMLElement;
 
         // ------------------------------------
@@ -147,7 +148,7 @@ class FormBuilderBackend {
         // ------------------------------------
         // read available form fields
         // ------------------------------------
-        var formDataJson = JSON.parse(formBuilder.formData);
+        var formDataJson = JSON.parse((window as any).formBuilder.formData);
         var actualInputValue = currentTarget.value;
         var actualInputValueArray = actualInputValue.split(';');
         //var actualInputName = $(currentTarget).attr('name');
@@ -156,9 +157,9 @@ class FormBuilderBackend {
         // ------------------------------------
         // read available local options for the active radio-group
         // ------------------------------------
-        var availableLocalOptions = [];
-        $(currentTarget).closest('div.form-elements').find('ol.sortable-options input.option-value').each(function (key, value) {
-            availableLocalOptions.push($(value).val());
+        var availableLocalOptions:Array<string> = [];
+        $(currentTarget).closest('div.form-elements').find('ol.sortable-options input.option-value').each(function (key, value: Element|HTMLElement|JQuery<HTMLElement>) {
+            availableLocalOptions.push($(value).val() as string);
         });
 
 
@@ -166,9 +167,9 @@ class FormBuilderBackend {
         // create an array that holds the
         // local / remote assignment
         // ------------------------------------
-        var localRemoteAssgnmentArray = [];
+        var localRemoteAssgnmentArray:any = {};
         $(actualInputValueArray).each(function (key, value) {
-            var tmp = value.split('#');
+            var tmp = ((value as unknown) as string).split('#');
             localRemoteAssgnmentArray[tmp[1]] = tmp[0];
         });
 
@@ -188,17 +189,19 @@ class FormBuilderBackend {
             availableString += '<ul>';
 
             $(formDataJson).each(function (formDataKey, formDataValue) {
-                var mylabel = formDataValue.label + " (" + formDataValue.name + ")";
-
-                console.log('XXXXX', formDataValue.name, parentName);
-                var isButton = formDataValue.type === 'button';
-                var isParagraph = formDataValue.type === 'paragraph';
-                var isSelf = formDataValue.name === parentName;
+                //var mylabel = formDataValue.label + " (" + formDataValue.name + ")";
+                const formDataName: string = (formDataValue as any).name;
+                const formDataLabel: string = (formDataValue as any).label + ' (' + formDataName + ')';
+                const formDataType: string = (formDataValue as any).type;
+                console.log('XXXXX', formDataName, parentName);
+                var isButton = formDataType === 'button';
+                var isParagraph = formDataType === 'paragraph';
+                var isSelf = formDataName === parentName;
 
                 if (!isButton && !isParagraph && !isSelf) {
                     // preselect radio for existing selections
                     var attrChecked = "";
-                    if (localRemoteAssgnmentArray[formDataValue.name] === value) {
+                    if (localRemoteAssgnmentArray[formDataName] === value) {
                         attrChecked = 'checked="checked"';
                     }
                     // create list item with configured radio button
@@ -208,29 +211,25 @@ class FormBuilderBackend {
 								' + attrChecked + ' \
 								class="dependency_management_radio" \
 								type="radio" \
-								id="depend_' + value + '_' + formDataValue.name + '"\
+								id="depend_' + value + '_' + formDataName + '"\
 								name="depend_' + value + '" \
-								value="' + formDataValue.name + '"\
+								value="' + formDataName + '"\
 								data-parent-name="' + value + '"/> \
-							<label for="depend_' + value + '_' + formDataValue.name + '">' + mylabel + ' </label> \
+							<label for="depend_' + value + '_' + formDataName + '">' + formDataLabel + ' </label> \
 						</li>';
                 }
             });
             availableString += '</ul>';
         });
 
-        this.dependencyContainer
-        .find('div.dependency_control_section ul')
-        .empty()
-        .append(availableString);
+        $(this.dependencyContainer).find('div.dependency_control_section ul').empty().append(availableString);
 
         // set headline
-        this.dependencyContainer
-        .find('h3 span').html(parentLabel);
+        $(this.dependencyContainer).find('h3 span').html(parentLabel);
 
         // add click handler for radiobuttons inside the overlay
         $('input:radio.dependency_management_radio').change(function () {
-            var myResult = [];
+            var myResult:Array<string> = [];
             $('.dependency_management_radio:checked').each(function (key, value) {
                 myResult.push($(this).data('parent-name') + '#' + $(value).val());
             });
@@ -277,7 +276,7 @@ class FormBuilderBackend {
 						Abhängigkeiten verwalten\
 				</a>';
 
-            $('<div class="manage-dependency-link-container">' + linkOpen + '</div>').insertBefore(this);
+            $('<div class="manage-dependency-link-container">' + linkOpen + '</div>').insertBefore(inputField);
         });
 
         // -----------------------------------

@@ -84,8 +84,8 @@ class FormController extends ActionController
         // to avoid errors in the frontend where jQuery is loaded elsewhere
         // mk@rms, 2024-11-21
         if (ApplicationType::fromRequest($this->request)->isBackend()) {
-            $this->pageRenderer->loadJavaScriptModule('@rms/mfbb');
-            $this->pageRenderer->loadJavaScriptModule('@rms/myinit');
+            $this->pageRenderer->loadJavaScriptModule('@ib/ib_formbuilder');
+            // $this->pageRenderer->loadJavaScriptModule('@rms/myinit');
         }
     }
 

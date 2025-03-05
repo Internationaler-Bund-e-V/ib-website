@@ -1,0 +1,18 @@
+{
+  "entrypoints": {
+    "ib_formbuilder_backend": {
+      "js": [
+        "/assets/runtime.js",
+        "/assets/ib_formbuilder_backend.js"
+      ],
+      "css": [
+        "/assets/ib_formbuilder_backend.css"
+      ]
+    }
+  },
+  "integrity": {
+    "/assets/runtime.js": "sha384-Konm5uKc2Yoc2457PgMJ0hqiiPy6m/vLqyT4bPXEITLLGROqkGQoH9QPQyw2GW2P",
+    "/assets/ib_formbuilder_backend.js": "sha384-LVUOWleewhOYJruS6w37j4CmwXVJzQAYYU6+aiWtcKQpuIBqZLcMTjrtjG6VHfz1",
+    "/assets/ib_formbuilder_backend.css": "sha384-cl6A6TuylSLh6UA+UvCaaYsZN1gKBQ5CAoINh9nPBggjuJwbbalY01i/G7yJ7yb9"
+  }
+}
