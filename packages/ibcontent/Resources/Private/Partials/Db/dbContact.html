@@ -113,8 +113,7 @@
               <!-- friendly captcha start -->
               <div class="row columns" id="ib-recaptcha-container">
                 <div class="frc-captcha" data-sitekey="FCMKN6E68LK32MRG"
-                  data-puzzle-endpoint="https://eu-api.friendlycaptcha.eu/api/v1/puzzle" data-callback="fcCallback"
-                  data-lang="{f:cObject(typoscriptObjectPath: 'portalSettings.cookiebot_language')}"></div>
+                  data-puzzle-endpoint="https://eu-api.friendlycaptcha.eu/api/v1/puzzle" data-lang="{f:cObject(typoscriptObjectPath: 'portalSettings.cookiebot_language')}"></div>
                 <span class="form-error">
                   <f:translate
                     key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_recaptcha_error" />
@@ -153,80 +152,4 @@
       </div>
     </div>
   </div>
-
-  <script>
-    var uid = $('.ibContactFormContainer').data('uid');
-    var ibdecodeuri = $('.ibContactFormContainer').data('ibdecodeuri');
-
-
-    var url = decodeURI(ibdecodeuri);
-    url = url.replace(/&amp;/g, '&');
-
-    var doSubmit = false;
-
-    function fcCallback(solution) {
-      if ($('#ib-recaptcha-container .frc-container').hasClass('frc-success')) {
-        doSubmit = true;
-      }
-
-    }
-
-
-
-    $(document).ready(function () {
-
-      var mainSelector = 'div#contact-form-' + uid;
-
-      // submit handler
-      $(mainSelector + " #rms_contactForm-" + uid).submit(function (e) {
-        e.preventDefault();
-      }).bind("formvalid.zf.abide", function (e, $form) {
-
-
-        if (doSubmit) {
-          // show loader, hide submit button -> prevent double submits
-          $(mainSelector + ' form div.ajax-loader').show();
-          $(mainSelector + ' form div.submit-button').hide();
-          $.ajax({
-            type: "POST",
-            url: url,
-            data: $(mainSelector + " #rms_contactForm-" + uid)
-              .serialize(), // serializes the form's elements.
-            success: function (data) {
-              var json = $.parseJSON(data);
-
-
-              $(mainSelector + ' form label.captcha-label').removeClass('is-invalid-label');
-              $(mainSelector + " form input[name='captcha']").removeClass('is-invalid-input');
-              $(mainSelector + ' form div.salutation-block label').removeClass('is-invalid-label');
-              if (json.errors.captcha) {
-                $(mainSelector + ' form label.captcha-label').addClass('is-invalid-label');
-                $(mainSelector + " form input[name='captcha']").addClass('is-invalid-input');
-              }
-              if (json.errors.salutation) {
-                $(mainSelector + ' form div.salutation-block label').addClass('is-invalid-label');
-              }
-
-
-              $(mainSelector + ' form div.ajax-loader').hide();
-              $(mainSelector + ' form div.submit-button').show();
-
-              // if there are no errors, hide form
-              if (json.errors.length === 0) {
-                $(mainSelector + ' form#rms_contactForm-' + uid)[0].reset();
-                $(mainSelector + ' form#rms_contactForm-' + uid).hide();
-                $(mainSelector + ' form#rms_contactForm-' + uid).addClass('rs_skip');
-                $(mainSelector + ' div.callout.success').removeClass('rs_skip');
-                $(mainSelector + ' div.callout.success').show();
-              }
-            }
-          });
-        } else {
-          $('#ib-recaptcha-container .form-error').fadeIn(100).fadeOut(5000);
-        }
-      });
-    })
-  </script>
-
-
 </f:if>

@@ -66,13 +66,6 @@ $(() => {
 		}, 'fast');
 	});
 
-    $('#ib-partial-startpageslider div.slick-arrow').on('click', () => {
-        $('.ib-startpage-slider').slick('slickPause');
-    });
-    if ($('#ib-partial-startpageslider .slick-slide:not(.slick-cloned)').length <= 1) {
-        $('#ib-slider-controls-toggle').css('display', 'none');
-    }
-
 	/*
 	 * dbPartner
 	 */
