@@ -39,13 +39,24 @@ class IBStartPageSlider {
         $('#ib-slider-controls-toggle').on('click', (event) => {
 
             if ($(event.target).hasClass('fa-play-circle')) {
-                $('.ib-startpage-slider').slick('slickPlay')
+                $(this.sliderElement!).slick('slickPlay')
                 $(event.target).removeClass('fa-play-circle');
+                $(event.target).addClass('fa-pause-circle');
             } else {
-                $('.ib-startpage-slider').slick('slickPause')
+                $(this.sliderElement!).slick('slickPause')
+                $(event.target).removeClass('fa-pause-circle');
                 $(event.target).addClass('fa-play-circle');
             }
         });
+
+        $('#ib-partial-startpageslider div.slick-arrow').on('click', () => {
+            $(this.sliderElement!).slick('slickPause');
+        });
+        // if ($('#ib-partial-startpageslider .slick-slide:not(.slick-cloned)').length <= 1) {
+        //     $('#ib-slider-controls-toggle').css('display', 'none');
+        // }
+
+
     }
 }
 

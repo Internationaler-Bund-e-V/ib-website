@@ -52,6 +52,7 @@
     "@babel/preset-react": "^7.26.3",
     "@symfony/webpack-encore": "^5.0.1",
     "@tsconfig/recommended": "^1.0.8",
+    "@types/foundation-sites": "^6.4.5",
     "@types/headroom.js": "^0.12.4",
     "@types/jquery": "^3.5.32",
     "@types/masonry-layout": "^4.2.8",
