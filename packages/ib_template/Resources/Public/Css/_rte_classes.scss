@@ -16,10 +16,21 @@
 
   &.lightblue {
     background-color: #009ddf;
+    // background-color: #007DB3; // Abgedunkelte Version, die den WCAG-Richtlinien entspricht 
+    transition: .15s ease-in; // for redesign
+
+    &:hover {
+      // background-color: #005590; // for redesign
+      }
   }
 
   &.darkblue {
     background: #005590;
+    transition: .15s ease-in; // for redesign
+
+    &:hover {
+    // background-color: #007DB3; // for redesign
+    }
   }
 
   &.orange {
