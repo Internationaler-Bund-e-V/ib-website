@@ -61,7 +61,7 @@
 	<f:variable name="contactform_dataPrivacyLink" value="{v:format.trim(content:contactform_dataPrivacyLink)}" />
 	<f:comment> <!-- STOP create link to data privacy site --> </f:comment>
 
-	<v:asset.script name="form_{formId}_{uid}">
+	<v:asset.script name="form_{formId}_{uid}" standalone="true" movable="false">
 		var myFormData = {f:format.htmlentitiesDecode(value: json, keepQuotes: 1)};
 		var formSubmitUri = '{f:uri.action(action: "frontendFormAjaxSubmit", controller: "Form", pageType: 7752)}';
 
