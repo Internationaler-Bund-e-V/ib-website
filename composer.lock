@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "06c78d07a67ad0ba5dc7721234a96084",
+    "content-hash": "bb657b38e76452933933d0c57c21671d",
     "packages": [
         {
             "name": "apache-solr-for-typo3/solr",
@@ -10614,30 +10614,30 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "netresearch/rte-ckeditor-image": 20,
+        "apache-solr-for-typo3/solrconsole": 20,
+        "apache-solr-for-typo3/solrfal": 20,
+        "ib/bv_bbe": 20,
         "ib/ib-cmt": 20,
-        "ib/ib-dataprivacy": 20,
         "ib/ib-contact-person": 20,
+        "ib/ib-content": 20,
+        "ib/ib-dataprivacy": 20,
         "ib/ib-formbuilder": 20,
         "ib/ib-galerie": 20,
+        "ib/ib-jobs": 20,
         "ib/ib-page-extension": 20,
+        "ib/ib-search": 20,
         "ib/ib-srb": 20,
         "ib/ib-template": 20,
-        "ib/ib-content": 20,
-        "ib/ib-jobs": 20,
-        "ib/ib-search": 20,
-        "ib/bv_bbe": 20,
-        "apache-solr-for-typo3/solrfal": 20,
-        "apache-solr-for-typo3/solrconsole": 20
+        "netresearch/rte-ckeditor-image": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.1"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "platform-overrides": {
         "php": "8.1"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
