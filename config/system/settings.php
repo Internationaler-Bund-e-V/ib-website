@@ -267,7 +267,7 @@ return [
         'transport_sendmail_command' => '/usr/sbin/sendmail -t -i',
         'transport_smtp_encrypt' => $_ENV['TYPO3_SMTP_ENCRYPT'] ?: true,
         'transport_smtp_password' => $_ENV['TYPO3_SMTP_PASSWORD'],
-        'transport_smtp_server' => $_ENV['TYPO3_SMTP_HOST'],
+        'transport_smtp_server' => $_ENV['TYPO3_SMTP_HOST']. ':' . $_ENV['TYPO3_SMTP_PORT'],
         'transport_smtp_username' => $_ENV['TYPO3_SMTP_USER'],
     ],
     'SYS' => [

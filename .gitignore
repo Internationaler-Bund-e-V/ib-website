@@ -20,6 +20,7 @@
 .webprj
 .fleet
 .cache
+.cache_ggshield
 .php_cs.cache
 .php-cs-fixer.cache
 .sass-cache
