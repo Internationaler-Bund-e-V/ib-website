@@ -4,7 +4,7 @@
     "license": "GPL-2.0+",
     "require": {
         "php": ">=8.1",
-        "fluidtypo3/vhs": "7.0.7",
+        "fluidtypo3/vhs": "7.1.0",
         "netresearch/rte-ckeditor-image": "@dev",
         "evoweb/recaptcha": "^12.0",
         "helhum/typo3-console": "^8.1",
