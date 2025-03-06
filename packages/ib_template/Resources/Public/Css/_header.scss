@@ -54,10 +54,22 @@ $nav-height--collapsed: 60px;
 }
 
 #ib-logo {
-    bottom: 15px;
-    left: 11%;
+    top: 5px;
+    left: 1rem;
     position: absolute;
     z-index: 10;
+    height: 45px;
+    @include transition(all 250ms ease);
+
+    a {
+        display: block;
+        height: 100%;
+    }
+
+    img {
+        height: 100%;
+        display: block;
+    }
 }
 
 #ib-main-menu {
@@ -109,15 +121,20 @@ $nav-height--collapsed: 60px;
 }
 
 #ib-markenzeichen {
+    display: none;
     position: absolute;
     z-index: 10;
-    top: 25px;
+    top: 0px;
     width: 180px;
     height: 55px;
     @include transition(all 250ms ease);
     right: 1rem;
     text-align: right;
 
+    a {
+        display: block;
+        height: 100%;
+    }
     img {
         height: 100%;
     }
@@ -174,9 +191,9 @@ $nav-height--collapsed: 60px;
     }
 
     #ib-logo {
-        display: block !important;
-        left: 25px;
-        width: 37px;
+        display: block;
+        // left: 25px;
+        //max-width: 37px;
     }
 
     #ib-main-menu {
@@ -222,12 +239,24 @@ $nav-height--collapsed: 60px;
         display: block !important;
         top: 58px;
     }
+
+    #ib-markenzeichen {
+        display: block;
+        top: 0;
+        height: 45px;
+    }
 }
 
 @media screen and (min-width:1024px) {
     #ib-head-bubble {
         display: block !important;
         top: 0;
+    }
+
+    #ib-markenzeichen {
+        display: block;
+        top: 25px;
+        height: 55px;
     }
 }
 
@@ -252,8 +281,10 @@ $nav-height--collapsed: 60px;
         }
 
         #ib-logo {
-            width: 70px;
-            @include transition(width 250ms ease);
+            height: 70px;
+            top: 15px;
+            left: 6%;
+            @include transition(all 250ms ease);
         }
 
         #ib-main-menu {
@@ -277,7 +308,9 @@ $nav-height--collapsed: 60px;
         }
 
         #ib-logo {
-            width: 35px;
+            // max-width: 35px;
+            height: 45px;
+            top: 7px;
         }
 
         #ib-markenzeichen {
@@ -307,7 +340,7 @@ $nav-height--collapsed: 60px;
         }
 
         #ib-logo {
-            width: 70px;
+            // max-width: 70px;
         }
 
         #ib-main-menu {
@@ -340,7 +373,7 @@ $nav-height--collapsed: 60px;
 
 .header-ib-logo-wide {
     #ib-logo {
-        left: 6%;
+        // left: 6%;
     }
 }
 
@@ -357,7 +390,7 @@ $nav-height--collapsed: 60px;
 
     .header-ib-logo-wide {
         #ib-logo {
-            display: none !important;
+            display: none;
         }
     }
 }
@@ -366,7 +399,7 @@ $nav-height--collapsed: 60px;
     .header-ib-logo-wide {
         #ib-logo {
             left: 25px;
-            width: 120px;
+            max-width: 120px;
         }
 
         #ib-main-menu .jetmenu {
@@ -386,7 +419,7 @@ $nav-height--collapsed: 60px;
     .headroom {
         .header-ib-logo-wide {
             #ib-logo {
-                width: 180px;
+                max-width: 180px;
             }
         }
     }
@@ -394,19 +427,19 @@ $nav-height--collapsed: 60px;
     .headroom--collapsed {
         .header-ib-logo-wide {
             #ib-logo {
-                width: 110px;
+                max-width: 110px;
             }
         }
         .header-ib-logo-wide {
             #ib-logo {
-                width: 110px;
+                max-width: 110px;
             }
         }  }
 
         .headroom--expanded {
             .header-ib-logo-wide {
                 #ib-logo {
-                    width: 180px;
+                    max-width: 180px;
                 }
             }
         }

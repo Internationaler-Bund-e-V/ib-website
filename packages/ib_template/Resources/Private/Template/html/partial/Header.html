@@ -46,7 +46,7 @@
 		</div>
 		<div class="row-fluid ib-header-bar {f:if(condition: "
 			{f:cObject(typoscriptObjectPath:'portalSettings.portal_logo.format')}=='wide' ", then: 'header-ib-logo-wide')}">
-			<div id="ib-logo" class="show-for-large">
+			<div id="ib-logo">
 				<f:variable name="src" value="EXT:ib_template/Resources/Public/Images/logos_portals/{f:cObject(typoscriptObjectPath: 'portalSettings.portal_logo.file')}" />
                 <f:link.page pageUid="{f:cObject(typoscriptObjectPath: 'portalSettings.root_id')}">
 					<img src="{f:uri.resource(path: src)}" class="responsive" alt="Portal Logo" style="width: auto; max-height: 70px">
