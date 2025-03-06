@@ -1692,16 +1692,16 @@
         },
         {
             "name": "georgringer/news",
-            "version": "12.2.0",
+            "version": "12.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/georgringer/news.git",
-                "reference": "66b4f98ce2013991837884b47eeccb53db3b70e1"
+                "reference": "64a942b7fa999bd2a5fd0f39def8fea280a9d0cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/georgringer/news/zipball/66b4f98ce2013991837884b47eeccb53db3b70e1",
-                "reference": "66b4f98ce2013991837884b47eeccb53db3b70e1",
+                "url": "https://api.github.com/repos/georgringer/news/zipball/64a942b7fa999bd2a5fd0f39def8fea280a9d0cd",
+                "reference": "64a942b7fa999bd2a5fd0f39def8fea280a9d0cd",
                 "shasum": ""
             },
             "require": {
@@ -1789,7 +1789,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2024-11-27T19:08:13+00:00"
+            "time": "2025-03-05T12:49:49+00:00"
         },
         {
             "name": "georgringer/numbered-pagination",
@@ -10616,30 +10616,30 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "apache-solr-for-typo3/solrconsole": 20,
-        "apache-solr-for-typo3/solrfal": 20,
-        "ib/bv_bbe": 20,
+        "netresearch/rte-ckeditor-image": 20,
         "ib/ib-cmt": 20,
-        "ib/ib-contact-person": 20,
-        "ib/ib-content": 20,
         "ib/ib-dataprivacy": 20,
+        "ib/ib-contact-person": 20,
         "ib/ib-formbuilder": 20,
         "ib/ib-galerie": 20,
-        "ib/ib-jobs": 20,
         "ib/ib-page-extension": 20,
-        "ib/ib-search": 20,
         "ib/ib-srb": 20,
         "ib/ib-template": 20,
-        "netresearch/rte-ckeditor-image": 20
+        "ib/ib-content": 20,
+        "ib/ib-jobs": 20,
+        "ib/ib-search": 20,
+        "ib/bv_bbe": 20,
+        "apache-solr-for-typo3/solrfal": 20,
+        "apache-solr-for-typo3/solrconsole": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.1"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "platform-overrides": {
         "php": "8.1"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }
