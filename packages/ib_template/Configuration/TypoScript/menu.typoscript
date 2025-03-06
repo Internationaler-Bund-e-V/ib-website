@@ -115,6 +115,9 @@ bubble.linkText_en.value = {$portalSettings.main_bubble_en.text}
 bubble.linkID_en = TEXT
 bubble.linkID_en.value = {$portalSettings.main_bubble_en.id}
 
+markenzeichen.linkID = TEXT
+markenzeichen.linkID.value = {$portalSettings.main_markenzeichen.id}
+
 ###############################
 
 
