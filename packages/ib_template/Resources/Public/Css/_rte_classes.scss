@@ -30,6 +30,18 @@
 
 }
 
+.modern-look a.ibCustomButton {
+  border-radius: 2.5px;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  transition: .15s ease-in-out;
+
+  &:hover {
+  background: #0661a2;
+
+  }
+
+}
+
 .ibCustomTable {
   display: table !important;
 
