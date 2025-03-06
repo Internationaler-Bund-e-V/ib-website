@@ -11,6 +11,8 @@
 			<i class="ib-icon-arrow-right float-right "></i>
 		</div>
 	</div>
+                <f:debug>{slides}</f:debug>
+
 	<div class="row-fluid ib-startpageslider" id="ib-slider-container" data-loaderid="loader_locPages">
 		<div class="row expanded">
 			<div class="ib-startpage-slider-container">
@@ -24,9 +26,10 @@
 								<f:variable name="altAttributeValue"><f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:altTagValue" /></f:variable>
 							</f:else>
 						</f:if>
+                        <f:variable name="src">{customSettings.urlIBPdbImages}{slide.url}</f:variable>
 						<div class="ib-startpage-slider-item">
 							<div class="ib-startpage-slider-item-wrapper">
-								<img src="{customSettings.urlIBPdbImages}{slide.url}" alt="{altAttributeValue}"
+								<img src="{src}" alt="{altAttributeValue}"
 									width="1350" height="425">
 
 							</div>
