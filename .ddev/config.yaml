@@ -13,6 +13,8 @@ additional_hostnames:
   - "ib-kitas"
   - "ib-suedwest"
   - "srb"
+  - "sit-sis"
+  - "ib-training"
 additional_fqdns: []
 database:
     type: mariadb
