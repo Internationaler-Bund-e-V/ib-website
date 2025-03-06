@@ -45,7 +45,10 @@
                             <f:link.typolink parameter="{slide.ItemWrap.slideLink}"
                               target="{tabTarget}">
                               <f:if condition="imagePath">
-                                <f:image src="{imagePath}" alt="{altAttributeValue}"
+                                <f:image 
+                                  class="ib-start-page-image-slider"
+                                  src="{imagePath}" 
+                                  alt="{altAttributeValue}"
                                   alt="{altAttributeValue}"
                                   additionalAttributes="{srcset:'{f:uri.image(src:imagePath,maxWidth:800)} 800w,
                                 {f:uri.image(src:imagePath,maxWidth:1350)} 1350w', sizes:'(max-width: 800px) 800px,1350px'}" />
@@ -54,7 +57,10 @@
                           </f:then>
                           <f:else>
                             <f:if condition="imagePath">
-                              <f:image src="{imagePath}" alt="{altAttributeValue}"
+                              <f:image 
+                                class="ib-start-page-image-slider"
+                                src="{imagePath}" 
+                                alt="{altAttributeValue}"
                                 alt="{altAttributeValue}"
                                 additionalAttributes="{srcset:'{f:uri.image(src:imagePath,maxWidth:800)} 800w,
                                 {f:uri.image(src:imagePath,maxWidth:1350)} 1350w', sizes:'(max-width: 800px) 800px,1350px'}" />
