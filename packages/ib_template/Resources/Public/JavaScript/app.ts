@@ -93,4 +93,20 @@ $(function() {
     });
 
     //    Foundation.reInit([ 'equalizer' ]);
+
+    // add "subpage-ib-training" class to body 
+    
+        const keywords = [
+            'fachkraeftesicherung', 
+            'weiterbildung', 
+            'ausbildungsunterstuetzung', 
+            'berufssprachekurse', 
+            'betriebliche-sozialberatung'
+        ];
+        const currentURL = window.location.href;
+    
+        if (keywords.some(keyword => currentURL.includes(keyword))) {
+            document.body.classList.add("subpage-ib-training");
+        }
+
 });
