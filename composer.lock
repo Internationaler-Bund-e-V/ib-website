@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7e0481ff0acdddac8d95f060e34e226f",
+    "content-hash": "5e9ace8ba75666ada5d9c86df5b8fbbb",
     "packages": [
         {
             "name": "apache-solr-for-typo3/solr",
@@ -282,7 +282,7 @@
         },
         {
             "name": "apache-solr-for-typo3/solrfal",
-            "version": "dev-main",
+            "version": "dev-hotfix-mobile-navigation",
             "dist": {
                 "type": "path",
                 "url": "./packages/solrfal",
@@ -1692,16 +1692,16 @@
         },
         {
             "name": "georgringer/news",
-            "version": "12.2.0",
+            "version": "12.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/georgringer/news.git",
-                "reference": "66b4f98ce2013991837884b47eeccb53db3b70e1"
+                "reference": "64a942b7fa999bd2a5fd0f39def8fea280a9d0cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/georgringer/news/zipball/66b4f98ce2013991837884b47eeccb53db3b70e1",
-                "reference": "66b4f98ce2013991837884b47eeccb53db3b70e1",
+                "url": "https://api.github.com/repos/georgringer/news/zipball/64a942b7fa999bd2a5fd0f39def8fea280a9d0cd",
+                "reference": "64a942b7fa999bd2a5fd0f39def8fea280a9d0cd",
                 "shasum": ""
             },
             "require": {
@@ -1789,7 +1789,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2024-11-27T19:08:13+00:00"
+            "time": "2025-03-05T12:49:49+00:00"
         },
         {
             "name": "georgringer/numbered-pagination",
@@ -2541,7 +2541,7 @@
         },
         {
             "name": "ib/bv_bbe",
-            "version": "dev-main",
+            "version": "dev-hotfix-mobile-navigation",
             "dist": {
                 "type": "path",
                 "url": "./packages/bv_bbe",
@@ -2564,7 +2564,7 @@
         },
         {
             "name": "ib/ib-cmt",
-            "version": "dev-main",
+            "version": "dev-hotfix-mobile-navigation",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_cmt",
@@ -2597,7 +2597,7 @@
         },
         {
             "name": "ib/ib-contact-person",
-            "version": "dev-main",
+            "version": "dev-hotfix-mobile-navigation",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_contact_person",
@@ -2630,7 +2630,7 @@
         },
         {
             "name": "ib/ib-content",
-            "version": "dev-main",
+            "version": "dev-hotfix-mobile-navigation",
             "dist": {
                 "type": "path",
                 "url": "./packages/ibcontent",
@@ -2663,7 +2663,7 @@
         },
         {
             "name": "ib/ib-dataprivacy",
-            "version": "dev-main",
+            "version": "dev-hotfix-mobile-navigation",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_dataprivacy",
@@ -2696,7 +2696,7 @@
         },
         {
             "name": "ib/ib-formbuilder",
-            "version": "dev-main",
+            "version": "dev-hotfix-mobile-navigation",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_formbuilder",
@@ -2729,7 +2729,7 @@
         },
         {
             "name": "ib/ib-galerie",
-            "version": "dev-main",
+            "version": "dev-hotfix-mobile-navigation",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_galerie",
@@ -2762,7 +2762,7 @@
         },
         {
             "name": "ib/ib-jobs",
-            "version": "dev-main",
+            "version": "dev-hotfix-mobile-navigation",
             "dist": {
                 "type": "path",
                 "url": "./packages/ibjobs",
@@ -2795,7 +2795,7 @@
         },
         {
             "name": "ib/ib-page-extension",
-            "version": "dev-main",
+            "version": "dev-hotfix-mobile-navigation",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_page_extension",
@@ -2818,7 +2818,7 @@
         },
         {
             "name": "ib/ib-search",
-            "version": "dev-main",
+            "version": "dev-hotfix-mobile-navigation",
             "dist": {
                 "type": "path",
                 "url": "./packages/ibsearch",
@@ -2851,7 +2851,7 @@
         },
         {
             "name": "ib/ib-srb",
-            "version": "dev-main",
+            "version": "dev-hotfix-mobile-navigation",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_srb",
@@ -2874,7 +2874,7 @@
         },
         {
             "name": "ib/ib-template",
-            "version": "dev-main",
+            "version": "dev-hotfix-mobile-navigation",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_template",
@@ -10225,16 +10225,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.12.19",
+            "version": "1.12.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "c42ba9bab7a940ed00092ecb1c77bad98896d789"
+                "reference": "3240b1972042c7f73cf1045e879ea5bd5f761bb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c42ba9bab7a940ed00092ecb1c77bad98896d789",
-                "reference": "c42ba9bab7a940ed00092ecb1c77bad98896d789",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/3240b1972042c7f73cf1045e879ea5bd5f761bb7",
+                "reference": "3240b1972042c7f73cf1045e879ea5bd5f761bb7",
                 "shasum": ""
             },
             "require": {
@@ -10279,7 +10279,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-19T15:42:21+00:00"
+            "time": "2025-03-05T13:37:43+00:00"
         },
         {
             "name": "rector/rector",
@@ -10339,6 +10339,141 @@
                 }
             ],
             "time": "2024-11-08T13:59:10+00:00"
+        },
+        {
+            "name": "sourcebroker/deployer-extended-database",
+            "version": "18.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sourcebroker/deployer-extended-database.git",
+                "reference": "42e983b75b1074daadb2b01847b97fd151e2280a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sourcebroker/deployer-extended-database/zipball/42e983b75b1074daadb2b01847b97fd151e2280a",
+                "reference": "42e983b75b1074daadb2b01847b97fd151e2280a",
+                "shasum": ""
+            },
+            "require": {
+                "deployer/deployer": "^7.0.0",
+                "sourcebroker/deployer-instance": "^6.0.0 || dev-master",
+                "sourcebroker/deployer-loader": "^4.0.0 || ^5.0.0 || dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SourceBroker\\DeployerExtendedDatabase\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Krystian Szymukowicz",
+                    "email": "k.szymukowicz@gmail.com"
+                }
+            ],
+            "description": "Deployer tasks to manage database synchronization between application instances.",
+            "keywords": [
+                "database",
+                "deployer",
+                "deployer.org",
+                "synchronization"
+            ],
+            "support": {
+                "issues": "https://github.com/sourcebroker/deployer-extended-database/issues",
+                "source": "https://github.com/sourcebroker/deployer-extended-database/tree/18.2.0"
+            },
+            "time": "2025-03-02T20:36:59+00:00"
+        },
+        {
+            "name": "sourcebroker/deployer-instance",
+            "version": "6.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sourcebroker/deployer-instance.git",
+                "reference": "c4038dddfe9d1ed373f16cc751e26488107305fb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sourcebroker/deployer-instance/zipball/c4038dddfe9d1ed373f16cc751e26488107305fb",
+                "reference": "c4038dddfe9d1ed373f16cc751e26488107305fb",
+                "shasum": ""
+            },
+            "require": {
+                "deployer/deployer": "^7.0.0",
+                "symfony/dotenv": "^3.3 || ^4 || ^5 || ^6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SourceBroker\\DeployerInstance\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Krystian Szymukowicz",
+                    "email": "k.szymukowicz@gmail.com"
+                }
+            ],
+            "description": "Instance management for deployer.",
+            "keywords": [
+                "deployer"
+            ],
+            "support": {
+                "issues": "https://github.com/sourcebroker/deployer-instance/issues",
+                "source": "https://github.com/sourcebroker/deployer-instance/tree/6.0.0"
+            },
+            "time": "2022-12-28T16:15:02+00:00"
+        },
+        {
+            "name": "sourcebroker/deployer-loader",
+            "version": "5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sourcebroker/deployer-loader.git",
+                "reference": "fa48696c68e97eb88a4d5bbbb301ea2e8caff9e7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sourcebroker/deployer-loader/zipball/fa48696c68e97eb88a4d5bbbb301ea2e8caff9e7",
+                "reference": "fa48696c68e97eb88a4d5bbbb301ea2e8caff9e7",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SourceBroker\\DeployerLoader\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Krystian Szymukowicz",
+                    "email": "k.szymukowicz@gmail.com"
+                }
+            ],
+            "description": "Load deployer tasks and settings from packages, path files.",
+            "keywords": [
+                "deployer"
+            ],
+            "support": {
+                "issues": "https://github.com/sourcebroker/deployer-loader/issues",
+                "source": "https://github.com/sourcebroker/deployer-loader/tree/5.0.0"
+            },
+            "time": "2025-03-02T14:08:29+00:00"
         },
         {
             "name": "ssch/typo3-rector",
