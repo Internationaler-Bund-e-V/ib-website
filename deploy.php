@@ -1,11 +1,18 @@
 <?php
 namespace Deployer;
 
+require_once(__DIR__ . '/vendor/autoload.php');
+
 require 'recipe/typo3.php';
 require 'contrib/yarn.php';
 require 'contrib/webpack_encore.php';
 require 'contrib/rsync.php';
 require 'contrib/cachetool.php';
+
+new \SourceBroker\DeployerLoader\Load([
+    ['path' => 'vendor/sourcebroker/deployer-instance/deployer'],
+    ['path' => 'vendor/sourcebroker/deployer-extended-database/deployer'],
+]);
 
 // require 'contrib/ms-teams.php';
 // set('teams_webhook', 'https://outlook.office.com/webhook/...');
