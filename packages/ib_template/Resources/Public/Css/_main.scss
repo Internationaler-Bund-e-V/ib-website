@@ -294,6 +294,11 @@ h4 {
     margin-bottom: -54px;
   }
 
+  // ib-training -> breadcrump container horizontally aligned with header-slider
+  .modern-look .offset--small #ib-slider-container {
+    margin-bottom: 0px;
+  }
+
   .offset--small .ib-startpage-slider-controls {
     margin-top: -27px;
   }
@@ -318,4 +323,12 @@ h4 {
   border-radius: 7.5px;
   margin-top: 3rem; 
   box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+
+// The grid of 50%:50% should turn into column on Mobile devices
+@media screen and (max-width: 480px) {
+  .modern-look .row .row {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }
