@@ -63,6 +63,7 @@ set('exclude', [
     'packages/*/Resources/Public/Css',
     'packages/*/Resources/Public/JavaScript',
     '/public/_assets',
+    '/public/.htaccess',
     '/public/typo3conf',
     '/public/typo3temp',
     '/public/fileadmin',
