@@ -127,9 +127,7 @@ export default {
           "&categories=" +
           selectedCategories.value.toString() +
           "&services=" +
-          selectedServices.value.toString() +
-          "&baseurl=" +
-          baseURL
+          selectedServices.value.toString()
       )
         .then((response) => response.json())
         .then((data) => (result.value = data))
