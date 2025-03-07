@@ -8,17 +8,7 @@
         title="IB - {cp:contactPersonName(personid:contact_person)}" />
     </div>
 	</f:if>
-	<f:format.html>
-		<div class="ib-font-bold">
-			<cp:contactPersonName personid="{contact_person}" />
-		</div>
-	</f:format.html>
-	<f:format.html>
-		<cp:contactPersonPosition personid="{contact_person}" />
-	</f:format.html>
-
-
-	<f:format.html>
-		<cp:contactPersonDescription personid="{contact_person}" />
-	</f:format.html>
+	<div class="ib-font-bold"><f:format.html><cp:contactPersonName personid="{contact_person}" /></f:format.html></div>
+	<f:format.html><cp:contactPersonPosition personid="{contact_person}" /></f:format.html>
+	<f:format.html><cp:contactPersonDescription personid="{contact_person}" /></f:format.html>
 </div>
