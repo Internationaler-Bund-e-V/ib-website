@@ -1,20 +1,36 @@
 <?php
 namespace Deployer;
 
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// require generic TYPO3 recipe
 require 'recipe/typo3.php';
-require 'contrib/yarn.php';
-require 'contrib/webpack_encore.php';
+
 require 'contrib/rsync.php';
-require 'contrib/cachetool.php';
+require 'contrib/webpack_encore.php';
+require 'contrib/yarn.php';
 
-// require 'contrib/ms-teams.php';
-// set('teams_webhook', 'https://outlook.office.com/webhook/...');
+new \SourceBroker\DeployerLoader\Load([
+    ['path' => 'vendor/sourcebroker/deployer-instance/deployer'],
+    ['path' => 'vendor/sourcebroker/deployer-extended-database/deployer'],
+]);
 
+// load host configuration
 import('deploy/inventory.yaml');
 
-// Config
+// Task Config: db:*
+set('db_databases', [
+    (new \SourceBroker\DeployerExtendedDatabase\Driver\EnvDriver())->getDatabaseConfig()
+]);
+
+localhost('local')
+    ->set('bin/php', 'php')
+    ->set('deploy_path', getcwd());
+
+// GIT Config
 set('repository', 'https://github.com/Internationaler-Bund-e-V/ib-website.git');
 
+## Task Config: deploy:symlink
 add('shared_files', [
     '.env',
     '{{typo3_webroot}}/.htaccess',
@@ -41,6 +57,7 @@ add('writable_dirs', array: [
 
 set('writable_recursive', true);
 
+// Task Config: rsync
 set('rsync_dest', '{{release_path}}');
 
 set('exclude', [
@@ -99,16 +116,12 @@ before('deploy:release', 'build:local');
 before('deploy:update_code', 'typo3:lockBackend');
 after('deploy:symlink', 'cache:flush');
 after('deploy:symlink', 'typo3:unlockBackend');
-// before('deploy', 'teams:notify');
-// after('deploy:success', 'teams:notify:success');
-// after('deploy:failed', 'teams:notify:failure');
-// after('deploy:symlink', 'cachetool:clear:opcache');
-// after('deploy:symlink', 'cachetool:clear:apcu');
 
 // Tasks
+desc('Build CSS and JavaScript on local machine');
 task('build:local', function () {
     runLocally('yarn install');
-    runLocally('yarn build');
+    runLocally('webpack_encore:build');
 });
 
 desc('Use rsync task to pull project files');
@@ -116,16 +129,19 @@ task('deploy:update_code', function () {
     invoke('rsync');
 });
 
+desc('Use TYPO3 CLI to flush cache');
 task('cache:flush', function () {
     run('{{deploy_path}}/typo3/vendor/bin/typo3 staticfilecache:flushCache');
     run('{{deploy_path}}/typo3/vendor/bin/typo3 cache:flush');
     run('{{deploy_path}}/typo3/vendor/bin/typo3 cache:warmup');
 });
 
+desc('Use TYPO3 CLI to lock the backend login');
 task('typo3:lockBackend', function () {
     run('{{deploy_path}}/typo3/vendor/bin/typo3 backend:lockforeditors');
 });
 
+desc('Use TYPO3 CLI to unlock the backend login');
 task('typo3:unlockBackend', function () {
     run('{{deploy_path}}/typo3/vendor/bin/typo3 backend:unlockforeditors');
 });
