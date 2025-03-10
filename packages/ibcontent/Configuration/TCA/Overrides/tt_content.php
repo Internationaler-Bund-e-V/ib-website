@@ -67,6 +67,12 @@ ExtensionUtility::registerPlugin(
     'ContentSlider',
     'Content Slider Module'
 );
+// TextSlider Extended
+ExtensionUtility::registerPlugin(
+    'ibcontent',
+    'TextSliderExtended',
+    'Text Slider Module'
+);
 // Content contact form
 ExtensionUtility::registerPlugin(
     'ibcontent',
@@ -216,6 +222,11 @@ $pluginName = 'contentslider';
 $pluginSignature = strtolower($extensionName) . '_' . $pluginName;
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
 ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . 'ibcontent' . '/Configuration/FlexForms/content_contentslider.xml');
+
+$pluginName = 'textsliderextended';
+$pluginSignature = strtolower($extensionName) . '_' . $pluginName;
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
+ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . 'ibcontent' . '/Configuration/FlexForms/content_textsliderextended.xml');
 
 $pluginName = 'contactform';
 $pluginSignature = strtolower($extensionName) . '_' . $pluginName;

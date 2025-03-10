@@ -102,6 +102,15 @@ mod.wizards.newContentElement.wizardItems.ibcontent {
                 list_type = ibcontent_contentslider
             }
         },
+         TextSliderExtended {
+            title = Textslider Extended
+            description = Content - Bilder oder Textslider
+            iconIdentifier = tx-ibcontent-icon
+            tt_content_defValues {
+                CType = list
+                list_type = ibcontent_textsliderextended
+            }
+        },
         ContactForm {
             title = Kontaktformular
             description = Content - Allgemeines Kontaktformular

@@ -44,6 +44,8 @@ class BackendPreview extends ActionController
             return $this->previewMediaElement($params['row']);
         } elseif ($params['row']['CType'] === 'list' && $params['row']['list_type'] === 'ibcontent_contentslider') {
             return $this->previewContentSlider($params['row']);
+        } elseif ($params['row']['CType'] === 'list' && $params['row']['list_type'] === 'ibcontent_textsliderextended') {
+            return $this->previewTextSliderExtended($params['row']);
         } elseif ($params['row']['CType'] === 'list' && $params['row']['list_type'] === 'ibcontent_dbproductlist') {
             return $this->previewDBProductList($params['row']);
         }
@@ -296,6 +298,37 @@ class BackendPreview extends ActionController
                 $BEoutput .= $leitsatz['ItemWrap']['el']['leitsatz']['vDEF'] . '<br><br><br>';
             }
         }
+
+        return $BEoutput;
+    }
+
+
+
+
+    protected function previewTextSliderExtended($row)
+    {
+        $this->initializeAction();
+        $data = GeneralUtility::xml2array($row['pi_flexform']);
+        // $this->showDebugger($data);
+        $BEoutput = '<h4>IB Content Slider</h4><br>';
+        $BEoutput .= '<h5>' . $data['data']['sDEF']['lDEF']['settings.headline']['vDEF'] . '</h5>';
+
+        if (isset($data['data']['sDEF']['lDEF']['settings.array']['el'])) {
+            foreach ($data['data']['sDEF']['lDEF']['settings.array']['el'] as $slide) {
+                $BEoutput .= '<h5>' . $slide['ItemWrap']['el']['headline']['vDEF'] . '</h5>';
+            }
+        }
+
+        // if ($data['data']['sDEF']['lDEF']['settings.type']['vDEF'] == "image") {
+        //     foreach ($data['data']['imageContent']['lDEF']['settings.imageSliderContainer']['el'] as $images) {
+        //         $BEoutput .= '<img src="/' . $images['ItemWrap']['el']['image']['vDEF'] . '" width="200"><br>';
+        //         $BEoutput .= $images['ItemWrap']['el']['caption']['vDEF'] . '<br>';
+        //     }
+        // } elseif ($data['data']['sDEF']['lDEF']['settings.type']['vDEF'] == "leitsatz") {
+        //     foreach ($data['data']['leitsatzContent']['lDEF']['settings.guidelineSliderContainer']['el'] as $leitsatz) {
+        //         $BEoutput .= $leitsatz['ItemWrap']['el']['leitsatz']['vDEF'] . '<br><br><br>';
+        //     }
+        // }
 
         return $BEoutput;
     }
