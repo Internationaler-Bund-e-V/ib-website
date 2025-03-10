@@ -204,5 +204,5 @@ mod.wizards.newContentElement.wizardItems.ibcontent {
             }
         },
     }
-    show := addToList(StartPageSlider,BubbleSlider,Locations,Jobs,Accordion,TextExtended,Breadcrump,SidebarMap,SidebarDownloads,MediaElement,TextContentSlider,ContentSlider,TextSliderExtended,ContactForm,Tiles,DBProductListShowLocation,DBProductListShowProduct,DBProductListShowCategory,DBProductListShowNews,DBJobModulShowJobList,DBJobModulShowJob,DBJobModulShowForeignJob,OSMMap)
+    show := addToList(StartPageSlider,BubbleSlider,Locations,Jobs,Accordion,TextExtended,Breadcrump,SidebarMap,SidebarDownloads,MediaElement,ContentSlider,TextSliderExtended,ContactForm,Tiles,DBProductListShowLocation,DBProductListShowProduct,DBProductListShowCategory,DBProductListShowNews,DBJobModulShowJobList,DBJobModulShowJob,DBJobModulShowForeignJob,OSMMap)
 }
