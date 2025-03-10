@@ -135,6 +135,17 @@ ExtensionUtility::configurePlugin(
     array(),
 );
 
+// textslider extended
+ExtensionUtility::configurePlugin(
+    'ibcontent',
+    'TextSliderExtended',
+    array(
+        MyContentController::class => 'textSliderExtended',
+    ),
+    // non-cacheable actions
+    array(),
+);
+
 // contact form
 ExtensionUtility::configurePlugin(
     'ibcontent',
