@@ -61,12 +61,13 @@
         "apache-solr-for-typo3/solr": "^12.0",
         "ssch/typo3-encore": "^6.0",
         "symfony/webpack-encore-bundle": "^2.2",
+        "deployer/deployer": "^7.5",
+        "sourcebroker/deployer-extended-database": "^18.2",
         "helhum/dotenv-connector": "^3.1"
 	},
     "require-dev": {
         "ssch/typo3-rector": "^2.5",
-        "phpstan/phpstan": "^1.10",
-        "deployer/deployer": "^7.5"
+        "phpstan/phpstan": "^1.10"
 	},
     "extra": {
         "typo3/cms": {
