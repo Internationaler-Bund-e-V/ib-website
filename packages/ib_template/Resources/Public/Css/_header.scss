@@ -121,14 +121,14 @@ $nav-height--collapsed: 60px;
 }
 
 #ib-markenzeichen {
-    display: none;
+    display: block;
     position: absolute;
     z-index: 10;
-    top: 0px;
+    top: 5px;
     width: 180px;
-    height: 55px;
+    height: 35px;
     @include transition(all 250ms ease);
-    right: 1rem;
+    right: 3.5rem;
     text-align: right;
 
     a {
