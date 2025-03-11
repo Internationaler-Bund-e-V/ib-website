@@ -62,7 +62,7 @@
         <i class="ib-icon-arrow-left"></i>
       </div>
       <div class="columns small-10 news-list-view" id="news-container-{contentObjectData.uid}">
-        <div class="ib-news-slider row expanded" data-loaderid="loader_{loaderID}" data-sliderid="{loaderID}">
+        <div class="ib-news-slider row expanded slides" data-loaderid="loader_{loaderID}" data-sliderid="{loaderID}">
         <f:for each="{news}" as="newsItem" iteration="iterator">
             <f:render partial="List/Item" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
         </f:for>
