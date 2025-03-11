@@ -8,145 +8,177 @@ $nav-height--expanded: 100px;
 $nav-height--collapsed: 60px;
 
 #ib-header {
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  right: 0;
-  top: 0;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    right: 0;
+    top: 0;
 
-  &.ibLandingpageHeader {
-    ul.jetmenu {
-      li.ibLandingpageLI {
-        border: none;
-      }
-    }
-  }
-
-  #ib-head-bubble-mobile {
-    
-
-    &:hover {
-      a {
-        background-color: $ib-bubble-orange;
-      }
-
+    &.ibLandingpageHeader {
+        ul.jetmenu {
+            li.ibLandingpageLI {
+                border: none;
+            }
+        }
     }
 
-    a {
-      color: white;
-      width: auto;
-      padding: 10px 15px !important;
-    }
+    #ib-head-bubble-mobile {
 
-  }
+
+        &:hover {
+            a {
+                background-color: $ib-bubble-orange;
+            }
+
+        }
+
+        a {
+            color: white;
+            width: auto;
+            padding: 10px 15px !important;
+        }
+
+    }
 }
 
 .ib-header-container {
-  max-width: 1350px;
-  margin-left: auto;
-  margin-right: auto;
+    max-width: 1350px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .ib-header-bar {
-  background-color: $white;
-  position: relative;
-  z-index: 100;
+    background-color: $white;
+    position: relative;
+    z-index: 100;
 }
 
 #ib-logo {
-  bottom: 15px;
-  left: 11%;
-  position: absolute;
-  z-index: 10;
+    top: 5px;
+    left: 1rem;
+    position: absolute;
+    z-index: 10;
+    height: 45px;
+    @include transition(all 250ms ease);
+
+    a {
+        display: block;
+        height: 100%;
+    }
+
+    img {
+        height: 100%;
+        display: block;
+    }
 }
 
 #ib-main-menu {
-  position: relative;
-  z-index: 1;
+    position: relative;
+    z-index: 1;
 }
 
 #ib-menu-overlay {
-  position: absolute;
-  z-index: 5;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: $white;
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: $white;
 }
 
 #ib-head-bubble {
-  display: none;
-  position: absolute;
-  z-index: 10;
-  top: 0px;
-  width: 135px;
-  height: 80px;
-  background-color: $ib-bubble-orange;
-  right: 0;
-  border-radius: 4.3em / 3em;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  @include transition(all 250ms ease);
-  box-shadow: 0px 0px 0px 0px rgba($ib-orange, .2);
+    display: none;
+    position: absolute;
+    z-index: 10;
+    top: 0px;
+    width: 135px;
+    height: 80px;
+    background-color: $ib-bubble-orange;
+    right: 0;
+    border-radius: 4.3em / 3em;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    @include transition(all 250ms ease);
+    box-shadow: 0px 0px 0px 0px rgba($ib-orange, .2);
 
-  &:hover {
-    box-shadow: 0px 10px 20px -10px rgba(color.adjust($ib-orange, $lightness: -30%, $space: hsl), .5);
-  }
+    &:hover {
+        box-shadow: 0px 10px 20px -10px rgba(color.adjust($ib-orange, $lightness: -30%, $space: hsl), .5);
+    }
 
-  a {
-    font-weight: 700;
-    color: #fff;
-    display: flex;
-    position: relative;
-    text-align: center;
-    line-height: 1em;
-    height: 100%;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-  }
+    a {
+        font-weight: 700;
+        color: #fff;
+        display: flex;
+        position: relative;
+        text-align: center;
+        line-height: 1em;
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+#ib-markenzeichen {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    top: 0px;
+    width: 180px;
+    height: 55px;
+    @include transition(all 250ms ease);
+    right: 1rem;
+    text-align: right;
+
+    a {
+        display: block;
+        height: 100%;
+    }
+    img {
+        height: 100%;
+    }
 }
 
 .jetmenu .showhide img {
-  height: 35px;
+    height: 35px;
 }
 
 .jetmenu>li.showhide span.title {
-  margin: 3px 0 0 25px;
+    margin: 3px 0 0 25px;
 }
 
 .jetmenu>li>.megamenu {
-  top: 40px !important;
-  background: $white !important;
-  border-top: none !important;
+    top: 40px !important;
+    background: $white !important;
+    border-top: none !important;
 }
 
 .jetmenu>li {
-  border-left: 1px solid $ib-standard-font-color;
-  line-height: 40px;
-  width: 200px;
-  text-align: center;
+    border-left: 1px solid $ib-standard-font-color;
+    line-height: 40px;
+    width: 200px;
+    text-align: center;
 }
 
 .jetmenu>li.showhide {
-  background: $white !important;
+    background: $white !important;
 }
 
 .jetmenu>li.showhide .icon em {
-  background: $ib-blue !important;
+    background: $ib-blue !important;
 }
 
 .jetmenu>li>a {
-  //color:$ib-darkblue !important;
-  padding: 0 !important;
+    //color:$ib-darkblue !important;
+    padding: 0 !important;
 }
 
 /* Small only */
 @media screen and (max-width: 767px) {
-  #ib-logo {
-    display: none !important;
-  }
+    #ib-logo {
+        display: none !important;
+    }
 }
 
 /* Medium and up */
@@ -154,72 +186,84 @@ $nav-height--collapsed: 60px;
 
 /* Medium only */
 @media screen and (min-width: 768px) and (max-width: 63.9375em) {
-  .ib-header-bar {
-    height: 55px;
-  }
+    .ib-header-bar {
+        height: 55px;
+    }
 
-  #ib-logo {
-    display: block !important;
-    left: 25px;
-    width: 37px;
-  }
+    #ib-logo {
+        display: block;
+        // left: 25px;
+        //max-width: 37px;
+    }
 
-  #ib-main-menu {
-    padding-top: 6px;
-  }
+    #ib-main-menu {
+        padding-top: 6px;
+    }
 
-  .jetmenu {
-    background-color: $white !important;
-    background: $white !important;
-    padding-left: 20.3% !important;
-  }
+    .jetmenu {
+        background-color: $white !important;
+        background: $white !important;
+        padding-left: 20.3% !important;
+    }
 }
 
 /* Large and up */
 @media screen and (min-width: 64em) {
-  .ib-header-bar {
-    height: $nav-height--expanded;
-  }
+    .ib-header-bar {
+        height: $nav-height--expanded;
+    }
 
-  #ib-main-menu {
-    padding-top: 59px;
-  }
+    #ib-main-menu {
+        padding-top: 59px;
+    }
 
-  .jetmenu {
-    background-color: $white !important;
-    background: $white !important;
-    padding-left: 20.3% !important;
-  }
+    .jetmenu {
+        background-color: $white !important;
+        background: $white !important;
+        padding-left: 20.3% !important;
+    }
 }
 
 /* make main navigation smaller so that there can be 4 nav items */
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-  #ib-main-menu .jetmenu {
-    padding-left: 70px !important;
-  }
+    #ib-main-menu .jetmenu {
+        padding-left: 70px !important;
+    }
 
-  #ib-main-menu .jetmenu>li {
-    width: auto;
-    padding: 0 10px;
-  }
+    #ib-main-menu .jetmenu>li {
+        width: auto;
+        padding: 0 10px;
+    }
 
-  #ib-head-bubble {
-    display: block !important;
-    top: 58px;
-  }
+    #ib-head-bubble {
+        display: block !important;
+        top: 58px;
+    }
+
+    #ib-markenzeichen {
+        display: block;
+        top: 0;
+        height: 45px;
+    }
 }
 
 @media screen and (min-width:1024px) {
-  #ib-head-bubble {
-    display: block !important;
-    top: 0;
-  }
+    #ib-head-bubble {
+        display: block !important;
+        top: 0;
+    }
+
+    #ib-markenzeichen {
+        display: block;
+        top: 25px;
+        height: 55px;
+    }
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1255px) {
-  #ib-main-menu .jetmenu>li {
-    width: 160px;
-  }
+    #ib-main-menu .jetmenu>li {
+        width: 160px;
+    }
 }
 
 /* Large only */
@@ -228,237 +272,250 @@ $nav-height--collapsed: 60px;
 /*headroom scroll states*/
 @media screen and (min-width: 64em) {
 
-  /*initial state*/
-  .headroom {
+    /*initial state*/
+    .headroom {
 
-    .ib-header-bar {
-      height: $nav-height--expanded;
-      @include transition(height 250ms ease);
+        .ib-header-bar {
+            height: $nav-height--expanded;
+            @include transition(height 250ms ease);
+        }
+
+        #ib-logo {
+            height: 70px;
+            top: 15px;
+            left: 6%;
+            @include transition(all 250ms ease);
+        }
+
+        #ib-main-menu {
+            padding-top: 59px;
+            @include transition(padding 250ms ease);
+        }
+
+        #ib-menu-overlay {
+            height: 59px;
+            @include transition(height 250ms ease);
+        }
+
+
     }
 
-    #ib-logo {
-      width: 70px;
-      @include transition(width 250ms ease);
+    /*collapsed state*/
+    .headroom--collapsed {
+
+        .ib-header-bar {
+            height: $nav-height--collapsed;
+        }
+
+        #ib-logo {
+            // max-width: 35px;
+            height: 45px;
+            top: 7px;
+        }
+
+        #ib-markenzeichen {
+            top: 3px;
+            height: 43px;
+        }
+
+        #ib-main-menu {
+            padding-top: 20px;
+        }
+
+        #ib-menu-overlay {
+            top: 0;
+            left: 0;
+            right: 0;
+            height: $nav-height--collapsed;
+        }
+
+
     }
 
-    #ib-main-menu {
-      padding-top: 59px;
-      @include transition(padding 250ms ease);
+    /*epanded state*/
+    .headroom--expanded {
+
+        .ib-header-bar {
+            height: $nav-height--expanded;
+        }
+
+        #ib-logo {
+            // max-width: 70px;
+        }
+
+        #ib-main-menu {
+            padding-top: 59px;
+        }
+
+        #ib-menu-overlay {
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 59px;
+        }
+
+
     }
-
-    #ib-menu-overlay {
-      height: 59px;
-      @include transition(height 250ms ease);
-    }
-
-
-  }
-
-  /*collapsed state*/
-  .headroom--collapsed {
-
-    .ib-header-bar {
-      height: $nav-height--collapsed;
-    }
-
-    #ib-logo {
-      width: 35px;
-    }
-
-    #ib-main-menu {
-      padding-top: 20px;
-    }
-
-    #ib-menu-overlay {
-      top: 0;
-      left: 0;
-      right: 0;
-      height: $nav-height--collapsed;
-    }
-
-
-  }
-
-  /*epanded state*/
-  .headroom--expanded {
-
-    .ib-header-bar {
-      height: $nav-height--expanded;
-    }
-
-    #ib-logo {
-      width: 70px;
-    }
-
-    #ib-main-menu {
-      padding-top: 59px;
-    }
-
-    #ib-menu-overlay {
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 59px;
-    }
-
-
-  }
 
 }
 
 /*
- * ------------------------------------------------------
- * format wide logos
- * ------------------------------------------------------
- * @see {$portalSettings.portal_logo.format} constant
- * @see EXT:ib_template/Resources/Private/Template/partial/header.html
- */
+* ------------------------------------------------------
+* format wide logos
+* ------------------------------------------------------
+* @see {$portalSettings.portal_logo.format} constant
+* @see EXT:ib_template/Resources/Private/Template/partial/header.html
+*/
 
 .mobileLoader {
-  display: none;
+    display: none;
 }
 
 .header-ib-logo-wide {
-  #ib-logo {
-    left: 6%;
-  }
+    #ib-logo {
+        // left: 6%;
+    }
 }
 
 @media screen and (max-width: 767px) {
-  .jetmenu {
-    display: none;
-  }
-
-  .mobileLoader {
-    display: block;
-    height: 60px;
-    background: white;
-  }
-
-  .header-ib-logo-wide {
-    #ib-logo {
-      display: none !important;
+    .jetmenu {
+        display: none;
     }
-  }
+
+    .mobileLoader {
+        display: block;
+        height: 60px;
+        background: white;
+    }
+
+    .header-ib-logo-wide {
+        #ib-logo {
+            display: none;
+        }
+    }
 }
 
 @media screen and (min-width: 768px) and (max-width: 63.9375em) {
-  .header-ib-logo-wide {
-    #ib-logo {
-      left: 25px;
-      width: 120px;
-    }
+    .header-ib-logo-wide {
+        #ib-logo {
+            left: 25px;
+            max-width: 120px;
+        }
 
-    #ib-main-menu .jetmenu {
-      padding-left: 140px !important;
+        #ib-main-menu .jetmenu {
+            padding-left: 140px !important;
+        }
     }
-  }
 }
 
 @media screen and (min-width: 64em) {
 
-  .header-ib-logo-wide {
-    #ib-main-menu .jetmenu {
-      padding-left: 280px !important;
-    }
-  }
-
-  .headroom {
     .header-ib-logo-wide {
-      #ib-logo {
-        width: 180px;
-      }
+        #ib-main-menu .jetmenu {
+            padding-left: 280px !important;
+        }
     }
-  }
 
-  .headroom--collapsed {
-    .header-ib-logo-wide {
-      #ib-logo {
-        width: 110px;
-      }
+    .headroom {
+        .header-ib-logo-wide {
+            #ib-logo {
+                max-width: 180px;
+            }
+        }
     }
-  }
 
-  .headroom--expanded {
-    .header-ib-logo-wide {
-      #ib-logo {
-        width: 180px;
-      }
+    .headroom--collapsed {
+        .header-ib-logo-wide {
+            #ib-logo {
+                max-width: 110px;
+            }
+        }
+        .header-ib-logo-wide {
+            #ib-logo {
+                max-width: 110px;
+            }
+        }  }
+
+        .headroom--expanded {
+            .header-ib-logo-wide {
+                #ib-logo {
+                    max-width: 180px;
+                }
+            }
+        }
     }
-  }
-}
 
 
 
 
-.lds-ellipsis {
+    .lds-ellipsis {
 
-  position: relative;
-  width: 80px;
-  height: auto;
-  margin: 0 auto;
-}
+        position: relative;
+        width: 80px;
+        height: auto;
+        margin: 0 auto;
+    }
 
-.lds-ellipsis div {
-  position: absolute;
-  top: 20px;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: #005590;
-  animation-timing-function: cubic-bezier(0, 1, 1, 0);
-}
+    .lds-ellipsis div {
+        position: absolute;
+        top: 20px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: #005590;
+        animation-timing-function: cubic-bezier(0, 1, 1, 0);
+    }
 
-.lds-ellipsis div:nth-child(1) {
-  left: 8px;
-  animation: lds-ellipsis1 0.6s infinite;
-}
+    .lds-ellipsis div:nth-child(1) {
+        left: 8px;
+        animation: lds-ellipsis1 0.6s infinite;
+    }
 
-.lds-ellipsis div:nth-child(2) {
-  left: 8px;
-  animation: lds-ellipsis2 0.6s infinite;
-}
+    .lds-ellipsis div:nth-child(2) {
+        left: 8px;
+        animation: lds-ellipsis2 0.6s infinite;
+    }
 
-.lds-ellipsis div:nth-child(3) {
-  left: 32px;
-  animation: lds-ellipsis2 0.6s infinite;
-}
+    .lds-ellipsis div:nth-child(3) {
+        left: 32px;
+        animation: lds-ellipsis2 0.6s infinite;
+    }
 
-.lds-ellipsis div:nth-child(4) {
-  left: 56px;
-  animation: lds-ellipsis3 0.6s infinite;
-}
+    .lds-ellipsis div:nth-child(4) {
+        left: 56px;
+        animation: lds-ellipsis3 0.6s infinite;
+    }
 
-@keyframes lds-ellipsis1 {
-  0% {
-    transform: scale(0);
-  }
+    @keyframes lds-ellipsis1 {
+        0% {
+            transform: scale(0);
+        }
 
-  100% {
-    transform: scale(1);
-  }
-}
+        100% {
+            transform: scale(1);
+        }
+    }
 
-@keyframes lds-ellipsis3 {
-  0% {
-    transform: scale(1);
-  }
+    @keyframes lds-ellipsis3 {
+        0% {
+            transform: scale(1);
+        }
 
-  100% {
-    transform: scale(0);
-  }
-}
+        100% {
+            transform: scale(0);
+        }
+    }
 
-@keyframes lds-ellipsis2 {
-  0% {
-    transform: translate(0, 0);
-  }
+    @keyframes lds-ellipsis2 {
+        0% {
+            transform: translate(0, 0);
+        }
 
-  100% {
-    transform: translate(24px, 0);
-  }
-}
+        100% {
+            transform: translate(24px, 0);
+        }
+    }
 
-.extbase-debugger.extbase-debugger-floating {
-  z-index: 1001;
-}
+    .extbase-debugger.extbase-debugger-floating {
+        z-index: 1001;
+    }
