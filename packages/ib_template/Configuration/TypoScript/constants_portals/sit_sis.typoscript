@@ -75,10 +75,10 @@
             title_text = IB Menschsein stärken
         }
 
-        main_bubble_en{
-            hide = 0
+        main_bubble_en {
+            hide = 1
             text = Contact
-            id = 7675
+            id = 7371
             title_text = Contact us
         }
 
