@@ -171,7 +171,7 @@ export default {
           selectedDistance.value +
           '&lat=' +
           Pin.value.latitude +
-          'long=' +
+          '&long=' +
           Pin.value.longitude +
           '&categories=' +
           (selectedCategories.value == null ? '' : selectedCategories.value.toString());
