@@ -7,7 +7,6 @@ require_once(__DIR__ . '/vendor/autoload.php');
 require 'recipe/typo3.php';
 
 require 'contrib/rsync.php';
-require 'contrib/webpack_encore.php';
 require 'contrib/yarn.php';
 
 new \SourceBroker\DeployerLoader\Load([
@@ -20,9 +19,18 @@ import('deploy/inventory.yaml');
 
 // Task Config: db:*
 set('db_databases', [
-    (new \SourceBroker\DeployerExtendedDatabase\Driver\EnvDriver())->getDatabaseConfig()
+    'typo3' => [
+        'truncate_tables' => [
+            'be_sessions',
+            'cache_.*',
+            'cf_.*',
+            'fe_sessions',
+            'sys_file_processedfile',
+            'sys_log',
+        ],
+        (new \Deploy\Driver\Typo3EnvDriver())->getDatabaseConfig()
+    ],
 ]);
-
 localhost('local')
     ->set('bin/php', 'php')
     ->set('deploy_path', getcwd());
@@ -71,8 +79,6 @@ set('exclude', [
     '/.gitignore',
     '/.idea',
     '/.vscode',
-    '/deploy',
-    '/deploy.php',
     '/docs',
     'dump.sql.gz',
     '/node_modules',
@@ -120,7 +126,7 @@ after('deploy:symlink', 'typo3:unlockBackend');
 desc('Build CSS and JavaScript on local machine');
 task('build:local', function () {
     runLocally('yarn install');
-    runLocally('webpack_encore:build');
+    runLocally('yarn install build');
 });
 
 desc('Use rsync task to pull project files');
