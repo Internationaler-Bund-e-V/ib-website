@@ -118,7 +118,7 @@ after('deploy:symlink', 'typo3:unlockBackend');
 desc('Build CSS and JavaScript on local machine');
 task('build:local', function () {
     runLocally('yarn install');
-    runLocally('yar run build');
+    runLocally('yarn run build');
 });
 
 desc('Use rsync task to pull project files');
