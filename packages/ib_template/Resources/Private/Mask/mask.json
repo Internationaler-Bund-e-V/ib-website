@@ -897,9 +897,16 @@
                         "behaviour": {
                             "allowLanguageSynchronization": "0"
                         },
-                        "renderType": "inputLink",
-                        "type": "input"
-                    },
+                        "type": "link",
+						"nullable": true,
+						"allowedTypes": ["page", "url", "record"],
+						"appearance": {
+						    "enableBrowser": false,
+						    "browserTitle": "Browser title",
+						    "allowedFileExtensions": ["jpg", "png"],
+						    "allowedOptions": ["params", "rel"]
+						}
+					},
                     "fullKey": "tx_mask_bvbbe_banner_link",
                     "inlineParent": "tx_mask_bvbbe_banner_links",
                     "key": "bvbbe_banner_link",
@@ -943,8 +950,15 @@
                         "behaviour": {
                             "allowLanguageSynchronization": "0"
                         },
-                        "renderType": "inputLink",
-                        "type": "input"
+                        "type": "link",
+						"nullable": true,
+						"allowedTypes": ["page", "url", "record"],
+						"appearance": {
+						    "enableBrowser": false,
+						    "browserTitle": "Browser title",
+						    "allowedFileExtensions": ["jpg", "png"],
+						    "allowedOptions": ["params", "rel"]
+						}
                     },
                     "fullKey": "tx_mask_bvbbe_slide_link",
                     "inlineParent": "tx_mask_bvbbe_slide_links",
@@ -1159,8 +1173,15 @@
                         "behaviour": {
                             "allowLanguageSynchronization": "0"
                         },
-                        "renderType": "inputLink",
-                        "type": "input"
+                        "type": "link",
+						"nullable": true,
+						"allowedTypes": ["page", "url", "record"],
+						"appearance": {
+						    "enableBrowser": false,
+						    "browserTitle": "Browser title",
+						    "allowedFileExtensions": ["jpg", "png"],
+						    "allowedOptions": ["params", "rel"]
+						}
                     },
                     "fullKey": "tx_mask_bvbbe_tile_link",
                     "inlineParent": "tx_mask_bvbbe_tiles",
@@ -1240,8 +1261,15 @@
             "tca": {
                 "tx_mask_srb_link": {
                     "config": {
-                        "renderType": "inputLink",
-                        "type": "input"
+                        "type": "link",
+						"nullable": true,
+						"allowedTypes": ["page", "url", "record"],
+						"appearance": {
+						    "enableBrowser": false,
+						    "browserTitle": "Browser title",
+						    "allowedFileExtensions": ["jpg", "png"],
+						    "allowedOptions": ["params", "rel"]
+						}
                     },
                     "fullKey": "tx_mask_srb_link",
                     "inlineParent": "tx_mask_srb_links",
@@ -1322,8 +1350,15 @@
                 },
                 "tx_mask_srb_tile_link": {
                     "config": {
-                        "renderType": "inputLink",
-                        "type": "input"
+                        "type": "link",
+						"nullable": true,
+						"allowedTypes": ["page", "url", "record"],
+						"appearance": {
+						    "enableBrowser": false,
+						    "browserTitle": "Browser title",
+						    "allowedFileExtensions": ["jpg", "png"],
+						    "allowedOptions": ["params", "rel"]
+						}
                     },
                     "fullKey": "tx_mask_srb_tile_link",
                     "inlineParent": "tx_mask_srb_tiles",
