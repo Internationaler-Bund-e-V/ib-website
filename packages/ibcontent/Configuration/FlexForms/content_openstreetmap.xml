@@ -205,8 +205,9 @@
             <TCEforms>
               <label>Seite Listenansicht</label>
               <config>
-                <type>inputLink</type>
-                <eval>trim</eval>
+                <type>link</type>
+                <nullable>true</nullable>
+                <allowedTypes>page,url,record</allowedTypes>
                 <size>60</size>
                 <default></default>
                 <wizards type="array">
