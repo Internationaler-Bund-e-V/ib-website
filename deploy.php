@@ -7,7 +7,6 @@ require_once(__DIR__ . '/vendor/autoload.php');
 require 'recipe/typo3.php';
 
 require 'contrib/rsync.php';
-require 'contrib/webpack_encore.php';
 require 'contrib/yarn.php';
 
 new \SourceBroker\DeployerLoader\Load([
@@ -71,8 +70,6 @@ set('exclude', [
     '/.gitignore',
     '/.idea',
     '/.vscode',
-    '/deploy',
-    '/deploy.php',
     '/docs',
     'dump.sql.gz',
     '/node_modules',
@@ -121,7 +118,7 @@ after('deploy:symlink', 'typo3:unlockBackend');
 desc('Build CSS and JavaScript on local machine');
 task('build:local', function () {
     runLocally('yarn install');
-    runLocally('webpack_encore:build');
+    runLocally('yar run build');
 });
 
 desc('Use rsync task to pull project files');
