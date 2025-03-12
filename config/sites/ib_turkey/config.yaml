@@ -1,4 +1,8 @@
 base: 'https://ib-turkey.com/'
+baseVariants:
+  -
+    base: 'https://ib-turkey.ddev.site/'
+    condition: 'getenv("IS_DDEV_PROJECT") == "true"'
 disableStaticFileCache: false
 errorHandling:
   -
