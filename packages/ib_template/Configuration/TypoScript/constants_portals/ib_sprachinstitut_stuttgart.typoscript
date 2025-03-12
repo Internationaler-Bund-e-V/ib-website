@@ -2,7 +2,7 @@
 # PORTAL Sprachen Reutlingen
 # -----------------------------------------------------------------------------
 
-[site("identifier") == "ib_sprachinstitut_stuttgart"] 
+[site("identifier") == "ib_sprachinstitut_stuttgart"]
     host = ib-sprachinstitut-stuttgart
     portalSettings {
         pageTitle = IB Sprachinstitut Stuttgart
@@ -11,10 +11,10 @@
         root_id = 7581
 
         readspeaker.show = 1
-        
+
         #portal_logo.file = sit_logo.png
         #portal_logo.format = wide
-        
+
         #data privacy site ID
         dataPrivacySiteID = 7587
 
@@ -28,7 +28,7 @@
         misc.sitemapStartId = 7594
 
         #Präfix Titel
-        firstMenuTitle = 
+        firstMenuTitle =
 
         #News Details - Seite
         tt_news.single_pid = 7623
@@ -39,19 +39,19 @@
         #Suche - Ergebnisseite
         misc.searchResultId = 7591
 
-        //generate news sitemap     
+        //generate news sitemap
         NewsSitemap.generate = 1
         NewsSitemap.NewsFolderPid = 7621
         NewsSitemap.NewsDetailPid = 7623
-                
+
         #Google Analytics ID
         analytics {
             #account_id =
             #enable_tracking = 0
             matomo_enabled = 0
-            matomo_siteid = 
+            matomo_siteid =
             matomo_tagmanager_enabled = 0
-            matomo_containerid = 
+            matomo_containerid =
         }
 
         cookiebot {
@@ -61,16 +61,16 @@
 
         #Text und Verlinkung des Bubbles im Header
         main_bubble {
-            hide = 1
+            hide = 0
             text = Kontakt
-            id = 7583
+            id = 7886
             title_text = Kontaktieren Sie uns hier bei Fragen, Wünschen und Anregungen
         }
 
         #Möglichkeit, optional Social Media Iconbar zu überschreiben
         social.facebook =
         #social.facebook.titletag =
-        social.youtube = 
+        social.youtube =
         #social.youtube.titletag =
         social.instagram = https://www.instagram.com/ib_sprachinstitut_stuttgart/
         social.instagram.titletag = Offizielle Instagram-Seite
@@ -92,18 +92,18 @@
     gallery.folder.pid = 7622
 
     #Möglichkeit, optional Social Media Footer Links zu überschreiben
-    #social.headline = 
-    social.facebook = 
-    #social.facebook.titletag = 
-    social.youtube = 
-    #social.youtube.titletag = 
+    #social.headline =
+    social.facebook =
+    #social.facebook.titletag =
+    social.youtube =
+    #social.youtube.titletag =
     social.instagram = https://www.instagram.com/ib_sprachinstitut_stuttgart/
     social.instagram.titletag = Offizielle Instagram-Seite
     social.twitter =
     social.xing =
     social.kununu =
     social.linkedin =
-   
+
 
     const_navigation {
         #Ordner ID zentraler Footer, zentrale Websites
@@ -116,7 +116,7 @@
         footernav_meta_folder_id = 7582
     }
 
-    
+
 
 
 [end]
