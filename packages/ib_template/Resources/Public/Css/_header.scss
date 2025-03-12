@@ -54,11 +54,11 @@ $nav-height--collapsed: 60px;
 }
 
 #ib-logo {
-    top: 5px;
-    left: 1rem;
+    top: 15px;
+    left: 6%;
     position: absolute;
     z-index: 10;
-    height: 45px;
+    height: 75px;
     @include transition(all 250ms ease);
 
     a {
@@ -69,6 +69,13 @@ $nav-height--collapsed: 60px;
     img {
         height: 100%;
         display: block;
+    }
+}
+
+/* Small only */
+@media screen and (max-width: 767px) {
+    #ib-logo {
+        display: none !important;
     }
 }
 
@@ -172,13 +179,6 @@ $nav-height--collapsed: 60px;
 .jetmenu>li>a {
     //color:$ib-darkblue !important;
     padding: 0 !important;
-}
-
-/* Small only */
-@media screen and (max-width: 767px) {
-    #ib-logo {
-        display: none !important;
-    }
 }
 
 /* Medium and up */
@@ -308,7 +308,6 @@ $nav-height--collapsed: 60px;
         }
 
         #ib-logo {
-            // max-width: 35px;
             height: 45px;
             top: 7px;
         }
@@ -337,10 +336,6 @@ $nav-height--collapsed: 60px;
 
         .ib-header-bar {
             height: $nav-height--expanded;
-        }
-
-        #ib-logo {
-            // max-width: 70px;
         }
 
         #ib-main-menu {
@@ -399,7 +394,6 @@ $nav-height--collapsed: 60px;
     .header-ib-logo-wide {
         #ib-logo {
             left: 25px;
-            max-width: 120px;
         }
 
         #ib-main-menu .jetmenu {
@@ -416,106 +410,80 @@ $nav-height--collapsed: 60px;
         }
     }
 
-    .headroom {
-        .header-ib-logo-wide {
-            #ib-logo {
-                max-width: 180px;
-            }
-        }
+
+}
+
+
+
+
+.lds-ellipsis {
+
+    position: relative;
+    width: 80px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.lds-ellipsis div {
+    position: absolute;
+    top: 20px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #005590;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+}
+
+@keyframes lds-ellipsis1 {
+    0% {
+        transform: scale(0);
     }
 
-    .headroom--collapsed {
-        .header-ib-logo-wide {
-            #ib-logo {
-                max-width: 110px;
-            }
-        }
-        .header-ib-logo-wide {
-            #ib-logo {
-                max-width: 110px;
-            }
-        }  }
+    100% {
+        transform: scale(1);
+    }
+}
 
-        .headroom--expanded {
-            .header-ib-logo-wide {
-                #ib-logo {
-                    max-width: 180px;
-                }
-            }
-        }
+@keyframes lds-ellipsis3 {
+    0% {
+        transform: scale(1);
     }
 
+    100% {
+        transform: scale(0);
+    }
+}
 
-
-
-    .lds-ellipsis {
-
-        position: relative;
-        width: 80px;
-        height: auto;
-        margin: 0 auto;
+@keyframes lds-ellipsis2 {
+    0% {
+        transform: translate(0, 0);
     }
 
-    .lds-ellipsis div {
-        position: absolute;
-        top: 20px;
-        width: 15px;
-        height: 15px;
-        border-radius: 50%;
-        background: #005590;
-        animation-timing-function: cubic-bezier(0, 1, 1, 0);
+    100% {
+        transform: translate(24px, 0);
     }
+}
 
-    .lds-ellipsis div:nth-child(1) {
-        left: 8px;
-        animation: lds-ellipsis1 0.6s infinite;
-    }
-
-    .lds-ellipsis div:nth-child(2) {
-        left: 8px;
-        animation: lds-ellipsis2 0.6s infinite;
-    }
-
-    .lds-ellipsis div:nth-child(3) {
-        left: 32px;
-        animation: lds-ellipsis2 0.6s infinite;
-    }
-
-    .lds-ellipsis div:nth-child(4) {
-        left: 56px;
-        animation: lds-ellipsis3 0.6s infinite;
-    }
-
-    @keyframes lds-ellipsis1 {
-        0% {
-            transform: scale(0);
-        }
-
-        100% {
-            transform: scale(1);
-        }
-    }
-
-    @keyframes lds-ellipsis3 {
-        0% {
-            transform: scale(1);
-        }
-
-        100% {
-            transform: scale(0);
-        }
-    }
-
-    @keyframes lds-ellipsis2 {
-        0% {
-            transform: translate(0, 0);
-        }
-
-        100% {
-            transform: translate(24px, 0);
-        }
-    }
-
-    .extbase-debugger.extbase-debugger-floating {
-        z-index: 1001;
-    }
+.extbase-debugger.extbase-debugger-floating {
+    z-index: 1001;
+}
