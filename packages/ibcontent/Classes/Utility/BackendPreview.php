@@ -303,35 +303,21 @@ class BackendPreview extends ActionController
     }
 
 
-
-
     protected function previewTextSliderExtended($row)
-    {
-        $this->initializeAction();
-        $data = GeneralUtility::xml2array($row['pi_flexform']);
-        // $this->showDebugger($data);
-        $BEoutput = '<h4>IB Content Slider</h4><br>';
-        $BEoutput .= '<h5>' . $data['data']['sDEF']['lDEF']['settings.headline']['vDEF'] . '</h5>';
+{
+    $this->initializeAction();
+    $data = GeneralUtility::xml2array($row['pi_flexform']);
+    // $this->showDebugger($data);
+    $BEoutput = '<h4>IB Text Slider Extended</h4><br>';
 
-        if (isset($data['data']['sDEF']['lDEF']['settings.array']['el'])) {
-            foreach ($data['data']['sDEF']['lDEF']['settings.array']['el'] as $slide) {
-                $BEoutput .= '<h5>' . $slide['ItemWrap']['el']['headline']['vDEF'] . '</h5>';
-            }
+    if (isset($data['data']['sDEF']['lDEF']['settings.textSliderExtendedContainer']['el'])) {
+        foreach ($data['data']['sDEF']['lDEF']['settings.textSliderExtendedContainer']['el'] as $slide) {
+            $BEoutput .= '<h5>' . $slide['ItemWrap']['el']['headline']['vDEF'] . '</h5>';
         }
-
-        // if ($data['data']['sDEF']['lDEF']['settings.type']['vDEF'] == "image") {
-        //     foreach ($data['data']['imageContent']['lDEF']['settings.imageSliderContainer']['el'] as $images) {
-        //         $BEoutput .= '<img src="/' . $images['ItemWrap']['el']['image']['vDEF'] . '" width="200"><br>';
-        //         $BEoutput .= $images['ItemWrap']['el']['caption']['vDEF'] . '<br>';
-        //     }
-        // } elseif ($data['data']['sDEF']['lDEF']['settings.type']['vDEF'] == "leitsatz") {
-        //     foreach ($data['data']['leitsatzContent']['lDEF']['settings.guidelineSliderContainer']['el'] as $leitsatz) {
-        //         $BEoutput .= $leitsatz['ItemWrap']['el']['leitsatz']['vDEF'] . '<br><br><br>';
-        //     }
-        // }
-
-        return $BEoutput;
     }
+
+    return $BEoutput;
+}
 
     /**
      * Render DBProductList

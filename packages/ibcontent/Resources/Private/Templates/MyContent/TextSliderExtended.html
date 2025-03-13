@@ -1,108 +1,132 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
 <f:layout name="Default" />
 
 <f:section name="main">
-    <f:for each="{settings.array}" as="element">
-        <f:if condition="{element}">
-            <f:render section="element" arguments="{settings: element.ItemWrap}" />
-        </f:if>
-    </f:for>
+    <div class="row ib-content-module ib-contentslider ib-background-{settings.bgColor}">
+        <div class="columns small-12 medium-offset-1 medium-11 large-offset-1-2col small-7-2col end">
+            <f:if condition="{settings.headline}">
+                <h2 class="ib-headline">{settings.headline}</h2>
+            </f:if>
+        </div>
+        <div class="sliderLoading" id="loader_{uid}"></div>
+        <div class="contentSliderContainer useLoadingIndicator">
+            <div class="columns small-8-2col">
+                <div id="contentsliderPrevButton-{uid}" class=" columns small-1 large-1-2col ib-color-blue ib-font-size-60 ib-prev-next-button ib-bubble-slider-control-prev">
+                    <i class="ib-icon-arrow-left"></i>
+                </div>
+                <div class="columns small-10 large-6-2col">
+                    <div class="ib-contentslider-slider slides row expanded" data-sliderid="{uid}" data-loaderid="loader_{uid}">
+            
+                    <f:render section="leitsatz" arguments="{textSliderList: settings.guidelineSliderContainer}" />
+                </div>
+                </div>
+                <div id="contentsliderNextButton-{uid}" class="columns small-1 large-1-2col ib-color-blue ib-font-size-60 ib-prev-next-button ib-bubble-slider-control-next">
+                    <i class="ib-icon-arrow-right float-right "></i>
+                </div>
+            </div>
+        </div>
+    </div>
 </f:section>
 
-<f:section name="element">
-    <f:if condition="{settings.divider} == 'top'">
-        <f:render section="divider" />
-    </f:if>
-    <f:if condition="{settings.divider} == 'both'">
-        <f:render section="divider" />
-    </f:if>
 
-    <div class="ib-services {f:if(condition: '{settings.paddingtop}',then:'ib-services-nopaddingtop')} {f:if(condition: '{settings.paddingbottom}',then:'ib-services-nopaddingbottom')}">
-        <div class="row ib-content-module ib-background-{settings.bgColor}">
-            <div class="columns {f:if(condition: '{settings.layout}=="2col"',then: 'medium-offset-1 medium-10 large-6-2col large-offset-1-2col',else: 'medium-10 medium-offset-1')} end">
+
+
+<f:section name="leitsatz">
+    <f:for each="{textSliderList}" as="sliderItem">
+        <f:if condition="{sliderItem}">
+            <div class="ib-contentslider-item  ">
+
+
                 <div class="columns row headline-section">
 
-                    <f:if condition="{settings.headline} != ''">
-                        <f:if condition="{settings.headline_tag}">
+                    <f:if condition="{sliderItem.ItemWrap.headline} != ''">
+                        <f:if condition="{sliderItem.ItemWrap.headline_tag}">
                             <f:then>
-                                <{settings.headline_tag} class="ib-headline">{settings.headline}</{settings.headline_tag}>
+                                <{sliderItem.ItemWrap.headline_tag} class="ib-headline">{sliderItem.ItemWrap.headline}</{sliderItem.ItemWrap.headline_tag}>
                             </f:then>
                             <f:else>
-                                <h2 class="ib-headline">{settings.headline}</h2>
+                                <h2 class="ib-headline">{sliderItem.ItemWrap.headline}</h2>
                             </f:else>
                         </f:if>
                     </f:if>
 
-                    <f:if condition="{settings.subheadline} != ''">
-                        <f:if condition="{settings.subheadline_tag}">
+                    <f:if condition="{sliderItem.ItemWrap.subheadline} != ''">
+                        <f:if condition="{sliderItem.ItemWrap.subheadline_tag}">
                             <f:then>
-                                <{settings.subheadline_tag}>{settings.subheadline}</{settings.subheadline_tag}>
+                                <{sliderItem.ItemWrap.subheadline_tag}>{sliderItem.ItemWrap.subheadline}</{sliderItem.ItemWrap.subheadline_tag}>
                             </f:then>
                             <f:else>
-                                <h2>{settings.subheadline}</h2>
+                                <h2>{sliderItem.ItemWrap.subheadline}</h2>
                             </f:else>
                         </f:if>
                     </f:if>
 
                 </div>
-                <f:switch expression="{settings.numCol}">
+
+                <f:switch expression="{sliderItem.ItemWrap.numCol}">
                     <f:case value="1">
                         <!-- layout: 100% -->
-                        <f:render section="oneCol" arguments="{settings: settings}" />
+                        <f:render section="oneCol" arguments="{settings: sliderItem.ItemWrap}" />
                     </f:case>
                     <f:case value="2">
                         <!-- layout: 50:50% -->
-                        <f:render section="twoCol" arguments="{settings: settings}" />
+                        <f:render section="twoCol" arguments="{settings: sliderItem.ItemWrap}" />
                     </f:case>
                     <f:case value="3">
                         <!-- layout: 33:33:33% -->
-                        <f:render section="threeCol" arguments="{settings: settings}" />
+                        <f:render section="threeCol" arguments="{settings: sliderItem.ItemWrap}" />
                     </f:case>
                     <f:case value="4">
                         <!-- layout: 66:33% -->
-                        <f:render section="two_one" arguments="{settings: settings}" />
+                        <f:render section="two_one" arguments="{settings: sliderItem.ItemWrap}" />
                     </f:case>
                     <f:case value="5">
                         <!-- layout: 33:66% -->
-                        <f:render section="one_two" arguments="{settings: settings}" />
+                        <f:render section="one_two" arguments="{settings: sliderItem.ItemWrap}" />
                     </f:case>
                     <f:case value="6">
                         <!-- layout: 25:75% -->
-                        <f:render section="one_three" arguments="{settings: settings}" />
+                        <f:render section="one_three" arguments="{settings: sliderItem.ItemWrap}" />
                     </f:case>
                     <f:case value="7">
                         <!-- layout: 75:25% -->
-                        <f:render section="three_one" arguments="{settings: settings}" />
+                        <f:render section="three_one" arguments="{settings: sliderItem.ItemWrap}" />
                     </f:case>
 
                     <f:case value="8">
                         <!-- layout: 41:41:16% 5:5:2 -->
-                        <f:render section="threeCol_5_5_2" arguments="{settings: settings}" />
+                        <f:render section="threeCol_5_5_2" arguments="{settings: sliderItem.ItemWrap}" />
                     </f:case>
                     <f:case value="9">
                         <!-- layout: 16:41:41% 2:5:5 -->
-                        <f:render section="threeCol_2_5_5" arguments="{settings: settings}" />
+                        <f:render section="threeCol_2_5_5" arguments="{settings: sliderItem.ItemWrap}" />
                     </f:case>
                     <f:case value="10">
                         <!-- layout: 16:16:66% 2:2:8 -->
-                        <f:render section="threeCol_2_2_8" arguments="{settings: settings}" />
+                        <f:render section="threeCol_2_2_8" arguments="{settings: sliderItem.ItemWrap}" />
                     </f:case>
                     <f:case value="11">
                         <!-- layout: 66:16:16% 8:2:2 -->
-                        <f:render section="threeCol_8_2_2" arguments="{settings: settings}" />
+                        <f:render section="threeCol_8_2_2" arguments="{settings: sliderItem.ItemWrap}" />
                     </f:case>
                 </f:switch>
 
-            </div>
-        </div>
-    </div>
+                
 
-    <f:if condition="{settings.divider} == 'bottom'">
-        <f:render section="divider" />
-    </f:if>
-    <f:if condition="{settings.divider} == 'both'">
-        <f:render section="divider" />
-    </f:if>
+
+            </div>
+
+
+
+
+            
+        </f:if>
+    </f:for>
 </f:section>
+
+
+
+
 
 <!-- 100% Layout -->
 <f:section name="oneCol">
@@ -248,10 +272,28 @@
     </div>
 </f:section>
 
-<f:section name="divider">
-    <div class="row ib-background-{settings.bgColor}">
-        <div class="columns medium-offset-1 medium-10 large-offset-1-2col large-6-2col end">
-            <div class="divider"></div>
+
+
+
+
+
+
+
+
+
+
+<f:section name="image">
+    <f:for each="{elements}" as="image">
+        <f:if condition="{image}">
+        <div class="ib-contentslider-item ">
+            <figure>
+                <f:image src="{image.ItemWrap.image}" alt="{image.ItemWrap.imageAlt}" class="title-image" title="{image.ItemWrap.imageAlt}" />
+                <f:if condition="{image.ItemWrap.caption}">
+                <figcaption><f:format.html>{image.ItemWrap.caption}</f:format.html></figcaption>
+                </f:if>
+            </figure>
         </div>
-    </div>
+        </f:if>
+    </f:for>
 </f:section>
+
