@@ -81,6 +81,12 @@ portalSettings {
         hide = 1
     }
 
+    main_markenzeichen {
+        show = 0
+        id =
+        title_text =
+    }
+
     tabs_bar {
         show = 0
         folder_id =

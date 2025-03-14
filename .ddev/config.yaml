@@ -15,6 +15,9 @@ additional_hostnames:
   - "srb"
   - "sit-sis"
   - "ib-training"
+  - "ib-sprachinstitut-boeblingen"
+  - "ib-sprachinstitut-stuttgart"
+  - "ib-turkey"
 additional_fqdns: []
 database:
     type: mariadb

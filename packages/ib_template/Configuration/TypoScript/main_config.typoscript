@@ -283,6 +283,9 @@ portalSettings.social_bar.show.value = {$portalSettings.social_bar.show}
 portalSettings.main_bubble.hide = TEXT
 portalSettings.main_bubble.hide.value = {$portalSettings.main_bubble.hide}
 
+portalSettings.main_markenzeichen.show = TEXT
+portalSettings.main_markenzeichen.show.value = {$portalSettings.main_markenzeichen.show}
+
 portalSettings.main_bubble_en.hide = TEXT
 portalSettings.main_bubble_en.hide.value = {$portalSettings.main_bubble_en.hide}
 

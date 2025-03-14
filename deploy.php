@@ -35,6 +35,11 @@ set('db_databases', [
 // load host configuration
 import('deploy/inventory.yaml');
 
+// Task Config: db:*
+set('db_databases', [
+    (new \SourceBroker\DeployerExtendedDatabase\Driver\EnvDriver())->getDatabaseConfig()
+]);
+
 // define localhost
 localhost('local')
     ->set('bin/php', 'php')
@@ -90,6 +95,7 @@ set('exclude', [
     'packages/*/Resources/Public/Css',
     'packages/*/Resources/Public/JavaScript',
     '/public/_assets',
+    '/public/.htaccess',
     '/public/typo3conf',
     '/public/typo3temp',
     '/public/fileadmin',

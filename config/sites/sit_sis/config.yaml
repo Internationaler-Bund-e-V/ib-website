@@ -1,4 +1,8 @@
 base: 'https://sit-sis.rmsdev.de/'
+baseVariants:
+  -
+    base: 'https://sit-sis.ddev.site/'
+    condition: 'getenv("IS_DDEV_PROJECT") == "true"'
 disableStaticFileCache: false
 friendlycaptcha_js_path: 'EXT:friendlycaptcha_official/Resources/Public/JavaScript/lib/widget-0.9.12.min.js'
 friendlycaptcha_puzzle_url: 'https://eu-api.friendlycaptcha.eu/api/v1/puzzle'
