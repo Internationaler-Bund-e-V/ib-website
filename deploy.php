@@ -31,13 +31,14 @@ set('db_databases', [
         (new \Deploy\Driver\Typo3EnvDriver())->getDatabaseConfig()
     ],
 ]);
-localhost('local')
-    ->set('bin/php', 'php')
-    ->set('deploy_path', getcwd());
 
 // load host configuration
 import('deploy/inventory.yaml');
 
+// define localhost
+localhost('local')
+    ->set('bin/php', 'php')
+    ->set('deploy_path', getcwd());
 
 // GIT Config
 set('repository', 'https://github.com/Internationaler-Bund-e-V/ib-website.git');
@@ -154,8 +155,8 @@ task('typo3:unlockBackend', function () {
     run('{{deploy_path}}/typo3/vendor/bin/typo3 backend:unlockforeditors');
 })->hidden();
 
-desc('Sync fileadmin from remote to local');
-task('files:sync', function() {
+desc('Download new files in TYPO3 fileadmin from remote to local');
+task('files:pull', function() {
     writeln('Sync folder public/fileadmin from host "{{alias}}" to local');
     download('{{deploy_path}}/typo3/public/fileadmin/', '{{rsync_src}}/public/fileadmin', [
         'progress_bar' => true,
@@ -180,9 +181,4 @@ task('files:sync', function() {
             '_temp_/**/*'
         ]
     ]);
-});
-
-desc('Sync database from remote to local');
-task('database:sync', function() {
-    writeln('Sync database from host "{{alias}}" to local');
 });
