@@ -2,8 +2,48 @@
 	<meta>
 		<langDisable>1</langDisable>
 	</meta>
-
   <sheets>
+
+	<sDEF>
+	  <ROOT>
+		<TCEforms>
+			<sheetTitle>Text Slider Settings</sheetTitle>
+		</TCEforms>
+		<type>array</type>
+			<el>
+				<settings.bgColor>
+					<TCEforms>
+						<label>Choose Background Color</label>
+						<config>
+							<type>select</type>
+							<renderType>selectSingle</renderType>
+							<items type="array">
+								<numIndex index="0" type="array">
+									<numIndex index="0">white</numIndex>
+									<numIndex index="1">white</numIndex>
+								</numIndex>
+								<numIndex index="1" type="array">
+									<numIndex index="0">gray</numIndex>
+									<numIndex index="1">gray</numIndex>
+								</numIndex>
+							</items>
+						</config>
+					</TCEforms>
+				</settings.bgColor>
+				<settings.headline>
+					<TCEforms>
+						<label>Headline</label>
+						<config>
+							<type>input</type>
+							<size>255</size>
+						</config>
+					</TCEforms>
+				</settings.headline>
+			</el>
+	  </ROOT>
+	</sDEF>
+
+
 
 	
 	<textSliderContent>
@@ -30,6 +70,8 @@
 			            </tx_templavoila>
 
 			            <el>
+
+					
 								<headline>
 									<TCEforms>
 										<label>Headline</label>
