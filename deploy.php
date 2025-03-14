@@ -14,19 +14,19 @@ new \SourceBroker\DeployerLoader\Load([
     ['path' => 'vendor/sourcebroker/deployer-extended-database/deployer'],
 ]);
 
-// load host configuration
-import('deploy/inventory.yaml');
-
 // Task Config: db:*
+set('db_allow_pull_live', false);
 set('db_databases', [
     'typo3' => [
-        'truncate_tables' => [
-            'be_sessions',
-            'cache_.*',
-            'cf_.*',
-            'fe_sessions',
-            'sys_file_processedfile',
-            'sys_log',
+        [
+            'truncate_tables' => [
+                'be_sessions',
+                'cache_.*',
+                'cf_.*',
+                'fe_sessions',
+                'sys_file_processedfile',
+                'sys_log',
+            ],
         ],
         (new \Deploy\Driver\Typo3EnvDriver())->getDatabaseConfig()
     ],
@@ -34,6 +34,10 @@ set('db_databases', [
 localhost('local')
     ->set('bin/php', 'php')
     ->set('deploy_path', getcwd());
+
+// load host configuration
+import('deploy/inventory.yaml');
+
 
 // GIT Config
 set('repository', 'https://github.com/Internationaler-Bund-e-V/ib-website.git');
@@ -67,7 +71,6 @@ set('writable_recursive', true);
 
 // Task Config: rsync
 set('rsync_dest', '{{release_path}}');
-
 set('exclude', [
     '.git',
     '/.ddev',
@@ -99,7 +102,6 @@ set('exclude', [
     '/webpack.config.js',
     '/yarn.lock',
 ]);
-
 set('rsync', function () {
     return [
         'exclude' => array_unique(get('exclude', [])),
@@ -119,6 +121,7 @@ set('rsync', function () {
 after('deploy:failed', 'deploy:unlock');
 before('deploy:release', 'build:local');
 before('deploy:update_code', 'typo3:lockBackend');
+before('deploy:update_code', 'rsync:warmup');
 after('deploy:symlink', 'cache:flush');
 after('deploy:symlink', 'typo3:unlockBackend');
 
@@ -127,12 +130,12 @@ desc('Build CSS and JavaScript on local machine');
 task('build:local', function () {
     runLocally('yarn install');
     runLocally('yarn install build');
-});
+})->hidden();
 
 desc('Use rsync task to pull project files');
 task('deploy:update_code', function () {
     invoke('rsync');
-});
+})->hidden();
 
 desc('Use TYPO3 CLI to flush cache');
 task('cache:flush', function () {
@@ -144,9 +147,42 @@ task('cache:flush', function () {
 desc('Use TYPO3 CLI to lock the backend login');
 task('typo3:lockBackend', function () {
     run('{{deploy_path}}/typo3/vendor/bin/typo3 backend:lockforeditors');
-});
+})->hidden();
 
 desc('Use TYPO3 CLI to unlock the backend login');
 task('typo3:unlockBackend', function () {
     run('{{deploy_path}}/typo3/vendor/bin/typo3 backend:unlockforeditors');
+})->hidden();
+
+desc('Sync fileadmin from remote to local');
+task('files:sync', function() {
+    writeln('Sync folder public/fileadmin from host "{{alias}}" to local');
+    download('{{deploy_path}}/typo3/public/fileadmin/', '{{rsync_src}}/public/fileadmin', [
+        'progress_bar' => true,
+        'exclude' => [
+            '_processed_/**/*',
+            '_temp_/**/*'
+        ]
+    ]);
+    writeln('Sync folder public/secure from host "{{alias}}" to local');
+    download('{{deploy_path}}/typo3/public/secure/', '{{rsync_src}}/public/secure', [
+        'progress_bar' => true,
+        'exclude' => [
+            '_processed_/**/*',
+            '_temp_/**/*'
+        ]
+    ]);
+    writeln('Sync folder public/uploads from host "{{alias}}" to local');
+    download('{{deploy_path}}/typo3/public/uploads/', '{{rsync_src}}/public/uploads', [
+        'progress_bar' => true,
+        'exclude' => [
+            '_processed_/**/*',
+            '_temp_/**/*'
+        ]
+    ]);
+});
+
+desc('Sync database from remote to local');
+task('database:sync', function() {
+    writeln('Sync database from host "{{alias}}" to local');
 });

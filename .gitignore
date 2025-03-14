@@ -46,6 +46,9 @@ vendor
 # !.ddev/homeadditions/.ssh/config
 # !.ddev/homeadditions/ssh_config
 
+# Ignore deployer stuff
+/.dep
+
 # Ignore build stuff
 /public/_assets
 /public/build
