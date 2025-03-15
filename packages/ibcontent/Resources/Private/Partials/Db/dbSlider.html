@@ -1,12 +1,12 @@
 <div class="ib-slider-container offset--small ibLocSliderContainer">
-	<div class="ib-slider-controls"><i class="fa fa-pause-circle" aria-hidden="true" id="ib-slider-controls-toggle"></i>
+	<div class="ib-slider-controls">
+        <i class="fa fa-pause-circle" aria-hidden="true" id="ib-slider-controls-toggle"></i>
 	</div>
 	<div class="row columns ib-startpage-slider-controls">
 		<div id="startpagesliderPrevButton" class="columns small-1 ib-font-size-60 ib-prev-next-button">
 			<i class="ib-icon-arrow-left"></i>
 		</div>
 		<div class="columns small-10"></div>
-
 		<div id="startpagesliderNextButton" class="columns small-1 ib-font-size-60 ib-prev-next-button">
 			<i class="ib-icon-arrow-right float-right "></i>
 		</div>
@@ -14,7 +14,7 @@
 	<div class="row-fluid ib-startpageslider" id="ib-slider-container" data-loaderid="loader_locPages">
 		<div class="row expanded">
 			<div class="ib-startpage-slider-container">
-				<div class="ib-startpage-slider row expanded">
+				<div class="ib-startpage-slider slides row expanded">
 					<f:for each="{slides}" as="slide">
 						<f:if condition="{slide.alt_tag} != ''">
 							<f:then>
@@ -24,9 +24,10 @@
 								<f:variable name="altAttributeValue"><f:translate key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:altTagValue" /></f:variable>
 							</f:else>
 						</f:if>
+                        <f:variable name="src">{customSettings.urlIBPdbImages}{slide.url}</f:variable>
 						<div class="ib-startpage-slider-item">
 							<div class="ib-startpage-slider-item-wrapper">
-								<img src="{customSettings.urlIBPdbImages}{slide.url}" alt="{altAttributeValue}"
+								<img src="{src}" alt="{altAttributeValue}"
 									width="1350" height="425">
 
 							</div>

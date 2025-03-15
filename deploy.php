@@ -1,63 +1,190 @@
 <?php
 namespace Deployer;
 
-require 'recipe/typo3.php';
-require 'contrib/webpack_encore.php';
-// require 'contrib/ms-teams.php';
-// set('teams_webhook', 'https://outlook.office.com/webhook/...');
+require_once(__DIR__ . '/vendor/autoload.php');
 
-// Config
+// require generic TYPO3 recipe
+require 'recipe/typo3.php';
+
+require 'contrib/rsync.php';
+require 'contrib/yarn.php';
+
+new \SourceBroker\DeployerLoader\Load([
+    ['path' => 'vendor/sourcebroker/deployer-instance/deployer'],
+    ['path' => 'vendor/sourcebroker/deployer-extended-database/deployer'],
+]);
+
+// Task Config: db:*
+set('db_allow_pull_live', false);
+set('db_databases', [
+    'typo3' => [
+        [
+            'truncate_tables' => [
+                'be_sessions',
+                'cache_.*',
+                'cf_.*',
+                'fe_sessions',
+                'sys_file_processedfile',
+                'sys_log',
+            ],
+        ],
+        (new \Deploy\Driver\Typo3EnvDriver())->getDatabaseConfig()
+    ],
+]);
+
+// load host configuration
+import('deploy/inventory.yaml');
+
+// Task Config: db:*
+set('db_databases', [
+    (new \SourceBroker\DeployerExtendedDatabase\Driver\EnvDriver())->getDatabaseConfig()
+]);
+
+// define localhost
+localhost('local')
+    ->set('bin/php', 'php')
+    ->set('deploy_path', getcwd());
+
+// GIT Config
 set('repository', 'https://github.com/Internationaler-Bund-e-V/ib-website.git');
 
+## Task Config: deploy:symlink
 add('shared_files', [
-    'public/.htaccess',
-    'public/google009d0a891c474c5a.html',
-    'public/google0226696366ebd26f.html',
+    '.env',
+    '{{typo3_webroot}}/.htaccess',
+    '{{typo3_webroot}}/google009d0a891c474c5a.html',
+    '{{typo3_webroot}}/google0226696366ebd26f.html',
 ]);
+
 add('shared_dirs', [
-    'public/fileadmin',
-    'public/secure',
-    'public/typo3temp',
-    'public/uploads',
+    '{{typo3_webroot}}/fileadmin',
+    '{{typo3_webroot}}/secure',
+    '{{typo3_webroot}}/typo3temp',
+    '{{typo3_webroot}}/uploads',
+    'var'
 ]);
 
 add('writable_dirs', array: [
-    'public/fileadmin',
-    'public/secure',
-    'public/typo3temp',
-    'public/typo3conf',
-    'public/uploads',
+    '{{typo3_webroot}}/secure',
+    '{{typo3_webroot}}/typo3temp',
+    '{{typo3_webroot}}/typo3conf',
+    '{{typo3_webroot}}/uploads',
     'var',
+    'config',
 ]);
 
-// Hosts
+set('writable_recursive', true);
 
-host('prod')
-    ->set('hostname', 'ib.de')
-    ->set('label', 'prod')
-    ->set('remote_user', 'ib')
-    ->set('port', 4567)
-    ->set('forward_agent', true)
-    ->set('config_file', '~/ssh_config')
-    ->set('deploy_path', '/var/www/ib.de/typo3');
-
-host('stage')
-    ->set('hostname', 'ib-staging.rmsdev.de')
-    ->set('remote_user', 'ib')
-    ->set('port', 4567)
-    ->set('forward_agent', true)
-    ->set('config_file', '~/ssh_config')
-    ->set('deploy_path', '/var/www/ib-staging.rmsdev.de/typo3');
+// Task Config: rsync
+set('rsync_dest', '{{release_path}}');
+set('exclude', [
+    '.git',
+    '/.ddev',
+    '/.editorconfig',
+    '/.env.example',
+    '/.env.local',
+    '/.env',
+    '/.github',
+    '/.gitignore',
+    '/.idea',
+    '/.vscode',
+    '/docs',
+    'dump.sql.gz',
+    '/node_modules',
+    '/package.json',
+    'packages/*/Resources/Public/Css',
+    'packages/*/Resources/Public/JavaScript',
+    '/public/_assets',
+    '/public/.htaccess',
+    '/public/typo3conf',
+    '/public/typo3temp',
+    '/public/fileadmin',
+    '/public/uploads',
+    '/public/secure',
+    '/public/index.php',
+    'tsconfig.json',
+    '/types',
+    '/vendor',
+    '/var',
+    '/webpack.config.js',
+    '/yarn.lock',
+]);
+set('rsync', function () {
+    return [
+        'exclude' => array_unique(get('exclude', [])),
+        'exclude-file' => false,
+        'include' => [],
+        'include-file' => false,
+        'filter' => [],
+        'filter-file' => false,
+        'filter-perdir' => false,
+        'flags' => 'rz',
+        'options' => ['delete'],
+        'timeout' => 3600,
+    ];
+});
 
 // Hooks
-after('deploy:update_code', 'build');
 after('deploy:failed', 'deploy:unlock');
-
-// before('deploy', 'teams:notify');
-// after('deploy:success', 'teams:notify:success');
-// after('deploy:failed', 'teams:notify:failure');
+before('deploy:release', 'build:local');
+before('deploy:update_code', 'typo3:lockBackend');
+before('deploy:update_code', 'rsync:warmup');
+after('deploy:symlink', 'cache:flush');
+after('deploy:symlink', 'typo3:unlockBackend');
 
 // Tasks
-task('build', function() {
-    runLocally('yarn install && yarn run build');
+desc('Build CSS and JavaScript on local machine');
+task('build:local', function () {
+    runLocally('yarn install');
+    runLocally('yarn run build');
+})->hidden();
+
+desc('Use rsync task to pull project files');
+task('deploy:update_code', function () {
+    invoke('rsync');
+})->hidden();
+
+desc('Use TYPO3 CLI to flush cache');
+task('cache:flush', function () {
+    run('{{deploy_path}}/typo3/vendor/bin/typo3 staticfilecache:flushCache');
+    run('{{deploy_path}}/typo3/vendor/bin/typo3 cache:flush');
+    run('{{deploy_path}}/typo3/vendor/bin/typo3 cache:warmup');
+});
+
+desc('Use TYPO3 CLI to lock the backend login');
+task('typo3:lockBackend', function () {
+    run('{{deploy_path}}/typo3/vendor/bin/typo3 backend:lockforeditors');
+})->hidden();
+
+desc('Use TYPO3 CLI to unlock the backend login');
+task('typo3:unlockBackend', function () {
+    run('{{deploy_path}}/typo3/vendor/bin/typo3 backend:unlockforeditors');
+})->hidden();
+
+desc('Download new files in TYPO3 fileadmin from remote to local');
+task('files:pull', function() {
+    writeln('Sync folder public/fileadmin from host "{{alias}}" to local');
+    download('{{deploy_path}}/typo3/public/fileadmin/', '{{rsync_src}}/public/fileadmin', [
+        'progress_bar' => true,
+        'exclude' => [
+            '_processed_/**/*',
+            '_temp_/**/*'
+        ]
+    ]);
+    writeln('Sync folder public/secure from host "{{alias}}" to local');
+    download('{{deploy_path}}/typo3/public/secure/', '{{rsync_src}}/public/secure', [
+        'progress_bar' => true,
+        'exclude' => [
+            '_processed_/**/*',
+            '_temp_/**/*'
+        ]
+    ]);
+    writeln('Sync folder public/uploads from host "{{alias}}" to local');
+    download('{{deploy_path}}/typo3/public/uploads/', '{{rsync_src}}/public/uploads', [
+        'progress_bar' => true,
+        'exclude' => [
+            '_processed_/**/*',
+            '_temp_/**/*'
+        ]
+    ]);
 });

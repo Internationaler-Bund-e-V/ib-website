@@ -71,7 +71,12 @@
               </f:if>
             </label>
             <!-- salutation neutral-->
-            <input type="radio" name="salutation" value="Neutral" id="salutationNeutral">
+            <input 
+              type="radio" 
+              name="salutation" 
+              value="Neutral" 
+              id="salutationNeutral"
+              >
             <label for="salutationNeutral">
               <f:if condition="{settings.salutationNeutral}">
                 <f:then>
@@ -99,7 +104,13 @@
                       key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_firstname" />
                   </f:else>
                 </f:if>
-                <input type="text" placeholder="" name="firstName" required>
+                <input 
+                  type="text" 
+                  placeholder="" 
+                  name="firstName" 
+                  autocomplete="given-name"
+                  required
+                  >
                 <span class="form-error">
                   <f:translate
                     key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_firstname_error" />
@@ -119,7 +130,12 @@
                       key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_lastname" />
                   </f:else>
                 </f:if>
-                <input type="text" placeholder="" name="lastName" required>
+                <input 
+                  type="text" 
+                  placeholder="" 
+                  name="lastName" 
+                  autocomplete="family-name"
+                  required>
                 <span class="form-error">
                   <f:translate
                     key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_lastname_error" />
@@ -139,7 +155,13 @@
                       key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_email" />
                   </f:else>
                 </f:if>
-                <input type="email" placeholder="" name="eMail" required>
+                <input 
+                  type="email" 
+                  placeholder="" 
+                  name="eMail" 
+                  autocomplete="email"
+                  required
+                  >
                 <span class="form-error">
                   <f:translate
                     key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_email_error" />
@@ -159,7 +181,12 @@
                       key="LLL:EXT:ibcontent/Resources/Private/Language/locallang_form.xlf:contactform_phone" />
                   </f:else>
                 </f:if>
-                <input type="text" placeholder="" name="phone">
+                <input 
+                  type="text" 
+                  placeholder="" 
+                  name="phone"
+                  autocomplete="tel"
+                  >
               </label>
             </div>
 

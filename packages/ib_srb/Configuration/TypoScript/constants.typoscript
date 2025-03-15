@@ -6,7 +6,7 @@ portalSettings {
     mainMenu = 4243
     spendenUID = 4267
     searchUID = 4255
-    recaptchaSiteKey = 6LesBQ4UAAAAACHcJQuvSaBmyxftnwUI-j0SRCFA
+    recaptchaSiteKey = getEnv('RECAPTCHA_SITE_KEY')
     google_tag_manager.id =
     cookiebot.language = DE
     cookiebot.cbid = a5443aef-4545-4365-a7d7-0c9845b054b8
@@ -15,8 +15,8 @@ portalSettings {
 }
 
 #recpatcha
-plugin.tx_recaptcha.public_key = 6LesBQ4UAAAAACHcJQuvSaBmyxftnwUI-j0SRCFA
-plugin.tx_recaptcha.private_key = 6LesBQ4UAAAAALhNNGcHEyuR2QdZBzjPhCDzgijV
+plugin.tx_recaptcha.public_key = getEnv('RECAPTCHA_SITE_KEY')
+plugin.tx_recaptcha.private_key = getEnv('SRB_RECAPTCHA_PRIVATE_KEY')
 
 # development settings
 [applicationContext == "Development"]
@@ -28,7 +28,7 @@ plugin.tx_recaptcha.private_key = 6LesBQ4UAAAAALhNNGcHEyuR2QdZBzjPhCDzgijV
         mainMenu = 4243
         spendenUID = 4267
         searchUID = 4255
-        recaptchaSiteKey = 6LesBQ4UAAAAACHcJQuvSaBmyxftnwUI-j0SRCFA
+        recaptchaSiteKey = getEnv('RECAPTCHA_SITE_KEY')
         google_tag_manager.id =
         cookiebot.language = DE
         cookiebot.cbid = a5443aef-4545-4365-a7d7-0c9845b054b8

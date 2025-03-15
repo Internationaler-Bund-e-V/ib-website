@@ -80,17 +80,17 @@ $(function() {
         new IBMenu(document.querySelector('.jetmenu') as HTMLElement, { indicator: false });
     }
 
-    if (document.querySelector('.startPage .ib-news-slider')) {
-        new IBStartpageNewsSlider(document.querySelector('.startPage .ib-news-slider')!);
-    }
+    document.querySelectorAll('.startPage .ib-news-slider').forEach((element:Element) => {
+        new IBStartpageNewsSlider(element as HTMLElement);
+    });
 
-    if (document.querySelectorAll('.twoColLayout .ib-news-slider').length > 0) {
-        new IBNewsSlider(document.querySelectorAll('.twoColLayout .ib-news-slider'));
-    }
+    document.querySelectorAll('.twoColLayout .ib-news-slider').forEach((element:Element) => {
+        new IBNewsSlider(element as HTMLElement);
+    });
 
-    if (document.querySelector('#ibVideoSlider')) {
-        new IBVideoSlider(document.querySelector('#ibVideoSlider')!);
-    }
+    document.querySelectorAll('#ibVideoSlider').forEach((element:Element) => {
+        new IBVideoSlider(element as HTMLElement);
+    });
 
     //    Foundation.reInit([ 'equalizer' ]);
 });

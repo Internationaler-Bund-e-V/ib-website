@@ -74,13 +74,6 @@ $(() => {
 // ------------------------------------
 // RECAPTCHA STUFF
 // ------------------------------------
-var fcSolved = false;
-
-function fcCallback(solution) {
-    if ($('#ib-recaptcha-container .frc-container').hasClass('frc-success')) {
-        fcSolved = true;
-    }
-}
 
 
 /**
@@ -99,6 +92,7 @@ function fcCallback(solution) {
         grecaptcha: null,
         ajaxSubmitUrl: ""
     };
+    var fcSolved = false;
 
 
     /**
@@ -255,6 +249,10 @@ function fcCallback(solution) {
             var serializedArrayFormData = $(contactForm).serializeArray();
             for (var i = 0; i < serializedArrayFormData.length; i++) {
                 serializedArrayFormData[i]['name'] = "tx_ibformbuilder_showform[formdata][" + serializedArrayFormData[i].name + "]";
+            }
+
+            if ($('#ib-recaptcha-container .frc-container').hasClass('frc-success')) {
+                fcSolved = true;
             }
 
             // ----------------------------------

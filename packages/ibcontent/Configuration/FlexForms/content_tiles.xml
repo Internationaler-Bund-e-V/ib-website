@@ -206,8 +206,9 @@
 												<minitems>0</minitems>
 												<show_thumbs>1</show_thumbs>
 												-->
-												<type>input</type>
-												<renderType>inputLink</renderType>
+												<type>link</type>
+                                                <nullable>true</nullable>
+                                                <allowedTypes>page,url,record</allowedTypes>
 											</config>
 										</TCEforms>
 									</targetpageintern>

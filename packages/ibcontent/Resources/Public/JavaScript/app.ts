@@ -7,6 +7,7 @@ import IBContentSlider from './components/IBContentSlider';
 import IBBubbleSlider from './components/IBBubbleSlider';
 import IBJobsSlider from './components/IBJobsSlider';
 import IBStartPageSlider from './components/IBStartPageSlider';
+import IBContactForm from './components/IBContactForm';
 
 import './components/db.js';
 
@@ -33,5 +34,9 @@ $(() => {
 
     document.querySelectorAll('.twoColLayout .ib-jobsslider').forEach((element: Element) => {
         new IBJobsSlider(element, { slidesToShow: 2 });
+    });
+
+    document.querySelectorAll('.ibContactFormContainer').forEach((element: Element) => {
+        new IBContactForm(element);
     });
 });

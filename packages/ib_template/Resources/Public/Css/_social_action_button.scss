@@ -99,22 +99,21 @@
 		opacity: 0;
 		visibility: hidden;
 		transition: all 0.4s ease-in-out;
-		background: #fff;
-		//border-radius: 5px;
-		//transform: translateY(0%);
-		//transform: translateY(-110%);
-		box-shadow: 2px 3px 10px 0 rgba(81, 81, 81, 0.1);
-		border: 1px solid #e4e4e4;
-		padding: 10px;
-		position: absolute;
-		bottom: 0px;
+        position: absolute;
+        bottom: 0px;
 
 		ul {
 			margin: 0;
 			padding: 0;
 			display: flex;
 			flex-direction: column;
-
+            background: #fff;
+            //border-radius: 5px;
+            //transform: translateY(0%);
+            //transform: translateY(-110%);
+            box-shadow: 2px 3px 10px 0 rgba(81, 81, 81, 0.1);
+            border: 1px solid #e4e4e4;
+            padding: 10px;
 		}
 
 		a {

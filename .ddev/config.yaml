@@ -13,6 +13,11 @@ additional_hostnames:
   - "ib-kitas"
   - "ib-suedwest"
   - "srb"
+  - "sit-sis"
+  - "ib-training"
+  - "ib-sprachinstitut-boeblingen"
+  - "ib-sprachinstitut-stuttgart"
+  - "ib-turkey"
 additional_fqdns: []
 database:
     type: mariadb

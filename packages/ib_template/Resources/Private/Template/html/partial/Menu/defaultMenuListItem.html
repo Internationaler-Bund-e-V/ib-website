@@ -53,34 +53,19 @@
   <v:menu pageUid="{recursionStartPageUid}" classActive="active" entryLevel="2">
     <f:if condition="{menu}">
       <!-- open first row -->
-      <div class="row">
+      <div class="row small-up-1 medium-up-3">
         <f:for each="{menu}" as="startLevelPage" iteration="iterator">
-          <div class="col2">
-            <ul>
-              <li class="image">
+          <div class="column column-block">
+            <v:page.link pageUid="{startLevelPage.uid}" absolute="1">
                 <v:page.resources.fal table="pages" field="media" uid="{startLevelPage.uid}" as="images" limit="1">
-                  <f:for each="{images}" as="image">
-                    <v:page.link pageUid="{startLevelPage.uid}" absolute="1">
-                      <img src="{image.url}" alt="{image.alternative}" data-navimage="{startLevelPage.uid}">
-                    </v:page.link>
-                  </f:for>
+                    <div class="megamenu-list-item-image hide-for-small-only" style="background-image: url('{images.0.url}')"></div>
                 </v:page.resources.fal>
-              </li>
-              <li>
-                <v:page.link pageUid="{startLevelPage.uid}" absolute="1" />
-              </li>
-            </ul>
+                <div class="megamenu-list-item-text">{startLevelPage.linktext}</div>
+            </v:page.link>
           </div>
-          <f:if condition="{iterator.cycle} % 3">
-            <f:then></f:then>
-            <f:else>
-      </div>
-      <div class="row">
-        </f:else>
-    </f:if>
-    </f:for>
+        </f:for>
     <!-- close last row -->
-    </div>
+      </div>
     </f:if>
   </v:menu>
 </f:section>

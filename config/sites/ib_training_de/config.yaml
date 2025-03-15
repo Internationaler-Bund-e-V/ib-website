@@ -1,4 +1,8 @@
 base: 'https://ib-training.de'
+baseVariants:
+  -
+    base: 'https://ib-training.ddev.site/'
+    condition: 'getenv("IS_DDEV_PROJECT") == "true"'
 disableStaticFileCache: false
 errorHandling:
   -

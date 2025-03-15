@@ -12,3 +12,11 @@ module.tx_ibcmt_web_ibcmtibcmt {
         layoutRootPaths.1 = {$module.tx_ibcmt_ibcmt.view.layoutRootPath}
     }
 }
+
+module.tx_typo3encore {
+    settings {
+        entrypointJsonPath = build/entrypoints.json
+        manifestJsonPath = build/manifest.json
+    }
+}
+
