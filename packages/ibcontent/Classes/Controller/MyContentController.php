@@ -138,6 +138,13 @@ class MyContentController extends ActionController
         return $this->htmlResponse();
     }
 
+    public function textSliderExtendedAction(): ResponseInterface
+    {
+        $this->view->assign('uid', $this->request->getAttribute('currentContentObject')->data['uid']);
+
+        return $this->htmlResponse();
+    }
+
     public function tilesAction(): ResponseInterface
     {
         $this->view->assign('uid', $this->request->getAttribute('currentContentObject')->data['uid']);
