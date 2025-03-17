@@ -127,6 +127,7 @@ set('rsync', function () {
 // Hooks
 after('deploy:failed', 'deploy:unlock');
 before('deploy:release', 'build:local');
+before('deploy:release', 'deploy:prepare_release_info');
 before('deploy:update_code', 'typo3:lockBackend');
 before('deploy:update_code', 'rsync:warmup');
 after('deploy:symlink', 'cache:flush');
@@ -139,9 +140,22 @@ task('build:local', function () {
     runLocally('yarn run build');
 })->hidden();
 
+desc('Get release information from git');
+task('deploy:prepare_release_info', function() {
+    set('target', function() {
+        return escapeshellarg(runLocally("git rev-parse --abbrev-ref HEAD"));
+    });
+
+    // Save git revision in REVISION file.
+    $target = get('target');
+    set('revision', escapeshellarg(runLocally("git rev-list $target -1")));
+});
+
 desc('Use rsync task to pull project files');
 task('deploy:update_code', function () {
     invoke('rsync');
+    $rev = get('revision');
+    run("echo $rev > {{release_path}}/REVISION");
 })->hidden();
 
 desc('Use TYPO3 CLI to flush cache');
