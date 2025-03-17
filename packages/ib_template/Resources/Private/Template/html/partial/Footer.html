@@ -9,7 +9,8 @@
 </f:if>
 
 <f:section name="defaultFooter">
-  <footer id="ib-footer">
+  <f:variable name="cssClass">{f:cObject(typoscriptObjectPath: 'portalSettings.footer.css_class')}</f:variable>
+  <footer id="ib-footer" class="{cssClass}">
     <div class="row ib-footer-container">
       <div class="columns medium-10 medium-offset-1">
         <f:if condition="{f:cObject(typoscriptObjectPath: 'portalSettings.footer.hide_footer')}">

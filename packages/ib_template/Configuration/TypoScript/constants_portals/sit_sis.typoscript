@@ -100,6 +100,7 @@
         footer.tt_content_uid_left = 21467
         footer.tt_content_uid_middle = 21466
         footer.tt_content_uid_right = 21465
+        footer.css_class = sit-sis
     }
 
     gallery.folder.pid = 7388

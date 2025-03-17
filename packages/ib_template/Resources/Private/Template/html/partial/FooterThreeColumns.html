@@ -1,5 +1,6 @@
 <!-- Footer Three Columns-->
-<footer id="ib-footer" class="footerThreeColumns">
+<f:variable name="cssClass">footerThreeColumns {f:cObject(typoscriptObjectPath: 'portalSettings.footer.css_class')}</f:variable>
+<footer id="ib-footer" class="{cssClass}">
   <div class="row ib-footer-container">
     <div class="columns medium-10 medium-offset-1">
       <!-- columns-->
