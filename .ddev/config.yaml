@@ -277,6 +277,8 @@ disable_settings_management: false
 # However, with "override_config: true" in a particular config.*.yaml file,
 # 'use_dns_when_possible: false' can override the existing values, and
 hooks:
+  pre-start:
+    - exec-host: ".ddev/commands/web/pre-start"
   post-start:
     - composer: install
     - exec: yarn install && yarn run watch &

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+GITCONFIG=~/.gitconfig
+GITCONFIGDDEV=.ddev/homeadditions/.gitconfig
+
+cp $GITCONFIG $GITCONFIGDDEV
+if [[ -f ~/.git-completion.bash ]]; then
+  cp ~/.git-completion.bash .ddev/homeadditions/
+fi
+if [[ -f ~/.git-prompt.sh ]]; then
+  cp ~/.git-prompt.sh .ddev/homeadditions/
+fi
+cp ~/.bashrc .ddev/homeadditions/
+echo "Using .gitconfig and Git completion from host."
