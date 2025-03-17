@@ -191,6 +191,10 @@ portalSettings.footer.show_textcontent_middle.value = {$portalSettings.footer.sh
 portalSettings.footer.show_textcontent_right = TEXT
 portalSettings.footer.show_textcontent_right.value = {$portalSettings.footer.show_textcontent_right}
 
+portalSettings.footer.css_class = TEXT
+portalSettings.footer.css_class.value = {$portalSettings.footer.css_class}
+portalSettings.footer.css_class.stdWrap.wrap = |
+
 // get tt_content.bodytext and render it for usage in the footer
 portalSettings.footer.textcontent_right = RECORDS
 portalSettings.footer.textcontent_right {
