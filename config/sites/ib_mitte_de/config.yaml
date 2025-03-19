@@ -1,6 +1,9 @@
 rootPageId: 1026
 base: 'https://ib-mitte.de'
-baseVariants: {  }
+baseVariants:
+  -
+    base: 'https://ib-mitte.ddev.site/'
+    condition: 'getenv("IS_DDEV_PROJECT") == "true"'
 languages:
   -
     title: Deutsch
