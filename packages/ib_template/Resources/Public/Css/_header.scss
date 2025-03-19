@@ -54,11 +54,11 @@ $nav-height--collapsed: 60px;
 }
 
 #ib-logo {
-    top: 15px;
+    top: 3px;
     left: 6%;
     position: absolute;
     z-index: 10;
-    height: 75px;
+    height: 45px;
     @include transition(all 250ms ease);
 
     a {
