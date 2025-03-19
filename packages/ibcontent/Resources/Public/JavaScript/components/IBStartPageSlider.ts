@@ -52,9 +52,9 @@ class IBStartPageSlider {
         $('#ib-partial-startpageslider div.slick-arrow').on('click', () => {
             $(this.sliderElement!).slick('slickPause');
         });
-        // if ($('#ib-partial-startpageslider .slick-slide:not(.slick-cloned)').length <= 1) {
-        //     $('#ib-slider-controls-toggle').css('display', 'none');
-        // }
+        if ($('#ib-partial-startpageslider .slick-slide:not(.slick-cloned)').length <= 1) {
+            $('#ib-slider-controls-toggle').css('display', 'none');
+        }
 
 
     }

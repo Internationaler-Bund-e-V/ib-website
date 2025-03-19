@@ -18,6 +18,8 @@ additional_hostnames:
   - "ib-sprachinstitut-boeblingen"
   - "ib-sprachinstitut-stuttgart"
   - "ib-turkey"
+  - "ib-mitte"
+  - "ib-stiftung"
 additional_fqdns: []
 database:
     type: mariadb

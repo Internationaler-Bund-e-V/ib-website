@@ -1,6 +1,9 @@
 rootPageId: 2723
 base: 'https://ib-stiftung.de/'
-baseVariants: {  }
+baseVariants:
+  -
+    base: 'https://ib-stiftung.ddev.site/'
+    condition: 'getenv("IS_DDEV_PROJECT") == "true"'
 disableStaticFileCache: false
 
 languages:

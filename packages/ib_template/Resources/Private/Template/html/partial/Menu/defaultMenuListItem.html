@@ -58,7 +58,9 @@
           <div class="column column-block">
             <v:page.link pageUid="{startLevelPage.uid}" absolute="1">
                 <v:page.resources.fal table="pages" field="media" uid="{startLevelPage.uid}" as="images" limit="1">
-                    <div class="megamenu-list-item-image hide-for-small-only" style="background-image: url('{images.0.url}')"></div>
+                    <f:if condition="{images.0}">
+                        <div class="megamenu-list-item-image hide-for-small-only" style="background-image: url('{images.0.url}')"></div>
+                    </f:if>
                 </v:page.resources.fal>
                 <div class="megamenu-list-item-text">{startLevelPage.linktext}</div>
             </v:page.link>
