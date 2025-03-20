@@ -29,7 +29,6 @@
                   </f:then>
                 </f:if>
 
-
                 <div class="ib-startpage-slider-item">
                   <div class="ib-startpage-slider-item-wrapper">
                     <f:if condition="{slide.ItemWrap.slideImage}">
@@ -46,7 +45,7 @@
                               target="{tabTarget}">
                               <f:if condition="imagePath">
                                 <f:image 
-                                  class="ib-start-page-image-slider"
+                                  class="ib-start-page-image-slider {ZukunftstagStartPageSlider}"
                                   src="{imagePath}" 
                                   alt="{altAttributeValue}"
                                   alt="{altAttributeValue}"
@@ -57,8 +56,9 @@
                           </f:then>
                           <f:else>
                             <f:if condition="imagePath">
+                              <f:variable name="ZukunftstagStartPageSlider" value="{f:cObject(typoscriptObjectPath: 'portalSettings.zukunftstagImgStartPageSlider.css_class')}" />
                               <f:image 
-                                class="ib-start-page-image-slider"
+                                class="ib-start-page-image-slider {ZukunftstagStartPageSlider}"
                                 src="{imagePath}" 
                                 alt="{altAttributeValue}"
                                 alt="{altAttributeValue}"

@@ -8,6 +8,9 @@
 
         bodyClassName = modern-look
 
+        zukunftstagImg.css_class = zukunftstag-img-text-ext
+        zukunftstagImgStartPageSlider.css_class = zukunftstag-start-page-slider
+
         #oberster Knoten / Home-Seite
         root_id = 7952
 
@@ -99,4 +102,6 @@
         #Meta Ordner ID (Impress, AGB, etc)
         footernav_meta_folder_id = 1027
     }
+
+
 [end]
