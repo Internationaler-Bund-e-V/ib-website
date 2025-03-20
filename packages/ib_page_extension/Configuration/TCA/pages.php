@@ -52,7 +52,6 @@ $temporaryColumns = array(
             "items" => array(
                 array('label' => 'default (portal)', 'value' => 'ib-theme-portal'),
                 array('label' => 'Kitas', 'value' => 'ib-theme-kitas'),
-                array('label' => 'Modern Look', 'value' => 'ib-theme-portal modern-look'),
             ),
         ),
     ),
