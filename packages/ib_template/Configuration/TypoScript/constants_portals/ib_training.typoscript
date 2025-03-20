@@ -6,6 +6,8 @@
     portalSettings {
         pageTitle = IB Training
 
+        bodyClassName = modern-look
+
         #oberster Knoten / Home-Seite
         root_id = 7952
 
