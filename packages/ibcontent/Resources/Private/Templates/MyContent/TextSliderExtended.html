@@ -1,0 +1,299 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+    <div class="row ib-content-module ib-contentslider ib-background-{settings.bgColor}">
+        <div class="columns small-12 medium-offset-1 medium-11 large-offset-1-2col small-7-2col end">
+            <f:if condition="{settings.headline}">
+                <h2 class="ib-headline">{settings.headline}</h2>
+            </f:if>
+        </div>
+        <div class="sliderLoading" id="loader_{uid}"></div>
+        <div class="contentSliderContainer useLoadingIndicator">
+            <div class="columns small-8-2col">
+                <div id="contentsliderPrevButton-{uid}" class=" columns small-1 large-1-2col ib-color-blue ib-font-size-60 ib-prev-next-button ib-bubble-slider-control-prev text-sliderext-prev-next-btn">
+                    <i class="ib-icon-arrow-left"></i>
+                </div>
+                <div class="columns small-10 large-6-2col">
+                    <div class="ib-contentslider-slider slides row expanded" data-sliderid="{uid}" data-loaderid="loader_{uid}">
+            
+                    <f:render section="leitsatz" arguments="{textSliderList: settings.guidelineSliderContainer}" />
+                </div>
+                </div>
+                <div id="contentsliderNextButton-{uid}" class="columns small-1 large-1-2col ib-color-blue ib-font-size-60 ib-prev-next-button ib-bubble-slider-control-next text-sliderext-prev-next-btn">
+                    <i class="ib-icon-arrow-right float-right "></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</f:section>
+
+
+
+
+<f:section name="leitsatz">
+    <f:for each="{textSliderList}" as="sliderItem">
+        <f:if condition="{sliderItem}">
+            <div class="ib-contentslider-item  ">
+
+
+                <div class="columns row headline-section">
+
+                    <f:if condition="{sliderItem.ItemWrap.headline} != ''">
+                        <f:if condition="{sliderItem.ItemWrap.headline_tag}">
+                            <f:then>
+                                <{sliderItem.ItemWrap.headline_tag} class="ib-headline">{sliderItem.ItemWrap.headline}</{sliderItem.ItemWrap.headline_tag}>
+                            </f:then>
+                            <f:else>
+                                <h2 class="ib-headline">{sliderItem.ItemWrap.headline}</h2>
+                            </f:else>
+                        </f:if>
+                    </f:if>
+
+                    <f:if condition="{sliderItem.ItemWrap.subheadline} != ''">
+                        <f:if condition="{sliderItem.ItemWrap.subheadline_tag}">
+                            <f:then>
+                                <{sliderItem.ItemWrap.subheadline_tag}>{sliderItem.ItemWrap.subheadline}</{sliderItem.ItemWrap.subheadline_tag}>
+                            </f:then>
+                            <f:else>
+                                <h2>{sliderItem.ItemWrap.subheadline}</h2>
+                            </f:else>
+                        </f:if>
+                    </f:if>
+
+                </div>
+
+                <f:switch expression="{sliderItem.ItemWrap.numCol}">
+                    <f:case value="1">
+                        <!-- layout: 100% -->
+                        <f:render section="oneCol" arguments="{settings: sliderItem.ItemWrap}" />
+                    </f:case>
+                    <f:case value="2">
+                        <!-- layout: 50:50% -->
+                        <f:render section="twoCol" arguments="{settings: sliderItem.ItemWrap}" />
+                    </f:case>
+                    <f:case value="3">
+                        <!-- layout: 33:33:33% -->
+                        <f:render section="threeCol" arguments="{settings: sliderItem.ItemWrap}" />
+                    </f:case>
+                    <f:case value="4">
+                        <!-- layout: 66:33% -->
+                        <f:render section="two_one" arguments="{settings: sliderItem.ItemWrap}" />
+                    </f:case>
+                    <f:case value="5">
+                        <!-- layout: 33:66% -->
+                        <f:render section="one_two" arguments="{settings: sliderItem.ItemWrap}" />
+                    </f:case>
+                    <f:case value="6">
+                        <!-- layout: 25:75% -->
+                        <f:render section="one_three" arguments="{settings: sliderItem.ItemWrap}" />
+                    </f:case>
+                    <f:case value="7">
+                        <!-- layout: 75:25% -->
+                        <f:render section="three_one" arguments="{settings: sliderItem.ItemWrap}" />
+                    </f:case>
+
+                    <f:case value="8">
+                        <!-- layout: 41:41:16% 5:5:2 -->
+                        <f:render section="threeCol_5_5_2" arguments="{settings: sliderItem.ItemWrap}" />
+                    </f:case>
+                    <f:case value="9">
+                        <!-- layout: 16:41:41% 2:5:5 -->
+                        <f:render section="threeCol_2_5_5" arguments="{settings: sliderItem.ItemWrap}" />
+                    </f:case>
+                    <f:case value="10">
+                        <!-- layout: 16:16:66% 2:2:8 -->
+                        <f:render section="threeCol_2_2_8" arguments="{settings: sliderItem.ItemWrap}" />
+                    </f:case>
+                    <f:case value="11">
+                        <!-- layout: 66:16:16% 8:2:2 -->
+                        <f:render section="threeCol_8_2_2" arguments="{settings: sliderItem.ItemWrap}" />
+                    </f:case>
+                </f:switch>
+
+                
+
+
+            </div>
+
+
+
+
+            
+        </f:if>
+    </f:for>
+</f:section>
+
+
+
+
+
+<!-- 100% Layout -->
+<f:section name="oneCol">
+    <div class="columns row">
+        <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text1}</f:format.html>
+    </div>
+</f:section>
+
+<!-- 50:50% Layout -->
+<f:section name="twoCol">
+    <div class="row">
+        <div class="columns medium-6">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text1}</f:format.html>
+        </div>
+        <div class="columns medium-6">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text2}</f:format.html>
+        </div>
+    </div>
+</f:section>
+
+<!-- 33:33:33% Layout -->
+<f:section name="threeCol">
+    <div class="row">
+        <div class="columns large-4">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text1}</f:format.html>
+        </div>
+        <div class="columns large-4">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text2}</f:format.html>
+        </div>
+        <div class="columns large-4">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text3}</f:format.html>
+        </div>
+    </div>
+</f:section>
+
+<!-- 66:33% Layout -->
+<f:section name="two_one">
+    <div class="row">
+        <div class="columns medium-6 large-8">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text1}</f:format.html>
+        </div>
+        <div class="columns medium-6 large-4">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text2}</f:format.html>
+        </div>
+    </div>
+</f:section>
+
+<!-- 33:66% Layout -->
+<f:section name="one_two">
+    <div class="row">
+        <div class="columns medium-6 large-4">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text1}</f:format.html>
+        </div>
+        <div class="columns medium-6 large-8">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text2}</f:format.html>
+        </div>
+    </div>
+</f:section>
+
+<!-- 25:75% Layout -->
+<f:section name="one_three">
+    <div class="row">
+        <div class="columns medium-3 large-3">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text1}</f:format.html>
+        </div>
+        <div class="columns medium-9 large-9">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text2}</f:format.html>
+        </div>
+    </div>
+</f:section>
+
+<!-- 75:25% Layout -->
+<f:section name="three_one">
+    <div class="row">
+        <div class="columns medium-9 large-9">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text1}</f:format.html>
+        </div>
+        <div class="columns medium-3 large-3">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text2}</f:format.html>
+        </div>
+    </div>
+</f:section>
+
+
+
+<!-- 41:41:16% 5:5:2 Layout -->
+<f:section name="threeCol_5_5_2">
+    <div class="row">
+        <div class="columns large-5">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text1}</f:format.html>
+        </div>
+        <div class="columns large-5">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text2}</f:format.html>
+        </div>
+        <div class="columns large-2">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text3}</f:format.html>
+        </div>
+    </div>
+</f:section>
+
+<!-- 41:16:41% 2:2:5 Layout -->
+<f:section name="threeCol_2_5_5">
+    <div class="row">
+        <div class="columns large-2">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text1}</f:format.html>
+        </div>
+        <div class="columns large-5">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text2}</f:format.html>
+        </div>
+        <div class="columns large-5">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text3}</f:format.html>
+        </div>
+    </div>
+</f:section>
+
+<!-- 16:16:66% 2:2:8 Layout -->
+<f:section name="threeCol_2_2_8">
+    <div class="row">
+        <div class="columns large-2">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text1}</f:format.html>
+        </div>
+        <div class="columns large-2">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text2}</f:format.html>
+        </div>
+        <div class="columns large-8">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text3}</f:format.html>
+        </div>
+    </div>
+</f:section>
+
+<!-- 66:16:16% 8:2:2 Layout -->
+<f:section name="threeCol_8_2_2">
+    <div class="row">
+        <div class="columns large-8">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text1}</f:format.html>
+        </div>
+        <div class="columns large-2">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text2}</f:format.html>
+        </div>
+        <div class="columns large-2">
+            <f:format.html parseFuncTSPath="lib.parseFunc">{settings.text3}</f:format.html>
+        </div>
+    </div>
+</f:section>
+
+
+
+
+
+
+
+
+
+
+
+<f:section name="image">
+    <f:for each="{elements}" as="image">
+        <f:if condition="{image}">
+        <div class="ib-contentslider-item ">
+            <figure>
+                <f:image src="{image.ItemWrap.image}" alt="{image.ItemWrap.imageAlt}" class="title-image" title="{image.ItemWrap.imageAlt}" />
+                <f:if condition="{image.ItemWrap.caption}">
+                <figcaption><f:format.html>{image.ItemWrap.caption}</f:format.html></figcaption>
+                </f:if>
+            </figure>
+        </div>
+        </f:if>
+    </f:for>
+</f:section>
+

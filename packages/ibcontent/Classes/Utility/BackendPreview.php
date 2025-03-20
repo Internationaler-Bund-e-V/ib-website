@@ -44,6 +44,8 @@ class BackendPreview extends ActionController
             return $this->previewMediaElement($params['row']);
         } elseif ($params['row']['CType'] === 'list' && $params['row']['list_type'] === 'ibcontent_contentslider') {
             return $this->previewContentSlider($params['row']);
+        } elseif ($params['row']['CType'] === 'list' && $params['row']['list_type'] === 'ibcontent_textsliderextended') {
+            return $this->previewTextSliderExtended($params['row']);
         } elseif ($params['row']['CType'] === 'list' && $params['row']['list_type'] === 'ibcontent_dbproductlist') {
             return $this->previewDBProductList($params['row']);
         }
@@ -299,6 +301,23 @@ class BackendPreview extends ActionController
 
         return $BEoutput;
     }
+
+
+    protected function previewTextSliderExtended($row)
+{
+    $this->initializeAction();
+    $data = GeneralUtility::xml2array($row['pi_flexform']);
+    // $this->showDebugger($data);
+    $BEoutput = '<h4>IB Text Slider Extended</h4><br>';
+
+    if (isset($data['data']['sDEF']['lDEF']['settings.textSliderExtendedContainer']['el'])) {
+        foreach ($data['data']['sDEF']['lDEF']['settings.textSliderExtendedContainer']['el'] as $slide) {
+            $BEoutput .= '<h5>' . $slide['ItemWrap']['el']['headline']['vDEF'] . '</h5>';
+        }
+    }
+
+    return $BEoutput;
+}
 
     /**
      * Render DBProductList

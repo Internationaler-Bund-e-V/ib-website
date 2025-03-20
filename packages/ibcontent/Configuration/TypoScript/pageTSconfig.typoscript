@@ -45,7 +45,7 @@ mod.wizards.newContentElement.wizardItems.ibcontent {
             tt_content_defValues {
                 CType = list
                 list_type = ibcontent_accordion
-                
+
             }
         },
         TextExtended {
@@ -102,6 +102,15 @@ mod.wizards.newContentElement.wizardItems.ibcontent {
                 list_type = ibcontent_contentslider
             }
         },
+        TextSliderExtended {
+            title = Textslider Extended
+            description = Content - Bilder oder Textslider
+            iconIdentifier = tx-ibcontent-icon
+            tt_content_defValues {
+                CType = list
+                list_type = ibcontent_textsliderextended
+            }
+        },
         ContactForm {
             title = Kontaktformular
             description = Content - Allgemeines Kontaktformular
@@ -132,7 +141,7 @@ mod.wizards.newContentElement.wizardItems.ibcontent {
         },
          DBJobModulShowJob {
             title = DB Job Modul - Show Job
-            description = DB Show Job 
+            description = DB Show Job
             iconIdentifier = tx-ibcontent-icon
             tt_content_defValues {
                 CType = list
@@ -141,7 +150,7 @@ mod.wizards.newContentElement.wizardItems.ibcontent {
         },
         DBJobModulShowForeignJob {
             title = DB Job Modul - Show Foreign Job
-            description = DB Show Foreign Job 
+            description = DB Show Foreign Job
             iconIdentifier = tx-ibcontent-icon
             tt_content_defValues {
                 CType = list
@@ -195,5 +204,5 @@ mod.wizards.newContentElement.wizardItems.ibcontent {
             }
         },
     }
-    show := addToList(StartPageSlider,BubbleSlider,Locations,Jobs,Accordion,TextExtended,Breadcrump,SidebarMap,SidebarDownloads,MediaElement,ContentSlider,ContactForm,Tiles,DBProductListShowLocation,DBProductListShowProduct,DBProductListShowCategory,DBProductListShowNews,DBJobModulShowJobList,DBJobModulShowJob,DBJobModulShowForeignJob,OSMMap)
+    show := addToList(StartPageSlider,BubbleSlider,Locations,Jobs,Accordion,TextExtended,Breadcrump,SidebarMap,SidebarDownloads,MediaElement,ContentSlider,TextSliderExtended,ContactForm,Tiles,DBProductListShowLocation,DBProductListShowProduct,DBProductListShowCategory,DBProductListShowNews,DBJobModulShowJobList,DBJobModulShowJob,DBJobModulShowForeignJob,OSMMap)
 }
