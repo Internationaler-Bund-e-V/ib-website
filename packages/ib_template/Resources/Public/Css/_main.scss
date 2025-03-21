@@ -130,6 +130,10 @@ h4 {
   cursor: pointer;
 }
 
+.modern-look .ib-prev-next-button  {
+  margin-top: 16rem;
+}
+
 /*
  * Links
  */
@@ -290,6 +294,11 @@ h4 {
     margin-bottom: -54px;
   }
 
+  // ib-training -> breadcrump container horizontally aligned with header-slider
+  .modern-look .offset--small #ib-slider-container {
+    margin-bottom: 0px;
+  }
+
   .offset--small .ib-startpage-slider-controls {
     margin-top: -27px;
   }
@@ -297,3 +306,31 @@ h4 {
 
 /* Large only */
 @media screen and (min-width: 64em) and (max-width: 74.9375em) {}
+
+
+
+// Full width of the main section
+@media screen and (min-width: 1349px) and (max-width: 2560px) {
+	.modern-look #ib-container {
+	// max-width: none;
+	max-width: 100%;
+  padding-bottom: 3rem;
+	}
+}
+
+// style images on ib-training
+.modern-look .zukunftstag-img-text-ext p img {
+  border-radius: 7.5px;
+  margin-top: 3rem; 
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  object-fit: cover;
+  height: 13rem;
+}
+
+// The grid of 50%:50% should turn into column on Mobile devices
+@media screen and (max-width: 480px) {
+  .modern-look .row .row {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}

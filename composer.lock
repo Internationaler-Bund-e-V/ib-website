@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d99c6d11b817b0a080f0d97c3a41ba90",
+    "content-hash": "5d8c3c991040d36509703d1ae6bf436c",
     "packages": [
         {
             "name": "apache-solr-for-typo3/solr",
@@ -282,7 +282,7 @@
         },
         {
             "name": "apache-solr-for-typo3/solrfal",
-            "version": "dev-deployment-database-actions",
+            "version": "dev-ib_training_modern_look",
             "dist": {
                 "type": "path",
                 "url": "./packages/solrfal",
@@ -2595,7 +2595,7 @@
         },
         {
             "name": "ib/bv_bbe",
-            "version": "dev-deployment-database-actions",
+            "version": "dev-ib_training_modern_look",
             "dist": {
                 "type": "path",
                 "url": "./packages/bv_bbe",
@@ -2618,7 +2618,7 @@
         },
         {
             "name": "ib/ib-cmt",
-            "version": "dev-deployment-database-actions",
+            "version": "dev-ib_training_modern_look",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_cmt",
@@ -2651,7 +2651,7 @@
         },
         {
             "name": "ib/ib-contact-person",
-            "version": "dev-deployment-database-actions",
+            "version": "dev-ib_training_modern_look",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_contact_person",
@@ -2684,7 +2684,7 @@
         },
         {
             "name": "ib/ib-content",
-            "version": "dev-deployment-database-actions",
+            "version": "dev-ib_training_modern_look",
             "dist": {
                 "type": "path",
                 "url": "./packages/ibcontent",
@@ -2717,7 +2717,7 @@
         },
         {
             "name": "ib/ib-dataprivacy",
-            "version": "dev-deployment-database-actions",
+            "version": "dev-ib_training_modern_look",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_dataprivacy",
@@ -2750,7 +2750,7 @@
         },
         {
             "name": "ib/ib-formbuilder",
-            "version": "dev-deployment-database-actions",
+            "version": "dev-ib_training_modern_look",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_formbuilder",
@@ -2783,7 +2783,7 @@
         },
         {
             "name": "ib/ib-galerie",
-            "version": "dev-deployment-database-actions",
+            "version": "dev-ib_training_modern_look",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_galerie",
@@ -2816,7 +2816,7 @@
         },
         {
             "name": "ib/ib-jobs",
-            "version": "dev-deployment-database-actions",
+            "version": "dev-ib_training_modern_look",
             "dist": {
                 "type": "path",
                 "url": "./packages/ibjobs",
@@ -2849,7 +2849,7 @@
         },
         {
             "name": "ib/ib-page-extension",
-            "version": "dev-deployment-database-actions",
+            "version": "dev-ib_training_modern_look",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_page_extension",
@@ -2872,7 +2872,7 @@
         },
         {
             "name": "ib/ib-search",
-            "version": "dev-deployment-database-actions",
+            "version": "dev-ib_training_modern_look",
             "dist": {
                 "type": "path",
                 "url": "./packages/ibsearch",
@@ -2905,7 +2905,7 @@
         },
         {
             "name": "ib/ib-srb",
-            "version": "dev-deployment-database-actions",
+            "version": "dev-ib_training_modern_look",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_srb",
@@ -2928,7 +2928,7 @@
         },
         {
             "name": "ib/ib-template",
-            "version": "dev-deployment-database-actions",
+            "version": "dev-ib_training_modern_look",
             "dist": {
                 "type": "path",
                 "url": "./packages/ib_template",
@@ -9028,6 +9028,64 @@
             "support": {
                 "chat": "https://typo3.org/help",
                 "docs": "https://docs.typo3.org",
+                "issues": "https://forge.typo3.org",
+                "source": "https://github.com/typo3/typo3"
+            },
+            "time": "2025-02-11T08:45:48+00:00"
+        },
+        {
+            "name": "typo3/cms-impexp",
+            "version": "v12.4.27",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-CMS/impexp.git",
+                "reference": "869d8c8ebaa2612fa1e8531c033750dd071d949d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3-CMS/impexp/zipball/869d8c8ebaa2612fa1e8531c033750dd071d949d",
+                "reference": "869d8c8ebaa2612fa1e8531c033750dd071d949d",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "12.4.27"
+            },
+            "conflict": {
+                "typo3/cms": "*"
+            },
+            "type": "typo3-cms-framework",
+            "extra": {
+                "typo3/cms": {
+                    "Package": {
+                        "partOfFactoryDefault": true
+                    },
+                    "extension-key": "impexp"
+                },
+                "branch-alias": {
+                    "dev-main": "12.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TYPO3\\CMS\\Impexp\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "TYPO3 Core Team",
+                    "email": "typo3cms@typo3.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TYPO3 CMS Import/Export - Tool for importing and exporting records using XML or the custom T3D format.",
+            "homepage": "https://typo3.org",
+            "support": {
+                "chat": "https://typo3.org/help",
+                "docs": "https://docs.typo3.org/c/typo3/cms-impexp/main/en-us/",
                 "issues": "https://forge.typo3.org",
                 "source": "https://github.com/typo3/typo3"
             },

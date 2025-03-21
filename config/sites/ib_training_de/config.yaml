@@ -3,6 +3,9 @@ baseVariants:
   -
     base: 'https://ib-training.ddev.site/'
     condition: 'getenv("IS_DDEV_PROJECT") == "true"'
+  -
+    base: 'https://schwarz-rot-bunt.rmsdev.de/'
+    condition: 'getenv("SITECONFIG_ENV") == "IBSTAGING"'
 disableStaticFileCache: false
 errorHandling:
   -

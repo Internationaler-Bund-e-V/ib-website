@@ -63,7 +63,8 @@
         "symfony/webpack-encore-bundle": "^2.2",
         "deployer/deployer": "^7.5",
         "sourcebroker/deployer-extended-database": "^18.2",
-        "helhum/dotenv-connector": "^3.1"
+        "helhum/dotenv-connector": "^3.1",
+        "typo3/cms-impexp": "^12.4"
 	},
     "require-dev": {
         "ssch/typo3-rector": "^2.5",

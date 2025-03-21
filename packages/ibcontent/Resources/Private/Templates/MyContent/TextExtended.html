@@ -16,9 +16,10 @@
         <f:render section="divider" />
     </f:if>
 
+    <f:variable name="cssClassZukunftstag">{f:cObject(typoscriptObjectPath: 'portalSettings.zukunftstagImg.css_class')}</f:variable>
     <div class="ib-services {f:if(condition: '{settings.paddingtop}',then:'ib-services-nopaddingtop')} {f:if(condition: '{settings.paddingbottom}',then:'ib-services-nopaddingbottom')}">
         <div class="row ib-content-module ib-background-{settings.bgColor}">
-            <div class="columns {f:if(condition: '{settings.layout}=="2col"',then: 'medium-offset-1 medium-10 large-6-2col large-offset-1-2col',else: 'medium-10 medium-offset-1')} end">
+            <div class="columns {cssClassZukunftstag} {f:if(condition: '{settings.layout}=="2col"',then: 'medium-offset-1 medium-10 large-6-2col large-offset-1-2col',else: 'medium-10 medium-offset-1')} end">
                 <div class="columns row headline-section">
 
                     <f:if condition="{settings.headline} != ''">

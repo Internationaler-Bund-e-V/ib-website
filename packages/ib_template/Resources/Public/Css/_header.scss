@@ -47,6 +47,10 @@ $nav-height--collapsed: 60px;
     margin-right: auto;
 }
 
+.modern-look .ib-header-container {
+    max-width: 100%;
+}
+
 .ib-header-bar {
     background-color: $white;
     position: relative;

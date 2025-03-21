@@ -67,6 +67,15 @@ plugin.tx_felogin_login {
     }
 }
 
+# Zukunftstag modern-look
+portalSettings.zukunftstagImg.css_class = TEXT
+portalSettings.zukunftstagImg.css_class.value = {$portalSettings.zukunftstagImg.css_class}
+portalSettings.zukunftstagImg.css_class.stdWrap.wrap = |
+
+portalSettings.zukunftstagImgStartPageSlider.css_class = TEXT
+portalSettings.zukunftstagImgStartPageSlider.css_class.value = {$portalSettings.zukunftstagImgStartPageSlider.css_class}
+portalSettings.zukunftstagImgStartPageSlider.css_class.stdWrap.wrap = |
+
 
 # -----------------------------------------------------------------------------
 # social share links
@@ -194,6 +203,7 @@ portalSettings.footer.show_textcontent_right.value = {$portalSettings.footer.sho
 portalSettings.footer.css_class = TEXT
 portalSettings.footer.css_class.value = {$portalSettings.footer.css_class}
 portalSettings.footer.css_class.stdWrap.wrap = |
+
 
 // get tt_content.bodytext and render it for usage in the footer
 portalSettings.footer.textcontent_right = RECORDS
